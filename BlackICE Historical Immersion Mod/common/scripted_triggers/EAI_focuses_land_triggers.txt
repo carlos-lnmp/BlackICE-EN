@@ -1,0 +1,746 @@
+############################################################################################################
+#	Expert AI mod - AI land focuses
+############################################################################################################
+
+############################################
+#	 Land focuses
+############################################
+
+
+# ARMOR FOCUS
+EAI_marm_army_focus = {
+	NOT = { # incompatible
+		has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 3 } 
+	}
+	OR = {
+		has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 2 }
+
+		AND = {
+			EAI_Medium_Armor_Focus_PRESET = yes
+			NOT = { has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 2 } }
+		}
+	}
+}
+EAI_harm_army_focus = {
+	NOT = { # incompatible
+		has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 4 } 
+	}
+	OR = {
+		has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 3 }
+
+		AND = {
+			EAI_Heavy_Armor_Focus_PRESET = yes
+			NOT = { has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 3 } }
+		}
+	}
+}
+EAI_anti_tank_army_focus = {
+	OR = {
+		has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 4 }
+
+		AND = {
+			EAI_Anti_Tank_Focus_PRESET = yes
+			NOT = { has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 4 } }
+		}
+	}
+}
+
+# ATTACHMENT
+EAI_larm_attachment = {
+	OR = {
+		has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 2 }
+		
+		AND = {
+			EAI_Light_Armor_Attachment_PRESET = yes
+			NOT = { has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 2 } }
+		}
+	}
+}
+EAI_motorized_attachment = {
+	OR = {
+		has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 1 }
+
+		AND = {
+			EAI_Motorized_Attachment_PRESET = yes
+			NOT = { has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 1 } }
+		}
+	}
+}
+EAI_harm_attachment = {
+	NOT = { # incompatible
+		has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 3 } 
+	}
+	OR = {
+		has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 4 }
+
+		AND = {
+			EAI_Heavy_Armor_Attachment_PRESET = yes
+			NOT = { has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 4 } }
+		}
+	}
+}
+EAI_marm_attachment = {
+	NOT = { # incompatible
+		has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 2 } 
+	}
+	OR = {
+		has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 3 }
+
+		AND = {
+			EAI_Medium_Armor_Attachment_PRESET = yes
+			NOT = { has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 3 } }
+		}
+	}
+}
+
+# SPEC OPS
+EAI_marine_spec_ops = {
+	OR = {
+		has_country_flag = { flag = EAI_FOCUS/LAND/spec_ops value = 1 }
+
+		AND = {
+			EAI_Marine_Focus_PRESET = yes
+			NOT = { has_country_flag = { flag = EAI_FOCUS/LAND/spec_ops value = 1 } }
+		}
+	}
+}
+EAI_mountaineer_spec_ops = {
+	OR = {
+		has_country_flag = { flag = EAI_FOCUS/LAND/spec_ops value = 2 }
+		
+		AND = {
+			EAI_Mountaineer_Focus_PRESET = yes
+			NOT = { has_country_flag = { flag = EAI_FOCUS/LAND/spec_ops value = 2 } }
+		}
+	}
+}
+EAI_no_spec_ops = {
+	OR = {
+		has_country_flag = { flag = EAI_FOCUS/LAND/spec_ops value = 3 }
+
+		AND = {
+			EAI_No_Spec_Ops_Focus_PRESET = yes
+			NOT = { has_country_flag = { flag = EAI_FOCUS/LAND/spec_ops value = 3 } }
+		}
+	}
+}
+
+############################################
+#	 Land tech focuses
+############################################
+
+### support companies
+
+EAI_maintenance_tech_focus = {
+	OR = {
+		has_country_flag = EAI_motorized_template
+		has_country_flag = EAI_medium_armor_template
+		has_country_flag = EAI_heavy_armor_template
+		check_variable = { num_battalions_with_type@maintenance_company > 0 }
+	}
+}
+EAI_hospital_tech_focus = {
+	NOT = { EAI_use_cheap_infantry = yes }
+	NOT = {
+		original_tag = CHI
+	}
+}
+EAI_logistics_tech_focus = {
+	NOT = { EAI_use_cheap_infantry = yes }
+	OR = {
+		EAI_logistics_tech_focus_2 = yes
+		has_country_flag = EAI_motorized_template
+		has_country_flag = EAI_medium_armor_template
+		has_country_flag = EAI_heavy_armor_template
+
+		check_variable = { num_battalions_with_type@maintenance_company > 0 }
+	}
+}
+EAI_logistics_tech_focus_2 = {
+	OR = {
+		original_tag = HUN
+		original_tag = ROM
+	}
+}
+EAI_recon_tech_focus = {
+	OR = {
+		always = yes
+	}
+}
+EAI_engineer_tech_focus = {
+	OR = {
+		always = yes
+	}
+}
+EAI_combat_engineer_tech_focus = {
+	OR = {
+		always = yes
+	}
+}
+EAI_signal_tech_focus = {
+	OR = {
+		original_tag = ENG
+		original_tag = CAN
+	}
+}
+EAI_military_police_tech_focus = {
+	OR = {
+		num_occupied_states > 2
+		has_offensive_war = yes
+
+		AND = { original_tag = GER date > 1939.1.1 }
+	}
+}
+
+###### armor techs
+
+EAI_armor_tech_focus = {
+	OR = {
+		original_tag = GER #REVISIT
+		original_tag = SOV 
+		original_tag = USA 
+	}
+	#OR = {
+	#	check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_MARM_FOCUS }
+	#	check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_HARM_FOCUS }
+	#}
+	#EAI_Armor_Research_Focus_PRESET = yes
+}
+
+EAI_GER_armor_tech_focus = {
+	original_tag = GER 
+}
+
+EAI_SOV_armor_tech_focus = {
+	original_tag = SOV 
+}
+
+EAI_USA_armor_tech_focus = {
+	original_tag = USA 
+}
+
+EAI_FRA_armor_tech_focus = {
+	original_tag = FRA 
+}
+
+EAI_ITA_armor_tech_focus = {
+	original_tag = ITA 
+	
+	date > 1939.1.1
+}
+
+EAI_ALLIED_armor_tech_focus = {
+	
+}
+
+EAI_AXIS_armor_tech_focus = {
+	
+}
+### light
+
+EAI_LARM_tech_focus = {
+	date > 1936.2.1
+
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_LARM_ATTACHMENT }
+		
+		EAI_LSPART_tech_focus = yes
+		EAI_LSPAA_tech_focus = yes
+	}
+	OR = {
+		EAI_armor_tech_focus = yes
+		num_of_military_factories > 15
+	}
+}
+EAI_LSPART_tech_focus = {
+	date > 1936.2.1
+
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_LARM_ATTACHMENT }
+		check_variable = { EAI_FOCUS/LAND/motorized_design = global.EAI_C_MOT_DESIGN }
+	}
+}
+EAI_LSPAA_tech_focus = {
+	date > 1936.2.1
+
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/antitank_design = global.EAI_LINE_AT_DESIGN }
+		check_variable = { EAI_FOCUS/LAND/motorized_design = global.EAI_C_MOT_DESIGN }
+	}
+}
+
+### medium
+
+EAI_MARM_tech_focus = {
+	date > 1936.2.1
+	
+	if = { limit = { check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_HARM_FOCUS } check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_MARM_ATTACHMENT } }
+		OR = {
+			date > 1942.6.1
+
+			AND = { date > 1941.1.1 OR = { has_country_flag = EAI_difficulty_bonus_very_hard_active has_country_flag = EAI_difficulty_bonus_insane_active } }
+		}
+	}
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_MARM_FOCUS }
+		check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_MARM_ATTACHMENT }
+		
+		EAI_MTD_tech_focus = yes
+		EAI_MSPART_tech_focus = yes
+		EAI_MSPAA_tech_focus = yes
+	}
+	OR = {
+		EAI_armor_tech_focus = yes
+		num_of_military_factories > 15
+	}
+}
+EAI_MTD_tech_focus = {
+	date > 1936.2.1
+	
+	NOT = { check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_HARM_FOCUS } }
+	OR = {
+		AND = {
+			OR = { check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_SF_DOCTRINE } check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_GB_DOCTRINE } check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_MA_DOCTRINE } }
+			check_variable = { EAI_FOCUS/LAND/antitank_design = global.EAI_MTD_AT_DESIGN }
+		}
+		check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_MARM_FOCUS }
+		check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_MARM_ATTACHMENT }
+	}
+}
+EAI_MSPART_tech_focus = {
+	date > 1936.2.1
+	
+	NOT = { 
+		check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_MA_DOCTRINE } 
+		AND = {
+			has_global_flag = EAI_challenging_mode
+			check_variable = { EAI_FOCUS/LAND/medium_armor_design = global.EAI_A_ARM_DESIGN }
+			num_of_military_factories < 300
+		}
+	}
+	OR = {
+		AND = { 
+			OR = { check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_MARM_FOCUS } check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_MARM_ATTACHMENT } }
+			OR = {
+				check_variable = { EAI_FOCUS/LAND/medium_armor_design = global.EAI_B_MARM_DESIGN }
+				check_variable = { EAI_FOCUS/LAND/medium_armor_design = global.EAI_C_MARM_DESIGN }
+			}
+		}
+		check_variable = { EAI_FOCUS/LAND/motorized_design = global.EAI_A_MOT_DESIGN }
+		AND = {
+			OR = { check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_SF_DOCTRINE } check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_GB_DOCTRINE } }
+			check_variable = { EAI_FOCUS/LAND/antitank_design = global.EAI_MTD_AT_DESIGN }
+		}
+	}
+}
+EAI_MSPAA_tech_focus = {
+	date > 1936.2.1
+	
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_MARM_FOCUS }
+		check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_MARM_ATTACHMENT }
+		check_variable = { EAI_FOCUS/LAND/antitank_design = global.EAI_MTD_AT_DESIGN }
+	}
+}
+
+### heavy
+
+EAI_HARM_tech_focus = {
+	date > 1936.2.1
+	
+	if = { limit = { check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_MARM_FOCUS } check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_HARM_ATTACHMENT } }
+		OR = {
+			date > 1942.6.1
+
+			AND = { date > 1941.1.1 OR = { has_country_flag = EAI_difficulty_bonus_very_hard_active has_country_flag = EAI_difficulty_bonus_insane_active } }
+		}
+	}
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_HARM_FOCUS }
+		check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_HARM_ATTACHMENT }
+		
+		EAI_HTD_tech_focus = yes
+		EAI_HSPART_tech_focus = yes
+		EAI_HSPAA_tech_focus = yes
+	}
+	OR = {
+		EAI_armor_tech_focus = yes
+		num_of_military_factories > 15
+	}
+}
+EAI_HTD_tech_focus = {
+	date > 1936.2.1
+	
+	NOT = { check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_MARM_FOCUS } }
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/antitank_design = global.EAI_HTD_AT_DESIGN }
+		check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_HARM_FOCUS }
+		check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_HARM_ATTACHMENT }
+	}
+}
+EAI_HSPART_tech_focus = {
+	date > 1936.2.1
+	
+	NOT = { check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_MA_DOCTRINE } }
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_HARM_FOCUS }
+		check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_HARM_ATTACHMENT }
+	}
+}
+EAI_HSPAA_tech_focus = {
+	date > 1936.2.1
+	
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_HARM_FOCUS }
+		check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_HARM_ATTACHMENT }
+		check_variable = { EAI_FOCUS/LAND/antitank_design = global.EAI_HTD_AT_DESIGN }
+	}
+}
+
+###### infantry/misc techs
+
+EAI_infantry_tech_focus = {
+	OR = {
+		AND = { 
+			EAI_major_country = yes 
+		}
+		
+		NOT = { 
+			EAI_major_country = yes 
+			has_global_flag = EAI_limit_research 
+		}
+	}
+}
+
+EAI_SMG_tech_focus = {
+	OR = {
+		AND = { 
+			EAI_major_country = yes 
+		}
+		
+		NOT = { 
+			EAI_major_country = yes 
+			has_global_flag = EAI_limit_research 
+		}
+	}
+}
+
+EAI_uniform_tech_focus = {
+	OR = {
+		AND = { 
+			EAI_major_country = yes 
+		}
+		
+		NOT = { 
+			EAI_major_country = yes 
+			has_global_flag = EAI_limit_research 
+		}
+	}
+}
+
+EAI_HMG_tech_focus = {
+	OR = {
+		AND = { 
+			EAI_major_country = yes 
+		}
+		
+		NOT = { 
+			EAI_major_country = yes 
+			has_global_flag = EAI_limit_research 
+		}
+	}
+}
+
+EAI_mortar_tech_focus = {
+	OR = {
+		AND = { 
+			EAI_major_country = yes 
+		}
+		
+		NOT = { 
+			EAI_major_country = yes 
+			has_global_flag = EAI_limit_research 
+		}
+	}
+}
+
+EAI_infgun_tech_focus = {
+	OR = {
+		AND = { 
+			EAI_major_country = yes 
+		}
+		
+		NOT = { 
+			EAI_major_country = yes 
+			has_global_flag = EAI_limit_research 
+		}
+	}
+}
+
+EAI_motorized_tech_focus = {
+	OR = {
+		AND = { 
+			EAI_major_country = yes 
+		}
+		
+		NOT = { 
+			EAI_major_country = yes 
+			has_global_flag = EAI_limit_research 
+		}
+	}
+}
+
+EAI_mechanized_tech_focus = {
+	OR = {
+		AND = { 
+			EAI_major_country = yes 
+		}
+		
+		NOT = { 
+			EAI_major_country = yes 
+			has_global_flag = EAI_limit_research 
+		}
+	}
+}
+
+
+EAI_HQ_tech_focus = {
+	date > 1936.6.1
+	
+	amount_research_slots > 4
+}
+
+EAI_marine_tech_focus = {
+	has_country_flag = EAI_marine_template
+	
+	has_country_flag = { flag = EAI_FOCUS/LAND/spec_ops value = 1 }
+}
+
+EAI_mountaineer_tech_focus = {
+	has_country_flag = EAI_mountaineer_template
+	
+	has_country_flag = { flag = EAI_FOCUS/LAND/spec_ops value = 2 }
+}
+
+EAI_artillery_tech_focus = {
+	date > 1936.7.1
+	
+	amount_research_slots > 2
+
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/infantry_design = global.EAI_B_INF_DESIGN }
+		check_variable = { EAI_FOCUS/LAND/infantry_design = global.EAI_C_INF_DESIGN }
+		check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_SF_DOCTRINE }
+
+		AND = { check_variable = { EAI_FOCUS/LAND/infantry_width = global.EAI_10W_INF_WIDTH } num_of_military_factories > 100 }
+
+		AND = {
+			check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_MA_DOCTRINE }
+			OR = { 
+				check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_MARM_FOCUS } check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_HARM_FOCUS } 
+				check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_MARM_ATTACHMENT } check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_HARM_ATTACHMENT } 
+			}
+		}
+	}
+
+	NOT = { EAI_use_cheap_infantry = yes }
+}
+EAI_med_artillery_tech_focus = {
+	date > 1936.7.1
+	
+	amount_research_slots > 2
+
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/infantry_design = global.EAI_B_INF_DESIGN }
+		check_variable = { EAI_FOCUS/LAND/infantry_design = global.EAI_C_INF_DESIGN }
+		check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_SF_DOCTRINE }
+
+		AND = { check_variable = { EAI_FOCUS/LAND/infantry_width = global.EAI_10W_INF_WIDTH } num_of_military_factories > 100 }
+
+		AND = {
+			check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_MA_DOCTRINE }
+			OR = { 
+				check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_MARM_FOCUS } check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_HARM_FOCUS } 
+				check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_MARM_ATTACHMENT } check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_HARM_ATTACHMENT } 
+			}
+		}
+	}
+
+	NOT = { EAI_use_cheap_infantry = yes }
+}
+EAI_hv_artillery_tech_focus = {
+	date > 1936.7.1
+	
+	amount_research_slots > 2
+
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/infantry_design = global.EAI_B_INF_DESIGN }
+		check_variable = { EAI_FOCUS/LAND/infantry_design = global.EAI_C_INF_DESIGN }
+		check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_SF_DOCTRINE }
+
+		AND = { check_variable = { EAI_FOCUS/LAND/infantry_width = global.EAI_10W_INF_WIDTH } num_of_military_factories > 100 }
+
+		AND = {
+			check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_MA_DOCTRINE }
+			OR = { 
+				check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_MARM_FOCUS } check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_HARM_FOCUS } 
+				check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_MARM_ATTACHMENT } check_variable = { EAI_FOCUS/LAND/attachment = global.EAI_HARM_ATTACHMENT } 
+			}
+		}
+	}
+
+	NOT = { EAI_use_cheap_infantry = yes }
+}
+
+EAI_rart_tech_focus = {
+	date > 1936.7.1
+	
+	if = { limit = { has_global_flag = EAI_limit_research }
+		EAI_major_country = yes
+	}
+	
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/land_doctrine = global.EAI_SF_DOCTRINE }
+	}
+
+	NOT = {
+		EAI_use_cheap_infantry = yes
+		AND = { check_variable = { EAI_FOCUS/LAND/infantry_width = global.EAI_10W_INF_WIDTH } num_of_military_factories < 100 }
+	}
+}
+
+EAI_anti_tank_tech_focus = {
+	date > 1936.7.1
+	
+	has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 4 }
+}
+
+EAI_anti_tank_tech_focus_2 = {
+	has_country_flag = EAI_anti_tank_template_upgrade
+	check_variable = { EAI_FOCUS/LAND/antitank_design = global.EAI_LINE_AT_DESIGN }
+	check_variable = { num_battalions_with_type@anti_tank_brigade > 20 }
+	check_variable = { EAI_max_armor_seen_enemies > EAI_max_piercing }
+}
+
+EAI_motart_tech_focus = {
+	date > 1936.7.1
+	
+	OR = {
+		check_variable = { EAI_FOCUS/LAND/motorized_design = global.EAI_B_MOT_DESIGN }
+	}
+
+	if = { limit = { has_global_flag = EAI_challenging_mode NOT = { check_variable = { EAI_FOCUS/LAND/armor_focus = global.EAI_AT_FOCUS } } } 
+		num_of_military_factories > 350
+	}
+}
+
+### antiair
+
+EAI_aa_tech_focus = {
+	date > 1936.7.1
+	
+	OR = {
+		
+		EAI_anti_air_design_focus = yes
+	}
+}
+EAI_anti_tank_design_focus = {
+	OR = {
+		AND = {
+			is_major = no
+			num_of_military_factories > 6
+			NOT = { EAI_FTR_tech_focus = yes }
+		}
+	}
+}
+EAI_anti_air_design_focus = {
+	OR = {
+		AND = {
+			is_major = no
+			num_of_military_factories > 6
+			NOT = { EAI_FTR_tech_focus = yes }
+		}
+	}
+}
+EAI_cancel_anti_air_design_focus = {
+	has_country_flag = EAI_anti_air_design_focus
+	is_major = yes
+	has_deployed_air_force_size = { size > 2000 }
+}
+
+EAI_land_doctrine_tech_focus = {
+	OR = {
+		EAI_Land_Doctrine_Research_Focus_PRESET = yes
+	}
+}
+
+############################################
+#	 Land production focuses
+############################################
+
+EAI_medium_armor_production = {
+	has_country_flag = EAI_medium_armor_template 
+
+	has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 2 }
+	
+}
+
+EAI_heavy_armor_production = {
+	has_country_flag = EAI_heavy_armor_template 
+	
+	has_country_flag = { flag = EAI_FOCUS/LAND/armor_focus value = 3 }
+}
+
+EAI_motorized_attachment_production = {
+	has_country_flag = EAI_motorized_template
+
+	has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 1 }
+	
+	if = {
+		limit = {
+			tag = GER 
+		}
+		date > 1938.6.1
+	}
+}
+
+EAI_light_armor_attachment_production = {
+	has_country_flag = EAI_light_armor_template
+
+	has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 2 }
+}
+
+EAI_medium_attachment_production = {
+	has_country_flag = EAI_medium_armor_template 
+
+	has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 3 }
+
+}
+
+EAI_heavy_attachment_production = {
+	has_country_flag = EAI_heavy_armor_template 
+	
+	has_country_flag = { flag = EAI_FOCUS/LAND/attachment value = 4 }
+}
+
+###
+
+EAI_garrison_production = {
+	always = no #Not usefull for AI
+	
+	has_war = yes
+	OR = {
+		original_tag = ENG
+		original_tag = JAP
+		
+		has_country_flag = EAI_garrison_divisions
+	}
+	
+}
+
+EAI_disable_stockpile_production = { #disables production of most equipments if it has a surplus
+	date < 1937.6.1
+	has_war = no 
+	check_variable = { field_strength < 0.9 }
+	num_of_military_factories < 20 
+}

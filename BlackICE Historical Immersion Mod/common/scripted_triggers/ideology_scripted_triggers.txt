@@ -1,0 +1,112 @@
+
+is_enemy_ideology = {
+	OR = {
+		AND = {
+			has_government = communism
+			ROOT = {
+				OR = {
+					has_government = fascism
+					democratic_govt = yes
+				}
+			}
+		}
+		AND = {
+			democratic_govt = yes
+			ROOT = {
+				OR = {
+					has_government = communism
+					has_government = fascism
+				}
+			}
+		}
+		AND = {
+			has_government = fascism
+			ROOT = {
+				OR = {
+					democratic_govt = yes
+					has_government = communism
+				}
+			}
+		}
+	}
+}
+
+
+EAI_democratic_nation = {
+	OR = {
+		democratic_govt = yes
+
+		AND = {
+			has_government = neutrality
+			
+			set_temp_variable = { democratic = party_popularity@conservatism }
+			add_to_temp_variable = { democratic = party_popularity@liberalism }
+			add_to_temp_variable = { democratic = party_popularity@socialism }
+
+			check_variable = { democratic > party_popularity@neutrality }
+			check_variable = { democratic > party_popularity@fascism }
+			check_variable = { democratic > party_popularity@communism }
+		}
+	}
+}
+
+EAI_communist_nation = {
+	OR = {
+		has_government = communism
+		
+		AND = {
+			has_government = neutrality
+			
+			set_temp_variable = { democratic = party_popularity@conservatism }
+			add_to_temp_variable = { democratic = party_popularity@liberalism }
+			add_to_temp_variable = { democratic = party_popularity@socialism }
+			
+			check_variable = { party_popularity@communism > party_popularity@neutrality }
+			check_variable = { party_popularity@communism > party_popularity@fascism }
+			check_variable = { party_popularity@communism > democratic }
+		}
+	}
+}
+
+EAI_fascist_nation = {
+	OR = {
+		has_government = fascism
+		
+		AND = {
+			has_government = neutrality
+			
+			set_temp_variable = { democratic = party_popularity@conservatism }
+			add_to_temp_variable = { democratic = party_popularity@liberalism }
+			add_to_temp_variable = { democratic = party_popularity@socialism }
+
+			check_variable = { party_popularity@fascism > party_popularity@neutrality }
+			check_variable = { party_popularity@fascism > party_popularity@communism }
+			check_variable = { party_popularity@fascism > democratic }
+		}
+	}
+}
+
+EAI_nonaligned_nation = {
+	NOT = {
+		EAI_democratic_nation = yes
+		EAI_communist_nation = yes
+		EAI_fascist_nation = yes
+	}
+}
+
+
+# true neutrals
+EAI_neutral_country = { 
+	NOT = { has_war = yes }
+	OR = { has_government = neutrality democratic_govt = yes }
+	OR = {
+		tag = BEL
+		tag = SWI
+		tag = SWE
+		tag = IRE
+		tag = TIB
+		tag = NEP
+		tag = BHU
+		tag = POR
+	}
+}

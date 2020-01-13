@@ -1,0 +1,284 @@
+ideas = {
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+	}
+	#Foreign
+	foreign_minister = {
+	}
+	#Propaganda/Security
+	interior_minister = {
+		VLA_georges_vereecken = {
+			allowed = {
+				original_tag = VLA
+			}
+			
+			available = {
+				has_government = communism
+			}			
+			
+			traits = { prince_of_terror  interior_minister_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Intelligence
+	intel_minister = {
+	}
+	#Economic
+	economic_minister = {
+	}
+	#Political Advisers
+	political_advisor = {
+		VLA_frans_van_cauwelaert = {
+			allowed = {
+				original_tag = VLA
+				
+			}
+			
+			available = {
+				has_government = conservatism
+			}
+			
+			traits = { silent_workhorse  political_advisor_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		VLA_emile_van_dievoet = {			
+			allowed = {
+				original_tag = VLA
+			}
+			
+			available = {
+				has_government = socialism
+			}
+			
+			traits = { compassionate_gentleman  political_advisor_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		VLA_Dr_August_Borms = {
+			allowed = {
+				original_tag = VLA
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { silent_workhorse  political_advisor_trait }
+		}
+		VLA_jef_van_de_wiele = {
+			allowed = {
+				original_tag = VLA
+				
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { backroom_backstabber  political_advisor_trait }
+		}		
+		VLA_war_van_overstraeten = {
+			allowed = {
+				original_tag = VLA
+			}
+			
+			available = {
+				has_government = communism
+			}
+			
+			traits = { backroom_backstabber  political_advisor_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}		
+	}
+	#Domestic
+	domestic_minister = {
+	}
+	influence_minister = {
+		#reserve communist: Bert Van Hoorick
+		VLA_georges_van_den_boom = {
+			allowed = {
+				original_tag = VLA
+				
+			}		
+			
+			traits = { communist_revolutionary  influence_minister_trait }
+	
+			on_add = {
+				country_event = political.1
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		VLA_Hendrik_Elias = {
+			allowed = {
+				original_tag = VLA
+			}
+			
+			traits = { fascist_demagogue  influence_minister_trait }
+	
+			on_add = {
+				country_event = political.7
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Academy
+	military_academy = {
+	}
+	#Military
+	#Army
+	army_chief = {
+		VLA_Staf_De_Clercq = {
+			allowed = {
+				original_tag = VLA
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { army_chief_offensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}		
+	}
+	#High Command
+	high_command = {
+		VLA_auguste_baesens = {
+			picture = generic_army_chief_def_western_european_2d
+			
+			allowed = {
+				original_tag = VLA
+			}
+			
+			traits = { army_artillery_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		VLA_alexis_vander_veken = {
+			allowed = {
+				original_tag = VLA
+			}
+			
+			traits = { army_infantry_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}		
+	}
+	#Designers
+	#Aircraft
+	aircraft_manufacturer = {
+		designer = yes		
+		
+		Stampe_Vertongen = {
+			allowed = {
+				original_tag = VLA
+			}
+			
+			research_bonus = {
+				air_equipment = 0.10
+			}
+			
+			traits = { medium_aircraft_manufacturer  aircraft_manufacturer_trait }
+			
+			equipment_bonus = {
+				# Tipsy B, firefly, fairey fox
+			}
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Materials
+	materiel_manufacturer = {
+		designer = yes
+		
+		brossel = {
+			allowed = {
+				original_tag = VLA
+			}
+			
+			research_bonus = {
+				motorized_equipment = 0.10
+			}
+			
+			traits = { motorized_equipment_manufacturer  materiel_manufacturer_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}			
+		}
+		mecar = {
+			allowed = {
+				original_tag = VLA
+			}
+			
+			research_bonus = {
+				infantry_weapons = 0.10
+			}
+			
+			traits = { infantry_equipment_manufacturer  materiel_manufacturer_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}			
+		}
+		zeebrugge_smederijen  = {
+			picture = generic_artillery_manufacturer_1
+			
+			allowed = {
+				original_tag = VLA
+			}
+			
+			research_bonus = {
+				artillery = 0.10
+			}
+			
+			traits = { artillery_manufacturer  materiel_manufacturer_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}			
+		}		
+	}		
+}
+### EOF ###

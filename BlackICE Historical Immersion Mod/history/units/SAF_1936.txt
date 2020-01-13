@@ -1,0 +1,214 @@
+﻿instant_effect = {
+	set_country_flag = placed_research_centre
+	
+	add_research_slot = 1
+	275 = { state_add_research_centre = yes }
+	SLOT:infantry_folder = yes
+	SLOT:support_folder = yes
+	SLOT:artillery_folder = yes
+}
+
+division_template = {
+	name = "District Force"			
+	division_names_group = SAF_GAR_01	# For 2-brigade Military Districts
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+	}
+	 support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		
+	}
+}
+division_template = {
+	name = "District Brigade"	
+	division_names_group = SAF_GAR_01		# For 1-brigade Military Districts
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Militia"  
+	#division_names_group = 
+	# Note: all forces at reserve levels in 1936
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+	}
+	 support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		
+	}
+}
+
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#	
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+##### OOB #####
+units = {
+	##### Royal South African Army #####
+	#division= {	
+	#	name = "Royal South African Army" 
+	#	location = 12589
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.1
+	#}
+	
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 12589 # Capetown
+		division_template = "District Force"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 1468 # Durbin
+		division_template = "District Force"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 12648  # Bloemfontein
+		division_template = "District Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 4696 # East London
+		division_template = "District Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 10400 # Pretoria
+		division_template = "District Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 10400 # Johannesburg
+		division_template = "District Force"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.3
+
+	}
+
+	##### No Naval OOB #####
+}
+
+air_wings = {
+	###South African Air Force (SAAF)
+	275 = {
+		# SAAF Fighter Squadron -- Hawker Furys
+		hawker_fury_equipment_1 =  {
+			owner = "SAF" 
+			amount = 30
+		}
+		war_cas_equipment_7 =  { #Waipiti
+			owner = "SAF" 
+			#creator = "ENG"
+			amount = 31
+		}
+	}
+}
+
+
+##### Starting Production #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "SAF"
+		}
+		requested_factories = 1
+		progress = 0.20
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_uniforms_0
+			creator = "SAF"
+		}
+		requested_factories = 1
+		progress = 0.20
+		efficiency = 100
+	}
+	#################### stockpile 
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_1
+			amount = 1000
+			producer = SAF
+		}
+	
+	add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+			amount = 800
+			producer = SAF
+		}
+	add_equipment_to_stockpile = {
+		type = war_cas_equipment_4
+			amount = 4
+			producer = ENG
+	}
+}

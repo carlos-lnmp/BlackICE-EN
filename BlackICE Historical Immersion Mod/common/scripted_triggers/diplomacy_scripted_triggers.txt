@@ -1,0 +1,514 @@
+#	Triggers to control if diplomatic actions are enabled:
+#		Format:
+#
+#		<diplomatic action tag>_enabled_trigger = {
+#			<trigger contents>
+#		}
+#
+#		ROOT is the country initiating the diplomatic action.
+#		FROM is the recipient or target of the diplomatic action.
+#
+#		Note:  For cleaner tooltips, it is recommended that you use
+#			if triggers within the enable triggers, and a single
+#			custom_trigger_tooltip trigger within each if trigger.
+#
+#		Example: (Germany is prevented from declaring war on the Soviet Union.)
+#
+#		DIPLOMACY_WAR_ENABLE_TRIGGER = {
+#			if = {
+#				limit = {
+#					tag = GER
+#				}
+#				custom_trigger_tooltip = {
+#					tooltip = PREVENT_GER_WAR_ON_SOV
+#					FROM = {
+#						NOT = {
+#							tag = SOV
+#						}
+#					}
+#				}
+#			}
+#		}
+
+######################################
+######################################
+##### KEEP CODE VERY SIMPLE HERE #####
+######################################
+######################################
+
+# This specifically overrides the rule check as to whether or not you can guarantee other ideologies
+DIPLOMACY_GUARANTEE_ENABLE_TRIGGER_OVERRIDES_GAME = {
+	NOT = {
+		has_game_rule = {
+			rule = allow_guarantees
+			option = LIMITED
+		}
+	}
+}
+
+DIPLOMACY_GUARANTEE_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GUARANTEE_LIMITED
+		}
+		always = yes # Handled by game logic.
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GUARANTEE 
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GUARANTEE_SAME 
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_GUARANTEES_SAME_IDEOLOGY_TOOLTIP
+			has_government = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GUARANTEE_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_GUARANTEES_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_REVOKE_GUARANTEE_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_REVOKE_GUARANTEE_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_REVOKE_GUARANTEES_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_RELEASE_NATION
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_RELEASE_NATION_PEACE
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_PEACE_ONLY_TOOLTIP
+			has_war = no
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_RELEASE_NATION_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+}
+DIPLOMACY_MILACC_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS_SAME
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_MILITARY_ACCESS_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_MILITARY_ACCESS_BLOCKED_TT
+			always = no
+		}
+	}
+}
+DIPLOMACY_OFFER_MILACC_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS_SAME
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_MILITARY_ACCESS_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_MILITARY_ACCESS_BLOCKED_TT
+			always = no
+		}
+	}
+}
+DIPLOMACY_DOCKING_RIGHTS_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS_SAME
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_MILITARY_ACCESS_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_MILITARY_ACCESS_BLOCKED_TT
+			always = no
+		}
+	}
+}
+DIPLOMACY_OFFER_DOCKING_RIGHTS_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS_SAME
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_MILITARY_ACCESS_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ACCESS_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_MILITARY_ACCESS_BLOCKED_TT
+			always = no
+		}
+	}
+}
+DIPLOMACY_LEND_LEASE_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_INCOMING_LEND_LEASE_LIMITED
+		}
+		always = yes #handled by game logic, see above
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_INCOMING_LEND_LEASE
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_INCOMING_LEND_LEASE_SAME
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEND_LEASE_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_INCOMING_LEND_LEASE_FACTION
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEND_LEASE_SAME_FACTION_TT
+			is_in_faction_with = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_INCOMING_LEND_LEASE_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEND_LEASE_BLOCKED_TT
+			always = no
+		}
+	}
+}
+DIPLOMACY_INCOMING_LEND_LEASE_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_INCOMING_LEND_LEASE
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_INCOMING_LEND_LEASE_LIMITED
+		}
+		always = yes #handled by game logic, see above #TODO, check if that requires the game rule trigger
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_INCOMING_LEND_LEASE_SAME
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEND_LEASE_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_INCOMING_LEND_LEASE_FACTION
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEND_LEASE_SAME_FACTION_TT
+			is_in_faction_with = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_INCOMING_LEND_LEASE_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEND_LEASE_BLOCKED_TT
+			always = no
+		}
+	}
+}
+DIPLOMACY_REQUEST_LICENSED_PRODUCTION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_REQUEST_LICENSED_PRODUCTION
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_REQUEST_LICENSED_PRODUCTION_SAME
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LICENSING_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_REQUEST_LICENSED_PRODUCTION_FACTION
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LICENSING_SAME_FACTION_TT
+			is_in_faction_with = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_REQUEST_LICENSED_PRODUCTION_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LICENSING_BLOCKED_TT
+			always = no
+		}
+	}
+}
+DIPLOMACY_GENERATE_WARGOAL_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GENERATE_WARGOAL_LIMITED
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GENERATE_WARGOAL
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GENERATE_WARGOAL_25
+		}
+		threat>0.24
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GENERATE_WARGOAL_50
+		}
+		threat>0.49
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GENERATE_WARGOAL_75
+		}
+		threat>0.74
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GENERATE_WARGOAL_100
+		}
+		threat>0.99
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_GENERATE_WARGOAL_FOCUS
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_WARGOALS_BLOCKED_TT
+			always = no
+		}
+	}
+}
+DIPLOMACY_BOOST_PARTY_POPULARITY_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_BOOST_PARTY_POPULARITY
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_BOOST_PARTY_POPULARITY_AI
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_BOOST_PARTY_AI_ONLY_TT
+			FROM = { is_ai = yes }
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_BOOST_PARTY_POPULARITY_PLAYER
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_BOOST_PARTY_PLAYER_ONLY_TT
+			FROM = { is_ai = no }
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_BOOST_PARTY_POPULARITY_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_BOOST_PARTY_BLOCKED_TT
+			always = no
+		}
+	}
+}
+DIPLOMACY_STAGE_COUP_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_STAGE_COUP
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_STAGE_COUP_AI
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_COUP_AI_ONLY_TT
+			FROM = { is_ai = yes }
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_STAGE_COUP_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_COUP_BLOCKED_TT
+			always = no
+		}
+	}
+}
+DIPLOMACY_LEAVE_FACTION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_LEAVE_FACTION_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEAVE_FACTION_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+}
+DIPLOMACY_ASSUME_FACTION_LEADERSHIP_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_ASSUME_FACTION_LEADERSHIP_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ASSUME_LEADERSHIP_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+}
+DIPLOMACY_KICK_FROM_FACTION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_KICK_FROM_FACTION_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_KICK_FROM_FACTION_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+}
+DIPLOMACY_SEND_VOLUNTEERS_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_country_flag = VOLUNTEERS_@FROM 
+		}
+		always = yes
+	}
+	if = {
+		limit = {
+			has_global_flag = DIPLOMACY_SEND_VOLUNTEERS_SAME
+			NOT = { has_country_flag = VOLUNTEERS_@FROM }
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_VOLUNTEERS_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_SEND_VOLUNTEERS
+		}
+		always = yes
+	}
+	else_if = {
+		limit = {
+			has_global_flag = DIPLOMACY_SEND_VOLUNTEERS_BLOCKED
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_VOLUNTEERS_BLOCKED_TT
+			always = no
+		}
+	}
+}

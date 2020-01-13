@@ -1,0 +1,660 @@
+foreign_influence = {
+
+	# Decisions for masters to push their ideology onto puppets
+	# Note that subject status is not checked due to those only appearing in DLC
+	# (Subjects are puppets with high autonomy)
+
+	nation_building = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 120
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				OR = {
+					conservatism < 0.9
+					socialism < 0.9
+					liberalism < 0.9
+				}
+			}
+			OR = {
+				political_power_daily > 0.5
+				has_political_power > 60
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			has_government = conservatism
+			FROM = {
+				is_puppet_of = ROOT
+				OR = {
+					conservatism < 0.99
+					socialism < 0.99
+					liberalism < 0.99
+				}
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		targeted_modifier = {
+			tag = FROM
+			conservatism_drift = 0.05
+			socialism_drift = 0.02
+			liberalism_drift = 0.02
+			stability_factor = 0.01
+			production_speed_buildings_factor = 0.05
+		}
+
+		modifier = {
+			political_power_cost = 0.5
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	nation_building_soc = {
+		name = nation_building
+		desc = nation_building_desc
+		icon = eng_propaganda_campaigns
+
+		days_remove = 120
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				OR = {
+					conservatism < 0.9
+					socialism < 0.9
+					liberalism < 0.9
+				}
+			}
+			OR = {
+				political_power_daily > 0.5
+				has_political_power > 60
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			has_government = socialism
+			FROM = {
+				is_puppet_of = ROOT
+				OR = {
+					conservatism < 0.99
+					socialism < 0.99
+					liberalism < 0.99
+				}
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		targeted_modifier = {
+			tag = FROM
+			conservatism_drift = 0.02
+			socialism_drift = 0.05
+			liberalism_drift = 0.02
+			stability_factor = 0.01
+			production_speed_buildings_factor = 0.05
+		}
+
+		modifier = {
+			political_power_cost = 0.5
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	nation_building_lib = {
+		name = nation_building
+		desc = nation_building_desc
+		icon = eng_propaganda_campaigns
+
+		days_remove = 120
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				OR = {
+					conservatism < 0.9
+					socialism < 0.9
+					liberalism < 0.9
+				}
+			}
+			OR = {
+				political_power_daily > 0.5
+				has_political_power > 60
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			has_government = liberalism
+			FROM = {
+				is_puppet_of = ROOT
+				OR = {
+					conservatism < 0.99
+					socialism < 0.99
+					liberalism < 0.99
+				}
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		targeted_modifier = {
+			tag = FROM
+			conservatism_drift = 0.02
+			socialism_drift = 0.02
+			liberalism_drift = 0.05
+			stability_factor = 0.01
+			production_speed_buildings_factor = 0.05
+		}
+
+		modifier = {
+			political_power_cost = 0.5
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	socialist_education = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 120
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				communism < 0.9
+			}
+			OR = {
+				political_power_daily > 0.5
+				has_political_power > 60
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			has_government = communism
+			FROM = {
+				is_puppet_of = ROOT
+				communism < 0.99
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		targeted_modifier = {
+			tag = FROM
+			communism_drift = 0.07
+			research_speed_factor = 0.05
+		}
+
+		modifier = {
+			political_power_cost = 0.5
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	paramilitary_training = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 120
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				fascism < 0.9
+			}
+			OR = {
+				political_power_daily > 0.5
+				has_political_power > 60
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			has_government = fascism
+			FROM = {
+				is_puppet_of = ROOT
+				fascism < 0.99
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		targeted_modifier = {
+			tag = FROM
+			fascism_drift = 0.1
+			experience_gain_army = 0.1
+		}
+
+		modifier = {
+			political_power_cost = 0.5
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	military_parade = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 120
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+				neutrality < 0.9
+			}
+			OR = {
+				political_power_daily > 0.5
+				has_political_power > 60
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			has_government = neutrality
+			FROM = {
+				is_puppet_of = ROOT
+				neutrality < 0.99
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		targeted_modifier = {
+			tag = FROM
+			neutrality_drift = 0.07
+			mobilization_speed = 0.15
+		}
+
+		modifier = {
+			political_power_cost = 0.5
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	police_action_socialism = {
+		name = police_action
+		icon = generic_prepare_civil_war
+		
+		cost = 50
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				socialism > 0.6
+			}
+			FROM = {
+				NOT = { democratic_govt = yes }
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			democratic_govt = yes
+			FROM = {
+				is_puppet_of = ROOT
+				NOT = { democratic_govt = yes }
+				socialism > 0.25
+			}
+		}
+		
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		complete_effect = {
+			FROM = { country_event = { id = mtg_generic.1 } }
+			FROM = {
+				add_timed_idea = {
+					idea = political_turmoil
+					days = 365
+				}
+			}
+			FROM = {
+				set_politics = {
+					ruling_party = socialism
+					elections_allowed = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	police_action_conservatism = {
+		name = police_action
+		icon = generic_prepare_civil_war
+		
+		cost = 50
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				conservatism > 0.6
+			}
+			FROM = {
+				NOT = { democratic_govt = yes }
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			democratic_govt = yes
+			FROM = {
+				is_puppet_of = ROOT
+				NOT = { democratic_govt = yes }
+				conservatism > 0.25
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		complete_effect = {
+			FROM = { country_event = { id = mtg_generic.1 } }
+			FROM = {
+				add_timed_idea = {
+					idea = political_turmoil
+					days = 365
+				}
+			}
+			FROM = {
+				set_politics = {
+					ruling_party = conservatism
+					elections_allowed = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	police_action_liberalism = {
+		name = police_action
+		icon = generic_prepare_civil_war
+		
+		cost = 50
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				liberalism > 0.6
+			}
+			FROM = {
+				NOT = { democratic_govt = yes }
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			democratic_govt = yes
+			FROM = {
+				is_puppet_of = ROOT
+				NOT = { democratic_govt = yes }
+				liberalism > 0.25
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		complete_effect = {
+			FROM = { country_event = { id = mtg_generic.1 } }
+			FROM = {
+				add_timed_idea = {
+					idea = political_turmoil
+					days = 365
+				}
+			}
+			FROM = {
+				set_politics = {
+					ruling_party = liberalism
+					elections_allowed = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	fraternal_republic = {
+
+		icon = generic_prepare_civil_war
+		
+		cost = 50
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				communism > 0.6
+			}
+			FROM = {
+				NOT = { has_government = communism }
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			has_government = communism
+			FROM = {
+				is_puppet_of = ROOT
+				NOT = { has_government = communism }
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		complete_effect = {
+			FROM = { country_event = { id = mtg_generic.1 } }
+			FROM = {
+				add_timed_idea = {
+					idea = political_turmoil
+					days = 365
+				}
+			}
+			FROM = {
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	ultranationalist_coup = {
+
+		icon = generic_prepare_civil_war
+		
+		cost = 50
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				fascism > 0.6
+			}
+			FROM = {
+				NOT = { has_government = fascism }
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			has_government = fascism
+			FROM = {
+				is_puppet_of = ROOT
+				NOT = { has_government = fascism }
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		complete_effect = {
+			FROM = { country_event = { id = mtg_generic.1 } }
+			FROM = {
+				add_timed_idea = {
+					idea = political_turmoil
+					days = 365
+				}
+			}
+			FROM = {
+				set_politics = {
+					ruling_party = fascism
+					elections_allowed = no
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	military_dictatorship_decision = {
+
+		icon = generic_prepare_civil_war
+		
+		cost = 50
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				neutrality > 0.6
+			}
+			FROM = {
+				NOT = { has_government = neutrality }
+			}
+		}
+
+		visible = {
+			has_FROM = yes
+			has_government = neutrality
+			FROM = {
+				is_puppet_of = ROOT
+				NOT = { has_government = neutrality }
+			}
+		}
+
+		#target_trigger = {
+		#	FROM = {
+		#		is_puppet_of = ROOT
+		#	}
+		#}
+
+		complete_effect = {
+			FROM = { country_event = { id = mtg_generic.1 } }
+			FROM = {
+				add_timed_idea = {
+					idea = political_turmoil
+					days = 365
+				}
+			}
+			FROM = {
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+puppet_management = {
+}

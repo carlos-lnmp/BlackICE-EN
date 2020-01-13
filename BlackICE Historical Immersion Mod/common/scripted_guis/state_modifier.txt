@@ -1,0 +1,228 @@
+scripted_gui = {
+	# Country States Overview
+	state_category_overview = {
+	
+		context_type = selected_state_context
+		
+		window_name = "state_category_overview_container"
+		
+		visible = {
+			has_state_flag = statedecisionview
+		}
+		
+		properties = {
+			state_decision = { 
+				frame = decision_status
+			}
+		}
+		
+		effects = {
+			exitbutton_click = {
+				clr_state_flag = statedecisionview
+				clear_array = state_decisions
+			}
+			name_background_click = {
+			}
+			
+			decision_button_click = {
+				set_variable = { decision_status = 3 }
+			}
+		}
+		
+		dynamic_lists = {
+			state_decisions_grid = {
+				array = state_decisions 
+				change_scope = yes
+				entry_container = "state_decision_grid_container"
+			}
+		}
+		
+		triggers = {
+			decision_button_click_enabled = {
+				always = yes
+			}
+		}
+	}
+	state_garrison_container = {
+	
+		context_type = selected_state_context
+		
+		window_name = "state_garrison_overview_container"
+		
+		visible = {
+			has_state_flag = stategarrisonview
+		}
+		 
+		properties = {
+			unit_icon = {
+				image = "[GetRecruitmentUnitIcon]"
+				frame = 2
+			}
+		}
+		effects = {
+			exitbutton_click={
+				close_state_garrison_container = yes
+			}
+			force_deploy_click = {
+				state_force_deploy_effect = yes
+			}
+			militia_icon_click = {
+				add_to_variable = { num_recruitment = 1 }
+				if = { limit = { NOT = { has_variable = recruitment_time } }
+				set_variable = { recruitment_time = 120 } }
+				set_state_flag = { flag = recruitment_type value = 1 }
+				
+				
+				meta_effect = { 
+					text = {
+						add_to_array = { state_recruitment = [X] }
+						ROOT = { add_to_array = { state_recruitment = [X] } }
+						[X] = {
+							set_state_flag = militia_[STATE_NAME]_[ROOT] 
+						}
+					}
+					X = num_recruitment
+					Y = recruitment_time
+					ROOT = "[Root.GetTag]"
+					STATE_NAME = "[Prev.GetName]"
+				}
+			}
+			
+			garrison_icon_click = {
+				add_to_variable = { num_recruitment = 1 }
+				if = { limit = { NOT = { has_variable = recruitment_time } }
+				set_variable = { recruitment_time = 90 } }
+				set_state_flag = { flag = recruitment_type value = 2 }
+				
+				meta_effect = { 
+					text = {
+						add_to_array = { state_recruitment = [X] }
+						ROOT = { add_to_array = { state_recruitment = [X] } }
+						[X] = {
+							set_state_flag = garrison_[STATE_NAME]_[ROOT] 
+						}
+					}
+					X = num_recruitment
+					Y = recruitment_time
+					ROOT = "[Root.GetTag]"
+					STATE_NAME = "[Prev.GetName]"
+				}
+			}
+			
+			cavalry_icon_click = {
+				add_to_variable = { num_recruitment = 1 }
+				if = { limit = { NOT = { has_variable = recruitment_time } }
+				set_variable = { recruitment_time = 90 } }
+				set_state_flag = { flag = recruitment_type value = 3 }
+				
+				meta_effect = { 
+					text = {
+						add_to_array = { state_recruitment = [X] }
+						ROOT = { add_to_array = { state_recruitment = [X] } }
+						[X] = {
+							set_state_flag = cavalry_[STATE_NAME]_[ROOT] 
+						}
+					}
+					X = num_recruitment
+					Y = recruitment_time
+					ROOT = "[Root.GetTag]"
+					STATE_NAME = "[Prev.GetName]"
+				}
+			}
+			
+			light_infantry_icon_click = {
+				add_to_variable = { num_recruitment = 1 }
+				if = { limit = { NOT = { has_variable = recruitment_time } }
+				set_variable = { recruitment_time = 90 } }
+				set_state_flag = { flag = recruitment_type value = 4 }
+				
+				meta_effect = { 
+					text = {
+						add_to_array = { state_recruitment = [X] }
+						ROOT = { add_to_array = { state_recruitment = [X] } }
+						[X] = {
+							set_state_flag = light_infantry_[STATE_NAME]_[ROOT] 
+						}
+					} 
+					X = num_recruitment
+					Y = recruitment_time
+					ROOT = "[Root.GetTag]"
+					STATE_NAME = "[Prev.GetName]"
+				}
+			}
+			
+			infantry_icon_click = {
+				add_to_variable = { num_recruitment = 1 }
+				if = { limit = { NOT = { has_variable = recruitment_time } }
+				set_variable = { recruitment_time = 90 } }
+				set_state_flag = { flag = recruitment_type value = 5 }
+				
+				meta_effect = { 
+					text = {
+						add_to_array = { state_recruitment = [X] }
+						ROOT = { add_to_array = { state_recruitment = [X] } }
+						[X] = {
+							set_state_flag = infantry_[STATE_NAME]_[ROOT] 
+						}
+					}
+					X = num_recruitment
+					Y = recruitment_time
+					ROOT = "[Root.GetTag]"
+					STATE_NAME = "[Prev.GetName]"
+				}
+			}
+		}
+		
+		dynamic_lists = {
+			state_garrison_grid = {
+				array = state_recruitment
+				change_scope = yes
+				entry_container = "state_garrison_grid_container"
+			}
+		}
+		
+		triggers = {
+			
+		}
+		
+		#ai_enabled = {
+		#	is_major = yes
+		#}
+		#
+		#ai_test_parent = <string>
+        #
+        #ai_test_interval = 24
+        #ai_test_variance = 2
+        #ai_test_scopes = test_self_owned_states
+        # 
+        #ai_check = {
+        #   always = yes
+        #}
+        #
+        #ai_check_scope = {
+		#	is_controlled_by = ROOT
+        #}
+        #
+        #ai_max_weight_taken_per_test = 2
+        #
+        #ai_weights = {
+        #    militia_icon_click = {
+        #        ai_will_do = {
+        #            base = 1
+        #               
+        #            modifier = {
+        #                add = ai_add
+        #                
+		#				set_temp_variable = { ai_add = state_strategic_value }
+        #            }  
+        #            modifier = {
+        #                add = ai_add
+        #                
+        #                is_capital = yes
+		#				set_temp_variable = { ai_add = state_strategic_value }
+        #            }
+        #        }
+        #    }
+        #}
+	}
+}

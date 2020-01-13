@@ -1,0 +1,169 @@
+
+#########################################################
+#	GER
+#########################################################
+
+EAI_GER_early_civilian_construction = {
+	enable = { 
+		tag = GER 
+		date < 1938.1.1
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 90
+	}
+}
+
+
+#########################################################
+#	ENG
+#########################################################
+EAI_ENG_early_civilian_construction = {
+	enable = { 
+		tag = ENG 
+		date < 1937.6.1
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 80
+	}
+}
+
+#########################################################
+#	FRA
+#########################################################
+
+EAI_FRA_early_civilian_construction = {
+	enable = { 
+		tag = FRA 
+		date < 1938.1.1
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 60
+	}
+}
+
+#########################################################
+#	ITA
+#########################################################
+
+EAI_ITA_early_civilian_construction = {
+	enable = { 
+		tag = ITA 
+		date < 1938.1.1
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 55
+	}
+}
+
+#########################################################
+#	SOV
+#########################################################
+
+EAI_SOV_early_civilian_construction = {
+	enable = { 
+		tag = SOV 
+		date < 1940.1.1
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 125
+	}
+}
+
+#########################################################
+#	HUN
+#########################################################
+
+EAI_HUN_early_civilian_construction = {
+	enable = { 
+		tag = HUN 
+		has_idea = HUN_treaty_of_triannon
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 20
+	}
+}
+
+#########################################################
+#	ROM
+#########################################################
+
+EAI_ROM_early_civilian_construction = {
+	enable = { 
+		tag = ROM 
+		date > 1936.1.1
+		date < 1938.1.1
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 20
+	}
+}
+
+EAI_ROM_upgrade_infrastructure = {
+	enable = { 
+		tag = ROM 
+		is_in_faction_with = GER
+		date > 1939.6.1
+		date < 1941.6.1
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = build_building target = 78 id = infrastructure value = 3 }
+	ai_strategy = { type = build_building target = 939 id = infrastructure value = 3 }
+	ai_strategy = { type = build_building target = 937 id = infrastructure value = 3 }
+	ai_strategy = { type = build_building target = 79 id = infrastructure value = 3 }
+}
+
+#########################################################
+#	GRE
+#########################################################
+
+EAI_GRE_early_civilian_construction = {
+	enable = { 
+		tag = GRE 
+		EAI_prioritize_civilian_buildup = yes
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 25
+	}
+}

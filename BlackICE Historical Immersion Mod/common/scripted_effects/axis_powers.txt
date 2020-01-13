@@ -1,0 +1,2508 @@
+#Check to see what idea's to give to all the Axis as a bonus for having the historical countries as part of
+# countries checked currently ITA, HUN, ROM, BUL, FIN,
+# possible minors to add IRQ, CRO, SLO
+axis_stronger_together = {
+	
+	## ITA in		
+	if = {
+		limit = {
+			ITA = {
+				is_in_faction_with = GER
+			}
+		}
+		every_country = {
+			limit = {
+				not = { has_idea = axis_i }
+				or = {
+					tag = ger
+					is_in_faction_with = GER
+				}
+			}
+			add_ideas = axis_i
+		}
+	}
+	## HUN in
+	if = {
+		limit = {
+			HUN = {
+				is_in_faction_with = GER
+			}
+		}
+		every_country = {
+			limit = {
+				not = { has_idea = axis_h }
+				or = {
+					tag = ger
+					is_in_faction_with = GER
+				}
+			}
+			add_ideas = axis_h
+		}
+	}
+	## ROM in
+	if = {
+		limit = {
+			ROM = {
+				is_in_faction_with = GER
+			}
+		}
+		every_country = {
+			limit = {
+				not = { has_idea = axis_r }
+				or = {
+					tag = ger
+					is_in_faction_with = GER
+				}
+			}
+			add_ideas = axis_r
+		}
+	}
+	## BUL in
+	if = {
+		limit = {
+			BUL = {
+				is_in_faction_with = GER
+			}
+		}
+		every_country = {
+			limit = {
+				not = { has_idea = axis_b }
+				or = {
+					tag = ger
+					is_in_faction_with = GER
+				}
+			}
+			add_ideas = axis_b
+		}
+	}
+	## FIN in
+	if = {
+		limit = {
+			FIN = {
+				is_in_faction_with = GER
+			}
+		}
+		every_country = {
+			limit = {
+				not = { has_idea = axis_f }
+				or = {
+					tag = ger
+					is_in_faction_with = GER
+				}
+			}
+			add_ideas = axis_f
+		}
+	}
+	## CRO in
+	if = {
+		limit = {
+			CRO = {
+				is_in_faction_with = GER
+			}
+		}
+		every_country = {
+			limit = {
+				not = { has_idea = axis_c }
+				or = {
+					tag = ger
+					is_in_faction_with = GER
+				}
+			}
+			add_ideas = axis_c
+		}
+	}
+	## SLO in
+	if = {
+		limit = {
+			SLO = {
+				is_in_faction_with = GER
+			}
+		}
+		every_country = {
+			limit = {
+				not = { has_idea = axis_s }
+				or = {
+					tag = ger
+					is_in_faction_with = GER
+				}
+			}
+			add_ideas = axis_s
+		}
+	}		
+}
+
+### When they leave
+axis_weaker_apart = {
+	
+	## ITA out		
+	if = {
+		limit = {
+			 not = {
+				ITA = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_idea = axis_i
+			}
+			remove_ideas = axis_i
+		}
+	}
+	## HUN out
+	if = {
+		limit = {
+			not = {
+				HUN = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_idea = axis_h
+			}
+			remove_ideas = axis_h
+		}
+	}
+	## ROM out
+	if = {
+		limit = {
+			not = {
+				ROM = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_idea = axis_r 
+			}
+			remove_ideas = axis_r
+		}
+	}
+	## BUL out
+	if = {
+		limit = {
+			not = {
+				BUL = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_idea = axis_b 
+			}
+			remove_ideas = axis_b
+		}
+	}
+	## FIN out
+	if = {
+		limit = {
+			not = {
+				FIN = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_idea = axis_f
+			}
+			remove_ideas = axis_f
+		}
+	}
+	## CRO out
+	if = {
+		limit = {
+			not = {
+				CRO = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_idea = axis_c
+			}
+			remove_ideas = axis_c
+		}
+	}
+	## SLO out
+	if = {
+		limit = {
+			not = {
+				SLO = {
+					is_in_faction_with = GER
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_idea = axis_s
+			}
+			remove_ideas = axis_s
+		}
+	}
+}
+
+### not working one would be much neater if it did
+axis_stronger_together_BUGGY = {
+	### ITA
+		if = {
+			limit = {
+				tag = ITA
+			}
+			if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_r_b_f
+						add_idea = axis_strong
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_r_b
+						add_idea = axis_i_h_r_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_r
+						add_idea = axis_i_h_r
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_b
+						add_idea = axis_i_h_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h
+						add_idea = axis_i_h
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_r_f
+						add_idea = axis_i_h_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_f
+						add_idea = axis_i_h_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_b_f
+						add_idea = axis_i_h_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_b_f
+						add_idea = axis_i_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROM = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_r_b_f
+						add_idea = axis_i_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROM = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_r_f
+						add_idea = axis_i_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROM = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_r
+						add_idea = axis_i_r
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_b
+						add_idea = axis_i_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_f
+						add_idea = axis_i_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					add_ideas = axis_i
+				}
+			}
+		}
+	###HUN
+		else_if = {
+			limit = {
+				tag = HUN
+			}
+			if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_r_b_f
+						add_idea = axis_strong
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_r_b
+						add_idea = axis_i_h_r_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_r
+						add_idea = axis_i_h_r
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_b
+						add_idea = axis_i_h_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i
+						add_idea = axis_i_h
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_r_f
+						add_idea = axis_i_h_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_f
+						add_idea = axis_i_h_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_b_f
+						add_idea = axis_i_h_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_b_f
+						add_idea = axis_h_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROM = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_r_b_f
+						add_idea = axis_h_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROM = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_r_f
+						add_idea = axis_h_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROM = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_r
+						add_idea = axis_h_r
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_b
+						add_idea = axis_h_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_f
+						add_idea = axis_h_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					add_ideas = axis_h
+				}
+			}
+		}
+	###ROM
+		else_if = {
+			limit = {
+				tag = ROM
+			}
+			if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h_b_f
+						add_idea = axis_strong
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h_b
+						add_idea = axis_i_h_r_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h
+						add_idea = axis_i_h_r
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_b
+						add_idea = axis_i_r_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i
+						add_idea = axis_i_r
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h_f
+						add_idea = axis_i_h_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_f
+						add_idea = axis_i_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_b_f
+						add_idea = axis_i_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_b_f
+						add_idea = axis_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_b_f
+						add_idea = axis_h_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_f
+						add_idea = axis_h_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h
+						add_idea = axis_h_r
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_b
+						add_idea = axis_r_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_f
+						add_idea = axis_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					add_ideas = axis_r
+				}
+			}
+		}		
+	###BUL
+		else_if = {
+			limit = {
+				tag = BUL
+			}
+			if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h_r_f
+						add_idea = axis_strong
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					not = {
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h_r
+						add_idea = axis_i_h_r_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h
+						add_idea = axis_i_h_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_r
+						add_idea = axis_i_r_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i
+						add_idea = axis_i_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h_f
+						add_idea = axis_i_h_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_f
+						add_idea = axis_i_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_r_f
+						add_idea = axis_i_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROM = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_r_f
+						add_idea = axis_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_r_f
+						add_idea = axis_h_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_f
+						add_idea = axis_h_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h
+						add_idea = axis_h_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROM = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_r
+						add_idea = axis_r_b
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FIN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_f
+						add_idea = axis_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+						FIN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					add_ideas = axis_b
+				}
+			}
+		}		
+	###FIN
+		else_if = {
+			limit = {
+				tag = BUL
+			}
+			if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h_r_b
+						add_idea = axis_strong
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					not = {
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h_r
+						add_idea = axis_i_h_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h
+						add_idea = axis_i_h_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_r
+						add_idea = axis_i_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i
+						add_idea = axis_i_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					HUN = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_h_b
+						add_idea = axis_i_h_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ROM = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_b
+						add_idea = axis_i_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_i_r_b
+						add_idea = axis_i_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROM = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_r_b
+						add_idea = axis_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					ROM = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_r_b
+						add_idea = axis_h_r_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h_b
+						add_idea = axis_h_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					HUN = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_h
+						add_idea = axis_h_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROM = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_r
+						add_idea = axis_r_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					BUL = {
+						is_in_faction_with = GER
+					}
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					swap_ideas = {
+						remove_idea = axis_b
+						add_idea = axis_b_f
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					not = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+						ROM = {
+							is_in_faction_with = GER
+						}
+						HUN = {
+							is_in_faction_with = GER
+						}
+						BUL = {
+							is_in_faction_with = GER
+						}
+					}
+				}
+				every_country = { 
+					limit = {
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					add_ideas = axis_f
+				}
+			}
+		}
+}

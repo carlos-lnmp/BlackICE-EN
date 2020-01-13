@@ -1,0 +1,124 @@
+﻿capital = 271
+
+oob = "ETH_1936"
+
+set_convoys = 5
+
+set_stability = 0.7
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		#early_ship_hull_submarine = 1
+	}
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_mountaineers = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	tech_support = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	desert_equipment = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	
+	ww1_battlefield_support = 1
+}
+
+add_ideas = { 	
+	export_focus
+	tax_low
+	tariffs_average
+	
+	war_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_encouraged
+	
+	cons_expanded_draft
+	foreign_volunteers
+	mob_general
+	train_low
+	age_19
+	officer_train_none
+	security_minor_restrictions
+	edu_minimal
+	foreign_isolationism
+	mountainous_country
+}
+
+set_politics = {
+	ruling_party = monarchism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	monarchism = 96
+	conservatism = 3
+	fascism = 0
+	communism = 1
+	neutrality = 0
+}
+################################
+create_country_leader = {
+	name = "Haile Selassie"
+	desc = "POLITICS_HAILE_SELASSIE_DESC"
+	picture = "Portrait_Ethiopia_Haile_Selassie.dds"
+	expire = "1965.1.1"
+	ideology = absolutism
+	traits = {
+		demagogue
+	}
+}
+create_country_leader = {
+	name = "Fitawrari Yeebio Woldai"
+	desc = "POLITICS_YEEBIO_WOLDAI_DESC"
+	picture = "Portrait_Ethiopia_Haile_Selassie.dds"
+	expire = "1965.1.1"
+	ideology = social_democracy
+	traits = {
+		#
+	}
+}
+##############################################
+create_corps_commander = {
+	name = "Seyoum Mengesha"
+	portrait_path = "gfx/leaders/Africa/Portrait_Africa_Generic_land_2.dds"
+	traits = {  desert_fox }
+	skill = 2
+}

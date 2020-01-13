@@ -1,0 +1,1110 @@
+####################
+##### Dedicated Research Slots
+####################
+#
+#
+#Commands:
+#SLOT:infantry_folder
+#SLOT:support_folder
+#SLOT:artillery_folder
+#SLOT:tank_techs_folder
+#SLOT:armor_folder
+#SLOT:air_techs_folder
+#SLOT:air_techs_folder_army
+#SLOT:air_techs_folder_navy
+#SLOT:naval_folder
+#SLOT:naval_techs_folder
+#SLOT:industry_folder
+#SLOT:ww1_land_doctrine_folder
+#SLOT:land_doctrine_folder
+#SLOT:naval_doctrine_folder
+#SLOT:air_doctrine_folder
+#SLOT:electronics_folder
+#SLOT:nuclear_folder
+#SLOT:special_forces
+
+SLOT:infantry_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:infantry_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_infantry_folder
+}
+SLOT:special_forces = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:special_forces
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_special_forces
+}
+SLOT:support_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:support_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_support_folder
+}
+SLOT:artillery_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:artillery_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_artillery_folder
+}
+SLOT:tank_techs_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:tank_techs_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_tank_techs_folder
+}
+SLOT:armor_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:armor_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_armor_folder
+}
+SLOT:air_techs_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:air_techs_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_air_techs_folder
+}
+SLOT:air_techs_folder_army = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:air_techs_folder_army
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_air_techs_folder_army
+}
+SLOT:air_techs_folder_navy = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:air_techs_folder_navy
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_air_techs_folder_navy
+}
+SLOT:naval_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:naval_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_naval_folder
+}
+SLOT:naval_techs_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:naval_techs_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_naval_techs_folder
+}
+SLOT:industry_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:industry_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_industry_folder
+}
+SLOT:ww1_land_doctrine_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:ww1_land_doctrine_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_ww1_land_doctrine_folder
+}
+SLOT:land_doctrine_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:land_doctrine_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_land_doctrine_folder
+}
+SLOT:naval_doctrine_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:naval_doctrine_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_naval_doctrine_folder
+}
+SLOT:air_doctrine_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:air_doctrine_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_air_doctrine_folder
+}
+SLOT:electronics_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:electronics_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_electronics_folder
+}
+SLOT:nuclear_folder = {
+	if = {
+		limit = { check_variable = { target_slot = 0 } } 
+		set_temp_variable = { temp = research_slots_total }
+		set_temp_variable = { temp_tt = research_slots_total }
+		add_to_temp_variable = { temp_tt = 1 }
+	}
+	else = {
+		set_temp_variable = { temp = target_slot }
+		set_temp_variable = { temp_tt = target_slot }
+		if = { limit = { check_variable = { target_slot > research_slots_total } }
+			set_temp_variable = { temp = research_slots_total }
+			set_temp_variable = { temp_tt = research_slots_total }
+		}
+	}
+	meta_effect = {
+		text = {
+			var:research_state_[NR] = {
+				set_state_flag = SLOT_[TAG]:nuclear_folder
+			}
+		}
+		NR = temp
+		TAG = "[Root.GetTag]"
+	}	
+	clr_country_flag = selected_research_slot
+	if = {
+		limit = {
+			check_variable = { loc = 0 }
+		}
+		custom_effect_tooltip = SLOT_title
+		set_temp_variable = { loc = 1 }
+	}
+	custom_effect_tooltip = SLOT_nuclear_folder
+}
+
+set_folder_flags = {
+	ROOT = {
+		set_country_flag = LOCK:infantry_folder
+		set_country_flag = LOCK:special_forces
+		set_country_flag = LOCK:support_folder
+		set_country_flag = LOCK:artillery_folder
+		set_country_flag = LOCK:tank_techs_folder
+		set_country_flag = LOCK:armor_folder
+		set_country_flag = LOCK:air_techs_folder
+		set_country_flag = LOCK:air_techs_folder_army
+		set_country_flag = LOCK:air_techs_folder_navy
+		set_country_flag = LOCK:naval_folder
+		set_country_flag = LOCK:naval_techs_folder
+		set_country_flag = LOCK:industry_folder
+		set_country_flag = LOCK:ww1_land_doctrine_folder
+		set_country_flag = LOCK:land_doctrine_folder
+		set_country_flag = LOCK:naval_doctrine_folder
+		set_country_flag = LOCK:air_doctrine_folder
+		set_country_flag = LOCK:electronics_folder
+		set_country_flag = LOCK:nuclear_folder
+	}
+		
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:infantry_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:infantry_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:support_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:support_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:artillery_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:artillery_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:tank_techs_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:tank_techs_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:armor_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:armor_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:air_techs_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:air_techs_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:air_techs_folder_army
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:air_techs_folder_army }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:air_techs_folder_navy
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:air_techs_folder_navy }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:naval_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:naval_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:naval_techs_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:naval_techs_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:industry_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:industry_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:ww1_land_doctrine_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:ww1_land_doctrine_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:land_doctrine_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:land_doctrine_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:naval_doctrine_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:naval_doctrine_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:air_doctrine_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:air_doctrine_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:electronics_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:electronics_folder }
+	}
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_state_flag = SLOT_[TAG]:nuclear_folder
+				}
+				TAG = "[Root.GetTag]"
+			}
+		}
+		ROOT = { clr_country_flag = LOCK:nuclear_folder }
+	}
+}
+	
+state_add_research_centre = {
+	if = {
+		limit = {
+			THIS = { 
+				NOT = { state = 847 }
+			}
+		}
+		add_building_construction = {
+			type = research_centre
+			level = 1
+			instant_build = yes
+		}
+	}
+	else = {
+		effect_tooltip = {
+			add_building_construction = {
+				type = research_centre
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	add_to_variable = { Root.research_centre = 1 }
+	set_state_flag = research_centre
+	set_research_centre = yes
+}
+
+set_research_centre = {
+	if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_3
+				}
+			}
+		}
+		set_variable = { position = 3 }
+		ROOT = { 
+			set_variable = { research_state_3 = PREV.id } 
+			set_variable = { research_slots_total = 3 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_4
+				}
+			}
+		}
+		set_variable = { position = 4 }
+		ROOT = { 
+			set_variable = { research_state_4 = PREV.id } 
+			set_variable = { research_slots_total = 4 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_5
+				}
+			}
+		}
+		set_variable = { position = 5 }
+		ROOT = { 
+			set_variable = { research_state_5 = PREV.id } 
+			set_variable = { research_slots_total = 5 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_6
+				}
+			}
+		}
+		set_variable = { position = 6 }
+		ROOT = { 
+			set_variable = { research_state_6 = PREV.id } 
+			set_variable = { research_slots_total = 6 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_7
+				}
+			}
+		}
+		set_variable = { position = 7 }
+		ROOT = { 
+			set_variable = { research_state_7 = PREV.id } 
+			set_variable = { research_slots_total = 7 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_8
+				}
+			}
+		}
+		set_variable = { position = 8 }
+		ROOT = { 
+			set_variable = { research_state_8 = PREV.id } 
+			set_variable = { research_slots_total = 8 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_9
+				}
+			}
+		}
+		set_variable = { position = 9 }
+		ROOT = { 
+			set_variable = { research_state_9 = PREV.id } 
+			set_variable = { research_slots_total = 9 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_10
+				}
+			}
+		}
+		set_variable = { position = 10 }
+		ROOT = { 
+			set_variable = { research_state_10 = PREV.id } 
+			set_variable = { research_slots_total = 10 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_11
+				}
+			}
+		}
+		set_variable = { position = 11 }
+		ROOT = { 
+			set_variable = { research_state_11 = PREV.id } 
+			set_variable = { research_slots_total = 11 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_12
+				}
+			}
+		}
+		set_variable = { position = 12 }
+		ROOT = { 
+			set_variable = { research_state_12 = PREV.id } 
+			set_variable = { research_slots_total = 12 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_13
+				}
+			}
+		}
+		set_variable = { position = 13 }
+		ROOT = { 
+			set_variable = { research_state_13 = PREV.id } 
+			set_variable = { research_slots_total = 13 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_14
+				}
+			}
+		}
+		set_variable = { position = 14 }
+		ROOT = { 
+			set_variable = { research_state_14 = PREV.id } 
+			set_variable = { research_slots_total = 14 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_15
+				}
+			}
+		}
+		set_variable = { position = 15 }
+		ROOT = { 
+			set_variable = { research_state_15 = PREV.id } 
+			set_variable = { research_slots_total = 15 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			ROOT = {
+				NOT = {
+					has_variable = research_state_16
+				}
+			}
+		}
+		set_variable = { position = 16 }
+		ROOT = { 
+			set_variable = { research_state_16 = PREV.id } 
+			set_variable = { research_slots_total = 16 } 
+			add_to_array = { research_slots = PREV }
+		}
+	}
+}
+
+add_research_centre = {
+	random_owned_controlled_state = {
+		limit = {
+			is_in_home_area = yes
+			is_core_of = ROOT
+			is_fully_controlled_by = ROOT
+			has_set_states = yes
+			NOT = { has_state_flag = research_centre }
+			NOT = { has_state_category = tiny_island }
+			NOT = { has_state_category = small_island }
+		}
+		add_building_construction = {
+			type = research_centre
+			level = 1
+			instant_build = yes
+		}
+		add_to_variable = { Root.research_centre = 1 }
+		set_state_flag = research_centre
+		set_research_centre = yes
+	}
+}

@@ -1,0 +1,300 @@
+﻿add_namespace = partisans
+
+country_event = {#Partisans, tied to resistance
+	id = partisans.1
+	hidden = yes
+	
+	trigger = {
+		is_ai = no 
+		has_war = yes
+		
+		check_variable = { num_occupied_states > 0 }
+		
+		#Enemy owns the state, you control it
+		any_of_scopes = {
+			array = Root.controlled_states
+			var:v = {
+
+				is_fully_controlled_by = ROOT
+				check_variable = { resistance > 0.99 }
+				NOT = {
+					has_state_flag = recent_uprising
+				}
+				
+			}
+		}		
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		calculate_partisan_states = yes
+	}
+				
+	option = { }	
+}
+
+country_event = { #Communist Spanish Partisans
+	id = partisans.2
+	hidden = yes
+	
+	trigger = {
+		original_tag = SPR
+		has_government = communism
+		has_civil_war = yes
+		any_enemy_country = {
+			original_tag = SPR
+			num_of_controlled_states > 5
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+		modifier = {
+			factor = 0.7
+			any_enemy_country = {
+				original_tag = SPR
+				num_of_controlled_states > 12
+			}
+		}
+		modifier = {
+			factor = 0.8
+			any_enemy_country = {
+				original_tag = SPR
+				num_of_controlled_states > 13
+			}
+		}
+	}
+	
+	immediate = {
+		calculate_communist_spanish_partisan_state = yes
+		if = {
+			limit = {
+				surrender_progress > 0.3 
+			}
+			calculate_communist_spanish_partisan_state = yes
+		}
+	}
+	
+	option = { }
+	
+}
+
+country_event = { #Fascist Spanish Partisans
+	id = partisans.3
+	hidden = yes
+	
+	trigger = {
+		original_tag = SPR
+		has_government = fascism
+		has_civil_war = yes
+		any_enemy_country = {
+			original_tag = SPR
+			num_of_controlled_states > 3
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+		modifier = {
+			factor = 0.7
+			SPR = {
+				num_of_controlled_states > 8
+			}
+		}
+		modifier = {
+			factor = 0.8
+			SPR = {
+				num_of_controlled_states > 10
+			}
+		}
+	}
+	
+	immediate = {
+		calculate_fascist_spanish_partisan_state = yes
+		if = {
+			limit = {
+				surrender_progress > 0.3 
+			}
+			calculate_fascist_spanish_partisan_state = yes
+		}
+	}
+	
+	option = { }
+	
+}
+
+#Massive Soviet Partisan uprising
+country_event = {
+	id = partisans.4
+	hidden = yes
+	
+	#mean_time_to_happen = {
+	#	days = 50 
+	#}
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = no
+		
+		OR = {
+			original_tag = GER
+			is_in_faction_with = GER
+		}
+		
+		has_war_with = SOV
+		
+		#Check for an area
+		OR = {
+			#Minsk
+			206 = {
+				is_controlled_by = ROOT
+				all_neighbor_state = {
+					CONTROLLER = {
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+			
+			#Kiev
+			202 = {
+				is_controlled_by = ROOT
+				all_neighbor_state = {
+					CONTROLLER = {
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+			
+			#Pskov
+			209 = {
+				is_controlled_by = ROOT
+				all_neighbor_state = {
+					CONTROLLER = {
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+			
+			#Voronezh
+			260 = {
+				is_controlled_by = ROOT
+				all_neighbor_state = {
+					CONTROLLER = {
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+			
+			#Orel
+			222 = {
+				is_controlled_by = ROOT
+				all_neighbor_state = {
+					CONTROLLER = {
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		
+	}
+	
+	option = { }
+	
+}
+
+country_event = {#Partisans, occasional spawn. Spawns Partisan on an area scope
+	id = partisans.10
+	hidden = yes
+	
+	trigger = {
+		always = no
+		is_ai = no 
+		has_war = yes
+		#Enemy owns the state, you control it
+		any_state = {
+			NOT = { is_owned_by = ROOT }
+			is_fully_controlled_by = ROOT
+		}		
+	}
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+	
+	immediate = {
+		random_state = {
+			limit = {
+				is_fully_controlled_by = ROOT 
+				NOT = { is_owned_by = ROOT }
+			}
+			save_event_target_as = partisan_state
+			OWNER = {
+				set_state_controller = PREV
+				if = {
+					limit = {
+						NOT = {	has_tech = interwar_antitank }
+					}
+					set_technology = { interwar_antitank = 1 }
+				}
+				
+				if = {
+					limit = {
+						NOT = {	has_tech = partisans }
+					}
+					set_technology = { partisans = 1 }
+				}
+				
+				if = {
+					limit = {
+						NOT = {	has_template_majority_unit = partisan }
+					}
+					division_template = {
+						name = "Partisan"		
+						
+						regiments = {
+							partisan = { x = 0 y = 0 }
+							partisan = { x = 0 y = 1 }
+							
+							partisan = { x = 1 y = 0 }
+							partisan = { x = 1 y = 1 }
+							
+							partisan = { x = 2 y = 0 }
+							partisan = { x = 2 y = 1 }
+							
+							partisan = { x = 3 y = 0 }
+							partisan = { x = 3 y = 1 }
+							
+							partisan = { x = 4 y = 0 }
+							partisan = { x = 4 y = 1 }
+						}
+						
+						support = {
+							anti_tank = { x = 0 y = 0 }
+						}
+						priority = 0
+					}
+					set_division_template_lock = {
+						division_template = "Partisan"
+						is_locked = yes
+					}
+				}
+				event_target:partisan_state = {
+					spawn_partisan_division = yes 
+				}
+			}
+			ROOT = {
+				set_state_controller = PREV 
+			}
+		}
+			 
+	}
+				
+	option = { }	
+}

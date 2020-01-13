@@ -1,0 +1,185 @@
+ideas = {
+	### Foreign Investment
+	fdi_regulations = { 
+		law = yes
+		
+		fdi_encouraged = {
+			
+			cost = 100
+			removal_cost = -1
+			level = 1
+			available = {
+				NOT = {
+					OR = { 
+						has_government = fascism
+						has_government = communism
+						has_government = neutrality
+						has_government = monarchism
+						has_idea = tariffs_high
+						has_idea = closed_economy
+					}
+				}
+			}
+			
+			on_add = {
+				set_country_flag = fdi_encouraged
+				clr_country_flag = fdi_allowed
+				clr_country_flag = fdi_regulated
+				clr_country_flag = fdi_banned
+			}
+			
+			modifier = {
+				political_power_factor = -0.10
+				industrial_capacity_factory = 0.04
+				industrial_capacity_dockyard = 0.04
+				production_speed_industrial_complex_factor = 0.04
+				production_speed_arms_factory_factor = 0.04
+				production_speed_dockyard_factor = 0.04
+				research_speed_factor = 0.02
+				local_resources_factor = 0.06
+				trade_opinion_factor = 0.10
+				consumer_goods_factor = -0.02
+				stability_weekly = -0.002
+				opposition_party_drift = 0.02
+			}
+			
+			cancel_if_invalid = no
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		fdi_allowed = {
+			
+			cost = 100
+			removal_cost = -1
+			level = 2
+			available = {
+				NOT = { has_government = communism }
+			}
+			
+			modifier = {
+				political_power_factor = -0.02
+				industrial_capacity_factory = 0.02
+				industrial_capacity_dockyard = 0.02
+				production_speed_industrial_complex_factor = 0.02
+				production_speed_arms_factory_factor = 0.02
+				production_speed_dockyard_factor = 0.02
+				local_resources_factor = 0.03
+				trade_opinion_factor = 0.05
+				consumer_goods_factor = -0.01
+				research_speed_factor = 0.010
+				stability_weekly = -0.001
+				opposition_party_drift = 0.01
+			}
+			
+			on_add = {
+				set_country_flag = fdi_allowed
+				clr_country_flag = fdi_encouraged
+				clr_country_flag = fdi_regulated
+				clr_country_flag = fdi_banned
+			}
+			
+			cancel_if_invalid = no
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		fdi_regulated = {
+			
+			cost = 100
+			removal_cost = -1
+			level = 3
+			available = {
+				if = {
+					limit = {
+						is_literally_china = yes
+					}
+					not = { has_idea = CHI_nine_power_treaty }
+				}
+			
+			}
+			
+			default = yes
+			
+			modifier = {
+				political_power_factor = 0.06
+				industrial_capacity_factory = -0.02
+				industrial_capacity_dockyard = -0.02
+				production_speed_industrial_complex_factor = -0.02
+				production_speed_arms_factory_factor = -0.02
+				production_speed_dockyard_factor = -0.02
+				research_speed_factor = -0.010
+				local_resources_factor = -0.03
+				trade_opinion_factor = -0.05
+				stability_weekly = 0.001
+
+			}
+			
+			on_add = {
+				set_country_flag = fdi_regulated
+				clr_country_flag = fdi_encouraged
+				clr_country_flag = fdi_allowed
+				clr_country_flag = fdi_banned
+			}
+			
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		fdi_banned = {
+			
+			cost = 100
+			removal_cost = -1
+			level = 4
+			available = {
+				if = {
+					limit = {
+						is_literally_china = yes
+					}
+					not = { has_idea = CHI_nine_power_treaty }
+				}
+				OR = { 
+					has_government = fascism
+					has_government = communism
+					has_government = monarchism
+					has_government = neutrality
+				}
+				NOT = {
+					has_idea = tariffs_none
+					has_idea = free_trade
+				}
+			}
+			
+			modifier = {
+				political_power_factor = 0.14
+				industrial_capacity_factory = -0.04
+				industrial_capacity_dockyard = -0.04
+				production_speed_industrial_complex_factor = -0.04
+				production_speed_arms_factory_factor = -0.04
+				production_speed_dockyard_factor = -0.04
+				research_speed_factor = -0.02
+				local_resources_factor = -0.06
+				trade_opinion_factor = -0.10
+				stability_weekly = 0.002
+			}
+			
+			on_add = {
+				set_country_flag = fdi_banned
+				clr_country_flag = fdi_encouraged
+				clr_country_flag = fdi_allowed
+				clr_country_flag = fdi_regulated
+			}
+					
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+}
+### EOF ###

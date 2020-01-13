@@ -1,0 +1,189 @@
+﻿capital = 322
+
+oob = "TIB_1936"
+
+set_stability = 0.65
+
+set_war_support = 0.15
+
+# Starting tech
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		#early_ship_hull_submarine = 1
+	}
+}
+set_technology = {
+	TIB_mountainous_people_tech = 1
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	Gurkha_tech = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	mountain_equipment = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+
+	ww1_battlefield_support = 1
+}
+add_ideas = { 	
+	TIB_mountainous_people
+	TIB_poorly_organized_army
+	TIB_monasteries_neutral
+	TIB_backward_industry1
+	
+	export_focus
+	tax_low
+	tariffs_average
+	
+	isolation
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	officer_train_none
+	age_19
+	security_minor_restrictions
+	edu_minimal
+	foreign_isolationism
+	neutrality_idea
+}
+
+set_politics = {
+	ruling_party = monarchism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	monarchism = 100
+	conservatism = 0
+	fascism = 0
+	communism = 0
+	neutrality = 0
+}
+###############################################################################
+create_country_leader = {
+	name = "The Dalai Lama" # the real one, the other one hidden behind special event
+	desc = "POLITICS_JAMPHEL_YESHE_GYALTSEN_DESC"
+	picture = "Portrait_TIB_dalai_lama.dds" 
+	expire = "1965.1.1"
+	ideology = popular
+	traits = {
+		devout
+	}
+}
+create_country_leader = {
+	name = "Jamphel Yeshe Gyaltsen"
+	desc = "POLITICS_JAMPHEL_YESHE_GYALTSEN_DESC"
+	picture = "Portrait_Tibet_Jamphel_Yeshe_Gyaltsen.dds"
+	expire = "1965.1.1"
+	ideology = absolutism
+	traits = {
+		hedonist
+	}
+}
+create_country_leader = {
+	name = "Thubten Kunphela"
+	desc = "POLITICS_JAMPHEL_YESHE_GYALTSEN_DESC"
+	picture = "portrait_TIB_Thubten_Kunphela.dds"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Bapa Phuntsog Wangyal"
+	desc = "POLITICS_JAMPHEL_YESHE_GYALTSEN_DESC"
+	picture = "Portrait_TIB_bapa_phuntsog_wangyal.dds"
+	expire = "1965.1.1"
+	ideology = stalinism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Namgang Dazang Damdu"
+	desc = "POLITICS_JAMPHEL_YESHE_GYALTSEN_DESC"
+	picture = "Portrait_TIB_tsarong_tsaza.dds" #tsarong tsaza = title before rise to power, change his in government when he is HoS
+	expire = "1965.1.1"
+	ideology = classical_liberalism
+	traits = {
+		captain_of_industry
+	}
+}
+##### FIELD MARSHAL ########################################################
+create_field_marshal = {
+	name = "Changra Sapron"
+	portrait_path = "gfx/leaders/TIB/portrait_TIB_changra_sapron.dds"
+	traits = { Bad_General defensive_doctrine_FM old_guard bad_staffer}
+	skill = 1
+	attack_skill = 1					
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+##### CORPS COMMANDERS #####################################################
+create_corps_commander = {
+	name = "Wangchen Geleg Surkhang"
+	portrait_path = "gfx/leaders/TIB/generic_tibetan_general_1.dds"
+	traits = { Incompetent_General winter_specialist old_guard bad_staffer}
+	skill = 1
+	attack_skill = 1					
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+create_corps_commander = {
+	name = "Yutok Tashi Dondrub"
+	portrait_path = "gfx/leaders/TIB/portrait_TIB_yutok_tashi_dondrub.dds"
+	traits = { Terrible_General trait_mountaineer winter_specialist old_guard bad_staffer}
+	skill = 2
+	attack_skill = 2					
+	defense_skill = 3
+	planning_skill = 1
+	logistics_skill = 1	
+}
+### EOF ###

@@ -1,0 +1,588 @@
+POL_infantry_role = {
+	
+	available_for = {
+		POL
+	}
+	
+	roles = {
+		infantry
+	}
+	
+	match_to_count = 0.7
+	
+	POL_infantry_role_1 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 1 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 1 }
+			}
+		}
+		target_width = 21
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 1
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				engineer = 1
+				recon = 1
+			}
+		
+			regiments = {
+				infantry = 9
+				artillery_brigade = 2
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			engineer
+			recon
+			
+			infantry
+			artillery_brigade
+		}	
+	}
+	POL_infantry_role_2 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 2 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 2 }
+			}
+		}
+		target_width = 23
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 1
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				engineer = 1
+				recon = 1
+				combat_engineer = 1
+			}
+		
+			regiments = {
+				infantry = 10
+				artillery_brigade = 2
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			engineer
+			combat_engineer
+			recon
+			
+			infantry
+			artillery_brigade
+		}	
+	}
+	POL_infantry_role_3 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 3 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 3 }
+			}
+		}
+		target_width = 23
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 1
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				engineer = 1
+				recon = 1
+				combat_engineer = 1
+				anti_air = 1
+			}
+		
+			regiments = {
+				infantry = 10
+				artillery_brigade = 2
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			engineer
+			combat_engineer
+			recon
+			anti_air
+			
+			infantry
+			artillery_brigade
+		}	
+	}
+	POL_infantry_role_4 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 4 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 4 }
+			}
+		}
+		target_width = 25
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 1
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				engineer = 1
+				recon = 1
+				combat_engineer = 1
+				anti_air = 1
+			}
+		
+			regiments = {
+				infantry = 10
+				artillery_brigade = 3
+				anti_tank_brigade = 1
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			engineer
+			combat_engineer
+			recon
+			anti_air
+			
+			infantry
+			artillery_brigade
+			anti_tank_brigade
+		}	
+	}
+}
+
+POL_anti_tank_infantry_role = {
+	
+	available_for = {
+		POL
+	}
+	
+	roles = {
+		alternative_infantry
+	}
+	
+	match_to_count = 0.46 #>0.45 <0.66 to getp picked up by POL_infantry_role later on
+	
+	POL_alternative_infantry_role_0 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				NOT = { has_country_flag = EAI_alternative_infantry_template }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				NOT = { has_country_flag = EAI_alternative_infantry_template }
+			}
+		}
+		target_width = 9.5
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 3
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				recon = 1
+			}
+		
+			regiments = {
+				cavalry = 2
+				infantry = 2
+				artillery_brigade = 1
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			recon
+			
+			cavalry
+			infantry
+			artillery_brigade
+		}	
+	}
+	POL_alternative_infantry_role_00 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 1 days < 365 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 1 days < 365 }
+			}
+		}
+		target_width = 12
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 3
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				recon = 1
+			}
+		
+			regiments = {
+				infantry = 6
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			recon
+			
+			infantry
+		}	
+	}
+	POL_alternative_infantry_role_1 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 1 days > 365 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 1 days > 365 }
+			}
+		}
+		target_width = 13.5
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 3
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				recon = 1
+				engineer = 1
+			}
+		
+			regiments = {
+				infantry = 6
+				artillery_brigade = 1
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			recon
+			
+			cavalry
+			infantry
+			artillery_brigade
+		}	
+	}
+	POL_alternative_infantry_role_2 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 2 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 2 }
+			}
+		}
+		target_width = 16
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 3
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				recon = 1
+				engineer = 1
+			}
+		
+			regiments = {
+				infantry = 7
+				artillery_brigade = 1
+				anti_tank_brigade = 1
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			recon
+			engineer
+			
+			infantry
+			artillery_brigade
+			anti_tank_brigade
+		}	
+	}
+	POL_alternative_infantry_role_3 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 3 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 3 }
+			}
+		}
+		target_width = 20
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 3
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				recon = 1
+				engineer = 1
+				combat_engineer = 1
+			}
+		
+			regiments = {
+				infantry = 8
+				artillery_brigade = 1
+				anti_tank_brigade = 1
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			recon
+			engineer
+			combat_engineer
+			
+			infantry
+			artillery_brigade
+			anti_tank_brigade
+		}	
+	}
+	POL_alternative_infantry_role_4 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 4 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 4 }
+			}
+		}
+		target_width = 23.5
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 3
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				recon = 1
+				engineer = 1
+				combat_engineer = 1
+			}
+		
+			regiments = {
+				infantry = 10
+				artillery_brigade = 2
+				anti_tank_brigade = 1
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			recon
+			engineer
+			combat_engineer
+			
+			infantry
+			artillery_brigade
+			anti_tank_brigade
+		}	
+	}
+	POL_alternative_infantry_role_5 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 5 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_alternative_infantry_template value = 5 }
+			}
+		}
+		target_width = 25
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 3
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				recon = 1
+				engineer = 1
+				combat_engineer = 1
+			}
+		
+			regiments = {
+				infantry = 10
+				artillery_brigade = 3
+				anti_tank_brigade = 1
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			recon
+			engineer
+			combat_engineer
+			
+			infantry
+			artillery_brigade
+			anti_tank_brigade
+		}	
+	}
+}

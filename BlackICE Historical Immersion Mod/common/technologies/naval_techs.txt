@@ -1,0 +1,905 @@
+technologies = {
+	#Vertical position
+	@1924 = 0
+	@1933 = 2
+	@1936 = 4
+	@1937 = 6
+	@1938 = 8
+	@1939 = 10
+	@1940 = 12
+	@1941 = 14
+	@1942 = 16
+	@1943 = 18
+	@1944 = 20
+	@1945 = 22
+	
+	#Horizontal position
+	@torp = 0
+	@SHIP_AAA = 3
+	@SNR = 6
+	@RDR = 9
+	
+	generic_naval_tech = {
+		
+		allow = {
+			always = no
+		}
+		
+		research_cost = 1
+		start_year = 1922
+		folder = {
+			name = naval_techs_folder
+			position = { x = @torp y = @1924 }
+		}
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+		}
+	}
+	##### TORPEDOES #####
+	interwar_torpedoes = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_cruiser = {
+			torpedo_attack = 0.1
+		}
+		category_all_destroyer = {
+			torpedo_attack = 0.1
+		}
+		category_all_subs = {
+			torpedo_attack = 0.1
+		}
+		dependencies = { generic_naval_tech = 1 }
+		path = {
+			leads_to_tech = magnetic_detonators
+			research_cost_coeff = 1
+		}
+		
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1924
+		research_cost = 1
+		folder = {
+			name = naval_techs_folder
+			position = { x = @torp y = @1924 }
+		}
+		
+		categories = {
+			naval_equipment
+			torpedo_equipment
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	magnetic_detonators = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_subs = {
+			torpedo_attack = 0.1
+		}
+        
+		path = {
+			leads_to_tech = electric_torpedoes
+			research_cost_coeff = 1
+		}
+		
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1937
+		research_cost = 1.5
+		folder = {
+			name = naval_techs_folder
+			position = { x = @torp y = @1937 }
+		}
+		
+		categories = {
+			naval_equipment
+			torpedo_equipment
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	electric_torpedoes = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_cruiser = {
+			torpedo_attack = 0.1
+		}
+		category_all_destroyer = {
+			torpedo_attack = 0.1
+		}
+		category_all_subs = {
+			torpedo_attack = 0.15
+		}
+		
+		naval_torpedo_reveal_chance_factor = -0.15
+		
+		path = {
+			leads_to_tech = advanced_torpedoes
+			research_cost_coeff = 1
+		}
+		
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1940
+		research_cost = 1.5
+		folder = {
+			name = naval_techs_folder
+			position = { x = @torp y = @1940 }
+		}
+		
+		categories = {
+			naval_equipment
+			torpedo_equipment
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	advanced_torpedoes = {
+		allow = { can_research_naval_techs_folder = yes } 
+		
+		naval_torpedo_reveal_chance_factor = -0.05
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			torpedo_attack = 0.15
+		}
+		category_all_destroyer = {
+			torpedo_attack = 0.15
+		}
+		category_all_subs = {
+			torpedo_attack = 0.25
+		}
+        
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1944
+		research_cost = 1.5
+		folder = {
+			name = naval_techs_folder
+			position = { x = @torp y = @1944 }
+		}
+		
+		categories = {
+			naval_equipment
+			torpedo_equipment
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	##### Ships ANTI-AIR #####
+	Interwar_AA_tech = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_ships = {
+			anti_air_attack = 0.15
+		}
+		dependencies = { generic_naval_tech = 1 }
+		
+		path = {
+			leads_to_tech = Late_1930s_AA_tech
+			research_cost_coeff = 1
+		}
+		
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1924
+		research_cost = 1
+		folder = {
+			name = naval_techs_folder
+			position = { x = @SHIP_AAA y = @1924 }
+		}
+		
+		categories = {
+			naval_equipment
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	Late_1930s_AA_tech = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_ships = {
+			anti_air_attack = 0.15
+		}
+
+		path = {
+			leads_to_tech = Early_War_AA_tech
+			research_cost_coeff = 1
+		}
+		
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1936
+		research_cost = 1
+		folder = {
+			name = naval_techs_folder
+			position = { x = @SHIP_AAA y = @1936 }
+		}
+		
+		categories = {
+			naval_equipment
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	Early_War_AA_tech = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_ships = {
+			anti_air_attack = 0.2
+		}
+
+		path = {
+			leads_to_tech = Late_War_AA_tech
+			research_cost_coeff = 1
+		}
+		
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1940
+		research_cost = 1.5
+		folder = {
+			name = naval_techs_folder
+			position = { x = @SHIP_AAA y = @1940 }
+		}
+		
+		categories = {
+			naval_equipment
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	Late_War_AA_tech = {
+		allow = { can_research_naval_techs_folder = yes } 
+		
+		# EFFECT #############
+		category_all_ships = {
+			anti_air_attack = 0.25
+		}
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1944
+		research_cost = 1.5
+		folder = {
+			name = naval_techs_folder
+			position = { x = @SHIP_AAA y = @1944 }
+		}
+		
+		categories = {
+			naval_equipment
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	##### SONAR ######
+	early_sonar = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		light_cruiser = {
+			sub_detection = 0.15
+			sub_attack = 0.05
+		}
+		category_all_destroyer = {
+			sub_detection = 0.25
+			sub_attack = 0.1
+		}
+
+		path = {
+			leads_to_tech = depth_charge_throwers
+			research_cost_coeff = 1
+		}
+		dependencies = { generic_naval_tech = 1 }
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1924
+		research_cost = 1.5
+		folder = {
+			name = naval_techs_folder
+			position = { x = @SNR y = @1924 }
+		}
+		
+		categories = {
+			naval_equipment
+			asw_tech
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	depth_charge_throwers = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		light_cruiser = {
+			sub_attack = 0.2
+		}
+		category_all_destroyer = {
+			sub_attack = 0.25
+		}
+
+		path = {
+			leads_to_tech = basic_sonar
+			research_cost_coeff = 1
+		}
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1933
+		research_cost = 1.5
+		folder = {
+			name = naval_techs_folder
+			position = { x = @SNR y = @1933 }
+		}
+		
+		categories = {
+			naval_equipment
+			asw_tech
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	basic_sonar = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		light_cruiser = {
+			sub_detection = 0.15
+			sub_attack = 0.1
+		}
+		category_all_destroyer = {
+			sub_detection = 0.25
+			sub_attack = 0.2
+		}
+		category_all_subs = {
+			sub_visibility = -0.025
+			torpedo_attack = 0.05
+		}
+
+		path = {
+			leads_to_tech = asw_anti_sub_mortars
+			research_cost_coeff = 1
+		}
+			
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1940
+		research_cost = 2.25
+		folder = {
+			name = naval_techs_folder
+			position = { x = @SNR y = @1940 }
+		}
+		
+		categories = {
+			naval_equipment
+			asw_tech
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	asw_anti_sub_mortars = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		light_cruiser = {
+			sub_attack = 0.2
+		}
+		category_all_destroyer = {
+			sub_attack = 0.25
+		}
+
+		path = {
+			leads_to_tech = advanced_sonar
+			research_cost_coeff = 1
+		}
+		
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+		
+		start_year = 1943
+		research_cost = 2.25
+		folder = {
+			name = naval_techs_folder
+			position = { x = @SNR y = @1943 }
+		}
+		
+		categories = {
+			naval_equipment
+			asw_tech
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	advanced_sonar = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		light_cruiser = {
+			sub_detection = 0.15
+			sub_attack = 0.1
+		}
+		category_all_destroyer = {
+			sub_detection = 0.25
+			sub_attack = 0.2
+		}
+		category_all_subs = {
+			sub_visibility = -0.025
+			torpedo_attack = 0.05
+		}
+		
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 1
+
+		
+		start_year = 1945
+		research_cost = 2.25
+		folder = {
+			name = naval_techs_folder
+			position = { x = @SNR y = @1945 }
+		}
+		
+		categories = {
+			naval_equipment
+			asw_tech
+		}
+
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	##### RADAR #####
+	Surface_search_radar = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_surface_ship = {
+			surface_detection = 0.2
+		}
+
+		path = {
+			leads_to_tech = air_warning_radar
+			research_cost_coeff = 1
+		}
+		
+		dependencies = { 
+			decimetric_radar = 1
+			generic_naval_tech = 1
+		}
+		
+		start_year = 1938
+		research_cost = 1
+		folder = {
+			name = naval_techs_folder
+			position = { x = @RDR y = @1938 }
+		}
+		
+		categories = {
+			naval_equipment
+			radar_tech
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	air_warning_radar = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_surface_ship = {
+			surface_detection = 0.1
+		}
+		category_all_subs = {
+			surface_detection = 0.15
+		}
+
+		path = {
+			leads_to_tech = surface_fc_radar
+			research_cost_coeff = 1
+		}
+		
+		dependencies = {
+			centimetric_radar = 1
+		}
+		
+		start_year = 1940
+		research_cost = 1
+		folder = {
+			name = naval_techs_folder
+			position = { x = @RDR y = @1940 }
+		}
+		
+		categories = {
+			naval_equipment
+			radar_tech
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	surface_fc_radar = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_surface_ship = {
+			surface_detection = 0.1
+			lg_attack = 0.05
+			hg_attack = 0.05
+		}
+		category_all_subs = {
+			surface_detection = 0.05
+		}
+
+		path = {
+			leads_to_tech = advanced_surface_search_radar
+			research_cost_coeff = 1
+		}
+		
+		dependencies = {
+			advanced_centimetric_radar = 1
+		}
+		
+		start_year = 1942
+		research_cost = 1
+		folder = {
+			name = naval_techs_folder
+			position = { x = @RDR y = @1942 }
+		}
+		
+		categories = {
+			naval_equipment
+			radar_tech
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	advanced_surface_search_radar = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_surface_ship = {
+			surface_detection = 0.1
+			lg_attack = 0.05
+			hg_attack = 0.05
+		}
+		category_all_subs = {
+			surface_detection = 0.05
+		}
+
+		dependencies = {
+			advanced_centimetric_radar = 1
+		}
+
+		path = {
+			leads_to_tech = advanced_fc_radar
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1943
+		research_cost = 1.5
+		folder = {
+			name = naval_techs_folder
+			position = { x = @RDR y = @1943 }
+		}
+		
+		categories = {
+			naval_equipment
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+	advanced_fc_radar = {
+		allow = { can_research_naval_techs_folder = yes } 
+		# EFFECT #############
+		category_all_surface_ship = {
+			surface_detection = 0.1
+			lg_attack = 0.05
+			hg_attack = 0.05
+		}
+		category_all_subs = {
+			surface_detection = 0.05
+		}
+		
+		dependencies = {
+			advanced_centimetric_radar = 1
+		}
+		
+		start_year = 1945
+		research_cost = 1.5
+		folder = {
+			name = naval_techs_folder
+			position = { x = @RDR y = @1945 }
+		}
+		
+		categories = {
+			naval_equipment
+			radar_tech
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 1800
+				naval_focused_nation_small = yes 
+			}
+			modifier = {
+				add = 1200
+				naval_focused_nation_moderate = yes 
+			}
+			modifier = {
+				add = 2000
+				naval_focused_nation_large = yes 
+			}
+		}
+	}
+}
+### EOF ###

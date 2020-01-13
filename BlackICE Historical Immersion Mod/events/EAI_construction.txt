@@ -1,0 +1,1940 @@
+﻿add_namespace = EAI_C
+
+######################################################
+# scriptable construction logic for the AI
+######################################################
+
+# queue_INF: queue INF anywhere possible
+# #queue_INF_2: see if there is a good place for infrastructure, else queue factories
+# queue_INF_resource: for building INF to increase resource extraction
+# queue_INF_supply: for building INF to increase supply
+# queue_RADAR: queue radar with location priorities
+# queue_RADAR_random: queue radar in a good random location
+# queue_AA: build AA on synth factories if facing strategic bombers
+# queue_CIC: queue CIC in higher INF states, else queue INF
+# queue_MIC: queue MIC in higher INF states, else queue INF
+# queue_MIC_2: queue MIC in any state
+# queue_NIC: queue NIC if possible, else queue MIC
+# queue_REF: build REF only in home area, else queue MIC
+# queue AMMO, STM (steelmill), UNIFORM, SUBYARD, LTAIR, HVAIR
+########################### queue at the start of the game
+
+country_event = {
+	id = EAI_C.0
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		EAI_custom_construction_queue = yes 
+	}
+	
+	immediate = {
+		set_temp_variable = { EAI_ratio_CIC = num_of_civilian_factories_available_for_projects }
+
+		divide_temp_variable = { EAI_ratio_CIC = num_of_factories }
+	
+		meta_effect = {
+			text = {
+				[TAG]_[YEAR]_queue = yes 
+			}
+			TAG = "[Root.GetTag]"
+			YEAR = "[GetYear]"
+		}
+		
+		EAI_clear_construction_scores = yes
+
+	}
+	option = {}
+}
+
+# Constructions inserted periodically to the AI's queue
+country_event = {
+	id = EAI_C.10
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+
+		### approximate construction time
+
+		set_temp_variable = { EAI_construction_time = 1 }
+		subtract_from_temp_variable = { EAI_construction_time = modifier@production_speed_arms_factory_factor }
+		multiply_temp_variable = { EAI_construction_time = 3800 }
+		divide_temp_variable = { EAI_construction_time = num_of_civilian_factories_available_for_projects }
+		clamp_temp_variable = { var = EAI_construction_time min = 75 max = 1000 }
+		meta_effect = {
+			text = { set_country_flag = { flag = EAI_construction_timer days = [x] value = 1 } }
+			x = "[?EAI_construction_time|.0]"
+		}
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | CONSTRUCTION: event delay: [?EAI_construction_time]" } 
+
+		####################################################################################################################################################
+		#	COMMON
+		####################################################################################################################################################
+		
+		# Air fields
+		if = {
+			limit = { 
+				has_deployed_air_force_size = { size > 1000 } 
+				num_of_civilian_factories_available_for_projects > 15 
+			}
+			
+			set_temp_variable = { temp = num_of_civilian_factories_available_for_projects }
+			while_loop_effect = { limit = { check_variable = { temp > 0 } }
+				EAI_queue_AIR = yes
+				subtract_from_temp_variable = { temp = 15 }
+			}
+		}
+
+		# Forts
+		if = { limit = { threat > 0.5 NOT = { any_of_scopes = { array = controlled_states EAI_available_SHARED = yes } } } 
+			random_list = {
+				1 = { EAI_queue_CFORT_BASES = yes }
+				1 = { EAI_queue_FORT_CITIES = yes }
+				1 = { EAI_queue_FORT_BORDER = yes }
+			}
+		}
+
+		# Silos
+		set_temp_variable = { EAI_num_silos_needed = num_of_military_factories }
+		subtract_from_temp_variable = { EAI_num_silos_needed = resource_produced@oil }
+		divide_temp_variable = { EAI_num_silos_needed = 6 }
+
+		if = {
+			limit = {
+				meta_trigger = {
+					text = { fuel_silo < [x] }
+					x = "[?EAI_num_silos_needed|.0]"
+				}
+			}
+
+			EAI_queue_SILO = yes
+		}
+
+		# resources needed
+		if = {
+			limit = {
+				num_of_civilian_factories_available_for_projects > 15
+
+				any_of_scopes = { array = controlled_states
+
+					EAI_available_INF = yes
+
+					OR = {
+						AND = { ROOT = { has_war = yes fuel_ratio < 0.5 } has_resources_amount = { resource = oil amount > 40 } }
+						AND = { OR = { check_variable = { ROOT.resource@aluminium < -4 } check_variable = { ROOT.resource_imported@aluminium > 16 } } has_resources_amount = { resource = aluminium amount > 40 } }
+						AND = { OR = { check_variable = { ROOT.resource@rubber < -4 } check_variable = { ROOT.resource_imported@rubber > 16 } } has_resources_amount = { resource = rubber amount > 40 } }
+						AND = { OR = { check_variable = { ROOT.resource@tungsten < -4 } check_variable = { ROOT.resource_imported@tungsten > 16 } } has_resources_amount = { resource = tungsten amount > 40 } }
+						AND = { OR = { check_variable = { ROOT.resource@steel < -4 } check_variable = { ROOT.resource_imported@steel > 16 } } has_resources_amount = { resource = steel amount > 40 } }
+						AND = { OR = { check_variable = { ROOT.resource@chromium < -4 } check_variable = { ROOT.resource_imported@chromium > 16 } } has_resources_amount = { resource = chromium amount > 40 } }
+					}
+				}
+			}
+
+			EAI_priority_queue_INF_resource = yes
+		}
+
+		#########
+		
+		set_temp_variable = { EAI_ratio_CIC = num_of_civilian_factories_available_for_projects }
+		divide_temp_variable = { EAI_ratio_CIC = num_of_factories }
+		
+		####################################################################################################################################################
+		#	ENG
+		####################################################################################################################################################
+
+		if = { limit = { original_tag = ENG }
+
+			# CONSTRUCTION SCRIPT
+			if = { 
+				limit = { 
+					num_of_civilian_factories_available_for_projects > 40
+					any_enemy_country = { has_deployed_air_force_size = { size > 200 type = strategic_bomber } }
+					is_major = yes
+				} 
+				EAI_queue_AA = yes
+			}
+			
+			if = { 
+				limit = { 
+					check_variable = { resource_consumed@rubber > 8 }
+					OR = { check_variable = { resource@rubber < 8 } check_variable = { resource_imported@rubber > 8 } }
+					has_tech = synth_oil_experiments 
+				}
+				EAI_queue_REF = yes
+				EAI_queue_REF = yes
+			}
+			
+			if = { limit = { date > 1940.1.1 num_of_civilian_factories_available_for_projects < 100 check_variable = { EAI_ratio_CIC < 0.25 } }
+			
+				EAI_queue_CIC = yes
+			}
+
+			EAI_queue_INF_supply = yes
+			EAI_queue_INF_supply = yes
+
+			if = { limit = { has_war = yes } 
+				EAI_queue_CFORT_BASES = yes
+			}
+
+			if = {
+				limit = {
+					num_of_military_factories < 400
+
+					num_of_naval_factories < 50
+				}
+
+				if = { limit = { date < 1937.1.1 }
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+
+					if = { limit = { fuel_silo < 10 }
+						EAI_queue_SILO = yes
+						EAI_queue_SILO = yes
+
+						else = {
+							EAI_queue_CIC = yes
+						}
+					}
+				}
+				else_if = { limit = { num_of_military_factories < 100 }
+					EAI_queue_INF_resource = yes
+	
+					EAI_queue_RADAR = yes
+					EAI_queue_RADAR = yes
+	
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					if = { limit = { fuel_silo < 10 }
+						EAI_queue_SILO = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+					
+					if = { limit = { num_of_naval_factories < 30 }
+						EAI_queue_NIC = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+				}
+				else_if = { limit = {}
+					EAI_queue_INF_resource = yes
+	
+					EAI_queue_RADAR = yes
+					EAI_queue_RADAR = yes
+	
+					if = { limit = { num_of_naval_factories < 30 }
+						EAI_queue_NIC = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+
+					if = { limit = { fuel_silo < 10 }
+						EAI_queue_SILO = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+	
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+			}
+			else_if = {
+				limit = {
+					num_of_naval_factories < 50
+				}
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				if = { limit = { fuel_silo < 10 }
+					EAI_queue_SILO = yes
+					EAI_queue_SILO = yes
+
+					else = {
+						EAI_queue_NIC = yes
+						EAI_queue_NIC = yes
+					}
+				}
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+			else_if = {
+				limit = { }
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+		}
+
+		####################################################################################################################################################
+		#	FRA
+		####################################################################################################################################################
+
+		else_if = { limit = { original_tag = FRA }
+
+			# CONSTRUCTION SCRIPT
+			EAI_queue_RADAR = yes
+
+			EAI_queue_INF_supply = yes
+			EAI_queue_INF_supply = yes
+			
+			if = { 
+				limit = { 
+					num_of_civilian_factories_available_for_projects > 40
+					any_enemy_country = { has_deployed_air_force_size = { size > 200 type = strategic_bomber } }
+					is_major = yes
+				} 
+				EAI_queue_AA = yes
+			}
+
+			if = { 
+				limit = { 
+					check_variable = { resource_consumed@rubber > 8 }
+					OR = { check_variable = { resource@rubber < 8 } check_variable = { resource_imported@rubber > 8 } }
+					has_tech = synth_oil_experiments 
+				}
+				EAI_queue_REF = yes
+			}
+			
+			if = { limit = { date > 1940.1.1 num_of_civilian_factories_available_for_projects < 100 check_variable = { EAI_ratio_CIC < 0.25 } }
+			
+				EAI_queue_CIC = yes
+			}
+
+			if = {
+				limit = {
+					num_of_military_factories < 400
+
+					num_of_naval_factories < 50
+				}
+
+				if = { limit = { date < 1938.1.1 }
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+				else_if = { limit = { num_of_military_factories < 100 }
+					EAI_queue_INF_resource = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+				else_if = { limit = {}
+					EAI_queue_INF_resource = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					EAI_queue_NIC = yes
+				}
+			}
+			else_if = {
+				limit = {
+					num_of_naval_factories < 50
+				}
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+			else_if = {
+				limit = { }
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+		}
+
+		####################################################################################################################################################
+		#	USA
+		####################################################################################################################################################
+
+		else_if = { limit = { original_tag = USA }
+
+			# CONSTRUCTION SCRIPT
+			EAI_queue_RADAR = yes
+			EAI_queue_RADAR = yes
+
+			EAI_queue_INF_supply = yes
+			EAI_queue_INF_supply = yes
+
+			if = { 
+				limit = { 
+					synthetic_refinery > 19
+					check_variable = { resource_consumed@rubber > 8 }
+					OR = { check_variable = { resource@rubber < 8 } check_variable = { resource_imported@rubber > 8 } }
+					has_tech = synth_oil_experiments 
+				}
+				EAI_queue_REF = yes
+				EAI_queue_REF = yes
+				EAI_queue_REF = yes
+			}
+
+			if = { limit = { has_war = yes } 
+				EAI_queue_CFORT_COAST = yes
+			}
+
+			if = { 
+				limit = { 
+					num_of_civilian_factories_available_for_projects > 40
+					any_enemy_country = { has_deployed_air_force_size = { size > 200 type = strategic_bomber } }
+					is_major = yes
+				} 
+				EAI_queue_AA = yes
+				EAI_queue_AA = yes
+			}
+
+			if = { limit = { num_of_military_factories < 400 }
+
+				if = { limit = { date < 1939.1.1 }
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+
+					if = { limit = { synthetic_refinery < 20 }
+						EAI_queue_REF = yes
+						EAI_queue_REF = yes
+
+						else = { 
+							EAI_queue_MIC_2 = yes
+							EAI_queue_MIC_2 = yes
+							EAI_queue_MIC_2 = yes
+						}
+					}
+				}
+				else_if = { limit = {}
+					EAI_queue_INF_resource = yes
+					EAI_queue_INF_resource = yes
+
+					if = { limit = { synthetic_refinery < 20 }
+						EAI_queue_REF = yes
+						EAI_queue_REF = yes
+
+						else = { 
+							EAI_queue_MIC_2 = yes 
+							EAI_queue_MIC_2 = yes 
+							EAI_queue_MIC_2 = yes 
+							EAI_queue_MIC_2 = yes 
+							EAI_queue_MIC_2 = yes 
+							EAI_queue_MIC_2 = yes 
+						}
+					}
+
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+				}
+			}
+			else_if = { limit = { num_of_naval_factories < 50 }
+
+				if = { limit = { synthetic_refinery < 20 }
+					EAI_queue_REF = yes
+					EAI_queue_REF = yes
+
+					else = { 
+						EAI_queue_NIC = yes 
+						EAI_queue_NIC = yes 
+						EAI_queue_NIC = yes 
+						EAI_queue_NIC = yes 
+					}
+				}
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+			else_if = {
+				limit = { }
+
+				if = { limit = { synthetic_refinery < 20 }
+					EAI_queue_REF = yes
+					EAI_queue_REF = yes
+
+					else = { 
+						EAI_queue_MIC_2 = yes 
+						EAI_queue_MIC_2 = yes 
+						EAI_queue_MIC_2 = yes 
+						EAI_queue_MIC_2 = yes 
+						EAI_queue_MIC_2 = yes 
+						EAI_queue_MIC_2 = yes 
+					}
+				}
+
+				EAI_queue_MIC_2 = yes
+				EAI_queue_MIC_2 = yes
+				EAI_queue_MIC_2 = yes
+				EAI_queue_MIC_2 = yes
+
+				EAI_queue_MIC_2 = yes
+				EAI_queue_MIC_2 = yes
+			}
+		}
+
+		####################################################################################################################################################
+		#	GER
+		####################################################################################################################################################
+
+		else_if = { limit = { always = no  original_tag = GER }
+
+			# CONSTRUCTION SCRIPT
+			EAI_queue_RADAR = yes
+			EAI_queue_RADAR = yes
+
+			if = { 
+				limit = { 
+					num_of_civilian_factories_available_for_projects > 40
+					any_enemy_country = { has_deployed_air_force_size = { size > 200 type = strategic_bomber } }
+					is_major = yes
+				} 
+				EAI_queue_AA = yes
+				EAI_queue_AA = yes
+			}
+			
+			if = { 
+				limit = { 
+					synthetic_refinery > 14
+					check_variable = { resource_consumed@rubber > 8 }
+					OR = { check_variable = { resource@rubber < 8 } check_variable = { resource_imported@rubber > 8 } }
+					has_tech = synth_oil_experiments 
+				}
+				EAI_queue_REF = yes
+			}
+			
+			if = { 
+				limit = { 
+					date > 1940.1.1 
+					num_of_civilian_factories_available_for_projects < 100 
+					check_variable = { EAI_ratio_CIC < 0.25 } 
+				}
+				EAI_queue_CIC = yes
+			}
+
+			EAI_queue_INF_supply = yes
+			EAI_queue_INF_supply = yes
+			EAI_queue_INF_supply = yes
+			EAI_queue_INF_supply = yes
+
+			if = {
+				limit = {
+					num_of_military_factories < 400
+
+					num_of_naval_factories < 50
+				}
+
+				if = { limit = { date < 1936.6.1 has_war = no num_of_civilian_factories_available_for_projects < 80 }
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+				}
+				else_if = { limit = { date < 1937.8.1 has_war = no num_of_civilian_factories_available_for_projects < 80 }
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+
+					EAI_queue_CIC = yes
+
+					EAI_queue_REF = yes
+				}
+				else_if = { limit = { has_war = no }
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					if = { limit = { num_of_naval_factories < 20 }
+						EAI_queue_NIC = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+
+					if = { limit = { synthetic_refinery < 15 }
+						EAI_queue_REF = yes
+						EAI_queue_REF = yes
+
+						else = {
+							EAI_queue_MIC = yes
+							EAI_queue_MIC = yes
+							EAI_queue_MIC = yes
+							EAI_queue_MIC = yes
+						}
+					}
+				}
+				else_if = { limit = {}
+					EAI_queue_INF_resource = yes
+					EAI_queue_INF_resource = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					if = { limit = { num_of_naval_factories < 30 }
+						EAI_queue_NIC = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+
+					if = { limit = { synthetic_refinery < 15 }
+						EAI_queue_REF = yes
+						EAI_queue_REF = yes
+
+						else = {
+							EAI_queue_MIC = yes
+							EAI_queue_MIC = yes
+							EAI_queue_MIC = yes
+							EAI_queue_MIC = yes
+							EAI_queue_MIC = yes
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					num_of_naval_factories < 50
+				}
+
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+			else_if = {
+				limit = { }
+
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+				
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+				EAI_queue_CFORT_COAST = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+		}
+
+		####################################################################################################################################################
+		#	ITA
+		####################################################################################################################################################
+
+		else_if = { limit = { original_tag = ITA }
+
+			# CONSTRUCTION SCRIPT
+			EAI_queue_RADAR = yes
+
+			if = { 
+				limit = { 
+					num_of_civilian_factories_available_for_projects > 40
+					any_enemy_country = { has_deployed_air_force_size = { size > 200 type = strategic_bomber } }
+					is_major = yes
+				} 
+				EAI_queue_AA = yes
+			}
+			
+			if = { 
+				limit = { 
+					check_variable = { resource_consumed@rubber > 8 }
+					OR = { check_variable = { resource@rubber < 8 } check_variable = { resource_imported@rubber > 8 } }
+					has_tech = synth_oil_experiments 
+				}
+				EAI_queue_REF = yes
+			}
+			
+			if = { limit = { date > 1940.1.1 num_of_civilian_factories_available_for_projects < 100 check_variable = { EAI_ratio_CIC < 0.25 } }
+			
+				EAI_queue_CIC = yes
+			}
+
+			if = {
+				limit = {
+					num_of_military_factories < 400
+
+					num_of_naval_factories < 50
+				}
+
+				if = { limit = { num_of_civilian_factories_available_for_projects < 40 }
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					EAI_queue_MIC = yes
+					
+					if = { limit = { num_of_naval_factories < 25 }
+						EAI_queue_NIC = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+				}
+				else_if = { limit = { num_of_military_factories < 150 }
+					EAI_queue_INF_resource = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					
+					if = { limit = { num_of_naval_factories < 25 }
+						EAI_queue_NIC = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+				}
+				else_if = { limit = {}
+					EAI_queue_INF_resource = yes
+	
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+	
+					if = { limit = { num_of_naval_factories < 25 }
+						EAI_queue_NIC = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					num_of_naval_factories < 50
+				}
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+			else_if = {
+				limit = { }
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+		}
+
+		####################################################################################################################################################
+		#	JAP
+		####################################################################################################################################################
+
+		else_if = { limit = { original_tag = JAP }
+
+			# CONSTRUCTION SCRIPT
+			if = { limit = { num_of_civilian_factories_available_for_projects > 35 }
+				EAI_queue_RADAR = yes
+				EAI_queue_INF_resource = yes
+			}
+			
+			if = { 
+				limit = { 
+					num_of_civilian_factories_available_for_projects > 40
+					any_enemy_country = { has_deployed_air_force_size = { size > 200 type = strategic_bomber } }
+					is_major = yes
+				} 
+				EAI_queue_AA = yes
+			}
+			
+			if = { 
+				limit = { 
+					check_variable = { resource_consumed@rubber > 8 }
+					OR = { check_variable = { resource@rubber < 8 } check_variable = { resource_imported@rubber > 8 } }
+					has_tech = synth_oil_experiments 
+				}
+				EAI_queue_REF = yes
+				EAI_queue_REF = yes
+			}
+			
+			if = { limit = { date > 1940.1.1 num_of_civilian_factories_available_for_projects < 100 check_variable = { EAI_ratio_CIC < 0.25 } }
+			
+				EAI_queue_CIC = yes
+			}
+
+			if = {
+				limit = {
+					num_of_military_factories < 400
+
+					num_of_naval_factories < 50
+				}
+
+				if = { limit = { num_of_civilian_factories_available_for_projects < 25 }
+					EAI_queue_CIC_2 = yes
+
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+
+					if = { limit = { fuel_silo < 15 }
+						EAI_queue_SILO = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+
+					if = { limit = { num_of_naval_factories < 35 }
+						EAI_queue_NIC = yes
+
+						else = {
+							EAI_queue_MIC_2 = yes
+						}
+					}
+				}
+				else_if = { limit = { num_of_military_factories < 150 }
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+
+					if = { limit = { fuel_silo < 15 }
+						EAI_queue_SILO = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+
+					if = { limit = { num_of_naval_factories < 35 }
+						EAI_queue_NIC = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+				}
+				else_if = { limit = {}
+					EAI_queue_NIC = yes
+					EAI_queue_NIC = yes
+
+					EAI_queue_MIC_2 = yes
+					EAI_queue_MIC_2 = yes
+					
+					if = { limit = { fuel_silo < 15 }
+						EAI_queue_SILO = yes
+
+						else = {
+							EAI_queue_MIC = yes
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					num_of_naval_factories < 50
+				}
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				
+				if = { limit = { fuel_silo < 15 }
+					EAI_queue_SILO = yes
+
+					else = {
+						EAI_queue_NIC = yes
+					}
+				}
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+			else_if = {
+				limit = { }
+
+				if = { limit = { fuel_silo < 15 }
+					EAI_queue_SILO = yes
+
+					else = {
+						EAI_queue_NIC = yes
+					}
+				}
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+		}
+
+		####################################################################################################################################################
+		#	SOV
+		####################################################################################################################################################
+
+		else_if = { limit = { original_tag = SOV }
+
+			# CONSTRUCTION SCRIPT
+			EAI_queue_RADAR = yes
+			
+			if = { 
+				limit = { 
+					check_variable = { resource_consumed@rubber > 8 }
+					OR = { check_variable = { resource@rubber < 8 } check_variable = { resource_imported@rubber > 8 } }
+					has_tech = synth_oil_experiments 
+				}
+				EAI_queue_REF = yes
+				EAI_queue_REF = yes
+			}
+
+			if = { 
+				limit = { 
+					num_of_civilian_factories_available_for_projects > 40
+					any_enemy_country = { has_deployed_air_force_size = { size > 200 type = strategic_bomber } }
+					is_major = yes
+				} 
+				EAI_queue_AA = yes
+			}
+			
+			if = { limit = { date > 1940.1.1 num_of_civilian_factories_available_for_projects < 100 check_variable = { EAI_ratio_CIC < 0.25 } }
+			
+				EAI_queue_CIC = yes
+			}
+
+			EAI_queue_INF_supply = yes
+			EAI_queue_INF_supply = yes
+			EAI_queue_INF_supply = yes
+			EAI_queue_INF_supply = yes
+
+			if = {
+				limit = {
+					num_of_military_factories < 400
+
+					num_of_naval_factories < 50
+				}
+
+				if = { limit = { has_war = no date < 1938.1.1 }
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+				}
+				else_if = { limit = { num_of_military_factories < 300 }
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					
+					EAI_queue_MIC = yes
+				}
+				else_if = { limit = { num_of_military_factories < 500 }
+					EAI_queue_INF_resource = yes
+					EAI_queue_INF_resource = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+				else_if = { limit = {}
+					EAI_queue_INF_resource = yes
+					EAI_queue_INF_resource = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					EAI_queue_NIC = yes
+					EAI_queue_NIC = yes
+				}
+			}
+			else_if = {
+				limit = {
+					num_of_naval_factories < 50
+				}
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+			else_if = {
+				limit = { }
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+		}
+
+		####################################################################################################################################################
+		#	CHI
+		####################################################################################################################################################
+
+		else_if = { limit = { original_tag = CHI }
+
+			# CONSTRUCTION SCRIPT
+			if = { limit = { num_of_civilian_factories_available_for_projects > 35 }
+				EAI_queue_INF_supply = yes
+			}
+			
+			if = { 
+				limit = { 
+					num_of_civilian_factories_available_for_projects > 40
+					any_enemy_country = { has_deployed_air_force_size = { size > 200 type = strategic_bomber } }
+					is_major = yes
+				} 
+				EAI_queue_AA = yes
+			}
+
+			if = {
+				limit = {
+					num_of_military_factories < 400
+
+					num_of_naval_factories < 50
+				}
+
+				if = { limit = { is_subject = no }
+					EAI_queue_CIC = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+				else_if = { limit = { is_subject = no num_of_civilian_factories_available_for_projects < 30 }
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+				else_if = { limit = {}
+					EAI_queue_INF_resource = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+			}
+			else_if = {
+				limit = {
+					num_of_naval_factories < 50
+				}
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+			else_if = {
+				limit = { }
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+		}
+
+		####################################################################################################################################################
+		#	SPR
+		####################################################################################################################################################
+
+		else_if = { limit = { original_tag = SPR }
+
+			# CONSTRUCTION SCRIPT
+			EAI_queue_INF_supply = yes
+
+			if = { limit = { OR = { oil > 80 rubber > 80 steel > 80 tungsten > 80 chromium > 80 aluminium > 80 } }
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+
+			if = { 
+				limit = { 
+					check_variable = { resource_consumed@rubber > 8 }
+					OR = { check_variable = { resource@rubber < 8 } check_variable = { resource_imported@rubber > 8 } }
+					has_tech = synth_oil_experiments 
+				}
+				EAI_queue_REF = yes
+			}
+
+			if = {
+				limit = {
+					num_of_military_factories < 400
+
+					num_of_naval_factories < 50
+				}
+
+				if = { limit = { has_civil_war = yes }
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+				else_if = { limit = { check_variable = { num_of_civilian_factories_available_for_projects < 100 } check_variable = { EAI_ratio_CIC < 0.25 } }
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+				}
+				else_if = { limit = {}
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+
+				if = { limit = { has_civil_war = yes }
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+				else_if = { limit = { check_variable = { num_of_civilian_factories_available_for_projects < 100 } check_variable = { EAI_ratio_CIC < 0.25 } }
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+				}
+				else_if = { limit = {}
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+
+				if = { limit = { has_civil_war = yes }
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+				else_if = { limit = { check_variable = { num_of_civilian_factories_available_for_projects < 100 } check_variable = { EAI_ratio_CIC < 0.25 } }
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+				}
+				else_if = { limit = {}
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+
+				if = { limit = { any_owned_state = { is_controlled_by = ROOT is_coastal = yes } num_of_naval_factories < 1 }
+
+					EAI_queue_NIC = yes
+				}
+			}
+			else_if = {
+				limit = {
+					num_of_naval_factories < 50
+				}
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+			else_if = {
+				limit = { }
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+		}
+
+		####################################################################################################################################################
+		#	GENERIC
+		####################################################################################################################################################
+
+		else = {
+
+			# CONSTRUCTION SCRIPT
+			EAI_queue_INF_supply = yes
+
+			if = { limit = { OR = { oil > 80 rubber > 80 steel > 80 tungsten > 80 chromium > 80 aluminium > 80 } }
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+
+			if = { 
+				limit = { 
+					check_variable = { resource_consumed@rubber > 8 }
+					OR = { check_variable = { resource@rubber < 8 } check_variable = { resource_imported@rubber > 8 } }
+					has_tech = synth_oil_experiments 
+				}
+				EAI_queue_REF = yes
+			}
+
+			if = {
+				limit = {
+					num_of_military_factories < 400
+
+					num_of_naval_factories < 50
+				}
+				
+				if = { limit = { check_variable = { num_of_civilian_factories_available_for_projects < 100 } check_variable = { EAI_ratio_CIC < 0.25 } }
+					EAI_queue_CIC = yes
+					EAI_queue_CIC = yes
+				}
+				else_if = { limit = {}
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+					EAI_queue_MIC = yes
+				}
+
+				if = { limit = { num_of_civilian_factories_available_for_projects > 6 }
+					if = { limit = { check_variable = { num_of_civilian_factories_available_for_projects < 100 } check_variable = { EAI_ratio_CIC < 0.25 } }
+						EAI_queue_CIC = yes
+						EAI_queue_CIC = yes
+					}
+					else_if = { limit = {}
+						EAI_queue_MIC = yes
+						EAI_queue_MIC = yes
+						EAI_queue_MIC = yes
+					}
+				}
+
+				if = { limit = { num_of_civilian_factories_available_for_projects > 12 }
+					if = { limit = { check_variable = { num_of_civilian_factories_available_for_projects < 100 } check_variable = { EAI_ratio_CIC < 0.25 } }
+						EAI_queue_CIC = yes
+						EAI_queue_CIC = yes
+					}
+					else_if = { limit = {}
+						EAI_queue_MIC = yes
+						EAI_queue_MIC = yes
+						EAI_queue_MIC = yes
+					}
+				}
+
+				if = { limit = { any_owned_state = { is_controlled_by = ROOT is_coastal = yes } num_of_naval_factories < 1 }
+
+					EAI_queue_NIC = yes
+				}
+			}
+			else_if = {
+				limit = {
+					num_of_naval_factories < 50
+				}
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+				EAI_queue_NIC = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+			else_if = {
+				limit = { }
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+				EAI_queue_INF_resource = yes
+			}
+		}
+	}
+	option = {}
+}
+########################### use free CIC to build infrastructure
+
+
+# Add random constructions if the AI has free CIC
+country_event = {
+	id = EAI_C.100
+	hidden = yes
+	mean_time_to_happen = { days = 2 }
+	trigger = {
+		is_ai = yes
+
+		num_of_available_civilian_factories > 1
+	}
+
+	immediate = {
+		if = { 
+			limit = { 
+				any_of_scopes = { array = controlled_states
+					free_building_slots = { building = infrastructure size > 0 include_locked = no } 
+				}
+			}
+			EAI_queue_INF = yes
+		}
+		
+		else_if = { limit = { threat > 0.5 NOT = { any_of_scopes = { array = controlled_states EAI_available_SHARED = yes } } } 
+			random_list = {
+				1 = { EAI_queue_CFORT_BASES = yes }
+				1 = { EAI_queue_FORT_CITIES = yes }
+				1 = { EAI_queue_FORT_BORDER = yes }
+			}
+		}
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | CONSTRUCTION: queuing INF with free factories" } 
+	}
+	option = {}
+}
+
+########################### fort construction scripts
+
+country_event = { #ITA coastal forts
+	id = EAI_C.1000
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		
+		is_ai = yes
+
+		check_variable = { global.days_passed > 1613 } # 1940-06-01
+
+		surrender_progress < 0.1
+	}
+
+	immediate = {		
+		every_state = {
+			limit = {
+				is_controlled_by = ROOT
+				is_in_home_area = yes
+			}
+			
+			EAI_add_CFORT_BASE = yes
+		}
+	}
+	option = {}
+}
+
+country_event = { #JAP coastal forts
+	id = EAI_C.1001
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+	fire_only_once = yes
+	trigger = {
+		original_tag = JAP
+		
+		is_ai = yes
+		
+		has_war = yes 
+		
+		enemies_strength_ratio > 0.5
+		
+		enemies_naval_strength_ratio > 0.5
+
+		CHI = { 
+			is_subject_of = JAP 
+		}
+
+		surrender_progress < 0.1
+	}
+
+	immediate = {		
+		every_state = {
+			limit = {
+				is_controlled_by = ROOT
+				is_in_home_area = yes
+				OR = {
+					region = 154
+					region = 260 
+				}
+			}
+			
+			EAI_add_CFORT_BASE = yes
+			EAI_add_CFORT_BASE = yes
+		}
+	}
+	option = {}
+}
+
+country_event = { #ENG coastal forts
+	id = EAI_C.1002
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		
+		is_ai = yes
+		
+		has_war = yes 
+		
+		has_war_with = GER 
+		
+		is_in_faction_with = FRA 
+		
+		FRA = { surrender_progress > 0.15 }
+
+		surrender_progress < 0.1
+	}
+
+	immediate = {		
+		every_state = {
+			limit = {
+				is_controlled_by = ROOT
+				is_in_home_area = yes
+				OR = { 
+					region = 236
+					region = 1
+				}
+			}
+			
+			EAI_add_CFORT_BASE = yes
+		}
+	}
+	option = {}
+}
+
+country_event = { #USA coastal forts
+	id = EAI_C.1003
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		
+		is_ai = yes
+		
+		has_war = yes 
+		
+		has_war_with = GER 
+		
+		is_in_faction_with = ENG 
+		
+		ENG = { surrender_progress > 0.5 }
+		
+		surrender_progress < 0.1
+	}
+
+	immediate = {	
+		every_state = {
+			limit = {
+				is_controlled_by = ROOT
+				is_in_home_area = yes
+				is_coastal = yes
+			}
+			
+			EAI_add_CFORT_BASE = yes
+			EAI_add_CFORT_BASE = yes
+		}
+	}
+	option = {}
+}
+
+country_event = { #SWI
+	id = EAI_C.1017
+	hidden = yes
+	fire_only_once = yes
+	mean_time_to_happen = { days = 2 }
+
+	trigger = {
+		original_tag = SWI
+		
+		is_ai = yes
+
+	}
+
+	immediate = {
+		
+		EAI_queue_FORT_BORDER = yes
+		EAI_queue_FORT_BORDER = yes
+		
+		capital_scope = {
+			EAI_add_FORT_CITY = yes
+			EAI_add_FORT_CITY = yes
+		}
+	}
+	option = {}
+}
+
+country_event = { #SPR
+	id = EAI_C.1018
+	hidden = yes
+	mean_time_to_happen = { days = 2 }
+	fire_only_once = yes
+	trigger = {
+		original_tag = SPR
+		
+		is_ai = yes
+
+		has_war = no
+
+		check_variable = { global.days_passed > 731 } # 1938-01-01
+	}
+
+	immediate = {
+
+		every_state = {
+			limit = {
+				is_controlled_by = ROOT
+				OR = { state = 165 state = 166 state = 172 state = 957 }
+			}
+			
+			EAI_add_FORT_BORDER = yes
+			EAI_add_FORT_BORDER = yes
+		}
+	}
+	option = {}
+}
+
+country_event = { #TUR
+	id = EAI_C.1019
+	hidden = yes
+	mean_time_to_happen = { days = 2 }
+	fire_only_once = yes
+	trigger = {
+		original_tag = TUR
+		
+		is_ai = yes
+
+		check_variable = { global.days_passed > 731 } # 1938-01-01
+	}
+
+	immediate = {
+
+		868 = {
+			EAI_add_FORT_CITY = yes
+			EAI_add_FORT_CITY = yes
+		}
+	}
+	option = {}
+}
+
+country_event = { #GENERIC
+	id = EAI_C.1020
+	hidden = yes
+	is_triggered_only = yes
+	#mean_time_to_happen = { days = 2 }
+	
+	trigger = {
+		is_ai = yes
+
+		num_of_civilian_factories_available_for_projects > 10
+
+		enemies_strength_ratio > 0.75
+		
+		OR = {
+			surrender_progress > 0.05
+			has_defensive_war = yes
+		}
+
+		any_home_area_neighbor_country = {
+			has_war_with = ROOT
+		}
+		
+		any_of_scopes = {
+			array = controlled_states
+			
+			OR = {
+				AND = {
+					is_in_home_area = yes
+					any_neighbor_state = {
+						OR = {
+							CONTROLLER = { has_war_with = ROOT }
+							any_neighbor_state = { CONTROLLER = { has_war_with = ROOT } }
+						}
+					}
+					NOT = { has_state_flag = EAI_generic_fort_construction_state_triggered_@ROOT }
+				}
+				
+				AND = {
+					is_capital = yes
+					NOT = { has_state_flag = EAI_generic_fort_construction_state_triggered_@ROOT }
+				}
+			}
+		}
+	}
+
+	immediate = {
+
+		every_state = { # build forts on victory points near enemy borders
+			limit = {
+				is_controlled_by = ROOT
+				is_in_home_area = yes
+				any_neighbor_state = {
+					CONTROLLER = { 
+						OR = {
+							has_war_with = ROOT 
+							is_justifying_wargoal_against = ROOT
+							has_wargoal_against = ROOT 
+						}
+					}
+				}
+				NOT = { has_state_flag = EAI_generic_fort_construction_state_triggered_@ROOT }
+			}
+			set_state_flag = { flag = EAI_generic_fort_construction_state_triggered_@ROOT value = 1 days = 1000 }
+		
+			EAI_add_FORT_CITY = yes
+		}
+		
+		capital_scope = { # build forts on capital
+			if = {
+				limit = { NOT = { has_state_flag = EAI_generic_fort_construction_state_triggered_@ROOT } }
+			
+				if = {
+					limit = {
+						ROOT = { is_major = yes }
+					}
+					set_state_flag = { flag = EAI_generic_fort_construction_state_triggered_@ROOT value = 1 days = 300 }
+				}
+				else = {
+					set_state_flag = { flag = EAI_generic_fort_construction_state_triggered_@ROOT value = 1 days = 1000 }
+				}
+				
+				EAI_add_FORT_CITY = yes
+				EAI_add_FORT_CITY = yes
+			}
+		}
+	}
+	option = {}
+}
+
+country_event = { #GENERIC AIR BASE
+	id = EAI_C.1021
+	hidden = yes
+	mean_time_to_happen = { days = 2 }
+	
+	trigger = {
+		is_ai = yes
+		
+		major_country = yes
+		
+		NOT = { has_country_flag = air_base_build }
+
+		num_of_civilian_factories_available_for_projects > 10
+
+		#enemies_strength_ratio > 0.75
+		
+		has_deployed_air_force_size = {
+			size > 1999
+		}
+		
+		any_neighbor_country = {
+			has_war_with = ROOT
+			has_deployed_air_force_size = {
+				size > 1999
+			}
+		}
+
+	}
+
+	immediate = {	
+		if = {
+			limit = {
+				major_country = yes 
+			}
+			set_country_flag = { flag = air_base_build value = 1 days = 270 }
+		}	
+	
+		EAI_queue_AIR = yes
+		EAI_queue_AIR = yes 
+	}
+	option = {}
+}
+
+
+########################### misc
+
+country_event = { #SOV: fix supply route to the east
+	id = EAI_C.10000
+	hidden = yes
+	mean_time_to_happen = { days = 2 }
+	fire_only_once = yes
+	trigger = {
+		is_ai = yes
+
+		original_tag = SOV
+
+		check_variable = { global.days_passed > 731 } # 1938-01-01
+	}
+
+	immediate = {
+		if = { limit = { 40 = { controller = { tag = ROOT } } }
+			40 = { EAI_add_INF = yes EAI_add_INF = yes EAI_add_INF = yes }
+		}
+		if = { limit = { 563 = { controller = { tag = ROOT } } }
+			563 = { EAI_add_INF = yes EAI_add_INF = yes EAI_add_INF = yes }
+		}
+		if = { limit = { 657 = { controller = { tag = ROOT } } }
+			657 = { EAI_add_INF = yes EAI_add_INF = yes EAI_add_INF = yes }
+		}
+
+		# Naval base
+		if = { limit = { 408 = { controller = { tag = ROOT } } }
+			408 = { 
+				add_building_construction = {
+					type = naval_base
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+						level < 10
+					}
+					level = 7
+					instant_build = no
+				}
+			}
+		}
+	}
+	option = {}
+}

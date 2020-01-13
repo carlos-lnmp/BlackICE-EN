@@ -1,0 +1,236 @@
+
+
+AI_wait_for_cores = {
+	reversed = yes
+	
+	enable = {
+		surrender_progress > 0.08
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = declare_war
+		id = "ROOT"
+		value = -9999
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "ROOT"
+		value = -9999
+	}
+}
+
+JAP_wait_for_CHI = {
+	reversed = yes
+	
+	enable = {
+		NOT = { tag = JAP }
+		NOT = { has_war_with = JAP }
+		JAP = {
+			has_war_with = CHI
+		}
+		CHI = { 
+			has_capitulated = no 
+		}
+	}
+	
+	abort = {
+		OR = {
+			JAP = { has_capitulated = yes }
+			CHI = { has_capitulated = yes }
+			NOT = { JAP = { has_war_with = CHI } }
+		}
+	}
+	
+	ai_strategy = {
+		type = declare_war
+		id = "JAP"
+		value = -9999
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "JAP"
+		value = -9999
+	}
+}
+
+JAP_wait_for_SOV = {
+	reversed = yes
+	
+	enable = {
+		NOT = { tag = JAP }
+		NOT = { has_war_with = JAP }
+		JAP = {
+			has_war_with = SOV
+		}
+		SOV = { 
+			has_capitulated = no 
+		}
+	}
+	
+	abort = {
+		OR = {
+			JAP = { has_capitulated = yes }
+			SOV = { has_capitulated = yes }
+			NOT = { JAP = { has_war_with = SOV } }
+		}
+	}
+	
+	ai_strategy = {
+		type = declare_war
+		id = "JAP"
+		value = -9999
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "JAP"
+		value = -9999
+	}
+}
+
+GER_wait_for_POL = {
+	reversed = yes
+	
+	enable = {
+		NOT = { tag = GER }
+		NOT = { has_war_with = GER }
+		GER = {
+			has_war_with = POL
+		}
+		POL = { 
+			has_capitulated = no 
+		}
+	}
+	
+	abort = {
+		OR = {
+			GER = { has_capitulated = yes }
+			POL = { has_capitulated = yes }
+			NOT = { GER = { has_war_with = POL } }
+		}
+	}
+	
+	ai_strategy = {
+		type = declare_war
+		id = "GER"
+		value = -9999
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "GER"
+		value = -9999
+	}
+}
+
+GER_wait_for_FRA_and_BENELUX = {
+	reversed = yes
+	
+	enable = {
+		NOT = { tag = GER }
+		NOT = { has_war_with = GER }
+		GER = {
+			has_war_with = HOL
+			has_war_with = BEL
+			has_war_with = LUX
+			has_war_with = FRA
+		}
+		FRA = { 
+			has_capitulated = no 
+		}
+	}
+	
+	abort = {
+		OR = {
+			GER = { has_capitulated = yes }
+			FRA = { has_capitulated = yes }
+			NOT = { GER = { has_war_with = FRA } }
+		}
+	}
+	
+	ai_strategy = {
+		type = declare_war
+		id = "GER"
+		value = -9999
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "GER"
+		value = -9999
+	}
+}
+
+ROM_wait_for_BARBAROSSA = {
+	
+	enable = {
+		tag = ROM
+		NOT = { has_war_with = SOV }
+		OR = {
+			78 = { is_controlled_by = SOV }
+			80 = { is_controlled_by = SOV }
+			939 = { is_controlled_by = SOV }
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = ignore_claim
+		id = "SOV"			
+		value = 1
+	}
+}
+
+ENG_wait_for_IRQ = {
+
+	enable = {
+		tag = ENG 
+		NOT = { has_war_with = PER }
+		NOT = {
+			835 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			291 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			832 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			853 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			444 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+		}
+	}
+	
+	abort = {
+		835 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		291 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		832 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		675 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		853 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		444 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	
+	ai_strategy = {
+		type = declare_war
+		id = "PER"
+		value = -9999
+	}
+}
+
+

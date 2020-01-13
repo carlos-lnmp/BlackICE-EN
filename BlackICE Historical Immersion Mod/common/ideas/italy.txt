@@ -1,0 +1,3398 @@
+ideas = {
+	hidden_ideas = {
+		ITA_barb = {
+			allowed = {
+				original_tag = "ITA"
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					OR = {
+						has_government = communism
+						democratic_govt = yes
+					}
+				}
+			}
+			modifier = {
+				winter_attrition_factor = -0.25 
+				acclimatization_cold_climate_gain_factor = 0.15
+				out_of_supply_factor = -0.1
+			}
+		}
+		ITA_save_fuel = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			
+
+			equipment_bonus = {
+				screen_ship = {
+					fuel_consumption_factor = -0.06 instant = yes
+				}
+				capital_ship = {
+					fuel_consumption_factor = -0.06 instant = yes
+				}
+				carrier = {
+					fuel_consumption_factor = -0.06 instant = yes
+				}
+				submarine = {
+					fuel_consumption_factor = -0.06 instant = yes
+				}
+				coastal_submarine = {
+					fuel_consumption_factor = -0.06 instant = yes
+				}
+				lr_submarine = {
+					fuel_consumption_factor = -0.06 instant = yes
+				}
+			}
+		}
+		ITA_truckin = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_fuel_capacity_factor = 0.05
+			}
+			equipment_bonus = {
+				motorized_equipment = {
+					reliability = 0.05 instant = yes
+				}
+			}
+		}
+		ITA_refit_ships = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				navy_refit_ic_cost = -0.05
+				navy_refit_speed= 0.1
+				repair_speed_factor = 0.2				
+			}
+		}
+	}
+			
+	country = {
+		vittoria_mutilata = {			
+			allowed = {
+				original_tag = ITA
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					OR = {
+						has_government = communism
+						democratic_govt = yes
+					}
+				}
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				communism_acceptance = -10
+				conservatism_acceptance = -10
+				socialism_acceptance = -10
+				liberalism_acceptance = -10
+				fascism_acceptance = 10
+				justify_war_goal_time = -0.05
+				ai_focus_aggressive_factor = 0.25
+				special_forces_cap = 0.01
+				special_forces_min = 30
+			}
+		}
+		ITA_bad_war = {
+			picture = chi_wargaming_division
+			allowed = {
+				original_tag = "ITA"
+			}
+			cancel = {
+				OR = {
+					has_full_control_of_state = 451
+					has_full_control_of_state = 450
+					has_full_control_of_state = 449
+					has_full_control_of_state = 448
+				}
+			}
+			modifier = {
+				stability_factor = -0.10
+				war_support_factor = -0.10
+				opposition_party_drift = 0.02
+			}
+		}
+		ITA_IEA_yay = {			
+			allowed = {
+				original_tag = ITA
+			}
+			picture = ROM_balkan_dominance
+			allowed_civil_war = {
+			}
+			cancel = {
+				OR = {
+					ETH = {
+						has_capitulated = yes
+						exists = yes
+					}
+				}
+			}
+			cancel_if_invalid = yes
+			
+			removal_cost = -1
+			
+			modifier = {
+				war_support_factor = 0.10
+				political_power_gain = 0.10 
+			}
+		}
+		ITA_unsinkable = {
+			allowed = {
+				original_tag = ITA
+			}
+			picture = man_five_year_plan_air
+			cancel = { 
+				not = {
+					controls_state = 116
+				}
+			}
+			
+			removal_cost = 1
+			modifier = {
+				air_accidents_factor = -0.1
+				air_weather_penalty = -0.1
+				army_bonus_air_superiority_factor = 0.05
+			}
+			equipment_bonus = {
+				cv_CAS_equipment = {
+					air_range = 0.05 instant = yes
+					reliability = 0.03 instant = yes
+					air_agility = 0.05 instant = yes
+				}
+				cv_fighter_equipment = {
+					air_range = 0.05 instant = yes
+					reliability = 0.03 instant = yes
+					air_agility = 0.05 instant = yes
+				}
+				flying_boat_equipment = {
+					air_range = 0.05 instant = yes
+					reliability = 0.03 instant = yes
+					air_agility = 0.05 instant = yes
+				}
+				cv_nav_bomber_equipment = {
+					air_range = 0.05 instant = yes
+					reliability = 0.03 instant = yes
+					air_agility = 0.05 instant = yes
+				}			
+			}
+		}
+		ITA_island = {
+			allowed = {
+				original_tag = ITA
+			}
+			picture = man_five_year_plan_air
+			cancel = { 
+				not = {
+					controls_state = 182
+					controls_state = 183
+				}
+			}
+			
+			removal_cost = 1
+			modifier = {
+				army_bonus_air_superiority_factor = 0.05
+			}
+		}
+			
+			
+			
+		ITA_warweary = {
+			picture = generic_intel_bonus
+			
+			allowed = {
+				always = no # Triggered via event
+			}
+			
+			removal_cost = -1	
+			
+			modifier = {
+				ai_get_ally_desire_factor = -1000
+				join_faction_tension = 1.50
+			}			
+		}
+		ITA_scw_intervention_nationalists = {
+			#picture = 
+		
+			allowed = {
+				always = no # Triggered via event
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				send_volunteer_divisions_required = -0.25
+				send_volunteers_tension = -0.4
+				send_volunteer_size = 1 
+			}
+		}
+		ITA_german_millitary_cooperation_focus = {
+			picture = german_advisors
+
+			allowed = {
+				original_tag = ITA
+			}
+
+			allowed_civil_war = {
+				OR = {
+					AND = {
+						has_government = fascism
+						GER = {
+							has_government = fascism
+						}
+					}
+					AND = {
+						has_government = communism
+						GER = {
+							has_government = communism
+						}
+					}
+					AND = {
+						OR = {
+							democratic_govt = yes
+							GER = {
+								democratic_govt = yes
+							}
+						}
+					}
+				}
+			}
+
+			removal_cost = -1
+
+			research_bonus = {
+				land_doctrine = 0.05
+			}
+			research_bonus = {
+				air_doctrine = 0.05
+			}				
+		}
+	        ITA_meddling = {
+			available = {
+				original_tag = ITA
+			}
+			picture = generic_king_handled
+
+			removal_cost = -1
+
+			modifier = {
+			    economy_cost_factor = 1.5
+			}
+		}
+		ITA_pig_idea = {
+			name = maiali_idea
+			available = {}
+			
+			picture = angelo_iachino
+			
+			modifier = {
+			 	special_forces_cap = 0.01
+			 	amphibious_invasion = 0.05
+				transport_capacity = -0.02
+			}
+			equipment_bonus = {
+				coastal_submarine = {
+					fuel_consumption_factor = -0.02 instant = yes
+				}
+			}
+		}
+		maiali_idea = {
+			available = {}
+			
+			picture = angelo_iachino
+			
+			modifier = {
+			 	special_forces_cap = 0.02
+			 	amphibious_invasion = 0.1
+				naval_invasion_capacity = 1
+				transport_capacity = -0.05
+			}
+			equipment_bonus = {
+				coastal_submarine = {
+					fuel_consumption_factor = -0.04 instant = yes
+				}
+			}
+		}
+		mare_nostrum = {  
+
+			picture = generic_coastal_defense_ships
+
+			available = {
+			original_tag = ITA			
+			}
+		
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.04
+				supply_consumption_factor = -0.05
+				political_power_gain = 0.15	
+			}				
+		}
+		ITA_oltre_colonne_idea = {
+			picture = royal_arsenal
+
+			available = {
+					original_tag = ITA
+			}	
+						
+			modifier = {			 			
+				consumer_goods_factor = -0.04
+				supply_consumption_factor = -0.04
+				industrial_capacity_dockyard = 0.08
+				political_power_gain = 0.2
+				sortie_efficiency = 0.1		
+				#naval_torpedo_range_factor = 0.3
+				#research_speed_factor = 0.05						
+			}
+		}
+
+		ITA_quota_90_idea = {
+
+			picture = generic_flexible_foreign_policy2
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+            
+			modifier = {
+				production_speed_buildings_factor = -0.01
+				consumer_goods_factor = 0.04
+				industrial_capacity_dockyard = -0.1
+				industrial_capacity_factory = -0.1
+				opposition_party_drift = 0.01
+			}			    		
+		}
+
+		ITA_armiamoci_idea = {
+
+			picture = generic_deal_with_the_devil
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+            
+			modifier = {
+				conscription = 0.02
+			}			    		
+		}
+
+		ITA_balilla_idea = {
+
+			picture = generic_deal_with_the_devil2
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+            
+			modifier = {
+				conscription = 0.002
+			}			    		
+		}
+
+		ITA_new_colombo_idea = {
+
+			picture = generic_central_management
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+            
+			modifier = {
+				naval_invasion_capacity = 2
+			}			    		
+		}
+
+		ITA_faccetta_nera_idea = {
+
+			picture = generic_fascist_demagogue_african_2d
+
+			available = {
+				or = {
+					original_tag = ITA
+					original_tag = ETH
+				}
+			}
+
+			removal_cost = -1
+            
+			modifier = {
+				conscription = 0.004
+				stability_factor = 0.02
+			}			    		
+		}
+
+		ITA_drain_the_swamp_idea = {
+
+			picture = generic_local_self_management
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+            
+			modifier = {
+				drift_defence_factor = 0.5
+				stability_factor = 0.05
+				MONTHLY_POPULATION = 0.005
+			}			    		
+		}
+
+		ITA_riforma_bancaria_idea = {
+
+			picture = holderbank
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+            
+			modifier = {
+				consumer_goods_factor = -0.04
+			}			    		
+		}
+
+		ITA_fight_the_burocracy_idea = {
+
+			picture = generic_reserve_divisions
+
+			available = {
+				or = {
+					original_tag = ITA
+					original_tag = ETH
+				}
+			}
+
+			removal_cost = -1
+            
+			modifier = {
+				industrial_capacity_dockyard = 0.05
+				industrial_capacity_factory = 0.05
+			}			    		
+		}
+
+		ITA_marconi_idea = {
+
+			picture = generic_fascist_demagogue_southamerican_2d
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+            
+			research_bonus = {
+				electronics = 0.15
+				
+			}		    		
+		}
+		ITA_supply = {
+			picture = Arms_Shipment
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				no_supply_grace = 24
+				out_of_supply_factor = -0.05 
+			}
+            
+		}			
+		ITA_guidonia_idea = {
+
+			picture = leningrad_polytechnical_institute
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+            
+			research_bonus = {
+				air_equipment = 0.12
+			}			    		
+		}
+
+		ITA_gentile_idea = {
+
+			picture = can_wartime_prices_and_trade_board
+
+			available = {
+				or = {
+					original_tag = ITA
+					original_tag = ETH
+				}
+			}
+
+			removal_cost = -1
+            
+			modifier = {
+				research_speed_factor = 0.02 
+			}			    		
+		}
+
+		ITA_beretta_idea = {
+
+			picture = generic_secret_police
+
+			available = {
+				or = {
+					original_tag = ITA
+					original_tag = ETH
+				}
+			}
+
+			removal_cost = -1
+            
+			equipment_bonus = {
+					infantry_equipment = {
+					build_cost_ic = -0.12 instant = yes
+					
+				}							
+			}			    		
+		}
+
+		autarchia = {
+			available = {}
+			
+			picture = ast_all_in
+			
+			modifier = {
+				local_resources_factor = 0.04
+				fuel_gain_factor = 0.02 
+				max_fuel_factor = 0.03
+			}
+		}
+		autarchia2 = {
+			name = autarchia
+			available = {}
+			
+			picture = ast_all_in
+			
+			modifier = {
+				local_resources_factor = 0.06
+				fuel_gain_factor = 0.03 
+				max_fuel_factor = 0.05
+			}
+		}
+		ITA_controls_malta ={ 
+			available ={ 
+				original_tag = ITA
+			}
+			picture = air_support_focus
+
+			removal_cost = -1
+
+			modifier = {
+				air_superiority_efficiency = 0.05
+			}
+		}
+		istituto_luce = {  
+
+			picture = generic_morale_bonus
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_morale_factor = 0.05
+				conscription_factor = 0.05
+			}				
+		}
+		ITA_rocketry_idea = { # make tech bonus instead
+			removal_cost = -1
+			
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			research_bonus = {
+				rocketry = 0.05
+				jet_technology = 0.05
+			}
+
+			picture = generic_research_bonus
+	
+			modifier = {
+				production_speed_rocket_site_factor = 0.10
+			}
+		}
+		ITA_german_scientist_cooperation = {
+			removal_cost = -1
+			
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				research_speed_factor = 0.02
+			}
+
+			picture = generic_research_bonus
+	
+		
+		}
+		navy_prioritised = {  
+
+			picture = generic_coastal_defense_ships
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				industrial_capacity_dockyard = 0.1
+				production_speed_dockyard_factor = 0.05
+				production_speed_arms_factory_factor = -0.1				
+			}				
+		}
+		ITA_backstabber = {
+
+			available = {
+				original_tag = ITA
+			}
+
+			picture = generic_king_handled
+
+			removal_cost = -1
+
+			modifier = {
+				army_attack_factor = 0.08
+				amphibious_invasion = 0.10
+				army_morale_factor = 0.10
+			}
+
+		}		
+		
+		german_dive_bombing = {  
+
+			picture = air_support_focus
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				air_cas_present_factor = 0.05		
+			}
+		}	
+		ARMIR = {  
+
+			picture = armir
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				winter_attrition_factor = -0.1
+				special_forces_cap = 0.015
+			}
+		}
+		poor_coordination_between_sea_and_air = {  
+
+			picture = generic_navy_bonus
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				air_nav_efficiency = -0.05
+				sortie_efficiency = -0.1
+				naval_strike_attack_factor = -0.05
+				naval_strike_targetting_factor = -0.1
+				naval_strike_agility_factor = -0.05	
+			}
+		}
+		fiat_tank_development = {  
+
+			picture = generic_acquire_tanks
+
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			research_bonus = { armor = 0.1 }
+				
+			equipment_bonus = {
+				armor = {
+                    build_cost_ic = -0.05 
+                }
+			}				
+		}
+		italian_leadership = {
+
+			picture = italian_leadership
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				planning_speed = -0.25
+				max_planning = -0.08
+				army_attack_factor = -0.1
+				army_defence_factor = -0.05						
+				#army_morale_factor = -0.1
+				opposition_party_drift = 0.01
+			}				
+		}
+		italian_leadership_proud = { 
+
+			picture = italian_leadership
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				planning_speed = -0.15
+				max_planning = -0.08
+				army_attack_factor = -0.05
+				army_defence_factor = -0.03	
+				conscription_factor = 0.1
+			}				
+		}
+		italian_leadership_old = { 
+			name = italian_leadership_proud
+			picture = italian_leadership
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				planning_speed = -0.15
+				max_planning = 0.02
+				army_attack_factor = -0.05
+				army_defence_factor = 0.02	
+				conscription_factor = 0.1
+				max_dig_in = 3
+				experience_loss_factor = -0.1
+			}				
+		}
+		italian_leadership_improved = { 
+
+			picture = italian_leadership
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				planning_speed = -0.1
+				max_planning = -0.04
+				conscription_factor = 0.1
+				army_morale_factor = 0.05
+				supply_consumption_factor = -0.02 
+			}				
+		}
+		ITA_Corpo_truppe_volontarie_focus = {
+			
+			
+			available = {
+				original_tag = ITA
+				SPR = { has_civil_war = yes }
+			}
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+			# can already send volunteers? increase min div requirement?
+			modifier = {
+				send_volunteer_divisions_required = -0.25
+			}
+		}
+		ITA_memento_audere_semper_idea = {
+
+			picture = generic_coastal_defense_ships
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+			    special_forces_cap = 0.01
+				naval_invasion_capacity = 1			
+
+			}				
+		}
+		ITA_fedelta_prima_di_tutto = {
+
+			picture = generic_army_chief_off_western_european_2d
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			research_bonus = {
+				land_doctrine = -0.2
+				naval_doctrine = -0.05
+				air_doctrine = -0.35			
+			}
+		}
+		ITA_fedelta_prima_di_tutto2 = {
+			name = ITA_fedelta_prima_di_tutto
+			picture = generic_army_chief_off_western_european_2d
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			research_bonus = {
+				land_doctrine = -0.1
+				naval_doctrine = -0.03
+				air_doctrine = -0.15							
+			}
+			modifier = {
+				political_power_gain = 0.03	
+			}
+		}
+		ITA_armi_chimiche_idea = {
+
+			picture = tula_arms_plant
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				# this is a huge bonus
+				army_attack_factor = 0.12
+				army_org_factor = 0.15
+				air_cas_present_factor = 0.15
+				recon_factor = 0.03 
+			}												
+		}		
+		ITA_cost_of_war = {
+
+			picture = YUG_serbian_general_staff
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				
+				consumer_goods_factor = 0.02
+			}												
+		}		
+		impero_di_argilla = {
+
+			picture = generic_fascism_drift_2
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+            
+			modifier = {
+				consumer_goods_factor = 0.06
+				political_power_factor = 0.10
+				industrial_capacity_factory = 0.04
+				fascism_drift = 0.01
+				political_advisor_cost_factor = -0.15 
+			}			    		
+		}
+		colonial_empire_lost = {
+		
+		picture = generic_fascism_banned
+
+			available = {
+				original_tag = ITA
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = -0.15
+				stability_factor = -0.05
+			}				
+	    }
+        parola_di_ordine_vincere = {
+			name = vittoria_mutilata
+			picture = vittoria_mutilata
+			allowed = {
+				original_tag = "ITA"
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					OR = {
+						has_government = communism
+						democratic_govt = yes
+					}
+				}
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				communism_acceptance = -20
+				conservatism_acceptance = -15
+				socialism_acceptance = -15
+				liberalism_acceptance = -15
+				fascism_acceptance = 10		
+				justify_war_goal_time = -0.1
+				industrial_capacity_factory = 0.05
+				consumer_goods_factor = -0.02
+				special_forces_cap = 0.01
+				special_forces_min = 30
+			}
+		}
+	}
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+		bordiga_hos = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				has_government = communism	
+			}
+			
+			traits = { communist demagogue  head_of_state_trait }
+			ai_will_do = { factor = 0 }
+		}
+		bonomi_hos = {
+			allowed = {
+				original_tag = ITA
+			}
+		
+			visible = {
+				OR = {
+					has_government = liberalism
+					has_government = socialism
+				}
+			}
+			
+			traits = { socialist coalition_builder  head_of_state_trait }
+			ai_will_do = { factor = 0 }
+		}
+		victor_emmanuel = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+				NOT = {
+					any_other_country = {
+						original_tag = ITA
+						has_government = fascism
+					}
+				}
+			}
+			
+			traits = {
+				monarchist popular_figurehead				
+head_of_state_trait
+			}
+			ai_will_do = { factor = 0 }
+		}
+		ferruccio_parri = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				democratic_govt = yes
+			}
+			visible = {
+				democratic_govt = yes
+			}
+			
+			traits = { silent_workhorse liberal  head_of_state_trait }
+			ai_will_do = { factor = 0 }
+		}
+		alcide_de_gasperi = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = conservatism
+			}
+			visible = {
+				democratic_govt = yes
+			}
+			
+			traits = { conservative elder_statesman  head_of_state_trait }
+			ai_will_do = { factor = 0 }
+			
+			cancel_if_invalid = no
+		}
+		pietro_nenni_hos = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = socialism
+			}
+			visible = {
+				democratic_govt = yes
+			}
+			
+			traits = { socialist coalition_builder  head_of_state_trait }
+			ai_will_do = { factor = 0 }
+		}
+		giuseppe_saragat = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = socialism
+			}
+			visible = {
+				democratic_govt = yes
+			}
+			
+			traits = { socialist silent_workhorse  head_of_state_trait }
+			ai_will_do = { factor = 0 }
+		}
+		palmiro_togliatti = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = communism
+			}
+			visible = {
+				has_government = communism
+			}
+			
+			traits = { communist great_leader  head_of_state_trait }
+			ai_will_do = { factor = 0 }
+		}
+	}
+	#Foreign
+	foreign_minister = {
+		ITA_gian_galeazzo_ciano = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			picture = generic_political_advisor_europe_6
+			
+			traits = { fascist compassionate_gentleman  foreign_minister_trait }
+	
+			on_add = {				
+			}
+			ai_will_do = { factor = 0 }
+		}
+		ITA_roberto_farinacci = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			picture = generic_army_europe_1
+			
+			traits = { fascist iron_fisted_brute  foreign_minister_trait }
+
+			ai_will_do = { factor = 0 }
+		}
+		ITA_dino_grandi = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			picture = generic_political_advisor_europe_3
+			
+			traits = { fascist smooth_talking_charmer  foreign_minister_trait }
+	
+			on_add = {				
+			}
+			
+			ai_will_do = { factor = 0 }
+		}
+		ITA_serafino_mazzolini = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			picture = generic_political_advisor_europe_1
+			
+			traits = { fascist ideological_crusader  foreign_minister_trait }
+	
+			on_add = {				
+			}
+			
+			ai_will_do = { factor = 0 }
+		}
+		carlo_sforza = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				OR = {
+					has_government = conservatism
+					has_government = liberalism
+				}
+			}			
+			traits = { anti_fascist ideological_crusader  foreign_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }
+		}
+		alcide_de_gasperi_foreign = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				OR = {
+					has_government = conservatism
+					has_government = liberalism
+				}
+			}			
+			traits = { conservative smooth_talking_charmer  foreign_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }
+		}
+		gaetano_salvemini = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				OR = {
+					has_government = socialism
+					has_government = communism
+				}
+			}			
+			traits = { anti_fascist socialist ideological_crusader  foreign_minister_trait }
+			ai_will_do = { factor = 0 }
+		}
+		luigi_longo = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				democratic_govt = yes
+			}				
+			traits = { socialist compassionate_gentleman  foreign_minister_trait }
+			ai_will_do = { factor = 0 }
+		}
+		pietro_nenni = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				has_government = communism
+			}			
+			traits = { communist tough_negotiator  foreign_minister_trait }
+			ai_will_do = { factor = 0 }
+		}
+	}
+	#Propaganda/Security
+	interior_minister = {
+		ITA_giovanni_marinelli = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			picture = generic_political_advisor_europe_5
+			
+			traits = { prince_of_terror  interior_minister_trait }
+	
+			on_add = {				
+			}
+			
+			ai_will_do = { factor = 0 }
+		}
+		ferruccio_parri_interior = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				OR = {
+					has_government = socialism
+					has_government = liberalism
+				}
+			}				
+			traits = { socialist hearts_and_minds  interior_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }
+		}
+		vito_reale = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				OR = {
+					has_government = conservatism
+					has_government = liberalism
+				}
+			}				
+			traits = { conservative crime_fighter interior_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }
+		}
+		giorgio_amendola = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				has_government = communism
+			}				
+			traits = { communist hearts_and_minds  interior_minister_trait }
+			ai_will_do = { factor = 0 }
+		}
+		giuseppe_bottai = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				has_government = fascism
+			}
+			
+			traits = { fascist hearts_and_minds  interior_minister_trait }
+			ai_will_do = { factor = 20 }
+		}
+		pietro_secchia = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				has_government = communism
+			}			
+			traits = { communist efficient_sociopath  interior_minister_trait }
+			ai_will_do = { factor = 0 }
+		}
+		giacomo_mancini = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				has_government = socialism
+			}				
+			traits = { socialist crime_fighter  interior_minister_trait }
+			ai_will_do = { factor = 0 }
+		}
+	}
+	#Intelligence
+	intel_minister = {
+		cesare_ame = {
+			picture = cesare_ame
+			
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				has_government = fascism
+			}
+			
+			traits = { fascist dismal_enigma  intel_minister_trait }
+			ai_will_do = { factor = 0 }
+		}
+		ITA_sansonetti = {
+			picture = generic_navy_europe_1
+			
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { 
+				keen_sailor
+				naval_intel 
+intel_minister_trait
+			}
+			ai_will_do = { factor = 20 }
+		}
+		giacomo_carboni = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				OR = {
+					has_government = socialism
+					has_government = liberalism
+				}
+			}			
+			traits = { socialist codebreaker  intel_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }
+		}
+		don_luigi_sturzo = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				OR = {
+					has_government = conservatism
+					has_government = liberalism
+					has_government = monarchism
+				}
+			}			
+			traits = { conservative dismal_enigma  intel_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }
+		}
+		vittorio_vidali = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			visible = {
+				has_government = communism
+			}			
+			traits = { communist codebreaker  intel_minister_trait }
+			ai_will_do = { factor = 0 }
+		}
+		ITA_spy1 = { 
+			picture = generic_spy_intel
+			allowed = {
+				original_tag = GER
+			}
+			research_bonus = {
+				artillery = 0.07
+			}
+			traits = { spy_generic  intel_minister_trait }
+			
+			on_add = {
+				hidden_effect = {
+					country_event = {
+						id = politics.56
+						days = 150
+						random = 90
+					}
+				}
+			}
+			ai_will_do = { factor = 0 }
+		}		
+	}
+	#Domestic
+	domestic_minister = {
+		ITA_edmondo_rossoni = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			picture = generic_political_advisor_europe_2
+			
+			traits = { 
+				fascist 
+				union_leader
+				domestminster_farms
+domestic_minister_trait
+				}	
+			ai_will_do = { factor = 20 }			
+		}
+		ITA_ferruccio_lantini = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			picture = generic_political_advisor_europe_1
+			
+			traits = { 
+				fascist 				
+				domestminster_industry
+domestic_minister_trait
+				}	
+			ai_will_do = { factor = 0 }			
+		}
+		ITA_cesare_vecchi = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			picture = generic_political_advisor_europe_3
+			
+			traits = { 
+				fascist 	
+				nationalist_symbol
+				domestminster_colony
+domestic_minister_trait
+				}	
+			ai_will_do = { factor = 0 }			
+		}
+		ITA_gabriele_annunzio = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			picture = generic_political_advisor_europe_4
+			
+			traits = { 
+				fascist 	
+				great_war_hero
+				domestminster_education				
+domestic_minister_trait
+				}	
+			ai_will_do = { factor = 0 }			
+		}
+		ITA_guglielmo_marconi = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			picture = generic_political_advisor_europe_5
+			
+			traits = { 
+				fascist 	
+				intellectual
+				domestminster_science
+domestic_minister_trait
+			}	
+			ai_will_do = { factor = 0 }			
+		}
+	}
+	#Economic
+	economic_minister = {
+		giuseppe_sirianni = {
+			
+			allowed = {
+				original_tag = ITA
+			}
+
+			picture = generic_political_advisor_south_america_2
+			
+			available = {
+				has_completed_focus = ITA_innovazione
+			}
+			
+			traits = { naval_builder  economic_minister_trait }
+			
+			ai_will_do = { factor = 0 }	
+		}
+		ardito_desio = {
+			
+			allowed = {
+				original_tag = ITA
+			}
+			picture = generic_political_advisor_south_america_1
+
+			available = {
+				has_completed_focus = ITA_Pursue_oil_autarchy
+			}
+			
+			traits = { synthetic_tycoon  economic_minister_trait }
+			
+			ai_will_do = { factor = 0 }	
+		}
+		
+		ITA_giacomo_acerbo = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = fascism
+			}
+
+			picture = generic_political_advisor_europe_2
+			
+			traits = { fascist war_industrialist  economic_minister_trait }
+	
+			on_add = {				
+			}
+				
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		ITA_crollalanza = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = fascism
+			}
+
+			picture = generic_political_advisor_europe_1
+			
+			traits = { fascist public_works_focus  economic_minister_trait }
+	
+			on_add = {				
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}	
+		}
+		
+		ITA_junio_valerio_borghese = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = fascism
+			}
+
+			picture = generic_army_europe_2
+			
+			traits = { fascist armaments_organizer  economic_minister_trait }
+	
+			on_add = {				
+			}
+			
+			ai_will_do = { factor = 0 }	
+		}
+		ITA_paolo_thaon_di_revel = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = fascism
+			}
+
+			picture = generic_navy_europe_3
+			
+			traits = { 
+				fascist 
+				keen_sailor
+				quartermaster_general 
+economic_minister_trait
+			}
+	
+			on_add = {				
+			}
+			
+			ai_will_do = { factor = 0 }	
+		}
+		marcello_soleri = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				OR = {
+					has_government = liberalism
+					has_government = socialism
+				}
+			}
+			visible = {
+				democratic_govt = yes
+			}			
+			traits = { socialist public_works_focus  economic_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }	
+		}
+		luigi_einaudi = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				democratic_govt = yes
+			}
+			visible = {
+				democratic_govt = yes
+			}			
+			traits = { liberal capitalist  economic_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }
+		}
+		ugo_la_malfa = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				OR = {
+					has_government = liberalism
+					has_government = socialism
+				}
+			}
+			visible = {
+				democratic_govt = yes
+			}			
+			traits = { socialist resource_industrialist  economic_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }	
+		}
+		giulio_andreotti = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				OR = {
+					has_government = conservatism
+					has_government = liberalism
+					has_government = monarchism
+				}
+			}
+			visible = {
+				OR = {
+					has_government = conservatism
+					has_government = liberalism
+					has_government = monarchism
+				}
+			}			
+			traits = { conservative captain_of_industry  economic_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }	
+		}
+		roberto_tremelloni = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				OR = {
+					has_government = socialism
+					has_government = liberalism
+				}
+			}
+			visible = {
+				democratic_govt = yes
+			}				
+			traits = { socialist war_industrialist  economic_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }	
+		}
+		ezio_vanoni = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				democratic_govt = yes
+			}
+			visible = {
+				democratic_govt = yes
+			}				
+			traits = { conservative public_works_focus  economic_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }	
+		}
+		giuseppe_pella = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				OR = {
+					has_government = conservatism
+					has_government = liberalism
+					has_government = monarchism
+				}
+			}
+			visible = {
+				OR = {
+					has_government = conservatism
+					has_government = liberalism
+					has_government = monarchism
+				}
+			}				
+			traits = { conservative armaments_organizer  economic_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }	
+		}
+		alfredo_guzzoni_econ = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = {fascist quartermaster_general  economic_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { factor = 0 }	
+		}
+		ITA_luigi_einaudi = {
+			
+			
+			allowed = {
+				original_tag = "ITA"
+			}
+			available = {
+				has_completed_focus = ITA_The_industrial_triangle
+			}
+			picture = generic_political_advisor_europe_1
+						
+			traits = { captain_of_industry  economic_minister_trait }
+	
+			on_add = {				
+			}
+				
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}	
+		}
+		antonio_sorice = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { fascist war_industrialist  economic_minister_trait }
+			
+			cancel_if_invalid = no
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		mauro_scoccimarro = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				OR = {
+					has_government = socialism
+					has_government = communism
+				}
+			}
+			visible = {
+				OR = {
+					has_government = socialism
+					has_government = communism
+				}
+			}			
+			traits = { communist econ_interventionist  economic_minister_trait }
+			ai_will_do = { factor = 0 }	
+		}
+		carlo_rosselli = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = socialism
+			}
+			visible = {
+				has_government = socialism
+			}				
+			traits = { socialist armaments_organizer  economic_minister_trait }
+			ai_will_do = { factor = 0 }	
+		}
+		ruggero_grieco = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = communism
+			}
+			visible = {
+				has_government = communism
+			}			
+			traits = { communist resource_industrialist  economic_minister_trait }
+			ai_will_do = { factor = 0 }	
+		}
+		giuseppe_romita = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = communism
+			}
+			visible = {
+				has_government = communism
+			}				
+			traits = { socialist public_works_focus  economic_minister_trait }
+			ai_will_do = { factor = 0 }	
+		}
+		giuseppe_di_vittorio = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				OR = {
+					has_government = socialism
+					has_government = communism
+				}
+			}
+			visible = {
+				OR = {
+					has_government = socialism
+					has_government = communism
+				}
+			}				
+			traits = { communist war_industrialist  economic_minister_trait }
+			ai_will_do = { factor = 0 }	
+		}
+		antonio_gramsci = { 
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				has_government = communism
+			}
+			visible = {
+				has_government = communism
+			}				
+			traits = { communist industrial_planner  economic_minister_trait }
+			ai_will_do = { factor = 0 }	
+		}
+	}
+	#Advisors
+	political_advisor = {
+		ezra_pound = { 
+			allowed = {
+				original_tag = ITA
+			}
+			visible = {
+				has_government = fascism
+			}
+			ai_will_do = { factor = 20 }	
+			traits = { fascist speechwriter political_advisor_trait }
+		}
+		pietro_ingrao = {
+			allowed = {
+				original_tag = ITA
+			}
+			visible = {
+				has_government = communism
+			}			
+			traits = { communist speechwriter  political_advisor_trait }
+			ai_will_do = { factor = 0 }	
+		}
+		fausto_gullo = {
+			allowed = {
+				original_tag = ITA
+			}
+			visible = {
+				has_government = communism
+			}			
+			traits = { communist sympathetic_judge  political_advisor_trait }
+			ai_will_do = { factor = 0 }	
+		}
+		francesco_de_martino = {
+			allowed = {
+				original_tag = ITA
+			}
+			visible = {
+				has_government = socialism
+			}			
+			traits = { socialist sympathetic_judge  political_advisor_trait }
+			ai_will_do = { factor = 0 }	
+		}
+		ITA_francesco_cuccia = {
+			picture = generic_political_advisor_south_america_1
+			allowed = {
+				original_tag = ITA
+			}
+			
+			available = {
+				not = { has_country_flag = mafia_removed }
+			}
+			ai_will_do = { factor = 0 }			
+			traits = {
+				neutral
+				black_marketeer
+political_advisor_trait
+			}
+		}
+		ITA_umberto_II = {
+			picture = generic_army_europe_5
+			allowed = {
+				original_tag = ITA
+			}
+			ai_will_do = { factor = 0 }	
+			traits = {
+				monarchist
+				righthand_man
+				good_soldier
+political_advisor_trait
+			}
+		}
+		
+		
+	}
+	influence_minister = {
+		amadeo_bordiga = {
+			allowed = {
+				original_tag = "ITA"
+			}
+			available = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			traits = { communist_revolutionary  influence_minister_trait }
+	
+			on_add = {
+				country_event = political.1
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}	
+		ivanoe_bonomi = {
+			allowed = {
+				original_tag = "ITA"
+			}
+			
+			traits = { liberal_reformer  influence_minister_trait }
+	
+			on_add = {
+				country_event = political.13
+			}
+			available = {
+				NOT = {
+					has_government = liberalism
+				}
+			}	
+			do_effect = {
+				NOT = {
+					has_government = socialism
+					has_government = liberalism
+					has_government = conservatism
+				}
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		carlo_scorza = {
+			allowed = {
+				original_tag = "ITA"
+			}
+			available = {
+				NOT = {
+					has_government = fascism
+				}
+			}			
+			traits = { fascist_demagogue  influence_minister_trait }
+	
+			on_add = {
+				country_event = political.7
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ITA_balbo = {
+			name = italo_balbo
+			allowed = {
+				original_tag = "ITA"
+			}
+			picture = italo_balbo
+			available = {
+				NOT = { has_country_flag = balbo_dead }
+			}
+
+			traits = { 
+				keen_pilot
+				powerful
+				steady_peace
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ITA_guy2 = {
+			allowed = {
+				original_tag = "ITA"
+			}
+			picture = generic_political_advisor_europe_2
+			available = {
+
+			}
+
+			traits = { 
+				angry_warrior
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ITA_achille = {
+			allowed = {
+				original_tag = "ITA"
+			}
+			picture = generic_political_advisor_europe_3
+			available = {
+
+			}
+
+			traits = { 
+				r_hess
+				pet_projects
+				political_fearmonger
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ITA_guy4 = {
+			allowed = {
+				original_tag = "ITA"
+			}
+			picture = generic_political_advisor_europe_4
+			available = {
+
+			}
+
+			traits = { 
+				protector_weak
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ITA_guy5 = {
+			allowed = {
+				original_tag = "ITA"
+			}
+			picture = generic_political_advisor_europe_5
+			available = {
+
+			}
+
+			traits = { 
+				unyeilding_defender
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Academy
+	military_academy = {
+	}
+	## MILITARY
+	supreme_commander = {
+		benito_mussolini = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { supreme_com_mussolini  supreme_commander_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		pietro_badoglio = { #36-40
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { army_chief_morale_1  supreme_commander_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ugo_cavallero = { #40-43
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { army_chief_maneuver_1  supreme_commander_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	army_chief = {
+		alberto_pariani = { #36-39
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { army_chief_defensive_1  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		graziani_coa = { #39-41
+			picture = generic_army_south_america_2
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { army_chief_offensive_1  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		roatta_coa = { #41-43
+			picture = generic_army_europe_3
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { army_chief_maneuver_1  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		paolo_berardi = { #43-45
+			#picture = generic_army_south_america_3
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { army_chief_organizational_1  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		emilio_de_bono = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { army_chief_defensive_1  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}	
+	}
+	
+	navy_chief = {
+		domenico_cavagnari = { #36-40
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { navy_chief_naval_maneuvering  navy_chief_trait }
+			# REVISIT Old Guard to represent hesitance for necessary reforms
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		arturo_riccardi = { #40-43
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { navy_chief_surface_raider_doctrine  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		raffaele_courten = {
+			picture = generic_navy_europe_1
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { navy_chief_defensive_naval_doctrine  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}	
+	}
+	
+	air_chief = {
+		italo_balbo = { #36-40
+			allowed = {
+				original_tag = ITA
+			}
+			available = {
+				NOT = { has_country_flag = balbo_dead }
+			}
+			
+			traits = { air_chief_all_weather_3  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		giulio_douhet = {
+						
+			allowed = {
+				original_tag = ITA
+			}
+			picture = generic_political_advisor_south_america_3
+			
+			cost = 200
+			available = { 
+				has_completed_focus = ITA_guidonia
+			}					
+			
+			traits = { air_strategic_bombing_3  air_chief_trait }
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		rino_corso_fougier = { #40-43
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { air_air_combat_training_1  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		francesco_pricolo = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { air_chief_reform_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}	
+	}
+	
+	high_command = {
+		giovanni_messe_hc = {
+			name = giovanni_messe
+			picture = giovanni_messe		
+			allowed = {
+				original_tag = ITA
+			}
+			
+			
+			available = { 
+				has_completed_focus = ITA_Appoint_Messe
+			}
+			
+			traits = { army_armored_2  high_command_trait }
+			ai_will_do = { factor = 0 }
+		}
+		
+		mario_roatta = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { army_regrouping_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ITA_mario_berti = {
+			allowed = {
+				original_tag = ITA
+			}
+			picture = generic_army_europe_1
+			available = { 
+				has_completed_focus = ITA_inf_guy
+			}			
+			traits = { army_infantry_2  high_command_trait }
+			
+			ai_will_do = { factor = 20 }
+		}
+		vittorio_ambrosio = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { army_cavalry_3  high_command_trait }
+			
+			available = { 
+				has_completed_focus = ITA_Legacy_of_the_Arditi
+			}
+			
+			ai_will_do = { factor = 0 }
+		}
+		alfredo_guzzoni = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { army_infantry_1  high_command_trait }
+			
+			ai_will_do = { 
+				factor = 20 
+			}
+		}	
+		ettore_muti = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			traits = { air_tactical_bombing_2  high_command_trait }
+			
+			ai_will_do = { factor = 0 }
+		}
+		marziale_cerutti = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			traits = { air_air_combat_training_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		silvio_scaroni = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			traits = { air_bomber_interception_2  high_command_trait }
+			
+			ai_will_do = { factor = 0 }
+		}
+		alberto_da_zara = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			traits = { ita_navy_high_command_convoy_defense_1  high_command_trait }
+			
+			ai_will_do = { factor = 0 }
+		}
+		carlo_bergamini = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			traits = { ita_navy_high_command_grand_battlefleet_commander_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		ITA_cmd_guy = {
+			allowed = {
+				original_tag = ITA
+			}
+			available = { 
+				has_completed_focus = ITA_traditional_support
+			}
+			traits = { 
+				army_command_3 
+				army_chief_morale_1
+army_chief_trait
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		angelo_iachino_fleet_admiral = {
+		picture = generic_navy_south_america_2
+			allowed = {
+				original_tag = ITA
+			}
+
+			traits = { ita_navy_high_command_fleet_admiral_1  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		inigo_campioni = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			traits = { ita_navy_high_command_surface_raiding_commander_1  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	
+	tank_manufacturer = {
+		designer = yes
+	
+		fiat = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			research_bonus = {
+				armor = 0.10
+			}
+			
+			traits = { armor_manufacturer  tank_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ansaldo_tank = {
+			picture = ansaldo
+			
+			allowed = {
+				 original_tag = ITA 
+			}
+			
+			available = {
+				has_completed_focus = ITA_Armor_Effort
+			}
+			
+			research_bonus = {
+				armor = 0.08
+				
+			}
+			equipment_bonus = {
+				medium_tank_equipment  = {
+					 hard_attack = 0.04 soft_attack = 0.04  
+				}
+			}
+			ai_will_do = {
+				factor = 20
+			}
+			traits = { tank_producer_quality  tank_manufacturer_trait }
+		}
+	}
+	materiel_manufacturer = {
+		designer = yes
+		
+		beretta = {
+			
+			
+			allowed = {
+				original_tag = ITA
+			}
+
+			available = {
+				has_completed_focus = ITA_beretta
+			}	
+
+			
+			research_bonus = {
+				infantry_weapons = 0.12				
+			}
+			
+			traits = { infantry_equipment_manufacturer  materiel_manufacturer_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		ITA_rayon = {
+			
+			
+			allowed = {
+				original_tag = ITA
+			}			
+			research_bonus = {
+				infantry_weapons = 0.10				
+			}
+			
+			traits = { uniform_manufacturer  materiel_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		lancia = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			research_bonus = {
+				motorized_equipment = 0.10
+			}
+			
+			traits = { motorized_equipment_manufacturer  materiel_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		breda = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			research_bonus = {
+				artillery = 0.10
+			}
+			
+			traits = { artillery_manufacturer  materiel_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	
+	aircraft_manufacturer = {
+		designer = yes
+		
+		macchi = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			research_bonus = {
+				macchi_air = 0.15
+			}
+			
+			equipment_bonus = {
+				fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				interceptor_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				flying_boat_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+			}
+			
+			#traits = { light_aircraft_manufacturer  aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		reggiane_aircraft = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			research_bonus = {
+				reggiane_air = 0.15
+			}
+			
+			equipment_bonus = {
+				mr_fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				cv_fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				cv_CAS_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				cv_nav_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+			}
+			
+			#traits = { light_aircraft_manufacturer  aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		fiat_aircraft = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			research_bonus = {
+				fiat_air = 0.10
+			}
+			
+			equipment_bonus = {
+				fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				fighter_alt_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				heavy_fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				mr_fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				cv_fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				twin_cas_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				tac_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				cv_nav_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+			}
+			
+			#traits = { light_aircraft_manufacturer  aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		imam_aircraft = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			research_bonus = {
+				imam_air = 0.15
+			}
+			
+			equipment_bonus = {
+				fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				heavy_fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				cv_fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+			}
+			
+			#traits = { naval_aircraft_manufacturer  aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		breda_aircraft = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			research_bonus = {
+				breda_air = 0.15
+			}
+			
+			equipment_bonus = {
+				mr_fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				heavy_fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				CAS_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				cv_CAS_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+			}
+			
+			#traits = { CAS_manufacturer  aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ambrosini_aircraft = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			research_bonus = {
+				ambrosini_air = 0.15
+			}
+			
+			equipment_bonus = {
+				fighter_alt_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				interceptor_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+			}
+			
+			#traits = { experimental_light_aircraft_manufacturer  aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		alfa_romeo = {			
+			
+			allowed = {
+				original_tag = ITA
+			}
+
+			picture = vulcan
+
+			available = {
+				has_completed_focus = ITA_asse_roma_berlino
+			}
+			
+			research_bonus = {
+				air_equipment = 0.10
+			}
+			
+			equipment_bonus = {
+			fighter_equipment = {
+				air_range = 0.05
+				reliability = 0.05
+			}
+			fighter_alt_equipment = {
+				air_range = 0.05
+				reliability = 0.05
+			}
+			interceptor_equipment = {
+				air_range = 0.05
+				reliability = 0.05
+			}
+			mr_fighter_equipment = {
+				air_range = 0.05
+				reliability = 0.05
+			}
+			heavy_fighter_equipment = {
+				air_range = 0.05
+				reliability = 0.05
+			}
+			light_bomber_equipment = {
+				air_range = 0.05
+				reliability = 0.05
+			}
+			tac_bomber_equipment = {
+				air_range = 0.05
+				reliability = 0.05
+			}
+			nav_bomber_equipment = {
+				air_range = 0.05
+				reliability = 0.05
+			}
+		}
+			
+			#traits = { fuel_efficient_aircraft_manufacturer  aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}		
+	}
+	big_aircraft_manufacturer = {
+		designer = yes
+	
+		cant_aircraft = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			research_bonus = {
+				cant_air = 0.15
+			}
+			
+			equipment_bonus = {
+				light_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				tac_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				nav_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				flying_boat_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+			}
+			
+			#traits = { experimental_heavy_aircraft_manufacturer  big_aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		savoia_marchetti = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			research_bonus = {
+				savoia_marchetti_air = 0.15
+			}
+			
+			equipment_bonus = {
+				CAS_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				twin_cas_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				light_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				quad_engine_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+				nav_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.1
+				}
+			}
+			
+			#traits = { medium_aircraft_manufacturer  big_aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		caproni = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			research_bonus = {
+				caproni_air = 0.10
+			}
+			
+			equipment_bonus = {
+				fighter_equipment = {
+					reliability = 0.05
+				}
+				mr_fighter_equipment = {
+					reliability = 0.05
+				}
+				interceptor_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				heavy_fighter_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				CAS_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				twin_cas_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				light_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				tac_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+			}
+			
+			#traits = { medium_aircraft_manufacturer_2  big_aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		piaggio = {
+			allowed = {
+				original_tag = ITA
+			}
+			available = {
+				has_completed_focus = ITA_aeroporti
+			}			
+			research_bonus = {
+				piaggio_air = 0.15
+			}
+			
+			equipment_bonus = {
+				nav_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+				quad_engine_bomber_equipment = {
+					build_cost_ic = -0.05 reliability = 0.05
+				}
+			}
+			
+			#traits = { heavy_aircraft_manufacturer  big_aircraft_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+		
+	naval_manufacturer = {
+		designer = yes
+		
+		crda = {
+			allowed = {
+				original_tag = ITA
+			}
+
+			research_bonus = {
+				ca_tech = 0.10
+				bc_tech = 0.10
+				bb_tech = 0.10
+			}
+			available = {
+				has_completed_focus = ITA_Dockyards_effort
+			}
+			traits = { grand_battlefleet_naval_manufacturer  naval_manufacturer_trait }
+			
+			modifier = {
+			}
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 20
+					has_completed_focus = ITA_Dockyards_effort
+				}
+			}
+		}
+		gio_ansaldo_genova = {
+			picture = ansaldo
+			allowed = {
+				original_tag = ITA
+			}
+
+			research_bonus = {
+				dd_tech = 0.10
+				cl_tech = 0.10
+			}
+
+			traits = { fleet_escort_naval_manufacturer  naval_manufacturer_trait }
+
+			modifier = {
+			}
+			ai_will_do = {
+				factor = 20
+				modifier = {
+					add = -20
+					has_completed_focus = ITA_Dockyards_effort
+				}
+			}
+		}
+		odero = {
+			picture = dakar
+			allowed = {
+				original_tag = ITA
+			}
+
+			research_bonus = {
+				dd_tech = 0.10
+				cl_tech = 0.10
+			}
+
+			traits = { convoy_escort_naval_manufacturer  naval_manufacturer_trait }
+			
+			modifier = {
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		STT_ships = {
+						
+			allowed = {
+				original_tag = ITA
+			}
+
+			picture = generic_navy_south_america_1
+			
+			available = {
+			has_completed_focus = ITA_innovazione
+			}
+						
+			research_bonus = {
+				naval_equipment = 0.10
+			}
+			
+			traits = { raiding_fleet_naval_manufacturer  naval_manufacturer_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}		
+	}
+	
+	theorist = {	
+		giovanni_messe = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			cost = 150
+			
+			research_bonus = {
+				cat_mobile_warfare = 0.10
+			}
+			available = { 
+				has_completed_focus = ITA_Innovative_theories
+			}
+			traits = { mobile_warfare_expert  theorist_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		rodolfo_graziani = {
+			
+			allowed = {
+				original_tag = ITA
+			}
+			
+			cost = 150
+			
+			research_bonus = {
+				cat_grand_battle_plan = 0.10
+			}
+			available = { 
+				has_completed_focus = ITA_The_Old_guard
+			}
+			traits = { grand_battle_plan_expert  theorist_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		guiseppe_fioravanzo = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			cost = 150
+			
+			research_bonus = {
+				naval_doctrine_fleet_in_being = 0.10
+				naval_doctrine = 0.05
+			}
+			
+			traits = { grand_fleet_proponent  theorist_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		angelo_iachino = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			cost = 150
+			
+			research_bonus = {
+				naval_doctrine = 0.07
+			}
+			
+			traits = { naval_theorist  theorist_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		amedeo_mecozzi = {
+			
+			allowed = {
+				original_tag = ITA
+			}
+			
+			cost = 150
+			
+			research_bonus = {
+				cat_operational_integrity = 0.10
+			}
+			
+			traits = { assault_avaition  theorist_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		renato_sandalli = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			cost = 150
+			
+			research_bonus = {
+				air_doctrine = 0.07
+			}
+			
+			traits = { air_warfare_theorist  theorist_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	
+	industrial_concern = {
+		danieli = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			research_bonus = {
+				industry = 0.10
+			}
+			
+			traits = { industrial_concern  industrial_concern_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		ITA_Impresa = {
+			picture = man_five_year_plan_industry
+			allowed = {
+				original_tag = ITA
+			}
+			available = {
+				has_completed_focus = ITA_construct
+			}			
+			research_bonus = {
+				construction_tech = 0.12
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.02
+			}
+			ai_will_do = {
+				factor = 0
+			}
+			
+		}
+		lybian_geological_survey = {
+			
+			allowed = {
+				original_tag = ITA
+			}	
+
+			picture = ig_faben
+
+			available = {
+				has_completed_focus = ITA_libyan_infrastructure
+			}				
+			research_bonus = {
+				industry = 0.05
+				synth_resources = 0.05
+			}
+			traits = { synthetic_tycoon  industrial_concern_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ITA_medical = {
+			picture = medical_concern
+			allowed = {
+				original_tag = ITA
+			}	
+
+			#picture = 
+			
+			research_bonus = {
+				medical_tech = 0.15
+			}
+			traits = { health_concern  industrial_concern_trait }
+			ai_will_do = {
+				factor = 0
+			}
+			
+		}		
+	}
+	electrical_concern = {
+		gaetano_crocco = {
+			allowed = {
+				original_tag = ITA
+			}
+			
+			cost = 150
+			
+			research_bonus = {
+				rocketry = 0.12
+			}
+			
+			traits = { rocket_scientist  electrical_concern_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		enrico_fermi = {
+						
+			allowed = {
+				original_tag = ITA
+			}			
+
+			picture = generic_air_chief_all_weather_south_american_2d
+			
+			available = {
+				fascism < 0.9
+			}
+			
+			research_bonus = {
+				nuclear = 0.13
+			}
+			
+			traits = { 
+				nuclear_scientist
+				theoretical_scientist
+electrical_concern_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ITA_accademia = {
+			picture = radar_concern
+			allowed = {
+				original_tag = ITA
+			}
+			
+			cost = 150
+			
+			research_bonus = {
+				naval_equipment = 0.01
+				radar_tech = 0.15
+			}
+			
+			traits = { radar_concern  electrical_concern_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		ITA_radiofonica = {
+			picture = radio_concern
+			allowed = {
+				original_tag = ITA
+			}
+			
+			cost = 150
+			
+			research_bonus = {
+				radio_tech = 0.16
+			}
+			
+			traits = { radio_concern  electrical_concern_trait }	
+			ai_will_do = {
+				factor = 0
+			}	
+		}	
+	}
+	
+}
+### EOF ###

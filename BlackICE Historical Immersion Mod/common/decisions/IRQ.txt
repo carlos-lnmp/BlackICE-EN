@@ -1,0 +1,568 @@
+political_actions = {
+	IRQ_Consult_Shia = {
+		icon = consumer_goods
+		allowed = {
+			TAG = IRQ
+			player_only_trigger = yes
+		}
+		available = {
+			has_completed_focus = IRQ_Shia_deal			
+		}
+
+		visible = {
+			TAG = IRQ
+			NOT = { has_completed_focus = IRQ_send_army }					
+		}
+		fire_only_once = no
+		is_good = yes
+		ai_will_do = {
+			factor = 0			
+		}
+		cost = 25
+		complete_effect = {	
+				add_popularity = {
+							ideology = neutrality
+							popularity = 0.01
+				}			
+		}
+		days_re_enable = 25
+	}
+	
+	IRQ_build_assyria = {
+		icon = generic_construction
+		allowed = {
+			TAG = IRQ
+			player_only_trigger = yes
+		}
+		available = {
+			has_completed_focus = IRQ_solve_internal_issues
+		}
+		visible = {
+			TAG = IRQ
+			NOT = { has_completed_focus = IRQ_Assyrian_friend }
+			has_completed_focus = IRQ_solve_internal_issues
+		}
+		fire_only_once = no
+		is_good = yes
+		ai_will_do = {
+			factor = 0	
+		}
+		cost = 5
+		days_remove = 50
+		modifier = {
+               civilian_factory_use = 1
+        }
+		complete_effect = {	
+			add_popularity = {
+							ideology = liberalism
+							popularity = 0.01
+						}
+		}
+	}
+}
+
+operations = {
+	IRQ_smuggle_oil_bag = {
+		allowed = {
+			TAG = IRQ
+		}
+		available = {
+			has_completed_focus = IRQ_Bureaucracy
+			hidden_trigger = { command_power > 9.9 }
+			NOT = { has_war_with = ENG }
+		}
+		visible = {
+			not = { 
+				has_completed_focus = IRQ_oil
+				has_completed_focus = IRQ_British_oil
+			}
+			has_war = no
+			has_resources_amount = {
+				resource = oil
+				amount > 10
+				state = 291
+			}
+		}
+		cost = 0
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				add = -5
+				ENG = { is_ai = yes }
+			}
+			modifier = {
+				add = 2
+				fascism > 0.1
+			}
+			modifier = {
+				add = 1
+				fascism > 0.2
+			}
+			modifier = {
+				add = 1
+				fascism > 0.3
+			}
+			modifier = {
+				add = 1
+				fascism > 0.4
+			}
+			modifier = {
+				add = 1
+				fascism > 0.5
+			}				
+		}
+		days_remove = 75
+		modifier = {
+            production_speed_buildings_factor = -0.05 
+        }
+		custom_cost_trigger = {
+			command_power > 9.9
+		}
+		custom_cost_text = cp_atleast_10
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10 
+			}
+		}
+		remove_effect = { 
+			if = {
+				limit = {
+					is_ai = no
+				}					
+				random_list = {
+					1 = {
+						ENG = {
+							create_wargoal = {
+								type = puppet_wargoal_focus
+								target = ROOT
+							}
+						}
+					}
+					19 = {
+						reverse_add_opinion_modifier = {
+							target = ENG
+							modifier = protest_action
+						}
+					}
+					40 = {
+						add_resource = {
+							type = oil
+							amount = -1
+							state = 291
+						}
+						add_resource = {
+							type = oil
+							amount = 1
+							state = 832
+						}
+					}
+					35 = {
+						add_resource = {
+							type = oil
+							amount = -2
+							state = 291
+						}
+						add_resource = {
+							type = oil
+							amount = 2
+							state = 832
+						}
+					}
+					5 = {
+						add_resource = {
+							type = oil
+							amount = -3
+							state = 291
+						}
+						add_resource = {
+							type = oil
+							amount = 3
+							state = 832
+						}
+					}
+				}
+			}
+			else = {
+				random_list = {
+					1 = {
+					}
+					19 = {
+						reverse_add_opinion_modifier = {
+							target = ENG
+							modifier = protest_action
+						}
+					}
+					40 = {
+						add_resource = {
+							type = oil
+							amount = -1
+							state = 291
+						}
+						add_resource = {
+							type = oil
+							amount = 1
+							state = 832
+						}
+					}
+					35 = {
+						add_resource = {
+							type = oil
+							amount = -2
+							state = 291
+						}
+						add_resource = {
+							type = oil
+							amount = 2
+							state = 832
+						}
+					}
+					5 = {
+						add_resource = {
+							type = oil
+							amount = -3
+							state = 291
+						}
+						add_resource = {
+							type = oil
+							amount = 3
+							state = 832
+						}
+					}
+				}
+			}
+		}
+	}
+	IRQ_smuggle_oil_mos = {
+		allowed = {
+			TAG = IRQ
+		}
+		available = {
+			has_completed_focus = IRQ_Bureaucracy
+			hidden_trigger = { command_power > 9.9 }
+			NOT = { has_war_with = ENG }
+		}
+		visible = {
+			not = { 
+				has_completed_focus = IRQ_oil
+			}
+			has_war = no
+			has_resources_amount = {
+				resource = oil
+				amount > 5
+				state = 676
+			}
+		}
+		cost = 0
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				add = -5
+				ENG = { is_ai = yes }
+			}
+			modifier = {
+				add = 2
+				fascism > 0.1
+			}
+			modifier = {
+				add = 1
+				fascism > 0.2
+			}
+			modifier = {
+				add = 1
+				fascism > 0.3
+			}
+			modifier = {
+				add = 1
+				fascism > 0.4
+			}
+			modifier = {
+				add = 1
+				fascism > 0.5
+			}				
+		}
+		days_remove = 75
+		modifier = {
+            production_speed_buildings_factor = -0.05 
+        }
+		custom_cost_trigger = {
+			command_power > 9.9
+		}
+		custom_cost_text = cp_atleast_10
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10 
+			}
+		}
+		remove_effect = { 
+			if = {
+				limit = {
+					is_ai = no
+				}		
+				random_list = {
+					1 = {
+						ENG = {
+							create_wargoal = {
+								type = puppet_wargoal_focus
+								target = ROOT
+							}
+						}
+					}
+					19 = {
+						reverse_add_opinion_modifier = {
+							target = ENG
+							modifier = protest_action
+						}
+					}
+					40 = {
+						add_resource = {
+							type = oil
+							amount = -1
+							state = 676
+						}
+						add_resource = {
+							type = oil
+							amount = 1
+							state = 835
+						}
+					}
+					35 = {
+						add_resource = {
+							type = oil
+							amount = -2
+							state = 676
+						}
+						add_resource = {
+							type = oil
+							amount = 2
+							state = 835
+						}
+					}
+					5 = {
+						add_resource = {
+							type = oil
+							amount = -3
+							state = 676
+						}
+						add_resource = {
+							type = oil
+							amount = 3
+							state = 835
+						}
+					}
+				}
+			}
+			else = {
+				random_list = {
+					1 = {
+					}
+					19 = {
+						reverse_add_opinion_modifier = {
+							target = ENG
+							modifier = protest_action
+						}
+					}
+					40 = {
+						add_resource = {
+							type = oil
+							amount = -1
+							state = 676
+						}
+						add_resource = {
+							type = oil
+							amount = 1
+							state = 835
+						}
+					}
+					35 = {
+						add_resource = {
+							type = oil
+							amount = -2
+							state = 676
+						}
+						add_resource = {
+							type = oil
+							amount = 2
+							state = 835
+						}
+					}
+					5 = {
+						add_resource = {
+							type = oil
+							amount = -3
+							state = 676
+						}
+						add_resource = {
+							type = oil
+							amount = 3
+							state = 835
+						}
+					}
+				}
+			}
+		}
+	}
+	IRQ_prepare_for_war = {
+		allowed = {
+			TAG = IRQ
+		}
+		available = {
+			has_completed_focus = IRQ_Prepare_coup
+			command_power > 29
+			NOT = { has_war_with = ENG }
+		}
+		visible = {
+			has_completed_focus = IRQ_Prepare_coup
+			check_variable = { var = IRQ_Prepare_coup_prep value = 50 compare = less_than }
+		}
+		cost = 0
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			add_command_power = -30
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 50 compare = less_than_or_equals }
+				}
+				custom_effect_tooltip = IRQ_can_prepare_more_tt
+			}
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 10 compare = less_than }
+				}
+				set_variable = { var = IRQ_Prepare_coup_prep value = 10 }
+			}
+			else = {
+				add_to_variable = { var = IRQ_Prepare_coup_prep value = 10 }
+			}
+		}
+	}
+	IRQ_Ambush = {
+		allowed = {
+			TAG = IRQ
+		}
+		available = {
+			has_completed_focus = IRQ_Prepare_coup
+			has_war_with = ENG
+		}
+		visible = {
+			check_variable = { var = IRQ_Prepare_coup_prep value = 0 compare = greater_than }
+		}
+		cost = 0
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 10 compare = greater_than_or_equals }
+				}
+				add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 1000 producer = ENG }
+			}
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 20 compare = greater_than_or_equals }
+				}
+				add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 1000 producer = ENG }
+			}
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 30 compare = greater_than_or_equals }
+				}
+				add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 50 producer = ENG }					
+				add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 200 producer = ENG }
+				
+			}
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 40 compare = greater_than_or_equals }
+				}
+				add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 5 producer = ENG }
+				add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 500 producer = ENG }
+			}
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 50 compare = greater_than_or_equals }
+				}
+				add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 10 producer = ENG }
+				add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 5 producer = ENG }
+			}
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 10 compare = greater_than_or_equals }
+					check_variable = { var = IRQ_Prepare_coup_prep value = 20 compare = less_than }
+				}
+				every_country = {
+					limit = { 
+							OR = { 
+							is_subject_of = ENG
+							TAG = ENG
+							}
+						}
+					add_timed_idea = { idea = IRQ_ambushed_1 days = 30 }
+				}
+				
+						
+			}
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 20 compare = greater_than_or_equals }
+					check_variable = { var = IRQ_Prepare_coup_prep value = 30 compare = less_than }
+				}
+				ENG = {
+					add_timed_idea = { idea = IRQ_ambushed_1 days = 60 }
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 30 compare = greater_than_or_equals }
+					check_variable = { var = IRQ_Prepare_coup_prep value = 40 compare = less_than }
+				}
+				every_country = {
+					limit = { 
+							OR = { 
+							is_subject_of = ENG
+							TAG = ENG
+							}
+						}
+						add_timed_idea = { idea = IRQ_ambushed_2 days = 60 }
+				}
+				
+			}
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 40 compare = greater_than_or_equals }
+					check_variable = { var = IRQ_Prepare_coup_prep value = 50 compare = less_than }
+				}
+				every_country = {
+					limit = { 
+							OR = { 
+							is_subject_of = ENG
+							TAG = ENG
+							}
+						}
+					add_timed_idea = { idea = IRQ_ambushed_2 days = 90 }
+				}
+				
+			}
+			if = {
+				limit = {
+					check_variable = { var = IRQ_Prepare_coup_prep value = 50 compare = greater_than_or_equals }
+					check_variable = { var = IRQ_Prepare_coup_prep value = 60 compare = less_than }
+				}
+				every_country = {
+					limit = { 
+							OR = { 
+							is_subject_of = ENG
+							TAG = ENG
+							}
+					}
+						add_timed_idea = { idea = IRQ_ambushed_3 days = 90 }
+				}
+				
+			}
+		}
+	}
+
+}

@@ -1,0 +1,2965 @@
+technologies = {
+	## Vertical position
+	@1930 = 0
+	@1933 = 2
+	@1936 = 4
+	@1937 = 6
+	@1938 = 8
+	@1939 = 10
+	@1940 = 12
+	@1941 = 14
+	@1942 = 16
+	@1943 = 18
+	@1944 = 20
+	@1945 = 22
+	@1947 = 24
+	@1949 = 26
+	@1950 = 28
+	@1951 = 30
+	
+	## Horizontal position
+	@ENG = -9
+	@LFTR = -6
+	@INT = -3
+	@FTR = 0
+	@MR = 3
+	@CVFTR = 6
+	@CVTORB = 9
+	@CVCAS = 12
+	@MR1 = 15
+	@LCAS = 18
+	@HCAS = 21
+	@HFTR = 24
+	@HNB = 27
+	@LNB = 30
+	@LB = 33
+	@TB = 36
+	@TB2 = 39
+	@NFTR = 42
+	@HSB = 45
+	@HTRP = 48
+	@TRP = 51
+	@GUIDED = 54
+	
+	#######HIDDEN AND COUNTRY DEFINING TECHS
+	
+	tech_player_ita = {
+		
+		allow = {
+			always = no
+		}
+		enable_equipments = {
+			ca111idro_naval_bomber_equipment_1 
+			ca133_light_bomber_equipment_1
+			
+		}
+		start_year = 1930
+		folder = {
+			name = italyair_folder
+			position = { x = 0 y = -2 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ita = {
+		
+		allow = {
+			always = no
+		}
+		
+		start_year = 1930
+		folder = {
+			name = italyair_folder
+			position = { x = 0 y = -2 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_italian_aircraft1 = {
+		
+		enable_equipments = {
+			cr_series_fighter_equipment_1
+			cr_series_fighter_equipment_2
+			cr_series_fighter_equipment_3
+			cr_series_fighter_equipment_4
+			m41_boat_fighter_equipment_1 
+			ap1_multirole_equipment_1
+			ba64_multirole_equipment_1	
+			exported_interceptor_equipment_1
+			exported_interceptor_equipment_2	
+			ro41_interceptor_equipment_1
+			m18ar_flying_boat_equipment_1	
+			z501_flying_boat_equipment_1			
+			m71_fighter_equipment_1 
+			ca101_bomber_equipment_1 
+			ca101_bomber_equipment_2
+			ca101_bomber_equipment_3
+			#ca111idro_naval_bomber_equipment_1 
+			ca111_bomber_equipment_1
+			ca111_bomber_equipment_2
+			ca111_bomber_equipment_3
+			ca111_transport_plane_equipment_1 
+			#ca133_light_bomber_equipment_1 
+			ca133_transport_plane_equipment_1 
+			sm81_bomber_equipment_1
+			sm72_bomber_equipment_1
+			ro37_cas_equipment_1 
+			ro37_cas_equipment_2 
+		}
+		
+		allow = {
+			always = no
+		}
+		
+		research_cost = 2
+		start_year = 1930
+	#	folder = {
+	#		name = italyair_folder
+	#		position = { x = 0 y = @1930 }
+	#	}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	####### ENIGINE #######
+	tech_italianmotorjet1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @ENG y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 500 
+				
+				date > 1943.1.1
+			}
+		}
+	}
+	tech_mediumengine1 = {
+		allow = { can_research_air_techs_folder = yes } 
+
+		path = {
+			leads_to_tech = tech_heavyengine1
+			research_cost_coeff = 1 
+		}
+		
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = italyair_folder
+			position = { x = @INT y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 5000 
+				EAI_timegate_1939/7 = yes
+			}
+		}
+	}
+	tech_heavyengine1 = {
+		allow = { can_research_air_techs_folder = yes } 
+
+		path = {
+			leads_to_tech = tech_heavyengine2
+			research_cost_coeff = 1 
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @MR y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 5000
+				EAI_timegate_1941/7 = yes
+			}
+		}
+	}
+	tech_heavyengine2 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @CVTORB y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 5000
+				EAI_timegate_1942/7 = yes
+			}
+		}
+	}
+	
+	tech_g50_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g50_fighter_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_g50v_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = fighter_1_researched
+			}
+		}
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment 
+			fiat_air
+		}
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = italyair_folder
+			position = { x = @FTR y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1936/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_g50v_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g50v_fighter_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_g55_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment 
+			fiat_air
+		}
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @FTR y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000 
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_g55_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g55_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_heavyengine1 = 1  
+		}
+		path = {
+			leads_to_tech = tech_g56_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_g55_cv_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @FTR y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1942/7 = yes				
+					EAI_FTR_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	tech_g56_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g56_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_heavyengine2 = 1  
+		}
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @FTR y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1943/7 = yes	
+					EAI_FTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_ca183_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca183_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_heavyengine1 = 1 
+			tech_italianmotorjet1 = 1 
+		}
+	
+		categories = {
+			light_air
+			air_equipment
+			caproni_air
+		}
+		research_cost = 1.5
+		start_year = 1945
+		folder = {
+			name = italyair_folder
+			position = { x = @FTR y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### Multirole
+	tech_g50_multirole_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g50_multirole_equipment_1 }
+		
+		dependencies = {
+			tech_g50_fighter_equipment_1 = 1
+		}
+		
+		path = {
+			leads_to_tech = tech_g50v_multirole_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_g50_cv_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_g50_cv_nav_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			light_air
+			air_equipment 
+			fiat_air
+		}
+		
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @MR y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1937/7 = yes	
+					EAI_CV_aircraft_production = yes
+				}
+			}
+		}
+	}
+	
+	tech_g50v_multirole_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g50v_multirole_equipment_1 }
+		
+		dependencies = {
+			tech_mediumengine1 = 1
+			tech_g50v_fighter_equipment_1 = 1
+		}
+		
+		categories = {
+			light_air
+			air_equipment 
+			fiat_air
+		}
+		
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @MR y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+#############################MultiRole##############	
+	tech_ba65_multirole_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ba65_multirole_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_italian_cv_CAS_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			breda_air
+		}
+		research_cost = 0.5
+		start_year = 1936
+		folder = {
+			name = italyair_folder
+			position = { x = @MR1 y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ca335_multirole_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca335_multirole_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_ca355_cas_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			caproni_air
+		}
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = italyair_folder
+			position = { x = @MR1 y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_re2000_multirole_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2000_multirole_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_re2001_multirole_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_re2000_cv_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 1.5
+		start_year = 1940
+		folder = {
+			name = italyair_folder
+			position = { x = @MR1 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_re2001_multirole_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2001_multirole_equipment_1 }
+		path = {
+			leads_to_tech = tech_re2002_multirole_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_re2001bis_multirole_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_re2001_cv_CAS_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_re2001_cv_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_re2001_cv_nav_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		
+		dependencies = {
+			tech_mediumengine1 = 1 
+		}
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 0.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @MR1 y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_re2001bis_multirole_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2001bis_multirole_equipment_1 }
+		
+		
+		dependencies = {
+			tech_mediumengine1 = 1 
+		}
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @MR1 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_re2005_multirole_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2005_multirole_equipment_1 }
+		
+		dependencies = {
+			tech_heavyengine1 = 1 
+			tech_re2002_multirole_equipment_1 = 1 
+		}
+		path = {
+			leads_to_tech = tech_re2006_multirole_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_re2005_cv_CAS_equipment_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @MR1 y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_re2006_multirole_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2006_multirole_equipment_1 }
+		
+		dependencies = {
+			tech_heavyengine2 = 1 
+		}
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @MR1 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	## Interceptor ##
+	tech_ca165_interceptor_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca165_interceptor_equipment_1 }
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			caproni_air
+		}
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @INT y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	tech_mc200_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { mc200_fighter_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_mc202_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = interceptor_1_researched
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			macchi_air
+		}
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = italyair_folder
+			position = { x = @INT y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_ITC_tech_focus = yes 
+				}
+			}
+		}
+	}
+
+	tech_mc202_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { mc202_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_mediumengine1 = 1 
+		}
+		path = {
+			leads_to_tech = tech_mc205_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				country_event = { id = EAI_V.507 days = 1 }
+			}
+		}
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			macchi_air
+		}
+		research_cost = 0.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @INT y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 4000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_ITC_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_mc205_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { mc205_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_heavyengine1 = 1 
+		}
+		path = {
+			leads_to_tech = tech_mc205n_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			macchi_air
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @INT y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_ITC_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_mc205n_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { mc205n_fighter_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_mc207_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		dependencies = {
+			tech_heavyengine1 = 1 
+		}
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			macchi_air
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				country_event = { id = EAI_V.508 days = 1 }
+			}
+		}
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @INT y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_ITC_tech_focus = yes 
+				}
+			}
+		}
+	}
+	
+	tech_mc207_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { mc207_fighter_equipment_1 }
+		
+		
+		dependencies = {
+			tech_heavyengine2 = 1 
+		}
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			macchi_air
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				country_event = { id = EAI_V.509 days = 1 }
+			}
+		}
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @INT y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_ITC_tech_focus = yes 
+				}
+			}
+		}
+	}
+	### Fighters ###
+	tech_cr_32_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cr_32_fighter_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_cr_32_fighter_equipment_2
+			research_cost_coeff = 0.75
+		}
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			fiat_air
+		}
+		
+		research_cost = 0.5
+		start_year = 1933
+		folder = {
+			name = italyair_folder
+			position = { x = @LFTR y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	#
+	tech_cr_32_fighter_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cr_32_fighter_equipment_2 }
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			fiat_air
+		}
+		
+		research_cost = 0.5
+		start_year = 1933
+		folder = {
+			name = italyair_folder
+			position = { x = @INT y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_cr_41_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cr_41_fighter_equipment_1 }
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			fiat_air
+		}
+		
+		research_cost = 0.5
+		start_year = 1936
+		folder = {
+			name = italyair_folder
+			position = { x = @LFTR y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_cr_33_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cr_33_fighter_equipment_1 }
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1937
+		folder = {
+			name = italyair_folder
+			position = { x = @LFTR y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_cr_42_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cr_42_fighter_equipment_1 }
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1939
+		folder = {
+			name = italyair_folder
+			position = { x = @LFTR y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+		
+	tech_ss4_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ss4_fighter_equipment_1 }
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			ambrosini_air
+		}
+		research_cost = 1.5
+		start_year = 1940
+		folder = {
+			name = italyair_folder
+			position = { x = @LFTR y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_cr_42_daimler_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cr_42_daimler_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_cr_42_fighter_equipment_1 = 1 
+			tech_mediumengine1 = 1 
+		}
+	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @LFTR y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tech_sai207_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sai207_fighter_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_sai403_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			ambrosini_air
+		}
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @LFTR y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_sai403_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sai403_fighter_equipment_1 }
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+			ambrosini_air
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @LFTR y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+		}
+	}
+	tech_ro44_cv_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ro44_cv_fighter_equipment_1 }
+	
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+			imam_air
+		}
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = italyair_folder
+			position = { x = @CVFTR y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/7 = yes
+					EAI_CV_fighter_production = yes
+				}
+			}
+		}
+	}
+	tech_g50_cv_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g50_cv_fighter_equipment_1 }
+	
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+			fiat_air
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = italyair_folder
+			position = { x = @CVFTR y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_CV_fighter_production = yes
+				}
+			}
+		}
+	}
+	tech_re2000_cv_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2000_cv_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_re2000_multirole_equipment_1 = 1 
+		}
+	
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 0.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @CVFTR y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_re2001_cv_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2001_cv_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_re2001_multirole_equipment_1 = 1 
+		}
+	
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @CVFTR y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_g55_cv_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g55_cv_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_g55_fighter_equipment_1 = 1 
+		}
+	
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @CVFTR y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_CV_fighter_production = yes
+				}
+			}
+		}
+	}
+	
+	tech_cr25_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cr25_fighter_equipment_1 }
+	
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = heavy_fighter_1_researched
+			}
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+			fiat_air
+		}
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @HFTR y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_HFTR_tech_focus = yes
+				}				
+			}
+		}
+	}
+	tech_ro57_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ro57_fighter_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_ro58_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+	
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+			imam_air
+		}
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = italyair_folder
+			position = { x = @HFTR y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_HFTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_ro58_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ro58_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_mediumengine1 = 1 
+		}
+	
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+			imam_air
+		}
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @HFTR y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_HFTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_ca380_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca380_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_heavyengine2 = 1 
+		}
+	
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+			caproni_air
+		}
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @HFTR y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_HFTR_tech_focus = yes
+				}				
+			}
+		}
+	}
+	###################NF###################
+	tech_z1018_night_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { z1018_night_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_z1018_bomber_equipment_1 = 1 
+		}
+	
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+			cant_air
+		}
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @NFTR y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_bz303_night_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bz303_night_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_z1018_bomber_equipment_1 = 1 
+		}
+	
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+			breda_air
+		}
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @NFTR y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### Light CAS ###
+	tech_ca355_cas_equipment_1 = { 
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca355_cas_equipment_1 }
+		
+		dependencies = {
+			tech_ca335_multirole_equipment_1 = 1 
+		}
+	
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = CAS_1_researched
+			}
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 0.5
+		start_year = 1940
+		folder = {
+			name = italyair_folder
+			position = { x = @LCAS y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_CAS_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_ba201_cas_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ba201_cas_equipment_1 }
+		
+		dependencies = {
+			tech_mediumengine1 = 1 
+		}
+	
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+			breda_air
+		}
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @LCAS y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_CAS_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	tech_re2002_multirole_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2002_multirole_equipment_1 }
+		
+		dependencies = {
+			tech_re2000_multirole_equipment_1 = 1 
+		}
+		path = {
+			leads_to_tech = tech_re2005_multirole_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @LCAS y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_sm93_cas_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sm93_cas_equipment_1 }
+		
+		
+		dependencies = {
+			tech_heavyengine1 = 1 
+		}
+	
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+			savoia_marchetti_air
+		}
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @LCAS y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	## Light bomber ## (Heavy CAS is the archetype)
+	tech_ca309_light_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca309_light_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_ca310_light_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = italyair_folder
+			position = { x = @HCAS y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/2 = yes
+					EAI_HCAS_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_ca310_light_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca310_light_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_ca311_light_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 0.5
+		start_year = 1937
+		folder = {
+			name = italyair_folder
+			position = { x = @HCAS y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/7 = yes
+					EAI_HCAS_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_ca311_light_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca311_light_bomber_equipment_1 }
+
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 0.5
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @HCAS y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ca313_light_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca313_light_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_ca310_light_bomber_equipment_1 = 1 
+		}
+		path = {
+			leads_to_tech = tech_ca314_light_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = heavy_CAS_1_researched
+			}
+		}
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 0.5
+		start_year = 1940
+		folder = {
+			name = italyair_folder
+			position = { x = @HCAS y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_HCAS_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	tech_ca314_light_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca314_light_bomber_equipment_1 }
+		
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 0.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @HCAS y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_HCAS_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_fc20_cas_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { fc20_cas_equipment_1 }
+		
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+			fiat_air
+		}
+		research_cost = 1.5
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @HCAS y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_sm89_cas_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sm89_cas_equipment_1 }
+		
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+			savoia_marchetti_air
+		}
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @HCAS y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_italian_cv_CAS_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cv_CAS_equipment_1 }
+		
+		dependencies = {
+			tech_ba65_multirole_equipment_1 = 1 
+		}
+	
+		categories = {
+			naval_air
+			cas_bomber
+			air_equipment
+			breda_air
+		}
+		research_cost = 0.5
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @CVCAS y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_re2001_cv_CAS_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2001_cv_CAS_equipment_1 }
+		
+		dependencies = {
+			tech_re2001_multirole_equipment_1 = 1 
+		}
+	
+		categories = {
+			naval_air
+			cas_bomber
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @CVCAS y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_re2005_cv_CAS_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2005_cv_CAS_equipment_1 }
+		
+		dependencies = {
+			tech_re2005_multirole_equipment_1 = 1 
+		}
+	
+		categories = {
+			naval_air
+			cas_bomber
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @CVCAS y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	###################### light bombers #######################
+	tech_sm79_light_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sm79_light_bomber_equipment_1 }
+
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = light_bomber_1_researched
+			}
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			savoia_marchetti_air
+		}
+		research_cost = 0.5
+		start_year = 1936
+		folder = {
+			name = italyair_folder
+			position = { x = @LB y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				OR = {
+					EAI_timegate_1936/2 = yes
+					EAI_NAV_tech_focus = yes 
+					EAI_LTBOMB_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	tech_z1007_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { z1007_bomber_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_z1007bis_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			cant_air
+		}
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @LB y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_LTBOMB_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_z1007bis_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { z1007bis_bomber_equipment_1 }
+		
+	
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			cant_air
+		}
+		research_cost = 0.5
+		start_year = 1939
+		folder = {
+			name = italyair_folder
+			position = { x = @LB y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_LTBOMB_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_ca331_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca331_bomber_equipment_1 }
+
+	
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @LB y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_cs3_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cs3_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_italianmotorjet1 = 1 
+			tech_heavyengine1 = 1 
+		}
+	
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @LB y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	######################################
+	tech_br20_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { br20_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_br20m_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			fiat_air
+		}
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = italyair_folder
+			position = { x = @TB2 y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0	
+		}
+	}
+	tech_ca135_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca135_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_ca135bis_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = italyair_folder
+			position = { x = @TB y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ca135bis_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca135bis_bomber_equipment_1 }
+
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 0.5
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @TB y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_br20m_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { br20m_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_br20bis_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1939
+		folder = {
+			name = italyair_folder
+			position = { x = @TB2 y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0	
+		}
+	}
+	tech_z1018a_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { z1018a_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_z1018_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_z1018a_naval_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = tactical_bomber_1_researched
+			}
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			cant_air
+		}
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @TB y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_TAC_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_br20bis_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { br20bis_bomber_equipment_1 }
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @TB2 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_z1018_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { z1018_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_bz301_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_z1018_night_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_bz303_night_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_z1018_naval_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			cant_air
+		}
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @TB y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_TAC_tech_focus = yes
+				}
+			}
+		}
+	}
+	tech_bz301_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bz301_bomber_equipment_1 }
+	
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+			breda_air
+		}
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @TB y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_TAC_tech_focus = yes 
+				}
+			}
+		}
+	}
+	#############################Heavy bombers#######################
+	tech_p50_heavy_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { p50_heavy_bomber_equipment_1 }
+	
+		categories = {
+			heavy_air
+			cat_strategic_bomber
+			air_equipment
+			piaggio_air
+		}
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @HSB y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_sm82_heavy_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sm82_heavy_bomber_equipment_1 sm82_transport_plane_equipment_1 }
+	
+		categories = {
+			heavy_air
+			cat_strategic_bomber
+			air_equipment
+			savoia_marchetti_air
+		}
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = italyair_folder
+			position = { x = @HSB y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_p108_heavy_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { p108_heavy_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_p108t_transport_plane_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_p133_heavy_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = strat_bomber_1_researched
+			}
+		}
+		categories = {
+			heavy_air
+			cat_strategic_bomber
+			air_equipment
+			piaggio_air
+		}
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @HSB y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_STR_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	tech_p133_heavy_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { p133_heavy_bomber_equipment_1 }
+		
+		categories = {
+			heavy_air
+			cat_strategic_bomber
+			air_equipment
+			piaggio_air
+		}
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @HSB y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_STR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_sm95b_heavy_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sm95b_heavy_bomber_equipment_1 }
+		
+		categories = {
+			heavy_air
+			cat_strategic_bomber
+			air_equipment
+			savoia_marchetti_air
+		}
+		research_cost = 1.5
+		start_year = 1945
+		folder = {
+			name = italyair_folder
+			position = { x = @HSB y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1944/7 = yes
+					EAI_STR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	
+	#####################################
+	tech_z506b_naval_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { z506b_naval_bomber_equipment_1 }
+	
+		categories = {
+			medium_air
+			naval_bomber
+			air_equipment
+			cant_air
+		}
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @LNB y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ca313s_naval_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ca313s_naval_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_ca313_light_bomber_equipment_1 = 1 
+		}
+	
+		categories = {
+			medium_air
+			naval_bomber
+			air_equipment
+			caproni_air
+		}
+		research_cost = 0.25
+		start_year = 1940
+		folder = {
+			name = italyair_folder
+			position = { x = @LNB y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_z1018a_naval_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { z1018a_naval_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_z1018a_bomber_equipment_1 = 1 
+		}
+	
+		categories = {
+			medium_air
+			naval_bomber
+			air_equipment
+			cant_air
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @LNB y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_z1018_naval_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { z1018_naval_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_z1018_bomber_equipment_1 = 1 
+		}
+	
+		categories = {
+			medium_air
+			naval_bomber
+			air_equipment
+			cant_air
+		}
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @LNB y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_g55s_naval_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g55s_naval_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_g55_fighter_equipment_1 = 1 
+		}
+		path = {
+			leads_to_tech = tech_g55s_cv_nav_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			medium_air
+			naval_bomber
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1945
+		folder = {
+			name = italyair_folder
+			position = { x = @LNB y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_mc99_flying_boat_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { mc99_flying_boat_equipment_1 }
+	
+		categories = {
+			heavy_air
+			naval_bomber
+			air_equipment
+			macchi_air
+		}
+		research_cost = 1 #derivative of civilian aircraft
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @HNB y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	tech_sm79_naval_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sm79_naval_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_sm79_light_bomber_equipment_1 = 1 
+		}
+	
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = naval_bomber_1_researched
+			}
+		}
+		categories = {
+			heavy_air
+			naval_bomber
+			air_equipment
+			savoia_marchetti_air
+		}
+		research_cost = 0.5
+		start_year = 1939
+		folder = {
+			name = italyair_folder
+			position = { x = @HNB y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_NAV_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_sm84_naval_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sm84_naval_bomber_equipment_1 }
+	
+		categories = {
+			heavy_air
+			naval_bomber
+			air_equipment
+			savoia_marchetti_air
+		}
+		research_cost = 1.5
+		start_year = 1940
+		folder = {
+			name = italyair_folder
+			position = { x = @HNB y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_NAV_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_p108_naval_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { p108_naval_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_p108_heavy_bomber_equipment_1 = 1
+		}
+	
+		categories = {
+			heavy_air
+			naval_bomber
+			air_equipment
+			piaggio_air
+		}
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @HNB y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_NAV_tech_focus = yes 
+				}
+			}
+		}
+	}
+	###############################Flying Boats################
+	#tech_mc77_flying_boat_equipment_1 = {
+	
+	#	enable_equipments = { mc77_flying_boat_equipment_1 }
+	
+	#	categories = {
+	#		light_air
+	#		light_fighter
+	#		air_equipment
+	#	}
+	#	research_cost = 1 #some research already done
+	#	start_year = 1936
+		#folder = {
+		#	name = italyair_folder
+		#	position = { x = FLBPOSITION y = @1936 }
+		#}
+		
+	#	ai_will_do = {
+	#		factor = 0
+	#	}
+	#}
+	## CV Tropedo bombers ##
+	tech_g50_cv_nav_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g50_cv_nav_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_g50_multirole_equipment_1 = 1 
+		}
+	
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1938
+		folder = {
+			name = italyair_folder
+			position = { x = @CVTORB y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_CV_aircraft_production = yes
+				}
+			}
+		}
+	}
+	tech_re2001_cv_nav_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { re2001_cv_nav_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_re2001_multirole_equipment_1 = 1 
+		}
+	
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+			reggiane_air
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @CVTORB y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_g55s_cv_nav_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g55s_cv_nav_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_g55s_naval_bomber_equipment_1 = 1 
+		}
+	
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1945
+		folder = {
+			name = italyair_folder
+			position = { x = @CVTORB y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1944/7 = yes
+					EAI_CV_aircraft_production = yes
+				}
+			}
+		}
+	}
+	#################Transports#################
+	tech_g12_transport_plane_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g12_transport_plane_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_g212_transport_plane_equipment_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			medium_air
+			air_equipment
+			fiat_air
+		}
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = italyair_folder
+			position = { x = @TRP y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_g212_transport_plane_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { g212_transport_plane_equipment_1 }
+	
+		categories = {
+			medium_air
+			air_equipment
+			fiat_air
+		}
+		research_cost = 0.5
+		start_year = 1947
+		folder = {
+			name = italyair_folder
+			position = { x = @TRP y = @1947 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	## Heavy Transport ##
+	tech_p108t_transport_plane_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { p108t_transport_plane_equipment_1 }
+	
+		categories = {
+			heavy_air
+			air_equipment
+			piaggio_air
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = italyair_folder
+			position = { x = @HTRP y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+		}
+	}
+	tech_bz308_transport_plane_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bz308_transport_plane_equipment_1 }
+		
+		dependencies = {
+			tech_heavyengine2 = 1 
+		}
+	
+		categories = {
+			heavy_air
+			air_equipment
+			breda_air
+		}
+		research_cost = 1.5
+		start_year = 1949
+		folder = {
+			name = italyair_folder
+			position = { x = @HTRP y = @1949 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	###############Guided weapons###############
+	tech_sm79_guided_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sm79_guided_equipment_1 }
+		
+		dependencies = {
+			tech_sm79_light_bomber_equipment_1 = 1 
+			vehicle_radio = 1 
+		}
+	
+		path = {
+			leads_to_tech = tech_ar4_guided_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			medium_air
+			air_equipment
+			savoia_marchetti_air
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = italyair_folder
+			position = { x = @GUIDED y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ar4_guided_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ar4_guided_equipment_1 }
+	
+		categories = {
+			light_air
+			air_equipment
+			ambrosini_air
+		}
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = italyair_folder
+			position = { x = @GUIDED y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

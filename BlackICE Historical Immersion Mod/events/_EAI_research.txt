@@ -1,0 +1,96 @@
+﻿add_namespace = EAI_R
+####################################################
+# Helps AI (majors) with some free techs if its too far behind
+####################################################
+#Helps GER SOV ENG USA by default
+#Helps ITA JAP FRA if enemy is player
+
+#MOST UNUSED
+
+country_event = { #Set initial Doctrine techs
+	id = EAI_R.0
+	hidden = yes
+	
+	trigger = {
+		date > 1936.1.1
+	}
+	
+	fire_only_once = yes 
+	
+	immediate = {
+		every_country = {
+			limit = {
+				is_ai = yes 
+			}
+			#if = {
+			#	limit = {
+			#		has_any_initial_doctrine_tech = yes 
+			#	}
+			#	log = "[This.GetName] has initial doctrine tech"
+			#}
+			if = {
+				limit = {
+					mw_doctrine = yes 
+				}
+				set_technology = { blitzkrieg = 1 } 
+			}
+			if = {
+				limit = {
+					sf_doctrine = yes 
+				}
+				set_technology = { superior_firepower = 1 } 
+			}
+			if = {
+				limit = {
+					mb_doctrine = yes 
+				}
+				set_technology = { methodical_battle = 1 } 
+			}
+			if = {
+				limit = {
+					ma_doctrine = yes 
+				}
+				set_technology = { mass_assault = 1 } 
+			}
+			if = {
+				limit = {
+					ao_doctrine = yes 
+				}
+				set_technology = { assault_operations = 1 } 
+			}
+			if = {
+				limit = { 
+					aw_doctrine = yes 
+				}
+				set_technology = { guerilla_warfare = 1 } 
+			}
+			
+			if = {
+				limit = {
+					dd_doctrine = yes 
+				}
+				set_technology = { defence_in_depth = 1 } 
+			}
+			if = {
+				limit = {
+					pd_doctrine = yes 
+				}
+				set_technology = { prepared_defense = 1 } 
+			}
+			if = {
+				limit = {
+					ed_doctrine = yes 
+				}
+				set_technology = { elastic_defence = 1 } 
+			}
+			if = {
+				limit = {
+					ac_doctrine = yes 
+				}
+				set_technology = { attritional_containment = 1 } 
+			}
+		}
+	}
+}
+	
+### EOF ###

@@ -1,0 +1,439 @@
+############################################################################################################
+#	Expert AI mod - equipment production
+############################################################################################################
+
+EAI_default_production_strategy = {
+	enable = { always = yes }
+	
+	ai_strategy = { type = equipment_variant_production_factor id = ss_infantry_uniforms value = -1000 }
+	ai_strategy = { type = equipment_variant_production_factor id = superartillery_equipment value = -1000 }
+	ai_strategy = { type = equipment_variant_production_factor id = railartillery_equipment value = -1000 }
+	
+}
+
+EAI_disable_stockpile_production = {
+	enable = { EAI_disable_stockpile_production = yes }
+	abort_when_not_enabled = yes
+	
+	ai_strategy = { type = equipment_stockpile_surplus_ratio value = -30 }
+}
+
+### hold off on upgrading while on low stockpiles
+
+EAI_infantry_eq_production_line_upgrade = {
+	enable = { 
+		date > 1937.1.1
+		has_equipment = { infantry_equipment < 1000 } 
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = { type = production_upgrade_desire_offset id = infantry_equipment_1 value = -100 }
+	ai_strategy = { type = production_upgrade_desire_offset id = infantry_equipment_2 value = -100 }
+	ai_strategy = { type = production_upgrade_desire_offset id = infantry_equipment_3 value = -100 }
+}
+EAI_infantry_uniform_production_line_upgrade = {
+	enable = { 
+		date > 1937.1.1
+		has_equipment = { infantry_uniforms < 1000 } 
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = { type = production_upgrade_desire_offset id = infantry_uniforms_0 value = -100 }
+	ai_strategy = { type = production_upgrade_desire_offset id = infantry_uniforms_1 value = -100 }
+	ai_strategy = { type = production_upgrade_desire_offset id = infantry_uniforms_2 value = -100 }
+}
+
+######################################
+#	misc
+######################################
+
+EAI_stop_infantry_production = {
+	enable = { 
+		has_equipment = { infantry_equipment > 200000 } 
+	}
+	abort = { 
+		NOT = { has_equipment = { infantry_equipment > 100000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = infantry_equipment value = -1000 }
+}
+
+EAI_stop_uniform_production = {
+	enable = { 
+		has_equipment = { infantry_uniforms > 200000 } 
+	}
+	abort = { 
+		NOT = { has_equipment = { infantry_uniforms > 100000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = infantry_uniforms value = -1000 }
+}
+
+EAI_stop_HMG_production = {
+	enable = { 
+		has_equipment = { HMG_equipment > 50000 } 
+	}
+	abort = { 
+		NOT = { has_equipment = { HMG_equipment > 40000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = HMG_equipment value = -1000 }
+}
+
+EAI_stop_mortar_production = {
+	enable = { 
+		has_equipment = { mortar_equipment > 50000 } 
+	}
+	abort = { 
+		NOT = { has_equipment = { mortar_equipment > 40000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = mortar_equipment value = -1000 }
+}
+
+EAI_stop_recon_production = {
+	enable = { 
+		has_equipment = { recon_equipment > 10000 } 
+	}
+	abort = { 
+		NOT = { has_equipment = { recon_equipment > 8000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = recon_equipment value = -1000 }
+}
+EAI_stop_recon_mot_production = {
+	enable = { 
+		has_equipment = { recon_mot_equipment > 5000 } 
+	}
+	abort = { 
+		NOT = { has_equipment = { recon_mot_equipment > 4000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = recon_mot_equipment value = -1000 }
+}
+EAI_stop_recon_arm_production = {
+	enable = { 
+		has_equipment = { motorized_AC_equipment > 3000 } 
+	}
+	abort = { 
+		NOT = { has_equipment = { motorized_AC_equipment > 2000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = motorized_AC_equipment value = -1000 }
+}
+EAI_stop_garrison_production = {
+	enable = { 
+		always = yes 
+		#has_equipment = { garrison_equipment > 4000 } 
+	}
+	abort = { 
+		always = no 
+		#NOT = { has_equipment = { garrison_equipment > 3000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = garrison_equipment value = -1000 }
+}
+EAI_stop_cavalry_production = {
+	enable = { 
+		OR = {
+			has_equipment = { horse_equipment > 5000 } 
+			AND = {
+				major_country = yes 
+				has_war = no 
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	
+	
+	ai_strategy = { type = equipment_variant_production_factor id = horse_equipment value = -1000 }
+}
+
+EAI_stop_artillery_production = {
+	enable = { 
+		has_equipment = { artillery_equipment > 8000 }
+	}
+	abort = { 
+		NOT = { has_equipment = { artillery_equipment > 6000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = artillery_equipment value = -1000 }
+}
+EAI_stop_med_artillery_production = {
+	enable = { 
+		has_equipment = { medartillery_equipment > 5000 }
+	}
+	abort = { 
+		NOT = { has_equipment = { medartillery_equipment > 4000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = medartillery_equipment value = -1000 }
+}
+EAI_stop_heavy_artillery_production = {
+	enable = { 
+		has_equipment = { Hvartillery_equipment > 3000 }
+	}
+	abort = { 
+		NOT = { has_equipment = { Hvartillery_equipment > 2000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = Hvartillery_equipment value = -1000 }
+}
+EAI_stop_pack_artillery_production = {
+	enable = { 
+		has_equipment = { mountain_artillery_equipment > 3000 }
+	}
+	abort = { 
+		NOT = { has_equipment = { mountain_artillery_equipment > 2000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = mountain_artillery_equipment value = -1000 }
+}
+EAI_stop_anti_air_production = {
+	enable = { 
+			has_equipment = { anti_air_equipment > 3000 }
+	}
+	abort = { 
+		NOT = { has_equipment = { anti_air_equipment > 2000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = anti_air_equipment value = -1000 }
+}
+EAI_stop_arty_truck_production = {
+	enable = {
+		has_equipment = { artytruck_equipment > 3000 }
+	}
+	abort = { 
+		NOT = { has_equipment = { artytruck_equipment > 2000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = artytruck_equipment value = -1000 }
+}
+EAI_stop_motorized_production = {
+	enable = { 
+		has_equipment = { motorized_equipment > 5000 }
+	}
+	abort = { 
+		NOT = { has_equipment = { motorized_equipment > 4000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = motorized_equipment value = -1000 }
+}
+EAI_stop_mechanized_production = {
+	enable = { 
+		has_equipment = { mechanized_equipment > 5000 }
+	}
+	abort = { 
+		NOT = { has_equipment = { mechanized_equipment > 3000 }  }
+	}
+	
+	ai_strategy = { type = equipment_variant_production_factor id = mechanized_equipment value = -1000 }
+}
+
+###########
+## shift production
+###########
+
+######################################
+#low MIC production priorities
+######################################
+
+EAI_low_MIC_recon_equipment = {
+	enable = { 
+		num_of_military_factories < 20 
+		check_variable = { field_strength < 0.9 }
+		
+		has_equipment = { recon_equipment > 100 } 
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = equipment_variant_production_factor id = recon_equipment value = -100 }
+}
+EAI_low_MIC_HQ_equipment = {
+	enable = { 
+		num_of_military_factories < 20 
+		check_variable = { field_strength < 0.9 }
+		
+		has_equipment = { HQ_equipment > 100 } 
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = equipment_variant_production_factor id = HQ_equipment value = -100 }
+}
+EAI_low_MIC_support_equipment = {
+	enable = { 
+		num_of_military_factories < 20 
+		check_variable = { field_strength < 0.9 }
+		
+		has_equipment = { support_equipment > 100 } 
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = equipment_variant_production_factor id = support_equipment value = -100 }
+}
+EAI_low_MIC_motorized_lia_equipment = {
+	enable = { 
+		num_of_military_factories < 20 
+		check_variable = { field_strength < 0.9 }
+		
+		has_equipment = { motorized_lia_equipment > 100 } 
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = equipment_variant_production_factor id = motorized_lia_equipment value = -100 }
+}
+EAI_low_MIC_artillery_equipment = {
+	enable = { 
+		num_of_military_factories < 20 
+		check_variable = { field_strength < 0.9 }
+		
+		has_equipment = { artillery_equipment > 100 } 
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = equipment_variant_production_factor id = artillery_equipment value = -100 }
+}
+EAI_low_MIC_horse_equipment = {
+	enable = { 
+		num_of_military_factories < 20 
+		check_variable = { field_strength < 0.9 }
+		
+		has_equipment = { horse_equipment > 100 } 
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = equipment_variant_production_factor id = horse_equipment value = -100 }
+}
+EAI_low_MIC_artyhorse_equipment = {
+	enable = { 
+		num_of_military_factories < 20 
+		check_variable = { field_strength < 0.9 }
+		
+		has_equipment = { artyhorse_equipment > 100 } 
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = equipment_variant_production_factor id = artyhorse_equipment value = -100 }
+}
+EAI_low_MIC_anti_air_equipment = {
+	enable = { 
+		num_of_military_factories < 20 
+		check_variable = { field_strength < 0.9 }
+		
+		has_equipment = { anti_air_equipment > 50 } 
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = equipment_variant_production_factor id = anti_air_equipment value = -100 }
+}
+######################################
+
+# support
+EAI_infantry_equipment_boost = {
+	enable = { has_equipment = { infantry_equipment < 1000 } }
+	abort = { has_equipment = { infantry_equipment > 2000 } }
+
+	ai_strategy = { type = equipment_variant_production_factor id = infantry_equipment value = 15 }
+}
+EAI_infantry_SMG_equipment_boost = {
+	enable = { has_equipment = { SMG_equipment < 1000 } }
+	abort = { has_equipment = { SMG_equipment > 2000 } }
+
+	ai_strategy = { type = equipment_variant_production_factor id = SMG_equipment value = 20 }
+}
+
+EAI_infantry_uniforms_boost_1 = {
+	enable = { 
+		has_equipment = { infantry_uniforms < 100 } 
+		
+		set_temp_variable = { t1 = num_target_equipment_in_armies@infantry_uniforms }
+		set_temp_variable = { t2 = num_equipment_in_armies@infantry_uniforms }
+		
+		divide_temp_variable = { t2 = t1 }
+		
+		check_variable = { t2 < 0.90 } 
+		
+	}
+	abort = {
+		has_equipment = { infantry_uniforms > 0 } 
+	}
+
+	ai_strategy = { type = equipment_variant_production_factor id = infantry_uniforms value = 15 }
+}
+EAI_infantry_uniforms_boost_2 = {
+	enable = { 
+		has_equipment = { infantry_uniforms < 100 } 
+		
+		set_temp_variable = { t1 = num_target_equipment_in_armies@infantry_uniforms }
+		set_temp_variable = { t2 = num_equipment_in_armies@infantry_uniforms }
+		
+		divide_temp_variable = { t2 = t1 }
+		
+		check_variable = { t2 < 0.80 } 
+		
+	}
+	abort = {
+		has_equipment = { infantry_uniforms > 0 } 
+	}
+
+	ai_strategy = { type = equipment_variant_production_factor id = infantry_uniforms value = 20 }
+}
+EAI_infantry_uniforms_boost_3 = {
+	enable = { 
+		has_equipment = { infantry_uniforms < 100 } 
+		
+		set_temp_variable = { t1 = num_target_equipment_in_armies@infantry_uniforms }
+		set_temp_variable = { t2 = num_equipment_in_armies@infantry_uniforms }
+		
+		divide_temp_variable = { t2 = t1 }
+		
+		check_variable = { t2 < 0.70 } 
+		
+	}
+	abort = {
+		has_equipment = { infantry_uniforms > 0 } 
+	}
+
+	ai_strategy = { type = equipment_variant_production_factor id = infantry_uniforms value = 25 }
+}
+EAI_support_equipment_boost = {
+	enable = { has_equipment = { support_equipment < 100 } }
+	abort = { has_equipment = { support_equipment > 300 } }
+
+	ai_strategy = { type = equipment_variant_production_factor id = support_equipment value = 15 }
+}
+EAI_artillery_equipment_boost = {
+	enable = { has_equipment = { artillery_equipment < 50 } }
+	abort = { has_equipment = { artillery_equipment > 100 } }
+
+	ai_strategy = { type = equipment_variant_production_factor id = artillery_equipment value = 20 }
+}
+
+######################################
+#	armor production
+######################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

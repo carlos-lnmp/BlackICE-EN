@@ -1,0 +1,52 @@
+﻿##### TEMPLATES #####
+division_template = {
+	name = "Brigade Coloniale"			# Represents: 2xRgt colonial forces and , usually with old equipment
+	template_counter = 77
+	priority = 0
+	
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+	}
+	 support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+##### OOB #####
+units = {
+	division = {
+		name = "First Syrian Regiment"
+		location = 4111
+		division_template = "Brigade Coloniale"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+	}	
+	division = {
+		name = "Second Syrian Regiment"
+		location = 12473
+		division_template = "Brigade Coloniale"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+	}	
+}
+##### INSTANT #####
+instant_effect = {
+##### ADDED TO STOCKPILE #####
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_0
+		amount = 1800
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+		amount = 2000
+		producer = FRA
+	}
+}
+### EOF ###

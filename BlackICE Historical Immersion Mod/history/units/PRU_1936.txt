@@ -1,0 +1,216 @@
+﻿division_template = {
+	name = "División de Infanteria"			# Divisions were at reserve levels during peacetime
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		jungle_support  = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "División de Caballería"  
+
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		jungle_support  = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Militia"  
+	# Note: all forces at reserve levels in 1936
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+	}
+	 support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		jungle_support  = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Garrison"	
+
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+		
+		garrison = { x = 2 y = 0 }
+		garrison = { x = 2 y = 1 }
+		garrison = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		jungle_support  = { x = 0 y = 2 }
+	}
+}
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#	
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+#### OOB ####
+units = {
+	##### Ejército del Perú #####
+	#division= {	
+	#	name = "Ejército del Perú" 
+	#	location = 12997
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.1
+	#}
+	
+	division= {	
+		name = "1era Div. de Infantería 'Bolognesi'"
+		location = 12997 # Lima
+		division_template = "División de Infanteria"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "2da División de Infantería"
+		location = 2210 # Arequipa
+		division_template = "División de Infanteria"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "3era División de Infantería"
+		location = 2156 # Plura
+		division_template = "División de Infanteria"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "4ta División de Infantería"
+		location = 8149 # Iquitos
+		division_template = "División de Infanteria"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "División de Caballería"
+		location = 12997 # Lima
+		division_template = "División de Caballería"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}			
+}
+
+air_wings = {
+	### Cuerpo de Aviación del Perú -- Lima
+	303 = {
+		# Fighter Air Group -- Curtis F11s, NiD 123s, Ca.114s
+		fighter_equipment_0 =  {
+			owner = "PRU" 
+			amount = 27
+		}
+		#exported_interceptor_equipment_2 =  {	#Caproni Ca.114
+		#	owner = "PRU" 
+		#	creator = "ITA"
+		#	amount = 12
+		#}
+		# CAS Air Group -- Ca.111s, Fairey Foxes
+		CAS_equipment_1 =  {
+			owner = "PRU" 
+			amount = 18
+		}
+		# Curtiss BT-32 Condor II
+		#prewar_bomber_equipment_3 =  { #For bolivia, confiscated in 1941. Move to event later
+		#	owner = "PRU" 
+		#	creator = "USA"
+		#	amount = 4
+		#}
+		# Vought V-80
+		#pre_war_mr_equipment_2 =  { 
+		#	owner = "PRU" 
+		#	creator = "USA"
+		#	amount = 3
+		#}
+		#Curtiss Sea Hawk II
+		#pre_war_mr_equipment_6 =  { 
+		#	owner = "PRU" 
+		#	creator = "USA"
+		#	version_name = ""
+		#	amount = 2
+		#}
+		# Curtiss Hawk II
+		#curtiss_hawk_ii_equipment_1 =  { 
+		#	owner = "PRU" 
+		#	creator = "USA"
+		#	amount = 1
+		#}
+		#ca111_bomber_equipment_2 =  {  #Caproni Ca.111 RC #Peru bought Idro, then converted all to bomber. Used some as transports.
+		#	owner = "PRU" 
+		#	creator = "ITA"
+		#	amount = 8
+		#}
+		#ca111_transport_plane_equipment_1 =  { #See above.
+		#	owner = "PRU" 
+		#	creator = "ITA"
+		#	amount = 4
+		#}
+	}
+}
+
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "PRU"
+		}
+		requested_factories = 1
+		progress = 0.79
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = fighter_equipment_0
+			creator = "PRU"
+		}
+		requested_factories = 1
+		progress = 0.27
+		efficiency = 100
+	}
+}

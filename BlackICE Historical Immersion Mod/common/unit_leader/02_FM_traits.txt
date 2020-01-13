@@ -1,0 +1,641 @@
+leader_traits = {
+#Based on HoI3 BICE traits by Riever 
+#Adapted for HOI4 1.5 by maverick87
+##################################
+# Table of Contents
+# - Field Marshal (FM) Traits
+##################################
+	logistics_wizard_FM = { 
+		type = field_marshal
+		
+		gain_xp = {
+			always = no # not gainable
+		}
+		cost = 1000
+		
+		field_marshal_modifier = {
+			supply_consumption_factor = -0.04
+		}
+		
+		enable_ability = extra_suplies
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		gui_row = 0
+		
+		trait_type = assignable_trait
+		
+		parent = organizer
+	}
+	fast_planner = { 
+		type = field_marshal
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 1000
+		
+		field_marshal_modifier = {
+			planning_speed = 0.08
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = organizer
+		mutually_exclusive = thorough_planner
+		trait_type = assignable_trait
+		
+		gui_row = 1
+	}
+	thorough_planner = { 
+		type = field_marshal
+		gain_xp = {
+			always = no # not gainable
+		}
+		cost = 1000
+		field_marshal_modifier = {
+			max_planning = 0.075
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = organizer
+		mutually_exclusive = fast_planner
+		trait_type = assignable_trait
+		
+		gui_row = 2
+	}
+	unyielding_defender = { 
+		type = field_marshal
+		gain_xp = {
+			always = no # not gainable
+		}
+
+		prerequisites = {
+			has_trait = inflexible_strategist
+		}
+
+		cost = 1000
+		field_marshal_modifier = {
+			defence = 0.05
+		}
+		custom_effect_tooltip = INCREASED_COUNTERATTACK_CHANCE
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		mutually_exclusive = aggressive_assaulter
+
+		gui_row = 3
+	}
+	aggressive_assaulter = { 
+		type = field_marshal
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			has_trait = brilliant_strategist
+		}
+		
+		cost = 1000
+		
+		field_marshal_modifier = {
+		}
+		
+		custom_effect_tooltip = INCREASED_ASSAULT_AND_SHOCK_CHANCE
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		mutually_exclusive = unyielding_defender
+
+		gui_row = 4
+	}
+	organisational_leader = { 
+		type = field_marshal
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 1000
+		
+		field_marshal_modifier = {
+			land_reinforce_rate = 0.02
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+
+		gui_row = 5
+	}
+	inspirational_leader = { 
+		type = field_marshal
+		gain_xp = {
+			always = no # not gainable
+		}
+		cost = 1000
+		field_marshal_modifier = {
+			army_morale_factor = 0.07
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		trait_type = assignable_trait
+		gui_row = 6
+	}
+	offensive_doctrine_FM = {
+		type = field_marshal
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 1000
+		
+		field_marshal_modifier = {
+			org_loss_when_moving = -0.10
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		mutually_exclusive = defensive_doctrine_FM
+		parent = offensive_doctrine_CC
+		
+		gui_row = 15
+	}
+	defensive_doctrine_FM = { 
+		type = field_marshal
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 1000
+		
+		field_marshal_modifier = {
+			max_dig_in_factor = 0.1
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		mutually_exclusive = offensive_doctrine_FM
+		parent = defensive_doctrine_CC
+		
+		gui_row = 16
+	}
+	trickster_FM = { 
+		type = field_marshal
+		gain_xp = {
+			OR = {
+				has_flanked_opponent = yes
+				opponent = { has_flanked_opponent = yes }
+			}
+		}
+		
+		cost = 1000
+		
+		field_marshal_modifier = {
+			recon_factor = 0.1
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = trickster_CC
+		
+		gui_row = 20
+	}
+	trait_engineer_FM = { 
+		type = field_marshal
+		gain_xp = {
+			has_combat_modifier = river_crossing
+			has_combat_modifier = fort_attack
+		}
+		
+		cost = 2000
+		
+		field_marshal_modifier = {
+			river = {
+				attack = 0.05
+				movement = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = trait_engineer
+		
+		gui_row = 24
+	}
+	fortress_buster_FM = {
+		type = field_marshal
+		gain_xp = {
+			OR = {
+				has_combat_modifier = fort_attack
+				dig_in > 10
+			}
+		}
+		
+		cost = 1400
+		
+		modifier = {
+			fort = {
+				attack = 0.08
+			}
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = fortress_buster
+		
+		gui_row = 26
+	}
+	naval_invader_FM = {
+		type = field_marshal
+		gain_xp = {
+			is_amphibious_invasion = yes
+		}
+		
+		cost = 200
+		
+		modifier = {
+			amphibious_invasion = 0.15 # 15% faster invasions
+			invasion_preparation = -0.15
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = invader_ii
+		
+		gui_row = 28
+	}
+	commando_FM = { 
+ 		type = field_marshal
+		gain_xp = {
+			OR = {
+				temperature < -10
+				has_combat_modifier = paradrop
+				has_combat_modifier = amphibious_attack
+			}
+		}
+		
+		cost = 1400
+		
+		modifier = {
+			out_of_supply_factor = -0.1
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = commando
+		
+		gui_row = 30
+	}
+	expert_delegator = { 
+		type = field_marshal
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 1000
+		
+		field_marshal_modifier = {
+			max_army_group_size = 2
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = skilled_staffer
+		
+		gui_row = 37
+	}
+	
+########################################
+# Table of Contents
+# - Field Marshal (FM) Terrain traits
+########################################
+	#desert_fox_FM = { 
+ 	#	type = field_marshal
+	#	gain_xp = {
+	#		is_fighting_in_terrain = desert
+	#	}
+	#	
+	#	prerequisites = {
+	#		has_trait = desert_fox_CC_II
+	#	}
+	#	
+	#	cost = 1400
+	#	
+	#	field_marshal_modifier = {
+	#		desert = {
+	#			movement = 0.025
+	#			attack = 0.05
+	#			defence = 0.05
+	#		}
+	#	}
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#	}
+	#	
+	#	trait_type = assignable_terrain_trait
+	#	#parent = desert_fox
+	#	
+	#	gui_row = 2
+	#}
+	#swamp_fox_FM = { 
+	#	type = field_marshal
+	#	gain_xp = {
+	#		is_fighting_in_terrain = marsh
+	#	}
+	#	
+	#	prerequisites = {
+	#		has_trait = swamp_fox_CC_II
+	#	}
+	#	
+	#	cost = 1400
+	#	
+	#	field_marshal_modifier = {
+	#		marsh = {
+	#			movement = 0.025
+	#			attack = 0.05
+	#			defence = 0.05
+	#		}
+	#	}
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#	}
+	#	
+	#	trait_type = assignable_terrain_trait
+	#	#parent = swamp_fox
+	#	
+	#	gui_row = 5
+	#}
+	#hill_fighter_FM = { 
+	#	type = field_marshal
+	#	gain_xp = {
+	#		is_fighting_in_terrain = hills
+	#	}
+	#	
+	#	prerequisites = {
+	#		has_trait = hill_fighter_CC_II
+	#	}
+	#	
+	#	cost = 1400
+	#	
+	#	field_marshal_modifier = {
+	#		hills = {
+	#			movement = 0.025
+	#			attack = 0.05
+	#			defence = 0.05
+	#		}
+	#	}
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#	}
+	#	
+	#	trait_type = assignable_terrain_trait
+	#	#parent = hill_fighter
+	#	
+	#	gui_row = 8
+	#}
+	#mountaineer_FM = { 
+	#	type = field_marshal
+	#	gain_xp = {
+	#		is_fighting_in_terrain = mountain
+	#	}
+	#	
+	#	prerequisites = {
+	#		has_trait = mountaineer_CC_II
+	#	}
+	#	
+	#	cost = 1400
+	#	
+	#	field_marshal_modifier = {
+	#		mountain = {
+	#			movement = 0.025
+	#			attack = 0.05
+	#			defence = 0.05
+	#		}
+	#	}
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#	}
+	#	
+	#	trait_type = assignable_terrain_trait
+	#	#parent = trait_mountaineer
+	#	
+	#	gui_row = 10
+	#}
+	#urban_assault_specialist_FM = { 
+	#	type = field_marshal
+	#	gain_xp = {
+	#		is_fighting_in_terrain = urban
+	#	}
+	#	
+	#	prerequisites = {
+	#		has_trait = urban_assault_specialist_CC_II
+	#	}
+	#	
+	#	cost = 1400
+	#	
+	#	field_marshal_modifier = {
+	#		urban = {
+	#			movement = 0.025
+	#			attack = 0.05
+	#			defence = 0.05
+	#		}
+	#	}
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#	}
+	#	
+	#	trait_type = assignable_terrain_trait
+	#	#parent = urban_assault_specialist
+	#	
+	#	gui_row = 13
+	#}
+	#ranger_FM = { 
+	#	type = field_marshal
+	#	gain_xp = {
+	#		is_fighting_in_terrain = forest
+	#	}
+	#	
+	#	prerequisites = {
+	#		has_trait = ranger_CC_II
+	#	}
+	#	
+	#	cost = 2000
+	#	
+	#	field_marshal_modifier = {
+	#		forest = {
+	#			movement = 0.025
+	#			attack = 0.05
+	#			defence = 0.05
+	#		}
+	#	}
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#	}
+	#	
+	#	trait_type = assignable_terrain_trait
+	#	#parent = ranger
+	#	
+	#	gui_row = 30
+	#}
+	#jungle_rat_FM = { 
+	#	type = field_marshal
+	#	gain_xp = {
+	#		is_fighting_in_terrain = jungle
+	#	}
+	#	
+	#	prerequisites = {
+	#		has_trait = jungle_rat_CC_II
+	#	}
+	#	
+	#	cost = 1400
+	#	
+	#	field_marshal_modifier = {
+	#		jungle = {
+	#			movement = 0.025
+	#			attack = 0.05
+	#			defence = 0.05
+	#		}
+	#	}
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#	}
+	#	
+	#	trait_type = assignable_terrain_trait
+	#	#parent = jungle_rat
+	#	
+	#	gui_row = 33
+	#}
+	#winter_specialist_FM = { 
+	#	type = field_marshal
+	#	gain_xp = {
+	#		temperature < -10
+	#	}
+	#	
+	#	prerequisites = {
+	#		has_trait = winter_specialist_CC_II
+	#	}
+	#	cost = 1000
+	#	
+	#	field_marshal_modifier = {
+	#		acclimatization_cold_climate_gain_factor = 0.1
+	#		winter_attrition_factor = -0.15
+	#	}
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#	}
+	#	
+	#	trait_type = assignable_terrain_trait
+	#	#parent = winter_specialist
+	#	
+	#	gui_row = 22
+	#}
+}

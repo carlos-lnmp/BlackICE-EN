@@ -1,0 +1,1034 @@
+	
+#################
+###NUKE EFFECT###
+#################
+
+@NUKE_REMOVE_MIL_FACTOR = 0.5
+@NUKE_REMOVE_CIV_FACTOR = 0.5
+@NUKE_REMOVE_NIC_FACTOR = 0.5
+@NUKE_REMOVE_INFRA_FACTOR = 0.4
+@NUKE_REMOVE_AIR_BASE_FACTOR = 0.4
+@NUKE_REMOVE_RADAR_FACTOR = 0.4
+@NUKE_REMOVE_ANTI_AIR_FACTOR = 0.4
+
+@NUKE_REMOVE_POP_FACTOR = 0.15
+@NUKE_REMOVE_POP_STATE_CATEGORY_FACTOR = 0 #how much the pop removal factor gets affected by state categories. each state category lvl has a variable, which gets multiplied by this
+
+@NUKE_REMOVE_SLOTS = 2 #removes this many building slots
+@NUKE_STATE_CATEGORY_LEVEL_DOWN = 1 #how many state categories the state should level down
+
+#TODO(
+@NUKE_MAX_SLOTS_DEBUFF = 0.4 #sets the starting building slots debuff to 40%
+@NUKE_MAX_SUPPLY_DEBUFF = 0.4 #sets the starting supply debuff to 40%
+@NUKE_MAX_RESOURCE_DEBUFF = 0.3 #sets the starting resource debuff to 30%
+@NUKE_DAYS_UNTIL_DEBUFF_REMOVE = 180 #How many days it takes for the debuffs to disappear; set to 0 for no removal and no scaling down the modifier
+#)
+
+#@NUKE_STATE_MUD_DROPOFF_MAX_DAYS = 30 #how long the state is full of the mud texture
+#@NUKE_STATE_MUD_DROPOFF_BORDER_DAYS = 20 #how long the state border is full of the mud texture
+
+@NUKE_STATE_TRACK_RECENT_BOMBING_DAYS = 180 #how long we should mark the state as recently nuked
+@NUKE_COUNTRY_TRACK_RECENT_BOMBING_DAYS = 180 #how long we should mark the country as recently nuked
+@NUKE_REPEATED_BOMBING_FACTOR = 2 #factor applied to the effect if the state has only recently been hit
+
+########################
+###NUKE SPREAD EFFECT###
+########################
+
+@NUKE_SPREAD_REMOVE_MIL_FACTOR = 0.8 #factor applied after NUKE_REMOVE_MIL_FACTOR
+@NUKE_SPREAD_REMOVE_CIV_FACTOR = 0.8 #factor applied after NUKE_REMOVE_CIV_FACTOR
+@NUKE_SPREAD_REMOVE_NIC_FACTOR = 0.8 #factor applied after NUKE_REMOVE_NIC_FACTOR
+@NUKE_SPREAD_REMOVE_INFRA_FACTOR = 0.5 #factor applied after NUKE_REMOVE_INFRA_FACTOR
+@NUKE_SPREAD_REMOVE_AIR_BASE_FACTOR = 0.4 #factor applied after NUKE_REMOVE_AIR_BASE_FACTOR
+@NUKE_SPREAD_REMOVE_RADAR_FACTOR = 0.4 #factor applied after NUKE_REMOVE_RADAR_FACTOR
+@NUKE_SPREAD_REMOVE_ANTI_AIR_FACTOR = 0.4 #factor applied after NUKE_REMOVE_ANTI_AIR_FACTOR
+
+@NUKE_SPREAD_REMOVE_POP_FACTOR = 0.5 #factor applied after NUKE_REMOVE_POP_FACTOR
+
+@NUKE_SPREAD_REMOVE_SLOTS = 1  #how many slots of neighboring states should get removed
+@NUKE_SPREAD_STATE_CATEGORY_LEVEL_DOWN = 0 #how many state categories the neighboring states should level down
+
+@NUKE_SPREAD_REPEATED_BOMBING_FACTOR = 2 #factor applied to the effect if a neighboring state gets nuked again
+	
+################################
+#############COST###############
+################################
+@NUKE_DROP_CP_COST = 100
+@NUKE_DROP_PP_COST = 0
+@NUKE_DROP_ARMY_XP_COST = 0
+@NUKE_DROP_AIR_XP_COST = 0
+@NUKE_DROP_NAVAL_XP_COST = 0
+
+@NUKE_DROP_MIN_COST = 25
+@NUKE_DROP_MAX_COST = 100
+
+@NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR = 2 #factor for the nuke cost if dropped on an only recently bombed state
+
+############
+###SENDER###
+############
+#GAIN
+@NUKE_DROP_BASE_CP_GAIN = 25
+@NUKE_DROP_MAX_CP_GAIN = 25
+@NUKE_DROP_CP_POP_FACTOR = 0 #multiplies the amount of pop which gets removed from the state
+@NUKE_DROP_CP_MIC_FACTOR = 0 #multiplies the amount of MIC which gets removed from the state
+@NUKE_DROP_CP_CIC_FACTOR = 0 #multiplies the amount of CIC which gets removed from the state
+@NUKE_DROP_CP_TROOP_FACTOR = 0 #multiplies the amount of Divisions in the state
+@NUKE_DROP_CP_SHIPS_IN_PORT_FACTOR = 0 #multiplies the amount of ships in the port
+
+@NUKE_DROP_BASE_PP_GAIN = 25
+@NUKE_DROP_MAX_PP_GAIN = 25
+@NUKE_DROP_PP_POP_FACTOR = 0 #multiplies the amount of pop which gets removed from the state
+@NUKE_DROP_PP_MIC_FACTOR = 0 #multiplies the amount of MIC which gets removed from the state
+@NUKE_DROP_PP_CIC_FACTOR = 0 #multiplies the amount of CIC which gets removed from the state
+@NUKE_DROP_PP_TROOP_FACTOR = 0 #multiplies the amount of Divisions in the state
+
+@NUKE_DROP_BASE_ARMY_XP_GAIN = 25
+@NUKE_DROP_MAX_ARMY_XP_GAIN = 25
+@NUKE_DROP_ARMY_XP_POP_FACTOR = 0 #multiplies the amount of pop which gets removed from the state
+@NUKE_DROP_ARMY_XP_MIC_FACTOR = 0 #multiplies the amount of MIC which gets removed from the state
+@NUKE_DROP_ARMY_XP_CIC_FACTOR = 0 #multiplies the amount of CIC which gets removed from the state
+@NUKE_DROP_ARMY_XP_TROOP_FACTOR = 0 #multiplies the amount of Divisions in the state
+
+@NUKE_DROP_BASE_AIR_XP_GAIN = 25
+@NUKE_DROP_MAX_AIR_XP_GAIN = 25
+@NUKE_DROP_AIR_XP_AIR_BASE_FACTOR = 0 #multiplies the amount of airbase which gets removed from the state
+@NUKE_DROP_AIR_XP_ANTI_AIR_FACTOR = 0 #multiplies the amount of anti air which gets removed from the state
+@NUKE_DROP_AIR_XP_RADAR_FACTOR = 0 #multiplies the amount of radar which gets removed from the state
+
+@NUKE_DROP_BASE_NAVAL_XP_GAIN = 25
+@NUKE_DROP_MAX_NAVAL_XP_GAIN = 25
+@NUKE_DROP_NAVAL_XP_NIC_FACTOR = 0 #multiplies the amount of NIC which gets removed from the state
+@NUKE_DROP_NAVAL_XP_SHIPS_IN_PORT_FACTOR = 0 #multiplies the amount of ships in the port
+
+##############
+###RECEIVER###
+##############
+#COST
+@NUKE_RECEIVE_BASE_CP_COST = 0
+@NUKE_RECEIVE_MAX_CP_COST = 0
+@NUKE_RECEIVE_CP_POP_FACTOR = 0 #multiplies the amount of pop which gets removed from the state
+@NUKE_RECEIVE_CP_MIC_FACTOR = 0 #multiplies the amount of MIC which gets removed from the state
+@NUKE_RECEIVE_CP_CIC_FACTOR = 0 #multiplies the amount of CIC which gets removed from the state
+@NUKE_RECEIVE_CP_TROOP_FACTOR = 0 #multiplies the amount of Divisions in the state
+@NUKE_RECEIVE_CP_SHIPS_IN_PORT_FACTOR = 0 #multiplies the amount of ships in the port
+
+@NUKE_RECEIVE_BASE_PP_COST = 0
+@NUKE_RECEIVE_MAX_PP_COST = 0
+@NUKE_RECEIVE_PP_POP_FACTOR = 0 #multiplies the amount of pop which gets removed from the state
+@NUKE_RECEIVE_PP_MIC_FACTOR = 0 #multiplies the amount of MIC which gets removed from the state
+@NUKE_RECEIVE_PP_CIC_FACTOR = 0 #multiplies the amount of CIC which gets removed from the state
+@NUKE_RECEIVE_PP_TROOP_FACTOR = 0 #multiplies the amount of Divisions in the state
+
+@NUKE_RECEIVE_BASE_ARMY_XP_COST = 0
+@NUKE_RECEIVE_MAX_ARMY_XP_COST = 0
+@NUKE_RECEIVE_ARMY_XP_POP_FACTOR = 0 #multiplies the amount of pop which gets removed from the state
+@NUKE_RECEIVE_ARMY_XP_MIC_FACTOR = 0 #multiplies the amount of MIC which gets removed from the state
+@NUKE_RECEIVE_ARMY_XP_CIC_FACTOR = 0 #multiplies the amount of CIC which gets removed from the state
+@NUKE_RECEIVE_ARMY_XP_TROOP_FACTOR = 0 #multiplies the amount of Divisions in the state
+
+@NUKE_RECEIVE_BASE_AIR_XP_COST = 0
+@NUKE_RECEIVE_MAX_AIR_XP_COST = 0
+@NUKE_RECEIVE_AIR_XP_AIR_BASE_FACTOR = 0 #multiplies the amount of airbase which gets removed from the state
+@NUKE_RECEIVE_AIR_XP_ANTI_AIR_FACTOR = 0 #multiplies the amount of anti air which gets removed from the state
+@NUKE_RECEIVE_AIR_XP_RADAR_FACTOR = 0 #multiplies the amount of radar which gets removed from the state
+
+@NUKE_RECEIVE_BASE_NAVAL_XP_COST = 0
+@NUKE_RECEIVE_MAX_NAVAL_XP_COST = 0
+@NUKE_RECEIVE_NAVAL_XP_NIC_FACTOR = 0 #multiplies the amount of NIC which gets removed from the state
+@NUKE_RECEIVE_NAVAL_XP_SHIPS_IN_PORT_FACTOR = 0 #multiplies the amount of ships in the port
+
+###############
+###STABILITY###
+###############
+@NUKE_DROP_STABILITY_HIT = 0.2
+@NUKE_MIN_STABILITY_HIT = 0.1 #stability hit cant go below this value
+@NUKE_MAX_STABILITY_HIT = 0.3 #stability hit cant go above this value
+
+@NUKE_STABILITY_POP_VALUE = 0.00001 #increases stability hit by this much per 1k population in the state
+@NUKE_STABILITY_REMOVED_POP_VALUE = 0.0001 #increases stability hit by this much per 1k pop which will get removed in the nuke drop
+@NUKE_STABILITY_CIC_VALUE = 0.008 #increases stability hit by this much per CIC in the state
+@NUKE_STABILITY_MIC_VALUE = -0.005 #increases stability hit by this much per MIC in the state
+@NUKE_STABILITY_NIC_VALUE = -0.005 #increases stability hit by this much per NIC in the state
+@NUKE_STABILITY_TROOP_VALUE = -0.01 #increases stability hit by this much per division in the state
+@NUKE_STABILITY_SHIP_IN_PORT_VALUE = -0.01 #increases stability hit by this much per division in the state
+@NUKE_STABILITY_CAPITAL_VALUE = 0.1 #increases stability hit by this if the nuked state is our capital
+
+@NUKE_STABILITY_HIT_DROPOFF = 0.1 #each nuke dropped on the country will decrease the stability hit by this percentage
+@NUKE_STABILITY_HIT_MAX_DROPOFF = 0.5 #limit stability hit reduction after multiple nukes to this percentage
+
+#################
+###WAR SUPPORT###
+#################
+@NUKE_DROP_WAR_SUPPORT_HIT = 0.25
+@NUKE_MIN_WAR_SUPPORT_HIT = 0.1 #war support hit cant go below this value
+@NUKE_MAX_WAR_SUPPORT_HIT = 0.4 #war support hit cant go above this value
+
+@NUKE_WAR_SUPPORT_POP_VALUE = 0 #increases war support hit by this much per 1k population in the state
+@NUKE_WAR_SUPPORT_REMOVED_POP_VALUE = 0 #increases war support hit by this much per 1k pop which will get removed in the nuke drop
+@NUKE_WAR_SUPPORT_CIC_VALUE = 0 #increases war support hit by this much per CIC in the state
+@NUKE_WAR_SUPPORT_MIC_VALUE = 0.008 #increases war support hit by this much per MIC in the state
+@NUKE_WAR_SUPPORT_NIC_VALUE = 0.008 #increases war support hit by this much per NIC in the state
+@NUKE_WAR_SUPPORT_TROOP_VALUE = 0.015 #increases war support hit by this much per division in the state
+@NUKE_WAR_SUPPORT_SHIP_IN_PORT_VALUE = -0.01 #increases war support hit by this much per division in the state
+@NUKE_WAR_SUPPORT_CAPITAL_VALUE = 0.1 #increases war support hit by this if the nuked state is our capital
+
+@NUKE_WAR_SUPPORT_HIT_DROPOFF = 0.1 #each nuke dropped on the country will decrease the war support hit by this percentage
+@NUKE_WAR_SUPPORT_HIT_MAX_DROPOFF = 0.5 #limit war support hit reduction after multiple nukes to this percentage
+
+nuke_war_support_effect = {
+	set_temp_variable = { war_support_hit = @NUKE_DROP_WAR_SUPPORT_HIT }
+	
+	set_temp_variable = { pop_hit = global._FROM_pop_remove }
+	multiply_temp_variable = { pop_hit = @NUKE_WAR_SUPPORT_POP_VALUE }
+	add_to_temp_variable = { war_support_hit = pop_hit }
+	
+	set_temp_variable = { pop_hit_2 = From.From.state_population_k }
+	multiply_temp_variable = { pop_hit_2 = @NUKE_WAR_SUPPORT_POP_VALUE }
+	add_to_temp_variable = { war_support_hit = pop_hit_2 }
+	
+	set_temp_variable = { cic_hit = global._FROM_civ_level }
+	multiply_temp_variable = { cic_hit = @NUKE_WAR_SUPPORT_CIC_VALUE }
+	add_to_temp_variable = { war_support_hit = cic_hit }
+	
+	set_temp_variable = { mic_hit = global._FROM_mil_level }
+	multiply_temp_variable = { mic_hit = @NUKE_WAR_SUPPORT_MIC_VALUE }
+	add_to_temp_variable = { war_support_hit = mic_hit }
+	
+	set_temp_variable = { nic_hit = global._FROM_nic_level }
+	multiply_temp_variable = { nic_hit = @NUKE_WAR_SUPPORT_NIC_VALUE }
+	add_to_temp_variable = { war_support_hit = nic_hit }
+
+	set_ships_in_port_var = yes 
+
+	multiply_temp_variable = { temp_ships_in_port = @NUKE_WAR_SUPPORT_SHIP_IN_PORT_VALUE }
+	add_to_temp_variable = { war_support_hit = temp_ships_in_port }
+	
+	set_division_in_state_var = yes
+	
+	multiply_temp_variable = { temp_div_in_state = @NUKE_WAR_SUPPORT_TROOP_VALUE }
+	add_to_temp_variable = { war_support_hit = temp_div_in_state }
+	
+	if = {
+		limit = {
+			capital_scope = {
+				state = FROM 
+			}
+		}
+		add_to_temp_variable = { war_support_hit = @NUKE_WAR_SUPPORT_CAPITAL_VALUE }
+	}
+	
+	multiply_temp_variable = { war_support_hit = war_support_dropoff_factor }
+	
+	if = {
+		limit = {
+			check_variable = { war_support_hit < @NUKE_MIN_WAR_SUPPORT_HIT }
+		}
+		set_temp_variable = { war_support_hit = @NUKE_MIN_WAR_SUPPORT_HIT }
+	}
+	if = {
+		limit = {
+			check_variable = { war_support_hit > @NUKE_MAX_WAR_SUPPORT_HIT }
+		}
+		set_temp_variable = { war_support_hit = @NUKE_MAX_WAR_SUPPORT_HIT }
+	}
+	
+	multiply_temp_variable = { war_support_hit = -1 }
+	
+	add_war_support = war_support_hit
+}
+
+nuke_stability_effect = {
+	set_temp_variable = { stability_hit = @NUKE_DROP_STABILITY_HIT }
+	
+	set_temp_variable = { pop_hit = global._FROM_pop_remove }
+	multiply_temp_variable = { pop_hit = @NUKE_STABILITY_REMOVED_POP_VALUE }
+	add_to_temp_variable = { stability_hit = pop_hit }
+	
+	set_temp_variable = { pop_hit_2 = From.From.state_population_k }
+	multiply_temp_variable = { pop_hit_2 = @NUKE_STABILITY_POP_VALUE }
+	add_to_temp_variable = { stability_hit = pop_hit_2 }
+	
+	set_temp_variable = { cic_hit = global._FROM_civ_level }
+	multiply_temp_variable = { cic_hit = @NUKE_STABILITY_CIC_VALUE }
+	add_to_temp_variable = { stability_hit = cic_hit }
+	
+	set_temp_variable = { mic_hit = global._FROM_mil_level }
+	multiply_temp_variable = { mic_hit = @NUKE_STABILITY_MIC_VALUE }
+	add_to_temp_variable = { stability_hit = mic_hit }
+	
+	set_temp_variable = { nic_hit = global._FROM_nic_level }
+	multiply_temp_variable = { nic_hit = @NUKE_STABILITY_NIC_VALUE }
+	add_to_temp_variable = { stability_hit = nic_hit }
+
+	set_ships_in_port_var = yes 
+
+	multiply_temp_variable = { temp_ships_in_port = @NUKE_STABILITY_SHIP_IN_PORT_VALUE }
+	add_to_temp_variable = { stability_hit = temp_ships_in_port }
+	
+	set_division_in_state_var = yes
+	
+	multiply_temp_variable = { temp_div_in_state = @NUKE_STABILITY_TROOP_VALUE }
+	add_to_temp_variable = { stability_hit = temp_div_in_state }
+	
+	if = {
+		limit = {
+			capital_scope = {
+				state = FROM
+			}
+		}
+		add_to_temp_variable = { stability_hit = @NUKE_STABILITY_CAPITAL_VALUE }
+	}
+	
+	multiply_temp_variable = { stability_hit = stability_dropoff_factor }
+	
+	if = {
+		limit = {
+			check_variable = { stability_hit < @NUKE_MIN_STABILITY_HIT }
+		}
+		set_temp_variable = { stability_hit = @NUKE_MIN_STABILITY_HIT }
+	}
+	if = {
+		limit = {
+			check_variable = { stability_hit > @NUKE_MAX_STABILITY_HIT }
+		}
+		set_temp_variable = { stability_hit = @NUKE_MAX_STABILITY_HIT }
+	}
+	
+	multiply_temp_variable = { stability_hit = -1 }
+	#set_variable = { test_var = stability_hit }
+	#log = "[?test_var]"
+	add_stability = stability_hit
+}
+
+nuke_receive_cost_effect = {
+	NUKE_RECEIVE_CP_COST_effect = yes
+	NUKE_RECEIVE_PP_GAIN_effect = yes
+	NUKE_RECEIVE_ARMY_XP_GAIN_effect = yes
+	NUKE_RECEIVE_AIR_XP_GAIN_effect = yes
+	NUKE_RECEIVE_NAVY_XP_GAIN_effect = yes
+}
+
+NUKE_RECEIVE_NAVY_XP_GAIN_effect = {
+	
+	set_temp_variable = { gain = @NUKE_RECEIVE_BASE_NAVAL_XP_GAIN }
+	
+	set_temp_variable = { nic_gain = global._FROM_nic_level }
+	multiply_temp_variable = { nic_gain = @NUKE_RECEIVE_NAVAL_XP_NIC_FACTOR }
+	add_to_temp_variable = { gain = nic_gain }
+	
+	set_ships_in_port_var = yes 
+	multiply_temp_variable = { temp_ships_in_port = @NUKE_RECEIVE_NAVAL_XP_SHIPS_IN_PORT_FACTOR }
+	add_to_temp_variable = { gain = temp_ships_in_port }
+	
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { gain = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { gain > @NUKE_RECEIVE_MAX_NAVAL_XP_GAIN }
+		}
+		set_temp_variable = { gain = @NUKE_RECEIVE_MAX_NAVAL_XP_GAIN }
+	}
+	multiply_temp_variable = { gain = -1 }
+	
+	navy_experience = gain
+}
+NUKE_RECEIVE_AIR_XP_GAIN_effect = {
+	set_temp_variable = { gain = @NUKE_RECEIVE_BASE_AIR_XP_GAIN }
+	
+	set_temp_variable = { radar_gain = global._FROM_radar_level }
+	multiply_temp_variable = { radar_gain = @NUKE_RECEIVE_AIR_XP_RADAR_FACTOR }
+	add_to_temp_variable = { gain = radar_gain }
+	
+	set_temp_variable = { air_base_gain = global._FROM_air_base_level }
+	multiply_temp_variable = { air_base_gain = @NUKE_RECEIVE_AIR_XP_AIR_BASE_FACTOR }
+	add_to_temp_variable = { gain = air_base_gain }
+	
+	set_temp_variable = { anti_air_gain = global._FROM_anti_air_level }
+	multiply_temp_variable = { anti_air_gain = @NUKE_RECEIVE_AIR_XP_ANTI_AIR_FACTOR }
+	add_to_temp_variable = { gain = anti_air_gain }
+	
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { gain = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { gain > @NUKE_RECEIVE_MAX_AIR_XP_GAIN }
+		}
+		set_temp_variable = { gain = @NUKE_RECEIVE_MAX_AIR_XP_GAIN }
+	}
+	multiply_temp_variable = { gain = -1 }
+	
+	air_experience = gain
+}
+NUKE_RECEIVE_ARMY_XP_GAIN_effect = {
+	set_temp_variable = { gain = @NUKE_RECEIVE_BASE_ARMY_XP_GAIN }
+	set_temp_variable = { pop_gain = global._FROM_pop_remove }
+	multiply_temp_variable = { pop_gain = @NUKE_RECEIVE_ARMY_XP_POP_FACTOR }
+	add_to_temp_variable = { gain = pop_gain }
+	
+	set_temp_variable = { mic_gain = global._FROM_mil_level }
+	multiply_temp_variable = { mic_gain = @NUKE_RECEIVE_ARMY_XP_MIC_FACTOR }
+	add_to_temp_variable = { gain = mic_gain }
+	
+	set_temp_variable = { cic_gain = global._FROM_civ_level }
+	multiply_temp_variable = { cic_gain = @NUKE_RECEIVE_ARMY_XP_CIC_FACTOR }
+	add_to_temp_variable = { gain = cic_gain }
+	
+	set_division_in_state_var = yes
+	
+	multiply_temp_variable = { temp_div_in_state = @NUKE_RECEIVE_ARMY_XP_TROOP_FACTOR }
+	add_to_temp_variable = { gain = temp_div_in_state }
+	
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { gain = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { gain > @NUKE_RECEIVE_MAX_ARMY_XP_GAIN }
+		}
+		set_temp_variable = { gain = @NUKE_RECEIVE_MAX_ARMY_XP_GAIN }
+	}
+	multiply_temp_variable = { gain = -1 }
+	
+	army_experience = gain
+}
+NUKE_RECEIVE_PP_GAIN_effect = {
+	set_temp_variable = { gain = @NUKE_RECEIVE_BASE_PP_GAIN }
+	set_temp_variable = { pop_gain = global._FROM_pop_remove }
+	multiply_temp_variable = { pop_gain = @NUKE_RECEIVE_PP_POP_FACTOR }
+	add_to_temp_variable = { gain = pop_gain }
+	
+	set_temp_variable = { mic_gain = global._FROM_mil_level }
+	multiply_temp_variable = { mic_gain = @NUKE_RECEIVE_PP_MIC_FACTOR }
+	add_to_temp_variable = { gain = mic_gain }
+	
+	set_temp_variable = { cic_gain = global._FROM_civ_level }
+	multiply_temp_variable = { cic_gain = @NUKE_RECEIVE_PP_CIC_FACTOR }
+	add_to_temp_variable = { gain = cic_gain }
+	
+	set_division_in_state_var = yes
+	
+	multiply_temp_variable = { temp_div_in_state = @NUKE_RECEIVE_PP_TROOP_FACTOR }
+	add_to_temp_variable = { gain = temp_div_in_state }
+	
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { gain = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { gain > @NUKE_RECEIVE_MAX_PP_GAIN }
+		}
+		set_temp_variable = { gain = @NUKE_RECEIVE_MAX_PP_GAIN }
+	}
+	multiply_temp_variable = { gain = -1 }
+	
+	add_political_power = gain
+}
+NUKE_RECEIVE_CP_COST_effect = {
+	set_temp_variable = { gain = @NUKE_RECEIVE_BASE_CP_COST }
+	set_temp_variable = { pop_gain = global._FROM_pop_remove }
+	multiply_temp_variable = { pop_gain = @NUKE_RECEIVE_CP_POP_FACTOR }
+	add_to_temp_variable = { gain = pop_gain }
+	
+	set_temp_variable = { mic_gain = global._FROM_mil_level }
+	multiply_temp_variable = { mic_gain = @NUKE_RECEIVE_CP_MIC_FACTOR }
+	add_to_temp_variable = { gain = mic_gain }
+	
+	set_temp_variable = { cic_gain = global._FROM_civ_level }
+	multiply_temp_variable = { cic_gain = @NUKE_RECEIVE_CP_CIC_FACTOR }
+	add_to_temp_variable = { gain = cic_gain }
+	
+	set_division_in_state_var = yes
+
+	multiply_temp_variable = { temp_div_in_state = @NUKE_RECEIVE_CP_TROOP_FACTOR }
+	add_to_temp_variable = { gain = temp_div_in_state }
+	
+	set_ships_in_port_var = yes 
+	
+	multiply_temp_variable = { temp_ships_in_port = @NUKE_RECEIVE_CP_SHIPS_IN_PORT_FACTOR }
+	add_to_temp_variable = { gain = temp_ships_in_port }
+	
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { gain = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { gain > @NUKE_RECEIVE_MAX_CP_COST }
+		}
+		set_temp_variable = { gain = @NUKE_RECEIVE_MAX_CP_COST }
+	}
+	multiply_temp_variable = { gain = -1 }
+	
+	add_command_power = gain
+}
+nuke_drop_cost_effect = {
+	NUKE_DROP_CP_COST_effect = yes
+	NUKE_DROP_PP_COST_effect = yes
+	NUKE_DROP_ARMY_XP_COST_effect = yes	
+	NUKE_DROP_AIR_XP_COST_effect = yes	
+	NUKE_DROP_NAVAL_XP_COST_effect = yes
+	
+	NUKE_DROP_CP_GAIN_effect = yes
+	NUKE_DROP_PP_GAIN_effect = yes
+	NUKE_DROP_ARMY_XP_GAIN_effect = yes
+	NUKE_DROP_AIR_XP_GAIN_effect = yes
+	NUKE_DROP_NAVY_XP_GAIN_effect = yes
+}
+NUKE_DROP_NAVY_XP_GAIN_effect = {
+	
+	set_temp_variable = { gain = @NUKE_DROP_BASE_NAVAL_XP_GAIN }
+	
+	set_temp_variable = { nic_gain = global._FROM_nic_level }
+	multiply_temp_variable = { nic_gain = @NUKE_DROP_NAVAL_XP_NIC_FACTOR }
+	add_to_temp_variable = { gain = nic_gain }
+	
+	set_ships_in_port_var = yes 
+	multiply_temp_variable = { temp_ships_in_port = @NUKE_DROP_NAVAL_XP_SHIPS_IN_PORT_FACTOR }
+	add_to_temp_variable = { gain = temp_ships_in_port }
+	
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { gain = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { gain > @NUKE_DROP_MAX_NAVAL_XP_GAIN }
+		}
+		set_temp_variable = { gain = @NUKE_DROP_MAX_NAVAL_XP_GAIN }
+	}
+	
+	navy_experience = gain
+}
+NUKE_DROP_AIR_XP_GAIN_effect = {
+	set_temp_variable = { gain = @NUKE_DROP_BASE_AIR_XP_GAIN }
+	
+	set_temp_variable = { radar_gain = global._FROM_radar_level }
+	multiply_temp_variable = { radar_gain = @NUKE_DROP_AIR_XP_RADAR_FACTOR }
+	add_to_temp_variable = { gain = radar_gain }
+	
+	set_temp_variable = { air_base_gain = global._FROM_air_base_level }
+	multiply_temp_variable = { air_base_gain = @NUKE_DROP_AIR_XP_AIR_BASE_FACTOR }
+	add_to_temp_variable = { gain = air_base_gain }
+	
+	set_temp_variable = { anti_air_gain = global._FROM_anti_air_level }
+	multiply_temp_variable = { anti_air_gain = @NUKE_DROP_AIR_XP_ANTI_AIR_FACTOR }
+	add_to_temp_variable = { gain = anti_air_gain }
+	
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { gain = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { gain > @NUKE_DROP_MAX_AIR_XP_GAIN }
+		}
+		set_temp_variable = { gain = @NUKE_DROP_MAX_AIR_XP_GAIN }
+	}
+	
+	air_experience = gain
+}
+NUKE_DROP_ARMY_XP_GAIN_effect = {
+	set_temp_variable = { gain = @NUKE_DROP_BASE_ARMY_XP_GAIN }
+	set_temp_variable = { pop_gain = global._FROM_pop_remove }
+	multiply_temp_variable = { pop_gain = @NUKE_DROP_ARMY_XP_POP_FACTOR }
+	add_to_temp_variable = { gain = pop_gain }
+	
+	set_temp_variable = { mic_gain = global._FROM_mil_level }
+	multiply_temp_variable = { mic_gain = @NUKE_DROP_ARMY_XP_MIC_FACTOR }
+	add_to_temp_variable = { gain = mic_gain }
+	
+	set_temp_variable = { cic_gain = global._FROM_civ_level }
+	multiply_temp_variable = { cic_gain = @NUKE_DROP_ARMY_XP_CIC_FACTOR }
+	add_to_temp_variable = { gain = cic_gain }
+	
+	set_division_in_state_var = yes
+	
+	multiply_temp_variable = { temp_div_in_state = @NUKE_DROP_ARMY_XP_TROOP_FACTOR }
+	add_to_temp_variable = { gain = temp_div_in_state }
+	
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { gain = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { gain > @NUKE_DROP_MAX_ARMY_XP_GAIN }
+		}
+		set_temp_variable = { gain = @NUKE_DROP_MAX_ARMY_XP_GAIN }
+	}
+	
+	army_experience = gain
+}
+NUKE_DROP_PP_GAIN_effect = {
+	set_temp_variable = { gain = @NUKE_DROP_BASE_PP_GAIN }
+	set_temp_variable = { pop_gain = global._FROM_pop_remove }
+	multiply_temp_variable = { pop_gain = @NUKE_DROP_PP_POP_FACTOR }
+	add_to_temp_variable = { gain = pop_gain }
+	
+	set_temp_variable = { mic_gain = global._FROM_mil_level }
+	multiply_temp_variable = { mic_gain = @NUKE_DROP_PP_MIC_FACTOR }
+	add_to_temp_variable = { gain = mic_gain }
+	
+	set_temp_variable = { cic_gain = global._FROM_civ_level }
+	multiply_temp_variable = { cic_gain = @NUKE_DROP_PP_CIC_FACTOR }
+	add_to_temp_variable = { gain = cic_gain }
+	
+	set_division_in_state_var = yes
+	
+	multiply_temp_variable = { temp_div_in_state = @NUKE_DROP_PP_TROOP_FACTOR }
+	add_to_temp_variable = { gain = temp_div_in_state }
+	
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { gain = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { gain > @NUKE_DROP_MAX_PP_GAIN }
+		}
+		set_temp_variable = { gain = @NUKE_DROP_MAX_PP_GAIN }
+	}
+	
+	add_political_power = gain
+}
+NUKE_DROP_CP_GAIN_effect = {
+	set_temp_variable = { gain = @NUKE_DROP_BASE_CP_GAIN }
+	set_temp_variable = { pop_gain = global._FROM_pop_remove }
+	multiply_temp_variable = { pop_gain = @NUKE_DROP_CP_POP_FACTOR }
+	add_to_temp_variable = { gain = pop_gain }
+	
+	set_temp_variable = { mic_gain = global._FROM_mil_level }
+	multiply_temp_variable = { mic_gain = @NUKE_DROP_CP_MIC_FACTOR }
+	add_to_temp_variable = { gain = mic_gain }
+	
+	set_temp_variable = { cic_gain = global._FROM_civ_level }
+	multiply_temp_variable = { cic_gain = @NUKE_DROP_CP_CIC_FACTOR }
+	add_to_temp_variable = { gain = cic_gain }
+	
+	set_division_in_state_var = yes
+	
+	multiply_temp_variable = { temp_div_in_state = @NUKE_DROP_CP_TROOP_FACTOR }
+	add_to_temp_variable = { gain = temp_div_in_state }
+	
+	set_ships_in_port_var = yes 
+	
+	multiply_temp_variable = { temp_ships_in_port = @NUKE_DROP_CP_SHIPS_IN_PORT_FACTOR }
+	add_to_temp_variable = { gain = temp_ships_in_port }
+	
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { gain = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { gain > @NUKE_DROP_MAX_CP_GAIN }
+		}
+		set_temp_variable = { gain = @NUKE_DROP_MAX_CP_GAIN }
+	}
+	
+	add_command_power = gain
+}
+NUKE_DROP_NAVAL_XP_COST_effect = {
+	set_temp_variable = { naval_xp_cost = @NUKE_DROP_CP_VALUE }
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { naval_xp_cost = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { naval_xp_cost < @NUKE_DROP_MIN_COST }
+		}
+		set_temp_variable = { naval_xp_cost = @NUKE_DROP_MIN_COST }
+	}
+	else_if = {
+		limit = {
+			check_variable = { naval_xp_cost > @NUKE_DROP_MAX_COST }
+		}
+		set_temp_variable = { naval_xp_cost = @NUKE_DROP_MAX_COST }
+	}
+	multiply_temp_variable = { naval_xp_cost = -1 }
+	navy_experience = naval_xp_cost
+}
+NUKE_DROP_AIR_XP_COST_effect = {
+	set_temp_variable = { air_xp_cost = @NUKE_DROP_CP_VALUE }
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { air_xp_cost = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { air_xp_cost < @NUKE_DROP_MIN_COST }
+		}
+		set_temp_variable = { air_xp_cost = @NUKE_DROP_MIN_COST }
+	}
+	else_if = {
+		limit = {
+			check_variable = { air_xp_cost > @NUKE_DROP_MAX_COST }
+		}
+		set_temp_variable = { air_xp_cost = @NUKE_DROP_MAX_COST }
+	}
+	multiply_temp_variable = { air_xp_cost = -1 }
+	air_experience = air_xp_cost
+}
+NUKE_DROP_ARMY_XP_COST_effect = {
+	set_temp_variable = { army_xp_cost = @NUKE_DROP_CP_VALUE }
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { army_xp_cost = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { army_xp_cost < @NUKE_DROP_MIN_COST }
+		}
+		set_temp_variable = { army_xp_cost = @NUKE_DROP_MIN_COST }
+	}
+	else_if = {
+		limit = {
+			check_variable = { army_xp_cost > @NUKE_DROP_MAX_COST }
+		}
+		set_temp_variable = { army_xp_cost = @NUKE_DROP_MAX_COST }
+	}
+	multiply_temp_variable = { army_xp_cost = -1 }
+	army_experience = army_xp_cost
+}
+NUKE_DROP_CP_COST_effect = {
+	set_temp_variable = { cp_cost = @NUKE_DROP_CP_VALUE }
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { cp_cost = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { cp_cost < @NUKE_DROP_MIN_COST }
+		}
+		set_temp_variable = { cp_cost = @NUKE_DROP_MIN_COST }
+	}
+	else_if = {
+		limit = {
+			check_variable = { cp_cost > @NUKE_DROP_MAX_COST }
+		}
+		set_temp_variable = { cp_cost = @NUKE_DROP_MAX_COST }
+	}
+	multiply_temp_variable = { cp_cost = -1 }
+	add_command_power = cp_cost
+}
+NUKE_DROP_PP_COST_effect = {
+	set_temp_variable = { pp_cost = @NUKE_DROP_PP_COST }
+	if = { limit = { FROM = { has_state_flag = recently_nuked } } multiply_temp_variable = { pp_cost = @NUKE_DROP_ON_RECENT_TARGET_COST_FACTOR } }
+	if = {
+		limit = {
+			check_variable = { pp_cost < @NUKE_DROP_MIN_COST }
+		}
+		set_temp_variable = { pp_cost = @NUKE_DROP_MIN_COST }
+	}
+	else_if = {
+		limit = {
+			check_variable = { pp_cost > @NUKE_DROP_MAX_COST }
+		}
+		set_temp_variable = { pp_cost = @NUKE_DROP_MAX_COST }
+	}
+	multiply_temp_variable = { pp_cost = -1 }
+	add_political_power = pp_cost
+}
+on_nuke_drop = {
+	ROOT = {
+		nuke_drop_cost_effect = yes
+	}
+	FROM = {
+		CONTROLLER = {
+			nuke_receive_cost_effect = yes
+			nuke_war_support_effect = yes
+			nuke_stability_effect = yes
+			set_country_flag = { flag = recently_nuked value = 1 days = @NUKE_COUNTRY_TRACK_RECENT_BOMBING_DAYS }
+			
+			#Stability Hit Dropoff
+			if = {
+				limit = {
+					NOT = { has_variable = stability_dropoff_factor }
+				}
+				set_variable = { stability_dropoff_factor = 1 }
+			}
+			else = {
+				subtract_from_variable = { stability_dropoff_factor = @NUKE_STABILITY_HIT_DROPOFF }
+				
+				if = {
+					limit = {
+						check_variable = { stability_dropoff_factor < @NUKE_STABILITY_HIT_MAX_DROPOFF }
+					}
+					set_variable = { stability_dropoff_factor = @NUKE_STABILITY_HIT_MAX_DROPOFF }
+				}
+			}
+			
+			#War Support Hit Dropoff
+			if = {
+				limit = {
+					NOT = { has_variable = war_support_dropoff_factor }
+				}
+				set_variable = { war_support_dropoff_factor = 1 }
+			}
+			else = {
+				subtract_from_variable = { war_support_dropoff_factor = @NUKE_STABILITY_HIT_DROPOFF }
+				
+				if = {
+					limit = {
+						check_variable = { war_support_dropoff_factor < @NUKE_STABILITY_HIT_MAX_DROPOFF }
+					}
+					set_variable = { war_support_dropoff_factor = @NUKE_STABILITY_HIT_MAX_DROPOFF }
+				}
+			}
+		}
+	}
+	FROM = {
+		set_state_flag = { flag = recently_nuked value = 1 days = @NUKE_STATE_TRACK_RECENT_BOMBING_DAYS }
+		add_province_modifier = {
+			static_modifiers = { nuked }
+			province = {
+				all_provinces = yes
+			}
+		}
+		
+		set_state_category_variables = yes
+		set_temp_variable = { FROM_pop_remove = state_population_k }
+		multiply_temp_variable = { FROM_pop_remove = @NUKE_REMOVE_POP_FACTOR }
+		
+		set_temp_variable = { FROM_pop_remove_2 = state_population_k }
+		divide_temp_variable = { state_category_lvl = 10 }
+		multiply_temp_variable = { FROM_pop_remove_2 = state_category_lvl }
+		multiply_temp_variable = { FROM_pop_remove_2 = @NUKE_REMOVE_POP_STATE_CATEGORY_FACTOR }
+		multiply_temp_variable = { FROM_pop_remove_2 = state_category_lvl }
+		
+		add_to_temp_variable = { FROM_pop_remove = FROM_pop_remove_2 }
+		
+		set_temp_variable = { FROM_mil_level = building_level@arms_factory }
+		multiply_temp_variable = { FROM_mil_level = @NUKE_REMOVE_MIL_FACTOR }
+		
+		set_temp_variable = { FROM_civ_level = building_level@industrial_complex }
+		multiply_temp_variable = { FROM_civ_level = @NUKE_REMOVE_CIV_FACTOR }
+		
+		set_temp_variable = { FROM_infra_level = building_level@infrastructure }
+		multiply_temp_variable = { FROM_infra_level = @NUKE_REMOVE_INFRA_FACTOR }
+		
+		set_temp_variable = { FROM_air_base_level = building_level@air_base }
+		multiply_temp_variable = { FROM_air_base_level = @NUKE_REMOVE_AIR_BASE_FACTOR }
+		
+		set_temp_variable = { FROM_radar_level = building_level@radar_station }
+		multiply_temp_variable = { FROM_radar_level = @NUKE_REMOVE_RADAR_FACTOR }
+		
+		set_temp_variable = { FROM_anti_air_level = building_level@anti_air_building }
+		multiply_temp_variable = { FROM_anti_air_level = @NUKE_REMOVE_ANTI_AIR_FACTOR }
+		
+		if = {
+			limit = {
+				is_coastal = yes 
+			}
+			set_temp_variable = { FROM_nic_level = building_level@dockyard }
+			multiply_temp_variable = { FROM_nic_level = @NUKE_REMOVE_NIC_FACTOR }
+		}
+		
+		set_temp_variable = { nuke_effect_factor = modifier@production_speed_nuke_effect_factor }
+		add_to_temp_variable = { nuke_effect_factor = 1 }
+		
+		multiply_temp_variable = { FROM_pop_remove = nuke_effect_factor }
+		multiply_temp_variable = { FROM_mil_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_civ_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_nic_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_infra_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_air_base_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_radar_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_anti_air_level = nuke_effect_factor }
+		
+		set_variable = { global._FROM_pop_remove = FROM_pop_remove }
+		set_variable = { global._FROM_mil_level = FROM_mil_level }
+		set_variable = { global._FROM_civ_level = FROM_civ_level }
+		set_variable = { global._FROM_nic_level = FROM_nic_level }
+		set_variable = { global._FROM_infra_level = FROM_infra_level }
+		set_variable = { global._FROM_air_base_level = FROM_air_base_level }
+		set_variable = { global._FROM_radar_level = FROM_radar_level }
+		set_variable = { global._FROM_anti_air_level = FROM_anti_air_level }
+		
+		if = {
+			limit = {
+				has_state_flag = recently_nuked 
+			}
+			multiply_temp_variable = { FROM_pop_remove = @NUKE_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_mil_level = @NUKE_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_civ_level = @NUKE_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_infra_level = @NUKE_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_air_base_level = @NUKE_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_radar_level = @NUKE_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_anti_air_level = @NUKE_REPEATED_BOMBING_FACTOR }
+		}
+	
+		remove_building = {
+			type = arms_factory
+			level = FROM_mil_level
+		}
+		remove_building = {
+			type = industrial_complex
+			level = FROM_civ_level
+		}
+		remove_building = {
+			type = infrastructure
+			level = FROM_infra_level
+		}
+		remove_building = {
+			type = air_base
+			level = FROM_air_base_level
+		}
+		remove_building = {
+			type = anti_air_building
+			level = FROM_anti_air_level
+		}
+		remove_building = {
+			type = radar_station
+			level = FROM_radar_level
+		}
+		
+		if = { limit = { is_coastal = yes }		
+		remove_building = {
+			type = dockyard
+			level = FROM_nic_level
+		} }
+		
+		if = {
+			limit = {
+				#NOT = { check_variable = { @NUKE_REMOVE_SLOTS = 0 } }
+			}
+			add_extra_state_shared_building_slots = @NUKE_REMOVE_SLOTS
+		}
+		if = {
+			limit = {
+				#check_variable = { @NUKE_STATE_CATEGORY_LEVEL_DOWN > 0 } 
+			}
+			set_temp_variable = { state_cat_level_down = @NUKE_STATE_CATEGORY_LEVEL_DOWN }
+			
+			state_category_effect = yes state_category_effect = yes state_category_effect = yes state_category_effect = yes
+			state_category_effect = yes state_category_effect = yes state_category_effect = yes state_category_effect = yes
+			state_category_effect = yes state_category_effect = yes state_category_effect = yes state_category_effect = yes
+		}
+		set_variable = { FROM_saved_pop_remove = FROM_pop_remove }
+		nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes
+		nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes
+		nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes
+		
+		FROM_FROM_nuke_neighbor_effect = yes 
+	}
+}
+nuke_pop_effect = {
+	if = {
+		limit = {
+			check_variable = { FROM_pop_remove > 2000 }
+		}
+		multiply_temp_variable = { FROM_pop_remove = 1000 }
+		multiply_temp_variable = { FROM_pop_remove = -1 }
+		add_manpower = FROM_pop_remove
+		multiply_temp_variable = { FROM_pop_remove = -1 }
+		divide_temp_variable = { FROM_pop_remove = 1000 }
+		subtract_from_temp_variable = { FROM_pop_remove = 2000 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { FROM_pop_remove < 2000 }
+			check_variable = { FROM_pop_remove > 0 }
+		}
+		multiply_temp_variable = { FROM_pop_remove = 1000 }
+		multiply_temp_variable = { FROM_pop_remove = -1 }
+		add_manpower = FROM_pop_remove
+		multiply_temp_variable = { FROM_pop_remove = -1 }
+		subtract_from_temp_variable = { FROM_pop_remove = FROM_pop_remove }
+	}
+}
+state_category_effect = {	
+	if = {
+		limit = {
+			check_variable = { state_cat_level_down > 0 }
+		}
+		subtract_from_temp_variable = { state_cat_level_down = 1 }
+		level_down_state_category = yes 
+	}
+}
+
+FROM_FROM_nuke_neighbor_effect = {
+	every_neighbor_state = {
+		
+		set_state_category_variables = yes
+		set_temp_variable = { FROM_pop_remove = state_population_k }
+		multiply_temp_variable = { FROM_pop_remove = @NUKE_REMOVE_POP_FACTOR }
+		multiply_temp_variable = { FROM_pop_remove = @NUKE_SPREAD_REMOVE_POP_FACTOR }
+		multiply_temp_variable = { state_category_lvl = @NUKE_REMOVE_POP_STATE_CATEGORY_FACTOR }
+		multiply_temp_variable = { FROM_pop_remove = state_category_lvl }
+		
+		set_temp_variable = { FROM_mil_level = building_level@arms_factory }
+		multiply_temp_variable = { FROM_mil_level = @NUKE_REMOVE_MIL_FACTOR }
+		multiply_temp_variable = { FROM_mil_level = @NUKE_SPREAD_REMOVE_MIL_FACTOR }
+		
+		set_temp_variable = { FROM_civ_level = building_level@industrial_complex }
+		multiply_temp_variable = { FROM_civ_level = @NUKE_REMOVE_CIV_FACTOR }
+		multiply_temp_variable = { FROM_civ_level = @NUKE_SPREAD_REMOVE_CIV_FACTOR }
+		
+		set_temp_variable = { FROM_infra_level = building_level@infrastructure }
+		multiply_temp_variable = { FROM_infra_level = @NUKE_REMOVE_INFRA_FACTOR }
+		multiply_temp_variable = { FROM_infra_level = @NUKE_SPREAD_REMOVE_INFRA_FACTOR }
+		
+		set_temp_variable = { FROM_air_base_level = building_level@air_base }
+		multiply_temp_variable = { FROM_air_base_level = @NUKE_REMOVE_AIR_BASE_FACTOR }
+		multiply_temp_variable = { FROM_air_base_level = @NUKE_SPREAD_REMOVE_AIR_BASE_FACTOR }
+		
+		set_temp_variable = { FROM_radar_level = building_level@radar_station }
+		multiply_temp_variable = { FROM_radar_level = @NUKE_REMOVE_RADAR_FACTOR }
+		multiply_temp_variable = { FROM_radar_level = @NUKE_SPREAD_REMOVE_RADAR_FACTOR }
+		
+		set_temp_variable = { FROM_anti_air_level = building_level@anti_air_building }
+		multiply_temp_variable = { FROM_anti_air_level = @NUKE_REMOVE_ANTI_AIR_FACTOR }
+		multiply_temp_variable = { FROM_anti_air_level = @NUKE_SPREAD_REMOVE_ANTI_AIR_FACTOR }
+		
+		if = {
+			limit = {
+				is_coastal = yes 
+			}
+			set_temp_variable = { FROM_nic_level = building_level@dockyard }
+			multiply_temp_variable = { FROM_nic_level = @NUKE_REMOVE_NIC_FACTOR }
+		}
+		set_temp_variable = { nuke_effect_factor = modifier@production_speed_nuke_effect_factor }
+		add_to_temp_variable = { nuke_effect_factor = 1 }
+		
+		multiply_temp_variable = { FROM_pop_remove = nuke_effect_factor }
+		multiply_temp_variable = { FROM_mil_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_civ_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_nic_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_infra_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_air_base_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_radar_level = nuke_effect_factor }
+		multiply_temp_variable = { FROM_anti_air_level = nuke_effect_factor }
+	
+		if = {
+			limit = {
+				has_state_flag = recently_nuke
+			}
+			multiply_temp_variable = { FROM_pop_remove = @NUKE_SPREAD_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_mil_level = @NUKE_SPREAD_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_civ_level = @NUKE_SPREAD_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_infra_level = @NUKE_SPREAD_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_air_base_level = @NUKE_SPREAD_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_radar_level = @NUKE_SPREAD_REPEATED_BOMBING_FACTOR }
+			multiply_temp_variable = { FROM_anti_air_level = @NUKE_SPREAD_REPEATED_BOMBING_FACTOR }
+		}
+	
+		remove_building = {
+			type = arms_factory
+			level = FROM_mil_level
+		}
+		remove_building = {
+			type = industrial_complex
+			level = FROM_civ_level
+		}
+		remove_building = {
+			type = infrastructure
+			level = FROM_infra_level
+		}
+		remove_building = {
+			type = air_base
+			level = FROM_air_base_level
+		}
+		remove_building = {
+			type = anti_air_building
+			level = FROM_anti_air_level
+		}
+		remove_building = {
+			type = radar_station
+			level = FROM_radar_level
+		}
+		
+		if = { limit = { is_coastal = yes }		
+		remove_building = {
+			type = dockyard
+			level = FROM_nic_level
+		} }
+		
+		if = {
+			limit = {
+				#NOT = { check_variable = { @NUKE_SPREAD_REMOVE_SLOTS = 0 } }
+			}
+			add_extra_state_shared_building_slots = @NUKE_SPREAD_REMOVE_SLOTS
+		}
+		if = {
+			limit = {
+				#check_variable = { @NUKE_SPREAD_STATE_CATEGORY_LEVEL_DOWN > 0 } 
+			}
+			set_temp_variable = { state_cat_level_down = @NUKE_SPREAD_STATE_CATEGORY_LEVEL_DOWN }
+			
+			state_category_effect = yes state_category_effect = yes state_category_effect = yes state_category_effect = yes
+			state_category_effect = yes state_category_effect = yes state_category_effect = yes state_category_effect = yes
+			state_category_effect = yes state_category_effect = yes state_category_effect = yes state_category_effect = yes
+		}
+		nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes
+		nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes
+		nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes nuke_pop_effect = yes
+		
+	}
+}

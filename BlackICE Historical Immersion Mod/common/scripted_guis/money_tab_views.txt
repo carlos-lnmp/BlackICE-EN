@@ -1,0 +1,591 @@
+
+
+scripted_gui = {
+	#Player check
+	player_takeover_check = {
+		context_type = player_context
+		
+		window_name = "player_takeover_check"	
+		
+		visible = { 
+			is_ai = no 
+			NOT = { has_country_flag = player_only } 
+		}
+		
+		effects = {
+			player_check_click = {
+				change_to_player = yes
+			} 
+		}
+		
+	}
+	#Production-tab
+	spec_factory_menu = {
+		context_type = player_context
+		
+		window_name = "spec_factories_view_container"
+		parent_window_name = "countryproductionlineview"
+		
+		visible = { 
+			#player_only_trigger = yes
+		}
+
+		properties = {
+			switch_equipment_display = { 
+				frame = show_EIC_modifier
+			}
+		}
+		effects = {
+			switch_equipment_display_click = {
+				if = {
+					limit = {
+						has_country_flag = show_number
+					}
+					clr_country_flag = show_number
+					set_variable = { show_EIC_modifier = 2 }
+					
+					update_EIC_production_gui = yes
+				}
+				else = {
+					set_country_flag = show_number
+					clear_variable = show_EIC_modifier
+					
+				}
+			}
+		}
+		
+			
+		
+		triggers = {
+		}
+	}
+	#Construction-tab -State list
+	construction_state_menu = {
+		context_type = player_context
+		
+		window_name = "construction_view_state_container"
+		parent_window_token = construction_tab
+		
+		visible = {
+			#has_global_flag = wip
+			player_only_trigger = yes
+			has_country_flag = show_state_list
+		}
+		
+		dynamic_lists = {
+			construction_state_grid = {
+				array = Root.temp_states 
+				change_scope = yes
+				entry_container = "state_construction_grid_container"
+			}
+		}
+		
+		effects = {
+			state_click = {
+				change_target_state = yes 
+				ROOT = { set_variable = { state = Prev.id } }
+			}
+			filter_infra_click = {
+				sort_states_INFRA = yes 
+			}
+		}
+		
+		triggers = {
+			state_click_enabled = {
+				NOT = { has_state_flag = construction_line@ROOT }
+			}
+		}
+			
+	}
+	#AWESOME FUCKING CONSTRUCTION MENU - I'm sorry, I couldnt resist
+	construction_view_menu = {
+		context_type = player_context
+		
+		window_name = "construction_view_menu_container"
+		parent_window_token = construction_tab
+		
+		visible = {
+			has_global_flag = wip
+			player_only_trigger = yes
+		}
+		
+		dynamic_lists = {
+			construction_line_grid = {
+				array = construction_lines 
+				change_scope = yes
+				entry_container = "country_construction_grid_container"
+			}
+		}
+		
+		properties = {
+			building_icon = { 
+				frame = construction_building_frame@ROOT
+			}
+		}
+
+		effects = {
+			state_button_click = {
+				if = {
+					limit = {
+						ROOT = { has_country_flag = show_state_list }
+					}
+					ROOT = { clr_country_flag = show_state_list }
+				}
+				else = {
+					ROOT = { 
+						set_country_flag = show_state_list 
+						set_variable = { state = Prev.id }
+						for_each_loop = {
+							array = Root.controlled_states
+							add_to_array = { Root.temp_states = v }
+						}
+					}
+				}
+			}
+			delete_line_click = {
+				remove_from_array = { from.construction_lines = this }
+				subtract_from_variable = { Root.total_construction_lines = 1 }
+		 		
+				clear_building_flags_and_var = yes
+				
+				#Adjust positions of the following construction lines
+				every_state = {
+					limit = { 
+						has_state_flag = construction_line@ROOT
+						check_variable = { position@ROOT > Prev.position@ROOT }
+					}
+					subtract_from_variable = { position@ROOT = 1 }
+				}
+			}
+			delete_line_shift_click = {
+				clear_array = from.construction_lines
+				clear_variable = Root.total_construction_lines
+				every_state = {
+					limit = { 
+						has_state_flag = construction_line@ROOT
+					}
+					clear_building_flags_and_var = yes
+				}
+			}
+			
+			move_up_click = {
+				set_variable = { position_temp = position@ROOT }
+				subtract_from_variable = { position_temp = 1 }
+				random_state = {
+					limit = {
+						has_state_flag = construction_line@ROOT
+						check_variable = { position@ROOT = Prev.position_temp }
+					}
+					add_to_variable = { position@ROOT = 1 }
+				}
+				subtract_from_variable = { position@ROOT = 1 }
+				if = {
+					limit = {
+						check_variable = { position@ROOT < 1 }
+					}
+					set_variable = { position@ROOT = 1 }
+				}
+				clear_variable = position_temp
+				
+				ROOT = { sort_construction_lines = yes }
+				
+			}
+			move_down_click = {
+				set_variable = { position_temp = position@ROOT }
+				subtract_from_variable = { position_temp = -1 }
+				random_state = {
+					limit = {
+						has_state_flag = construction_line@ROOT
+						check_variable = { position@ROOT = Prev.position_temp }
+					}
+					add_to_variable = { position@ROOT = -1 }
+					if = {
+						limit = {
+							check_variable = { position@ROOT < 1 }
+						}
+						set_variable = { position@ROOT = 1 }
+					}
+				}
+				subtract_from_variable = { position@ROOT = -1 }
+				clear_variable = position_temp
+				
+				ROOT = { sort_construction_lines = yes }
+				
+			}		 
+			  
+			days_icon_click = {
+				custom_effect_tooltip = "CONSTRUCTION_DAYS_TT"
+				 
+				set_temp_variable = { cic_output = cic_assigned }
+				multiply_temp_variable = { cic_output = 5 }
+				 
+				custom_effect_tooltip = "DAILY_OUTPUT_TT" 
+					  
+				#EXPAND 
+				 
+			}
+			building_speed_click = { 
+				custom_effect_tooltip = "CONSTRUCTION_SPEED_TT"
+				set_temp_variable = { build_speed_infrastructure = building_level@infrastructure }
+				multiply_temp_variable = { build_speed_infrastructure = 0.05 }
+				set_temp_variable = { build_speed_infrastructure_mod = Root.modifier@production_speed_local_infrastructure_factor }
+				add_to_temp_variable = { build_speed_infrastructure_mod = 1 }
+				multiply_temp_variable = { build_speed_infrastructure = build_speed_infrastructure_mod }
+	
+				custom_effect_tooltip = "CONSTRUCTION_SPEED_BASE_TT"
+				custom_effect_tooltip = "CONSTRUCTION_SPEED_CAP_INFRA"
+				
+			}
+			   
+			civilian_industry_button_click = {
+				if = {  
+					limit = { 
+						capital_scope = {
+							NOT = { has_state_flag = construction_line@ROOT }
+						}
+					}
+					capital_scope = {
+						add_to_array = { Root.construction_lines = this }
+						
+						start_construction_line = yes
+						start_civilian_factory = yes 
+					}
+				}
+				else = {
+					random_owned_controlled_state = {
+						limit = {
+							NOT = { has_state_flag = construction_line@ROOT }
+							NOT = { capital_scope = { state = PREV } }
+						}
+						add_to_array = { Root.construction_lines = this }
+						
+						start_construction_line = yes
+						start_civilian_factory = yes
+					}
+				}
+			}
+			infrastructure_button_click = {
+				if = {
+					limit = {
+						capital_scope = {
+							NOT = { has_state_flag = construction_line@ROOT }
+						}
+					}
+					capital_scope = {
+						add_to_array = { Root.construction_lines = this }
+						
+						start_construction_line = yes
+						start_infrastructure = yes
+					}
+				}
+				else = {
+					random_owned_controlled_state = {
+						limit = {
+							NOT = { has_state_flag = construction_line@ROOT }
+							NOT = { capital_scope = { state = PREV } }
+						}
+						add_to_array = { Root.construction_lines = this }
+						
+						start_construction_line = yes
+						start_infrastructure = yes
+					}
+				}
+			}
+			military_industry_button_click = {
+				if = {
+					limit = {
+						capital_scope = {
+							NOT = { has_state_flag = construction_line@ROOT }
+						}
+					}
+					capital_scope = {
+						add_to_array = { Root.construction_lines = this }
+						
+						start_construction_line = yes
+						start_military_factory = yes
+					}
+				}
+				else = {
+					random_owned_controlled_state = {
+						limit = {
+							NOT = { has_state_flag = construction_line@ROOT }
+							NOT = { capital_scope = { state = PREV } }
+						}
+						add_to_array = { Root.construction_lines = this }
+						
+						start_construction_line = yes
+						start_military_factory = yes
+					}
+				}
+			}
+			#EXPAND
+			  
+			
+			cic_slot_1_click = { 
+				subtract_from_variable = { Root.CIC_used = cic_assigned }
+				
+				set_temp_variable = { cic_slot = 1 }
+				
+				#if = 
+				#	limit = 
+				#		check_variable = { CIC_available > cic_slot }
+				
+				add_to_variable = { Root.CIC_used = cic_slot }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_2_click = { 
+				set_temp_variable = { cic_slot = 2 }
+				construction_cic_assigned = yes 
+			} 
+			cic_slot_3_click = { 
+				set_temp_variable = { cic_slot = 3 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_4_click = { 
+				set_temp_variable = { cic_slot = 4 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_5_click = { 
+				set_temp_variable = { cic_slot = 5 }
+				construction_cic_assigned = yes 
+			} 
+			cic_slot_6_click = { 
+				set_temp_variable = { cic_slot = 6 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_7_click = { 
+				set_temp_variable = { cic_slot = 7 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_8_click = { 
+				set_temp_variable = { cic_slot = 8 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_9_click = { 
+				set_temp_variable = { cic_slot = 9 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_10_click = { 
+				set_temp_variable = { cic_slot = 10 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_11_click = { 
+				set_temp_variable = { cic_slot = 11 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_12_click = { 
+				set_temp_variable = { cic_slot = 12 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_13_click = { 
+				set_temp_variable = { cic_slot = 13 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_14_click = { 
+				set_temp_variable = { cic_slot = 14 }
+				construction_cic_assigned = yes
+			} 
+			cic_slot_15_click = { 
+				set_temp_variable = { cic_slot = 15 }
+				construction_cic_assigned = yes
+			} 
+			
+			cic_icon_1_click = { 
+				set_temp_variable = { cic_slot = 1 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_2_click = { 
+				set_temp_variable = { cic_slot = 2 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_3_click = { 
+				set_temp_variable = { cic_slot = 3 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_4_click = { 
+				set_temp_variable = { cic_slot = 4 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_5_click = { 
+				set_temp_variable = { cic_slot = 5 }
+				construction_cic_assigned = yes 
+			} 
+			cic_icon_6_click = { 
+				set_temp_variable = { cic_slot = 6 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_7_click = { 
+				set_temp_variable = { cic_slot = 7 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_8_click = { 
+				set_temp_variable = { cic_slot = 8 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_9_click = { 
+				set_temp_variable = { cic_slot = 9 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_10_click = { 
+				set_temp_variable = { cic_slot = 10 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_11_click = { 
+				set_temp_variable = { cic_slot = 11 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_12_click = { 
+				set_temp_variable = { cic_slot = 12 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_13_click = { 
+				set_temp_variable = { cic_slot = 13 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_14_click = { 
+				set_temp_variable = { cic_slot = 14 }
+				construction_cic_assigned = yes
+			} 
+			cic_icon_15_click = { 
+				set_temp_variable = { cic_slot = 15 }
+				construction_cic_assigned = yes
+			} 
+				
+		}
+		  
+		triggers = {
+			cic_icon_1_visible = {
+				has_state_flag = { flag = cic_ass value > 0 }
+				#check_variable = { cic_assigned > 0 }
+			}
+			cic_icon_2_visible = {
+				has_state_flag = { flag = cic_ass value > 1 }
+				#check_variable = { cic_assigned > 1 }
+			}
+			cic_icon_3_visible = {
+				has_state_flag = { flag = cic_ass value > 2 }
+				#check_variable = { cic_assigned > 2 }
+			}
+			cic_icon_4_visible = {
+				has_state_flag = { flag = cic_ass value > 3 }
+				#check_variable = { cic_assigned > 3 }
+			}
+			cic_icon_5_visible = {
+				has_state_flag = { flag = cic_ass value > 4 }
+				#check_variable = { cic_assigned > 4 }
+			}
+			cic_icon_6_visible = {
+				has_state_flag = { flag = cic_ass value > 5 }
+				#check_variable = { cic_assigned > 5 }
+			}
+			cic_icon_7_visible = {
+				has_state_flag = { flag = cic_ass value > 6 }
+				#check_variable = { cic_assigned > 6 }
+			}
+			cic_icon_8_visible = {
+				has_state_flag = { flag = cic_ass value > 7 }
+				#check_variable = { cic_assigned > 7 }
+			}
+			cic_icon_9_visible = {
+				has_state_flag = { flag = cic_ass value > 8 }
+				#check_variable = { cic_assigned > 8 }
+			}
+			cic_icon_10_visible = {
+				has_state_flag = { flag = cic_ass value > 9 }
+				#check_variable = { cic_assigned > 9 }
+			}
+			cic_icon_11_visible = {
+				has_state_flag = { flag = cic_ass value > 10 }
+				#check_variable = { cic_assigned > 10 }
+			}
+			cic_icon_12_visible = {
+				has_state_flag = { flag = cic_ass value > 11 }
+				#check_variable = { cic_assigned > 11 }
+			}
+			cic_icon_13_visible = {
+				has_state_flag = { flag = cic_ass value > 12 }
+				#check_variable = { cic_assigned > 12 }
+			}
+			cic_icon_14_visible = {
+				has_state_flag = { flag = cic_ass value > 13 }
+				#check_variable = { cic_assigned > 13 }
+			}
+			cic_icon_15_visible = {
+				has_state_flag = { flag = cic_ass value > 14 }
+				#check_variable = { cic_assigned > 14 }
+			}
+		}
+		
+		ai_enabled = {
+			always = no
+		}
+	}
+	#Recuitment_deployment-tab
+	deployment_view_menu = {
+		context_type = player_context
+		
+		window_name = "deployment_view_menu_container"
+		parent_window_token = deployment_tab
+		
+		visible = {
+			#player_only_trigger = yes
+		}
+
+		effects = {
+		}
+		
+		triggers = {
+		}
+	}
+	#Trade-tab
+	trade_view_menu = {
+		context_type = player_context
+		
+		window_name = "trade_view_menu_container"
+		parent_window_token = trade_tab
+		
+		visible = {
+			#player_only_trigger = yes
+		}
+
+		effects = {
+		}
+		
+		triggers = {
+		}
+	}
+	#Army-view
+	army_view_menu = {
+		context_type = player_context
+		
+		window_name = "army_view_menu_container"
+		parent_window_name = army_header
+		
+		visible = {
+			#player_only_trigger = yes
+		}
+
+		effects = {
+		}
+		
+		triggers = {
+		}
+	}
+	#topbar-tension
+	tension_view_menu = {
+		context_type = player_context
+		
+		window_name = "tension_view_menu_container"
+		parent_window_name = topbar
+		
+		visible = {
+			#player_only_trigger = yes
+		}
+
+		effects = {
+		}
+		
+		triggers = {
+		}
+	}
+}

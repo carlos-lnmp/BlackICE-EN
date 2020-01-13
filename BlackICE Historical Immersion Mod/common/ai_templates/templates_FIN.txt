@@ -1,0 +1,63 @@
+FIN_infantry_role = {
+	
+	available_for = {
+		FIN
+	}
+	
+	roles = {
+		infantry
+	}
+	
+	match_to_count = 0.3
+	
+	FIN_infantry_role_1 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 1 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 1 }
+			}
+		}
+		target_width = 24
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 1
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				engineer = 1
+				recon = 1
+				arctic_support = 1
+			}
+		
+			regiments = {
+				infantry = 9
+				artillery_brigade = 3
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			engineer
+			arctic_support
+			recon
+			
+			infantry
+		}	
+	}
+}

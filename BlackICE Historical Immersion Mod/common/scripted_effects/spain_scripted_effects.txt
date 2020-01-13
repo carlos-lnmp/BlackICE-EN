@@ -1,0 +1,65 @@
+#	Example:
+# 
+#	example_effect = {
+#		add_political_power = 66
+#		add_popularity = {
+#			ideology = fascism
+#			popularity = 0.33
+#		}
+#	}
+#
+#
+#	In a script file:
+#
+#	effect = {
+#		example_effect = yes
+#	}
+#
+
+## Order is important in case of a tie
+SPR_seize_power = {
+	if = {
+		limit = { 
+			NOT = {
+				OR = {
+					has_country_flag = commie_take_power
+					has_country_flag = CNTFAI_take_power
+					has_country_flag = libs_take_power
+				}
+			}
+		}
+		if = {
+			limit = { 
+				check_variable = { com_inf > 99 } 
+				}
+			hidden_effect = {
+				set_politics = {
+					ruling_party = communism
+				}
+				set_country_flag = commie_take_power
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { ana_inf > 99 } 
+				}
+			hidden_effect = {
+				set_politics = {
+					ruling_party = socialism
+				}
+				set_country_flag = CNTFAI_take_power 
+			}
+		}
+		else_if = {
+			limit = { 
+				check_variable = { lib_inf > 99 } 
+				}
+			hidden_effect = {
+				set_politics = {
+					ruling_party = liberalism
+				}
+				set_country_flag = libs_take_power
+			}
+		}
+	}
+}

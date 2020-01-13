@@ -1,0 +1,116 @@
+############################################################################################################
+#	Expert AI mod - focus effects
+############################################################################################################
+#Flag values
+
+@LAND/armor_focus/light_armor = 1
+@LAND/armor_focus/medium_armor = 2
+@LAND/armor_focus/heavy_armor = 3
+@LAND/armor_focus/anti_tank = 4
+
+@LAND/attachment/motorized = 1
+@LAND/attachment/light_armor = 2
+@LAND/attachment/medium_armor = 3
+@LAND/attachment/heavy_armor = 4
+
+@LAND/spec_ops/marines = 1
+@LAND/spec_ops/mountaineers = 2
+@LAND/spec_ops/disabled = 3
+
+# historical focus preset
+EAI_set_historical = { 
+	
+}
+
+EAI_copy_focuses = {
+}
+
+EAI_apply_global_focuses = {
+}
+
+EAI_clear_modified_focuses = {
+}
+
+EAI_clear_all_focuses = {
+	if = { # doctrine focuses can't be cleared if they are being researched
+		limit = {
+			NOT = {
+				is_researching_technology = mobile_warfare
+				is_researching_technology = superior_firepower
+				is_researching_technology = trench_warfare
+				is_researching_technology = mass_assault
+
+				has_tech = delay is_researching_technology = delay
+				#has_tech = sup_delay is_researching_technology = sup_delay
+				has_tech = grand_battle_plan is_researching_technology = grand_battle_plan
+				has_tech = pocket_defence is_researching_technology = pocket_defence
+			}
+		}
+
+		clear_variable = EAI_FOCUS/LAND/land_doctrine
+		clear_variable = EAI_FOCUS/LAND/land_doctrine_path
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				is_researching_technology = air_superiority
+			    is_researching_technology = formation_flying
+				is_researching_technology = force_rotation
+
+				has_tech = infrastructure_destruction is_researching_technology = infrastructure_destruction
+				has_tech = home_defence is_researching_technology = home_defence
+				has_tech = dive_bombing is_researching_technology = dive_bombing
+				has_tech = fighter_baiting is_researching_technology = fighter_baiting
+			}
+		}
+
+		clear_variable = EAI_FOCUS/AIR/air_doctrine
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				is_researching_technology = nrm_fleet_in_being
+				is_researching_technology = nrm_trade_interdiction
+				is_researching_technology = nrm_decisive_battle
+
+				has_tech = nrm_fib_power_projection is_researching_technology = nrm_fib_power_projection
+				has_tech = nrm_fib_sealane_defence is_researching_technology = nrm_fib_sealane_defence
+
+				has_tech = nrm_ti_raider_patrols is_researching_technology = nrm_ti_raider_patrols
+
+				has_tech = nrm_db_offensive_tactics is_researching_technology = nrm_db_offensive_tactics
+			}
+		}
+
+		clear_variable = EAI_FOCUS/NAVY/naval_doctrine
+	}
+
+	clear_variable = EAI_FOCUS/LAND/infantry_design
+	clear_variable = EAI_FOCUS/LAND/infantry_width
+	clear_variable = EAI_FOCUS/LAND/armor_focus
+	clear_variable = EAI_FOCUS/LAND/armor_design
+	clear_variable = EAI_FOCUS/LAND/medium_armor_design
+	clear_variable = EAI_FOCUS/LAND/heavy_armor_design
+	clear_variable = EAI_FOCUS/LAND/armor_width
+	clear_variable = EAI_FOCUS/LAND/motorized_design
+	clear_variable = EAI_FOCUS/LAND/antitank_design
+	clear_variable = EAI_FOCUS/LAND/attachment
+	clear_variable = EAI_FOCUS/LAND/spec_ops
+	clear_variable = EAI_FOCUS/AIR/heavy_fighter
+	clear_variable = EAI_FOCUS/AIR/ground_bomber
+	clear_variable = EAI_FOCUS/AIR/naval_bomber
+	clear_variable = EAI_FOCUS/AIR/strategic_bomber
+	clear_variable = EAI_FOCUS/NAVY/destroyer
+	clear_variable = EAI_FOCUS/NAVY/ASW_destroyer
+	clear_variable = EAI_FOCUS/NAVY/light_cruiser
+	clear_variable = EAI_FOCUS/NAVY/ASW_light_cruiser
+	clear_variable = EAI_FOCUS/NAVY/heavy_cruiser
+	clear_variable = EAI_FOCUS/NAVY/battlecruiser
+	clear_variable = EAI_FOCUS/NAVY/battleship
+	clear_variable = EAI_FOCUS/NAVY/carrier
+	clear_variable = EAI_FOCUS/NAVY/submarine}
+
+EAI_clear_all_OVERRIDE_focuses = {
+}

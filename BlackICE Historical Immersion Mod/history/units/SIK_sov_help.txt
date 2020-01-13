@@ -1,0 +1,86 @@
+﻿division_template = {
+	name = "Sov tanks"	
+	regiments = {
+		sov_light_tank = { x = 0 y = 0 }
+		sov_light_tank = { x = 0 y = 1 }
+		
+		sov_infantry_tank = { x = 1 y = 0 }
+		sov_infantry_tank = { x = 1 y = 1 }
+		
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_ac = { x = 0 y = 1 }
+		Tankettes = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Strelkovyy Polk"			
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		light_infantry  = { x = 1 y = 0 }
+		light_infantry  = { x = 1 y = 1 }
+		light_infantry  = { x = 1 y = 2 }
+		
+		artillery_brigade = { x = 2 y = 0 }
+		sov_amph_tank = { x = 2 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 } 
+		recon_cav = { x = 0 y = 1 } 
+		engineer = { x = 0 y = 2 } 
+	}
+}
+division_template = {
+	name = "Ukreplennyy"			
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+
+	}
+	support = 	{
+		DIV_HQ = { x = 0 y = 0 } 
+		artillery_heavy = { x = 0 y = 1 }
+	}
+	priority = 0
+}
+
+#### OOB ####
+units = {
+	division = {
+		name = ""
+		location = 4709
+		division_template = "Sov tanks"
+		start_experience_factor = 0.35
+		start_equipment_factor = 1
+	}
+	division = {
+		name = ""
+		location = 4709
+		division_template = "Strelkovyy Polk"
+		start_experience_factor = 0.30
+		start_equipment_factor = 1
+	}
+	division = {
+		name = ""
+		location = 4709
+		division_template = "Ukreplennyy"
+		start_experience_factor = 0.25
+		start_equipment_factor = 1
+	}
+
+}
+instant_effect = {
+	add_equipment_to_stockpile = {
+		type = i_5_equipment_1
+		amount = 50
+		producer = SOV
+	}
+}

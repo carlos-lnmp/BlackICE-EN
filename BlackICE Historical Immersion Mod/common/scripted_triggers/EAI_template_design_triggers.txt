@@ -1,0 +1,305 @@
+######################################################
+#	Expert AI mod - AI template design triggers
+######################################################
+EAI_dont_build_units = {
+	OR = {
+		AND = {
+			original_tag = FRA 
+			date < 1937.1.1
+		}
+		AND = {
+			original_tag = ENG 
+			date < 1937.1.1
+		}
+	}
+}
+EAI_nation_specific_infantry = {
+	OR = {
+		original_tag = JAP
+		original_tag = ITA 
+		
+		
+		original_tag = GER 
+		original_tag = ENG 
+		original_tag = FRA  
+		original_tag = USA 
+		original_tag = SOV 
+		
+		original_tag = CAN 
+		
+		original_tag = POL 
+		original_tag = HOL 
+		original_tag = BEL 
+		original_tag = FIN
+		original_tag = EGY
+		original_tag = CHI
+		
+		original_tag = HUN 
+		original_tag = ROM 
+		original_tag = GRE 
+		original_tag = TUR 
+	}
+}
+EAI_nation_specific_alternative_infantry = {
+	OR = {
+		original_tag = ITA #Mountaineer Mix		
+		original_tag = POL #Anti Tank Infantry 
+		original_tag = ENG #Infantry Garrison til Garrison is balanced
+		original_tag = FRA #gets used as merger into infantry
+	}
+}
+EAI_nation_specific_light_infantry = {
+	OR = {
+		original_tag = JAP 
+		original_tag = ITA 
+	}
+}
+EAI_nation_specific_marines = {
+	OR = {
+		original_tag = JAP 
+	}
+}
+EAI_nation_specific_mountaineers = {
+	OR = {
+		original_tag = ITA 
+		#original_tag = GER
+		
+		original_tag = ROM 
+		original_tag = GRE 
+		original_tag = TUR 
+	}
+}
+EAI_nation_specific_cavalry = {
+	OR = {
+		original_tag = ENG
+	}
+}
+EAI_nation_specific_motorized = {
+	OR = {
+		original_tag = JAP 
+		original_tag = ITA
+		original_tag = GER
+		original_tag = ENG
+		
+		original_tag = CAN 
+		
+		original_tag = HUN 
+		original_tag = ROM 
+	}
+}
+EAI_nation_specific_light_armor = {
+	OR = {
+		original_tag = CIV 
+	}
+}
+EAI_nation_specific_medium_armor = {
+	OR = { 
+		original_tag = GER 
+		original_tag = USA 
+		original_tag = SOV 
+		#original_tag = FRA #cavalry tanks
+	}
+}
+EAI_nation_specific_heavy_armor = {
+	OR = {
+		original_tag = CIV 
+	}
+}
+
+# poor countries that use cheap infantry templates
+EAI_use_cheap_infantry = {
+	has_country_flag = EAI_army_config_triggered
+	
+	NOT = {
+		has_country_flag = EAI_AI_is_configuring_focuses
+		has_country_flag = EAI_player_is_configuring_focuses
+	}
+
+	num_of_military_factories < 10
+	
+	NOT = { 
+		has_country_flag = EAI_upgrade_inf_design 
+		check_variable = { EAI_FOCUS/LAND/infantry_width = global.EAI_10W_INF_WIDTH }
+	}
+}
+
+# true if artillery designs are preferable
+EAI_prefer_artillery_design = { 
+	OR = {
+		has_idea_with_trait = army_artillery_3 has_available_idea_with_traits = { idea = army_artillery_3 limit = 1 }
+		has_idea_with_trait = army_artillery_2 has_available_idea_with_traits = { idea = army_artillery_2 limit = 1 }
+	}
+}
+
+# triggers to control designs
+EAI_infantry_design_priorities = {
+
+	# GER needs to build up its army first
+	if = { limit = { original_tag = GER }
+		has_army_manpower = { size > 550000 }
+	}
+}
+############################
+##### INFANTRY DESIGNS #####
+############################
+
+EAI_cheap_infantry = {
+
+}
+
+EAI_militia_as_infantry = {
+
+}
+
+## HEAVY AA
+EAI_field_anti_air_heavy = {
+
+	OR = {
+		original_tag = USA 
+		
+		num_of_military_factories > 100 
+	}
+
+}
+
+EAI_field_anti_air_heavy_in_armor = {
+
+	OR = {
+		original_tag = USA 
+		
+		num_of_military_factories > 100 
+	}
+
+}
+
+EAI_field_anti_air_heavy_in_infantry = {
+	EAI_field_anti_air_heavy_in_armor = yes 
+	
+	OR = {
+		original_tag = USA 
+		
+		num_of_military_factories > 100 
+	}
+
+}
+
+
+## HEAVY AT
+
+EAI_field_anti_tank_heavy = {
+
+	OR = {
+		original_tag = USA 
+		
+		num_of_military_factories > 100 
+	}
+
+}
+
+EAI_field_anti_tank_heavy_in_armor = {
+
+	OR = {
+		original_tag = USA 
+		
+		num_of_military_factories > 100 
+	}
+
+}
+
+EAI_field_anti_tank_heavy_in_infantry = {
+	EAI_field_anti_tank_heavy_in_armor = yes 
+	
+	OR = {
+		original_tag = USA 
+		
+		num_of_military_factories > 100 
+	}
+
+}
+EAI_upgrade_mountaineers_trigger = {
+	set_temp_variable = { mount_in_field_max = num_target_equipment_in_armies@mount_equipment }
+	set_temp_variable = { mount_in_field = num_equipment_in_armies@mount_equipment }
+	
+	divide_temp_variable = { mount_in_field = mount_in_field_max }
+	
+	check_variable = { mount_in_field > 0.90 } 
+}
+
+EAI_upgrade_pack_arty_trigger = {
+	set_temp_variable = { arty_in_field_max = num_target_equipment_in_armies@mountain_artillery_equipment }
+	set_temp_variable = { arty_in_field = num_equipment_in_armies@mountain_artillery_equipment }
+	
+	divide_temp_variable = { arty_in_field = arty_in_field_max }
+	
+	check_variable = { arty_in_field > 0.90 } 
+}
+
+EAI_upgrade_light_arty_trigger = {
+	set_temp_variable = { arty_in_field_max = num_target_equipment_in_armies@artillery_equipment }
+	set_temp_variable = { arty_in_field = num_equipment_in_armies@artillery_equipment }
+	
+	divide_temp_variable = { arty_in_field = arty_in_field_max }
+	
+	check_variable = { arty_in_field > 0.90 } 
+}
+
+EAI_upgrade_medium_arty_trigger = {
+	set_temp_variable = { arty_in_field_max = num_target_equipment_in_armies@medartillery_equipment }
+	set_temp_variable = { arty_in_field = num_equipment_in_armies@medartillery_equipment }
+	
+	divide_temp_variable = { arty_in_field = arty_in_field_max }
+	
+	check_variable = { arty_in_field > 0.90 } 
+}			
+	
+EAI_upgrade_motorized_trigger = {
+	set_temp_variable = { mot_fielded_max = num_target_equipment_in_armies@motorized_equipment }
+	set_temp_variable = { mot_fielded = num_equipment_in_armies@motorized_equipment }
+	
+	divide_temp_variable = { mot_fielded = mot_fielded_max }
+	
+	check_variable = { mot_fielded > 0.90 }	
+}	
+
+EAI_upgrade_mechanized_trigger = {
+	set_temp_variable = { mech_fielded_max = num_target_equipment_in_armies@mechanized_equipment }
+	set_temp_variable = { mech_fielded = num_equipment_in_armies@mechanized_equipment }
+	
+	divide_temp_variable = { mech_fielded = mech_fielded_max }
+	
+	check_variable = { mech_fielded > 0.90 }	
+}		
+					
+	
+EAI_JAP_upgrade_for_allied_campaign_trigger = {
+	OR = {
+		date > 1941.1.1
+		num_of_military_factories > 80
+		num_divisions > 100
+	}
+}	
+
+EAI_ENG_finished_template_change = { 
+	OR = {
+		date > 1937.3.1
+		check_variable = { num_battalions_with_type@cavalry = 0 }
+	}
+}
+	
+EAI_switch_to_MED_ARTY = {
+	check_variable = { field_strength > 0.9 }
+	has_tech = medartillery1
+	if = {
+		limit = {
+			original_tag = ENG 
+		}
+		OR = {
+			date > 1941.6.1
+			num_of_military_factories > 100 
+		}
+	}
+}
+			
+			
+			
+			

@@ -1,0 +1,177 @@
+﻿division_template = {
+	name = "Jalaväediviisi"				# Infantry Division	
+	# Note: Divisions were nowhere near full strength until mobilized
+	division_names_group = EST_INF_01
+	template_counter = 113
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Kavaleri Brigade"
+	division_names_group = EST_CAV_01
+	template_counter = 208
+	
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+       	recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Militia"  
+	#division_names_group = 
+	template_counter = 70
+	
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Garrison"	
+	division_names_group = EST_GAR_01
+	template_counter = 86
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+		
+		garrison = { x = 2 y = 0 }
+		garrison = { x = 2 y = 1 }
+		garrison = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#	
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+units = {
+	######## LAND OOB ########
+	##### Eesti Ülemjuhatus #####
+	#division= {	
+	#	name = "Eesti Ülemjuhatus" 
+	#	location = 3152
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.5
+	#}
+	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 3152
+		division_template = "Jalaväediviisi"
+		force_equipment_variants = { infantry_equipment_0 = { owner = "EST" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 4640
+		division_template = "Jalaväediviisi"
+		force_equipment_variants = { infantry_equipment_0 = { owner = "EST" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 6099
+		division_template = "Jalaväediviisi"
+		force_equipment_variants = { infantry_equipment_0 = { owner = "EST" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+
+	}
+}
+##### No Naval OOB -- 2 SSs in 1937 #####
+##### Air Wings #####
+air_wings = {
+	### Eesti Ohuvägi
+	13 = {
+		# Hävitajate Grupp -- Bristol Bulldogs, GL 22.B3s
+		#pre_war_af_equipment_4 =  { # Bristol Bulldog II #2-12 left by 1940
+		#	owner = "EST" 
+		#	creator = "ENG"
+		#	amount = 4
+		#}
+		#pre_war_fighter_equipment_2 =  { # A.W. Siskin  Still on strength in 1940. 
+		#	owner = "EST" 
+		#	creator = "ENG"
+		#	amount = 1
+		#}
+		#war_cas_equipment_2 =  {	#Hawker Hart
+		#	owner = "EST" 
+		#	creator = "ENG"
+		#	amount = 8
+		#}
+	}
+}
+
+### Starting Production ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "EST"
+		}
+		requested_factories = 1
+		progress = 0.88
+		efficiency = 100
+	}
+}

@@ -1,0 +1,428 @@
+economy_decisions = {
+	Arab_farming = {
+			
+			icon = generic_construction
+			
+		available = {
+				custom_trigger_tooltip = {
+					tooltip = Arab_farming_tt 
+						OR = {
+							has_completed_focus = IRQ_Agriculture
+							has_completed_focus = Arab_Agriculture
+							has_completed_focus = merJOR_Agriculture
+						}
+				}
+				hidden_trigger = {
+					OR = {
+						has_completed_focus = IRQ_Agriculture
+						has_completed_focus = Arab_Agriculture
+						has_completed_focus = merJOR_Agriculture
+					}
+				}
+			}
+		allowed = {
+			is_Arab = yes
+		}
+		visible = {		
+			is_Arab = yes
+		}	
+		
+		days_re_enable = 150
+		days_remove = 33
+		complete_effect = { 
+			##subtract_from_variable = { dx = 50 }
+		}
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		
+		remove_effect = {
+			add_timed_idea = { idea = Arab_Farms  days = 100 }
+		}
+	}
+}
+
+prospect_for_resources = {
+	Arab_Mining = {
+		fixed_random_seed = no
+		icon = generic_construction
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = Arab_Mining_tt 
+					OR = {
+						has_completed_focus = IRQ_Mining_Operations
+						has_completed_focus = Arab_Mining_Operations
+						has_completed_focus = merJOR_Mining_Operations
+						}
+					}
+			hidden_trigger = {
+				OR = {
+					has_completed_focus = IRQ_Mining_Operations
+					has_completed_focus = Arab_Mining_Operations
+					has_completed_focus = merJOR_Mining_Operations
+				}
+			}
+		}
+		
+		
+		allowed = {
+			is_Arab = yes
+		}
+
+		days_remove = 90
+
+		visible = {		
+			is_Arab = yes			
+		}		
+
+		fixed_random_seed = no
+
+		fire_only_once = yes
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		
+		remove_effect = {
+			random_list = {
+				40 = {
+					random_owned_controlled_state = {
+						add_resource = {
+							type = steel
+							amount = 5
+						}
+						add_resource = {
+							type = aluminium
+							amount = 1
+						}
+						
+					}
+				}
+				30 = {
+					random_owned_controlled_state = {
+						add_resource = {
+							type = steel
+							amount = 4
+						}
+						add_resource = {
+							type = aluminium
+							amount = 2
+						}
+						
+					}
+				}
+				20 = {
+					random_owned_controlled_state = {
+						add_resource = {
+							type = steel
+							amount = 3
+						}
+						add_resource = {
+							type = aluminium
+							amount = 3
+						}
+						
+					}
+				}
+				10 = {
+					random_owned_controlled_state = {
+						add_resource = {
+							type = steel
+							amount = 2
+						}
+						add_resource = {
+							type = aluminium
+							amount = 4
+						}
+						
+					}
+				}
+			}
+			}
+		}
+		
+		Arab_Search_For_Oil = {
+
+		icon = oil
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = Arab_Search_For_Oil_tt 
+					OR = {
+						has_completed_focus = IRQ_Search_For_Oil_Deposits
+						has_completed_focus = Arab_Search_For_Oil_Deposits
+						has_completed_focus = merJOR_Search_For_Oil_Deposits
+						}
+					}
+			hidden_trigger = {
+				OR = {
+					has_completed_focus = IRQ_Search_For_Oil_Deposits
+					has_completed_focus = Arab_Search_For_Oil_Deposits
+					has_completed_focus = merJOR_Search_For_Oil_Deposits
+				}
+			}
+			
+		}
+		
+		allowed = {
+			is_Arab = yes
+		}
+
+		days_remove = 90
+
+		visible = {				
+			is_Arab = yes		
+		}		
+
+		fixed_random_seed = no
+
+		fire_only_once = yes
+		
+		modifier = {
+			civilian_factory_use = 1
+		}
+		
+		remove_effect = {
+			random_list = {
+				90 = {
+					set_country_flag = Arab_oil_Found
+					custom_effect_tooltip = Arab_oil_Found_tt
+				}
+				10 = {
+					set_country_flag = Arab_oil_Found				
+					random_owned_controlled_state = {
+						add_resource = {
+							type = oil
+						amount = 1
+						}
+					}
+					custom_effect_tooltip = Arab_oil_Found_tt
+				}
+			}
+		}
+	}
+}
+
+foreign_politics = {
+	YEM_aid_ITA = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			hidden_trigger = { 
+				command_power > 4.9
+				has_political_power > 10
+				}
+			has_manpower > 250
+		}
+		
+		visible = {	
+			ITA = {
+				has_war_with = ETH
+			}
+		}
+		
+		allowed = {
+			tag = YEM
+		}
+		
+		custom_cost_trigger = {
+			command_power > 4.9
+		}
+		custom_cost_text = cp_atleast_5
+        fire_only_once = yes
+        complete_effect = {
+			add_manpower = -250
+			army_experience = 15
+			add_war_support = 0.03
+			add_tech_bonus = {
+				bonus = 0.1
+				uses = 1
+				category = land_doctrine
+			}
+			ITA = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_0
+					amount = 100
+					producer = YEM
+				}
+				add_equipment_to_stockpile = {
+					type = horse_equipment_0
+					amount = 50
+					producer = YEM
+				}
+				add_opinion_modifier = {
+					target = YEM
+					modifier = small_increase
+				}
+				country_event = Arab.4
+			}
+			hidden_effect = {
+				add_command_power = -5 
+			}
+        }
+		ai_will_do = {
+			base = 50
+		}
+    }
+	Arab_invite = {
+
+		icon = generic_political_discourse
+
+		available = {
+			has_completed_focus = Arab_Indi_friends
+			has_completed_focus = Arab_Indi_mono
+			Not = { has_completed_focus = Arab_League }
+		}
+		
+		visible = {	
+			has_completed_focus = Arab_Indi_friends
+			has_completed_focus = Arab_Indi_mono
+			Not = { has_completed_focus = Arab_League }		
+		}
+		
+		allowed = {
+			is_Arab = yes
+		}
+		
+        cost = 50
+        fire_only_once = yes
+        complete_effect = {
+			FROM = {
+				set_country_flag = invited
+			}
+        }
+    }
+	
+	Arab_invite_build = {
+		fixed_random_seed = no
+		icon = generic_construction
+
+		available = {
+		has_completed_focus = Arab_Indi_friends
+		has_completed_focus = Arab_Indi_mono
+		has_manpower > 500
+		Not = { has_completed_focus = Arab_League }
+		}
+		
+		visible = {	
+		has_completed_focus = Arab_Indi_friends
+		has_completed_focus = Arab_Indi_mono
+		Not = { has_completed_focus = Arab_League }		
+		}
+		
+        cost = 25
+		modifier = {
+			civilian_factory_use = 1
+		}
+		complete_effect = { 
+			add_manpower = -500
+		}
+        fire_only_once = yes
+		days_remove = 100
+        remove_effect = {
+			random_list = { 
+				60 = { 
+					FROM = {
+						set_country_flag = Arab_ready
+						random_owned_state = {
+							add_building_construction = { 						
+								type = infrastructure 
+								level = 1 
+								instant_build = yes 
+							}
+						}
+					}
+				}
+				40 = {
+					FROM = {
+						set_country_flag = Arab_ready
+						random_owned_state = {
+							add_building_construction = { 						
+								type = industrial_complex 
+								level = 1 
+								instant_build = yes 
+							}
+						}
+					}
+				}
+            }
+        }
+			
+    }
+	Arab_invite_bribe = {
+
+		icon = generic_political_discourse
+
+		available = {
+		has_completed_focus = Arab_Indi_friends
+		has_completed_focus = Arab_Indi_mono
+		Not = { has_completed_focus = Arab_League }
+		has_equipment = {
+			infantry_equipment > 1000
+			}
+		}
+		allowed = {
+			is_Arab = yes
+		}		
+		visible = {	
+		has_completed_focus = Arab_Indi_friends
+		has_completed_focus = Arab_Indi_mono
+		Not = { has_completed_focus = Arab_League }		
+		}
+		
+		
+          cost = 25
+		  complete_effect = { 
+			send_equipment = {
+				equipment = infantry_equipment
+				amount = 1000
+				target = FROM				
+				} 
+			FROM = { set_country_flag = Arab_ready }
+			}
+          fire_only_once = yes
+
+    }
+	Arab_research_standards = {
+
+		icon = generic_research
+		allowed = {
+			is_Arab = yes
+		}
+		available = {
+		has_completed_focus = Arab_Indi_friends
+		has_completed_focus = Arab_Indi_demo
+		Not = { has_completed_focus = Arab_Science }
+		}
+		visible = {	
+		has_completed_focus = Arab_Indi_friends
+		has_completed_focus = Arab_Indi_demo
+		Not = { has_completed_focus = Arab_Science }		
+		}
+		
+		
+          cost = 35
+
+          fire_only_once = yes
+          modifier = {
+               civilian_factory_use = 2
+                }
+		  days_remove = 75
+		  remove_effect = {
+               FROM = {
+                    set_country_flag = Arab_science_rdy
+					add_tech_bonus = {
+						name = standardised_bonus
+						bonus = 0.1
+						ahead_reduction = 1
+						uses = 1
+						category = electronics
+					}
+                }
+			}
+    }
+}
+

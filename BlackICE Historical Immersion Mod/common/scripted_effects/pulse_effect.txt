@@ -1,0 +1,1421 @@
+
+first_every_year_script = {
+	every_country= {
+		limit = {
+			major_country = yes 
+			is_ai = yes 
+		}
+		country_event = { id = EAI_C.0 days = 1 }
+	}
+}
+
+first_every_month_script = {
+	add_to_variable = { global.amount_of_pulses_passed = 1 }
+	
+	country_event = EAI_M.750
+	
+	every_country = { 
+		set_special_forces_cap = yes 
+		
+		country_event = military_size.1
+		
+		calculate_equipment_supplied_ratio = yes
+		
+		country_event = BICE_buildings.1
+		
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			change_alien_tanks_into_foreign_armor = yes
+			remove_foreign_illegal_equipment = yes
+			
+			#VARIANTS
+			country_event = EAI_V.0
+			
+			country_event = BICE_buildings.2
+
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = war_with_major }
+				any_enemy_country = {
+					is_major = yes 
+				}
+			}
+			set_country_flag = war_with_major
+		}
+		else = {
+			clr_country_flag = war_with_major
+		}
+	}
+	for_each_scope_loop = {
+		array = global.players
+		
+		player_on_monthly = yes 
+		player_monthly_controlled_state_effect = yes
+		
+	}
+	clear_variable = num_armor
+	#global_every_army_leader = { #Recode this to count armor battalions, ugh 
+	#	OWNER = { add_to_variable = { num_armor = Prev.num_armored } }
+	#}
+}
+
+first_every_week_script = {
+	max_building_limiter = yes
+
+	for_each_scope_loop = {
+		array = global.players
+		
+		country_event = BICE_buildings.2
+		
+		check_army_strength = yes
+		change_alien_tanks_into_foreign_armor = yes
+		remove_foreign_illegal_equipment = yes
+		
+		if = {
+			limit = {
+				OR = {
+					rubber_storage > 0 
+					tungsten_storage > 0 
+					aluminium_storage > 0 
+					steel_storage > 0 
+					chromium_storage > 0 
+				}
+			}
+			country_event = BICE_buildings.3 
+		}
+		
+		country_event = EAI_M.11
+		
+	}
+}
+
+player_on_monthly = {
+	country_event = { id = generic.25 days = 7 random = 368 }
+	country_event = { id = generic.26 days = 7 random = 368 }
+	country_event = { id = generic.27 days = 7 random = 368 }
+	country_event = { id = generic.28 days = 7 random = 368 }
+	
+	if = { #RECODE THIS
+		limit = {
+			any_unit_leader = {
+				has_trait = Good_General
+			}
+		}
+		every_unit_leader = {	
+			limit = {
+				has_trait = Good_General
+			}
+			remove_unit_leader_trait = Good_General
+		}
+	}
+}
+player_monthly_controlled_state_effect = {
+	clear_variable = num_controlled_core_states
+	clear_variable = num_owned_core_states
+	clear_variable = core_population
+	clear_variable = total_population
+	for_each_loop = {
+		array = Root.controlled_states
+		var:v = {
+			#STATES
+			add_to_variable = { Root.total_population = state_population_k }
+			if = { 
+				limit = {
+					is_core_of = ROOT
+				}
+				add_to_variable = { Root.num_controlled_core_states = 1 }
+				if = {
+					limit = {
+						is_owned_by = ROOT
+					}
+					add_to_variable = { Root.num_owned_core_states = 1 }
+				}
+				add_to_variable = { Root.core_population = state_population_k }
+			}
+			#POPULATION
+			add_to_variable = { Root.total_population = state_population_k }
+			if = { 
+				limit = {
+					is_core_of = ROOT
+				}
+				add_to_variable = { Root.num_controlled_core_states = 1 }
+				if = {
+					limit = {
+						is_owned_by = ROOT
+					}
+					add_to_variable = { Root.num_owned_core_states = 1 }
+				}
+				add_to_variable = { Root.core_population = state_population_k }
+			}
+		}
+	}
+	#POPULATION
+	if = { limit = { check_variable = { core_population > 1000 } } 
+		set_variable = { core_population_k = core_population }
+		divide_variable = { core_population_k = 1000 }
+		clear_variable = core_population
+	}
+	if = { limit = { check_variable = { total_population > 1000 } } 
+		set_variable = { total_population_k = total_population }
+		divide_variable = { total_population_k = 1000 }
+		clear_variable = total_population
+	}
+}
+
+calculate_equipment_supplied_ratio = { #DOESNT INCLUDE TANKS AND AIRCRAFT
+
+	set_temp_variable = { equipment_fielded = 0 }
+	
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@infantry_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@support_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@garrison_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@garrison_aa } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@HQ_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@infantry_uniforms } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@SMG_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@HMG_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@mortar_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@urbanwar_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@para_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@amph_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@mount_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@desert_equip } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@arctic_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@jungle_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@horse_equipment }
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@recon_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@recon_mot_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@artyhorse_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@artytruck_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@artytractor_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@artillery_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@mountain_artillery_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@medartillery_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@Hvartillery_equipment } 
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@infantrygun_equipment }  
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@anti_tank_equipment }  
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@HVanti_tank_equipment }  
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@handheld_at_equipment }  
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@motorized_equipment }  
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@motorized_AC_equipment }  
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@motorized_lia_equipment }  
+	add_to_temp_variable = { equipment_fielded = num_equipment_in_armies_k@radio_equipment } 
+	
+	set_temp_variable = { equipment_fielded_target = 0 }
+	
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@infantry_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@support_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@garrison_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@garrison_aa } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@HQ_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@infantry_uniforms } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@SMG_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@HMG_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@mortar_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@urbanwar_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@para_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@amph_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@mount_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@desert_equip } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@arctic_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@jungle_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@horse_equipment }
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@recon_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@recon_mot_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@artyhorse_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@artytruck_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@artytractor_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@artillery_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@mountain_artillery_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@medartillery_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@Hvartillery_equipment } 
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@infantrygun_equipment }  
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@anti_tank_equipment }  
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@HVanti_tank_equipment }  
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@handheld_at_equipment }  
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@motorized_equipment }  
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@motorized_AC_equipment }  
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@motorized_lia_equipment }  
+	add_to_temp_variable = { equipment_fielded_target = num_target_equipment_in_armies_k@radio_equipment } 
+	
+	divide_temp_variable = { equipment_fielded = equipment_fielded_target }
+	
+	set_variable = { field_strength = equipment_fielded }
+}
+	
+max_building_limiter = {
+	#THIS IS THE AIRBASE LIMITER.
+	for_each_scope_loop = {
+		array = global.small_airbase_list
+		if = {
+			limit = {
+				air_base > 1
+			}
+			remove_building = {
+				type = air_base
+				level = 1
+			}
+			controller = {
+				PREV = { save_event_target_as = GDU_badairport1 }
+				country_event = { id = gduairlimiter.1 }
+			}
+		}
+		if = {
+			limit = {
+				radar_station > 0
+			}
+			remove_building = {
+				type = radar_station
+				level = 1
+			}
+			controller = {
+				PREV = { save_event_target_as = GDU_badairport1 }
+				country_event = { id = gduairlimiter.1 }
+			}
+		}
+		#if = {
+			#limit = {
+				#coastal_bunker > 0
+			#}
+			#set_building_level = {
+			#	type = coastal_bunker
+			#	level = 0
+			#	province = {
+			#		all_provinces = yes
+			#	}
+			#}
+			#controller = {
+			#	PREV = { save_event_target_as = GDU_badairport1 }
+			#	country_event = { id = gduairlimiter.1 }
+			#}
+		#}
+
+	}
+	for_each_scope_loop = {
+		array = global.medium_airbase_list
+		if = {
+			limit = {
+				air_base > 3
+			}
+			remove_building = {
+				type = air_base
+				level = 1
+			}
+			controller = {
+				PREV = { save_event_target_as = GDU_badairport2 }
+				country_event = { id = gduairlimiter.2 }
+			}
+		}
+		if = {
+			limit = {
+				radar_station > 1
+			}
+			remove_building = {
+				type = radar_station
+				level = 1
+			}
+			controller = {
+				PREV = { save_event_target_as = GDU_badairport2 }
+				country_event = { id = gduairlimiter.2 }
+			}
+		}
+		#if = {
+		#	limit = {
+		#		coastal_bunker > 1
+		#	}
+		#	remove_building = {
+		#		type = coastal_bunker
+		#		level = 1
+		#	}
+		#	controller = {
+		#		PREV = { save_event_target_as = GDU_badairport2 }
+		#		country_event = { id = gduairlimiter.2 }
+		#	}
+		#}
+
+	}
+}
+
+change_alien_tanks_into_foreign_armor = {
+	if = {
+		limit = {
+			OR = {
+				has_tech = light_captured_armor_tech_1 
+				has_tech = medium_captured_armor_tech_1
+			}
+			OR = {
+				if = {
+					limit = {
+						NOT = { original_tag = ENG }
+					}
+					#LIGHT
+					has_equipment = { cruiser_tank_equipment > 0 } 
+					has_equipment = { churchill_tank_equipment > 0 } 
+					has_equipment = { british_infantry_tank_equipment > 0 } 
+					has_equipment = { british_light_tank_equipment > 0 } 
+					has_equipment = { infantry_tank_art_equipment > 0 } 
+					has_equipment = { cruiser_tank_td_equipment > 0 } 
+					has_equipment = { infantry_tank_td_equipment > 0 } 
+					
+					has_equipment = { british_mbt_equipment > 0 } 
+					
+					has_equipment = { churchill_tank_art_equipment > 0 } 
+					has_equipment = { cruiser_tank_td_equipment > 0 } 
+				}
+				if = {
+					limit = {
+						NOT = { original_tag = FRA }
+					}
+					#LIGHT
+					has_equipment = { fra_infantry_tank_equipment > 0 } 
+					has_equipment = { fra_light_tank_equipment > 0 } 
+					has_equipment = { fra_light_cavalry_tank_equipment > 0 } 
+					has_equipment = { fra_spart_equipment > 0 } 
+					has_equipment = { fra_tank_destroyer_equipment > 0 } 
+					
+					has_equipment = { fra_cavalry_tank_equipment > 0 } 
+					has_equipment = { fra_medium_tank_equipment > 0 }
+					
+					has_equipment = { fra_heavy_tank_equipment > 0 } 
+				}
+				if = {
+					limit = {
+						NOT = { original_tag = GER }
+					}
+					#LIGHT
+					has_equipment = { panzer_i_equipment > 0 } 
+					has_equipment = { panzer_ii_equipment > 0 } 
+					has_equipment = { czech_ger_panzer_equipment > 0 } 
+					has_equipment = { panzer_spaa_equipment > 0 } 
+					has_equipment = { light_assault_panzer_equipment > 0 } 
+					has_equipment = { light_panzer_art_equipment > 0 } 
+					has_equipment = { conversion_art_equipment > 0 } 
+					has_equipment = { conversion_td_equipment > 0 } 
+					has_equipment = { marder_conversion_td_equipment > 0 } 
+					has_equipment = { light_panzer_td_equipment > 0 } 
+					
+					has_equipment = { panzer_v_spaa_equipment > 0 } 
+					has_equipment = { assault_panzer_equipment > 0 } 
+					has_equipment = { panzer_iii_td_equipment > 0 } 
+					has_equipment = { medium_panzer_td_equipment > 0 } 
+					
+					has_equipment = { heavy_panzer_equipment > 0 } 
+					has_equipment = { tiger_panzer_equipment > 0 } 
+					has_equipment = { heavy_panzer_equipment > 0 } 
+					has_equipment = { heavy_panzer_art_equipment > 0 } 
+					has_equipment = { heavy_panzer_td_fast_equipment > 0 }
+					has_equipment = { heavy_panzer_td_slow_equipment > 0 }
+				}
+				if = {
+					limit = {
+						NOT = { original_tag = ITA }
+					}
+					#LIGHT
+					has_equipment = { ita_light_armor_equipment > 0 } 
+					has_equipment = { ita_light_td_equipment > 0 } 
+					
+					has_equipment = { ita_med_td_equipment > 0 } 
+					has_equipment = { ita_medium_armor_equipment > 0 } 
+					has_equipment = { ita_med_art_equipment > 0 } 
+					
+					has_equipment = { ita_heavy_armor_equipment > 0 } 
+					has_equipment = { ita_heavy_art_equipment > 0 } 
+					
+					has_equipment = { ita_tankette_armor_equipment > 0 }
+				}
+				if = {
+					limit = {
+						NOT = { original_tag = JAP }
+					}
+					#LIGHT
+					has_equipment = { japanese_light_tank_equipment > 0 } 
+					has_equipment = { japanese_light_tank_art_equipment > 0 } 
+					has_equipment = { japanese_light_tank_td_equipment > 0 }  
+					
+					has_equipment = { japanese_medium_tank_art_equipment > 0 } 
+					has_equipment = { japanese_medium_tank_equipment > 0 } 
+					has_equipment = { japanese_medium_tank_td_equipment > 0 } 
+					
+					has_equipment = { japanese_heavy_tank_equipment > 0 } 
+				}
+				if = {
+					limit = {
+						NOT = { original_tag = SOV }
+					}
+					#LIGHT
+					has_equipment = { light_soviet_tank_equipment > 0 } 
+					has_equipment = { light_soviet_tank_aa_equipment > 0 } 
+					has_equipment = { light_soviet_tank_td_equipment > 0 } 
+					
+					has_equipment = { medium_soviet_tank_equipment > 0 } 
+					has_equipment = { t_34_td_equipment > 0 } 
+					has_equipment = { medium_soviet_ag_equipment > 0 } 
+					
+					has_equipment = { heavy_soviet_infantry_tank_equipment > 0 } 
+					has_equipment = { heavy_soviet_tank_equipment > 0 } 
+					has_equipment = { heavy_soviet_ag_equipment > 0 } 
+				}
+				if = {
+					limit = {
+						NOT = { original_tag = USA }
+					}
+					#LIGHT
+					has_equipment = { american_light_tank_equipment > 0 } 
+					has_equipment = { american_light_tank_aa_equipment > 0 } 
+					has_equipment = { american_light_tank_artillery_equipment > 0 } 
+					has_equipment = { hellcat_equipment > 0 }
+					
+					has_equipment = { american_mbt_equipment > 0 }
+					has_equipment = { american_medium_tank_equipment > 0 }
+					has_equipment = { american_medium_tank_artillery_equipment > 0 }
+					has_equipment = { american_medium_tank_destroyer_equipment > 0 }
+					
+					has_equipment = { american_heavy_tank_equipment > 0 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = allied_tanks }
+					}
+					#LIGHT
+					has_equipment = { light_tank_equipment > 0 } 
+					has_equipment = { light_tank_aa_equipment > 0 } 
+					has_equipment = { light_tank_artillery_equipment > 0 } 
+					has_equipment = { light_tank_destroyer_equipment > 0 } 
+					
+					has_equipment = { infantry_tank_equipment > 0 } 
+					has_equipment = { cavalry_tank_equipment > 0 } 
+					has_equipment = { medium_tank_equipment > 0 } 
+					has_equipment = { medium_tank_aa_equipment > 0 } 
+					has_equipment = { medium_tank_destroyer_equipment > 0 } 
+					
+					has_equipment = { heavy_tank_equipment > 0 } 
+					has_equipment = { heavy_tank_aa_equipment > 0 } 
+					has_equipment = { heavy_tank_artillery_equipment > 0 } 
+					has_equipment = { heavy_tank_destroyer_equipment > 0 } 
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = axis_tanks }
+					}
+					#LIGHT
+					has_equipment = { light_tank_equipment_axis > 0 } 
+					has_equipment = { light_tank_aa_equipment_axis > 0 } 
+					has_equipment = { light_tank_artillery_equipment_axis > 0 } 
+					has_equipment = { light_tank_destroyer_equipment_axis > 0 } 
+					
+					has_equipment = { infantry_tank_equipment_axis > 0 } 
+					has_equipment = { cavalry_tank_equipment_axis > 0 } 
+					has_equipment = { medium_tank_equipment_axis > 0 } 
+					has_equipment = { medium_tank_aa_equipment_axis > 0 }
+					has_equipment = { medium_tank_destroyer_equipment_axis > 0 }
+					
+					has_equipment = { heavy_tank_equipment_axis > 0 } 
+					has_equipment = { heavy_tank_aa_equipment_axis > 0 } 
+					has_equipment = { heavy_tank_artillery_equipment_axis > 0 } 
+					has_equipment = { heavy_tank_destroyer_equipment_axis > 0 } 
+				}
+			}
+		}
+					
+		if = {
+			limit = {
+				NOT = { tag = CZE }
+				has_equipment = { czech_panzer_equipment > 0 } 
+			}
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = czech_panzer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@czech_panzer_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = czech_panzer_equipment target = CIV amount = temp } } }
+			
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = allied_tanks }
+				OR = {
+					has_equipment = { light_tank_equipment > 0 } 
+					has_equipment = { light_tank_aa_equipment > 0 } 
+					has_equipment = { light_tank_artillery_equipment > 0 } 
+					has_equipment = { light_tank_destroyer_equipment > 0 } 
+					
+					has_equipment = { infantry_tank_equipment > 0 } 
+					has_equipment = { cavalry_tank_equipment > 0 } 
+					has_equipment = { medium_tank_equipment > 0 } 
+					has_equipment = { medium_tank_aa_equipment > 0 } 
+					has_equipment = { medium_tank_destroyer_equipment > 0 } 
+					
+					has_equipment = { heavy_tank_equipment > 0 } 
+					has_equipment = { heavy_tank_aa_equipment > 0 } 
+					has_equipment = { heavy_tank_artillery_equipment > 0 } 
+					has_equipment = { heavy_tank_destroyer_equipment > 0 } 
+					
+				}
+			}
+			if = { limit = { NOT = { tag = GER any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_equipment } } } }
+			set_temp_variable = { temp = num_equipment@light_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_aa_equipment } } } }
+			set_temp_variable = { temp = num_equipment@light_tank_aa_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_tank_aa_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_artillery_equipment } } } }
+			set_temp_variable = { temp = num_equipment@light_tank_artillery_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_tank_artillery_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@light_tank_destroyer_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_tank_destroyer_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@infantry_tank_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = infantry_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@cavalry_tank_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = cavalry_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@medium_tank_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = medium_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@medium_tank_aa_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = medium_tank_aa_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@medium_tank_destroyer_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = medium_tank_destroyer_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = heavy_tank_equipment } } } }
+			set_temp_variable = { temp = num_equipment@heavy_tank_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = heavy_tank_equipment } } } }
+			set_temp_variable = { temp = num_equipment@heavy_tank_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = heavy_tank_aa_equipment } } } }
+			set_temp_variable = { temp = num_equipment@heavy_tank_aa_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_tank_aa_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = heavy_tank_artillery_equipment } } } }
+			set_temp_variable = { temp = num_equipment@heavy_tank_artillery_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_tank_artillery_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = heavy_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@heavy_tank_destroyer_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_tank_destroyer_equipment target = CIV amount = temp } } }
+			
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = axis_tanks }
+				OR = {
+					has_equipment = { light_tank_equipment_axis > 0 } 
+					has_equipment = { light_tank_aa_equipment_axis > 0 } 
+					has_equipment = { light_tank_artillery_equipment_axis > 0 } 
+					has_equipment = { light_tank_destroyer_equipment_axis > 0 } 
+					
+					has_equipment = { infantry_tank_equipment_axis > 0 } 
+					has_equipment = { cavalry_tank_equipment_axis > 0 } 
+					has_equipment = { medium_tank_equipment_axis > 0 } 
+					has_equipment = { medium_tank_aa_equipment_axis > 0 }
+					has_equipment = { medium_tank_destroyer_equipment_axis > 0 }
+					
+					has_equipment = { heavy_tank_equipment_axis > 0 } 
+					has_equipment = { heavy_tank_aa_equipment_axis > 0 } 
+					has_equipment = { heavy_tank_artillery_equipment_axis > 0 } 
+					has_equipment = { heavy_tank_destroyer_equipment_axis > 0 } 
+				}
+			}
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_equipment_axis } } } }
+			set_temp_variable = { temp = num_equipment@light_tank_equipment_axis }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_tank_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_aa_equipment_axis } } } }
+			set_temp_variable = { temp = num_equipment@light_tank_aa_equipment_axis }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_tank_aa_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_artillery_equipment_axis } } } }
+			set_temp_variable = { temp = num_equipment@light_tank_artillery_equipment_axis }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_tank_artillery_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment_axis } } } }
+			set_temp_variable = { temp = num_equipment@light_tank_destroyer_equipment_axis }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_tank_destroyer_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@infantry_tank_equipment_axis }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = infantry_tank_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@cavalry_tank_equipment_axis }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = cavalry_tank_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@medium_tank_equipment_axis }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = medium_tank_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@medium_tank_aa_equipment_axis }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = medium_tank_aa_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = light_tank_destroyer_equipment } } } }
+			set_temp_variable = { temp = num_equipment@medium_tank_destroyer_equipment_axis }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = medium_tank_destroyer_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = heavy_tank_equipment_axis } } } }
+			set_temp_variable = { temp = num_equipment@heavy_tank_equipment_axis }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_tank_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = heavy_tank_aa_equipment_axis } } } }
+			set_temp_variable = { temp = num_equipment@heavy_tank_aa_equipment_axis }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_tank_aa_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = heavy_tank_artillery_equipment_axis } } } }
+			set_temp_variable = { temp = num_equipment@heavy_tank_artillery_equipment_axis }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_tank_artillery_equipment_axis target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { any_other_country = { is_licensing_to = { target = ROOT archetype = heavy_tank_destroyer_equipment_axis } } } }
+			set_temp_variable = { temp = num_equipment@heavy_tank_destroyer_equipment_axis }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_tank_destroyer_equipment_axis target = CIV amount = temp } } }
+		}
+			
+		if = {
+			limit = {
+				NOT = { original_tag = SOV }
+				OR = {
+					has_equipment = { light_soviet_tank_equipment > 0 } 
+					has_equipment = { light_soviet_tank_aa_equipment > 0 } 
+					has_equipment = { light_soviet_tank_td_equipment > 0 } 
+					
+					has_equipment = { medium_soviet_tank_equipment > 0 } 
+					has_equipment = { t_34_td_equipment > 0 } 
+					has_equipment = { medium_soviet_ag_equipment > 0 } 
+					
+					has_equipment = { heavy_soviet_infantry_tank_equipment > 0 } 
+					has_equipment = { heavy_soviet_tank_equipment > 0 } 
+					has_equipment = { heavy_soviet_ag_equipment > 0 }
+				}
+			}
+			if = { limit = { NOT = { has_license = { from = SOV archetype = light_soviet_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@light_soviet_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_soviet_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = SOV archetype = light_soviet_tank_aa_equipment } } }
+			set_temp_variable = { temp = num_equipment@light_soviet_tank_aa_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_soviet_tank_aa_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = SOV archetype = light_soviet_tank_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@light_soviet_tank_td_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_soviet_tank_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = SOV archetype = medium_soviet_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@medium_soviet_tank_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = medium_soviet_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = SOV archetype = t_34_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@t_34_td_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = t_34_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = SOV archetype = medium_soviet_ag_equipment } } }
+			set_temp_variable = { temp = num_equipment@medium_soviet_ag_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = medium_soviet_ag_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = SOV archetype = heavy_soviet_infantry_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@heavy_soviet_infantry_tank_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_soviet_infantry_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = SOV archetype = heavy_soviet_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@heavy_soviet_tank_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_soviet_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = SOV archetype = heavy_soviet_ag_equipment } } }
+			set_temp_variable = { temp = num_equipment@heavy_soviet_ag_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_soviet_ag_equipment target = CIV amount = temp } } }
+		}
+		if = {
+			limit = {
+				NOT = { original_tag = USA }
+				OR = {
+					has_equipment = { american_light_tank_equipment > 0 } 
+					has_equipment = { american_light_tank_aa_equipment > 0 } 
+					has_equipment = { american_light_tank_artillery_equipment > 0 } 
+					has_equipment = { hellcat_equipment > 0 }
+					
+					has_equipment = { american_mbt_equipment > 0 }
+					has_equipment = { american_medium_tank_equipment > 0 }
+					has_equipment = { american_medium_tank_artillery_equipment > 0 }
+					has_equipment = { american_medium_tank_destroyer_equipment > 0 }
+					
+					has_equipment = { american_heavy_tank_equipment > 0 }
+				}
+			}
+			if = { limit = { NOT = { has_license = { from = USA archetype = american_light_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@american_light_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = american_light_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = USA archetype = american_light_tank_aa_equipment } } }
+			set_temp_variable = { temp = num_equipment@american_light_tank_aa_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = american_light_tank_aa_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = USA archetype = american_light_tank_artillery_equipment } } }
+			set_temp_variable = { temp = num_equipment@american_light_tank_artillery_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = american_light_tank_artillery_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = USA archetype = hellcat_equipment } } }
+			set_temp_variable = { temp = num_equipment@hellcat_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = hellcat_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = USA archetype = american_mbt_equipment } } }
+			set_temp_variable = { temp = num_equipment@american_mbt_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = american_mbt_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = USA archetype = american_medium_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@american_medium_tank_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = american_medium_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = USA archetype = american_medium_tank_artillery_equipment } } }
+			set_temp_variable = { temp = num_equipment@american_medium_tank_artillery_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = american_medium_tank_artillery_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = USA archetype = american_medium_tank_destroyer_equipment } } }
+			set_temp_variable = { temp = num_equipment@american_medium_tank_destroyer_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = american_medium_tank_destroyer_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = USA archetype = american_heavy_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@american_heavy_tank_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = american_heavy_tank_equipment target = CIV amount = temp } } }
+		}
+		if = {
+			limit = {
+				NOT = { original_tag = JAP }
+				OR = {
+					has_equipment = { japanese_light_tank_equipment > 0 } 
+					has_equipment = { japanese_light_tank_art_equipment > 0 } 
+					has_equipment = { japanese_light_tank_td_equipment > 0 }  
+					
+					has_equipment = { japanese_medium_tank_art_equipment > 0 } 
+					has_equipment = { japanese_medium_tank_equipment > 0 } 
+					has_equipment = { japanese_medium_tank_td_equipment > 0 } 
+					
+					has_equipment = { japanese_heavy_tank_equipment > 0 } 
+				}
+			}
+			if = { limit = { NOT = { has_license = { from = JAP archetype = japanese_light_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@japanese_light_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = japanese_light_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = JAP archetype = japanese_light_tank_art_equipment } } }
+			set_temp_variable = { temp = num_equipment@japanese_light_tank_art_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = japanese_light_tank_art_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = JAP archetype = japanese_light_tank_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@japanese_light_tank_td_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = japanese_light_tank_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = JAP archetype = japanese_medium_tank_art_equipment } } }
+			set_temp_variable = { temp = num_equipment@japanese_medium_tank_art_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = japanese_medium_tank_art_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = JAP archetype = japanese_medium_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@japanese_medium_tank_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = japanese_medium_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = JAP archetype = japanese_medium_tank_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@japanese_medium_tank_td_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = japanese_medium_tank_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = JAP archetype = japanese_heavy_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@japanese_heavy_tank_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = japanese_heavy_tank_equipment target = CIV amount = temp } } }
+		}
+		if = {
+			limit = {
+				NOT = { original_tag = ITA }
+				OR = {
+					has_equipment = { ita_light_armor_equipment > 0 } 
+					has_equipment = { ita_light_td_equipment > 0 } 
+					
+					has_equipment = { ita_med_td_equipment > 0 } 
+					has_equipment = { ita_medium_armor_equipment > 0 } 
+					has_equipment = { ita_med_art_equipment > 0 } 
+					
+					has_equipment = { ita_heavy_armor_equipment > 0 } 
+					has_equipment = { ita_heavy_art_equipment > 0 } 
+					
+					has_equipment = { ita_tankette_armor_equipment > 0 } 
+				}
+			}
+			if = { limit = { NOT = { has_license = { from = ITA archetype = ita_light_armor_equipment } } }
+			set_temp_variable = { temp = num_equipment@ita_light_armor_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = ita_light_armor_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ITA archetype = ita_light_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@ita_light_td_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = ita_light_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ITA archetype = ita_med_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@ita_med_td_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = ita_med_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ITA archetype = ita_medium_armor_equipment } } }
+			set_temp_variable = { temp = num_equipment@ita_medium_armor_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = ita_medium_armor_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ITA archetype = ita_med_art_equipment } } }
+			set_temp_variable = { temp = num_equipment@ita_med_art_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = ita_med_art_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ITA archetype = ita_heavy_armor_equipment } } }
+			set_temp_variable = { temp = num_equipment@ita_heavy_armor_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = ita_heavy_armor_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ITA archetype = ita_heavy_art_equipment } } }
+			set_temp_variable = { temp = num_equipment@ita_heavy_art_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = ita_heavy_art_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ITA archetype = ita_tankette_armor_equipment } } }
+			set_temp_variable = { temp = num_equipment@ita_tankette_armor_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = ita_tankette_armor_equipment target = CIV amount = temp } } }
+		}
+			
+		if = {
+			limit = {
+				NOT = { original_tag = GER }
+				OR = {
+					has_equipment = { panzer_i_equipment > 0 } 
+					has_equipment = { panzer_ii_equipment > 0 } 
+					has_equipment = { czech_ger_panzer_equipment > 0 } 
+					has_equipment = { panzer_spaa_equipment > 0 } 
+					has_equipment = { light_assault_panzer_equipment > 0 } 
+					has_equipment = { light_panzer_art_equipment > 0 } 
+					has_equipment = { conversion_art_equipment > 0 } 
+					has_equipment = { conversion_td_equipment > 0 } 
+					has_equipment = { marder_conversion_td_equipment > 0 } 
+					has_equipment = { light_panzer_td_equipment > 0 } 
+					
+					has_equipment = { panzer_v_spaa_equipment > 0 } 
+					has_equipment = { assault_panzer_equipment > 0 } 
+					has_equipment = { panzer_iii_td_equipment > 0 } 
+					has_equipment = { medium_panzer_td_equipment > 0 } 
+					
+					has_equipment = { heavy_panzer_equipment > 0 } 
+					has_equipment = { tiger_panzer_equipment > 0 } 
+					has_equipment = { heavy_panzer_equipment > 0 } 
+					has_equipment = { heavy_panzer_art_equipment > 0 } 
+					has_equipment = { heavy_panzer_td_fast_equipment > 0 }
+					has_equipment = { heavy_panzer_td_slow_equipment > 0 }
+				}
+			}
+			if = { limit = { NOT = { has_license = { from = GER archetype = panzer_i_equipment } } }
+			set_temp_variable = { temp = num_equipment@panzer_i_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0 } }
+			send_equipment = { equipment = panzer_i_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = panzer_ii_equipment } } }
+			set_temp_variable = { temp = num_equipment@panzer_ii_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0 } }
+			send_equipment = { equipment = panzer_ii_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = czech_ger_panzer_equipment } } }
+			set_temp_variable = { temp = num_equipment@czech_ger_panzer_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = czech_ger_panzer_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = panzer_spaa_equipment } } }
+			set_temp_variable = { temp = num_equipment@panzer_spaa_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = panzer_spaa_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = light_assault_panzer_equipment } } }
+			set_temp_variable = { temp = num_equipment@light_assault_panzer_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_assault_panzer_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = light_panzer_art_equipment } } }
+			set_temp_variable = { temp = num_equipment@light_panzer_art_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_panzer_art_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = conversion_art_equipment } } }
+			set_temp_variable = { temp = num_equipment@conversion_art_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = conversion_art_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = conversion_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@conversion_td_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = conversion_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = light_panzer_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@light_panzer_td_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = light_panzer_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = marder_conversion_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@marder_conversion_td_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = marder_conversion_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = panzer_v_spaa_equipment } } }
+			set_temp_variable = { temp = num_equipment@panzer_v_spaa_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = panzer_v_spaa_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = assault_panzer_equipment } } }
+			set_temp_variable = { temp = num_equipment@assault_panzer_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = assault_panzer_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = panzer_iii_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@panzer_iii_td_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = panzer_iii_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = medium_panzer_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@medium_panzer_td_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = medium_panzer_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = medium_panzer_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@medium_panzer_td_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = medium_panzer_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = heavy_panzer_equipment } } }
+			set_temp_variable = { temp = num_equipment@heavy_panzer_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_panzer_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = tiger_panzer_equipment } } }
+			set_temp_variable = { temp = num_equipment@tiger_panzer_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = tiger_panzer_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = heavy_panzer_td_fast_equipment } } }
+			set_temp_variable = { temp = num_equipment@heavy_panzer_td_fast_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_panzer_td_fast_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = GER archetype = heavy_panzer_td_slow_equipment } } }
+			set_temp_variable = { temp = num_equipment@heavy_panzer_td_slow_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = heavy_panzer_td_slow_equipment target = CIV amount = temp } } }
+		}
+			
+		if = {
+			limit = {
+				NOT = { original_tag = FRA }
+				OR = {
+					has_equipment = { fra_infantry_tank_equipment > 0 } 
+					has_equipment = { fra_light_tank_equipment > 0 } 
+					has_equipment = { fra_light_cavalry_tank_equipment > 0 } 
+					has_equipment = { fra_spart_equipment > 0 } 
+					has_equipment = { fra_tank_destroyer_equipment > 0 } 
+					
+					has_equipment = { fra_cavalry_tank_equipment > 0 } 
+					has_equipment = { fra_medium_tank_equipment > 0 }
+					
+					has_equipment = { fra_heavy_tank_equipment > 0 } 
+				}
+			}
+			if = { limit = { NOT = { has_license = { from = FRA archetype = fra_infantry_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@fra_infantry_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = fra_infantry_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = FRA archetype = fra_light_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@fra_light_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = fra_light_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = FRA archetype = fra_light_cavalry_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@fra_light_cavalry_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = fra_light_cavalry_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = FRA archetype = fra_spart_equipment } } }
+			set_temp_variable = { temp = num_equipment@fra_spart_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = fra_spart_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = FRA archetype = fra_tank_destroyer_equipment } } }
+			set_temp_variable = { temp = num_equipment@fra_tank_destroyer_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = fra_tank_destroyer_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = FRA archetype = fra_cavalry_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@fra_cavalry_tank_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = fra_cavalry_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = FRA archetype = fra_medium_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@fra_medium_tank_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = fra_medium_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = FRA archetype = fra_heavy_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@fra_heavy_tank_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = fra_heavy_tank_equipment target = CIV amount = temp } } }
+		}
+		if = {
+			limit = {
+				NOT = { original_tag = ENG }
+				OR = {
+					has_equipment = { cruiser_tank_equipment > 0 } 
+					has_equipment = { churchill_tank_equipment > 0 } 
+					has_equipment = { british_infantry_tank_equipment > 0 } 
+					has_equipment = { british_light_tank_equipment > 0 } 
+					has_equipment = { infantry_tank_art_equipment > 0 } 
+					has_equipment = { cruiser_tank_td_equipment > 0 } 
+					has_equipment = { infantry_tank_td_equipment > 0 } 
+					
+					has_equipment = { british_mbt_equipment > 0 } 
+					
+					has_equipment = { churchill_tank_art_equipment > 0 } 
+					has_equipment = { cruiser_tank_td_equipment > 0 } 
+				}
+			}
+			if = { limit = { NOT = { has_license = { from = ENG archetype = cruiser_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@cruiser_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = cruiser_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ENG archetype = churchill_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@churchill_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = churchill_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ENG archetype = british_infantry_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@british_infantry_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = british_infantry_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ENG archetype = british_light_tank_equipment } } }
+			set_temp_variable = { temp = num_equipment@british_light_tank_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = british_light_tank_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ENG archetype = infantry_tank_art_equipment } } }
+			set_temp_variable = { temp = num_equipment@infantry_tank_art_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = infantry_tank_art_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ENG archetype = cruiser_tank_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@cruiser_tank_td_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = cruiser_tank_td_equipment target = CIV amount = temp } } }
+			
+			if = { limit = { NOT = { has_license = { from = ENG archetype = infantry_tank_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@infantry_tank_td_equipment }
+			add_to_temp_variable = { light_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = infantry_tank_td_equipment target = CIV amount = temp } } } 
+			
+			if = { limit = { NOT = { has_license = { from = ENG archetype = british_mbt_equipment } } }
+			set_temp_variable = { temp = num_equipment@british_mbt_equipment }
+			add_to_temp_variable = { medium_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = british_mbt_equipment target = CIV amount = temp } } } 
+			
+			if = { limit = { NOT = { has_license = { from = ENG archetype = cruiser_tank_td_equipment } } }
+			set_temp_variable = { temp = num_equipment@cruiser_tank_td_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = cruiser_tank_td_equipment target = CIV amount = temp } } } 
+			
+			if = { limit = { NOT = { has_license = { from = ENG archetype = churchill_tank_art_equipment } } }
+			set_temp_variable = { temp = num_equipment@churchill_tank_art_equipment }
+			add_to_temp_variable = { heavy_armor = temp }
+			if = { limit = { check_variable = { temp > 0  } }
+			send_equipment = { equipment = churchill_tank_art_equipment target = CIV amount = temp } } } 
+			
+		}
+		
+		set_temp_variable = { temp2 = 1 }
+		add_to_temp_variable = { temp2 = modifier@production_speed_foreign_armor_factor }
+		
+		multiply_temp_variable = { light_armor = temp2 }
+		round_variable = light_armor 
+		
+		multiply_temp_variable = { medium_armor = temp2 }
+		round_variable = medium_armor 
+		
+		if = {
+			limit = {
+				check_variable = { light_armor > 0 }
+			}
+			if = { 
+				limit = { has_tech = light_captured_armor_tech_5 check_variable = { modifier@production_speed_foreign_light_armor_5_factor > 0 } }
+				set_temp_variable = { add = light_armor }
+				multiply_temp_variable = { add = modifier@production_speed_foreign_light_armor_5_factor }
+				add_equipment_to_stockpile = { type = captured_light_tank_equipment_4 amount = add } 
+			}
+			if = { 
+				limit = { has_tech = light_captured_armor_tech_4 check_variable = { modifier@production_speed_foreign_light_armor_4_factor > 0 } }
+				set_temp_variable = { add = light_armor }
+				multiply_temp_variable = { add = modifier@production_speed_foreign_light_armor_4_factor }
+				add_equipment_to_stockpile = { type = captured_light_tank_equipment_3 amount = add } 
+			}
+			if = { 
+				limit = { has_tech = light_captured_armor_tech_3 check_variable = { modifier@production_speed_foreign_light_armor_3_factor > 0 } }
+				set_temp_variable = { add = light_armor }
+				multiply_temp_variable = { add = modifier@production_speed_foreign_light_armor_3_factor }
+				add_equipment_to_stockpile = { type = captured_light_tank_equipment_2 amount = add } 
+			}
+			if = { 
+				limit = { has_tech = light_captured_armor_tech_2 check_variable = { modifier@production_speed_foreign_light_armor_2_factor > 0 } }
+				set_temp_variable = { add = light_armor }
+				multiply_temp_variable = { add = modifier@production_speed_foreign_light_armor_2_factor }
+				add_equipment_to_stockpile = { type = captured_light_tank_equipment_1 amount = add } 
+			}
+			if = { 
+				limit = { has_tech = light_captured_armor_tech_1 check_variable = { modifier@production_speed_foreign_light_armor_1_factor > 0 } }
+				set_temp_variable = { add = light_armor }
+				multiply_temp_variable = { add = modifier@production_speed_foreign_light_armor_1_factor }
+				add_equipment_to_stockpile = { type = captured_light_tank_equipment_0 amount = add } 
+			}
+				
+		}
+		if = {
+			limit = {
+				check_variable = { medium_armor > 0 }
+			}
+			if = { 
+				limit = { has_tech = medium_captured_armor_tech_5 check_variable = { modifier@production_speed_foreign_medium_armor_5_factor > 0 } }
+				set_temp_variable = { add = medium_armor }
+				multiply_temp_variable = { add = modifier@production_speed_foreign_medium_armor_5_factor }
+				add_equipment_to_stockpile = { type = captured_tank_equipment_4 amount = add } 
+			}
+			if = { 
+				limit = { has_tech = medium_captured_armor_tech_4 check_variable = { modifier@production_speed_foreign_medium_armor_4_factor > 0 } }
+				set_temp_variable = { add = medium_armor }
+				multiply_temp_variable = { add = modifier@production_speed_foreign_medium_armor_4_factor }
+				add_equipment_to_stockpile = { type = captured_tank_equipment_3 amount = add } 
+			}
+			if = { 
+				limit = { has_tech = medium_captured_armor_tech_3 check_variable = { modifier@production_speed_foreign_medium_armor_3_factor > 0 } }
+				set_temp_variable = { add = medium_armor }
+				multiply_temp_variable = { add = modifier@production_speed_foreign_medium_armor_3_factor }
+				add_equipment_to_stockpile = { type = captured_tank_equipment_2 amount = add } 
+			}
+			if = { 
+				limit = { has_tech = medium_captured_armor_tech_2 check_variable = { modifier@production_speed_foreign_medium_armor_2_factor > 0 } }
+				set_temp_variable = { add = medium_armor }
+				multiply_temp_variable = { add = modifier@production_speed_foreign_medium_armor_2_factor }
+				add_equipment_to_stockpile = { type = captured_tank_equipment_1 amount = add } 
+			}
+			if = { 
+				limit = { has_tech = medium_captured_armor_tech_1 check_variable = { modifier@production_speed_foreign_medium_armor_1_factor > 0 } }
+				set_temp_variable = { add = medium_armor }
+				multiply_temp_variable = { add = modifier@production_speed_foreign_medium_armor_1_factor }
+				add_equipment_to_stockpile = { type = captured_tank_equipment_0 amount = add } 
+			}
+				
+		}
+	}	
+}
+
+remove_foreign_illegal_equipment = {
+	if = {
+		limit = {
+			NOT = { tag = GER }
+			has_equipment = { ss_infantry_uniforms > 0 }
+		}
+		
+		if = { limit = { NOT = { has_license = { from = GER archetype = ss_infantry_uniforms } } }
+		set_temp_variable = { temp = num_equipment@ss_infantry_uniforms }
+		if = { limit = { check_variable = { temp > 0  } }
+		send_equipment = { equipment = ss_infantry_uniforms target = CIV amount = temp } } } 
+	}
+}
+					
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+### EOF ###

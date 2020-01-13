@@ -1,0 +1,2991 @@
+technologies = {
+	### Vertical position Y
+	@1930 = 0
+	@1933 = 2
+	@1935 = 4
+	@1936 = 6
+	@1937 = 8
+	@1938 = 10
+	@1939 = 12
+	@1940 = 14
+	@1941 = 16
+	@1942 = 18
+	@1943 = 20
+	@1944 = 22
+	@1945 = 24
+	@1946 = 26
+	@1947 = 28
+	@1948 = 30
+	@1949 = 32
+	@JET_1944 = 36
+	@JET_1945 = 38
+	
+	### Horizontal positions X
+	@RAF = 16
+	@FTR = 0
+	@INT = 3
+	@MR = 6
+	@CAS = 10
+	@HVY_FTR = 14
+	@HVY_FTR_1 = 17
+	@L_BMB = 21
+	@M_BMB = 25
+	@M_BMB_1 = 28
+	@STRAT_BMB = 32
+	@STRAT_BMB_1 = 35
+	
+	@CV_FTR = 39
+	@CV_FTR_1 = 42
+	@CV_CAS = 46
+	@CV_TB = 50
+	@FLY_BTS = 54
+	
+	@JET_FTR = 0
+	
+	tech_testing_5 = { #for testing purposes, this tech should be kept updated with a list of all ENGLISH aircraft to allow ease of testing. MAKE SURE IT IS NOT IN 1936 START ON RELEASE!
+		enable_equipments = {
+			
+		}
+		allow = {
+			always = no
+		}
+	
+		research_cost = 1
+		start_year = 1934
+
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_raf = {
+	
+		enable_equipments = {
+			transport_plane_equipment_1
+			prewar_cas_equipment_1
+			war_cas_equipment_2
+			war_cas_equipment_3
+			war_cas_equipment_4
+			war_cas_equipment_5
+			war_cas_equipment_6
+			war_cas_equipment_7
+			war_cas_equipment_8
+			war_cas_equipment_9
+			prewar_cv_CAS_equipment_0
+			fairey_iiif_equipment_0
+			pre_war_af_equipment_1
+			pre_war_af_equipment_2
+			pre_war_af_equipment_3
+			pre_war_af_equipment_4
+			pre_war_af_equipment_5
+			pre_war_fighter_equipment_1
+			pre_war_fighter_equipment_2
+			hawker_osprey_fighter_equipment_00
+			hawker_osprey_fighter_equipment_01
+			pre_war_mr_equipment_1
+			prewar_bomber_equipment_1
+			prewar_bomber_equipment_2
+			prewar_flying_boat_equipment_1
+			prewar_medium_bomber_equipment_1
+			prewar_medium_bomber_equipment_2
+			prewar_medium_bomber_equipment_3
+			prewar_medium_bomber_equipment_4
+			prewar_medium_bomber_equipment_5
+			prewar_flying_boat_equipment_2
+		}
+		
+		path = {
+			leads_to_tech = tech_english_aircraft1
+			research_cost_coeff = 1 
+		}
+		
+		allow = {
+			always = no
+		}
+		
+		research_cost = 1
+		start_year = 1930
+		folder = {
+			name = britishair_folder
+			position = { x = @RAF y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	tech_english_aircraft1 = {
+		
+		allow = {
+			always = no
+		}
+		
+		research_cost = 1
+		start_year = 1930
+		folder = {
+			name = britishair_folder
+			position = { x = @RAF y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### INTERCEPTORS ###
+	tech_gauntlet_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			gauntlet_fighter_equipment_1
+		}
+		path = {
+			leads_to_tech = tech_gladiator_fighter_equipment_1
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1933
+		folder = {
+			name = britishair_folder
+			position = { x = @INT y = @1933 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_gladiator_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			gladiator_fighter_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = britishair_folder
+			position = { x = @INT y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_defiant_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			defiant_fighter_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = britishair_folder
+			position = { x = @INT y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_ITC_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}			
+		}
+	}
+	tech_martinbaker_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			martinbaker_fighter_equipment_1
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = interceptor_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1945
+		folder = {
+			name = britishair_folder
+			position = { x = @INT y = @1945 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1944/7 = yes
+					EAI_ITC_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1944/7 = no
+			}				
+		}
+	}
+	### FIGHTERS ###
+	tech_hawker_demon_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_demon_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1930
+		folder = {
+			name = britishair_folder
+			position = { x = @FTR y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_spitfire_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			spitfire_equipment_1
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = fighter_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		path = {
+			leads_to_tech = tech_mid_spitfire_equipment_1
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = britishair_folder
+			position = { x = @FTR y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}	
+		}
+	}
+	tech_mid_spitfire_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			mid_spitfire_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		path = {
+			leads_to_tech = tech_late_spitfire_equipment_1
+			research_cost_coeff = 1
+		}
+		research_cost = 0.5
+		start_year = 1941
+		folder = {
+			name = britishair_folder
+			position = { x = @FTR y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}	
+		}
+	}	
+	tech_late_spitfire_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			late_spitfire_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		path = {
+			leads_to_tech = tech_griffon_fighter_equipment_1
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = britishair_folder
+			position = { x = @FTR y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}	
+		}
+	}
+	tech_griffon_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			griffon_fighter_equipment_1
+		}
+		path = {
+			leads_to_tech = tech_griffon_spitfire_equipment_1
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = britishair_folder
+			position = { x = @FTR y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}	
+		}
+	}
+	tech_griffon_spitfire_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			griffon_spitfire_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		path = {
+			leads_to_tech = tech_spiteful_equipment_1
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = britishair_folder
+			position = { x = @FTR y = @1944 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}	
+		}
+	}	
+	tech_spiteful_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			spiteful_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		path = {
+			leads_to_tech = tech_spitfire_24_equipment_1
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1945
+		folder = {
+			name = britishair_folder
+			position = { x = @FTR y = @1945 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1944/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}	
+		}
+	}	
+	tech_spitfire_24_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			spitfire_24_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1946
+		folder = {
+			name = britishair_folder
+			position = { x = @FTR y = @1946 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1945/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	### MULTI ROLE ###
+	tech_hawker_fury_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_fury_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1933
+		folder = {
+			name = britishair_folder
+			position = { x = @MR y = @1933 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_hawker_hurricane_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_hurricane_equipment_1
+		}
+
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = multirole_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = britishair_folder
+			position = { x = @MR y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/7 = yes
+					EAI_MTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_hawker_typhoon_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_typhoon_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		path = {
+			leads_to_tech = tech_hawker_typhoon1b_equipment_1
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = britishair_folder
+			position = { x = @MR y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_MTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_hawker_typhoon1b_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_typhoon1b_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		path = {
+			leads_to_tech = tech_hawker_tempest_equipment_1
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = britishair_folder
+			position = { x = @MR y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_MTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_hawker_tempest_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_tempest_equipment_1
+		}
+		path = {
+			leads_to_tech = tech_hawker_monofury_equipment_1
+			research_cost_coeff = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = britishair_folder
+			position = { x = @MR y = @1944 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_hawker_monofury_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_monofury_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = light_air_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1945
+		folder = {
+			name = britishair_folder
+			position = { x = @MR y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### CLOSE AIR SUPPORT ###
+	tech_hawker_hind_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+
+        enable_equipments = {
+            hawker_hind_equipment_1
+        }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = light_air_tt
+		}
+        categories = {
+            light_air
+            cas_bomber
+            air_equipment
+        }
+        research_cost = 1
+        start_year = 1933
+        folder = {
+            name = britishair_folder
+            position = { x = @CAS y = @1933 }
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    tech_fairey_battle_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+
+        enable_equipments = {
+            fairey_battle_equipment_1
+        }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = light_air_tt
+		}
+        categories = {
+            light_air
+            cas_bomber
+            air_equipment
+        }
+        research_cost = 1
+        start_year = 1937
+        folder = {
+            name = britishair_folder
+            position = { x = @CAS y = @1937 }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    tech_beaufighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+
+        enable_equipments = {
+            beaufighter_equipment_1
+        }
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = CAS_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = light_air_tt
+		}
+        categories = {
+            light_air
+            cas_bomber
+            air_equipment
+        }
+        research_cost = 1
+        start_year = 1939
+        folder = {
+            name = britishair_folder
+            position = { x = @CAS y = @1939 }
+        }
+
+        ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_CAS_tech_focus = yes 
+				}
+			}
+		}
+    }
+	tech_hawker_hurricane_iic_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_hurricane_iic_equipment_1
+		}
+		dependencies = {
+			tech_hawker_hurricane_equipment_1 = 1 
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = light_air_tt
+			
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				country_event = { id = EAI_V.510 days = 1 }
+			}
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = britishair_folder
+			position = { x = @CAS y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 5000
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_CAS_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_mosquito_cas_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			mosquito_cas_equipment_1
+		}
+		dependencies = {
+			tech_mosquito_fsb_equipment_1 = 1 
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = heavy_CAS_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = britishair_folder
+			position = { x = @CAS y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_HCAS_tech_focus = yes 
+				}
+			}
+		}
+	}
+	### HVY FIGHTERS ###
+	tech_bristol_blenheim_f_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			bristol_blenheim_f_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = britishair_folder
+			position = { x = @HVY_FTR y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_bristol_beaufighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			bristol_beaufighter_equipment_1
+		}
+		dependencies = {
+			tech_bristol_beaufort_equipment_1 = 1 
+		}
+		path = {
+			leads_to_tech = tech_beaufighter_equipment_1
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = medium_air_tt
+		}	
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = britishair_folder
+			position = { x = @HVY_FTR y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_westland_whirlwind_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			westland_whirlwind_equipment_1
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = heavy_fighter_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = britishair_folder
+			position = { x = @HVY_FTR y = @1940 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_HFTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_mosquito_hvf_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			mosquito_hvf_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = britishair_folder
+			position = { x = @HVY_FTR y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_HFTR_tech_focus = yes
+				}
+			}
+		}
+	}
+#	tech_ham_sandwich_equipment_1 = {
+#		
+#		enable_equipments = {
+#			ham_sandwich_equipment_1
+#		}
+#		categories = {
+#			medium_air
+#			air_equipment
+#			cat_heavy_fighter
+#		}
+#		research_cost = 1
+#		start_year = 1945
+#		folder = {
+#			name = britishair_folder
+#			position = { x = 8 y = @1944 }
+#		}
+#
+#		ai_will_do = {
+#			factor = 0
+#		}
+#	}
+	tech_welkin_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			welkin_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = britishair_folder
+			position = { x = @HVY_FTR y = @1944 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_hornet_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hornet_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = britishair_folder
+			position = { x = @HVY_FTR_1 y = @1944 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### LIGHT BOMBERS ###
+	tech_vickers_valentia_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			vickers_valentia_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1934
+		folder = {
+			name = britishair_folder
+			position = { x = @L_BMB y = @1933 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_vickers_wellesley_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			vickers_wellesley_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = britishair_folder
+			position = { x = @L_BMB y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_bristol_bolingbroke_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			bristol_bolingbroke_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = britishair_folder
+			position = { x = @L_BMB y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_bristol_brigand_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			bristol_brigand_equipment_1
+		}
+		dependencies = {
+			tech_bristol_buckingham_equipment_1 = 1
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = light_bomber_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1945
+		folder = {
+			name = britishair_folder
+			position = { x = @L_BMB y = @1945 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1944/7 = yes
+					EAI_LTBOMB_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_bristol_blenheim_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			bristol_blenheim_equipment_1
+		}
+		
+		path = {
+			leads_to_tech = tech_bristol_bolingbroke_equipment_1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_bristol_blenheim_f_equipment_1
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = britishair_folder
+			position = { x = @L_BMB y = @1937 }
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_mosquito_fsb_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			mosquito_fsb_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = medium_air_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = britishair_folder
+			position = { x = @L_BMB y = @1941 }
+		}
+		path = {
+			leads_to_tech = tech_mosquito_hvf_equipment_1
+			research_cost_coeff = 1
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					OR = {
+						EAI_HFTR_tech_focus = yes 
+						EAI_LTBOMB_tech_focus = yes 
+					}
+					EAI_timegate_1940/7 = yes
+				}
+			}
+		}
+	}
+	tech_bristol_beaufort_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			bristol_beaufort_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			air_equipment
+			naval_bomber
+		}
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = britishair_folder
+			position = { x = @M_BMB_1 y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	### Carrier based planes
+	tech_hawker_osprey_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_osprey_fighter_equipment_1
+		}
+
+		path = {
+			leads_to_tech = tech_nimrod_fighter_equipment_1
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1930
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_nimrod_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			nimrod_fighter_equipment_1
+		}
+
+		path = {
+			leads_to_tech = tech_hawker_osprey_fighter_equipment_2
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1933
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1933 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_hawker_osprey_fighter_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_osprey_fighter_equipment_2
+		}
+		path = {
+			leads_to_tech = tech_sea_gladiator_equipment_1
+			research_cost_coeff = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1930
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1935 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_sea_gladiator_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			sea_gladiator_equipment_1
+		}
+
+		dependencies = {
+			tech_gladiator_fighter_equipment_1 = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_blackburn_roc_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			blackburn_roc_equipment_1
+		}
+		
+		dependencies = {
+			tech_blackburn_skua_equipment_1 = 1 
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_CV_fighter_production = yes 
+				}
+			}
+		}
+	}
+	tech_fairey_fulmar_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			fairey_fulmar_equipment_1
+		}
+		
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1940 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_hawker_sea_hurricane_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_sea_hurricane_equipment_1
+		}
+		dependencies = {
+			tech_hawker_hurricane_equipment_1 = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_supermarine_seafire_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			supermarine_seafire_equipment_1
+		}
+		dependencies = {
+			tech_mid_spitfire_equipment_1 = 1
+		}
+		path = {
+			leads_to_tech = tech_supermarine_seafire_iii_equipment_1
+			research_cost_coeff = 0.5
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500 
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_CV_fighter_production = yes 
+				}
+			}	
+		}
+	}
+	tech_supermarine_seafire_iii_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			supermarine_seafire_iii_equipment_1
+		}
+		path = {
+			leads_to_tech = tech_supermarine_seafire_xv_equipment_1
+			research_cost_coeff = 0.5
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_CV_fighter_production = yes 
+				}
+			}	
+		}
+	}
+	tech_supermarine_seafire_xv_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			supermarine_seafire_xv_equipment_1
+		}
+		path = {
+			leads_to_tech = tech_sea_fire47_equipment_1
+			research_cost_coeff = 0.5
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1944 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_CV_fighter_production = yes 
+				}
+			}	
+		}
+	}
+	tech_sea_fire47_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			sea_fire47_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 0.7
+		start_year = 1946
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR y = @1946 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1945/7 = yes
+					EAI_CV_fighter_production = yes 
+				}
+			}
+		}
+	}
+	tech_fairey_firefly_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			fairey_firefly_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_FTR_1 y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### CV_CAS
+	tech_fairey_iiif_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			fairey_iiif_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+		}
+		categories = {
+			naval_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1930
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_CAS y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_fairey_seal_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			fairey_seal_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+		}
+		categories = {
+			naval_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1933
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_CAS y = @1933 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_blackburn_skua_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			blackburn_skua_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+		}
+		categories = {
+			naval_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_CAS y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_fairey_barracuda_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			fairey_barracuda_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+		}
+		categories = {
+			naval_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_CAS y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_hawker_seafury_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hawker_seafury_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+		}
+		categories = {
+			naval_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1945
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_CAS y = @1945 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### CV TORPEDO BOMBER ###
+	tech_blackburn_baffin_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			blackburn_baffin_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1933
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_TB y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_blackburn_shark_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			blackburn_shark_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1933
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_TB y = @1933 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_fairey_swordfish_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			fairey_swordfish_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1935
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_TB y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1937/1 = yes
+					EAI_CV_aircraft_production = yes 
+				}
+			}
+		}
+	}
+	tech_fairey_albacore_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			fairey_albacore_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_TB y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_CV_aircraft_production = yes 
+				}
+			}	
+		}
+	}
+	tech_supermarine_dumbo_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			supermarine_dumbo_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_TB y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_CV_aircraft_production = yes 
+				}
+			}
+		}
+	}
+	
+	tech_blackburn_firebrand_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			blackburn_firebrand_equipment_1
+		}	
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1945
+		folder = {
+			name = britishair_folder
+			position = { x = @CV_TB y = @1945 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				AND = {
+					EAI_timegate_1944/7 = yes
+					EAI_CV_aircraft_production = yes 
+				}
+			}
+		}
+	}
+#	tech_gloster_squirt_equipment_1 = {
+#		
+#		enable_equipments = {
+#			gloster_squirt_equipment_1
+#		}
+#		categories = {
+#			light_air
+#			jet_technology
+#		}
+#		research_cost = 2
+#		start_year = 1943
+#		folder = {
+#			name = britishair_folder
+#			position = { x = 24 y = @1943 }
+#		}
+
+#		ai_will_do = {
+#			factor = 0
+#		}
+#	}
+	tech_gloster_meteor_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			gloster_meteor_equipment_1
+		}
+		dependencies = {
+			jet_engines = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = jet_technology_tt
+		}
+		
+		categories = {
+			light_air
+			jet_technology
+			air_equipment
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = britishair_folder
+			position = { x = @JET_FTR y = @JET_1944 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_dehaviland_vampire_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			dehaviland_vampire_equipment_1
+		}
+		
+		dependencies = {
+			jet_engines = 1 
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = jet_technology_tt
+		}
+		categories = {
+			light_air
+			jet_technology
+			air_equipment
+		}
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = britishair_folder
+			position = { x = @JET_FTR y = @JET_1945 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	### MEDIUM BOMBERS ###
+	#tech_heyford_bomber_equipment_1 = {
+	#	enable_equipments = {
+	#		heyford_bomber_equipment_1
+	#	}
+	#	categories = {
+	#		medium_air
+	#		tactical_bomber
+	#		air_equipment
+	#	}
+	#	research_cost = 1
+	#	start_year = 1933
+	#	folder = {
+	#		name = britishair_folder
+	#		position = { x = 27 y = @1933 }
+	#	}
+
+	#	ai_will_do = {
+	#		factor = 10
+	#	}
+	#}
+	tech_handley_harrow_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			handley_harrow_bomber_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = britishair_folder
+			position = { x = @M_BMB y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_handley_hampden_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			handley_hampden_bomber_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = britishair_folder
+			position = { x = @M_BMB y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_bombay_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			bombay_bomber_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1938
+		#folder = {
+		#	name = britishair_folder
+		#	position = NOWHERE
+		#}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_vickers_wellington_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			vickers_wellington_bomber_equipment_1
+		}
+		path = {
+			leads_to_tech = tech_vickers_wellingtonvi_bomber_equipment_1
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = tactical_bomber_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = britishair_folder
+			position = { x = @M_BMB y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					OR = {
+						EAI_TAC_tech_focus = yes 
+						EAI_NAV_tech_focus = yes 
+					} 
+					EAI_timegate_1937/7 = yes
+				}
+			}
+		}
+	}
+	tech_vickers_wellingtonvi_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			vickers_wellingtonvi_bomber_equipment_1
+		}
+		dependencies = {
+			tech_vickers_wellington_bomber_equipment_1 = 1 
+		}
+		
+		path = {
+			leads_to_tech = tech_vickers_warwick_equipment_1
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = britishair_folder
+			position = { x = @M_BMB y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				AND = {
+					OR = {
+						EAI_TAC_tech_focus = yes 
+						EAI_NAV_tech_focus = yes 
+					}
+						EAI_timegate_1938/7 = yes
+				}
+			}
+			modifier = {
+				factor = 300 
+				
+				date > 1938.1.1
+			}	
+		}
+	}
+	### NAVAL BOMBER ###
+	tech_vickers_warwick_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			vickers_warwick_equipment_1
+		}
+		dependencies = {
+			tech_vickers_wellington_bomber_equipment_1 = 1 
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = naval_bomber_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			air_equipment
+			naval_bomber
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = britishair_folder
+			position = { x = @M_BMB_1 y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_NAV_tech_focus = yes 
+				}
+			}
+		}
+	}
+	###
+	tech_bristol_buckingham_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			bristol_buckingham_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = britishair_folder
+			position = { x = @M_BMB y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### STRATEGIC BOMBERS ###
+	tech_hendon_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			hendon_equipment_1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = britishair_folder
+			position = { x = @STRAT_BMB y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_aw_whitley_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			aw_whitley_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = britishair_folder
+			position = { x = @STRAT_BMB y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_avro_manchester_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			avro_manchester_bomber_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = britishair_folder
+			position = { x = @STRAT_BMB y = @1940 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_short_stirling_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			short_stirling_equipment_1
+		}
+		dependencies = {
+			tech_short_sunderland_equipment_1 = 1 
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = strat_bomber_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = britishair_folder
+			position = { x = @STRAT_BMB_1 y = @1940 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_STR_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	tech_handley_halifax_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			handley_halifax_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = britishair_folder
+			position = { x = @STRAT_BMB y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 0	
+		}
+	}
+	tech_avro_lancaster_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			avro_lancaster_equipment_1
+		}
+		path = {
+			leads_to_tech = tech_avro_lancaster_equipment_2
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+		}
+		
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = britishair_folder
+			position = { x = @STRAT_BMB_1 y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000 
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_STR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_avro_lancaster_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			avro_lancaster_equipment_2
+		}
+		path = {
+			leads_to_tech = tech_avro_lincoln_equipment_1
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = britishair_folder
+			position = { x = @STRAT_BMB_1 y = @1943 }
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				country_event = { id = EAI_V.512 days = 1 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_STR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_avro_lincoln_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			avro_lincoln_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		research_cost = 1
+		start_year = 1945
+		folder = {
+			name = britishair_folder
+			position = { x = @STRAT_BMB_1 y = @1945 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1944/1 = yes
+					EAI_STR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	### NAVAL
+	tech_saro_london_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			saro_london_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = britishair_folder
+			position = { x = @FLY_BTS y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_short_sunderland_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			short_sunderland_equipment_1
+		}
+		path = {
+			leads_to_tech = tech_short_seaford_equipment_1
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = britishair_folder
+			position = { x = @FLY_BTS y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_short_seaford_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = {
+			short_seaford_equipment_1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = britishair_folder
+			position = { x = @FLY_BTS y = @1944 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

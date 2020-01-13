@@ -1,0 +1,1031 @@
+scripted_gui = {
+
+	partisan_popup = {
+		context_type = player_context
+		
+		window_name = "partisan_popup_container"
+		#parent_window_token = technology_tab
+        
+		visible = {
+			always = no
+		}
+		
+		effects = {
+			
+		}
+        
+		triggers = { 
+			
+		}
+	}
+	research_slot = {
+		context_type = player_context
+		
+		window_name = "research_slot_info_container"
+		parent_window_name = "research_slots"
+		#parent_window_token = technology_tab
+        
+		visible = {
+			player_only_trigger = yes
+			#has_variable = research_state_1
+		}
+		
+		properties = {
+			research_slot_overlay = {
+				frame = research_slot_overlay
+			}
+		}
+		effects = {
+			research_slot_overlay_1_click = {
+				ROOT = {
+					set_variable = { selected_research_slot = 1 }
+					set_country_flag = {
+						flag = selected_research_slot
+						value = 1
+					}
+					clr_country_flag = LOCK:infantry_folder
+					clr_country_flag = LOCK:special_forces
+					clr_country_flag = LOCK:support_folder
+					clr_country_flag = LOCK:artillery_folder
+					clr_country_flag = LOCK:tank_techs_folder
+					clr_country_flag = LOCK:armor_folder
+					clr_country_flag = LOCK:air_techs_folder
+					clr_country_flag = LOCK:air_techs_folder_army
+					clr_country_flag = LOCK:air_techs_folder_navy
+					clr_country_flag = LOCK:naval_folder
+					clr_country_flag = LOCK:naval_techs_folder
+					clr_country_flag = LOCK:industry_folder
+					clr_country_flag = LOCK:ww1_land_doctrine_folder
+					clr_country_flag = LOCK:land_doctrine_folder
+					clr_country_flag = LOCK:naval_doctrine_folder
+					clr_country_flag = LOCK:air_doctrine_folder
+					clr_country_flag = LOCK:electronics_folder
+					clr_country_flag = LOCK:nuclear_folder
+				}
+			}
+			research_slot_overlay_2_click = {
+				ROOT = {
+					set_variable = { selected_research_slot = 2 }
+					set_country_flag = {
+						flag = selected_research_slot
+						value = 2
+					}
+					clr_country_flag = LOCK:infantry_folder
+					clr_country_flag = LOCK:special_forces
+					clr_country_flag = LOCK:support_folder
+					clr_country_flag = LOCK:artillery_folder
+					clr_country_flag = LOCK:tank_techs_folder
+					clr_country_flag = LOCK:armor_folder
+					clr_country_flag = LOCK:air_techs_folder
+					clr_country_flag = LOCK:air_techs_folder_army
+					clr_country_flag = LOCK:air_techs_folder_navy
+					clr_country_flag = LOCK:naval_folder
+					clr_country_flag = LOCK:naval_techs_folder
+					clr_country_flag = LOCK:industry_folder
+					clr_country_flag = LOCK:ww1_land_doctrine_folder
+					clr_country_flag = LOCK:land_doctrine_folder
+					clr_country_flag = LOCK:naval_doctrine_folder
+					clr_country_flag = LOCK:air_doctrine_folder
+					clr_country_flag = LOCK:electronics_folder
+					clr_country_flag = LOCK:nuclear_folder
+				}
+			}
+			research_slot_overlay_click = {
+				ROOT = {
+					set_variable = { selected_research_slot = Prev.id }
+					set_temp_variable = { id_var = Prev.position }
+					meta_effect = {
+						text = {
+							set_country_flag = {
+								flag = selected_research_slot
+								value = [VALUE]
+							}
+						}
+						VALUE = id_var
+					}
+				}
+				set_folder_flags = yes
+			}
+			research_slot_overlay_right_click = {
+				if = {
+					limit = {
+						ROOT = { has_country_flag = selected_research_slot }
+					}
+					ROOT = {
+						clr_country_flag = selected_research_slot
+						clear_variable = selected_research_slot
+					}
+				}
+				else = {
+					add_to_variable = { research_slot_overlay = 1 }
+					if = {
+						limit = {
+							check_variable = { research_slot_overlay > 6 }
+						}
+						clear_variable = research_slot_overlay
+					}
+				}
+			}
+		}
+		
+		dynamic_lists = {
+			research_slot_list = {
+				array = Root.research_slots 
+				change_scope = yes
+				entry_container = "research_slot_container"
+			}
+		}
+        
+		triggers = { 
+			research_slot_overlay_visible = {
+				ROOT = {
+					set_temp_variable = { id_var = Prev.position }
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_country_flag = {
+									flag = selected_research_slot
+									value = [VALUE]
+								}
+							}
+						}
+						VALUE = id_var
+					}
+				}
+			}
+			research_slot_overlay_1_visible = {
+				ROOT = {
+					NOT = {
+						has_country_flag = {
+							flag = selected_research_slot
+							value = 1
+						}
+					}
+				}
+			} 
+			research_slot_overlay_2_visible = {
+				ROOT = {
+					NOT = {
+						has_country_flag = {
+							flag = selected_research_slot
+							value = 2
+						}
+					}
+				}
+			} 
+		}
+		
+	}
+	research_centre = {
+		context_type = player_context
+		
+		window_name = "research_view_menu_container"
+		parent_window_token = technology_tab
+        
+		visible = {
+			player_only_trigger = yes
+			#has_variable = research_state_1
+		}
+		
+		
+		
+		effects = {
+			research_centre_button_click = {
+				if = {
+					limit = {
+						has_country_flag = show_research_centre_locations
+					}
+					clr_country_flag = show_research_centre_locations
+				}
+				else = {
+					set_country_flag = show_research_centre_locations
+					
+				}	
+			}	
+		}
+	}
+	
+	research_centre_gui = {
+		context_type = player_context
+		
+		window_name = "research_centre_container"
+		parent_window_token = technology_tab
+        
+		visible = {
+			has_country_flag = show_research_centre_locations
+		}
+		
+		effects = {
+			#wanted to do goto_state, but it still CTDs (but nothing to fix nono, 1.6 is done)
+			research_centre_1_click = {
+				
+			}
+			research_centre_2_click = {
+				
+			}
+			research_centre_3_click = {
+				
+			}
+			research_centre_4_click = {
+				
+			}
+			research_centre_5_click = {
+				
+			}
+			research_centre_6_click = {
+				
+			}
+			research_centre_7_click = {
+				
+			}
+			research_centre_8_click = {
+				
+			}
+			research_centre_9_click = {
+				
+			}
+			research_centre_10_click = {
+				
+			}
+			research_centre_11_click = {
+				
+			}
+			research_centre_12_click = {
+				
+			}
+			research_centre_13_click = {
+				
+			}
+			research_centre_14_click = {
+				
+			}
+			research_centre_15_click = {
+				
+			}
+			research_centre_16_click = {
+				
+			}
+		}
+        
+		triggers = {
+			research_centre_1_visible = {
+				has_variable = research_state_1
+			}
+			research_centre_1_lost_visible = {
+				has_variable = research_state_1
+				var:research_state_1 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_1_name_visible = {
+				has_variable = research_state_1
+			}
+			research_centre_2_visible = {
+				has_variable = research_state_2
+			}
+			research_centre_2_lost_visible = {
+				has_variable = research_state_2
+				var:research_state_2 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_2_name_visible = {
+				has_variable = research_state_2
+			}
+			research_centre_3_visible = {
+				has_variable = research_state_3
+			}
+			research_centre_3_lost_visible = {
+				has_variable = research_state_3
+				var:research_state_3 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_3_name_visible = {
+				has_variable = research_state_3
+			}
+			research_centre_4_visible = {
+				has_variable = research_state_4
+			}
+			research_centre_4_lost_visible = {
+				has_variable = research_state_4
+				var:research_state_4 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_4_name_visible = {
+				has_variable = research_state_4
+			}
+			research_centre_5_visible = {
+				has_variable = research_state_5
+			}
+			research_centre_5_lost_visible = {
+				has_variable = research_state_5
+				var:research_state_5 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_5_name_visible = {
+				has_variable = research_state_5
+			}
+			research_centre_6_visible = {
+				has_variable = research_state_6
+			}
+			research_centre_6_lost_visible = {
+				has_variable = research_state_6
+				var:research_state_6 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_6_name_visible = {
+				has_variable = research_state_6
+			}
+			research_centre_7_visible = {
+				has_variable = research_state_7
+			}
+			research_centre_7_lost_visible = {
+				has_variable = research_state_7
+				var:research_state_7 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_7_name_visible = {
+				has_variable = research_state_7
+			}
+			research_centre_8_visible = {
+				has_variable = research_state_8
+			}
+			research_centre_8_lost_visible = {
+				has_variable = research_state_8
+				var:research_state_8 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_8_name_visible = {
+				has_variable = research_state_8
+			}
+			research_centre_9_visible = {
+				has_variable = research_state_9
+			}
+			research_centre_9_lost_visible = {
+				has_variable = research_state_9
+				var:research_state_9 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_9_name_visible = {
+				has_variable = research_state_9
+			}
+			research_centre_10_visible = {
+				has_variable = research_state_10
+			}
+			research_centre_10_lost_visible = {
+				has_variable = research_state_10
+				var:research_state_10 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_10_name_visible = {
+				has_variable = research_state_10
+			}
+			research_centre_11_visible = {
+				has_variable = research_state_11
+			}
+			research_centre_11_lost_visible = {
+				has_variable = research_state_11
+				var:research_state_11 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_11_name_visible = {
+				has_variable = research_state_11
+			}
+			research_centre_12_visible = {
+				has_variable = research_state_12
+			}
+			research_centre_12_lost_visible = {
+				has_variable = research_state_12
+				var:research_state_12 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_12_name_visible = {
+				has_variable = research_state_12
+			}
+			research_centre_13_visible = {
+				has_variable = research_state_13
+			}
+			research_centre_13_lost_visible = {
+				has_variable = research_state_13
+				var:research_state_13 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_13_name_visible = {
+				has_variable = research_state_13
+			}
+			research_centre_14_visible = {
+				has_variable = research_state_14
+			}
+			research_centre_14_lost_visible = {
+				has_variable = research_state_14
+				var:research_state_14 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_14_name_visible = {
+				has_variable = research_state_14
+			}
+			research_centre_15_visible = {
+				has_variable = research_state_15
+			}
+			research_centre_15_lost_visible = {
+				has_variable = research_state_15
+				var:research_state_15 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_15_name_visible = {
+				has_variable = research_state_15
+			}
+			research_centre_16_visible = {
+				has_variable = research_state_16
+			}
+			research_centre_16_lost_visible = {
+				has_variable = research_state_16
+				var:research_state_16 = {
+					CONTROLLER = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			research_centre_16_name_visible = {
+				has_variable = research_state_16
+			}
+		}
+	}
+	
+	nukezero = {
+		context_type = player_context
+		
+		parent_window_token = top_bar
+		window_name = "nukezero_container"
+		
+		visible = {
+			player_only_trigger = yes
+            NOT = { has_tech = nukes }
+			#always = yes
+		}
+
+		effects = {
+			
+		}
+		
+		triggers = {
+		
+		}
+	}
+	special_forces = { 
+		context_type = player_context 
+		
+		parent_window_token = top_bar
+		window_name = "special_forces_container"
+		
+		visible = {
+			player_only_trigger = yes
+		}
+
+		effects = {
+			
+		}
+		
+		triggers = {
+		
+		}
+	}
+	
+	topbarextender = {
+		context_type = player_context
+		
+		parent_window_token = top_bar
+		window_name = "topbarextender_container"
+		
+		visible = {
+			has_global_flag = wip
+			player_only_trigger = yes
+            check_variable = { show_topbar_extended < 1 }
+		}
+
+		effects = {
+            topbar_eba_click = {
+				#add_political_power = 1
+				if ={
+					limit={
+						check_variable={ show_topbar_extended = 1}
+					}
+					set_variable = { show_topbar_extended = 0 }
+				}
+				else={
+					set_variable = { show_topbar_extended = 1 }
+				}
+            }
+		}
+		
+		triggers = {
+		
+		}
+	}
+	topbarunextender = {
+		context_type = player_context
+		
+		parent_window_token = top_bar
+		window_name = "topbarunextender_container"
+		
+		visible = {
+			has_global_flag = wip
+			player_only_trigger = yes
+            check_variable = { show_topbar_extended > 0 }
+		}
+
+		effects = {
+            topbar_ueba_click = {
+				#add_political_power = 1
+				if ={
+					limit={
+						check_variable={ show_topbar_extended = 1}
+					}
+					set_variable = { show_topbar_extended = 0 }
+				}
+				else={
+					set_variable = { show_topbar_extended = 1 }
+				}
+            }
+		}
+		
+		triggers = {
+		
+		}
+	}
+	topbar_extended = {
+		context_type = player_context
+		#context_type = decision_category
+		#context_type = selected_state_context
+		#context_type = background
+		
+		parent_window_token = top_bar
+		window_name = "topbarbg_extended_container"
+		
+		visible = {
+			has_global_flag = wip
+			player_only_trigger = yes
+			check_variable = { show_topbar_extended > 0 }
+		}
+	}
+	
+	bicepanel = {
+		context_type = player_context
+		
+		parent_window_token = top_bar
+		window_name = "bicepanel_container"
+		
+		visible = {
+			player_only_trigger = yes
+		}
+
+		effects = {
+            bice_icon_click = {
+				if ={
+					limit={
+						check_variable={ show_bicepanel = 1}
+					}
+					set_variable = { show_bicepanel = 0 }
+				}
+				else={
+					set_variable = { show_bicepanel = 1 }
+				}				
+            }
+			
+		}
+		
+		triggers = {
+			bice_icon_click_enabled = {
+				check_variable = { global.players^num = 1 }
+			}
+		}
+	}
+	bicepanel_menu = {
+		context_type = player_context
+		
+		parent_window_token = top_bar
+		window_name = "bicepanel_menu_container"
+		
+		visible = {
+			player_only_trigger = yes
+			check_variable = { show_bicepanel > 0 }
+		}
+		
+		effects = {
+			exitbuttonmbice_click = {
+				clear_variable = show_bicepanel
+				clear_variable = mapmode_filter
+			}
+			scripted_faq.1_click = {
+				country_event = faq.1
+			}
+			scripted_performance.1_click = {
+				if = {
+					limit {
+						NOT = {
+							any_other_country = {
+								is_ai = no
+							}
+						}
+					}
+					country_event = performance.1
+				}
+			}
+			scripted_debug.1_click = {
+				if = {
+					limit {
+						NOT = {
+							any_other_country = {
+								is_ai = no
+							}
+						}
+					}
+					country_event = debug.1
+				}
+			}
+			scripted_debug.102_click = { #event that would paint all countries in the color of their ideology
+				if = {
+					limit {
+						NOT = {
+							any_other_country = {
+								is_ai = no
+							}
+						}
+					}
+					country_event = debug.102
+				}
+			}
+			scripted_debug.103_click = { #and another that paints them based on a specific law set (monarchy/republic for example) would include a disclaimer that it ruins all existing cosmetic_tags
+				if = {
+					limit {
+						NOT = {
+							any_other_country = {
+								is_ai = no
+							}
+						}
+					}
+					country_event = debug.103
+				}
+			}
+			scripted_debug.104_click = {
+				if = {
+					limit {
+						NOT = {
+							any_other_country = {
+								is_ai = no
+							}
+						}
+					}
+					country_event = debug.104
+				}
+			}
+			
+			scripted_debug.105_click = {
+				if = {
+					limit {
+						NOT = {
+							any_other_country = {
+								is_ai = no
+							}
+						}
+					}
+					country_event = debug.105
+				}
+			}
+			scripted_debug.105_right_click = {
+				add_to_variable = { mapmode_filter = 1 }
+				if = {
+					limit = { 
+						check_variable = { mapmode_filter > 4 }
+						#NOT = {
+							#any_other_country = {
+								#is_ai = no
+							#}
+					}
+					set_variable = { mapmode_filter = 0 }
+				}
+			}
+			
+			#a link button next to the faq.1 event button that takes you to the pinned FAQ on the steam workshop
+			#event to give germany a better yet still censored flag
+			#event to give all countries their vanilla color, not their panzeroo/BICE color
+			#event that fixes cosmetic tags -partially done, go through all files and find the rest that arent in cosmetic.txt #thats why it says partial
+			#event to disable formable nation decisions (for multiplayer?)
+			#event to enable equipment trading interface
+			#debug event for enabling/disabling elections
+			
+			#button to turn the new topbar top-right gui on and off, same with colonial's buttons, some people prefer the vanilla buttons or colored buttons mod
+			#button to the control panel so jack can make some easy "Hide these Events - Enable again in control center" for unit leaders leveling up/Partisans
+			#"DLCs" and "BICE Mods" submenus: insert scripted gui that can figure out what DLCs you have enabled and which of the 3 BICE mods you have enabled; make sure player gets warning events if he misses the MK I or gfx addon mods #do it by adding on_startup events, one in gfx addon, one in MK I that give global flags and those events are only stored in those mods
+				#2 more small checkmarks that show you if  you have historical mode on and ironman off
+			#"Mods" submenu: insert scripted gui that enables and disables player-led peace conferences mod. also integrate that mod and make it toggle-able. also only make it available in singleplayer
+			#integrate all kinds of tool-like mods but only make them available by turning them on from here
+				#add_political_power = 1 #for testing if the button works
+		}
+		
+		triggers = {
+			
+		}
+	}
+	
+	storage = {
+		context_type = player_context
+		
+		parent_window_token = top_bar
+		window_name = "storage_container"
+		
+		visible = {
+			player_only_trigger = yes
+		} 
+
+		effects = {
+			rubber_bg_click = {
+				open_resource_storage_menu = yes
+			} 
+			tungsten_bg_click = {
+				open_resource_storage_menu = yes
+			}
+			steel_bg_click = {
+				open_resource_storage_menu = yes
+			}
+			chromium_bg_click = {
+				open_resource_storage_menu = yes
+			}
+			aluminum_bg_click = {  
+				open_resource_storage_menu = yes
+			}
+        }
+		
+		triggers = {
+			consumer_bg_visible = {
+				always = no
+			}
+			consumer_icon_visible = {
+				always = no
+			}
+			consumer_storage_value_visible = {
+				always = no
+			}
+		}
+	}
+	storage_menu = {
+		context_type = player_context
+		
+		parent_window_token = top_bar
+		window_name = "storage_menu_container"
+		
+		visible = {
+			player_only_trigger = yes
+			check_variable = { show_storage > 0 }
+		}
+		
+		effects = {
+			exitbutton_click = {
+				close_resource_storage_menu = yes
+			}
+			output_rubber_click = {
+				custom_effect_tooltip = number_rubber_TT2
+				if = {
+					limit = { NOT = { has_country_flag = use_up_rubber } }
+					meta_effect = {
+						text = {
+							modify_building_resources = {
+								building = rubber_storage
+								resource = rubber
+								amount = [RUBBER]
+							}
+						}
+						RUBBER = rubber_storage_output
+					}
+					set_variable = { original_rubber_storage_output = rubber_storage_output }
+					multiply_variable = { original_rubber_storage_output = -1 }
+					
+					set_variable = { rubber_output = rubber_storage_output }
+					multiply_variable = { rubber_output = rubber_storage_buildings }
+					
+					set_country_flag = use_up_rubber
+					
+				}	
+				else_if = {
+					limit = { has_country_flag = use_up_rubber }
+					meta_effect = {
+						text = {
+							modify_building_resources = {
+								building = rubber_storage
+								resource = rubber
+								amount = [RUBBER]
+							}
+						}
+						RUBBER = original_rubber_storage_output
+					}
+					clr_country_flag = use_up_rubber
+					clear_variable = original_rubber_storage_output
+					clear_variable = rubber_output 
+				}
+			}
+			output_aluminium_click = {
+				custom_effect_tooltip = number_aluminium_TT2
+				if = {
+					limit = { NOT = { has_country_flag = use_up_aluminium } }
+					meta_effect = {
+						text = {
+							modify_building_resources = {
+								building = aluminium_storage
+								resource = aluminium
+								amount = [ALUMINIUM]
+							}
+						}
+						ALUMINIUM = aluminium_storage_output
+					}
+					set_variable = { original_aluminium_storage_output = aluminium_storage_output }
+					multiply_variable = { original_aluminium_storage_output = -1 }
+					
+					set_variable = { aluminium_output = aluminium_storage_output }
+					multiply_variable = { aluminium_output = aluminium_storage_buildings }
+					
+					set_country_flag = use_up_aluminium
+				}	
+				else_if = {
+					limit = { has_country_flag = use_up_aluminium }
+					meta_effect = {
+						text = {
+							modify_building_resources = {
+								building = aluminium_storage
+								resource = aluminium
+								amount = [ALUMINIUM]
+							}
+						}
+						ALUMINIUM = original_aluminium_storage_output
+					}
+					clr_country_flag = use_up_aluminium
+					clear_variable = original_aluminium_storage_output
+					clear_variable = aluminium_output 
+				}
+			}
+			output_tungsten_click = {
+				custom_effect_tooltip = number_tungsten_TT2
+				if = {
+					limit = { NOT = { has_country_flag = use_up_tungsten } }
+					meta_effect = {
+						text = {
+							modify_building_resources = {
+								building = tungsten_storage
+								resource = tungsten
+								amount = [TUNGSTEN]
+							}
+						}
+						TUNGSTEN = tungsten_storage_output
+					}
+					set_variable = { original_tungsten_storage_output = tungsten_storage_output }
+					multiply_variable = { original_tungsten_storage_output = -1 }
+					
+					set_variable = { tungsten_output = tungsten_storage_output }
+					multiply_variable = { tungsten_output = tungsten_storage_buildings }
+					
+					set_country_flag = use_up_tungsten
+				}	
+				else_if = {
+					limit = { has_country_flag = use_up_tungsten }
+					meta_effect = {
+						text = {
+							modify_building_resources = {
+								building = tungsten_storage
+								resource = tungsten
+								amount = [TUNGSTEN]
+							}
+						}
+						TUNGSTEN = original_tungsten_storage_output
+					}
+					clr_country_flag = use_up_tungsten
+					clear_variable = original_tungsten_storage_output
+					clear_variable = tungsten_output 
+				}
+			} 
+			output_steel_click = {
+				custom_effect_tooltip = number_steel_TT2
+				if = {
+					limit = { NOT = { has_country_flag = use_up_steel } }
+					meta_effect = {
+						text = {
+							modify_building_resources = {
+								building = steel_storage
+								resource = steel
+								amount = [STEEL]
+							}
+						}
+						STEEL = steel_storage_output
+					}
+					set_variable = { original_steel_storage_output = steel_storage_output }
+					multiply_variable = { original_steel_storage_output = -1 }
+					
+					set_variable = { steel_output = steel_storage_output }
+					multiply_variable = { steel_output = steel_storage_buildings }
+					
+					set_country_flag = use_up_steel
+				}	
+				else_if = {
+					limit = { has_country_flag = use_up_steel }
+					meta_effect = {
+						text = {
+							modify_building_resources = {
+								building = steel_storage
+								resource = steel
+								amount = [STEEL]
+							}
+						}
+						STEEL = original_steel_storage_output
+					}
+					clr_country_flag = use_up_steel
+					clear_variable = original_steel_storage_output
+					clear_variable = steel_output 
+				}
+			}
+			output_chromium_click = {
+				custom_effect_tooltip = number_chromium_TT2
+				if = {
+					limit = { NOT = { has_country_flag = use_up_chromium } }
+					meta_effect = {
+						text = {
+							modify_building_resources = {
+								building = chromium_storage
+								resource = chromium
+								amount = [CHROMIUM]
+							}
+						}
+						CHROMIUM = chromium_storage_output
+					}
+					set_variable = { original_chromium_storage_output = chromium_storage_output }
+					multiply_variable = { original_chromium_storage_output = -1 }
+					
+					set_variable = { chromium_output = chromium_storage_output }
+					multiply_variable = { chromium_output = chromium_storage_buildings }
+					
+					set_country_flag = use_up_chromium
+				}	
+				else_if = {
+					limit = { has_country_flag = use_up_chromium }
+					meta_effect = {
+						text = {
+							modify_building_resources = {
+								building = chromium_storage
+								resource = chromium
+								amount = [CHROMIUM]
+							}
+						}
+						CHROMIUM = original_chromium_storage_output
+					}
+					clr_country_flag = use_up_chromium
+					clear_variable = original_chromium_storage_output
+					clear_variable = chromium_output 
+				}
+			}
+		}
+		
+		triggers = {
+			
+		}
+	}
+}

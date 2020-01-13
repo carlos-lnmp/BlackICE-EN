@@ -1,0 +1,26 @@
+PRC_ally_CHI = {
+	name = "Communist China alliance with CHI"
+	desc = "Forces alliance with CHI"
+
+	enable = {
+		original_tag = PRC
+		is_in_faction_with = CHI
+	}
+	abort = {
+		NOT = {
+			is_in_faction_with = CHI
+		}
+	}
+	ai_strategy = {
+		type = alliance
+		id = "CHI"
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+	}
+
+}

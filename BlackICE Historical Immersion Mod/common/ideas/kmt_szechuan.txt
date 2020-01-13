@@ -1,0 +1,312 @@
+ideas = {
+	political_advisor = {
+		
+		SCC_deng_hanxiang = {
+		
+			picture = generic_political_advisor_asia_2
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			available = {
+			}
+			
+			traits = { 
+				silent_workhorse 
+political_advisor_trait
+			}
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		SCC_gan_jieyong = {
+
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			traits = { compassionate_gentleman  political_advisor_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Economic
+	economic_minister = {
+		SCC_liu_hangshen = {
+
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			traits = { captain_of_industry  economic_minister_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+
+
+
+		SCC_zhong_tiqian = {
+
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			traits = { quartermaster_general  economic_minister_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+	}
+
+	theorist = {
+		SCC_fu_chang = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			available = {
+			}
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { military_theorist  theorist_trait }
+		}
+		
+		SCC_navy_theorist = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			research_bonus = {
+				naval_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { naval_theorist  theorist_trait }
+		}
+		
+		SCC_air_theorist = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			available = {
+			}
+			
+			research_bonus = {
+				air_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+	}
+
+	high_command = {
+
+		SCC_li_jiayu = {
+
+			picture = generic_air_asia_2
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			traits = { army_entrenchment_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		SCC_yang_sen = {
+
+			picture = generic_navy_asia_2
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			traits = { army_infantry_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		SCC_sun_zhen = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			traits = { army_cavalry_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		SCC_tang_shizun = {
+
+			picture = generic_army_asia_3
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			traits = { navy_chief_maneuver_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		SCC_wang_zuanxu = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			traits = { army_logistics_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+
+	army_chief = {
+		
+		SCC_deng_xihou = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			traits = { army_regrouping_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0 
+				modifier = {
+					add = 20 
+					has_country_flag = SCC_liu_xiang_dead
+				}
+			}
+		}
+
+		SCC_tian_song_yao = {
+
+			picture = generic_army_asia_2
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			traits = { army_chief_offensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		SCC_liu_xiang = {
+
+			picture = generic_army_asia_3
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			available = {
+				NOT = {
+					has_country_flag = SCC_liu_xiang_dead
+				}
+			}
+			
+			traits = { army_chief_morale_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+
+	air_chief = {
+		
+		SCC_air_chief = {
+			
+			picture = generic_air_asia_1
+			
+			allowed = {
+				original_tag = SCC
+			}
+			
+			available = {
+			}
+			
+			traits = { air_chief_safety_1  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	
+	navy_chief = {
+
+		SCC_navy_chief = {
+			
+			picture = generic_navy_asia_1
+
+			allowed = {
+				original_tag = SCC
+			}
+					
+			traits = { navy_chief_reform_1  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+}

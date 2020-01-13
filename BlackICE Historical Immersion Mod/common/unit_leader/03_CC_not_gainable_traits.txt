@@ -1,0 +1,1224 @@
+leader_traits = {
+#Based on HoI3 BICE traits by Riever 
+#Adapted for HOI4 1.5 by maverick87
+##################################
+# Table of Contents
+# - Corps Commander (CC) not-gainable traits
+# - Navy leaders not-gainable traits
+##################################
+	logistics_wizard_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		cost = 1500 #experience
+		
+		modifier = {
+			supply_consumption_factor = -0.02
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = logistics_wizard_CC
+		
+		gui_row = 1
+	}
+	logistics_wizard_CC_III = {
+		type = corps_commander
+		
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			has_trait = logistics_wizard_CC_II
+		}
+		
+		cost = 2000
+		
+		modifier = {
+			supply_consumption_factor = -0.03
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = logistics_wizard_CC
+
+		gui_row = 2
+	}
+	infantry_expert = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			set_temp_variable = { temp = num_battalions }
+			multiply_temp_variable = { temp = 0.4 }
+			
+			set_temp_variable = { ratio = num_battalions_with_type@infantry }
+			divide_temp_variable = { ratio = num_battalions }
+			custom_trigger_tooltip = {
+				tooltip = infantry_ratio_over_40
+				check_variable = { num_battalions_with_type@infantry > temp }
+			}
+		}
+
+		cost = 500
+		
+		modifier = {
+			modifier_army_sub_unit_infantry_attack_factor = 0.1
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+
+		mutually_exclusive = ambusher
+		
+		trait_type = assignable_trait
+		parent = infantry_leader
+		
+		gui_row = 3
+	}
+	ambusher = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 500
+		
+		modifier = {
+			max_dig_in = 1
+			recon_factor_while_entrenched = 0.15
+		}
+		
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		mutually_exclusive = infantry_expert
+
+		trait_type = assignable_trait
+		parent = infantry_leader
+		
+		gui_row = 4
+	}
+	panzer_leader_II = { 
+		type = corps_commander
+		gain_xp = {
+			hardness > 0.5
+		}
+		
+		cost = 750
+		
+		modifier = {
+			modifier_army_sub_unit_category_all_armor_speed_factor = 0.04
+			modifier_army_sub_unit_category_all_armor_attack_factor = 0.08
+		}
+		
+		on_add = {
+			log = "||| [This.GetName] assigned panzer_leader_II |||"
+		}
+
+		ai_will_do = {
+			base = -2000 
+			modifier = {
+				add = 2000
+				OWNER = { 
+					OR = {
+						EAI_medium_armor_production = yes 
+						EAI_heavy_armor_production = yes 
+					}
+				}
+			}
+			modifier = {
+				add = 1000 
+				has_trait = blitzkrieg_master
+			}
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = panzer_leader
+		
+		gui_row = 5
+	}
+	panzer_leader_III = { 
+		type = corps_commander
+		gain_xp = {
+			hardness > 0.5
+		}
+		
+		prerequisites = {
+			has_trait = panzer_leader_II
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			modifier_army_sub_unit_category_all_armor_speed_factor = 0.03
+			modifier_army_sub_unit_category_all_armor_attack_factor = 0.06
+		}
+
+		on_add = {
+			log = "||| [This.GetName] assigned panzer_leader_III |||"
+		}
+		ai_will_do = {
+			base = -2000 
+			modifier = {
+				add = 2000
+				OWNER = { 
+					OR = {
+						EAI_medium_armor_production = yes 
+						EAI_heavy_armor_production = yes 
+					}
+				}
+			}
+			modifier = {
+				add = 1000 
+				has_trait = blitzkrieg_master
+			}
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = panzer_leader
+		
+		gui_row = 6
+	}
+	panzer_expert = { #
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			has_trait = panzer_leader_III
+		}
+		
+		cost = 1250
+		
+		modifier = {
+			modifier_army_sub_unit_category_all_armor_defence_factor = 0.07
+		}
+		
+		custom_effect_tooltip = INCREASED_BLITZ_AND_ENCIRCLEMENT_CHANCE
+		
+		ai_will_do = {
+			base = -2000 
+			modifier = {
+				add = 2000
+				OWNER = { 
+					OR = {
+						EAI_medium_armor_production = yes 
+						EAI_heavy_armor_production = yes 
+					}
+				}
+			}
+			modifier = {
+				add = 1000 
+				has_trait = blitzkrieg_master
+			}
+			modifier = {
+				add = -5000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = panzer_leader
+		
+		mutually_exclusive = combined_arms_expert
+		mutually_exclusive = cavalry_expert
+		
+		gui_row = 7
+	}
+	combined_arms_expert = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			OR = {
+				has_trait = panzer_leader_II
+				has_trait = motorized_leader_II
+			}
+		}
+		
+		cost = 750
+		
+		modifier = {
+			modifier_army_sub_unit_motorized_defence_factor = 0.04
+			modifier_army_sub_unit_mechanized_defence_factor = 0.04
+			modifier_army_sub_unit_category_all_armor_defence_factor = 0.04
+		}
+		
+		custom_effect_tooltip = INCREASED_BLITZ_AND_ENCIRCLEMENT_CHANCE
+		
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = 2000
+				OR = {
+					has_trait = panzer_leader_II
+					has_trait = motorized_leader_II
+				}
+			}
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = motorized_leader
+		parent = panzer_leader
+		
+		mutually_exclusive = panzer_expert
+		mutually_exclusive = motorized_leader_III
+		mutually_exclusive = cavalry_expert
+		
+		num_parents_needed = 1
+		gui_row = 8
+	}
+	motorized_leader_II = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		prerequisites = {
+			set_temp_variable = { temp = num_battalions }
+			multiply_temp_variable = { temp = 0.3 }
+			set_temp_variable = { cmm = num_battalions_with_type@motorized }
+			add_to_temp_variable = { cmm = num_battalions_with_type@mechanized }
+			
+			set_temp_variable = { ratio = cmm }
+			divide_temp_variable = { ratio = num_battalions }
+			custom_trigger_tooltip = {
+				tooltip = motorized_ratio_over_30
+				check_variable = { cmm > temp }
+			}
+		}
+		cost = 500
+		
+		modifier = {
+			modifier_army_sub_unit_motorized_attack_factor = 0.08
+			modifier_army_sub_unit_motorized_defence_factor = 0.08
+		}
+		
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = motorized_leader
+		
+		mutually_exclusive = cavalry_expert
+		
+		gui_row = 9
+	}
+	motorized_leader_III = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		prerequisites = {
+			has_trait = motorized_leader_II
+			
+			set_temp_variable = { temp = num_battalions }
+			multiply_temp_variable = { temp = 0.3 }
+			set_temp_variable = { cmm = num_battalions_with_type@motorized }
+			add_to_temp_variable = { cmm = num_battalions_with_type@mechanized }
+			
+			set_temp_variable = { ratio = cmm }
+			divide_temp_variable = { ratio = num_battalions }
+			custom_trigger_tooltip = {
+				tooltip = motorized_ratio_over_30
+				check_variable = { cmm > temp }
+			}
+		}
+		
+		cost = 500
+		
+		modifier = {
+			modifier_army_sub_unit_mechanized_attack_factor = 0.08
+			modifier_army_sub_unit_mechanized_defence_factor = 0.08
+		}
+		
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		
+		mutually_exclusive = cavalry_expert
+		
+		gui_row = 10
+	}
+	cavalry_expert = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		prerequisites = {
+			set_temp_variable = { temp = num_battalions }
+			multiply_temp_variable = { temp = 0.25 }
+			set_temp_variable = { cmm = num_battalions_with_type@cavalry }
+			
+			set_temp_variable = { ratio = cmm }
+			divide_temp_variable = { ratio = num_battalions }
+			custom_trigger_tooltip = {
+				tooltip = cavalry_ratio_over_25
+				check_variable = { cmm > temp }
+			}
+		}
+		cost = 500
+		
+		modifier = {
+			modifier_army_sub_unit_cavalry_attack_factor = 0.08
+			modifier_army_sub_unit_cavalry_defence_factor = 0.08
+		}
+		
+		ai_will_do = {
+			base = -1000 #add very low priority to garrison unit leaders, (trigger?)
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = cavalry_leader
+		
+		mutually_exclusive = panzer_expert
+		mutually_exclusive = combined_arms_expert
+		
+		gui_row = 11
+	}
+	spearhead_specialist_II = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			combat_width_factor = -0.02
+		}
+
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = spearhead_specialist
+		
+		gui_row = 12
+	}
+	spearhead_specialist_III = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			has_trait = spearhead_specialist_II
+		}
+		
+		cost = 1500
+		
+		modifier = {
+			combat_width_factor = -0.03
+		}
+
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = spearhead_specialist
+		
+		gui_row = 13
+	}
+	
+	offensive_doctrine_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		cost = 1500
+		
+		modifier = {
+			offence = 0.04
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -6000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = offensive_doctrine_CC
+		
+		gui_row = 14
+	}
+
+	offensive_doctrine_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			has_trait = offensive_doctrine_CC_II
+		}
+		
+		cost = 2000
+		
+		modifier = {
+			offence = 0.05
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -6000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = offensive_doctrine_CC
+		
+		gui_row = 15
+	}
+	defensive_doctrine_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 1500
+		
+		modifier = {
+			defence = 0.04
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -6000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = defensive_doctrine_CC
+		
+		gui_row = 16
+	}
+	defensive_doctrine_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			has_trait = defensive_doctrine_CC_II
+		}
+		
+		cost = 1500
+		
+		modifier = {
+			defence = 0.05
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -6000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = defensive_doctrine_CC
+		
+		gui_row = 17
+	}
+	trench_warfare_specialist_II = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			max_dig_in_factor = 0.1
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = 2000 
+				OWNER = { has_tech = defence_in_depth } 
+			}
+			modifier = {
+				add = -6000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = trench_warfare_specialist
+		
+		gui_row = 18
+	}
+	trench_warfare_specialist_III = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			has_trait = trench_warfare_specialist_II
+		}
+		
+		cost = 1500
+		
+		modifier = {
+			max_dig_in_factor = 0.15
+		}
+
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = trench_warfare_specialist
+		
+		gui_row = 19
+	}
+	expert_improviser = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			check_variable = { num_terrain_traits > 0 }
+		}
+		
+		custom_prerequisite_tooltip = needs_at_least_one_terrain
+		
+		cost = 500
+		
+		modifier = {
+			desert = {
+				movement = 0.1
+			}
+			hills = {
+				movement = 0.1
+			}
+			forest = {
+				movement = 0.1
+			}
+			mountain = {
+				movement = 0.1
+			}
+			urban = {
+				movement = 0.1
+			}
+			capital = {
+				movement = 0.1
+			}
+			jungle = {
+				movement = 0.1
+			}
+			marsh = {
+				movement = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		#enable_ability = makeshift_bridges
+		
+		trait_type = assignable_trait
+		parent = trickster_CC
+		
+		gui_row = 20
+	}
+	trickster_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		prerequisites = {
+			set_temp_variable = { cmm = num_battalions_with_type@recon }
+			add_to_temp_variable = { cmm = num_battalions_with_type@recon_cav }
+			add_to_temp_variable = { cmm = num_battalions_with_type@recon_mot }
+			add_to_temp_variable = { cmm = num_battalions_with_type@recon_ac }
+			add_to_temp_variable = { cmm = num_battalions_with_type@Tankettes }
+			check_variable = { cmm > 0 }
+			
+			set_temp_variable = { recon_required = num_target_equipment@recon_equipment }
+			add_to_temp_variable = { recon_required = num_target_equipment@recon_mot_equipment }
+			add_to_temp_variable = { recon_required = num_target_equipment@motorized_AC_equipment }
+			
+			set_temp_variable = { recon_supplied = num_equipment@recon_equipment }
+			add_to_temp_variable = { recon_supplied = num_equipment@recon_mot_equipment }
+			add_to_temp_variable = { recon_supplied = num_equipment@motorized_AC_equipment }
+			
+			divide_temp_variable = { recon_supplied = recon_required }
+			
+			set_temp_variable = { ratio = recon_supplied }
+			custom_trigger_tooltip = {
+				tooltip = recon_ratio_over_10
+				check_variable = { ratio > 0.9 }
+			}
+		}
+		cost = 750
+		
+		sub_unit_modifiers = {
+			recon = {
+				recon_factor = 0.1
+			}
+			recon_cav = {
+				recon_factor = 0.1
+			}
+			recon_mot = {
+				recon_factor = 0.1
+			}
+			recon_ac = {
+				recon_factor = 0.1
+			}
+			Tankettes = {
+				recon_factor = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = trickster_CC
+		
+		gui_row = 21
+	}
+	trickster_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		prerequisites = {
+			has_trait = trickster_CC_II
+			
+			set_temp_variable = { cmm = num_battalions_with_type@recon }
+			add_to_temp_variable = { cmm = num_battalions_with_type@recon_cav }
+			add_to_temp_variable = { cmm = num_battalions_with_type@recon_mot }
+			add_to_temp_variable = { cmm = num_battalions_with_type@recon_ac }
+			add_to_temp_variable = { cmm = num_battalions_with_type@Tankettes }
+			check_variable = { cmm > 0 }
+			
+			set_temp_variable = { recon_required = num_target_equipment@recon_equipment }
+			add_to_temp_variable = { recon_required = num_target_equipment@recon_mot_equipment }
+			add_to_temp_variable = { recon_required = num_target_equipment@motorized_AC_equipment }
+			
+			set_temp_variable = { recon_supplied = num_equipment@recon_equipment }
+			add_to_temp_variable = { recon_supplied = num_equipment@recon_mot_equipment }
+			add_to_temp_variable = { recon_supplied = num_equipment@motorized_AC_equipment }
+			
+			divide_temp_variable = { recon_supplied = recon_required }
+			
+			set_temp_variable = { ratio = recon_supplied }
+			custom_trigger_tooltip = {
+				tooltip = recon_ratio_over_10
+				check_variable = { ratio > 0.9 }
+			}
+		}
+		
+		cost = 1000
+		
+		sub_unit_modifiers = {
+			recon = {
+				recon_factor = 0.1
+			}
+			recon_cav = {
+				recon_factor = 0.1
+			}
+			recon_mot = {
+				recon_factor = 0.1
+			}
+			recon_ac = {
+				recon_factor = 0.1
+			}
+			Tankettes = {
+				recon_factor = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = trickster_CC
+		
+		gui_row = 22
+	}
+	guerilla_fighter = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 500
+		
+		modifier = {
+			dig_in_speed_factor = 0.15
+		}
+		
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = trickster_CC
+		
+		gui_row = 23
+	}
+	engineer_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			OR = {
+				has_combat_modifier = fort_attack
+				has_combat_modifier = river_crossing
+			}
+		}
+		prerequisites = {
+			has_trait = trait_engineer
+		
+			set_temp_variable = { temp = num_battalions }
+			multiply_temp_variable = { temp = 0.05 }
+			
+			set_temp_variable = { ratio = num_battalions_with_type@engineer }
+			divide_temp_variable = { ratio = num_battalions }
+			custom_trigger_tooltip = {
+				tooltip = engineer_ratio_over_5
+				check_variable = { cmm > temp }
+			}
+		}
+		cost = 1000
+		
+		modifier = {
+			river = {
+				attack = 0.05
+				movement = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = trait_engineer
+		
+		gui_row = 24
+	}
+
+	engineer_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			OR = {
+				has_combat_modifier = fort_attack
+				has_combat_modifier = river_crossing
+			}
+		}
+		prerequisites = {
+			has_trait = engineer_CC_II
+		
+			set_temp_variable = { temp = num_battalions }
+			multiply_temp_variable = { temp = 0.05 }
+			
+			set_temp_variable = { ratio = num_battalions_with_type@engineer }
+			divide_temp_variable = { ratio = num_battalions }
+			custom_trigger_tooltip = {
+				tooltip = engineer_ratio_over_5
+				check_variable = { cmm > temp }
+			}
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			river = {
+				attack = 0.05
+				movement = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = trait_engineer
+		
+		gui_row = 25
+	}
+	fortress_buster = {
+		type = corps_commander
+		gain_xp = {
+			OR = {
+				has_combat_modifier = fort_attack
+				dig_in > 10
+			}
+		}
+		
+		prerequisites = {
+			has_trait = engineer_CC_II
+		}
+		
+		cost = 700
+		
+		modifier = {
+			fort = {
+				attack = 0.15
+			}
+		}
+		
+		enable_ability = siege_artillery
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+
+		trait_type = assignable_trait
+		parent = trait_engineer
+		mutually_exclusive = scavenger
+		
+		gui_row = 26
+	}
+	scavenger = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			has_trait = engineer_CC_II
+		}
+		
+		cost = 500
+		
+		modifier = {
+			equipment_capture_factor = 0.075
+		}
+		
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = trait_engineer
+		mutually_exclusive = fortress_buster
+		
+		gui_row = 27
+	}
+	invader_ii = {
+		type = corps_commander
+		gain_xp = {
+			is_amphibious_invasion = yes
+		}
+		
+		cost = 250
+		
+		modifier = {
+			extra_marine_supply_grace = 96
+			amphibious_invasion = 0.2 # 20% faster invasions
+			invasion_preparation = -0.1
+		}
+		
+		enable_ability = faster_naval_invasion_planning
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = naval_invader
+		
+		gui_row = 28
+	}
+	naval_liason = {
+		type = corps_commander
+		gain_xp = {
+			is_amphibious_invasion = yes
+		}
+		
+		prerequisites = {
+			has_trait = invader_ii
+		}
+		
+		cost = 500
+		
+		modifier = {
+			shore_bombardment_bonus = 0.2
+			amphibious_invasion = 0.1 # 10% faster invasions
+			invasion_preparation = -0.1
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = naval_invader
+		
+		gui_row = 29
+	}
+	skirmisher = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		cost = 500
+		modifier = {
+		}
+		
+		ai_will_do = {
+			base = -1000
+		}
+		
+		enable_ability = probing_attack
+		
+		trait_type = assignable_trait
+		parent = commando
+		
+		gui_row = 30
+	}
+	paratrooper = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		cost = 500
+		modifier = {
+			extra_paratrooper_supply_grace = 96
+		}
+		
+		enable_ability = glider_planes
+		
+		ai_will_do = {
+			base = -1000
+		}
+		
+		trait_type = assignable_trait
+		parent = commando
+		
+		gui_row = 31
+	}
+	commando_CC_II = { 
+ 		type = corps_commander
+		gain_xp = {
+			OR = {
+				temperature < -10
+				has_combat_modifier = paradrop
+				has_combat_modifier = amphibious_attack
+			}
+		}
+		
+		prerequisites = {
+			has_trait = skirmisher
+		}
+		
+		cost = 900
+		
+		modifier = {
+			out_of_supply_factor = -0.2
+			night = {
+				attack = 0.08
+				defence = 0.08
+			}
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = commando
+		
+		gui_row = 32
+	}
+	camouflage_expert = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		cost = 500
+		modifier = {
+			cas_damage_reduction = 0.25
+			air_superiority_bonus_in_combat = -0.25
+		}
+		
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = commando
+		
+		gui_row = 33
+	}
+	commando_CC_III = { 
+ 		type = corps_commander
+		gain_xp = {
+			OR = {
+				temperature < -10
+				has_combat_modifier = paradrop
+				has_combat_modifier = amphibious_attack
+			}
+		}
+		
+		prerequisites = {
+			has_trait = commando_CC_II
+		}
+		
+		cost = 1200
+		
+		modifier = {
+			out_of_supply_factor = -0.1
+			night = {
+				attack = 0.05
+				defence = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_trait
+		parent = commando
+		
+		gui_row = 34
+	}
+##################################
+# - Navy leaders traits
+##################################
+	
+}

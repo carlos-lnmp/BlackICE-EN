@@ -1,0 +1,71 @@
+﻿add_namespace = military_size
+
+########Universal Event############
+
+country_event = {
+	id = military_size.1
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		clear_air_size_ideas = yes
+		clear_navy_size_ideas = yes
+	
+		set_temp_variable = { temp_num_battalions = num_battalions }
+		
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@anti_air } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@anti_air_heavy } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@anti_tank } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@anti_tank_mot } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@anti_tank_heavy } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@logistics_company } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@desert_support } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@urban_support } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@amph_support } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@mount_support } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@para_support } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@arctic_support } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@jungle_support } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@DIV_HQ } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@military_police } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@maintenance_company } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@field_hospital } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@engineer } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@airborne_engineer } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@combat_engineer } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@flamethrower_squad } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@artillery_rail } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@artillery_coastal } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@artillery_heavy } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@rocket_artillery } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@recon } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@recon_cav } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@recon_mot } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@recon_ac } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@signal_company } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@Tankettes } 
+		subtract_from_temp_variable = { temp_num_battalions = num_battalions_with_type@Tankettes_axis } 
+		
+		
+		#Airforce
+		if = { limit = { has_war = no has_deployed_air_force_size = { size < 800 } NOT = { has_idea = tiny_air_force } } add_ideas = tiny_air_force }
+		else_if = { limit = { has_war = yes has_deployed_air_force_size = { size < 800 } NOT = { has_idea = tiny_air_force_war } } add_ideas = tiny_air_force_war }
+		
+		else_if = { limit = { has_war = no has_deployed_air_force_size = { size > 800 } has_deployed_air_force_size = { size < 2000 } NOT = { has_idea = small_air_force } } add_ideas = small_air_force }
+		else_if = { limit = { has_war = yes has_deployed_air_force_size = { size > 800 } has_deployed_air_force_size = { size < 2000 } NOT = { has_idea = small_air_force_war } } add_ideas = small_air_force_war }
+		
+		else_if = { limit = { has_deployed_air_force_size = { size > 2000 } has_deployed_air_force_size = { size < 4000 } NOT = { has_idea = average_air_force } } add_ideas = average_air_force }
+		
+		else_if = { limit = { has_deployed_air_force_size = { size > 4000 } has_deployed_air_force_size = { size < 7000 } NOT = { has_idea = large_air_force } } add_ideas = large_air_force }
+		
+		else_if = { limit = { has_deployed_air_force_size = { size > 7000 } NOT = { has_idea = huge_air_force } } add_ideas = huge_air_force }
+		
+		#Naval
+		check_army_strength = yes
+		check_navy_strength = yes
+						
+	}
+}
+
+### EOF ###

@@ -1,0 +1,322 @@
+ideas = {
+	
+
+	
+
+
+	high_command = {
+		
+		PRC_wang_tehan = {
+		
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = PRC
+			}
+			
+			available = {
+				has_completed_focus = PRC_recall_feng_clique_generals
+			}
+			
+			traits = { army_chief_offensive_2  high_command_trait }
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		PRC_xu_lanzhou = {
+		
+			picture = generic_army_asia_3
+			
+			allowed = {
+				original_tag = PRC
+			}
+			
+			available = {
+				has_completed_focus = PRC_recall_feng_clique_generals
+			}
+			
+			traits = { army_chief_drill_2  high_command_trait }
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		PRC_yang_hu_cheng = {
+		
+			picture = generic_army_asia_2
+			
+			allowed = {
+				original_tag = PRC
+			}
+			
+			available = {
+				has_country_flag = PRC_yhc_enable
+			}
+			
+			traits = { army_infantry_2  high_command_trait }
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		PRC_mazhanshan = {
+		
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = PRC
+			}
+			
+			available = {
+				has_completed_focus = PRC_recall_feng_clique_generals
+			}
+			
+			traits = { army_cavalry_3  high_command_trait }
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		PRC_liu_duo_quan = {
+		
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = PRC
+			}
+			
+			available = {
+				has_completed_focus = PRC_recall_feng_clique_generals
+			}
+			
+			traits = { army_commando_1  high_command_trait }
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		PRC_deng_bao_shan = {
+		
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = PRC
+			}
+			
+			available = {
+				has_completed_focus = PRC_incorporate_xbj
+			}
+			
+			traits = { army_chief_old_guard  high_command_trait }
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		PRC_random_high_command = {
+		
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = PRC
+			}
+			
+			available = {
+			}
+			
+			traits = { army_chief_reform_1  high_command_trait }
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+
+	economy = { 
+		law = yes
+		
+		PRC_guerrilla_warfare = {
+			removal_cost = -1
+			
+			picture = generic_morale_bonus
+
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				consumer_goods_factor = 0.01
+				conversion_cost_civ_to_mil_factor = -0.75
+				conversion_cost_mil_to_civ_factor = 0.5
+				production_speed_buildings_factor = -0.25
+			}
+			
+			research_bonus = {
+				cat_guerilla_warfare = 0.1
+			}
+			
+			cancel_if_invalid = no
+			
+			allowed_to_remove = {
+				has_country_flag = prc_nation_founded
+			}
+		}
+	}
+	
+	conscription = { 
+		law = yes
+		
+		propaganda_recruits = {
+			
+			picture = socialist_science_focus
+			
+			allowed = {
+				always = no		
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				conscription = 0.05
+				industrial_capacity_factory = -0.05
+				production_speed_buildings_factor = -0.05
+				training_time_factor = 0.05
+				communism_drift = 0.075
+				army_morale_factor = 0.1
+				drift_defence_factor = 3
+			}
+			
+			cancel_if_invalid = no
+			
+			allowed_to_remove = {
+				has_country_flag = prc_nation_founded
+			}
+		}
+		
+		political_mobilisation_idea = {
+			
+			picture = FRA_matignon_agreements
+			
+			allowed = {
+				always = no		
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = 0.15
+				conscription = 0.025
+				industrial_capacity_factory = -0.05
+				production_speed_buildings_factor = -0.05
+				training_time_factor = 0.05
+				communism_drift = 0.1
+				army_morale_factor = 0.2
+				drift_defence_factor = 5
+				political_power_factor = 0.1
+			}
+			
+			cancel_if_invalid = no
+			
+			allowed_to_remove = {
+				has_country_flag = prc_nation_founded
+			}
+		}
+		
+		most_desperate_hours = {
+			
+			picture = FRA_matignon_agreements
+			
+			allowed = {
+				always = no		
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				conscription = 0.25
+				conscription_factor = 0.25
+				industrial_capacity_factory = -0.25
+				production_speed_buildings_factor = -0.25
+				communism_drift = 0.5
+				army_morale_factor = 0.35
+				drift_defence_factor = 10
+				army_org_factor = 0.25
+				consumer_goods_factor = -1
+			}
+			
+			cancel_if_invalid = no
+			
+			allowed_to_remove = {
+				has_country_flag = prc_nation_founded
+			}
+		}
+		
+	}
+
+	army_chief = {
+		
+		lin_biao_generalissimo = {
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_to_remove = {
+				always = no
+			}
+			
+		}
+		
+		PRC_he_zhuguo = {
+		
+			picture = generic_army_asia_3
+			
+			allowed = {
+				original_tag = PRC
+			}
+			
+			available = {
+				has_completed_focus = PRC_recall_feng_clique_generals
+			}
+			
+			traits = { army_artillery_2  army_chief_trait }
+	
+			ai_will_do = {
+				factor = 0
+			}
+			
+		}
+		
+		PRC_yu_xue_zhong = {
+		
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = PRC
+			}
+			
+			available = {
+				has_completed_focus = PRC_recall_feng_clique_generals
+			}
+			
+			traits = { army_chief_organizational_2  army_chief_trait }
+	
+			ai_will_do = {
+				factor = 0
+			}
+			
+		}
+	}
+}

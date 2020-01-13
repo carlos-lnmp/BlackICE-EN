@@ -1,0 +1,613 @@
+﻿capital = 824 # Nanjing
+
+oob = "CHI_1936"
+
+set_research_slots = 2
+
+set_convoys = 75
+
+set_stability = 0.4
+
+set_war_support = 0.5
+
+save_global_event_target_as = WTT_current_china_leader
+set_global_flag = KMT_mod_enabled
+set_global_flag = KMT_first_chinese_civil_war
+add_equipment_to_stockpile = { type = panzer_ii_equipment_1 amount = 10 producer = GER }
+add_equipment_to_stockpile = { type = british_light_tank_equipment_1 amount = 20 producer = ENG }
+add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 6000 producer = CHI }
+add_equipment_to_stockpile = { type = infantry_uniforms_0 amount = 5000 producer = CHI }
+add_equipment_to_stockpile = { type = HQ_equipment_0 amount = 250 producer = GER }
+add_equipment_to_stockpile = { type = artillery_equipment_0 amount = 200 producer = GER }
+add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 50 producer = GER }
+add_equipment_to_stockpile = { type = artillery_equipment_0 amount = 10 producer = ITA }
+add_equipment_to_stockpile = { type = support_equipment_1 amount = 1000 producer = GER }
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+	}
+	set_naval_oob = "CHI_1936_naval_legacy"
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		#early_ship_hull_coastal_submarine = 1
+		#basic_ship_hull_lr_submarine = 1
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		nrm_battery_basic = 1
+		nrm_battery_early_5h = 1
+		nrm_battery_early_6 = 1
+		nrm_battery_early_8 = 1
+		early_fire_control_system = 1
+		basic_torpedo = 1
+		early_engine = 1
+		airplane_launcher = 1
+		old_cruiser = 1
+	}
+	set_naval_oob = "CHI_1936_naval"
+set_technology = {
+	BICE_sub_balance = 1
+	building_tech = 1
+	##################### infantry ###############
+	infantry_weapons = 1
+	tech_infantry_uniforms = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	#mountain_equipment = 1
+	tech_mountaineers = 1
+	############### support ############
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	tech_support = 1
+	tech_engineers  = 1
+	tech_military_police = 1
+	################ artillery #############
+	gw_artillery = 1
+	interwar_artillery = 1
+	interwar_antitank = 1
+	interwar_antiair = 1
+	################### armor #############
+	gwtank = 1
+	tech_ac_recon = 1
+	############## aircraft ##############
+	early_fighter = 1
+	early_bomber = 1
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	##################### WW1 doctrines #################
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	offensive_trenches = 1
+	defensive_trenches = 1
+	basic_MG_defences = 1
+	
+	ww1_artillery = 1
+	artillery_observers = 1
+	balloon_observers = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	
+	ww1_battlefield_support = 1
+	
+	WW1_air_power = 1
+	##################### doctrines #################
+
+	############### naval doctrines ##################
+	nrm_pre_ww1_naval_doctrine = 1
+	nrm_mahanian_concepts = 1
+	nrm_jeune_ecole_concepts = 1
+	nrm_commerce_warfare = 1
+	nrm_battlefleet_concentration = 1
+	nrm_cruiser_warfare = 1
+	nrm_cruiser_battleline_support = 1
+	nrm_cruiser_flotilla_leader = 1
+	nrm_destroyer_support = 1
+	nrm_destroyer_screen = 1
+	nrm_destroyer_torpedo_tactics = 1
+	nrm_submarine_tactics_early = 1
+	nrm_submarine_raiding = 1
+}
+
+add_ideas = {
+	german_advisors
+	CHI_nine_power_treaty
+	
+	#laws
+	tax_low
+	tariffs_low
+	
+	low_economic_mobilisation
+	press_regulated
+	key_industries
+	labor_none
+	fdi_encouraged
+	security_minor_restrictions
+	
+	cons_volunteer
+	foreign_legion
+	mob_standing
+	train_none
+	age_19
+	officer_train_low
+	
+	edu_minimal
+	foreign_neutral
+	neutrality_idea
+	public_iliteracy
+	incompetent_industry_fake
+	incompetent_industry_fake_navy
+	KMT_falkenhausen
+	KMT_weak_army
+	KMT_corrupted_government
+	cu_cg_warlords_all
+	cg_true
+	CHI_communist_uprisings
+}
+
+set_country_flag = neutrality_idea
+
+set_autonomy = {
+	target = ECR
+	autonomous_state = autonomy_minor_warlord
+}
+puppet = ZXL
+add_opinion_modifier = {
+    target = GER
+    modifier = offered_support
+}
+ECR = {
+	set_politics = {
+		ruling_party = neutrality
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+	set_popularities = {
+			fascism = 20
+			neutrality = 60
+			monarchism = 20
+	}
+}
+ZXL = {
+	set_politics = {
+		ruling_party = neutrality
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+	set_popularities = {		
+			neutrality = 93
+			fascism = 7
+	}
+}
+
+reverse_add_opinion_modifier = {
+    target = GER
+    modifier = anti_imperialist
+}
+reverse_add_opinion_modifier = {
+    target = ENG
+    modifier = small_increase
+}
+reverse_add_opinion_modifier = {
+    target = FRA
+    modifier = small_increase
+}
+give_guarantee = PGR
+
+set_party_name = { ideology = fascism long_name = KMT_blueshirt name = KMT_blueshirt }
+
+set_country_flag = KMT_central_government_flag
+save_global_event_target_as = KMT_central_gov_tag
+capital_scope = {
+	set_state_flag = KMT_central_gov_capital
+	save_global_event_target_as = KMT_central_gov_capital_state
+}
+set_party_name = { ideology = communism long_name = KMT_CPWDP_long name = KMT_CPWDP }
+
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}		
+	add_ideas = {
+		CHI_army_corruption_1
+		#CHI_ineffective_bureaucracy
+		free_trade
+		#CHI_hyper_inflation_1
+	}
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	conservatism = 1
+	fascism = 2
+	communism = 1
+	neutrality = 96
+}
+##### Country Leaders #####
+create_country_leader = {
+	name = "Chiang Kai-Shek"
+	desc = "POLITICS_CHIANG_KAI-SHEK_DESC"
+	picture = "Portrait_China_Chiang_Kai_Shek.dds"
+	expire = "1965.1.1"
+	ideology = the_peoples_tutelage
+	traits = {
+		demagogue
+	}
+}
+create_country_leader = {
+	name = "Mao Zedong"
+	desc = "POLITICS_MAO_ZEDONG_DESC"
+	picture = "GFX_portrait_prc_mao_zedong"
+	expire = "1965.1.1"
+	ideology = leninism
+	traits = { cornered_fox }
+}
+create_country_leader = {
+	name = "Wang Jingwei"
+	desc = "POLITICS_WANG_JINGWEI_DESC"
+	picture = "gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Zhang Lan"
+	desc = "POLITICS_ZHANG_LAN_DESC"
+	picture = "gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
+	expire = "1965.1.1"
+	ideology = social_democracy
+	traits = {
+	}
+}
+##### Field Marshals #####
+create_field_marshal = {
+	name = "Chiang Kai-shek"
+	picture = "Portrait_China_Chiang_Kai_Shek.dds"
+	traits = { Decent_General defensive_doctrine_FM  logistics_wizard_FM  }
+	skill = 3
+	attack_skill = 3
+    defense_skill = 2
+    planning_skill = 3
+    logistics_skill = 2
+	id = 2400
+}
+create_field_marshal = {
+	name = "Du Yuming"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
+	traits = { trait_cautious armor_officer harsh_leader defensive_doctrine_FM }
+	skill = 4
+	#Paradox values#
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 2
+	logistics_skill = 3
+	id = 2401
+}
+create_field_marshal = {
+	name = "Xue Yue"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
+	traits = { trait_reckless brilliant_strategist war_hero offensive_doctrine_FM }
+	skill = 3
+	#Paradox values#
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 1
+	logistics_skill = 3
+	id = 2402
+}
+create_field_marshal = {
+	name = "Tai An-lan"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+	traits = { trait_reckless career_officer offensive_doctrine_FM }
+	skill = 3
+	#Paradox values#
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 1
+	logistics_skill = 3
+	id = 2403
+}
+create_field_marshal = {
+	name = "Wang Yao-wu"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
+	traits = { trait_cautious infantry_officer defensive_doctrine_FM }
+	skill = 2
+	#Paradox values#
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 2
+	id = 2404
+}
+create_field_marshal = {
+	name = "Zhang Xueliang"
+	gfx = "GFX_portrait_chi_zhang_xueliang"
+	traits = { }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+	id = 2405
+}
+##### Corps Commanders #####
+create_corps_commander = {
+	name = "Sun Li Jen"
+	gfx = "GFX_portrait_chi_sun_li_jen"
+	traits = { brilliant_strategist }
+	skill = 4
+	attack_skill = 5
+	defense_skill = 4
+	planning_skill = 2
+	logistics_skill = 2
+	id = 2406
+}
+create_corps_commander = {
+	name = "Hu Zongnan"
+	gfx = "GFX_portrait_chi_hu_zongnan"
+	traits = { politically_connected }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 3
+	id = 2407
+}
+create_corps_commander = {
+	name = "Gu Zhutong"
+	gfx = "GFX_portrait_chi_gu_zhutong"
+	traits = { career_officer }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+	id = 2408
+}
+create_corps_commander = {
+	name = "Wei Lihuang"
+	gfx = "GFX_portrait_chi_wei_lihuang"
+	traits = { infantry_officer }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+	id = 2409
+}
+create_corps_commander = {
+	name = "Fu Zuoyi"
+	gfx = "GFX_portrait_chi_fu_zuoyi"
+	traits = { }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+	id = 2410
+}
+
+########################################################################
+## BICE variants
+########################################################################
+# 1936 Start #
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	create_equipment_variant = {
+		name = "Chao Ho Class"
+		type = light_cruiser_1
+		parent_version = 0
+		#upgrades = {
+		#	ship_quality_upgrade = 0
+		#	ship_engine_upgrade = 0
+		#	ship_barrels_upgrade = 0
+		#	ship_anti_air_upgrade = 0
+		#}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Hai Chi Class"
+		type = light_cruiser_1
+		parent_version = 0
+		#upgrades = {
+		#	ship_quality_upgrade = 0
+		#	ship_engine_upgrade = 0
+		#	ship_barrels_upgrade = 0
+		#	ship_anti_air_upgrade = 0
+		#}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Ning Hai Class"
+		type = light_cruiser_1
+		parent_version = 0
+		#upgrades = {
+		#	ship_quality_upgrade = 0
+		#	ship_engine_upgrade = 0
+		#	ship_barrels_upgrade = 1
+		#	ship_anti_air_upgrade = 0
+		#}
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	# Destroyers #
+	create_equipment_variant = {
+		name = "Jianwei Class"			
+		type = nrm_ship_hull_destroyer_1
+		name_group = CHI_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_1
+			fixed_ship_engine_slot = nrm_destroyer_engine_S0_005
+			fixed_ship_sonar_slot = empty
+			fixed_ship_battery_slot = nrm_destroyer_battery_4_1_x3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_1
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = empty
+			custom_slot_4 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	# Light Cruisers #
+	create_equipment_variant = {
+		name = "Hairong Class"					# Hairong protected cruisers and Zhaohe, Yingrui training cruisers
+		type = nrm_ship_hull_cruiser_0
+		name_group = CHI_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_0
+			fixed_ship_engine_slot = nrm_cruiser_engine_S0_010
+			fixed_ship_armor_layout_slot = nrm_armour_layout_0
+			fixed_ship_armor_slot = nrm_cruiser_armour_03_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_1
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_1_x04
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_3_1_x08
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Zhaohe Class"					# Hairong protected cruisers and Zhaohe, Yingrui training cruisers
+		type = nrm_ship_hull_cruiser_0
+		name_group = CHI_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_0
+			fixed_ship_engine_slot = nrm_cruiser_engine_S0_005
+			fixed_ship_armor_layout_slot = nrm_armour_layout_0
+			fixed_ship_armor_slot = nrm_cruiser_armour_02_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_1
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_1_x04
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_3_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Yingrui Class"					# Hairong protected cruisers and Zhaohe, Yingrui training cruisers
+		type = nrm_ship_hull_cruiser_0
+		name_group = CHI_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_0
+			fixed_ship_engine_slot = nrm_cruiser_engine_S0_005
+			fixed_ship_armor_layout_slot = nrm_armour_layout_0
+			fixed_ship_armor_slot = nrm_cruiser_armour_01h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_1
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_1_x04
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_3_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Haiqi Class"
+		type = nrm_ship_hull_cruiser_0
+		name_group = CHI_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_0
+			fixed_ship_engine_slot = nrm_cruiser_engine_S0_020
+			fixed_ship_armor_layout_slot = nrm_armour_layout_0
+			fixed_ship_armor_slot = nrm_cruiser_armour_04_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_1
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_1_x02
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_SB_5_1_x08
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_1_x04
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Ninghai Class"
+		type = nrm_ship_hull_cruiser_1
+		name_group = CHI_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_1
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_010
+			fixed_ship_armor_layout_slot = nrm_armour_layout_1
+			fixed_ship_armor_slot = nrm_cruiser_armour_03_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_5h_1_x06
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_3_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_1_x04
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+}
+### EOF ###

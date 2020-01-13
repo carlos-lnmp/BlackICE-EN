@@ -1,0 +1,1944 @@
+######################################################
+#	RESEARCH PRIORITY MACROS
+######################################################
+
+####################
+##### INFANTRY #####
+####################
+#How much gets added to ai_will_do when triggers are true
+@PRIO_INF_EQ = 10000
+@PRIO_SMG_EQ = 10000
+@PRIO_INF_UNI_EQ = 10000
+@PRIO_HMG_EQ = 10000
+@PRIO_MORTAR_EQ = 10000
+@PRIO_INF_GUN_EQ = 10000
+@PRIO_MOT_MECH_EQ = 10000
+@PRIO_INF_AT_EQ = 10000
+@PRIO_HQ_EQ = 10000
+@PRIO_AT_EQ = 10000
+@PRIO_GAR_EQ = 10000
+@PRIO_MAR_EQ = 10000
+@PRIO_MOUNT_EQ = 10000 
+@PRIO_NIGHT_EQ = 10000
+
+prioritise_infantry_equipment = {
+	num_of_military_factories > 15
+	OR = {
+		major_country = yes
+		num_of_military_factories > 20
+		num_divisions > 20
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = infantry_weapons 
+		}
+		AND = {
+			date > 1936.1.1 
+			can_research = infantry_weapons1
+		}
+		AND = {
+			date > 1937.7.1 
+			can_research = infantry_weapons2
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = improved_infantry_weapons
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = advanced_infantry_weapons
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_INF_EQ }
+}
+
+prioritise_HQ_equipment = {
+	num_of_military_factories > 20
+	OR = {
+		major_country = yes
+		num_of_military_factories > 30
+		num_divisions > 20
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_Headquarters 
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = tech_Headquarters2
+		}
+		AND = {
+			date > 1943.7.1 
+			can_research = tech_Headquarters3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_HQ_EQ }
+}
+prioritise_GAR_equipment = {
+	num_of_military_factories > 20
+	OR = {
+		major_country = yes
+		num_of_military_factories > 30
+		num_divisions > 20
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_Garrison 
+		}
+		AND = {
+			date > 1936.7.1 
+			can_research = tech_Garrison_2
+		}
+		AND = {
+			date > 1940.7.1 
+			can_research = tech_Garrison_3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_GAR_EQ }
+}
+prioritise_SMG_equipment = {
+	check_variable = { num_battalions_with_type@light_infantry > 10 }
+	OR = {
+		major_country = yes
+		num_of_military_factories > 30
+		num_divisions > 20
+	}
+	OR = {
+		AND = {
+			date > 1936.7.1 
+			can_research = SMG_team 
+		}
+		AND = {
+			date > 1937.1.1 
+			can_research = SMG_team1
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = SMG_team2
+		}
+		AND = {
+			date > 1942.7.1 
+			can_research = assault_rifle
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_SMG_EQ }
+}
+
+prioritise_uniform_equipment = {
+	num_of_military_factories > 15
+	OR = {
+		major_country = yes
+		num_of_military_factories > 20
+		num_divisions > 20
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_infantry_uniforms 
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = tech_infantry_uniforms1
+		}
+		AND = {
+			date > 1943.7.1 
+			can_research = tech_infantry_uniforms2
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_INF_UNI_EQ }
+}
+
+prioritise_HMG_equipment = {
+	num_of_military_factories > 20
+	OR = {
+		major_country = yes
+		num_of_military_factories > 30
+		num_divisions > 20
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = hmg 
+		}
+		AND = {
+			date > 1937.7.1 
+			can_research = hmg_2
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = hmg_3
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = hmg_4
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_HMG_EQ }
+}
+
+prioritise_mortar_equipment = {
+	num_of_military_factories > 20
+	OR = {
+		major_country = yes
+		num_of_military_factories > 30
+		num_divisions > 20
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = mortars 
+		}
+		AND = {
+			date > 1937.7.1 
+			can_research = mortars_2
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = mortars_3
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = mortars_4
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_MORTAR_EQ }
+}
+
+prioritise_infantry_gun_equipment = {
+	num_of_military_factories > 25
+	OR = {
+		major_country = yes
+		num_of_military_factories > 32
+		num_divisions > 22
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = infantry_guns 
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = infantry_guns1
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_INF_GUN_EQ }
+}
+
+prioritise_infantry_AT_equipment = {
+	num_of_military_factories > 20
+	OR = {
+		major_country = yes
+		num_of_military_factories > 30
+		num_divisions > 22
+	}
+	OR = {
+		AND = {
+			date > 1937.7.1 
+			can_research = infantry_at 
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = infantry_at_1
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = infantry_at_2
+		}
+		AND = {
+			date > 1943.7.1 
+			can_research = RPG_weapons
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_INF_AT_EQ }
+}
+
+prioritise_marine_equipment = {
+	num_of_military_factories > 20
+	OR = {
+		major_country = yes
+		num_of_military_factories > 30
+		num_divisions > 22
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = marines 
+		}
+		AND = {
+			date > 1937.7.1 
+			can_research = amphibious_equipment
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = marines2
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = amphibious_equipment2
+		}
+		AND = {
+			date > 1942.7.1 
+			can_research = marines3
+		}
+	}
+}
+
+prioritise_mountaineer_equipment = {
+	num_of_military_factories > 20
+	OR = {
+		major_country = yes
+		num_of_military_factories > 30
+		num_divisions > 22
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_mountaineers 
+		}
+		AND = {
+			date > 1937.7.1 
+			can_research = mountain_equipment
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = tech_mountaineers2
+		}
+		AND = {
+			date > 1942.7.1 
+			can_research = tech_mountaineers3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_MOUNT_EQ }
+}
+
+prioritise_night_vision_equipment = {
+	num_of_military_factories > 20
+	OR = {
+		major_country = yes
+		num_of_military_factories > 30
+		num_divisions > 22
+	}
+	OR = {
+		AND = {
+			date > 1942.7.1 
+			can_research = night_vision 
+		}
+		AND = {
+			date > 1945.7.1 
+			can_research = night_vision2
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_NIGHT_EQ }
+}
+
+prioritise_motorized_equipment = {
+	num_of_military_factories > 25
+	OR = {
+		major_country = yes
+		num_of_military_factories > 50
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = semi_motorised_infantry 
+		}
+		AND = {
+			date > 1937.7.1 
+			can_research = motorised_infantry
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = mechanised_infantry
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = mechanised_infantry2
+		}
+		AND = {
+			date > 1943.7.1 
+			can_research = mechanised_infantry3
+		}
+		
+		#Mechanized 1942
+		AND = {
+			date > 1941.7.1 
+			can_research = mechanized_hmg_tech
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = mechanized_mortar_tech
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = mechanized_at_tech
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = mechanized_aa_tech
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_MOT_MECH_EQ }
+}
+
+###################
+##### SUPPORT #####
+###################
+@PRIO_RECON_EQ = 10000
+@PRIO_ENGINEER_EQ = 10000 
+@PRIO_MP_EQ = 10000
+@PRIO_MAINT_EQ = 10000 
+@PRIO_HOSPITAL_EQ = 10000 
+@PRIO_LOGISTIC_EQ = 10000 
+@PRIO_SIGNAL_EQ = 10000
+
+prioritise_engineer_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_engineers 
+			has_industry_techs_1936 = yes
+		}
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_combat_engineers 
+			has_industry_techs_1936 = yes
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = tech_engineers2 
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = tech_engineers3 
+		}
+		AND = {
+			date > 1944.7.1 
+			can_research = tech_engineers4 
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_ENGINEER_EQ }
+}
+
+prioritise_MP_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_military_police 
+			has_industry_techs_1936 = yes
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = tech_military_police2 
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = tech_military_police3 
+		}
+		AND = {
+			date > 1942.7.1 
+			can_research = tech_improved_suppression 
+		}
+		AND = {
+			date > 1944.7.1 
+			can_research = tech_military_police4 
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_MP_EQ }
+}
+
+prioritise_maintenance_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_maintenance_company 
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = tech_maintenance_company2 
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = tech_maintenance_company3 
+		}
+		AND = {
+			date > 1944.7.1 
+			can_research = tech_maintenance_company4 
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_MAINT_EQ }
+}
+
+prioritise_field_hospital_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_field_hospital 
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = tech_field_hospital2 
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = tech_field_hospital3 
+		}
+		AND = {
+			date > 1944.7.1 
+			can_research = tech_field_hospital4 
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_HOSPITAL_EQ }
+}
+
+prioritise_logistic_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_logistics_company 
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = tech_logistics_company2 
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = tech_logistics_company3 
+		}
+		AND = {
+			date > 1944.7.1 
+			can_research = tech_logistics_company4 
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_LOGISTIC_EQ }
+}
+
+prioritise_signal_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tech_signal_company 
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = tech_signal_company2 
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = tech_signal_company3 
+		}
+		AND = {
+			date > 1944.7.1 
+			can_research = tech_signal_company4 
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_SIGNAL_EQ }
+}
+
+######################	
+##### ARTY AT AA #####
+######################		
+@PRIO_LT_ARTY_EQ = 10000
+@PRIO_MED_ARTY_EQ = 10000
+@PRIO_HV_ARTY_EQ = 10000
+@PRIO_AA_EQ = 10000
+@PRIO_HV_AA_EQ = 10000
+@PRIO_LT_AT_EQ = 10000
+@PRIO_HV_AT_EQ = 10000
+
+prioritise_artillery_equipment = {
+	OR = {
+		NOT = { has_country_flag = artillery_equipment_DISABLED }
+		has_country_flag = artillery_equipment_OVERRIDE
+	}
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = gw_artillery 
+			has_industry_techs_1936 = yes
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = interwar_artillery
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = artillery1
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = artillery2
+		}
+		AND = {
+			date > 1940.7.1 
+			can_research = artillery3
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = artillery4
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_LT_ARTY_EQ }
+}		
+prioritise_artillery_med_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = gw_artillery 
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = interwar_artillery
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = artillery1
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = artillery2
+		}
+		AND = {
+			date > 1940.7.1 
+			can_research = artillery3
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = artillery4
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_MED_ARTY_EQ }
+}	
+prioritise_artillery_hv_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = gw_artillery 
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = interwar_artillery
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = artillery1
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = artillery2
+		}
+		AND = {
+			date > 1940.7.1 
+			can_research = artillery3
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = artillery4
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_HV_ARTY_EQ }
+}
+prioritise_anti_air_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = interwar_antiair 
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = antiair1
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = antiair2
+		}
+		AND = {
+			date > 1940.7.1 
+			can_research = antiair3
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = antiair4
+		}
+		AND = {
+			date > 1942.7.1 
+			can_research = antiair5
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_AA_EQ }
+}
+prioritise_hv_anti_air_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1939.7.1 
+			can_research = HVantiair2 
+		}
+		AND = {
+			date > 1940.7.1 
+			can_research = HVantiair3
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = HVantiair4
+		}
+		AND = {
+			date > 1942.7.1 
+			can_research = HVantiair5
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_HV_AA_EQ }
+}
+prioritise_anti_tank_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = interwar_antitank 
+		}
+		AND = {
+			date > 1938.7.1 
+			can_research = antitank1
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = antitank2
+		}
+		AND = {
+			date > 1940.7.1 
+			can_research = antitank3
+		}
+		AND = {
+			date > 1941.7.1 
+			can_research = antitank4
+		}
+		AND = {
+			date > 1942.7.1 
+			can_research = antitank5
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_LT_AT_EQ }
+}
+prioritise_hv_anti_tank_equipment = {
+	OR = {
+		major_country = yes
+		num_of_military_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1942.7.1 
+			can_research = HVantitank1 
+		}
+		AND = {
+			date > 1942.7.1 
+			can_research = HVantitank2
+		}
+		AND = {
+			date > 1943.7.1 
+			can_research = HVantitank3
+		}
+		AND = {
+			date > 1943.7.1 
+			can_research = HVantitank4
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_HV_AT_EQ }
+}
+
+#Misc
+has_latest_industry_techs = {
+	if = {
+		limit = {
+			date > 1936.1.1
+			date < 1937.1.1
+		}
+		OR = {
+			AND = { has_tech = concentrated_industry is_researching_technology = concentrated_industry }
+			
+			AND = { has_tech = dispersed_industry is_researching_technology = dispersed_industry }
+		}
+	}
+	else_if = {
+		limit = {
+			date > 1937.1.1
+			date < 1939.1.1
+		}
+		OR = {
+			AND = { has_tech = concentrated_industry2 is_researching_technology = concentrated_industry2 }
+			
+			AND = { has_tech = dispersed_industry2 is_researching_technology = dispersed_industry2 }
+		}
+	}
+	else_if = {
+		limit = {
+			date > 1939.1.1
+			date < 1941.1.1
+		}
+		OR = {
+			AND = { has_tech = concentrated_industry3 is_researching_technology = concentrated_industry3 }
+			
+			AND = { has_tech = dispersed_industry3 is_researching_technology = dispersed_industry3 }
+		}
+	}
+	else_if = {
+		limit = {
+			date > 1941.1.1
+			date < 1943.1.1
+		}
+		OR = {
+			AND = { has_tech = concentrated_industry4 is_researching_technology = concentrated_industry4 }
+			
+			AND = { has_tech = dispersed_industry4 is_researching_technology = dispersed_industry4 }
+		}
+	}
+	else_if = {
+		limit = {
+			date > 1943.1.1
+		}
+		OR = {
+			AND = { has_tech = concentrated_industry5 is_researching_technology = concentrated_industry5 }
+			
+			AND = { has_tech = dispersed_industry5 is_researching_technology = dispersed_industry5 }
+		}
+	}
+}
+@PRIO_INDUSTRY = 10000	
+prioritise_industry_techs = {
+	OR = {
+		AND = { date > 1942.6.1 OR = { can_research = concentrated_industry5 can_research = dispersed_industry5 } 	NOT = { has_tech = concentrated_industry5 is_researching_technology = concentrated_industry5 has_tech = dispersed_industry5 is_researching_technology = dispersed_industry5 } }
+
+		AND = { date > 1940.6.1 OR = { can_research = concentrated_industry4 can_research = dispersed_industry4 }	NOT = { has_tech = concentrated_industry4 is_researching_technology = concentrated_industry4 has_tech = dispersed_industry4 is_researching_technology = dispersed_industry4 } }
+
+		AND = { date > 1938.6.1 OR = { can_research = concentrated_industry3 can_research = dispersed_industry3 }	NOT = { has_tech = concentrated_industry3 is_researching_technology = concentrated_industry3 has_tech = dispersed_industry3 is_researching_technology = dispersed_industry3 } }
+
+		AND = { date > 1937.1.1 OR = { can_research = concentrated_industry2 can_research = dispersed_industry2 }	NOT = { has_tech = concentrated_industry2 is_researching_technology = concentrated_industry2 has_tech = dispersed_industry2 is_researching_technology = dispersed_industry2 } }
+		
+		AND = { OR = { can_research = concentrated_industry can_research = dispersed_industry }		NOT = { has_tech = concentrated_industry is_researching_technology = concentrated_industry has_tech = dispersed_industry is_researching_technology = dispersed_industry } }
+	
+		#BICE
+		AND = { 
+			date > 1936.6.1 
+			can_research = improved_machine_tools 
+			NOT = { has_tech = improved_machine_tools is_researching_technology = improved_machine_tools } 
+		}
+		
+		AND = { 
+			date > 1938.6.1 
+			can_research = advanced_machine_tools 
+			NOT = { has_tech = advanced_machine_tools is_researching_technology = advanced_machine_tools } 
+		}
+		
+		AND = { 
+			date > 1940.6.1 
+			can_research = assembly_line_production 
+			NOT = { has_tech = assembly_line_production is_researching_technology = assembly_line_production } 
+		}
+		
+		
+		AND = { 
+			date > 1936.6.1 
+			can_research = tool_maintenance 
+			NOT = { has_tech = tool_maintenance is_researching_technology = tool_maintenance } 
+		}
+		
+		AND = { 
+			date > 1937.1.1 
+			can_research = worker_training 
+			NOT = { has_tech = worker_training is_researching_technology = worker_training } 
+		}
+		
+		AND = { 
+			date > 1940.6.1 
+			can_research = worker_colleges 
+			NOT = { has_tech = worker_colleges is_researching_technology = worker_colleges } 
+		}
+		
+		AND = { 
+			date > 1940.6.1 
+			can_research = on_spot_training 
+			NOT = { has_tech = on_spot_training is_researching_technology = on_spot_training } 
+		}
+	
+	}
+}
+
+@PRIO_CONSTRUCTION = 10000
+@PRIO_DEF_WORKS = 10000
+@PRIO_INFRA_WORKS = 10000
+prioritise_construction = {
+	OR = {
+		major_country = yes
+		num_of_factories > 40
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = construction1 
+			OR = {
+				is_researching_technology = concentrated_industry has_tech = concentrated_industry
+				is_researching_technology = dispersed_industry has_tech = dispersed_industry
+			}
+		}
+		AND = {
+			date > 1937.1.1 
+			can_research = construction2
+			OR = {
+				is_researching_technology = concentrated_industry2 has_tech = concentrated_industry2
+				is_researching_technology = dispersed_industry2 has_tech = dispersed_industry2
+			}
+		}
+		AND = {
+			date > 1939.1.1 
+			can_research = construction3
+			OR = {
+				is_researching_technology = concentrated_industry3 has_tech = concentrated_industry3
+				is_researching_technology = dispersed_industry3 has_tech = dispersed_industry3
+			}
+		}
+		AND = {
+			date > 1941.1.1 
+			can_research = construction4
+			OR = {
+				is_researching_technology = concentrated_industry4 has_tech = concentrated_industry4
+				is_researching_technology = dispersed_industry4 has_tech = dispersed_industry4
+			}
+		}
+		AND = {
+			date > 1943.1.1 
+			can_research = construction5
+			OR = {
+				is_researching_technology = concentrated_industry5 has_tech = concentrated_industry5
+				is_researching_technology = dispersed_industry5 has_tech = dispersed_industry5
+			}
+		}
+	}
+}
+
+prioritise_defence_works = {
+	OR = {
+		original_tag = JAP 
+		original_tag = USA 
+		original_tag = GER 
+		original_tag = ENG
+		original_tag = ITA
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = defence_works 
+		}
+		AND = {
+			date > 1937.1.1 
+			can_research = defence_works2
+		}
+		AND = {
+			date > 1939.1.1 
+			can_research = defence_works3
+		}
+		AND = {
+			date > 1941.1.1 
+			can_research = defence_works4
+		}
+		AND = {
+			date > 1943.1.1 
+			can_research = defence_works5
+		}
+	}
+}
+prioritise_pre_fab = {
+	has_war = yes
+	OR = {
+		original_tag = GER 
+		original_tag = SOV 
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = pre_fab 
+		}
+		AND = {
+			date > 1937.1.1 
+			can_research = pre_fab2
+		}
+		AND = {
+			date > 1939.1.1 
+			can_research = pre_fab3
+		}
+		AND = {
+			date > 1941.1.1 
+			can_research = pre_fab4
+		}
+		AND = {
+			date > 1943.1.1 
+			can_research = pre_fab5
+		}
+	}
+}
+
+prioritise_infra_works = {
+	OR = {
+		major_country = yes
+		OR = {
+			num_of_factories > 30
+			num_divisions > 30
+		}
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = infra_works 
+		}
+		AND = {
+			date > 1937.1.1 
+			can_research = infra_works2
+		}
+		AND = {
+			date > 1939.1.1 
+			can_research = infra_works3
+		}
+		AND = {
+			date > 1941.1.1 
+			can_research = infra_works4
+		}
+		AND = {
+			date > 1943.1.1 
+			can_research = infra_works5
+		}
+	}
+}
+
+prioritise_air_infra = {
+	OR = {
+		original_tag = GER 
+		original_tag = SOV 
+		original_tag = ENG 
+		original_tag = ITA  
+		original_tag = USA  
+		original_tag = JAP 
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = air_infra 
+		}
+		AND = {
+			date > 1937.1.1 
+			can_research = air_infra2
+		}
+		AND = {
+			date > 1939.1.1 
+			can_research = air_infra3
+		}
+		AND = {
+			date > 1941.1.1 
+			can_research = air_infra4
+		}
+		AND = {
+			date > 1943.1.1 
+			can_research = air_infra5
+		}
+	}
+}
+prioritise_port_infra = {
+	OR = { 
+		original_tag = ENG 
+		original_tag = FRA
+		original_tag = ITA  
+		original_tag = USA  
+		original_tag = JAP 
+		original_tag = GER
+	}
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = port_infra 
+		}
+		AND = {
+			date > 1937.1.1 
+			can_research = port_infra2
+		}
+		AND = {
+			date > 1939.1.1 
+			can_research = port_infra3
+		}
+		AND = {
+			date > 1941.1.1 
+			can_research = port_infra4
+		}
+		AND = {
+			date > 1943.1.1 
+			can_research = port_infra5
+		}
+	}
+}
+#####################
+#### ELECTRONICS ####
+#####################
+@PRIO_ADD = 10000
+
+prioritise_radios = {
+	OR = {
+		major_country = yes 
+		
+		is_major = yes 
+		
+		AND = {
+			num_divisions > 19
+			num_of_military_factories > 19
+		}
+	}
+	OR = {
+		AND = { 
+			date > 1937.1.1 
+			can_research = radio 
+			NOT = { has_tech = radio is_researching_technology = radio } 
+		}
+		AND = { 
+			date > 1938.1.1 
+			can_research = HQ_radio 
+			NOT = { has_tech = HQ_radio is_researching_technology = HQ_radio } 
+		}
+		AND = { 
+			date > 1939.1.1 
+			can_research = artillery_radio 
+			NOT = { has_tech = artillery_radio is_researching_technology = artillery_radio } 
+		}
+		AND = { 
+			date > 1940.1.1 
+			can_research = vehicle_radio 
+			NOT = { has_tech = vehicle_radio is_researching_technology = vehicle_radio } 
+		}
+		AND = { 
+			date > 1941.1.1 
+			can_research = tank_radio 
+			NOT = { has_tech = tank_radio is_researching_technology = tank_radio } 
+		}
+		AND = { 
+			date > 1940.1.1 
+			can_research = recon_radio 
+			NOT = { has_tech = recon_radio is_researching_technology = recon_radio } 
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_RADIO }
+}
+
+#######################
+#### NUCLEAR TECHS ####
+#######################
+
+priotise_nuke_after_drop = {
+	has_global_flag = first_nuke_dropped
+}
+
+prioritise_nukes = {
+	
+	if = {
+		limit = {
+			OR = {
+				original_tag = SOV
+				original_tag = ENG
+				original_tag = ITA
+			}
+		}
+		set_temp_variable = { ai_add = 1000 }
+	}
+	if = {
+		limit = {
+			OR = {
+				original_tag = FRA
+				original_tag = JAP
+				original_tag = GER
+				original_tag = SOV
+				original_tag = ENG
+			}
+		}
+		set_temp_variable = { ai_add = 3000 }
+	}
+	if = {
+		limit = {
+			OR = {
+				original_tag = USA
+			}
+		}
+		set_temp_variable = { ai_add = 8000 }
+	}
+	
+	OR = {
+		AND = { 
+			date > 1938.1.1 
+			can_research = atomic_research 
+			NOT = { has_tech = atomic_research is_researching_technology = atomic_research } 
+		}
+		AND = { 
+			date > 1938.1.1 
+			can_research = basic_particle_accelerators 
+			NOT = { has_tech = basic_particle_accelerators is_researching_technology = basic_particle_accelerators } 
+		}
+		AND = { 
+			date > 1939.1.1 
+			can_research = fission_experiments 
+			NOT = { has_tech = fission_experiments is_researching_technology = fission_experiments } 
+		}
+		AND = { 
+			date > 1941.1.1 
+			can_research = nuclear_fission 
+			NOT = { has_tech = nuclear_fission is_researching_technology = nuclear_fission } 
+		}
+		AND = { 
+			date > 1942.1.1 
+			can_research = nuclear_weapons_research 
+			NOT = { has_tech = nuclear_weapons_research is_researching_technology = nuclear_weapons_research } 
+		}
+		AND = { 
+			date > 1943.1.1 
+			can_research = nuclear_reactor 
+			NOT = { has_tech = nuclear_reactor is_researching_technology = nuclear_reactor } 
+		}
+		AND = { 
+			date > 1944.1.1 
+			can_research = nuclear_weapons_production 
+			NOT = { has_tech = nuclear_weapons_production is_researching_technology = nuclear_weapons_production } 
+		}
+		AND = { 
+			date > 1945.1.1 
+			can_research = nukes 
+			NOT = { has_tech = nukes is_researching_technology = nukes } 
+		}
+		
+		AND = { 
+			date > 1937.1.1 
+			can_research = improved_particle_sources 
+			NOT = { has_tech = improved_particle_sources is_researching_technology = improved_particle_sources } 
+		}
+		AND = { 
+			date > 1940.1.1 
+			can_research = improved_particle_detectors 
+			NOT = { has_tech = improved_particle_detectors is_researching_technology = improved_particle_detectors } 
+		}
+		AND = { 
+			date > 1943.6.1 
+			can_research = synchrotron_particle_accelerators 
+			NOT = { has_tech = synchrotron_particle_accelerators is_researching_technology = synchrotron_particle_accelerators } 
+		}
+		AND = { 
+			date > 1944.1.1 
+			can_research = scintilation_counter 
+			NOT = { has_tech = scintilation_counter is_researching_technology = scintilation_counter } 
+		}
+	}
+}
+
+prioritise_nuke_reactor = {
+	NOT = { has_tech = nuclear_reactor }
+}
+#############
+#### AIR ####
+#############
+@PRIO_FIGHTER_EQ = 10000
+@PRIO_HV_FIGHTER_EQ = 10000
+@PRIO_CAS_EQ = 10000
+@PRIO_HV_CAS_EQ = 10000
+@PRIO_TAC_BOMB_EQ = 10000
+@PRIO_NV_BOMB_EQ = 10000
+@PRIO_STRAT_EQ = 10000
+@PRIO_LT_BOMB_EQ = 10000
+
+prioritise_fighter = {
+	use_fighters = yes
+	
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = early_fighter 
+			has_industry_techs_1936 = yes 
+		}
+		AND = {
+			date > 1936.1.1 
+			can_research = fighter1 
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = fighter2
+		}
+		AND = {
+			date > 1943.7.1 
+			can_research = fighter3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_FIGHTER_EQ }
+}
+
+prioritise_heavy_fighter = {
+	use_heavy_fighters = yes
+	
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = heavy_fighter1
+			has_industry_techs_1936 = yes  
+		}
+		AND = {
+			date > 1940.1.1 
+			can_research = heavy_fighter2
+		}
+		AND = {
+			date > 1944.1.1 
+			can_research = heavy_fighter3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_HV_FIGHTER_EQ }
+}
+
+prioritise_single_CAS = {
+	use_single_CAS = yes
+	
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = early_CAS 
+			has_industry_techs_1936 = yes 
+		}
+		AND = {
+			date > 1936.1.1 
+			can_research = CAS1 
+		}
+		AND = {
+			date > 1940.1.1 
+			can_research = CAS2
+		}
+		AND = {
+			date > 1944.1.1 
+			can_research = CAS3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_CAS_EQ }
+}
+
+prioritise_twin_CAS = {
+	use_twin_CAS = yes
+	
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = twin_CAS1 
+			has_industry_techs_1936 = yes 
+		}
+		AND = {
+			date > 1940.1.1 
+			can_research = twin_CAS2
+		}
+		AND = {
+			date > 1944.1.1 
+			can_research = twin_CAS3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_HV_CAS_EQ }
+}
+
+prioritise_tactical_bomber = {
+	use_tactical_bomber = yes
+	
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = tactical_bomber1 
+			has_industry_techs_1936 = yes 
+		}
+		AND = {
+			date > 1940.1.1 
+			can_research = tactical_bomber2
+		}
+		AND = {
+			date > 1944.1.1 
+			can_research = tactical_bomber3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_TAC_BOMB_EQ }
+}
+
+prioritise_naval_bomber = {
+	use_naval_bomber = yes
+	
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = naval_bomber1 
+			has_industry_techs_1936 = yes 
+		}
+		AND = {
+			date > 1940.1.1 
+			can_research = naval_bomber2
+		}
+		AND = {
+			date > 1944.1.1 
+			can_research = naval_bomber3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_NV_BOMB_EQ }
+}
+
+prioritise_light_bomber = {
+	use_light_bomber = yes
+	
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = light_bomber1 
+			has_industry_techs_1936 = yes 
+		}
+		AND = {
+			date > 1940.1.1 
+			can_research = light_bomber2
+		}
+		AND = {
+			date > 1944.1.1 
+			can_research = light_bomber3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_LT_BOMB_EQ }
+}
+
+prioritise_strategic_bomber = {
+	use_strategic_bomber = yes
+	
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = strategic_bomber1 
+			has_industry_techs_1936 = yes 
+		}
+		AND = {
+			date > 1940.1.1 
+			can_research = strategic_bomber2
+		}
+		AND = {
+			date > 1944.1.1 
+			can_research = strategic_bomber3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_STRAT_EQ }
+}
+
+@PRIO_CV_FIGHTER_EQ = 10000
+@PRIO_CV_BOMBER_EQ = 10000
+@PRIO_CV_CAS_EQ = 10000
+prioritise_CV_fighter = {
+	use_fighters = yes
+	check_variable = { num_ships_with_type@carrier > 0 }
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = cv_early_fighter 
+			has_industry_techs_1936 = yes 
+		}
+		AND = {
+			date > 1936.1.1 
+			can_research = cv_fighter1 
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = cv_fighter2
+		}
+		AND = {
+			date > 1943.7.1 
+			can_research = cv_fighter3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_CV_FIGHTER_EQ }
+}
+prioritise_CV_bomber = {
+	use_fighters = yes
+	check_variable = { num_ships_with_type@carrier > 0 }
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = cv_naval_bomber1 
+			has_industry_techs_1936 = yes 
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = cv_naval_bomber2
+		}
+		AND = {
+			date > 1943.7.1 
+			can_research = cv_naval_bomber3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_CV_BOMBER_EQ }
+}
+prioritise_CV_CAS = {
+	use_fighters = yes
+	check_variable = { num_ships_with_type@carrier > 0 }
+	OR = {
+		AND = {
+			date > 1936.1.1 
+			can_research = cv_CAS1 
+			has_industry_techs_1936 = yes 
+		}
+		AND = {
+			date > 1939.7.1 
+			can_research = cv_CAS2
+		}
+		AND = {
+			date > 1943.7.1 
+			can_research = cv_CAS3
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_CV_CAS_EQ }
+}
+
+###################
+#### DOCTRINES ####
+###################
+@PRIO_LAND_DOC = 25000
+prioritise_land_doctrine = {	
+	OR = {
+		is_major = yes
+		has_war = yes
+		threat > 0.5
+		
+	}
+
+	if = { limit = { original_tag = USA } #lower prio for USA
+		OR = {
+			date > 1938.6.1
+			has_war = yes
+		}
+	}
+	
+	NOT = { has_idea = FRA_victors_of_wwi } #FRA has a land doctrine debuff
+	
+	NOT = { SOV_doctrine_research = yes } #SOV has a purge land doctrine debuff
+}
+
+prioritise_naval_doctrine = {	
+	OR = {
+		AND = {
+			naval_focused_nation_small = yes #Also included moderate and heavy focus
+			date > 1937.1.1 #mb not start from day 1
+		}
+		AND = { 	
+			naval_focused_nation_small = yes
+			has_war = yes #if at war then YES start from day 1
+		}
+	}
+			
+}
+
+prioritise_air_doctrine = {	
+	OR = {
+		use_fighters = yes
+		use_heavy_fighters = yes 
+		use_single_CAS = yes 
+		use_twin_CAS = yes
+		use_strategic_bomber = yes 
+		use_light_bomber = yes 
+		use_naval_bomber = yes 
+		
+		has_deployed_air_force_size = {
+			size > 499
+		}
+	}
+}
+
+########################
+#### NAVAL DOCTRINE ####
+########################
+fleet_in_being_doctrine = {
+	OR = {
+		has_tech = nrm_fleet_in_being
+
+		original_tag = ITA
+		original_tag = SOV
+		original_tag = FRA
+		original_tag = ENG
+		original_tag = USA
+	}
+}
+trade_interdiction_doctrine = {
+	OR = {
+		has_tech = nrm_trade_interdiction
+
+		original_tag = GER
+	}
+}
+base_strike_doctrine = {
+	OR = {
+		has_tech = nrm_decisive_battle
+
+		original_tag = JAP
+	}
+}
+
+####################
+####AIR DOCTRINE####
+####################
+strategic_destruction_focus = {
+	OR = {
+		original_tag = USA
+		
+	}
+}
+
+battlefield_support_focus = {
+	OR = {
+		original_tag = GER
+		original_tag = FRA
+		original_tag = ITA
+		original_tag = JAP
+		
+	}
+}
+
+operational_integrity_focus = {
+	OR = {
+		original_tag = ENG
+		original_tag = SOV
+
+	}
+}
+
+#####################
+####LAND DOCTRINE####
+#####################
+has_any_initial_doctrine_tech = {
+	OR = {
+		has_tech = blitzkrieg
+		has_tech = superior_firepower
+		has_tech = methodical_battle
+		has_tech = mass_assault
+		has_tech = assault_operations
+		has_tech = guerilla_warfare
+		has_tech = defence_in_depth
+		has_tech = prepared_defense
+		has_tech = elastic_defence
+		has_tech = attritional_containment
+	}
+}
+has_any_initial_offensive_doctrine_tech = {
+	OR = {
+		has_tech = blitzkrieg
+		has_tech = superior_firepower
+		has_tech = methodical_battle
+		has_tech = mass_assault
+		has_tech = assault_operations
+		has_tech = guerilla_warfare
+	}
+}
+mw_doctrine = {
+	OR = {
+		original_tag = GER
+		
+		AND = {
+			is_subject = yes 
+			OVERLORD = { mw_doctrine = yes }
+		}
+	}
+}
+sf_doctrine = {
+	OR = {
+		original_tag = USA
+
+		AND = {
+			is_subject = yes 
+			OVERLORD = { sf_doctrine = yes }
+		}
+	}
+}
+mb_doctrine = {
+	OR = {
+		original_tag = FRA
+		original_tag = ITA
+		original_tag = POL
+		original_tag = ROM
+		original_tag = YUG
+		original_tag = GRE
+		
+		AND = {
+			is_subject = yes 
+			OVERLORD = { mb_doctrine = yes }
+		}
+	}
+}
+ma_doctrine = {
+	OR = {
+		original_tag = SOV
+		original_tag = RAJ
+		
+		AND = {
+			is_subject = yes 
+			OVERLORD = { ma_doctrine = yes }
+		}
+	}
+}
+ao_doctrine = {
+	OR = {
+		original_tag = ENG
+		original_tag = JAP
+		
+		AND = {
+			is_subject = yes 
+			OVERLORD = { ao_doctrine = yes }
+		}
+	}
+}
+aw_doctrine = {
+	OR = {
+		original_tag = FIN
+		original_tag = NOR
+		original_tag = CHI
+		original_tag = PRC
+		original_tag = YUN
+		original_tag = GXC
+		original_tag = XSM
+		original_tag = SHX
+		original_tag = SIK
+		
+		AND = {
+			is_subject = yes 
+			OVERLORD = { aw_doctrine = yes }
+		}
+	}
+}
+
+dd_doctrine = {
+	OR = {
+		original_tag = ENG
+		original_tag = FRA
+		original_tag = ITA
+		original_tag = POL
+		
+		AND = {
+			is_subject = yes 
+			OVERLORD = { dd_doctrine = yes }
+		}
+	}
+}
+pd_doctrine = {
+	OR = {
+		original_tag = USA
+		
+		AND = {
+			is_subject = yes 
+			OVERLORD = { pd_doctrine = yes }
+		}
+	}
+}
+ed_doctrine = {
+	OR = {
+		original_tag = GER
+		original_tag = HUN
+		
+		AND = {
+			is_subject = yes 
+			OVERLORD = { ed_doctrine = yes }
+		}
+	}
+}
+ac_doctrine = {
+	OR = {
+		original_tag = SOV
+		original_tag = JAP
+		original_tag = ROM
+		original_tag = YUG
+		original_tag = GRE
+		original_tag = FIN
+		original_tag = NOR
+		original_tag = CHI
+		original_tag = PRC
+		original_tag = SHX
+		original_tag = XSM
+		original_tag = GXC
+		original_tag = YUN
+		original_tag = SIK
+		
+		AND = {
+			is_subject = yes 
+			OVERLORD = { ac_doctrine = yes }
+		}
+	}
+}
+#################
+####GER ARMOR####
+#################
+@PRIO_PANZER_3 = 10000
+@PRIO_PANZER_4 = 10000
+@PRIO_PANTHER = 10000
+
+prioritise_GER_panzer_3 = {
+	OR = {
+		AND = {
+			date > 1936.2.1 
+			can_research = tech_panzer_iii_equipment_1 
+		}
+		AND = {
+			date > 1939.1.1 
+			can_research = tech_panzer_iii_equipment_2
+		}
+		AND = {
+			date > 1940.1.1 
+			can_research = tech_panzer_iii_equipment_3
+		}
+		AND = {
+			date > 1941.1.1 
+			can_research = tech_panzer_iii_equipment_4
+		}
+		AND = {
+			date > 1942.1.1 
+			can_research = tech_panzer_iii_equipment_5
+		}
+		AND = {
+			date > 1943.1.1 
+			can_research = tech_panzer_iii_equipment_6
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_PANZER_3 }
+}
+
+prioritise_GER_panzer_4 = {
+	OR = {
+		AND = {
+			date > 1936.2.1 
+			can_research = tech_panzer_iv_equipment_1 
+		}
+		AND = {
+			date > 1939.1.1 
+			can_research = tech_panzer_iv_equipment_2
+		}
+		AND = {
+			date > 1940.1.1 
+			can_research = tech_panzer_iv_equipment_3
+		}
+		AND = {
+			date > 1942.1.1 
+			can_research = tech_panzer_iv_equipment_4
+		}
+		AND = {
+			date > 1943.1.1 
+			can_research = tech_panzer_iv_equipment_5
+		}
+		AND = {
+			date > 1944.1.1 
+			can_research = tech_panzer_iv_equipment_6
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_PANZER_4 }
+}
+
+prioritise_GER_panther = {
+	OR = {
+		AND = {
+			date > 1943.1.1 
+			can_research = tech_panzer_v_equipment_1 
+		}
+		AND = {
+			date > 1944.1.1 
+			can_research = tech_panzer_v_equipment_2
+		}
+		AND = {
+			date > 1945.1.1 
+			can_research = tech_panzer_v_equipment_3
+		}
+		AND = {
+			date > 1946.1.1 
+			can_research = tech_panzer_v_equipment_4
+		}
+	}
+	
+	set_temp_variable = { ai_add = @PRIO_PANTHER }
+}
+
+
+
+
+
+
+
+

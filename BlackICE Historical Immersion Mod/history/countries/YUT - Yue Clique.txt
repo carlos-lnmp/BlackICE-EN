@@ -1,0 +1,186 @@
+﻿capital = 592
+
+oob = "YUT_1936"
+
+set_stability = 0.2
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+		early_destroyer = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		early_fire_control_system = 1
+		basic_torpedo = 1
+		early_engine = 1
+	}
+}
+set_technology = {
+	BICE_sub_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	mountain_equipment = 1
+	tech_mountaineers = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## artillery ###############
+	################## armor ##############
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	early_fighter = 1
+	
+	############### economy ############
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	ww1_artillery = 1
+	foot_runners = 1
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	ww1_battlefield_support = 1
+}
+
+add_ideas = {
+	incompetent_industry_fake
+	incompetent_industry_fake_navy
+	YUT_hu_hanwen
+	cg_warlords
+	cu_is_warlord
+	limited_exports
+	#limited_conscription
+	war_economy
+	KMT_weak_army
+	CHI_nine_power_treaty
+}
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		PRC_government_corruption
+		CHI_ineffective_bureaucracy_warlord
+		CHI_ineffective_bureaucracy
+	}
+}
+
+create_field_marshal = {
+	name = "Chen Jitang"		
+	portrait_path = "gfx/leaders/kmt_mod/Portrait_Jyut_Chen_Jitang.dds"
+	traits = { inflexible_strategist trait_cautious }
+	id = 10131
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 3
+	skill = 3
+}
+
+create_corps_commander = {
+	name = "Zhang Fakui"
+	portrait_path = "gfx/leaders/kmt_mod/Portrait_Zhang_Fakui.dds"
+	traits = { scavenger }
+	id = 10241
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+	skill = 2
+}
+
+create_corps_commander = {
+	name = "Yu Hanmou"
+	id = 10121
+	portrait_path = "gfx/leaders/kmt_mod/Portrait_Jyut_Yu_Hanmou.dds"
+	traits = { infantry_officer career_officer }
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 2
+	skill = 3
+}
+
+set_convoys = 50
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {		
+		neutrality = 100
+}
+
+set_country_flag = is_warlords
+
+create_country_leader = {
+	name = "Yu Hanmou"
+	desc = "POLITICS_CHEN_JITANG_DESC"
+	picture = "gfx/leaders/kmt_mod/Portrait_Jyut_Yu_Hanmou.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+		warlords
+		neutral
+	}
+}
+
+create_country_leader = {
+	name = "Chen Jitang"
+	desc = "POLITICS_CHEN_JITANG_DESC"
+	picture = "gfx/leaders/kmt_mod/Portrait_Jyut_Chen_Jitang.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+		neutral
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	# Destroyers #
+	create_equipment_variant = {
+		name = "Jianwei Class"			
+		type = nrm_ship_hull_destroyer_1
+		name_group = CHI_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_1
+			fixed_ship_engine_slot = nrm_destroyer_engine_S0_005
+			fixed_ship_sonar_slot = empty
+			fixed_ship_battery_slot = nrm_destroyer_battery_4_1_x3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_1
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = empty
+			custom_slot_4 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+}

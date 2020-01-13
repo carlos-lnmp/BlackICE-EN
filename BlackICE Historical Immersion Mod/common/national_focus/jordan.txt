@@ -1,0 +1,1302 @@
+focus_tree = {
+	id = jor_merfocus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = JOR
+			has_dlc = "Waking the Tiger"
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 50 y = 540 }
+	focus = {
+		id = merJOR_Search_For_Oil_Deposits
+		icon = GFX_goal_generic_oil_refinery
+		cost = 10.00
+		x = 8
+		y = 0
+		completion_reward = {
+				activate_decision = Arab_Search_For_Oil
+				}
+
+
+	}
+	focus = {
+		id = merJOR_Bureaucracy
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10.00
+		x = 3
+		y = 0
+        completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = merJOR_Recognize_Peel_Commission_Plan
+		icon = GFX_goal_molotov_ribbentrop_pact
+		cost = 10.00
+		mutually_exclusive = {
+			focus = merJOR_Declare_Neutrality
+			focus = merJOR_Protest_Peel_Commission_Plan
+		}
+		prerequisite = {
+			focus = merJOR_Arab_Legion
+		}
+		x = 12
+		y = 1
+		#available = {
+			#Peel Partition Plan finished
+		#}
+		completion_reward = {
+			add_ideas = BMP_British_Rule
+			every_country = { 
+				limit = { is_Arab = yes }
+				add_opinion_modifier = {
+						target = ROOT
+						modifier = protest_action
+					}	
+				
+				}
+			}
+
+	}
+	focus = {
+		id = merJOR_Protest_Balfour_Declaration
+		icon = GFX_goal_generic_attack_allies
+		cost = 10.00
+		x = 19
+		y = 0
+		completion_reward = {
+			ENG = {
+				add_opinion_modifier = {
+						target = ROOT
+						modifier = protest_action_strong
+					}
+				}
+			every_country = { 
+				limit = { is_Arab = yes }
+				add_opinion_modifier = {
+						target = ROOT
+						modifier = took_stand_for_us
+					}	
+				
+			}
+		}
+
+	}
+	focus = {
+		id = merJOR_Declare_Neutrality
+		icon = GFX_goal_generic_defence
+		cost = 10.00
+		mutually_exclusive = {
+			focus = merJOR_Recognize_Peel_Commission_Plan
+			focus = merJOR_Protest_Peel_Commission_Plan
+		}
+		x = 16
+		y = 1
+		prerequisite = {
+			focus = merJOR_Arab_Legion
+		}
+
+	}
+	focus = {
+		id = merJOR_Build_Schools
+		icon = GFX_focus_generic_self_management
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Bureaucracy
+		}
+		x = 0
+		y = 1
+		available = {
+			NOT = {
+				has_idea = Arab_hyper_inflation_5
+			}
+		}
+		completion_reward = {
+			add_ideas = Arab_Schools
+			Arab_hyper_inflation_level_up = yes
+			}
+
+	}
+	focus = {
+		id = merJOR_Build_More_Schools
+		icon = GFX_focus_generic_self_management
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Build_Schools
+		}
+		x = 0
+		y = 2
+		available = {
+			NOT = {
+				has_idea = Arab_hyper_inflation_5
+			}
+		}
+		completion_reward = {			
+			swap_ideas = { 
+				remove_idea = Arab_Schools 
+				add_idea = Arab_Schools2
+				}
+			Arab_hyper_inflation_level_up = yes
+		}
+
+	}
+	focus = {
+		id = merJOR_Research_Funding
+		icon = GFX_focus_research
+		cost = 20.00
+		prerequisite = {
+			focus = merJOR_Build_More_Schools
+		}
+		x = 0
+		y = 3
+		available = {
+			NOT = {
+				has_idea = Arab_hyper_inflation_5
+			}
+		}
+		completion_reward = {
+			add_research_slot = 1
+			add_research_centre = yes
+			SLOT:electronics_folder = yes
+			Arab_hyper_inflation_level_up = yes
+		}
+
+	}
+	focus = {
+		id = merJOR_Revise_Bedouin_Control_Law
+		icon = GFX_goal_constitution2 #GFX_focus_renounce_the_treaty_of_trianon
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Bureaucracy
+		}
+		x = 2
+		y = 1
+		available = {
+			NOT = {
+				has_idea = security_liberty_first
+			}
+		}
+		completion_reward = {
+		add_stability = -0.15
+			swap_ideas = { 
+				remove_idea = Arab_Tribes 
+				add_idea = Arab_Tribes2
+				}
+		}
+
+	}
+	focus = {
+		id = merJOR_Integrate_Nomads
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Revise_Bedouin_Control_Law
+		}
+		x = 2
+		y = 2
+		available = {
+			NOT = {
+				has_idea = security_liberty_first
+			}
+		}
+		completion_reward = {
+		add_stability = -0.25
+			swap_ideas = { 
+				remove_idea = Arab_Tribes2 
+				add_idea = Arab_Tribes3
+				}
+		}
+
+	}
+	focus = {
+		id = merJOR_Subsidize_Farmers
+		icon = GFX_goal_generic_consumer_goods
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Bureaucracy
+		}
+		x = 4
+		y = 1
+		available = {
+			NOT = {
+				has_idea = Arab_hyper_inflation_5
+			}
+		}
+		completion_reward = {			
+			add_stability = 0.1
+			add_war_support = 0.05
+			Arab_hyper_inflation_level_up = yes
+		}
+
+	}
+	focus = {
+		id = merJOR_Welfare
+		icon = GFX_focus_generic_concessions
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Subsidize_Farmers
+		}
+		available = {
+			NOT = {
+				has_idea = Arab_hyper_inflation_5
+			}
+		}
+		x = 4
+		y = 2
+		completion_reward = {			
+			add_ideas = Arab_Social
+			Arab_hyper_inflation_level_up = yes
+		}
+
+	}
+	focus = {
+		id = merJOR_Healthcare
+		icon = GFX_focus_generic_concessions
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Welfare
+		}
+		available = {
+			NOT = {
+				has_idea = Arab_hyper_inflation_5
+			}
+		}
+		x = 4
+		y = 3
+		completion_reward = {			
+			swap_ideas = { 
+				remove_idea = Arab_Social
+				add_idea = Arab_Social2
+				}
+			Arab_hyper_inflation_level_up = yes
+		}
+
+	}
+	focus = {
+		id = merJOR_Agriculture
+		icon = GFX_goal_generic_construct_civilian
+		cost = 7
+		prerequisite = {
+			focus = merJOR_Bureaucracy
+		}
+		available = {
+			NOT = {
+				has_idea = Arab_hyper_inflation_5
+			}
+		}
+		x = 6
+		y = 1
+		completion_reward = {
+					add_timed_idea = { idea = Arab_Farms  days = 200 }
+		}
+
+	}
+	focus = {
+		id = merJOR_Develop_Oil_Industry
+		icon = GFX_goal_generic_oil_refinery
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Search_For_Oil_Deposits
+		}
+		prerequisite = {
+			focus = merJOR_Bureaucracy
+		}
+		x = 8
+		y = 1
+		available = {
+			has_country_flag = Arab_oil_Found
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+						add_resource = {
+						type = oil
+						amount = 1
+						}
+					}
+		}
+
+	}
+	focus = {
+		id = merJOR_Trade
+		icon = GFX_goal_generic_trade
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Develop_Oil_Industry
+		}
+		x = 6
+		y = 2
+		completion_reward = {
+			Arab_hyper_inflation_level_down = yes
+		}
+
+	}
+	focus = {
+		id = JOR_sci
+		icon = GFX_focus_mex_privatisation
+		cost = 3.90
+		prerequisite = {
+			focus = merJOR_Trade
+		}	
+		x = 0
+		y = 1
+		relative_position_id = merJOR_Trade
+		ai_will_do = {
+			factor = 5
+		}
+		completion_reward = {
+			add_research_slot = 1
+			add_research_centre = yes
+			SLOT:industry_folder = yes
+		}
+	}
+	focus = {
+		id = merJOR_Jordanian_Petroleum_Company
+		icon = GFX_goal_generic_oil_refinery
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Develop_Oil_Industry
+		}
+		x = 8
+		y = 2
+		completion_reward = { 
+			add_ideas = Arab_oil
+		}
+
+	}
+	focus = {
+		id = merJOR_Road
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 5.00
+		x = 10
+		y = 0
+		completion_reward = {
+					capital_scope = {
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}	
+		}
+
+	}
+	
+	focus = {
+		id = merJOR_construction
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 5.00
+		x = 10
+		y = 1
+		prerequisite = { focus = merJOR_Road }
+		completion_reward = {
+					capital_scope = {
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = industrial_complex
+							level = 1
+							instant_build = yes
+						}
+					}	
+		}
+
+	}
+	focus = {
+		id = merJOR_Mining_Operations
+		icon = GFX_goal_generic_construction2
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Develop_Oil_Industry
+		}
+		prerequisite = {
+			focus = merJOR_construction
+		}
+		x = 10
+		y = 2
+		completion_reward = {
+				activate_decision = Arab_Mining
+		}
+
+	}
+	focus = {
+		id = merJOR_Industry
+		icon = GFX_goal_generic_construction
+		cost = 8.00
+		prerequisite = {
+			focus = merJOR_Mining_Operations
+		}
+		x = 10
+		y = 3
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.25
+				uses = 2
+				category = industry
+			}
+		}				
+	}
+	focus = {
+		id = merJOR_Market_Reforms
+		icon = GFX_focus_generic_industry_3
+		cost = 9.00
+		prerequisite = {
+			focus = merJOR_Industry
+		}
+		prerequisite = {
+			focus = merJOR_Invite_More_British_Advisors
+		}
+		x = 12
+		y = 4
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				add = 2
+				has_idea = Arab_hyper_inflation_2			
+			}
+			modifier = {
+				add = 3
+				has_idea = Arab_hyper_inflation_3			
+			}
+			modifier = {
+				add = 4
+				has_idea = Arab_hyper_inflation_4			
+			}
+			modifier = {
+				add = 5
+				has_idea = Arab_hyper_inflation_5			
+			}
+		}
+		completion_reward = {
+			Arab_hyper_inflation_level_down = yes
+		}				
+		
+
+	}
+	focus = {
+		id = merJOR_Trade_More
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Jordanian_Petroleum_Company
+		}
+		prerequisite = {
+			focus = merJOR_Trade
+		}
+		prerequisite = {
+			focus = merJOR_Mining_Operations
+		}
+		x = 8
+		y = 3
+		completion_reward = {
+			add_ideas = liberty_ethos_focus
+			Arab_hyper_inflation_level_down = yes
+		}
+
+	}
+	focus = {
+		id = merJOR_Arming
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Industry
+		}
+		x = 10
+		y = 4
+
+		completion_reward = {
+					capital_scope = {
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = arms_factory
+							level = 1
+							instant_build = yes
+						}
+					}		
+		}
+
+	}
+	
+	focus = {
+		id = merJOR_Support_Britain
+		icon = GFX_focus_chi_british_cooperation
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Recognize_Peel_Commission_Plan
+		}
+		mutually_exclusive = {
+			focus = merJOR_Expel_British_Administration
+		}
+		x = 12
+		y = 2
+		completion_reward = {
+			swap_ideas = { 
+				remove_idea = Arab_Minor
+				add_idea = Arab_Minor2
+				}
+			Arab_hyper_inflation_level_down = yes
+		}
+	}
+	
+	focus = {
+		id = merJOR_Invite_More_British_Advisors
+		icon = GFX_focus_generic_commonwealth_build_infantry
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Support_Britain
+		}
+		x = 12
+		y = 3
+		completion_reward = {
+			remove_ideas = CHI_incompetent_officers
+			Arab_hyper_inflation_level_down = yes
+			}
+
+	}
+
+###############
+### Defense ###
+###############
+	focus = {
+		id = merJOR_fort_capital
+		icon = GFX_goal_generic_fortify_city
+		x = 11
+		y = 5
+		cost = 7
+		available_if_capitulated = yes
+		available = {
+			OR = {
+				threat > 0.05
+				has_war = yes
+			}
+		}
+		completion_reward = {
+					capital_scope = {
+						add_building_construction = {
+						type = anti_air_building
+						level = 1
+						instant_build = yes
+						}
+					}	
+		}
+	}
+	
+	focus = {
+		id = merJOR_forts
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = merJOR_fort_capital }
+		x = 11
+		y = 6
+		cost = 8
+		available_if_capitulated = yes
+		available = {
+			OR = {
+				threat > 0.10
+				has_war = yes
+			}
+		}
+		completion_reward = {
+			add_ideas = Arab_deterrence
+			}
+	}
+	
+	focus = {
+		id = merJOR_Elec_Fort
+		icon = GFX_goal_generic_radar
+		prerequisite = { focus = merJOR_forts }
+		mutually_exclusive = { focus = merJOR_Walls }
+		x = 9
+		y = 7
+		cost = 9
+		available_if_capitulated = yes
+		available = {
+		has_tech = radio
+			OR = {
+				threat > 0.10
+				has_war = yes
+			}
+		}
+		completion_reward = {
+				swap_ideas = { 
+					remove_idea = Arab_deterrence 
+					add_idea = Arab_deterrence2
+				}
+			}
+	}
+	
+	focus = {
+		id = merJOR_Listen
+		icon = GFX_goal_generic_radar
+		prerequisite = { focus = merJOR_Elec_Fort }
+		mutually_exclusive = { focus = merJOR_Hide }
+		x = 8
+		y = 8
+		cost = 7
+		available_if_capitulated = yes
+		completion_reward = {
+				swap_ideas = { 
+					remove_idea = Arab_deterrence2
+					add_idea = Arab_deterrence2a
+				}
+			}
+	}
+	
+	focus = {
+		id = merJOR_Hide
+		icon = GFX_focus_shadow_government
+		prerequisite = { focus = merJOR_Elec_Fort }
+		mutually_exclusive = { focus = merJOR_Listen }
+		x = 10
+		y = 8
+		cost = 7
+		available_if_capitulated = yes
+		completion_reward = {
+				swap_ideas = { 
+					remove_idea = Arab_deterrence2
+					add_idea = Arab_deterrence2b
+				}
+			}
+	}
+	
+	focus = {
+		id = merJOR_Walls
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = merJOR_forts }
+		mutually_exclusive = { focus = merJOR_Elec_Fort }
+		x = 13
+		y = 7
+		cost = 9
+		available_if_capitulated = yes
+		available = {
+		has_tech = construction1
+			OR = {
+				threat > 0.10
+				has_war = yes
+			}
+		}
+		completion_reward = {
+				swap_ideas = { 
+					remove_idea = Arab_deterrence 
+					add_idea = Arab_deterrence3
+				}
+			}
+	}
+	
+	focus = {
+		id = merJOR_Walls_ground
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = merJOR_Walls }
+		mutually_exclusive = { focus = merJOR_Walls_Air }
+		x = 12
+		y = 8
+		cost = 7
+		available_if_capitulated = yes
+		completion_reward = {
+				swap_ideas = { 
+					remove_idea = Arab_deterrence3 
+					add_idea = Arab_deterrence3b
+				}
+			}
+	}
+	
+	focus = {
+		id = merJOR_Walls_Air
+		icon = GFX_goal_fortify_city_AA
+		prerequisite = { focus = merJOR_Walls }
+		mutually_exclusive = { focus = merJOR_Walls_ground }
+		x = 14
+		y = 8
+		cost = 8
+		available_if_capitulated = yes
+		completion_reward = {
+				swap_ideas = { 
+					remove_idea = Arab_deterrence3 
+					add_idea = Arab_deterrence3a
+				}
+			}
+	}
+	
+###################
+### Alt History ###
+###################
+focus = {
+		id = merJOR_Protest_Peel_Commission_Plan
+		icon = GFX_focus_generic_strike_at_democracy2
+		cost = 10.00
+		available = {
+			threat > 0.25
+		}
+		prerequisite = {
+			focus = merJOR_Protest_Balfour_Declaration
+		}
+		mutually_exclusive = {
+			focus = merJOR_Recognize_Peel_Commission_Plan
+			focus = merJOR_Declare_Neutrality
+		}
+		x = 18
+		y = 1
+		completion_reward = {
+			ENG = {
+				add_opinion_modifier = {
+						target = ROOT
+						modifier = protest_action_strong
+					}
+				}
+			every_country = { 
+				limit = { is_Arab = yes }
+				add_opinion_modifier = {
+						target = ROOT
+						modifier = took_stand_for_us
+					}	
+				
+			}
+		}
+
+	}
+	
+	focus = {
+		id = merJOR_Expel_British_Administration
+		icon = GFX_focus_SAF_colonialist_crusade_ENG
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Protest_Peel_Commission_Plan
+			focus = merJOR_Declare_Neutrality
+		}
+		mutually_exclusive = {
+			focus = merJOR_Support_Britain
+		}
+		x = 18
+		y = 2
+		completion_reward = {
+			set_stability = 0.2
+			set_war_support = 0.1
+			Arab_hyper_inflation_level_up = yes			
+			}
+
+	}
+	focus = {
+		id = merJOR_Call_Upon_Arab_Leaders
+		icon = GFX_goal_generic_propaganda
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Expel_British_Administration
+		}
+		prerequisite = {
+			focus = merJOR_Declare_Neutrality
+		}
+		completion_reward = {
+			add_ideas = Arab_autonomy
+		}
+		
+		x = 16
+		y = 3
+
+	}
+	focus = {
+		id = merJOR_Close_Mosul-Haifa_Pipeline
+		icon = GFX_goal_demand_sudetenland
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Expel_British_Administration
+		}
+		x = 18
+		y = 3
+		completion_reward = {
+			add_ideas = Arab_less_export
+		}
+
+	}
+	focus = {
+		id = merJOR_Support_Germany
+		icon = GFX_focus_chi_mission_to_germany
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Protest_Balfour_Declaration
+		}
+		x = 21
+		y = 1
+		completion_reward = {
+			GER = {
+				add_opinion_modifier = {
+						target = ROOT
+						modifier = fascism_leanings_good
+					}
+			}
+			ENG = {
+				add_opinion_modifier = {
+						target = ROOT
+						modifier = faction_traitor_trade
+					}
+			}
+		}
+
+	}
+	focus = {
+		id = merJOR_Arab_Ultranationalism
+		icon = GFX_goal_generic_major_war
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Expel_British_Administration
+		}
+		prerequisite = {
+			focus = merJOR_Support_Germany
+		}
+		x = 20
+		y = 3
+		completion_reward = { 
+			declare_war_on = {
+				target = ENG
+				type = liberate_wargoal
+			}
+		}
+
+	}
+	focus = {
+		id = merJOR_Claim_Greater_Syria
+		icon = GFX_goal_generic_more_territorial_claims
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Arab_Ultranationalism
+		}
+		x = 20
+		y = 4
+		completion_reward = { 
+			### Golan
+			add_state_claim = 837
+			### Westbank
+			add_state_claim = 838
+			### Gaza
+			add_state_claim = 943
+			### Syria
+			add_state_claim = 554
+			### Lebanon
+			add_state_claim = 553
+			### Aleppo
+			add_state_claim = 677
+			### deir Az Zur
+			add_state_claim = 680
+			### Israel
+			add_state_claim = 454
+		}
+
+	}
+	focus = {
+		id = merJOR_Found_Fascist_Movement
+		icon = GFX_focus_RAJ_indian_gurkhas
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Arab_Ultranationalism
+		}
+		x = 22
+		y = 4
+		completion_reward = {
+			add_ideas = nationalism
+		}
+		
+
+	}
+	focus = {
+		id = merJOR_Declare_Fascist_State
+		icon = GFX_goal_generic_propaganda
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Found_Fascist_Movement
+		}
+		x = 22
+		y = 5
+		available = {
+			has_government = fascism
+		}
+		completion_reward = {
+			load_focus_tree = generic_focus
+		}
+
+	}
+	focus = {
+		id = merJOR_Invite_German_Advisors
+		icon = GFX_goal_military_agreement_germany
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Expel_British_Administration
+		}
+		prerequisite = {
+			focus = merJOR_Support_Germany
+		}
+		x = 22
+		y = 3
+		completion_reward = {
+			add_ideas = Arab_german_advisors
+		}
+
+	}
+	focus = {
+		id = merJOR_Arab_League
+		icon = GFX_goal_generic_major_alliance
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Call_Upon_Arab_Leaders
+		}
+		x = 16
+		y = 4
+		available = {
+			is_subject = no
+		}
+		completion_reward = {
+			load_focus_tree = arab_focus
+		}
+	}
+### Arab Legion OOB #####
+	focus = {
+		id = merJOR_Arab_Legion
+		icon = GFX_goal_generic_cavalry
+		cost = 5
+		x = 14
+		y = 0
+		completion_reward = {
+			custom_effect_tooltip = merJOR_Arab_Legion_tt
+			hidden_effect = {
+				delete_unit_template_and_units = {
+					division_template = "Arab Legion 1930s"
+				}
+				division_template = {
+					name = "Arab Legion 1936"
+					is_locked = yes
+					priority = 2
+					regiments = {
+						light_infantry = { x = 0 y = 0 }
+						cavalry = { x = 1 y = 0 }
+					}
+					support = {
+						recon_cav = { x = 0 y = 0 }
+						desert_support = { x = 0 y = 1 }
+						military_police = { x = 0 y = 2 }
+					}
+				}
+				set_technology = {
+					tech_support = 1
+				}
+				capital_scope = {
+					create_unit = {
+						division = "name = \"Arab Legion\" division_template = \"Arab Legion 1936\" start_experience_factor = 0.5 start_equipment_factor = 0.5" owner = JOR 
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = merJOR_Arab_Legion2
+		icon = GFX_focus_generic_commonwealth_build_infantry
+		cost = 6
+		prerequisite = {
+			focus = merJOR_Recognize_Peel_Commission_Plan 
+			focus = merJOR_Declare_Neutrality
+		}
+		x = 14
+		y = 3
+		available = {
+			BMP = {
+				OR = {
+					has_idea = BMP_arab_revolt
+					has_completed_focus = BMP_put_down_the_arab_revolt
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = merJOR_Arab_Legion2_tt
+			hidden_effect = {
+				delete_unit_template_and_units = {
+					division_template = "Arab Legion 1936"
+				}
+				division_template = {
+					name = "Arab Legion 1938"
+					is_locked = yes
+					priority = 2
+					regiments = {
+						light_infantry = { x = 0 y = 0 }
+						light_infantry = { x = 0 y = 1 }
+						cavalry = { x = 1 y = 0 }
+						cavalry = { x = 1 y = 1 }
+					}
+					support = {
+						recon_cav = { x = 0 y = 0 }
+						desert_support = { x = 0 y = 1 }
+						military_police = { x = 0 y = 2 }
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "name = \"Arab Legion\" division_template = \"Arab Legion 1938\" start_experience_factor = 0.6 start_equipment_factor = 0.5" owner = JOR 
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = merJOR_Motorize_Arab_Legion
+		icon = GFX_goal_generic_army_motorized
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Arab_Legion2
+		}
+		prerequisite = {
+			focus = merJOR_Invite_More_British_Advisors
+		}
+		x = 14
+		y = 4
+		available = {
+			date > 1939.1.1
+		}
+		completion_reward = {
+			custom_effect_tooltip = merJOR_Motorize_Arab_Legion_tt 
+			hidden_effect = {
+				random_army_leader = {
+					limit = {
+							has_trait = Most_Excellent_Order
+					}
+					retire = yes		
+				}				
+				create_corps_commander = {
+					name = "Glubb"
+					portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
+					traits = { Competent_General logistics_wizard_CC organizer War_Medal_1914_1915  }
+					skill = 2
+				}
+				delete_unit_template_and_units = {
+					division_template = "Arab Legion 1938"
+				}
+				division_template = {
+					name = "Arab Legion 1939"
+					is_locked = yes
+					priority = 2
+					regiments = {
+						semi_motorized = { x = 0 y = 0 }
+						semi_motorized = { x = 0 y = 1 }
+						cavalry = { x = 1 y = 0 }
+						cavalry = { x = 1 y = 1 }
+					}
+					support = {
+						recon_cav = { x = 0 y = 0 }
+						desert_support = { x = 0 y = 1 }
+						military_police = { x = 0 y = 2 }
+						recon_ac = { x = 0 y = 3 }
+					}
+				}
+				set_technology = {
+					tech_ac_recon = 1
+				}
+				set_cosmetic_tag = JOR_MONARCHY_1939
+				capital_scope = {
+					create_unit = {
+						division = "name = \"Arab Legion\" division_template = \"Arab Legion 1939\" start_experience_factor = 0.65 start_equipment_factor = 0.5" owner = JOR 
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = merJOR_Arab_Legion_Mech
+		icon = GFX_goal_generic_build_tank
+		cost = 5
+		prerequisite = {
+			focus = merJOR_Motorize_Arab_Legion
+		}
+		x = 14
+		y = 5
+		available = {
+			OR = {
+				hidden_trigger = {
+					is_ai = yes
+				}
+				IRQ = {
+					OR = {
+						fascism > 0.25
+						has_government = fascism
+						NOT = { gives_military_access_to = ENG }
+					}
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = merJOR_Arab_Legion_Mech_tt
+			hidden_effect = {
+				delete_unit_template_and_units = {
+					division_template = "Arab Legion 1939"
+				}
+				division_template = {
+					name = "Arab Legion 1940"
+					is_locked = yes
+					priority = 3
+					regiments = {
+						mechanized = { x = 0 y = 0 }
+						mechanized = { x = 0 y = 1 }
+						semi_motorized = { x = 1 y = 0 }
+						semi_motorized = { x = 1 y = 1 }
+						cavalry = { x = 2 y = 0 }
+						cavalry = { x = 2 y = 1 }
+					}
+					support = {
+						recon_cav = { x = 0 y = 0 }
+						desert_support = { x = 0 y = 1 }
+						recon_ac = { x = 0 y = 2 }
+					}
+				}
+				set_technology = {
+					mechanised_infantry = 1
+				}
+				capital_scope = {
+					create_unit = {
+						division = "name = \"Arab Legion\" division_template = \"Arab Legion 1940\" start_experience_factor = 0.7 start_equipment_factor = 0.5" owner = JOR 
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = merJOR_Arab_Legion_fame
+		icon = GFX_focus_chi_army_reform
+		cost = 10.00
+		prerequisite = {
+			focus = merJOR_Arab_Legion_Mech
+		}
+		x = 14
+		y = 6
+		available = {
+			OR = {
+				has_war_with = SYR
+				has_war_with = LEB
+				IRQ = {
+					OR = {										
+						is_puppet_of = ENG
+						has_capitulated = yes
+						exists = no
+					}
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = Arab_Command
+			custom_effect_tooltip = merJOR_Arab_Legion_fame_tt
+			hidden_effect = {
+				delete_unit_template_and_units = {
+					division_template = "Arab Legion 1940"
+				}
+				division_template = {
+					name = "Arab Legion 1941"
+					is_locked = yes
+					priority = 3
+					regiments = {
+						mechanized = { x = 0 y = 0 }
+						mechanized = { x = 0 y = 1 }
+						mechanized = { x = 1 y = 0 }
+						mechanized = { x = 1 y = 1 }
+						cavalry = { x = 2 y = 0 }
+						cavalry = { x = 2 y = 1 }
+					}
+					support = {
+						recon_cav = { x = 0 y = 0 }
+						desert_support = { x = 0 y = 1 }
+						recon_ac = { x = 0 y = 2 }
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "name = \"Arab Legion\" division_template = \"Arab Legion 1941\" start_experience_factor = 0.75 start_equipment_factor = 0.5" owner = JOR 
+					}
+				}
+			}
+		}
+	}
+#### AIR ####
+	focus = {
+		id = merJOR_aviation_effort
+		icon = GFX_goal_generic_build_airforce
+		x = 18
+		y = 5
+		cost = 7
+		ai_will_do = {
+			factor = 2
+		}
+		available_if_capitulated = yes
+		complete_tooltip = {
+			air_experience = 25
+			if = { limit = { has_country_flag = aviation_effort_AB }
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}			
+			add_tech_bonus = {
+				name = air_doc_bonus
+				bonus = 0.2
+				uses = 1
+				category = air_doctrine
+			}			
+		}
+
+		completion_reward = {
+			air_experience = 25
+
+			if = {
+				limit = {
+					capital_scope = {
+						NOT = {
+							free_building_slots = {
+								building = air_base
+								size > 1
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 1
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_AB }
+				}
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 1
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_AB }
+				}
+			}
+			add_tech_bonus = {
+				name = air_doc_bonus
+				bonus = 0.2
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+}
+
+##### END ######
+

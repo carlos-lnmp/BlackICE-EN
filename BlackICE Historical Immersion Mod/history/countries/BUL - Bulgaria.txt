@@ -1,0 +1,362 @@
+﻿capital = 854
+
+oob = "BUL_1936"
+
+set_convoys = 20
+
+set_war_support = 0.15
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+		torpedo_boat_destroyer = 1
+		early_ww1_destroyer = 1
+		late_ww1_destroyer = 1
+	}
+	set_naval_oob = "BUL_1936_naval_legacy"
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		basic_depth_charges = 1
+		nrm_battery_basic = 1
+		basic_torpedo = 1
+		early_engine = 1
+	}
+	set_naval_oob = "BUL_1936_naval"
+}
+
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	tech_support = 1		
+	tech_engineers = 1
+	################## artillery ###############
+	gw_artillery = 1
+	################## armor ##############
+	generic_armor_axis = 1
+	################## aircraft ##############
+	early_fighter = 1
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	offensive_trenches = 1
+	defensive_trenches = 1
+	basic_MG_defences = 1
+	
+	ww1_artillery = 1
+	artillery_concentration = 1
+	artillery_observers = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	cavalry_exploitation = 1
+	
+	ww1_battlefield_support = 1
+	battlefield_commissions = 1
+	terrain_mapping = 1
+	
+	WW1_air_power = 1
+	WW1_air_survey = 1
+	WW1_air_control = 1
+	WW1_air_bomb = 1
+	############### naval doctrines ##################
+	nrm_pre_ww1_naval_doctrine = 1
+	nrm_mahanian_concepts = 1
+	nrm_jeune_ecole_concepts = 1
+	nrm_commerce_warfare = 1
+	nrm_cruiser_warfare = 1
+	nrm_cruiser_flotilla_leader = 1
+	nrm_destroyer_support = 1
+	nrm_destroyer_screen = 1
+	nrm_destroyer_torpedo_tactics = 1
+	nrm_independent_destroyer_operation = 1
+	nrm_submarine_tactics_early = 1
+	nrm_submarine_raiding = 1
+	nrm_submarine_torpedo_tactics = 1
+}
+
+add_ideas = {
+	BUL_boris
+	BUL_imro
+	mountainous_country
+	BUL_second_national_catastrophe
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	security_minor_restrictions
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	age_19
+	officer_train_none
+	
+	edu_minimal
+	
+	foreign_isolationism
+	neutrality_idea
+}
+
+set_country_flag = neutrality_idea
+
+set_politics = {
+	ruling_party = monarchism
+	last_election = "1931.6.21"
+	election_frequency = 66
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservatism = 12.5
+	fascism = 7.5
+	liberalism = 4.8
+	socialism = 6.3
+	communism = 8
+	monarchism = 50
+	neutrality = 10.9
+}
+##### Country Leaders #####
+create_country_leader = {
+	name = "Georgi Kyoseivanov"
+	desc = "POLITICS_GEORGI_KYOSEIVANOV_DESC"
+	picture = "Portrait_Bulgaria_Georgi_Kyoseivanov.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Boris III"
+	desc = "POLITICS_BORIS_III_DESC"
+	picture = "Portrait_Bulgaria_Boris_III.dds"
+	expire = "1965.1.1"
+	ideology =  absolutism
+	traits = {
+		monarchist
+	}
+}
+create_country_leader = {
+	name = "Georgi Dimitrov"
+	desc = "POLITICS_GEORGI_DIMITROV_DESC"
+	picture = "Portrait_Bulgaria_Georgi_Dimitrov.dds"
+	expire = "1965.1.1"
+	ideology = leninism
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Zivko Topalovic"
+	desc = "POLITICS_ZIVCO_TOPALOVIC_DESC"
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
+	expire = "1965.1.1"
+	ideology = social_democracy
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Hristo Lukov"
+	desc = "POLITICS_HRISTO_LUKOV_DESC"
+	picture = "GFX_Portrait_bulgaria_hristo_lukov"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+		fascist
+	}
+}
+##### Field Marshals #####
+create_field_marshal = {
+	name = "Nikola Dimitrov Nedeva"
+	picture = "Portrait_Bulgaria_Nikola_Dimitrov_Nedeva.dds"
+	traits = { Competent_General old_guard  }
+	skill = 4
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 4
+}
+
+##### Corps Commanders #####
+create_corps_Commander = {
+	name = "Georgi Nikolov Popov"
+	picture = "Portrait_Bulgaria_Georgi_Nikolov_Popov.dds"
+	traits = { Decent_General bearer_of_artillery }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 3
+	logistics_skill = 4
+}
+
+create_field_marshal = {
+	name = "Vladimir Dimitrov Stoychev"
+	picture = "Portrait_Bulgaria_Vladimir_Dimitrov_Stoychev.dds"
+	traits = { Awesome_General offensive_doctrine_CC old_guard }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Bakyrdjiev, "
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
+	traits = { old_guard Awesome_General logistics_wizard_CC }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 1
+}
+
+create_corps_Commander = {
+	name = "Vasil Tenev Boydev"
+	picture = "Portrait_Bulgaria_Vasil_Tenev_Boydev.dds"
+	traits = { Bad_General armor_officer }
+	skill = 3
+	attack_skill = 2
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 3
+}
+create_corps_Commander = {
+	name = "Gancho Ivanov Manchev"
+	picture = "Portrait_Bulgaria_Gancho_Ivanov_Manchev.dds"
+	traits = { Competent_General }
+	skill = 3
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 3
+}
+create_corps_commander = {
+	name = "Vulkov, "
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
+	traits = { Competent_General defensive_doctrine_CC old_guard }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 3
+	logistics_skill = 2
+}
+
+##### Navy Leaders #####
+create_navy_leader = {
+	name = "Ivanov"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
+	traits = { old_guard_navy }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 2
+	maneuvering_skill = 1
+	coordination_skill = 1
+}
+create_navy_leader = {
+	name = "Shalapatov, "
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
+	traits = { seawolf }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 1
+}
+create_navy_leader = {
+	name = "Tzanev, "
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
+	traits = { superior_tactician }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	maneuvering_skill = 2
+	coordination_skill = 1
+}
+create_navy_leader = {
+	name = "Variclechkov, "
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
+	traits = { old_guard blockade_runner }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	maneuvering_skill = 2
+	coordination_skill = 1
+}
+
+### Ships ###
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	create_equipment_variant = {
+		name = "Drazki-class"
+		type = destroyer_early_ww1
+		parent_version = 0
+		#upgrades = {
+		#	ship_torpedo_upgrade = 3
+		#	ship_calibre_upgrade = 1
+		#	ship_barrels_upgrade = 2
+		#	ship_anti_air_upgrade = 2
+		#	destroyer_engine_upgrade = 1
+		#	ship_ASW_upgrade = 4
+		#}
+		obsolete=yes
+	}
+	create_equipment_variant = {
+		name = "Lurrsen-class"
+		type = destroyer_late_ww1
+		parent_version = 0
+		#upgrades = {
+		#	ship_torpedo_upgrade = 1
+		#	ship_calibre_upgrade = 1
+		#	ship_barrels_upgrade = 1
+		#	ship_anti_air_upgrade = 2
+		#	destroyer_engine_upgrade = 3
+		#	ship_ASW_upgrade = 2
+		#	ship_quality_upgrade = 3
+		#}
+	}
+	create_equipment_variant = {
+		name = "Torpedo Boat"
+		type = destroyer_tb
+		parent_version = 0
+		#upgrades = {
+		#	ship_torpedo_upgrade = 2
+		#	destroyer_engine_upgrade = 3
+		#}
+		obsolete=yes
+	}
+}
+### EOF ###

@@ -1,0 +1,1421 @@
+﻿instant_effect = {
+	set_country_flag = placed_research_centre
+	
+	add_research_slot = 1
+	159 = { state_add_research_centre = yes }
+	SLOT:artillery_folder = yes
+	SLOT:armor_folder = yes
+	SLOT:tank_techs_folder = yes
+
+	add_research_slot = 1
+	161 = { state_add_research_centre = yes }
+	SLOT:air_techs_folder = yes
+	SLOT:air_doctrine_folder = yes
+	
+	add_research_slot = 1
+	858 = { state_add_research_centre = yes }
+	SLOT:naval_folder = yes
+	SLOT:naval_techs_folder = yes
+	SLOT:naval_doctrine_folder = yes
+	
+	add_research_slot = 1
+	158 = { state_add_research_centre = yes }
+	SLOT:air_techs_folder = yes
+}
+
+##### Division Templates #####
+division_template = {
+	name = "Divisione di Fanteria-Alpina"
+	#represent semi-mountain divisions (1st, 2nd, 3rd, 4th, 6th Divisions)
+	template_counter = 3008
+	
+	regiments = {
+		semi_motorized = { x = 0 y = 0 }
+		semi_motorized = { x = 0 y = 1 }
+
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+
+		light_infantry = { x = 2 y = 0 }
+		light_infantry = { x = 2 y = 1 }
+		light_infantry = { x = 2 y = 2 }
+		light_infantry = { x = 2 y = 3 }
+
+		mountain_artillery_brigade = { x = 3 y = 0 }
+		artillery_brigade = { x = 3 y = 1 }
+		artillery_brigade = { x = 3 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		recon = { x = 0 y = 2 }
+		maintenance_company = { x = 0 y = 3 }
+		logistics_company = { x = 0 y = 4 }
+		field_hospital = { x = 1 y = 0 }
+	}
+}
+division_template = {
+	name = "Divisione di Fanteria"		
+	# Represents nearly all infantry divisions
+	# In later years, CCNN Brigade added to Inf Division (1x2 militia/inf regiment)
+	template_counter = 114
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+
+		militia = { x = 3 y = 0 }
+		militia = { x = 3 y = 1 }
+		militia = { x = 3 y = 2 }
+		
+		artillery_brigade = { x = 4 y = 0 }
+		artillery_brigade = { x = 4 y = 1 }
+		artillery_brigade = { x = 4 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		recon = { x = 0 y = 2 }
+		maintenance_company = { x = 0 y = 3 }
+		logistics_company = { x = 0 y = 4 }
+		field_hospital = { x = 1 y = 0 }
+	}
+}
+division_template = {
+	name = "Divisione di Fanteria-Binaria"		
+	# Certain infantry divisions were raised, or existed as binary divisions in 1936 before the 1938 re-organization
+	template_counter = 381
+	priority = 1
+	
+	regiments = {
+		light_infantry = { x = 0 y = 0 }
+		light_infantry = { x = 0 y = 1 }
+		light_infantry = { x = 0 y = 2 }
+
+		light_infantry = { x = 1 y = 0 }
+		light_infantry = { x = 1 y = 1 }
+		light_infantry = { x = 1 y = 2 }
+
+		artillery_brigade = { x = 2 y = 0 }
+		artillery_brigade = { x = 2 y = 1 }
+		mountain_artillery_brigade = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		recon = { x = 0 y = 2 }
+		maintenance_company = { x = 0 y = 3 }
+		logistics_company = { x = 0 y = 4 }
+		field_hospital = { x = 1 y = 0 }
+	}
+}
+division_template = {
+	name = "Divisione di CC.NN."		
+	template_counter = 150
+	
+	regiments = {
+		semi_motorized = { x = 0 y = 0 }
+		semi_motorized = { x = 0 y = 1 }
+
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1}
+		militia = { x = 1 y = 2 }
+		militia = { x = 1 y = 3 }
+		
+		cavalry = { x = 2 y = 0 }
+		cavalry = { x = 2 y = 1 }
+
+		ita_tankette_armor = { x = 3 y = 0 }
+		
+		artillery_brigade = { x = 4 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		engineer = { x = 0 y = 2 }
+		military_police = { x = 0 y = 3 }
+	}
+}
+division_template = {
+	name = "Divisione di CC.NN. 'Tevere'"
+	#Represents 6th CCNN division, which was composed mostly of university students, veterans, and cripples - still saw a bit of service - notably missing pack artillery
+	template_counter = 69
+	priority = 0
+	
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		mountain_artillery_brigade = { x = 2 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		field_hospital = { x = 0 y = 2 }
+		logistics_company = { x = 0 y = 3 }
+		mount_support = { x = 0 y = 4 }
+	}
+}
+division_template = {
+	name = "Divisione di CC.NN. 'Cirene'"
+	#Represents highly over-strength 7th CCNN division, in Libya, saw no front-line service but existed to threaten Suez, potentially
+	template_counter = 374
+	priority = 0
+	
+	regiments = {
+		light_infantry = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		militia = { x = 0 y = 3 }
+
+		light_infantry = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		militia = { x = 1 y = 3 }
+
+		light_infantry = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+		militia = { x = 2 y = 3 }	
+        
+		light_infantry = { x = 3 y = 0 }		
+		militia = { x = 3 y = 1 }
+		militia = { x = 3 y = 2 }
+		militia = { x = 3 y = 3 }
+		
+		mountain_artillery_brigade = { x = 4 y = 0 }
+		mountain_artillery_brigade = { x = 4 y = 1 }	
+		mountain_artillery_brigade = { x = 4 y = 2 }
+
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		field_hospital = { x = 0 y = 2 }
+		logistics_company = { x = 0 y = 3 }
+		mount_support = { x = 0 y = 4 }
+	}
+}
+division_template = {
+	name = "Divisione Alpina"					# Divisione Alpina
+	template_counter = 3008
+	priority = 2
+	
+	regiments = {
+		mountaineers = { x = 0 y = 0 }			# Elite Alpina Regiments
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }
+		
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+		
+		mountaineers = { x = 2 y = 0 }
+		mountaineers = { x = 2 y = 1 }
+		mountaineers = { x = 2 y = 2 }
+		
+		mountain_artillery_brigade = { x = 3 y = 0 }
+		mountain_artillery_brigade = { x = 3 y = 1 }
+		mountain_artillery_brigade = { x = 3 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		recon_cav = { x = 0 y = 2 }
+		maintenance_company = { x = 0 y = 3 }
+		logistics_company = { x = 0 y = 4 }
+		field_hospital = { x = 1 y = 0 }
+	}
+}
+division_template = {
+	name = "Divisione Celere" 		# Divisione Celere (Fast Division)
+	template_counter = 222
+	priority = 2
+	
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+		
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 1 y = 2 }
+		
+		mechanized = { x = 2 y = 0 }		# (elite) Bersaglieri Regiment
+		motorized = { x = 2 y = 1 }
+		motorized = { x = 2 y = 2 }
+		
+		artillery_brigade_mot = { x = 3 y = 0 }
+		artillery_brigade_mot = { x = 3 y = 1 }
+		
+		ita_tankette_armor  = { x = 4 y = 0 } # L3/35 Tankette Battalion
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_ac = { x = 0 y = 1 }
+		maintenance_company = { x = 0 y = 2 }
+		logistics_company = { x = 0 y = 3 }
+		field_hospital = { x = 0 y = 4 }
+	}
+}
+division_template = {
+	name = "Divisione Motorizzata"
+	template_counter = 162
+	priority = 2
+	
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+		motorized = { x = 1 y = 2 }
+		
+		motorized = { x = 2 y = 0 }
+		motorized = { x = 2  y = 1 }
+		motorized = { x = 2 y = 2 }
+		
+		artillery_brigade_mot = { x = 3 y = 0 }	
+		artillery_brigade_mot = { x = 3 y = 1 }
+		artillery_brigade_mot = { x = 3 y = 2 }	
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+  		recon_mot = { x = 0 y = 2 }
+		#anti_tank = { x = 0 y = 3 }
+		
+		maintenance_company = { x = 1 y = 0 }
+	}
+}
+division_template = {
+	name = "Divisione Indigini-Eritreo"		
+	# Represents Askaris, primarily - basing on 1st and 2nd Eritrean division
+	template_counter = 382
+	priority = 0
+	
+	regiments = {
+		light_infantry = { x = 0 y = 0 }
+		light_infantry = { x = 0 y = 1 }
+		light_infantry = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		
+		cavalry = { x = 3 y = 0 }
+		cavalry = { x = 3 y = 1 }
+		
+		mountain_artillery_brigade = { x = 4 y = 0 }
+		mountain_artillery_brigade = { x = 4 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		desert_support = { x = 0 y = 2 }
+		mount_support = { x = 0 y = 3 }
+	}
+}
+division_template = {
+	name = "Divisione Coloniale"		
+	# Represents Askaris, primarily - basing on 1st and 2nd Eritrean division
+	template_counter = 382
+	priority = 0
+	
+	regiments = {
+		light_infantry = { x = 0 y = 0 }
+		light_infantry = { x = 0 y = 1 }
+		light_infantry = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		
+		cavalry = { x = 3 y = 0 }
+		cavalry = { x = 3 y = 1 }
+		
+		mountain_artillery_brigade = { x = 4 y = 0 }
+		mountain_artillery_brigade = { x = 4 y = 1 }
+	}
+	
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		desert_support = { x = 0 y = 2 }
+		mount_support = { x = 0 y = 3 }
+	}
+}
+division_template = {
+	name = "Divisione Indigini-Somalo"		
+	# Represents Libyan / Somali divisions in Somalia
+	template_counter = 381
+	priority = 0
+	
+	regiments = {
+		light_infantry = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+
+		light_infantry = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		cavalry = { x = 2 y = 0 }
+		cavalry = { x = 2 y = 1 }
+		
+		mountain_artillery_brigade = { x = 3 y = 0 }
+		mountain_artillery_brigade = { x = 3 y = 1 }
+	}
+	
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		desert_support = { x = 0 y = 2 }
+		mount_support = { x = 0 y = 3 }
+	}
+}
+division_template = {
+	name = "Raggruppamento Celere" 			# Raggruppamento Celere
+	# Note: these groups were gradually expanded to army-level supprt of cavalry rgts, bersaglieri rgts, and tankette bns.
+	template_counter = 189
+	priority = 0
+	
+	regiments = {
+		mechanized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 1 y = 2 }
+		
+		ita_tankette_armor  = { x = 2 y = 0 } # L3/35 Tankette Battalion
+		ita_tankette_armor  = { x = 2 y = 1 } # L3/35 Tankette Battalion
+	}
+	
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_mot = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Divisione Costiera"	# Represents Border Guard Commands, Fortress Groups, etc.
+	template_counter = 84
+	priority = 0
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		military_police = { x = 0 y = 1 }	
+		artillery_coastal = { x = 0 y = 2 }
+	}
+}
+####################
+######## AI ########
+####################
+instant_effect = {
+	if = {
+		limit = {
+			is_ai = yes 
+		}
+		set_technology = { interwar_antitank = 1 }
+		division_template = {
+			name = "Divisione di Fanteria-Alpina"	
+			priority = 3
+			template_counter = 3008
+			
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+
+				mountaineers = { x = 1 y = 0 }
+				mountaineers = { x = 1 y = 1 }
+				mountaineers = { x = 1 y = 2 }
+
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+				infantry = { x = 2 y = 3 }
+
+				mountain_artillery_brigade = { x = 3 y = 0 }
+				artillery_brigade = { x = 3 y = 1 }
+				artillery_brigade = { x = 3 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				recon = { x = 0 y = 2 }
+				maintenance_company = { x = 0 y = 3 }
+				logistics_company = { x = 0 y = 4 }
+				field_hospital = { x = 1 y = 0 }
+				mount_support = { x = 1 y = 1 }
+			}
+		}
+		division_template = {
+			name = "Divisione di Fanteria"		
+			priority = 2
+			template_counter = 114
+			
+			regiments = {
+				infantry = {x = 0 y = 0}
+				infantry = {x = 0 y = 1}
+				infantry = {x = 0 y = 2}
+				infantry = {x = 0 y = 3}
+				infantry = {x = 0 y = 4}
+
+				infantry = {x = 1 y = 0}
+				infantry = {x = 1 y = 1}
+				infantry = {x = 1 y = 2}
+				infantry = {x = 1 y = 3}
+				
+				artillery_brigade = {x = 2 y = 0}
+				artillery_brigade = {x = 2 y = 1}
+				artillery_brigade = {x = 2 y = 2}
+				anti_tank_brigade = {x = 2 y = 3}
+				
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				logistics_company = { x = 0 y = 2 }	
+				maintenance_company = { x = 0 y = 3 }
+				
+				field_hospital = { x = 1 y = 0 }
+				recon = { x = 1 y = 1 }
+				combat_engineer = { x = 1 y = 2 }
+				desert_support = { x = 1 y = 3 }
+			}
+
+		}
+		division_template = {
+			name = "Divisione di Fanteria-Binaria"	
+			priority = 2
+			template_counter = 381
+			
+			regiments = {
+				light_infantry = { x = 0 y = 0 }
+				light_infantry = { x = 0 y = 1 }
+				light_infantry = { x = 0 y = 2 }
+				light_infantry = { x = 0 y = 3 }
+
+				light_infantry = { x = 1 y = 0 }
+				light_infantry = { x = 1 y = 1 }
+				light_infantry = { x = 1 y = 2 }
+				light_infantry = { x = 1 y = 3 }
+
+				artillery_brigade = { x = 2 y = 0 }
+				artillery_brigade = { x = 2 y = 1 }
+				artillery_brigade = { x = 2 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				recon = { x = 0 y = 2 }
+				maintenance_company = { x = 0 y = 3 }
+				logistics_company = { x = 0 y = 4 }
+				field_hospital = { x = 1 y = 0 }
+			}
+		}
+		division_template = {
+			name = "Divisione di CC.NN."	
+			priority = 2
+			template_counter = 382
+			
+			regiments = {
+				light_infantry = { x = 0 y = 0 }
+				light_infantry = { x = 0 y = 1 }
+
+				light_infantry = { x = 1 y = 0 }
+				light_infantry = { x = 1 y = 1 }
+				
+				light_infantry = { x = 2 y = 0 }
+				light_infantry = { x = 2 y = 1 }
+				
+				artillery_brigade = { x = 3 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Divisione di CC.NN. 'Tevere'"
+			priority = 2
+			template_counter = 381
+			
+			regiments = {
+				light_infantry = { x = 0 y = 0 }
+				light_infantry = { x = 0 y = 1 }
+				light_infantry = { x = 0 y = 2 }
+				
+				light_infantry = { x = 1 y = 0 }
+				light_infantry = { x = 1 y = 1 }
+				light_infantry = { x = 1 y = 2 }
+				
+				artillery_brigade = { x = 2 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				field_hospital = { x = 0 y = 2 }
+				logistics_company = { x = 0 y = 3 }
+				mount_support = { x = 0 y = 4 }
+			}
+		}
+		division_template = {
+			name = "Divisione di CC.NN. 'Cirene'"
+			priority = 0
+			template_counter = 382
+			
+			regiments = {
+				light_infantry = { x = 0 y = 0 }
+				militia = { x = 0 y = 1 }
+				militia = { x = 0 y = 2 }
+				militia = { x = 0 y = 3 }
+
+				light_infantry = { x = 1 y = 0 }
+				militia = { x = 1 y = 1 }
+				militia = { x = 1 y = 2 }
+				militia = { x = 1 y = 3 }
+
+				light_infantry = { x = 2 y = 0 }
+				militia = { x = 2 y = 1 }
+				militia = { x = 2 y = 2 }
+				militia = { x = 2 y = 3 }	
+				
+				light_infantry = { x = 3 y = 0 }		
+				militia = { x = 3 y = 1 }
+				militia = { x = 3 y = 2 }
+				militia = { x = 3 y = 3 }
+				
+				mountain_artillery_brigade = { x = 4 y = 0 }
+				mountain_artillery_brigade = { x = 4 y = 1 }	
+				mountain_artillery_brigade = { x = 4 y = 2 }
+
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				field_hospital = { x = 0 y = 2 }
+				logistics_company = { x = 0 y = 3 }
+				mount_support = { x = 0 y = 4 }
+			}
+		}
+		division_template = {
+			name = "Divisione Alpina"		
+			priority = 5
+			template_counter = 3008
+			
+			regiments = {
+				mountaineers = { x = 0 y = 0 }			# Elite Alpina Regiments
+				mountaineers = { x = 0 y = 1 }
+				mountaineers = { x = 0 y = 2 }
+				mountaineers = { x = 0 y = 3 }
+				
+				mountaineers = { x = 1 y = 0 }
+				mountaineers = { x = 1 y = 1 }
+				mountaineers = { x = 1 y = 2 }
+				
+				mountaineers = { x = 2 y = 0 }
+				mountaineers = { x = 2 y = 1 }
+				mountaineers = { x = 2 y = 2 }
+				
+				mountain_artillery_brigade = { x = 3 y = 0 }
+				mountain_artillery_brigade = { x = 3 y = 1 }
+				mountain_artillery_brigade = { x = 3 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				recon = { x = 0 y = 2 }
+				maintenance_company = { x = 0 y = 3 }
+				logistics_company = { x = 0 y = 4 }
+				field_hospital = { x = 1 y = 0 }
+				mount_support = { x = 1 y = 1 }
+			}
+		}
+		division_template = {
+			name = "Divisione Celere" 	
+			priority = 2
+			template_counter = 146
+			
+			regiments = {
+				semi_motorized = {x = 0 y = 0}
+				semi_motorized = {x = 0 y = 1}
+				semi_motorized = {x = 0 y = 2}
+
+				semi_motorized = {x = 1 y = 0}
+				semi_motorized = {x = 1 y = 1}
+				semi_motorized = {x = 1 y = 2}
+				
+				semi_motorized = {x = 2 y = 0}
+				semi_motorized = {x = 2 y = 1}
+				semi_motorized = {x = 2 y = 2}
+				
+				artillery_brigade_mot = {x = 3 y = 0}
+				artillery_brigade_mot = {x = 3 y = 1}
+				artillery_brigade_mot = {x = 3 y = 2}
+				
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				logistics_company = { x = 0 y = 2 }	
+				maintenance_company = { x = 0 y = 3 }
+				
+				field_hospital = { x = 1 y = 0 }
+				recon = { x = 1 y = 1 }
+			}
+		}
+		division_template = {
+			name = "Divisione Motorizzata"
+			priority = 2
+			template_counter = 162
+			
+			regiments = {
+				semi_motorized = {x = 0 y = 0}
+				semi_motorized = {x = 0 y = 1}
+				semi_motorized = {x = 0 y = 2}
+
+				semi_motorized = {x = 1 y = 0}
+				semi_motorized = {x = 1 y = 1}
+				semi_motorized = {x = 1 y = 2}
+				
+				semi_motorized = {x = 2 y = 0}
+				semi_motorized = {x = 2 y = 1}
+				semi_motorized = {x = 2 y = 2}
+				
+				artillery_brigade_mot = {x = 3 y = 0}
+				artillery_brigade_mot = {x = 3 y = 1}
+				artillery_brigade_mot = {x = 3 y = 2}
+				
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				logistics_company = { x = 0 y = 2 }	
+				maintenance_company = { x = 0 y = 3 }
+				
+				field_hospital = { x = 1 y = 0 }
+				recon = { x = 1 y = 1 }
+			}
+		}
+		division_template = {
+			name = "Divisione Indigini-Eritreo"		
+			priority = 2
+			template_counter = 382
+			
+			regiments = {
+				light_infantry = { x = 0 y = 0 }
+				light_infantry = { x = 0 y = 1 }
+
+				light_infantry = { x = 1 y = 0 }
+				light_infantry = { x = 1 y = 1 }
+				
+				light_infantry = { x = 2 y = 0 }
+				light_infantry = { x = 2 y = 1 }
+				
+				artillery_brigade = { x = 3 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Divisione Coloniale"		
+			priority = 2
+			template_counter = 381
+			
+			regiments = {
+				light_infantry = { x = 0 y = 0 }
+				light_infantry = { x = 0 y = 1 }
+
+				light_infantry = { x = 1 y = 0 }
+				light_infantry = { x = 1 y = 1 }
+				
+				light_infantry = { x = 2 y = 0 }
+				light_infantry = { x = 2 y = 1 }
+				
+				artillery_brigade = { x = 3 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Divisione Indigini-Somalo"		
+			priority = 2
+			template_counter = 382
+			
+			regiments = {
+				light_infantry = { x = 0 y = 0 }
+				light_infantry = { x = 0 y = 1 }
+
+				light_infantry = { x = 1 y = 0 }
+				light_infantry = { x = 1 y = 1 }
+				
+				light_infantry = { x = 2 y = 0 }
+				light_infantry = { x = 2 y = 1 }
+				
+				artillery_brigade = { x = 3 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Raggruppamento Celere" 		
+			priority = 2
+			template_counter = 158
+			
+			regiments = {
+				semi_motorized = {x = 0 y = 0}
+				semi_motorized = {x = 0 y = 1}
+				semi_motorized = {x = 0 y = 2}
+
+				semi_motorized = {x = 1 y = 0}
+				semi_motorized = {x = 1 y = 1}
+				semi_motorized = {x = 1 y = 2}
+				
+				semi_motorized = {x = 2 y = 0}
+				semi_motorized = {x = 2 y = 1}
+				semi_motorized = {x = 2 y = 2}
+				
+				artillery_brigade_mot = {x = 3 y = 0}
+				artillery_brigade_mot = {x = 3 y = 1}
+				artillery_brigade_mot = {x = 3 y = 2}
+				
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				logistics_company = { x = 0 y = 2 }	
+				maintenance_company = { x = 0 y = 3 }
+				
+				field_hospital = { x = 1 y = 0 }
+				recon = { x = 1 y = 1 }
+			}
+		}
+		division_template = {
+			name = "Divisione Costiera"	
+			priority = 0
+			template_counter = 84
+			
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+			}
+			
+			support = {
+				military_police = { x = 0 y = 0 }
+			}
+		}
+	}
+}
+#################################################
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#	
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+##### OOB #####
+units = {
+	##### Commando Superiore Metropolitana #####
+	#division= {	
+	#	name = "Commando Superiore" 
+	#	location = 11721
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.1
+	#}
+	
+	### Gruppo d'Armata Ovest ###
+	## 1a Armata ##
+	# II Corpo d'Armata #
+	division= {	
+		name = "4a Divisione di Fanteria 'Monviso'"
+		location = 770
+		division_template = "Divisione di Fanteria-Alpina"		# "Semi-Mountain" (less trained & equipped than Alpina)
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.3
+	}
+	division= {	
+		name = "4a Divisione Alpina 'Cuneense'"
+		location = 770
+		division_template = "Divisione Alpina"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
+	}
+
+	# III Corpo d'Armata #
+	division= {	
+		name = "3a Divisione di Fanteria 'Ravenna'"
+		location = 776
+		division_template = "Divisione di Fanteria-Alpina"		# "Semi-Mountain" (less trained & equipped than Alpina)
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.3
+	}
+	division= {	
+		name = "6a Divisione di Fanteria 'Cuneo'"
+		location = 770
+		division_template = "Divisione di Fanteria-Alpina"		# "Semi-Mountain" (less trained & equipped than Alpina)
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.3
+	}
+
+	# Subordinate to Army
+	division= {	
+		name = "1° Raggruppamento Celere"
+		location = 6788
+		division_template = "Raggruppamento Celere"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+	
+	## 4a Armata ##
+	# Corpo d'Armata Alpina #
+	division= {	
+		name = "1a Divisione Alpina 'Taurinense'"
+		location = 6780
+		division_template = "Divisione Alpina"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
+	}
+
+	# I Corpo d'Armata #
+	division= {	
+		name = "1a Divisione di Fanteria 'Superga'"
+		location = 6780
+		division_template = "Divisione di Fanteria-Alpina"		# "Semi-Mountain" (less trained & equipped than Alpina)
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.3
+	}
+	division= {	
+		name = "2a Divisione Alpina 'Tridentina'"
+		location = 9738
+		division_template = "Divisione Alpina"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
+	}
+
+	# IV Corpo d'Armata #
+	division= {	
+		name = "2a Divisione di Fanteria 'Sforzesca'"
+		location = 11726
+		division_template = "Divisione di Fanteria-Alpina"		# "Semi-Mountain" (less trained & equipped than Alpina)
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.3
+	}
+	division= {	
+		name = "7a Divisione di Fanteria 'Leonessa'"
+		location = 773
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+	}
+
+	### Gruppo d'Armata Est ###
+	## 2a Armata ##
+	# V Corpo d'Armata #
+	division= {	
+		name = "9a Divisione di Fanteria 'Pasubio'"
+		location = 603
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "10a Divisione di Fanteria 'Piave'"
+		location = 3604
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "11a Divisione di Fanteria 'Brennero'"
+		location = 11598
+		division_template = "Divisione di Fanteria-Alpina"		# "Semi-Mountain" (less trained & equipped than Alpina)
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.3
+	}
+
+	# VI Corpo d'Armata #
+	division= {	
+		name = "8a Divisione di Fanteria 'Po'"
+		location = 6790
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "12a Divisione di Fanteria 'Timavo'"
+		location = 6626
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "13a Divisione di Fanteria 'Montenero'"
+		location = 628
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "14a Divisione di Fanteria 'Isonzo'"
+		location = 11595
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "15a Divisione di Fanteria 'Carnaro'"
+		location = 11735
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "16a Divisione di Fanteria 'Fossalta'"
+		location = 6606
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	
+	division= {	
+		name = "17a Divisione di Fanteria 'Rubicone'"
+		location = 782
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "3a Divisione Alpina 'Julia'"
+		location = 628
+		division_template = "Divisione Alpina"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
+	}
+
+	# Subordinate to Army
+	division= {	
+		name = "2° Raggruppamento Celere"
+		location = 6626
+		division_template = "Raggruppamento Celere"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+
+	## 6a Armata ##
+	# Corpo d'Armata Celere #
+	division= {	
+		name = "1a Divisione Celere 'Eugenio di Savoia'"
+		location = 11584
+		division_template = "Divisione Celere"	
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "2a Divisione Celere 'Emanuele Filiberto'"
+		location = 11584
+		division_template = "Divisione Celere"	
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "3a Divisione Celere 'Principe Amedeo'"
+		location = 11584
+		division_template = "Divisione Celere"	
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.8
+	}
+
+	### Gruppo d'Armata Sud ###
+	# VII Corpo d'Armata #
+	division= {	
+		name = "20a Divisione di Fanteria 'Curtatone e Montanara'"
+		location = 11833
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "21a Divisione di Fanteria 'Granatieri di Sardegna'"
+		location = 9904
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "23a Divisione di Fanteria 'Murge'"
+		location = 9784
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "25a Divisione di Fanteria 'Volturno'"
+		location = 819
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "28a Divisione di Fanteria 'Vespri'"
+		location = 10074
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "31a Divisione di Fanteria 'Caprera'"
+		location = 9772
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+
+
+	##### Commando Superiore Africa #####
+	# Subordinate to Theatre #
+	division= {	
+		name = "7a Divisione CC.NN. 'Cirene'"
+		location = 1149
+		division_template = "Divisione di CC.NN."		# CCNN militia, lower training and equipment
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "18a Divisione di Fanteria 'Metauro'"
+		location = 11954
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "2a Divisione Motorizzata 'Trento'"
+		location = 4151
+		division_template = "Divisione Motorizzata"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "2a Divisione Coloniale 'Libia'"
+		location = 1130
+		division_template = "Divisione Indigini-Eritreo"		# Colonial militia, lower training and equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "ITA" } }
+		start_equipment_factor = 0.2
+
+	}
+
+	## Armata dell'Africa Orientale Italiana ##
+	# I Corpo d'Armata dell'A.O.I. #
+	division= {	
+		name = "26a Divisione di Fanteria 'Assietta'" #Formed as binary in 1935
+		location = 12723
+		division_template = "Divisione di Fanteria-Binaria"	
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "30a Divisione di Fanteria 'Sabauda'" #Formed as three-regimented, but one regiment was semi-motorized, and moved to separate group in March 1936, so representing as binary
+		location = 12723
+		division_template = "Divisione di Fanteria-Binaria"	
+		start_experience_factor = 0.35
+
+	}
+	division= {	
+		name = "5a Divisione Alpina 'Pusteria'"
+		location = 12723
+		division_template = "Divisione Alpina"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+	}
+	division= {	
+		name = "4a Divisione CC.NN. '3 Gennaio'"
+		location = 12723
+		division_template = "Divisione di CC.NN."		# CCNN militia, lower training and equipment
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.2
+
+	}
+
+	# II Corpo d'Armata dell'A.O.I. #
+	division= {	
+		name = "19a Divisione di Fanteria 'Gavinana'" #Demobilized in July 1936, remobilized later, 3-regiment during Ethiopian war, 'mountain infantry'
+		location = 12766
+		division_template = "Divisione di Fanteria-Alpina"	
+		start_experience_factor = 0.35
+	}
+	division= {	
+		name = "24a Divisione di Fanteria 'Gran Sasso'"
+		location = 12766
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division= {	
+		name = "3a Divisione CC.NN. '21 Aprile'"
+		location = 12766
+		division_template = "Divisione di CC.NN."		# CCNN militia, lower training and equipment
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.2
+
+	}
+
+	# III Corpo d'Armata dell'A.O.I. #
+	division= {	
+		name = "27a Divisione di Fanteria 'Sila'"
+		location = 8043
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+	}
+	division= {	
+		name = "1a Divisione CC.NN. '23 Marzo'"
+		location = 8043
+		division_template = "Divisione di CC.NN."		# CCNN militia, lower training and equipment
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.2
+
+	}
+
+	# IV Corpo d'Armata dell'A.O.I. #
+	division= {	
+		name = "5a Divisione di Fanteria 'Cosseria'" #Raised as binary before reorganisation in 1938
+		location = 8043
+		division_template = "Divisione di Fanteria-Binaria"	
+		start_experience_factor = 0.25
+	}
+	division= {	
+		name = "2a Divisione CC.NN. '28 Ottobre'"
+		location = 8043
+		division_template = "Divisione di CC.NN."		# CCNN militia, lower training and equipment
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.2
+
+	}
+	division= {	
+		name = "5a Divisione CC.NN. '1 Febbraio'"
+		location = 8043
+		division_template = "Divisione di CC.NN."		# CCNN militia, lower training and equipment
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.2
+
+	}
+
+	# Corpo d'Armata Eritreo #
+	division= {	
+		name = "1a Divisione Coloniale 'Eritrea'"
+		location = 12766
+		division_template = "Divisione Indigini-Eritreo"		#Askari division
+		force_equipment_variants = { infantry_equipment_0 = { owner = "ITA" } }
+	}
+	division= {	
+		name = "2a Divisione Coloniale 'Eritrea'"
+		location = 12766
+		division_template = "Divisione Indigini-Eritreo"		#Askari division
+		force_equipment_variants = { infantry_equipment_0 = { owner = "ITA" } }
+	}
+
+	# Corpo d'Armata Libico #
+	division= {	
+		name = "29a Divisione di Fanteria 'Peloritana'"
+		location = 11014
+		division_template = "Divisione di Fanteria"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division= {	
+		name = "1a Divisione Coloniale 'Libia'" #Arab / Libyan auxillary division
+		location = 2063
+		division_template = "Divisione Indigini-Somalo"		
+		force_equipment_variants = { infantry_equipment_0 = { owner = "ITA" } }
+	}
+	division= {	
+		name = "Battaglioni Dubat del Somaliland" #Refers to unattached Somalian batallions under Graziani
+		location = 1964
+		division_template = "Divisione Indigini-Somalo"		
+		force_equipment_variants = { infantry_equipment_0 = { owner = "ITA" } }
+	}
+	division= {	
+		name = "Comando Regione di Ogaden" #Refers to Somalian border command under Luigi Frusci
+		location = 2020
+		division_template = "Divisione Indigini-Somalo"		
+		force_equipment_variants = { infantry_equipment_0 = { owner = "ITA" } }
+	}
+	division= {	
+		name = "6a Divisione CC.NN. 'Tevere'"
+		location = 2063
+		division_template = "Divisione di CC.NN. 'Tevere'"	# CCNN volunteer division, under-strength
+		start_experience_factor = 0.15
+	}
+	division= {	
+		name = "202a Div. Costiera"
+		location = 11954
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division= {	
+		name = "205a Div. Costiera"
+		location = 11773
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division= {	
+		name = "206a Div. Costiera"
+		location = 4014
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division= {	
+		name = "207a Div. Costiera"
+		location = 3943
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division= {	
+		name = "215a Div. Costiera"
+		location = 7059
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division= {	
+		name = "209a Div. Costiera"
+		location = 11837
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division= {	
+		name = "208a Div. Costiera"
+		location = 819
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division= {	
+		name = "211a Div. Costiera"
+		location = 9904
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division= {	
+		name = "212a Div. Costiera"
+		location = 11833
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division= {	
+		name = "213a Div. Costiera"
+		location = 925
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division= {	
+		name = "214a Div. Costiera"
+		location = 6606
+		division_template = "Divisione Costiera"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+}
+
+	
+######################################################
+#### PLAYER AND AI HAVE SEPERATE NAVAL & AIR OOBS ####
+######################################################
+
+instant_effect = {
+	if = {
+		limit = {
+			ITA = { is_ai = yes }
+			NOT = {	
+				has_game_rule = {
+					rule = AI_country_tech_rules
+					option = rule_country_specific_1
+				}
+			}
+		}
+		ITA = { 
+			#set_country_flag = ITA_AI 
+			load_oob = "1936_ITA_AI" 
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				ITA = { is_ai = no }
+				has_game_rule = {
+					rule = AI_country_tech_rules
+					option = rule_country_specific_1
+				}
+			}
+		}
+		ITA = { load_oob = "1936_ITA_player" } 
+	}
+}

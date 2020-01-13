@@ -1,0 +1,324 @@
+GEN_foreign_leader_announcements_category = {
+
+	sp_listen_POL = {
+
+		icon = generic_civil_support
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 31
+		
+		allowed = {
+			NOT = { tag = POL }
+		}
+
+		available = {
+			85 = { is_claimed_by = GER }
+			86 = { is_claimed_by = GER }
+		}
+
+
+		activation = {
+			85 = { is_claimed_by = GER }
+			86 = { is_claimed_by = GER }
+		}
+
+		complete_effect = {
+			
+		hidden_effect = {
+			sound_effect = sp_POL_peace
+			}
+		}		
+	}
+
+	sp_listen_wien = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 31
+		
+		allowed = { 
+			NOT = { tag = GER }
+		}
+
+		available = { 
+			GER = { has_country_leader = { ruling_only = yes name = "Adolf Hitler" } }
+		}
+		
+		activation = {
+			GER = { owns_state = 4 }
+		}
+			
+		complete_effect = {
+
+			hidden_effect = {
+				sound_effect = sp_ger_wien 
+			}
+		
+		}
+		
+	}
+
+	sp_listen_GERwarPOL = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 31
+		
+		allowed = { 
+			NOT = { tag = GER }
+		}
+
+		available = { 
+			GER = { has_country_leader = { ruling_only = yes name = "Adolf Hitler" } }
+		}
+		
+		activation = {
+			GER = { has_offensive_war_with = POL }
+		}
+			
+		complete_effect = {
+
+			hidden_effect = {
+				sound_effect = sp_ger_POL 
+			}
+		
+		}
+		
+	}
+
+	sp_listen_GERwarSOV = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 31
+		
+		allowed = { 
+			NOT = { tag = GER }
+		}
+
+		available = { 
+			GER = { has_country_leader = { ruling_only = yes name = "Adolf Hitler" } }
+		}
+		
+		activation = {
+			GER = { has_offensive_war_with = SOV }
+		}
+			
+		complete_effect = {
+
+			hidden_effect = {
+				sound_effect = sp_ger_waronrussia 
+			}
+		
+		}
+		
+	}
+
+	sp_listen_ENG_peace = {
+
+		icon = generic_decision
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 31
+		
+		allowed = { 
+			NOT = { tag = ENG }
+		}
+
+		available = { 
+			ENG = { has_country_leader = { ruling_only = yes name = "Neville Chamberlain" } }
+		}
+		
+		activation = {
+			GER = { owns_state = 69 }
+		}
+			
+		complete_effect = {
+
+			hidden_effect = {
+				sound_effect = sp_ENG_peaceforourtime
+			}
+		
+		}
+		
+	}
+
+	sp_listen_ENG_warGER = {
+
+		icon = generic_decision
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 31
+		
+		allowed = { 
+			NOT = { tag = ENG }
+		}
+
+		available = { 
+			ENG = { has_country_leader = { ruling_only = yes name = "Neville Chamberlain" } }
+		}
+		
+		activation = {
+			GER = { has_offensive_war_with = POL }
+			ENG = { has_defensive_war_with = GER }
+		}
+			
+		complete_effect = {
+
+			hidden_effect = {
+				sound_effect = sp_ENG_warwithGER
+			}
+		
+		}
+		
+	}
+
+	sp_listen_SOV_patrioticwar = {
+
+		icon = generic_civil_support
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 31
+		
+		allowed = { 
+			NOT = { tag = SOV }
+		}
+
+		available = { 
+			SOV = { has_country_leader = { ruling_only = yes name = "Joseph Stalin" } }
+		}
+		
+		activation = {
+			SOV = { has_defensive_war_with = GER }
+		}
+			
+		complete_effect = {
+
+			hidden_effect = {
+				sound_effect = sp_SOV_patrioticwar
+			}
+		
+		}
+		
+	}
+
+	sp_listen_USA_warJAP = {
+
+		icon = generic_ignite_civil_war
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 31
+		
+		allowed = { 
+			NOT = { tag = USA }
+		}
+
+		available = { 
+			USA = { has_country_leader = { ruling_only = yes name = "Franklin Delano Roosevelt" } }
+		}
+		
+		activation = {
+			USA = { has_defensive_war_with = JAP }
+		}
+			
+		complete_effect = {
+
+			hidden_effect = {
+				sound_effect = sp_USA_warwithJAP
+			}
+		
+		}
+		
+	}
+
+	sp_listen_ITA_ethiopia = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 31
+		
+		allowed = { 
+			NOT = { tag = ITA }
+		}
+
+		available = { 
+			ITA = { has_country_leader = { ruling_only = yes name = "Benito Mussolini" } }
+		}
+		
+		activation = {
+			ITA = { 
+				OR = {
+					owns_state = 271
+					ETH = { is_puppet_of = ITA }
+				}
+			}
+		}
+			
+		complete_effect = {
+
+			hidden_effect = {
+				sound_effect = sp_ITA_ethiopia
+			}
+		
+		}
+		
+	}
+
+	sp_listen_ITA_warwith_ENGFRA = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 31
+		
+		allowed = { 
+			NOT = { tag = ITA }
+		}
+
+		available = { 
+			ITA = { has_country_leader = { ruling_only = yes name = "Benito Mussolini" } }
+			ENG = { is_in_faction_with = FRA }
+		}
+		
+		activation = {
+			ITA = { 
+ 				has_war_with = FRA
+ 				has_war_with = ENG	
+				}
+			}
+			
+		complete_effect = {
+
+			hidden_effect = {
+				sound_effect = sp_ITA_warwith_ENGFRA
+			}
+		
+		}
+		
+	}
+
+}

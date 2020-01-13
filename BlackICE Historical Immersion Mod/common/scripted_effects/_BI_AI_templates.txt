@@ -1,0 +1,2517 @@
+	
+@INFANTRY_PRIORITY = 1			
+
+TEMPLATE_VARIANT:infantry_template = {
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					TRIGGER:[DOCTRINE]_infantry_[VARIANT]/FOCUS:[FOCUS] = yes
+				}
+				DOCTRINE = "[Root.GetDoctrine]"
+				VARIANT = "[Root.GetInfantryTemplateVariant]"
+				FOCUS = "[Root.GetInfantryTemplateFocus]"
+			}
+		}
+		meta_effect = {
+			text = {
+				TEMPLATE:[DOCTRINE]_infantry_width_[WIDTH]_[VARIANT]/FOCUS:[FOCUS] = yes
+			}
+			DOCTRINE = "[Root.GetDoctrine]"
+			WIDTH = infantry_width
+			VARIANT = "[Root.GetInfantryTemplateVariant]"
+			FOCUS = "[Root.GetInfantryTemplateFocus]"
+		}
+		update_all_subunits = yes	
+	}
+}				
+	
+TEMPLATE:SF_infantry_width_24_BASE/FOCUS:BASE = {	
+	set_country_flag = starting_infantry_template
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+			
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+TEMPLATE:SF_infantry_width_24_BASE/FOCUS:AIR_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}
+			
+TEMPLATE:SF_infantry_width_24_BASE/FOCUS:AIR_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+		
+TEMPLATE:SF_infantry_width_24_BASE/FOCUS:AT_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+		
+	
+TEMPLATE:SF_infantry_width_24_BASE/FOCUS:AT_AA_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+
+TEMPLATE:SF_infantry_width_24_BASE/FOCUS:AT_AA_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air_heavy = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+
+
+TEMPLATE:SF_infantry_width_24_MOUNT/FOCUS:BASE = {	
+	set_country_flag = starting_infantry_template
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			mount_support = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+TEMPLATE:SF_infantry_width_24_MOUNT/FOCUS:AIR_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air = { x = 1 y = 2 }
+			mount_support = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}
+			
+TEMPLATE:SF_infantry_width_24_MOUNT/FOCUS:AIR_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air_heavy = { x = 1 y = 2 }
+			mount_support = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+		
+TEMPLATE:SF_infantry_width_24_MOUNT/FOCUS:AT_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			mount_support = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+
+TEMPLATE:SF_infantry_width_24_MOUNT/FOCUS:AT_AA_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air = { x = 1 y = 3 }
+			mount_support = { x = 1 y = 4 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+TEMPLATE:SF_infantry_width_24_MOUNT/FOCUS:AT_AA_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air_heavy = { x = 1 y = 3 }
+			mount_support = { x = 1 y = 4 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}				
+
+			
+	
+TEMPLATE:SF_infantry_width_24_MED_ARTY/FOCUS:BASE = {	
+	set_country_flag = starting_infantry_template
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+TEMPLATE:SF_infantry_width_24_MED_ARTY/FOCUS:AIR_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}
+			
+TEMPLATE:SF_infantry_width_24_MED_ARTY/FOCUS:AIR_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+		
+TEMPLATE:SF_infantry_width_24_MED_ARTY/FOCUS:AT_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+		
+	
+TEMPLATE:SF_infantry_width_24_MED_ARTY/FOCUS:AT_AA_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+
+TEMPLATE:SF_infantry_width_24_MED_ARTY/FOCUS:AT_AA_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air_heavy = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+
+	
+TEMPLATE:SF_infantry_width_28_BASE/FOCUS:BASE = {	
+	set_country_flag = starting_infantry_template
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+TEMPLATE:SF_infantry_width_28_BASE/FOCUS:AIR_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}
+			
+TEMPLATE:SF_infantry_width_28_BASE/FOCUS:AIR_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+		
+TEMPLATE:SF_infantry_width_28_BASE/FOCUS:AT_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+		
+	
+TEMPLATE:SF_infantry_width_28_BASE/FOCUS:AT_AA_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+
+TEMPLATE:SF_infantry_width_28_BASE/FOCUS:AT_AA_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air_heavy = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+
+
+TEMPLATE:SF_infantry_width_28_MOUNT/FOCUS:BASE = {	
+	set_country_flag = starting_infantry_template
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			mount_support = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+TEMPLATE:SF_infantry_width_28_MOUNT/FOCUS:AIR_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air = { x = 1 y = 2 }
+			mount_support = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}
+			
+TEMPLATE:SF_infantry_width_28_MOUNT/FOCUS:AIR_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air_heavy = { x = 1 y = 2 }
+			mount_support = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+		
+TEMPLATE:SF_infantry_width_28_MOUNT/FOCUS:AT_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			mountain_artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			mount_support = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+
+TEMPLATE:SF_infantry_width_28_MOUNT/FOCUS:AT_AA_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			mountain_artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air = { x = 1 y = 3 }
+			mount_support = { x = 1 y = 4 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+TEMPLATE:SF_infantry_width_28_MOUNT/FOCUS:AT_AA_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			mountain_artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air_heavy = { x = 1 y = 3 }
+			mount_support = { x = 1 y = 4 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}				
+
+			
+	
+TEMPLATE:SF_infantry_width_28_MED_ARTY/FOCUS:BASE = {	
+	set_country_flag = starting_infantry_template
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+TEMPLATE:SF_infantry_width_28_MED_ARTY/FOCUS:AIR_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}
+			
+TEMPLATE:SF_infantry_width_28_MED_ARTY/FOCUS:AIR_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+		
+TEMPLATE:SF_infantry_width_28_MED_ARTY/FOCUS:AT_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+		
+	
+TEMPLATE:SF_infantry_width_28_MED_ARTY/FOCUS:AT_AA_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+
+TEMPLATE:SF_infantry_width_28_MED_ARTY/FOCUS:AT_AA_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air_heavy = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+
+
+TEMPLATE:SF_infantry_width_32_BASE/FOCUS:BASE = {	
+	set_country_flag = starting_infantry_template
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+TEMPLATE:SF_infantry_width_32_BASE/FOCUS:AIR_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}
+			
+TEMPLATE:SF_infantry_width_32_BASE/FOCUS:AIR_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+		
+TEMPLATE:SF_infantry_width_32_BASE/FOCUS:AT_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+		
+	
+TEMPLATE:SF_infantry_width_32_BASE/FOCUS:AT_AA_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+
+TEMPLATE:SF_infantry_width_32_BASE/FOCUS:AT_AA_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air_heavy = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+
+
+TEMPLATE:SF_infantry_width_32_MOUNT/FOCUS:BASE = {	
+	set_country_flag = starting_infantry_template
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			mount_support = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+TEMPLATE:SF_infantry_width_32_MOUNT/FOCUS:AIR_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air = { x = 1 y = 2 }
+			mount_support = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}
+			
+TEMPLATE:SF_infantry_width_32_MOUNT/FOCUS:AIR_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			artillery_brigade = { x = 2 y = 2 }
+			artillery_brigade = { x = 2 y = 3 }
+			artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air_heavy = { x = 1 y = 2 }
+			mount_support = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+		
+TEMPLATE:SF_infantry_width_32_MOUNT/FOCUS:AT_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			mountain_artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			mount_support = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+
+TEMPLATE:SF_infantry_width_32_MOUNT/FOCUS:AT_AA_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			mountain_artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air = { x = 1 y = 3 }
+			mount_support = { x = 1 y = 4 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+TEMPLATE:SF_infantry_width_32_MOUNT/FOCUS:AT_AA_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			mountain_artillery_brigade = { x = 2 y = 0 }
+			mountain_artillery_brigade = { x = 2 y = 1 }
+			mountain_artillery_brigade = { x = 2 y = 2 }
+			mountain_artillery_brigade = { x = 2 y = 3 }
+			mountain_artillery_brigade = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air_heavy = { x = 1 y = 3 }
+			mount_support = { x = 1 y = 4 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}				
+
+			
+	
+TEMPLATE:SF_infantry_width_32_MED_ARTY/FOCUS:BASE = {	
+	set_country_flag = starting_infantry_template
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+TEMPLATE:SF_infantry_width_32_MED_ARTY/FOCUS:AIR_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}
+			
+TEMPLATE:SF_infantry_width_32_MED_ARTY/FOCUS:AIR_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AIR_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_air_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}		
+		
+TEMPLATE:SF_infantry_width_32_MED_ARTY/FOCUS:AT_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+		
+	
+TEMPLATE:SF_infantry_width_32_MED_ARTY/FOCUS:AT_AA_1 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 1
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}			
+
+TEMPLATE:SF_infantry_width_32_MED_ARTY/FOCUS:AT_AA_2 = {	
+	set_country_flag = {
+		flag = INFANTRY_AT_AA_FOCUS
+		value = 2
+	}
+	division_template = {
+		name = "Infantry Division"			
+		template_counter = 114
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			artillery_brigade_med = { x = 2 y = 3 }
+			artillery_brigade_med = { x = 2 y = 4 }
+			
+			anti_tank_brigade = { x = 3 y = 0 }
+			
+			infantry = { x = 4 y = 0 }
+			infantry = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+			anti_air_heavy = { x = 1 y = 3 }
+		}
+		priority = @INFANTRY_PRIORITY
+	}	
+}	
+	

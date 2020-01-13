@@ -1,0 +1,367 @@
+﻿capital = 774
+
+oob = "BEL_1936"
+
+set_research_slots = 2
+
+set_stability = 0.75
+
+set_war_support = 0.3 #we see what you are doing there Adolf
+
+set_convoys = 60
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+	#set_naval_oob = "BEL_1936_naval_legacy"
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		nrm_battery_basic = 1
+		#early_ship_hull_coastal_submarine = 1
+	}
+	#set_naval_oob = "BEL_1936_naval"
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	#tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	semi_motorised_infantry = 1
+	motorised_infantry = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	subtech_recon_cav_1 = 1
+	subtech_recon_mot_1 = 1
+	tech_support = 1		
+	tech_recon = 1
+	tech_engineers = 1
+	tech_military_police = 1
+	################## artillery ###############
+	gw_artillery = 1
+	interwar_artillery = 1
+	interwar_medartillery = 1
+	################## armor-techs ##############
+	tech_ac_recon = 1
+	tech_Tankettes = 1
+	################## armor ##############
+	gwtank = 1
+	generic_armor = 1
+	################## aircraft ##############
+	early_fighter = 1
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	complex_trench_systems = 1
+	defensive_trenches = 1
+	reserve_trenches = 1
+	communication_trenches = 1
+	logistics_trenches = 1
+	barbed_wire = 1
+	pillboxes = 1
+	sniper_pits = 1
+	tunnel_mines = 1
+	basic_MG_defences = 1
+	multiple_MG_nests = 1
+	
+	ww1_artillery = 1
+	artillery_concentration = 1
+	foot_runners = 1
+	carrier_pidgeons = 1
+	telephone_communications = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	cavalry_exploitation = 1
+	armored_car_recon = 1
+	motorcycle_liaison = 1
+	staff_officer_vehicles = 1
+	
+	ww1_battlefield_support = 1
+	weather_reporting = 1
+	terrain_mapping = 1
+	camouflage_positions = 1
+	first_aid_stations = 1
+	
+	WW1_air_power = 1
+	WW1_air_survey = 1
+	WW1_air_control = 1
+	############### WW2 doctrines ############
+	trench_warfare = 1
+}
+
+add_ideas = {
+	BEL_leopold_III
+	tblra_leopold3
+	tblra_pillarized_society
+	tblra_peacetime_national_union
+	tblra_linguistic_question_in_military
+	export_focus
+	tax_average
+	tariffs_average
+	
+	civilian_economy
+	press_free
+	private_control
+	labor_allowed
+	fdi_regulated
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_medium
+	officer_train_low
+	security_liberty_first
+	age_19
+
+	edu_high
+	foreign_neutral
+}
+
+set_politics = {
+	ruling_party = socialism
+	last_election = "1932.11.27"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservatism = 27.7
+	fascism = 11.5
+	communism = 6.2
+	monarchism = 3
+	neutrality = 7.1
+	liberalism = 12.4
+	socialism = 32.1
+}
+##### Country Leaders #####
+create_country_leader = {
+	name = "King Leopold III"
+	desc = "POLITICS_HUBERT_PIERLOT_DESC"
+	picture = "bel_king_leopold_iii.dds"
+	expire = "1965.1.1"
+	ideology = absolutism
+	traits = {
+	}
+}
+#tblra belgian Prime Ministers
+create_country_leader = {
+	name = "Hubert Pierlot"
+	desc = "POLITICS_HUBERT_PIERLOT_DESC"
+	picture = "Portrait_Belgium_Hubert_Pierlot.dds"
+	expire = "1965.1.1"
+	ideology = social_conservatism
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Achille van Acker"
+	desc = "POLITICS_ACHILLE_VAN_ACKER_DESC"
+	picture = "Portrait_van_acker.dds"
+	expire = "1939.1.1"
+    ideology = social_democracy
+	traits = {
+		socialist
+		public_works_focus
+	}
+}
+create_country_leader = {
+	name = "Victor de Laveleye"
+	desc = ""
+	picture = "portrait_Janson.dds"
+	expire = "1939.1.1"
+    ideology = centrism
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Paul-Henri Spaak"
+	desc = "Paul-Henri Spaak"
+	picture = "gfx/leaders/BEL/Portrait_Spaak.dds"
+	expire = "1939.1.1"
+    ideology = social_conservatism
+	traits = {
+		stout_defender
+	}
+}
+create_country_leader = {
+	name = "Staf De Clercq"
+	desc = ""
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
+	expire = "1965.1.1"
+	ideology = pseudo_fascism
+	traits = {
+		neutral
+		fascist_sympathies
+	}
+}
+create_country_leader = {
+	name = "Paul Van Zeeland"
+	desc = "Paul Van Zeeland"
+	picture = "portrait_paul_van_zeeland.dds"
+	expire = "1938.1.1"
+    ideology = social_democracy
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Xavier Relecom"
+	desc = "Xavier Relecom"
+	picture = "portrait_xavier_relecom.dds"
+	expire = "1965.1.1"
+	ideology = stalinism
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Julien Lahaut"
+	desc = "Julien Lahaut"
+	picture = "LAHAUT_Julien.dds"
+	expire = "1965.1.1"
+	ideology = stalinism
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Joseph Jacquemotte"
+	desc = "POLITICS_JOSEPH_JACQUEMOTTE_DESC"
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_1.dds"
+	expire = "1965.1.1"
+	ideology = anarchist_communism
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Léon Degrelle"
+	desc = "POLITICS_LEON_DEGRELLE_DESC"
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
+	expire = "1965.1.1"
+	ideology = rexism
+	traits = {
+	}
+}
+##### Field Marshals #####
+##### Corps Commanders #####
+create_corps_commander = {
+	name = "Baesens, Auguste"
+	picture = "Portrait_Auguste_Baesens.dds"
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+create_corps_commander = {
+	name = "Bergen, Édouard van den"
+	picture = "Portrait_Belgium_Edouard_van_den_Bergen.tga"
+	traits = { Bad_General old_guard }
+	skill = 3
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 1
+}
+create_corps_commander = {
+	name = "Drubbel, "
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
+	traits = { old_guard Competent_General logistics_wizard_CC }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 3
+}
+create_corps_commander = {
+	name = "Gilliaert, Auguste-Édouard"
+	picture = "Portrait_Gilliaert.dds"
+	traits = { jungle_rat }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Keyaerts, M.C.L."
+	picture = "Portrait_Belgium_MCL_Keyaerts.dds"
+	traits = { ranger hill_fighter }
+	skill = 3
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 3
+	logistics_skill = 3
+	
+}
+create_corps_commander = {
+	name = "Roden, Maximilien de Nève de "
+	picture = "Portrait_DE_NEVE_DE_RODEN.dds"
+	traits = { Terrible_General }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Burkel, Strydonck de"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
+	traits = { Decent_General defensive_doctrine_CC }
+	skill = 3
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Overstraeten, van"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
+	traits = { old_guard Decent_General logistics_wizard_CC }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 2
+}
+##### Navy Leaders #####
+create_navy_leader = {
+	name = "Daumerie"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
+	traits = { seawolf }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 2
+	maneuvering_skill = 1
+	coordination_skill = 1
+}
+create_navy_leader = {
+	name = "Georges Timmermans"
+	portrait_path = "Portrait_Belgium_Georges_Timmermans.dds"
+	traits = { bold }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 2
+	maneuvering_skill = 3
+	coordination_skill = 4
+}
+### EOF ###

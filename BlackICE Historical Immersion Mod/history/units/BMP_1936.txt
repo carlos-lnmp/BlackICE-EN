@@ -1,0 +1,76 @@
+﻿division_template = {
+	name = "Colonial Militia"
+
+	regiments = {
+		Militia = { x = 0 y = 0 }
+		Militia = { x = 0 y = 1 }
+		Militia = { x = 0 y = 2 }
+
+	}
+}
+
+division_template = {
+	name = "Regular Garrison"
+	#division_names_group = ENG_GAR_01
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		
+		artillery_brigade = { x = 1 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		military_police = { x = 0 y = 1 }		
+		anti_air = { x = 0 y = 2 } 
+	}
+	
+	priority = 0
+}
+
+
+units = {
+	#division= {	
+	#	name = "Badiyat Ash Sham Garrison"
+	#	location = 1155 #suez canal east bank, east of port said
+	#	division_template = "Local Defence Force"
+	#	start_experience_factor = 0.1
+	#	start_equipment_factor = 0.15
+	#}
+	##Palestine Command##############################
+	#division= {	
+	#	name = "Palestine Command" 
+	#	location = 1086 #jerusalem in Palestine, was 4206 Tel Aviv
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.3
+	#	start_equipment_factor = 0.8
+	#}
+	division= {	
+		name = "Jerusalem & Lydda Areas"
+		#Jerusalem & Lydda Areas
+		#division_name = {
+			#is_name_ordered = yes
+			#name_order = 219
+		#}
+		location = 1086 #jerusalem in Palestine, was 4206 Tel Aviv
+		division_template = "Regular Garrison"		
+		#force_equipment_variants = { infantry_equipment_0 = { owner = "ENG" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.8
+	}
+}
+
+	#########################
+	## STARTING PRODUCTION ##
+	#########################
+
+instant_effect = {
+		add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 50
+	}
+}

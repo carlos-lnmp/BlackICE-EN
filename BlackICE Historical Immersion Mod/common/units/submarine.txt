@@ -1,0 +1,100 @@
+sub_units = {
+	coastal_submarine = {
+		sprite = submarine
+		map_icon_category = ship
+		priority = 1
+		active = yes
+		type = { submarine }
+		need = { nrm_ship_hull_submarine = 1 }
+		need_equipment_modules = {
+			any = {
+				nrm_submarine_hull_small_1 = 1
+				nrm_submarine_hull_small_2 = 1
+				nrm_submarine_hull_small_3 = 1
+				nrm_submarine_hull_small_4 = 1
+				nrm_submarine_hull_small_5 = 1
+			}
+		}
+		max_organisation = 20
+		
+		supply_consumption = 0.001
+		
+		critical_parts = { destroyed_ammo_storage broken_propeller on_fire rudder_jammed ballast_tanks_inoperable }
+		critical_part_damage_chance_mult = 1
+		
+		hit_profile_mult = 1.0
+		
+		categories = {
+			category_all_ships
+			category_all_subs
+			category_coastal_submarine
+		}
+		
+		#water_deep_ocean = {
+		#	movement = -1
+		#}
+	}
+	lr_submarine = {
+		sprite = submarine
+		map_icon_category = ship
+		priority = 3
+		active = yes
+		type = { submarine }
+		need = { nrm_ship_hull_submarine = 1 }
+		need_equipment_modules = {
+			any = {
+				nrm_submarine_hull_cruiser_1 = 1
+				nrm_submarine_hull_cruiser_2 = 1
+				nrm_submarine_hull_cruiser_3 = 1
+				nrm_submarine_hull_cruiser_4 = 1
+				nrm_submarine_hull_cruiser_5 = 1
+			}
+		}
+		max_organisation = 20
+		
+		supply_consumption = 0.001
+		
+		critical_parts = { destroyed_ammo_storage broken_propeller on_fire rudder_jammed ballast_tanks_inoperable }
+		critical_part_damage_chance_mult = 1
+		
+		hit_profile_mult = 1.0
+		
+		categories = {
+			category_all_ships
+			category_all_subs
+			category_long_range_submarine
+		}
+	}
+	submarine = {
+		sprite = submarine
+		map_icon_category = ship
+		priority = 2
+		active = yes
+		type = { submarine }
+		need = { nrm_ship_hull_submarine = 1 }
+		#need_equipment_modules = {
+		#	any = {
+		#		nrm_submarine_hull_small_1 = 1
+		#		nrm_submarine_hull_small_2 = 1
+		#		nrm_submarine_hull_small_3 = 1
+		#		nrm_submarine_hull_small_4 = 1
+		#		nrm_submarine_hull_small_5 = 1
+		#	}
+		#}
+
+		max_organisation = 20
+		
+		supply_consumption = 0.001
+		
+		critical_parts = { destroyed_ammo_storage broken_propeller on_fire rudder_jammed ballast_tanks_inoperable }
+		critical_part_damage_chance_mult = 1
+		
+		hit_profile_mult = 1.0
+		
+		categories = {
+			category_all_ships
+			category_all_subs
+			category_patrol_submarine
+		}
+	}
+}

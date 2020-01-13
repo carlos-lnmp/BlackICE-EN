@@ -1,0 +1,623 @@
+############################################################################################################
+#	Expert AI mod - AI air focuses
+############################################################################################################
+
+############################################
+#	 Air focuses
+############################################
+
+EAI_can_produce_fighter = {
+	OR = {
+		always = yes 
+	}
+}
+EAI_can_produce_hv_fighter = {
+	OR = {
+		always = yes 
+	}
+}
+EAI_can_produce_interceptor = {
+	OR = {
+		NOT = { major_country = yes }
+		original_tag = SOV 
+		original_tag = GER 
+		original_tag = ITA 
+		original_tag = ENG 
+		original_tag = JAP 
+		original_tag = USA 
+		original_tag = FRA 
+	}
+}
+EAI_can_produce_multi_role = {
+	OR = {
+		NOT = { major_country = yes }
+		original_tag = SOV 
+		original_tag = GER 
+		original_tag = ENG 
+		original_tag = USA 
+	}
+}
+EAI_can_produce_strategic_bomber = {
+	OR = {
+		NOT = { major_country = yes }
+		original_tag = SOV 
+		original_tag = GER 
+		original_tag = ITA 
+		original_tag = ENG 
+		original_tag = USA
+	}
+}
+EAI_can_produce_naval_bomber = {
+	OR = {
+		NOT = { major_country = yes }
+		original_tag = SOV 
+		original_tag = GER 
+		original_tag = ENG 
+		original_tag = ITA 
+		original_tag = JAP
+		original_tag = USA
+		original_tag = FRA
+	}
+}
+EAI_can_produce_light_bomber = {
+	OR = {
+		NOT = { major_country = yes }
+		original_tag = SOV 
+		original_tag = GER 
+		original_tag = ITA 
+		original_tag = JAP 
+		original_tag = FRA 
+		original_tag = USA
+	}
+}
+EAI_can_produce_tactical_bomber = {
+	OR = {
+		NOT = { major_country = yes }
+		original_tag = SOV 
+		original_tag = GER 
+		original_tag = ENG 
+		original_tag = ITA 
+		original_tag = JAP 
+	}
+}
+EAI_can_produce_fast_bomber = {
+	OR = {
+		always = no
+	}
+}
+EAI_can_produce_CAS = {
+	OR = {
+		NOT = { major_country = yes }
+		original_tag = SOV 
+		original_tag = GER 
+		original_tag = ENG 
+		original_tag = ITA 
+		original_tag = JAP 
+		original_tag = USA 
+	}
+}
+EAI_can_produce_hv_CAS = {
+	OR = {
+		NOT = { major_country = yes }
+		original_tag = ENG 
+		original_tag = ITA 
+	}
+}
+
+# DOCTRINE
+EAI_SD_doctrine = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/air_doctrine = global.EAI_SD_DOCTRINE }
+		check_variable = { EAI_FOCUS/AIR/air_doctrine_OVERRIDE = global.EAI_SD_DOCTRINE }
+
+		AND = {
+			OR = { EAI_Strategic_Destruction_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/air_doctrine has_variable = EAI_FOCUS/AIR/air_doctrine_OVERRIDE }
+		}
+	}
+}
+EAI_BFS_doctrine = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/air_doctrine = global.EAI_BFS_DOCTRINE }
+		check_variable = { EAI_FOCUS/AIR/air_doctrine_OVERRIDE = global.EAI_BFS_DOCTRINE }
+
+		AND = {
+			OR = { EAI_Battlefield_Support_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/air_doctrine has_variable = EAI_FOCUS/AIR/air_doctrine_OVERRIDE }
+		}
+	}
+}
+EAI_OI_doctrine = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/air_doctrine = global.EAI_OI_DOCTRINE }
+		check_variable = { EAI_FOCUS/AIR/air_doctrine_OVERRIDE = global.EAI_OI_DOCTRINE }
+
+		AND = {
+			OR = { EAI_Operational_Integrity_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/air_doctrine has_variable = EAI_FOCUS/AIR/air_doctrine_OVERRIDE }
+		}
+	}
+}
+
+# HFTR FOCUS
+EAI_hftr_air_focus_1 = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/heavy_fighter = global.EAI_ON }
+		check_variable = { EAI_FOCUS/AIR/heavy_fighter_OVERRIDE = global.EAI_ON }
+
+		AND = {
+			OR = { EAI_Heavy_Fighter_Focus_1_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/heavy_fighter has_variable = EAI_FOCUS/AIR/heavy_fighter_OVERRIDE }
+		}
+	}
+}
+EAI_hftr_air_focus_0 = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/heavy_fighter = global.EAI_OFF }
+		check_variable = { EAI_FOCUS/AIR/heavy_fighter_OVERRIDE = global.EAI_OFF }
+
+		AND = {
+			OR = { EAI_Heavy_Fighter_Focus_0_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/heavy_fighter has_variable = EAI_FOCUS/AIR/heavy_fighter_OVERRIDE }
+		}
+	}
+}
+
+EAI_ftr_air_focus = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/ground_bomber = global.EAI_CAS_AIR }
+		check_variable = { EAI_FOCUS/AIR/ground_bomber_OVERRIDE = global.EAI_CAS_AIR }
+
+		AND = {
+			OR = { EAI_Close_air_Support_Focus_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/ground_bomber has_variable = EAI_FOCUS/AIR/ground_bomber_OVERRIDE }
+		}
+	}
+}
+EAI_hftr_air_focus = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/heavy_fighter = global.EAI_ON }
+		check_variable = { EAI_FOCUS/AIR/heavy_fighter_OVERRIDE = global.EAI_ON }
+
+		AND = {
+			OR = { EAI_Heavy_Fighter_Focus_1_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/heavy_fighter has_variable = EAI_FOCUS/AIR/heavy_fighter_OVERRIDE }
+		}
+	}
+}
+EAI_ITC_tech_focus = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/ground_bomber = global.EAI_CAS_AIR }
+		check_variable = { EAI_FOCUS/AIR/ground_bomber_OVERRIDE = global.EAI_CAS_AIR }
+
+		AND = {
+			OR = { EAI_Close_air_Support_Focus_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/ground_bomber has_variable = EAI_FOCUS/AIR/ground_bomber_OVERRIDE }
+		}
+	}
+}
+EAI_mtr_air_focus = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/ground_bomber = global.EAI_CAS_AIR }
+		check_variable = { EAI_FOCUS/AIR/ground_bomber_OVERRIDE = global.EAI_CAS_AIR }
+
+		AND = {
+			OR = { EAI_Close_air_Support_Focus_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/ground_bomber has_variable = EAI_FOCUS/AIR/ground_bomber_OVERRIDE }
+		}
+	}
+}
+# BOMBER FOCUS
+EAI_CAS_air_focus = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/ground_bomber = global.EAI_CAS_AIR }
+		check_variable = { EAI_FOCUS/AIR/ground_bomber_OVERRIDE = global.EAI_CAS_AIR }
+
+		AND = {
+			OR = { EAI_Close_air_Support_Focus_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/ground_bomber has_variable = EAI_FOCUS/AIR/ground_bomber_OVERRIDE }
+		}
+	}
+}
+EAI_TAC_air_focus = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/ground_bomber = global.EAI_TAC_AIR }
+		check_variable = { EAI_FOCUS/AIR/ground_bomber_OVERRIDE = global.EAI_TAC_AIR }
+
+		AND = {
+			OR = { EAI_Tactical_Bomber_Focus_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/ground_bomber has_variable = EAI_FOCUS/AIR/ground_bomber_OVERRIDE }
+		}
+	}
+}
+EAI_FSTBOMB_air_focus = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/ground_bomber = global.EAI_TAC_AIR }
+		check_variable = { EAI_FOCUS/AIR/ground_bomber_OVERRIDE = global.EAI_TAC_AIR }
+
+		AND = {
+			OR = { EAI_Strategic_Bomber_Focus_1_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/ground_bomber has_variable = EAI_FOCUS/AIR/ground_bomber_OVERRIDE }
+		}
+	}
+}
+EAI_LTBOMB_air_focus = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/ground_bomber = global.EAI_TAC_AIR }
+		check_variable = { EAI_FOCUS/AIR/ground_bomber_OVERRIDE = global.EAI_TAC_AIR }
+
+		AND = {
+			OR = { EAI_Strategic_Bomber_Focus_1_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/ground_bomber has_variable = EAI_FOCUS/AIR/ground_bomber_OVERRIDE }
+		}
+	}
+}
+# STR FOCUS
+EAI_STR_air_focus = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/strategic_bomber = global.EAI_ON }
+		check_variable = { EAI_FOCUS/AIR/strategic_bomber_OVERRIDE = global.EAI_ON }
+
+		AND = {
+			OR = { EAI_Strategic_Bomber_Focus_1_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/strategic_bomber has_variable = EAI_FOCUS/AIR/strategic_bomber_OVERRIDE }
+		}
+	}
+}
+EAI_STR_air_focus_1 = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/strategic_bomber = global.EAI_ON }
+		check_variable = { EAI_FOCUS/AIR/strategic_bomber_OVERRIDE = global.EAI_ON }
+
+		AND = {
+			OR = { EAI_Strategic_Bomber_Focus_1_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/strategic_bomber has_variable = EAI_FOCUS/AIR/strategic_bomber_OVERRIDE }
+		}
+	}
+}
+EAI_STR_air_focus_0 = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/strategic_bomber = global.EAI_OFF }
+		check_variable = { EAI_FOCUS/AIR/strategic_bomber_OVERRIDE = global.EAI_OFF }
+
+		AND = {
+			OR = { EAI_Strategic_Bomber_Focus_0_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/strategic_bomber has_variable = EAI_FOCUS/AIR/strategic_bomber_OVERRIDE }
+		}
+	}
+}
+
+# NAV FOCUS
+EAI_NAV_air_focus = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/naval_bomber = global.EAI_ON }
+		check_variable = { EAI_FOCUS/AIR/naval_bomber_OVERRIDE = global.EAI_ON }
+
+		AND = {
+			OR = { EAI_Naval_Bomber_Focus_1_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/naval_bomber has_variable = EAI_FOCUS/AIR/naval_bomber_OVERRIDE }
+		}
+	}
+}
+EAI_NAV_air_focus_1 = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/naval_bomber = global.EAI_ON }
+		check_variable = { EAI_FOCUS/AIR/naval_bomber_OVERRIDE = global.EAI_ON }
+
+		AND = {
+			OR = { EAI_Naval_Bomber_Focus_1_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/naval_bomber has_variable = EAI_FOCUS/AIR/naval_bomber_OVERRIDE }
+		}
+	}
+}
+EAI_NAV_air_focus_0 = {
+	OR = {
+		check_variable = { EAI_FOCUS/AIR/naval_bomber = global.EAI_OFF }
+		check_variable = { EAI_FOCUS/AIR/naval_bomber_OVERRIDE = global.EAI_OFF }
+
+		AND = {
+			OR = { EAI_Naval_Bomber_Focus_0_PRESET = yes has_global_flag = EAI_random_focuses }
+			NOT = { has_variable = EAI_FOCUS/AIR/naval_bomber has_variable = EAI_FOCUS/AIR/naval_bomber_OVERRIDE }
+		}
+	}
+}
+
+############################################
+#	Air tech focuses
+############################################
+
+EAI_air_doctrine_tech_focus = {
+	OR = {
+		EAI_Air_Doctrine_Research_Focus_PRESET = yes
+
+		has_deployed_air_force_size = { size > 3000 }
+	}
+}
+
+# fighter
+EAI_FTR_tech_focus = {
+	OR = {
+		AND = {
+			major_country = yes 
+			num_of_military_factories > 25
+		}
+		AND = {
+			NOT = { major_country = yes }
+			num_of_factories > 30
+			check_variable = { field_strength > 0.95 }
+		}
+	}
+}
+#interceptor
+EAI_ITC_tech_focus = {
+	num_of_military_factories > 25
+	#has_country_flag = EAI_FOCUS/AIR/interceptor
+}
+#multirole
+EAI_MTR_tech_focus = {
+	num_of_military_factories > 25
+	#has_country_flag = EAI_FOCUS/AIR/multi_role
+}
+
+# heavy fighter
+EAI_HFTR_tech_focus = {
+	date > 1936.7.1
+
+	num_of_military_factories > 20
+	
+	#has_country_flag = EAI_FOCUS/AIR/heavy_fighter 
+	
+	OR = { EAI_major_country = yes date > 1939.1.1 }
+}
+
+# close air support
+EAI_CAS_tech_focus = {
+	date > 1936.7.1
+
+	num_of_military_factories > 20
+	
+	#has_country_flag = EAI_FOCUS/AIR/ground_bomber 
+	
+	OR = { EAI_major_country = yes date > 1939.1.1 }
+}
+EAI_HCAS_tech_focus = {
+	date > 1936.7.1
+
+	num_of_military_factories > 20
+	
+	#has_country_flag = EAI_FOCUS/AIR/ground_bomber 
+	
+	OR = { EAI_major_country = yes date > 1939.1.1 }
+}
+
+# tactical bomber
+EAI_TAC_tech_focus = {
+	date > 1936.7.1
+
+	num_of_military_factories > 20
+	
+	#has_country_flag = EAI_FOCUS/AIR/ground_bomber
+	
+	OR = { EAI_major_country = yes date > 1939.1.1 }
+}
+
+# naval bomber
+EAI_NAV_tech_focus = {
+	date > 1936.7.1
+
+	OR = {
+		num_of_military_factories > 40
+		AND = {
+			num_of_naval_factories > 20
+			num_of_military_factories > 25
+		}
+	}
+
+	#has_country_flag = EAI_FOCUS/AIR/naval_bomber 
+		
+	OR = { EAI_major_country = yes date > 1939.1.1 }
+}
+
+#Fast bomber
+EAI_FSTBOMB_tech_focus = {
+	date > 1936.7.1
+
+	num_of_military_factories > 25
+
+	#has_country_flag = EAI_FOCUS/AIR/fast_bomber 
+	
+	OR = { EAI_major_country = yes date > 1939.1.1 }
+}
+
+#Light bomber
+EAI_LTBOMB_tech_focus = {
+	date > 1936.7.1
+	
+	OR = {
+		NOT = {
+			original_tag = ITA
+		}
+		AND = {
+			original_tag = ITA
+			date > 1937.9.1
+		}
+	}
+
+	num_of_military_factories > 25
+
+	#has_country_flag = EAI_FOCUS/AIR/light_bomber 
+	
+	OR = { EAI_major_country = yes date > 1939.1.1 }
+}
+
+# strategic bomber
+EAI_STR_tech_focus = {
+	date > 1936.7.1
+
+	num_of_military_factories > 40
+
+	#has_country_flag = EAI_FOCUS/AIR/strategic_bomber 
+	
+	OR = { EAI_major_country = yes date > 1939.1.1 }
+}
+
+EAI_CV_FTR_tech_focus = {
+	OR = {
+		has_navy_size = { unit = carrier size > 0 }
+		original_tag = USA
+		original_tag = ENG
+		original_tag = JAP
+	}
+	
+	OR = {
+		num_of_military_factories > 40
+		AND = {
+			num_of_naval_factories > 20
+			num_of_military_factories > 25
+		}
+	}
+	
+	OR = { EAI_major_country = yes date > 1939.1.1 }
+}
+
+EAI_CV_NAV_tech_focus = {
+	OR = {
+		has_navy_size = { unit = carrier size > 0 }
+		original_tag = USA
+		original_tag = ENG
+		original_tag = JAP
+	}
+	
+	OR = {
+		num_of_military_factories > 40
+		AND = {
+			num_of_naval_factories > 20
+			num_of_military_factories > 25
+		}
+	}
+	
+	OR = { EAI_major_country = yes date > 1939.1.1 }
+}
+############################################
+#	 Air production focuses
+############################################
+
+# fighter
+EAI_FTR_aircraft_production = {
+	has_country_flag = fighter_1_researched
+	#has_tech = fighter1
+
+	EAI_FTR_tech_focus = yes
+}
+
+EAI_ITC_aircraft_production = {
+	has_country_flag = interceptor_1_researched
+	#has_tech = fighter1
+
+	EAI_ITC_tech_focus = yes
+}
+
+EAI_MTR_aircraft_production = {
+	has_country_flag = multirole_1_researched
+	#has_tech = fighter1
+
+	EAI_MTR_tech_focus = yes
+}
+
+# heavy fighter
+EAI_HFTR_aircraft_production = {
+	has_country_flag = heavy_fighter_1_researched
+	#has_tech = heavy_fighter1
+
+	EAI_HFTR_tech_focus = yes
+}
+
+# close air support
+EAI_CAS_aircraft_production = {
+	has_country_flag = CAS_1_researched
+	#has_tech = CAS1
+
+	EAI_CAS_tech_focus = yes
+}
+
+#twin engine CAS
+EAI_HV_CAS_aircraft_production = {
+	has_country_flag = heavy_CAS_1_researched
+	#has_tech = CAS1
+
+	EAI_HCAS_tech_focus = yes
+}
+
+# tactical bomber
+EAI_TAC_aircraft_production = {
+	has_country_flag = tactical_bomber_1_researched
+	#has_tech = tactical_bomber1
+
+	EAI_TAC_tech_focus = yes
+}
+
+# naval bomber
+EAI_NAV_aircraft_production = {
+	has_country_flag = naval_bomber_1_researched
+	#has_tech = naval_bomber1
+
+	EAI_NAV_tech_focus = yes
+}
+
+# light bomber
+EAI_LTBOMB_aircraft_production = {
+	has_country_flag = light_bomber_1_researched
+	#has_tech = strategic_bomber1
+
+	EAI_LTBOMB_tech_focus = yes
+}
+
+# fast bomber
+EAI_FSTBOMB_aircraft_production = {
+	has_country_flag = fast_bomber_1_researched
+	#has_tech = strategic_bomber1
+
+	EAI_FSTBOMB_tech_focus = yes
+}
+
+# strategic bomber
+EAI_STR_aircraft_production = {
+	has_country_flag = strat_bomber_1_researched
+	#has_tech = strategic_bomber1
+
+	EAI_STR_tech_focus = yes
+}
+
+# carrier fighter/naval bomber
+EAI_CV_fighter_production = {
+	num_of_military_factories > 25
+
+	#OR = { has_tech = basic_carrier has_tech = basic_ship_hull_carrier }
+
+	has_navy_size = { unit = carrier size > 0 }
+	
+	EAI_CV_FTR_tech_focus = yes
+}
+EAI_CV_aircraft_production = {
+	num_of_military_factories > 25
+
+	#OR = { has_tech = basic_carrier has_tech = basic_ship_hull_carrier }
+
+	has_navy_size = { unit = carrier size > 0 }
+	
+	EAI_CV_NAV_tech_focus = yes
+}
+
+# transport
+EAI_TRNS_aircraft_production = {
+	#num_of_military_factories > 25
+
+	#EAI_FTR_aircraft_production = yes
+	#
+	# OR = {
+	#	EAI_major_country = yes
+	#	num_of_factories > 100
+	#}
+
+	always = no
+}

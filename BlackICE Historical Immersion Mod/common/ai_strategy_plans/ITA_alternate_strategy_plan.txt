@@ -1,0 +1,40 @@
+ITA_alternate_plan_1 = {
+	name = "Italy alternate plan 1: Germany Opposed Hitler"
+	desc = "Behavior for Italy if Germany goes ahistorical and opposes Hitler, but has not decided a direction yet."
+
+	enable = {
+		original_tag = ITA
+		NOT = { has_government = fascism }
+		#GER = { has_completed_focus = GER_oppose_hitler }
+	}
+	abort = {
+		has_government = fascism
+	}
+
+	ai_national_focuses = {
+		
+ 														
+	}				
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+	
+	traits = {
+		sympathetic_judge = 15 #Always go for that
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+

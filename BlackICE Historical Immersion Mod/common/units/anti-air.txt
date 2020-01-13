@@ -1,0 +1,184 @@
+sub_units = {
+	#Anti-air
+	anti_air = {
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = yes
+
+		type = {
+			
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_army
+			category_all_light_anti_air
+		}
+		
+		##BASE stats
+		max_strength = 2
+		max_organisation = -5
+		default_morale = 0.1
+		weight = 0.1
+		supply_consumption = 0.06
+		
+		##COMBAT stats
+		#soft_attack = -0.5
+		#hard_attack = -0.5
+		#air_attack = -0.2
+		#defense = -0.5
+		#breakthrough = -0.5
+		combat_width = 0.0
+		
+		##OTHER
+		training_time = 120
+		manpower = 350 	#500
+		
+		need = {
+			infantry_uniforms = 35
+			anti_air_equipment = 20
+			artyhorse_equipment = 20
+			#officer_equipment = 7
+		}
+		
+		can_be_parachuted = yes
+		
+		transport = artyhorse_equipment
+		
+		
+		desert = {
+			movement = -0.05
+		}
+		forest = {
+			attack = -0.05
+			movement = -0.05
+		}
+		hills = {
+			attack = -0.1
+			movement = -0.1
+		}
+		mountain = 	{
+			attack = -0.2
+			movement = -0.2
+		}
+		jungle = {
+			attack = -0.2
+			movement = -0.2
+		}
+		marsh = {
+			movement = -0.1
+		}
+		urban = {
+			attack = -0.05
+			defence = 0.05
+		}
+		capital = {
+			attack = -0.05
+			defence = 0.05
+		}
+		river = { 
+			movement = -0.1
+		}
+		amphibious = { 
+			attack = -0.10
+			movement = -0.10
+		}
+	}
+	### Anti-Air Battalions
+	anti_air_heavy = {
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 301
+		ai_priority = 10
+		active = yes
+
+		type = {
+			infantry
+			support
+			anti_air
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_army
+			category_all_heavy_anti_air
+		}
+		
+		##BASE stats
+		max_strength = 2
+		max_organisation = -5
+		default_morale = 0.1
+		weight = 0.1
+		supply_consumption = 0.1
+		
+		own_equipment_fuel_consumption_mult = 1.5
+
+		##COMBAT stats
+		#soft_attack = -0.2
+		#hard_attack = -0.2
+		#air_attack = -0.1
+		#defense = -0.2
+		#breakthrough = -0.6
+		combat_width = 0.0
+		
+		##OTHER
+		training_time = 120
+		manpower = 550 	#800
+		
+		need = {
+			infantry_uniforms = 55
+			HVanti_air_equipment = 36
+			artytruck_equipment = 36 # truck pulled
+			#officer_equipment = 11
+		}
+		
+		can_be_parachuted = no
+		
+		transport = artytruck_equipment
+		
+		desert = {
+			movement = -0.1
+		}
+		forest = {
+			attack = -0.05
+			movement = -0.15
+		}
+		hills = {
+			attack = -0.1
+			movement = -0.2
+		}
+		mountain = 	{
+			attack = -0.2
+			movement = -0.25
+		}
+		jungle = {
+			attack = -0.2
+			movement = -0.25
+		}
+		marsh = {
+			movement = -0.15
+		}
+		urban = {
+			attack = -0.05
+			defence = 0.05
+		}
+		capital = {
+			attack = -0.05
+			defence = 0.05
+		}
+		river = { 
+			movement = -0.25
+		}
+		amphibious = { 
+			attack = -0.10
+			movement = -0.25
+		}
+	}
+}

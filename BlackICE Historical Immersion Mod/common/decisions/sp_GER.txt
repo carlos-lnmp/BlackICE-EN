@@ -1,0 +1,478 @@
+GER_speeches_category = {
+
+	sp_freemarket = {
+
+		icon = ger_reichskommissariats
+
+		cost = 25
+		days_re_enable = 365
+		days_remove = 180
+		
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_war = no
+			ENG = { democratic_govt = yes }
+			FRA = { democratic_govt = yes }
+			USA = { democratic_govt = yes }
+			}
+
+		available = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+		}
+
+		complete_effect = {
+			add_opinion_modifier = { target = ENG modifier = small_decrease }
+			add_opinion_modifier = { target = FRA modifier = small_decrease }
+			add_opinion_modifier = { target = USA modifier = medium_decrease }
+			add_popularity = { ideology = fascism popularity = 0.05 }
+			
+		hidden_effect = {
+			sound_effect = sp_ger_capitalism 
+			}
+		}		
+	}
+
+	sp_hitlerjugend = {
+
+		icon = ger_reichskommissariats
+
+		cost = 25
+		days_re_enable = 365
+		
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_war = no
+		}
+
+		available = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+		}
+
+		complete_effect = {
+			add_manpower = 8000
+			add_popularity = { ideology = fascism popularity = 0.01 }
+			
+		hidden_effect = {
+			sound_effect = sp_ger_hitlerjugend 
+			}
+		}
+		
+	}
+
+	sp_berlin_siemens = {
+
+		icon = ger_reichskommissariats
+
+		cost = 30
+		fire_only_once = yes
+		
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_war = no
+		}
+		
+		available = {
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_tech = electronic_mechanical_engineering
+		}
+
+		complete_effect = {
+			add_tech_bonus = {
+				name = electronics_bonus
+				bonus = 0.10
+				uses = 2
+				category = electronics
+			}
+			
+		hidden_effect = {
+			sound_effect = sp_ger_siemens
+			}
+		}
+	}
+
+	sp_essen_krupp = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = GER
+		}
+
+		visible = { 
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_war = no
+		}
+		
+		available = {
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			NOT = { 51 = { is_demilitarized_zone = yes } }
+		}
+		
+		complete_effect = {
+			add_tech_bonus = {
+				name = industry_bonus
+				bonus = 0.10
+				uses = 2
+				category = industry
+			}
+			
+		hidden_effect = {
+			sound_effect = sp_ger_krupp 
+			}
+		}
+
+		cost = 30
+
+		fire_only_once = yes
+		
+	}
+	
+	sp_inaugurate_autobahn = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		cost = 30		
+		
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			64 = { infrastructure > 9  }
+			59 = { infrastructure > 9  }
+			60 = { infrastructure > 9  }
+			54 = { infrastructure > 9  }
+		}
+		
+		activation = {
+			64 = { infrastructure > 9  }
+			59 = { infrastructure > 9  }
+			60 = { infrastructure > 9  }
+			54 = { infrastructure > 9  }
+		}
+		
+		days_mission_timeout = 180
+
+		complete_effect = {
+			add_popularity = { ideology = fascism popularity = 0.05 }
+			add_stability = 0.05 
+					
+			hidden_effect = {
+				sound_effect = sp_ger_autobahn 
+			}
+		}
+		
+	}
+
+	sp_wien = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		cost = 20
+		
+		allowed = { 
+			tag = GER
+		}
+
+		available = { 
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_war = no
+		}
+		
+		activation = {
+			GER = { owns_state = 4 }
+		}
+			
+		days_mission_timeout = 7
+	
+		complete_effect = {
+			add_popularity = { ideology = fascism popularity = 0.05 }
+			
+			ITA = {
+			add_opinion_modifier = { target = GER modifier = small_decrease } 
+			}  
+			
+			hidden_effect = {
+				sound_effect = sp_ger_wien 
+			}
+		
+		}
+		
+	}
+	
+	sp_sudeten = {
+
+		icon = ger_reichskommissariats		
+		
+		allowed = {
+			tag = GER
+		}
+
+		visible = { 
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			NOT { owns_state = 69 }
+			NOT { has_war_with = CZE }
+		}
+		
+		available = {
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			GER = { has_added_tension_amount > 14.0 }
+		}
+		
+		complete_effect = {
+			add_war_support = 0.05
+			add_popularity = { ideology = fascism popularity = 0.05 }
+			
+			hidden_effect = {
+				sound_effect = sp_ger_sudeten 
+			}
+		}
+
+		cost = 30
+
+		fire_only_once = yes	
+		
+	}
+	
+	declare_war_POL = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			NOT = { has_war_with = POL }
+			country_exists = POL
+			}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_wargoal_against = POL
+		}
+
+		complete_effect = {
+			declare_war_on = { target = POL type = take_state_focus }
+			
+			hidden_effect = {
+				sound_effect = sp_ger_POL
+			}
+		}
+		
+		fire_only_once = yes
+		
+	}
+	
+	sp_falloffrance = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			GER = { has_war_with = ENG }
+			}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			ENG = { has_country_leader = { ruling_only = yes name = "Winston Churchill" } }
+			GER = { has_war_with = ENG }
+			FRA = { has_capitulated = yes }
+			15 = { is_fully_controlled_by = ROOT }
+			16 = { is_fully_controlled_by = ROOT }
+			29 = { is_fully_controlled_by = ROOT }
+			
+		}
+
+		complete_effect = {
+			add_war_support = 0.05 
+			
+		hidden_effect = {
+			sound_effect = sp_ger_FRAcap 
+			}
+		}
+		
+		cost = 25
+		
+		fire_only_once = yes
+		
+	}
+
+	declare_war_SOV = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			NOT = { has_war_with = SOV }
+			country_exists = SOV
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_idea = joseph_goebbels
+			has_wargoal_against = SOV	
+		}
+
+		complete_effect = {
+			declare_war_on = { target = SOV type = annex_everything }
+			
+			hidden_effect = {
+				sound_effect = sp_ger_waronrussia
+			}
+		}
+		
+		fire_only_once = yes	
+	}
+
+	declare_war_USA1 = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			NOT = { GER = { has_war_with = USA } }
+			country_exists = USA
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_wargoal_against = USA
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = USA type = annex_everything }
+			set_country_flag = GER_declare_war_USA1
+
+			hidden_effect = {
+					sound_effect = sp_ger_waronusa
+				}
+
+		}
+			
+		fire_only_once = yes	
+
+	}
+
+	declare_war_USA2 = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_war_with = USA
+			country_exists = USA
+			NOT = { has_country_flag = GER_declare_war_USA1 }
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_war_with = USA
+		}
+
+		complete_effect = {
+
+			add_war_support = 0.05
+			
+			hidden_effect = {
+					sound_effect = sp_ger_waronusa
+				}
+
+		}
+		
+		cost = 25
+		
+		fire_only_once = yes	
+
+	}
+
+	sp_ger_totalwar = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = GER
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_war_with = SOV
+			has_war_with = ENG
+			has_war_with = USA
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Adolf Hitler" }
+			has_idea = joseph_goebbels
+			has_war_with = SOV
+			has_war_with = ENG
+			has_war_with = USA
+		}
+
+		complete_effect = {
+
+			add_war_support = 0.05
+	
+			hidden_effect = {
+					sound_effect = sp_ger_totalwar
+				}
+
+		}
+
+		cost = 25
+				
+		fire_only_once = yes	
+		
+	}
+	
+}

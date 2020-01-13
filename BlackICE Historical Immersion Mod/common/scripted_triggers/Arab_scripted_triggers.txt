@@ -1,0 +1,142 @@
+#	Example:
+# 
+#	example_trigger = {
+#		tag = GER
+#		is_ai = no
+#	}
+#
+#
+#	In a script file:
+#
+#	trigger = {
+#		example_trigger = yes
+#	}
+# 
+#	THIS FILE IS FOR TRIGGERS SPECIFICALLY FOR THE Arab TAG
+
+is_Arab = { 
+	OR = {
+				tag = JOR
+				tag = SAU
+				tag = YEM
+				tag = OMA
+				tag = LEB
+				tag = SYR
+				tag = LBA
+				tag = PAL
+				tag = MAR
+				tag = MOR
+				tag = TUN
+				tag = IRQ
+				tag = EGY
+	}
+}
+
+
+full_control_by_root = {
+	is_owned_by = ROOT
+	is_controlled_by = ROOT
+}
+
+has_Arab_inflation = {
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_1 }
+		has_idea = Arab_hyper_inflation_1
+	}
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_2 }
+		has_idea = Arab_hyper_inflation_2
+	}
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_3 }
+		has_idea = Arab_hyper_inflation_3
+	}
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_4 }
+		has_idea = Arab_hyper_inflation_4
+	}
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_5 }
+		has_idea = Arab_hyper_inflation_5
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_idea = Arab_hyper_inflation_1
+				has_idea = Arab_hyper_inflation_2
+				has_idea = Arab_hyper_inflation_3
+				has_idea = Arab_hyper_inflation_4
+				has_idea = Arab_hyper_inflation_5
+			}
+		}
+		has_idea = Arab_hyper_inflation_1
+	}
+}
+
+
+GER_will_arab = {
+	GER = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}
+
+SOV_will_arab = {
+	SOV = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}
+ENG_will_arab = {
+	ENG = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}
+FRA_will_arab = {
+	FRA = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}
+ITA_will_arab = {
+	ITA = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}

@@ -1,0 +1,2130 @@
+technologies = {
+	#Vertical position Y
+	@1933 = 0
+	@1934 = 2
+	@1934_1 = 4
+	@1934_2 = 6
+	@1935 = 8
+	@1935_1 = 10
+	@1936 = 12
+	@1937 = 14
+	@1938 = 16
+	@1939 = 18
+	@1940 = 20
+	@1941 = 22
+	@1942 = 24
+	@1943 = 26
+	@1944 = 28
+	@1945 = 30
+	@1946 = 32
+	@1947 = 34
+	@1948 = 36
+	@1949 = 38
+	@1950 = 40
+	@1951 = 42
+	@1952 = 44
+	# Horizontal position X
+	@SOV_AIR = 18
+	@FTR = 0
+	@FTR_ENG = 3
+	@FTR_1 = 2
+	@FTR_2 = 5
+	@FTR_3 = 8
+	@INT = 11
+	@CAS_1 = 12
+	@CAS = 14
+	@CAS_3 = 15
+	@CAS_2 = 16
+	@CAS_4 = 17
+	@H_FTR = 21
+	@F_BMB = 25
+	@L_BMB = 28
+	@M_BMB = 31
+	@M_BMB_1 = 34
+	@M_LR_BMB = 37
+	@H_BMB = 40
+	@H_BMB_1 = 39
+	@H_BMB_2 = 42
+	@NVL_BMB = 46
+	@CV_FTR = 50
+	@CV_DIVE = 53
+	@CV_TORP = 56
+	@F_B = 60
+	
+	tech_testing_2 = { #for testing purposes, this tech should be kept updated with a list of all SOVIET aircraft to allow ease of testing. MAKE SURE IT IS NOT IN 1936 START ON RELEASE!
+		enable_equipments = {
+			i_5_equipment_1
+			i_z_equipment_1
+			i_7_equipment_1
+			di_6_equipment_1
+			i_14_fighter_equipment_1
+			i_15_equipment_1
+			i_152_equipment_1
+			i_153_equipment_1
+			i_16_equipment_1
+			yak_1_equipment_1
+			yak_7_equipment_1
+			yak_3_equipment_1
+			yak_9_equipment_1
+			lagg_1_equipment_1
+			lagg_3_equipment_1
+			lagg_5_equipment_1
+			lagg_7_equipment_1
+			mig_1_equipment_1
+			mig_3_equipment_1
+			pe_2_fighter_equipment_1
+			pe_3_fighter_equipment_1
+			tu_2_fighter_equipment_1
+			tu_2_fighter_equipment_2
+			r_10_bomber_equipment_1
+			sb_2m_bomber_equipment_1
+			ar_2_bomber_equipment_1
+			pe_2_bomber_equipment_1
+			pe_2i_bomber_equipment_1
+			db_3_bomber_equipment_1
+			il_4_bomber_equipment_1
+			tu_2_bomber_equipment_1
+			tb_3_bomber_equipment_1
+			pe_8_bomber_equipment_1
+			r_5_bomber_equipment_1
+			r_5_bomber_equipment_2
+			po_2_equipment_1
+			po_2_equipment_2
+			r_5_nav_bomber_equipment_1
+			db_3t_bomber_equipment_1
+			ip_1_fighter_equipment_1
+		}
+		allow = {
+			always = no
+		}
+	
+		research_cost = 2
+		start_year = 1934
+
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	soviet_air_tech = {
+		
+		enable_equipments = {
+			transport_plane_equipment_1
+			#i_5_equipment_1
+			#i_7_equipment_1
+			i_z_equipment_1
+			#di_6_equipment_1
+			i_14_fighter_equipment_1
+			#i_16_equipment_1
+			r_5_nav_bomber_equipment_1
+			ip_1_fighter_equipment_1
+		}
+		
+		allow = {
+			always = no
+		}
+		
+		research_cost = 1
+		start_year = 1934
+		folder = {
+			name = sovietair_folder
+			position = { x = @SOV_AIR y = -1 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+		}
+	}
+	soviet_player_tech = {
+		
+		enable_equipments = {
+			i_5_equipment_1
+			i_7_equipment_1
+			di_6_equipment_1
+			i_16_equipment_1
+		}
+		
+		allow = {
+			always = no
+		}
+		
+		research_cost = 1
+		start_year = 1934
+		folder = {
+			name = sovietair_folder
+			position = { x = 18 y = -1 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+		}
+	}
+	##### FIGHTERS #####
+	### I-15
+	tech_i_15_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_15_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_i15_m25_engine_1
+			research_cost_coeff = 0.5 
+		}
+		path = {
+			leads_to_tech = tech_i_16_equipment_1
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1
+		start_year = 1934
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR y = @1934 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_i15_m25_engine_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		path = {
+			leads_to_tech = tech_i_15_equipment_2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 0.5
+		start_year = 1934
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_ENG y = @1934 }
+		}
+		
+		fighter = {
+			maximum_speed = 0.03
+			air_agility = 0.03
+			build_cost_ic = 0.1
+		}
+		
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### I-15 M-25
+	tech_i_15_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_15_equipment_2 }
+		
+		dependencies = {
+			tech_i15_m25_engine_1 = 1
+		}
+		
+		research_cost = 0.25
+		start_year = 1934
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_1 y = @1934_1 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### I-16
+	tech_i_16_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_16_equipment_1 }
+		
+		dependencies = {
+			tech_i15_m25_engine_1 = 1
+		}
+		path = {
+			leads_to_tech = tech_i_16_equipment_2
+			research_cost_coeff = 0.75 
+		}
+		path = {
+			leads_to_tech = tech_i_16_equipment_3
+			research_cost_coeff = 0.75 
+		}
+		path = {
+			leads_to_tech = tech_i_152_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		research_cost = 0.25
+		start_year = 1934
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR y = @1934_2 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### I-16 Type 4
+	tech_i_16_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_16_equipment_2 }
+		
+		dependencies = {
+			tech_i15_m25_engine_1 = 1
+		}
+		
+		research_cost = 0.25
+		start_year = 1935
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_1 y = @1935 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### I-16 Type 5
+	tech_i_16_equipment_3 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_16_equipment_3 }
+		
+		dependencies = {
+			tech_i15_m25_engine_1 = 1
+		}
+		
+		research_cost = 0.25
+		start_year = 1936
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_2 y = @1936 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### I-15bis
+	tech_i_152_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_152_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_i_153_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR y = @1937 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### I-153
+	tech_i_153_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_153_equipment_1 }
+
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR y = @1938 }
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = fighter_1_researched
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 9999
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+	}
+	### YAK-1
+	tech_yak_1_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { yak_1_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_yak_3_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_yak_7
+			research_cost_coeff = 1 
+		}
+		
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR y = @1940 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### YAK-7
+	tech_yak_7 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { yak_7_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_yak_9
+			research_cost_coeff = 1 
+		}
+		
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_1 y = @1941 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### YAK-9
+	tech_yak_9 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { yak_9_equipment_1 }
+
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_1 y = @1942 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### YAK-3
+	tech_yak_3_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { yak_3_equipment_1 }
+
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1944 #Maybe 1943?
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR y = @1944 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### I-180
+	tech_i_180_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_180_equipment_1 }
+
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_3 y = @1940 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### LaGG-1
+	tech_lagg_1_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { lagg_1_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_lagg_3_equipment_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_2 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+	}
+	### LaGG-3
+	tech_lagg_3_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { lagg_3_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_lagg_5_equipment_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_2 y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+	}
+	### LaGG-5
+	tech_lagg_5_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { lagg_5_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_lagg_7_equipment_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_2 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+	}
+	### LaGG-7
+	tech_lagg_7_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { lagg_7_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_lagg_9_equipment_1
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_2 y = @1944 }
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				country_event = { id = EAI_V.500 days = 1 }
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+	}
+	### LaGG-9
+	tech_lagg_9_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { lagg_9_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_lagg_11_equipment_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				country_event = { id = EAI_V.501 days = 1 }
+			}
+		}
+		research_cost = 1
+		start_year = 1946
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_2 y = @1946 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1945/7 = no
+			}
+		}
+	}
+	### LaGG-11
+	tech_lagg_11_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { lagg_11_equipment_1 }
+		
+		research_cost = 1
+		start_year = 1947
+		folder = {
+			name = sovietair_folder
+			position = { x = @FTR_2 y = @1947 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1946/7 = no
+			}
+		}
+	}
+	### INTERCEPTOR
+	tech_mig_1_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { mig_1_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_mig_3_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = interceptor_1_researched
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = sovietair_folder
+			position = { x = @INT y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+	}
+	tech_mig_3_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { mig_3_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_mig_15_equipment_1
+			research_cost_coeff = 1 
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				country_event = { id = EAI_V.502 days = 1 }
+			}
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = sovietair_folder
+			position = { x = @INT y = @1941 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+	}
+	tech_mig_15_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { mig_15_equipment_1 }
+
+		research_cost = 1
+		start_year = 1949
+		folder = {
+			name = sovietair_folder
+			position = { x = @INT y = @1949 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### CLOSE AIR SUPPORT #####
+	### U2
+	tech_po_2_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { 
+			po_2_equipment_1  
+			#po_2_equipment_2
+		}
+		
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		
+		research_cost = 0.5
+		start_year = 1934
+		folder = {
+			name = sovietair_folder
+			position = { x = @CAS_3 y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_r_5_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { r_5_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_r_5_bomber_equipment_2
+			research_cost_coeff = 0.75 
+		}
+		path = {
+			leads_to_tech = tech_r_5_bomber_equipment_3
+			research_cost_coeff = 0.75 
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1934
+		folder = {
+			name = sovietair_folder
+			position = { x = @CAS y = @1934_1 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	# R-5 SSS
+	tech_r_5_bomber_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { 
+			r_5_bomber_equipment_2
+		}
+		
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 0.25
+		start_year = 1935
+		folder = {
+			name = sovietair_folder
+			position = { x = @CAS_1 y = @1935 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	# R-5 Z
+	tech_r_5_bomber_equipment_3 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { 
+			r_5_bomber_equipment_3
+		}
+		
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 0.25
+		start_year = 1935
+		folder = {
+			name = sovietair_folder
+			position = { x = @CAS_2 y = @1935 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### R-10
+	tech_r_10_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { r_10_bomber_equipment_1 }
+		
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = sovietair_folder
+			position = { x = @CAS y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### SU-2 LR
+	tech_su_2_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { su_2_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_su_2_equipment_2
+			research_cost_coeff = 1 
+		}
+
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = sovietair_folder
+			position = { x = @CAS y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### SU-4 LR
+	tech_su_2_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { su_2_equipment_2 }
+
+		path = {
+			leads_to_tech = tech_su_6_equipment_1
+			research_cost_coeff = 1 
+		}		
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 0.5
+		start_year = 1940
+		folder = {
+			name = sovietair_folder
+			position = { x = @CAS y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_su_6_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { su_6_equipment_1 }
+		
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = sovietair_folder
+			position = { x = @CAS y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### IL-2
+	tech_il_2_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { il_2_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_il_10_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = CAS_1_researched
+			}
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = sovietair_folder
+			position = { x = @CAS_4 y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}	
+		}
+	}
+	### IL-10
+	tech_il_10_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { il_10_equipment_1 }
+		
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = sovietair_folder
+			position = { x = @CAS_4 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+	}
+	##### HEAVY FIGHTER #####
+	### I-14
+	tech_i_14_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_14_fighter_equipment_1 }
+		
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_FTR y = @1935 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### IP-1
+	tech_ip_1_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ip_1_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_i15_m25_engine_1 = 1
+		}
+		
+		research_cost = 0.25
+		start_year = 1935
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_FTR y = @1935_1 }
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### PE-2
+	tech_pe_2_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { pe_2_fighter_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_pe_3_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = heavy_fighter_1_researched
+			}
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_FTR y = @1939 }
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				country_event = { id = EAI_V.503 days = 1 }
+			}
+		}
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+	}
+	### PE-3
+	tech_pe_3_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { pe_3_fighter_equipment_1 }
+		
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_FTR y = @1941 }
+		}
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				country_event = { id = EAI_V.504 days = 1 }
+			}
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_HFTR_tech_focus = yes
+				}
+			}
+		}
+	}
+	### TU-2S
+	tech_tu_2_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { tu_2_fighter_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_tu_2_fighter_equipment_2
+			research_cost_coeff = 1 
+		}
+		
+		dependencies = {
+			tech_tu_2_bomber_equipment_1 = 1
+		}
+
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_FTR y = @1944 }
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+	}
+	### TU-1
+	tech_tu_2_fighter_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { tu_2_fighter_equipment_2 }
+		
+		research_cost = 1
+		start_year = 1947
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_FTR y = @1947 }
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### BOMBERS FAST/LIGHT/TACTICAL/STRATEGIC #####
+	### YAK-2 F-BOMBER
+	tech_yak_2_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { yak_2_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_yak_4_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = sovietair_folder
+			position = { x = @F_BMB y = @1939 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### YAK-4 F-BOMBER
+	tech_yak_4_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { yak_2_bomber_equipment_2 }
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 0.5
+		start_year = 1940
+		folder = {
+			name = sovietair_folder
+			position = { x = @F_BMB y = @1940 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### PE-2 F-BOMBER
+	tech_pe_2_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { pe_2_bomber_equipment_1 }
+
+		dependencies = {
+			tech_pe_2_fighter_equipment_1 = 1
+		}
+
+		path = {
+			leads_to_tech = tech_pe_2i_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = sovietair_folder
+			position = { x = @F_BMB y = @1941 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### PE-2I F-BOMBER
+	tech_pe_2i_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { pe_2i_bomber_equipment_1 }
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		path = {
+			leads_to_tech = jet_tactical_bomber1
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = sovietair_folder
+			position = { x = @F_BMB y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### SB-2M L-BOMBER
+	tech_sb_2m_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { sb_2m_bomber_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_ar_2_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = sovietair_folder
+			position = { x = @L_BMB y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### AR-2 L
+	tech_ar_2_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ar_2_bomber_equipment_1 }
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		path = {
+			leads_to_tech = tech_soviet_cvnav_3
+			research_cost_coeff = 1 
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = sovietair_folder
+			position = { x = @L_BMB y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### STRATEGIC BOMBERS
+	### TB-3 S-BOMBER
+	tech_tb_3_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = {
+			tb_3_bomber_equipment_1
+			tb_3_bomber_equipment_2
+			tb_3_bomber_equipment_3
+		}
+		
+		path = {
+			leads_to_tech = tech_tb_3_bomber_equipment_2
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		research_cost = 1 #tweak
+		start_year = 1934
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_BMB y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### TB-3 4M-34RN S-BOMBER
+	tech_tb_3_bomber_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { tb_3_bomber_equipment_4 }
+		
+		path = {
+			leads_to_tech = tech_tb_3_bomber_equipment_3
+			research_cost_coeff = 1 
+		}
+		
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		research_cost = 1 #tweak
+		start_year = 1935
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_BMB y = @1934_2 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### TB-3 4M-34FRN/FRNV S-BOMBER
+	tech_tb_3_bomber_equipment_3 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { tb_3_bomber_equipment_5 }
+		
+		
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		research_cost = 1 #tweak
+		start_year = 1935
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_BMB_2 y = @1935 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### PE-8 S-BOMBER
+	tech_pe_8_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { pe_8_bomber_equipment_1 }
+
+		
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		research_cost = 2 #tweak
+		start_year = 1938
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_BMB y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### TU-4 S-BOMBER
+	tech_tu_4_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { tu_4_bomber_equipment_1 }
+
+
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		research_cost = 1
+		start_year = 1949
+		folder = {
+			name = sovietair_folder
+			position = { x = @H_BMB y = @1948 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### TACTICAL-BOMBERS #####
+	### DB-3 M-BOMBER
+	tech_db_3_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { db_3_bomber_equipment_1 }
+
+		
+		path = {
+			leads_to_tech = tech_il_4_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = tactical_bomber_1_researched
+			}
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = sovietair_folder
+			position = { x = @M_BMB y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+	}
+	### IL 4 M-BOMBER
+	tech_il_4_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { il_4_bomber_equipment_1 }
+		
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = sovietair_folder
+			position = { x = @M_BMB y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+	}
+	### TU-2 M-BOMBER
+	tech_tu_2_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { tu_2_bomber_equipment_1 }
+
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = sovietair_folder
+			position = { x = @M_BMB_1 y = @1942 }
+		}
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+	}
+	### YER-2/M-105 M-LR-BOMBER
+	tech_yer_2_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { yer_2_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_yer_2_bomber_equipment_2
+			research_cost_coeff = 1 
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			tactical_bomber
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = sovietair_folder
+			position = { x = @M_LR_BMB y = @1941 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### YER-2/ACh-30B M-LR-BOMBER
+	tech_yer_2_bomber_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { yer_2_bomber_equipment_2 }
+
+		categories = {
+			heavy_air
+			air_equipment
+			tactical_bomber
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = sovietair_folder
+			position = { x = @M_LR_BMB y = @1944 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### NAVAL BOMBERS #####
+	### DB-3T N-BOMBER
+	tech_db_3t_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { db_3t_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_db_3_bomber_equipment_1 = 1
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = naval_bomber_1_researched
+			}
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		
+		research_cost = 0.75
+		start_year = 1937
+		folder = {
+			name = sovietair_folder
+			position = { x = @NVL_BMB y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}			
+		}
+	}
+	### IL-4T N-BOMBER
+	tech_il_4t_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { il_4t_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_il_4_bomber_equipment_1 = 1
+		}
+		
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 0.75
+		start_year = 1942
+		folder = {
+			name = sovietair_folder
+			position = { x = @NVL_BMB y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+	}
+	### TU-2T N-BOMBER
+	tech_tu_2t_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { tu_2t_bomber_equipment_1 }
+
+		dependencies = {
+			tech_tu_2_bomber_equipment_1 = 1
+		}
+		
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+
+		research_cost = 0.75
+		start_year = 1945
+		folder = {
+			name = sovietair_folder
+			position = { x = @NVL_BMB y = @1945 }
+		}
+		ai_will_do = {
+			factor = 4000
+			modifier = {
+				factor = 0
+				EAI_timegate_1944/7 = no
+			}
+		}
+	}
+	##### FLYING BOATS #####
+	tech_beriev_mbr_2_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { beriev_mbr_2_equipment_1 }
+
+
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = sovietair_folder
+			position = { x = @F_B y = @1936 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_tupolev_mdr_4_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { tupolev_mdr_4_equipment_1 }
+
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = sovietair_folder
+			position = { x = @F_B y = @1938 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_chetverikov_mdr_6_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { chetverikov_mdr_6_equipment_1 }
+
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = sovietair_folder
+			position = { x = @F_B y = @1941 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_beriev_be_6_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { beriev_be_6_equipment_1 }
+
+
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+
+		research_cost = 1
+		start_year = 1949
+		folder = {
+			name = sovietair_folder
+			position = { x = @F_B y = @1948 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### CARRIER-BASED AIRCRAFT #####
+	### I-15 CV-FIGHTER
+	tech_i_15_cv_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_15_cv_fighter_equipment_1 }
+
+
+		path = {
+			leads_to_tech = tech_i_15_cv_fighter_equipment_2
+			research_cost_coeff = 1 
+		}
+
+		dependencies = {
+			tech_i_15_equipment_1 = 1
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = sovietair_folder
+			position = { x = @CV_FTR y = @1936 }
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/2 = no
+			}
+		}
+	}
+	### I-153K CV-FIGHTER
+	tech_i_15_cv_fighter_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { i_15_cv_fighter_equipment_2 }
+		
+		dependencies = {
+			tech_i_153_equipment_1 = 1
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = sovietair_folder
+			position = { x = @CV_FTR y = @1939 }
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+	}
+	### YAK-1K CV-FIGHTER
+	tech_yak_cv_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { yak_cv_fighter_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_yak_cv_fighter_equipment_2
+			research_cost_coeff = 1 
+		}
+		
+		dependencies = {
+			tech_yak_1_equipment_1 = 1
+		}
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = sovietair_folder
+			position = { x = @CV_FTR y = @1941 }
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+	}
+	### YAK-3K CV-FIGHTER
+	tech_yak_cv_fighter_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { yak_cv_fighter_equipment_2 }
+		
+		dependencies = {
+			tech_yak_3_equipment_1 = 1
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = sovietair_folder
+			position = { x = @CV_FTR y = @1944 }
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+	}
+	### R-Kz CV-CAS
+	tech_soviet_cvcas_0 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cv_CAS_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_soviet_cvcas_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = sovietair_folder
+			position = { x = @CV_DIVE y = @1936 }
+		}		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	###SU-2K
+	tech_soviet_cvcas_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cv_CAS_equipment_2 }
+
+		path = {
+			leads_to_tech = tech_soviet_cvcas_2
+			research_cost_coeff = 1 
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = sovietair_folder
+			position = { x = @CV_DIVE y = @1940 }
+		}		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### SU-6K
+	tech_soviet_cvcas_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cv_CAS_equipment_3 }
+		
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = sovietair_folder
+			position = { x = @CV_DIVE y = @1944 }
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### CV TORPEDO-BOMBER
+	### R-5TK
+	tech_soviet_cvnav_0 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cv_nav_bomber_equipment_1 }
+
+		path = {
+			leads_to_tech = tech_soviet_cvnav_1
+			research_cost_coeff = 1 
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = sovietair_folder
+			position = { x = @CV_TORP y = @1936 }
+		}		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/2 = no
+			}
+		}
+	}
+	### SU-2TK
+	tech_soviet_cvnav_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cv_nav_bomber_equipment_2 }
+
+		path = {
+			leads_to_tech = tech_soviet_cvnav_2
+			research_cost_coeff = 1 
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = sovietair_folder
+			position = { x = @CV_TORP y = @1940 }
+		}		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+	}
+	tech_soviet_cvnav_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { cv_nav_bomber_equipment_3 }
+		
+		categories = {
+			naval_air
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = sovietair_folder
+			position = { x = @CV_TORP y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+	}
+}

@@ -1,0 +1,161 @@
+on_actions = {
+	on_declare_war = {
+		effect = {
+			#Puppets automatically joining
+			if = {
+				limit = {
+					ROOT = { num_subjects > 0 }
+				}
+				FROM = { save_global_event_target_as = target_1 }
+				#ROOT = { country_event = { id = EAI_DM.6 hours = 1 } }
+			}
+			if = {
+				limit = {
+					FROM = { num_subjects > 0 }
+				}
+				ROOT = { save_global_event_target_as = target_2 }
+				#FROM = { country_event = { id = EAI_DM.7 hours = 1 } }
+			}
+			#AI mobilizing
+			if = {
+				limit = {
+					ROOT = {
+						is_ai = yes
+						NOT = { has_idea = mob_general }
+						if = {
+							limit = {
+								tag = SOV 
+							}
+							NOT = { has_idea = officers_purged }			
+							NOT = { has_idea = officers_purged_2 }			
+							NOT = { has_idea = officers_purged_3 }			
+							NOT = { has_idea = officers_purged_4 }			
+							NOT = { has_idea = officers_purged_5 }			
+							NOT = { has_idea = officers_purged_6 }			
+							NOT = { has_idea = officers_purged_7 }			
+							NOT = { has_idea = officers_purged_8 }			
+							NOT = { has_idea = officers_purged_9 }			
+							NOT = { has_idea = officers_purged_10 }	
+						}
+					}
+				}
+				hidden_effect = {
+					ROOT = {
+						add_ideas = mob_general
+					}
+				} 
+			}
+			if = {
+				limit = {
+					FROM = {
+						is_ai = yes
+						NOT = {
+							has_idea = mob_general
+						}
+						if = {
+							limit = {
+								tag = SOV 
+							}
+							NOT = { has_idea = officers_purged }			
+							NOT = { has_idea = officers_purged_2 }			
+							NOT = { has_idea = officers_purged_3 }			
+							NOT = { has_idea = officers_purged_4 }			
+							NOT = { has_idea = officers_purged_5 }			
+							NOT = { has_idea = officers_purged_6 }			
+							NOT = { has_idea = officers_purged_7 }			
+							NOT = { has_idea = officers_purged_8 }			
+							NOT = { has_idea = officers_purged_9 }			
+							NOT = { has_idea = officers_purged_10 }	
+						}
+					}
+				}
+				hidden_effect = {
+					FROM = {
+						add_ideas = mob_general
+					}
+				}
+				custom_effect_tooltip = mobilize_now_TT
+			}
+		}
+	}
+	
+	on_capitulation = {
+		effect = {
+			if =  { #bug fix to central africa flipping to GER on FRA capitulation
+				limit = {
+					ROOT = { tag = FRA is_in_faction = yes }
+					FROM = { is_in_faction_with = GER }
+				}
+
+				if = { limit = { 539 = { CONTROLLER = { is_in_faction_with = GER } } }
+					FRA = { set_state_controller = 539 }
+				}
+
+				if = { limit = { 660 = { CONTROLLER = { is_in_faction_with = GER } } }
+					FRA = { set_state_controller = 660 }
+				}
+
+				if = { limit = { 556 = { CONTROLLER = { is_in_faction_with = GER } } }
+					FRA = { set_state_controller = 556 }
+				}
+
+				if = { limit = { 272 = { CONTROLLER = { is_in_faction_with = GER } } }
+					FRA = { set_state_controller = 272 }
+				}
+				
+				if = { limit = { 310 = { CONTROLLER = { is_in_faction_with = GER } } }
+					FRA = { set_state_controller = 310 }
+				}
+			}
+			
+			if =  { #bug fix to central africa flipping to GER on BEL capitulation
+				limit = {
+					ROOT = { tag = BEL is_in_faction = yes }
+					FROM = { is_in_faction_with = GER }
+				}
+
+				if = { limit = { 538 = { CONTROLLER = { is_in_faction_with = GER } } }
+					BEL = { set_state_controller = 538 }
+				}
+
+				if = { limit = { 295 = { CONTROLLER = { is_in_faction_with = GER } } }
+					BEL = { set_state_controller = 295 }
+				}
+
+				if = { limit = { 718 = { CONTROLLER = { is_in_faction_with = GER } } }
+					BEL = { set_state_controller = 718 }
+				}
+			}
+			
+			if =  { #bug fix to GER getting ICE
+				limit = {
+					ROOT = { tag = DEN is_in_faction = yes }
+					FROM = { is_in_faction_with = GER }
+				} 
+				
+				if = { limit = { 337 = { CONTROLLER = { is_in_faction_with = GER } } }
+					DEN = { set_state_controller = 337 }
+				}
+				if = { limit = { 100 = { CONTROLLER = { is_in_faction_with = GER } } }
+					DEN = { set_state_controller = 100 }
+				}
+				if = { limit = { 101 = { CONTROLLER = { is_in_faction_with = GER } } }
+					DEN = { set_state_controller = 101 }
+				}
+			}
+			
+			
+			if =  { #bug fix to GER getting Suriname
+				limit = {
+					ROOT = { tag = HOL is_in_faction = yes }
+					FROM = { is_in_faction_with = GER }
+				} 
+				
+				if = { limit = { 309 = { CONTROLLER = { is_in_faction_with = GER } } }
+					HOL = { set_state_controller = 309 }
+				}
+			}
+			
+		}
+	}
+}

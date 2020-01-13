@@ -1,0 +1,249 @@
+ideas = {
+	tariffs = { 
+		law = yes
+		
+		tariffs_none = {
+			
+			cost = 125
+			removal_cost = -1
+			level = 5
+			available = {
+				NOT = {
+					has_government = fascism
+					has_government = communism
+					has_government = neutrality
+					has_government = monarchism
+					has_idea = closed_economy
+					has_idea = limited_exports
+				}
+			}
+			
+			on_add = {
+				set_country_flag = tariffs_none
+				clr_country_flag = tariffs_low
+				clr_country_flag = tariffs_average
+				clr_country_flag = tariffs_high
+				clr_country_flag = tariffs_extreme
+			}
+			
+			modifier = {
+				political_power_factor = -0.07
+				production_factory_max_efficiency_factor = 0.08
+				production_speed_dockyard_factor = -0.10
+				production_speed_arms_factory_factor = -0.10
+				production_speed_industrial_complex_factor = -0.10
+				trade_opinion_factor = 0.20
+				industrial_capacity_factory = -0.10
+				industrial_capacity_dockyard = -0.10
+				research_speed_factor = 0.03
+				production_factory_efficiency_gain_factor = 0.08
+				consumer_goods_factor = -0.03
+				line_change_production_efficiency_factor = 0.08
+				stability_weekly = 0.001
+			}
+			
+			
+			cancel_if_invalid = no
+			
+		}
+		tariffs_low = {
+			
+			cost = 100
+			removal_cost = -1
+			level = 4
+			available = {
+				NOT = {
+					has_government = communism
+					has_government = fascism
+					has_idea = closed_economy
+				}
+			}
+			
+			on_add = {
+				set_country_flag = tariffs_low
+				clr_country_flag = tariffs_none
+				clr_country_flag = tariffs_average
+				clr_country_flag = tariffs_high
+				clr_country_flag = tariffs_extreme
+			}
+			
+			modifier = {
+				political_power_factor = -0.03
+				production_factory_max_efficiency_factor = 0.04
+				production_speed_dockyard_factor = -0.05
+				production_speed_arms_factory_factor = -0.05
+				production_speed_industrial_complex_factor = -0.05
+				trade_opinion_factor = 0.10
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
+				research_speed_factor = 0.01
+				production_factory_efficiency_gain_factor = 0.04
+				consumer_goods_factor = -0.01
+				line_change_production_efficiency_factor = 0.04
+				stability_weekly = 0.0005
+			}
+			
+			
+			cancel_if_invalid = no
+			
+		}
+		tariffs_average = {
+			
+			cost = 100
+			removal_cost = -1
+			level = 3
+			available = {
+			}
+			
+			default = yes
+			
+			on_add = {
+				set_country_flag = tariffs_average
+				clr_country_flag = tariffs_none
+				clr_country_flag = tariffs_low
+				clr_country_flag = tariffs_high
+				clr_country_flag = tariffs_extreme
+			}
+			
+			modifier = {
+				trade_opinion_factor = 0.0
+				political_power_factor = 0.01
+				production_factory_max_efficiency_factor = 0.01
+				production_speed_dockyard_factor = 0.01
+				production_speed_arms_factory_factor = 0.01
+				production_speed_industrial_complex_factor = 0.01
+				industrial_capacity_factory = 0.01
+				industrial_capacity_dockyard = 0.01
+				production_factory_efficiency_gain_factor = 0.01
+				line_change_production_efficiency_factor = 0.01	
+			}
+
+			cancel_if_invalid = no
+
+		}
+		tariffs_high = {
+			
+			cost = 100
+			removal_cost = -1
+			level = 2
+			available = {
+				if = {
+					limit = {
+						tag = IRE
+					}
+					OR = {
+						has_idea = IRE_trade_war
+						has_idea = IRE_trade_war2
+					}
+				}
+				else = {
+					NOT = { has_idea = free_trade }
+					OR = {
+						AND = {
+							democratic_govt = yes
+							has_war = yes
+							any_enemy_country = {
+								ic_ratio = { 
+									tag = ROOT 
+									ratio > 0.7
+								}
+							}
+						}
+						AND = {
+							NOT = { 
+								democratic_govt = yes
+							}
+							OR = {
+								has_idea = partial_economic_mobilisation
+								has_idea = war_economy
+								has_idea = tot_economic_mobilisation						
+							}
+						}
+					}
+				}
+			}
+			
+			on_add = {
+				set_country_flag = tariffs_high
+				clr_country_flag = tariffs_none
+				clr_country_flag = tariffs_low
+				clr_country_flag = tariffs_average
+				clr_country_flag = tariffs_extreme
+			}
+			
+			modifier = {
+				political_power_factor = 0.05
+				production_factory_max_efficiency_factor = -0.04
+				production_speed_dockyard_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+				production_speed_industrial_complex_factor = 0.05
+				trade_opinion_factor = -0.10
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				research_speed_factor = -0.01
+				production_factory_efficiency_gain_factor = -0.04
+				consumer_goods_factor = 0.01
+				line_change_production_efficiency_factor = -0.04
+				stability_weekly = -0.001
+			}
+			
+			cancel_if_invalid = no
+		}
+		tariffs_extreme = {
+			
+			cost = 125
+			removal_cost = -1
+			level = 1
+			available = {
+				OR = { 
+					has_government = fascism
+					has_government = communism
+					has_government = monarchism
+					has_government = neutrality
+				}
+				NOT = {
+					has_idea = free_trade
+					has_idea = export_focus
+				}
+				AND = {
+					NOT = { 
+						democratic_govt = yes
+					}
+					OR = {
+						has_idea = partial_economic_mobilisation
+						has_idea = war_economy
+						has_idea = tot_economic_mobilisation
+					}
+				}
+			}
+			
+			on_add = {
+				set_country_flag = tariffs_extreme
+				clr_country_flag = tariffs_none
+				clr_country_flag = tariffs_low
+				clr_country_flag = tariffs_average
+				clr_country_flag = tariffs_high
+			}
+			
+			modifier = {
+				political_power_factor = 0.09
+				production_factory_max_efficiency_factor = -0.08
+				production_speed_dockyard_factor = 0.10
+				production_speed_arms_factory_factor = 0.10
+				production_speed_industrial_complex_factor = 0.10
+				trade_opinion_factor = -0.20
+				industrial_capacity_factory = 0.10
+				industrial_capacity_dockyard = 0.10
+				research_speed_factor = -0.03
+				production_factory_efficiency_gain_factor = -0.08
+				consumer_goods_factor = 0.03
+				line_change_production_efficiency_factor = -0.08
+				stability_weekly = -0.003
+			}
+			
+			cancel_if_invalid = no
+
+		}
+	}
+}
+### EOF ###

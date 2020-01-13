@@ -1,0 +1,571 @@
+﻿##############################
+##### GERMANY PLAYER OOB #####
+##############################
+instant_effect = {
+	set_technology = { 
+		tech_german_aircraft0 = 1
+		
+		tech_transport_ju_52_equipment_1 = 1
+		tech_ar_65_equipment_1 = 1
+		tech_he_51_equipment_1 = 1
+		tech_ar_68_equipment_1 = 1
+		tech_ar_81_equipment_1 = 1
+		tech_he_70_bomber_equipment_1 = 1
+		tech_do_11_bomber_equipment_1 = 1
+		tech_do_23_bomber_equipment_1 = 1
+		tech_he_118_equipment_1 = 1
+		tech_ju_87_equipment_1 = 1
+	}
+}
+### Air oob
+air_wings = { #Historically Germany grouped aircraft in groups of 90-120 of the same type
+	###Germany historic production 1933-35 totalled: 284 He 51, 157 Ar 65 F (27 more in schools inc. A, B, C, D, E, F), 24 Ar 65 G (E),  90 He 50, 165 Do 23, 400 He 45 (guess for 35), 156 he 46 (guess 72 in 1935), 30 he 59 (guess of 16 for 1935 production) 181 ju 52. 41 or fewer he 70. 73 do 11 in 1935. 
+	### I. Luftkreiskommando -- Konigsberg ###
+	5 = { #478
+		# Jagdgeschwader 232 april 36
+		he_51_equipment_2 =  {		# He 51
+			owner = "GER" 
+			amount = 73
+		}
+		name="I/JG 232"
+		
+		#StürzGeschwader 167 #1937
+		he_46_equipment_1 = {			# He 46
+			owner = "GER"
+			amount = 55
+		}
+		name="StG 167"
+	}
+	### II. Luftkreiskommando -- Berlin ###
+	62 = {
+		# Kampfgeschwader 152 and as of 20 april 1936 KG 152 'Hindenburg'
+		do_11_bomber_equipment_1 = {		# Do 11
+			owner = "GER"
+			amount = 55
+		}
+		name="I/KG 152"
+		do_11_bomber_equipment_1 = {		# Do 11
+			owner = "GER"
+			amount = 48
+		}
+		name="II/KG 152"
+		do_11_bomber_equipment_1 = {		# Do 11
+			owner = "GER"
+			amount = 42
+		}
+		name="III/KG 152"
+	}
+	64 = {
+		#I Gruppe Kampfgeschwader 153		
+		do_23_bomber_equipment_1 = {		# Do 23
+			owner = "GER"
+			amount = 55
+		}
+		name="I/KG 153"
+		
+		#Kampfgeschwader zbV
+		transport_ju_52_equipment_1 = {
+			owner = "GER" 
+			amount = 4
+		}
+		name="I/KGzbV 1"
+		
+		#StürzGeschwader 168	#1938
+		he_46_equipment_1 = {			# He 46
+			owner = "GER"
+			amount = 55
+		}
+		name="I/StG 168"
+	}
+	65 = {
+		# Jagdgeschwader 132 'Richtofen'		
+		he_51_equipment_2 =  {		# He-51 B
+			owner = "GER" 
+			amount = 60
+		}
+		name="I/JG 132"
+		ace={ # Order is important. Ace will be assigned to the wing above (fighter_equipment_0).
+			modifier="fighter_genius"
+			name="Erich"
+			surname="Hartmann"
+			callsign="Bubi"
+			portrait=1 # Pick random index here, or make special GFX_GER_ace_Erich_Hartmann to override.
+		}
+		
+		# II Gruppe Jagdgeschwader 132 'Richtofen'		
+		ar_65_equipment_1 =  {		# Ar-65
+			owner = "GER" 
+			amount = 60
+		}
+		name="II/JG 132"
+		
+		#III Gruppe Jagdgeschwader 134 'Horst Wessel'		
+		he_51_equipment_2 =  {		# He 51
+			owner = "GER" 
+			amount = 48
+		}
+		name="III/JG 134"
+	}
+	68 = {
+		#II Gruppe Kampfgeschwader 153		
+		do_23_bomber_equipment_1 = {		# Do 23
+			owner = "GER"
+			amount = 48
+		}
+		name="II/KG 153"
+	}
+	### III. Luftkreiskommando -- Breslau ###
+	60 = {
+		#I Gruppe/Kampfgeschwader 253 'General Wever'		
+		do_23_bomber_equipment_1 = {		# Do 23
+			owner = "GER"
+			amount = 52
+		}
+		name="I/KG 253"
+		#II Gruppe/Kampfgeschwader 253 'General Wever'		
+		do_23_bomber_equipment_1 = {		# Do 23
+			owner = "GER"
+			amount = 48
+		}
+		name="II/KG 253"
+		#III Gruppe/Kampfgeschwader 253 'General Wever'		
+		ju_52_bomber_equipment_1 = {		# Ju 52/3mge
+			owner = "GER"
+			amount = 48
+		}
+		name="III/KG 253"
+	}
+	66 = {
+		#III Gruppe Kampfgeschwader 153		
+		do_23_bomber_equipment_1 = {		# Do 23
+			owner = "GER"
+			amount = 48
+		}
+		name="III/KG 153"
+	}
+	### IV. Luftkreiskommando -- Kassel ###
+	57 = { 
+		#I Gruppe Jagdgeschwader 134 'Horst Wessel'		
+		he_51_equipment_2 =  {		# He 51
+			owner = "GER" 
+			amount = 55
+		}
+		name="I/JG 134"
+		#II Gruppe Jagdgeschwader 134 'Horst Wessel'		
+		he_51_equipment_2 =  {		# He 51
+			owner = "GER" 
+			amount = 55
+		}
+		name="II/JG 134"
+	}
+	### V. Luftkreiskommando -- Munich ###
+	### VI. Luftkreiskommando -- Kiel ###
+	58 = {
+		#Küstenjagdgruppe 136
+		he_51_equipment_1 =  {		# He 51
+			owner = "GER"
+			amount = 12
+		}
+		name="1/KJG 136"
+		he_51_equipment_1 =  {		# He 51
+			owner = "GER"
+			amount = 12
+		}
+		name="2/KJG 136"
+		# Küstenfliegergruppe 106		
+		he_59_bomber_equipment_1 =  {		# He 59
+			owner = "GER" 
+			amount = 30
+		}
+		name="KüFlGr 106"
+		#I/Küstenfliegergruppe 206
+		he_45_equipment_1 = {		# He 45 
+			owner = "GER" 
+			amount = 55
+		}
+		name="I/KüFlGr 206"
+		#
+		do_wal_equipment_1 = {		# He 45 
+			owner = "GER" 
+			amount = 48
+		}
+		name="II/KüFlGr 206"
+		#
+		ju_52_bomber_equipment_1 = {
+			owner = "GER" 
+			amount = 55
+		}
+		name="I/KG 355"
+	}
+	61 = {
+		# I/Sturzkampfgeschwader 162		
+		he_50_equipment_1 =  {			# He 50
+			owner = "GER" 
+			amount = 55
+		}	
+		name="I/StG 162"
+		# I/Sturzkampfgeschwader 162		
+		he_50_equipment_1 =  {			# He 50
+			owner = "GER" 
+			amount = 48
+		}	
+		name="II/StG 162"
+	}
+}
+#########################
+## STARTING PRODUCTION ##
+#########################
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = he_51_equipment_2
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = do_23_bomber_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 2
+		progress = 0.1
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = panzer_i_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 3
+		progress = 0.4
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = panzer_ii_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 4
+		progress = 0.4
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "GER"
+		}
+		requested_factories = 10
+		progress = 0.1
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = SMG_equipment_0
+			creator = "GER"
+		}
+		requested_factories = 2
+		progress = 0.1
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = garrison_equipment_0
+			creator = "GER"
+		}
+		requested_factories = 2
+		progress = 0.1
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_uniforms_1
+			creator = "GER"
+		}
+		requested_factories = 5
+		progress = 0.1
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = ss_infantry_uniforms_0
+			creator = "GER"
+		}
+		requested_factories = 3
+		progress = 0.1
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 6
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = mount_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = motorized_lia_equipment_01
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = mountain_artillery_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 2
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = medartillery_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 2
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = Hvartillery_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = anti_air_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = superartillery_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = mechanized_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artyhorse_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artytruck_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artytractor_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = motorized_equipment_2
+			creator = "GER" 
+		}
+		requested_factories = 3
+		progress = 0.4
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = HMG_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 2
+		progress = 0.4
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantrygun_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 2
+		progress = 0.4
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = mortar_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 2
+		progress = 0.4
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = horse_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 25
+	}
+	add_equipment_production = {
+		equipment = {
+			type = HQ_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 25
+	}
+	add_equipment_production = {
+		equipment = {
+			type = recon_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 25
+	}
+	add_equipment_production = {
+		equipment = {
+			type = motorized_AC_equipment_07
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 25
+	}
+	add_equipment_production = {
+		equipment = {
+			type = recon_mot_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 25
+	}
+	add_equipment_production = {
+		equipment = {
+			type = anti_tank_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 5
+		progress = 0.25
+		efficiency = 35
+	}
+	add_equipment_to_stockpile = {
+		type = mortar_equipment_0
+		amount = 200
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = HMG_equipment_1
+		amount = 250
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = infantrygun_equipment_0
+		amount = 250
+		producer = GER
+	}
+}
+instant_effect = {
+################# equipment stockpile
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_1
+		amount = 1000
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = infantrygun_equipment_0
+		amount = 1500
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = SMG_equipment_0
+		amount = 1500
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = mortar_equipment_0
+		amount = 2500
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = HMG_equipment_0
+		amount = 3500 
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = HMG_equipment_1
+		amount = 1000
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = garrison_equipment_0
+		amount = 1500
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+		amount = 2000
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = ss_infantry_uniforms_0
+		amount = 1000
+		producer = GER
+	}
+}
+### EOF ###

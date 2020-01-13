@@ -1,0 +1,70 @@
+scripted_gui = {
+
+	asia_anger = {
+		context_type = player_context
+		    
+		window_name = "asia_anger"
+		parent_window_token = politics_tab
+        
+		visible = {
+			#has_war = no
+			OR = {
+				original_tag = JAP             
+				original_tag = CHI
+				original_tag = PRC
+				#is_in_faction_with = CHI
+			}
+		}
+		                               
+		effects = {
+			asia_anger_test_click = { 
+				custom_effect_tooltip = jap_aware_TT_0
+				
+				every_country = {  
+					limit = { 
+						OR={
+							#is_on_continent = asia
+						} 
+					}
+					custom_effect_tooltip = jap_aware_TT_1 
+					custom_effect_tooltip = jap_aware_TT_2
+				} 
+				
+				if = {
+					limit = {
+						CHI = {	has_idea = jap_aware_1 }
+					}
+					show_ideas_tooltip = jap_aware_1
+				}
+				else_if = {
+					limit = {
+						CHI = {	has_idea = jap_aware_2 }
+					}
+					show_ideas_tooltip = jap_aware_2
+				}
+				else_if = {
+					limit = {
+						CHI = {	has_idea = jap_aware_3 }
+					}
+					show_ideas_tooltip = jap_aware_3
+				}
+				else_if = {
+					limit = {
+						CHI = {	has_idea = jap_aware_4 }
+					}
+					show_ideas_tooltip = jap_aware_4
+				}
+				else_if = {
+					limit = {
+						CHI = {	has_idea = jap_aware_5 }
+					}
+					show_ideas_tooltip = jap_aware_5
+				}
+			} 
+		}
+		
+		triggers = {
+		}
+	}
+}
+### EOF ###

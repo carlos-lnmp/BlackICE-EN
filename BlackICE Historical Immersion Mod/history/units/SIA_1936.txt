@@ -1,0 +1,192 @@
+﻿division_template = {
+	name = "Infantry Division"		
+	division_names_group = SIA_INF_01
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		jungle_support  = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Militia"  
+	#division_names_group = 
+	# Note: all forces at reserve levels in 1936
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+	}
+	 support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		jungle_support  = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Garrison"	
+	division_names_group = SIA_GAR_01
+
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+		
+		garrison = { x = 2 y = 0 }
+		garrison = { x = 2 y = 1 }
+		garrison = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		jungle_support  = { x = 0 y = 2 }
+	}
+}
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#	
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+#### OOB ####
+units = {
+	##### Royal Siamese Army #####
+	#division= {	
+	#	name = "Royal Siamese Army" 
+	#	location = 7408
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.1
+	#}
+	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 7408
+		division_template = "Infantry Division"		
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.5
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 7236
+		division_template = "Infantry Division"		
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.5
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 7292
+		division_template = "Infantry Division"		
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.5
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 12264
+		division_template = "Infantry Division"		
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.5
+
+	}		
+}
+
+air_wings = {
+	### Royal Siamese Air Force ###
+	289 = {
+		# 1st Air Wing -- Curtis Hawks
+		# 2nd Air Wing -- French WWI biplanes (SPAD.XIII, Ni.23)
+		fighter_equipment_0 =  {
+			owner = "SIA" 
+			amount = 60
+		}
+		# 3rd Air Wing -- Vought V-93Ss
+		#CAS_equipment_1 =  {
+		#	owner = "SIA" 
+		#	amount = 12
+		#}
+		# Vought V-92C
+		#pre_war_mr_equipment_3 =  { 
+		#	owner = "SIA" 
+		#	creator = "USA"
+		#	amount = 12
+		#}
+		# Curtiss Hawk II
+		#curtiss_hawk_ii_equipment_1 =  { 
+		#	owner = "SIA" 
+		#	creator = "USA"
+		#	amount = 12
+		#}
+		#Curtiss Hawk III
+		#pre_war_mr_equipment_7 =  { 
+		#	owner = "SIA" 
+		#	creator = "USA"
+		#	amount = 24
+		#}
+	}
+}
+
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "SIA"
+		}
+		requested_factories = 1
+		progress = 0.27
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = curtiss_hawk_ii_equipment_2
+			creator = "SIA"
+		}
+		requested_factories = 1
+		progress = 0.55
+		efficiency = 100
+	}	
+}

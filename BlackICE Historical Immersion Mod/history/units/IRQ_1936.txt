@@ -1,0 +1,212 @@
+﻿division_template = {
+	name = "Alfurqat Almasha"			# Infantry Division
+	division_names_group = IRQ_INF_01	
+	template_counter = 113
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Alfurqat Aljabalia"				# Mountain Brigade
+	division_names_group = IRQ_MTN_01	
+	template_counter = 3006
+	
+	regiments = {
+		mountaineers = { x = 0 y = 0 }
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }
+		
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Mechanized Brigade" 			# Independent Mechanized Brigade
+	division_names_group = IRQ_MEC_01	
+	template_counter = 177
+	
+	regiments = {
+		semi_motorized = { x = 0 y = 0 }
+		semi_motorized = { x = 0 y = 1 }
+		
+		artillery_brigade = { x = 1 y = 0 }
+	}
+	support = {
+		recon_ac = { x = 0 y = 0 }
+		Tankettes = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Garrison"		
+	division_names_group = IRQ_GAR_01	
+	template_counter = 86
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+		
+		garrison = { x = 2 y = 0 }
+		garrison = { x = 2 y = 1 }
+		garrison = { x = 2 y = 2 }
+
+		artillery_brigade = { x = 3 y = 0 }	
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+ 	}
+}
+division_template = {
+	name = "Militia"		# miltia forces, lower experience and equipment
+	#division_names_group = 	
+	template_counter = 70
+	
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+	
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y =1}
+	}
+	priority = 0
+}
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#	
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+#### OOB ####
+units = {
+	##### Royal Iraqi Army #####
+	#division= {	
+	#	name = "Royal Iraqi Army" 
+	#	location = 2097
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.1
+	#}
+	
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 2097 ## Baghdad in Baghdad
+		division_template = "Alfurqat Almasha"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 10106 ## Mosul in Mosul
+		division_template = "Alfurqat Almasha"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 2097 ## Baghdad in Baghdad
+		division_template = "Alfurqat Almasha"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 2089 ## Basrah in Al Basra
+		division_template = "Alfurqat Almasha"	
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 2097 ## Baghdad in Baghdad		
+		division_template = "Mechanized Brigade"	
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+}
+
+#### No Naval OOB ####
+
+
+#### Air Wings ####
+
+air_wings = {
+	### Royal Iraqi Air Force (RIrAF)
+	291 = {
+		CAS_equipment_1 =  { owner = "IRQ"  amount = 20 }			# 1st Squadron -- Hawker Nisr, Northrup 8A-4
+		fighter_equipment_0 =  { owner = "IRQ"  amount = 40 }		# 2nd Squadron -- Gladiator, Breda Ba.65
+	}
+}
+
+#### Production ####
+
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "IRQ"
+		}
+		requested_factories = 1
+		progress = 0.22
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_uniforms_1
+			creator = "IRQ"
+		}
+		requested_factories = 1
+		progress = 0.22
+		efficiency = 100
+	}
+}

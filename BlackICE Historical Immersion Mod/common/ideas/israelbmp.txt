@@ -1,0 +1,363 @@
+ideas = {
+
+	country = {
+		ISR_jewish_immigration {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = bmp_jewish_immigration
+
+			modifier = {
+				monthly_population = 1.5
+			}
+		}
+
+		ISR_unexpected_war {
+
+			allowed = {
+				always = no
+			}
+
+		removal_cost = -1
+
+		picture = FRA_scw_intervention_republicans_focus
+
+			modifier {
+				stability_factor = -0.15
+			}
+		}
+		
+		ISR_holds_all_of_palestine {
+
+			allowed = {
+				always = no
+			}
+
+		removal_cost = -1
+
+			modifier {
+				stability_factor = +0.01
+			}
+		}
+		
+		ISR_held_all_of_palestine_at_least_once {
+
+			allowed = {
+				always = no
+			}
+
+		removal_cost = -1
+
+			modifier {
+				stability_factor = +0.01
+			}
+		}
+		
+		ISR_no_longer_holds_all_of_palestine {
+
+			allowed = {
+				always = no
+			}
+
+		removal_cost = -1
+
+			modifier {
+				stability_factor = -0.01
+			}
+		}
+	}
+
+	political_advisor = {
+
+		ISR_dov_yosef = {
+			
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = ISR
+			}
+			
+			traits = { silent_workhorse  political_advisor_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		ISR_abba_eban = {
+			
+			picture = generic_political_advisor_europe_2
+			
+			allowed = {
+				original_tag = ISR
+			}
+			
+			traits = { popular_figurehead  political_advisor_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	economic_minister = {
+		ISR_mordechai_maklef = {
+			
+			picture = generic_political_advisor_europe_3
+			
+			allowed = {
+				original_tag = ISR
+			}
+			
+			traits = { captain_of_industry  economic_minister_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+	}
+	#Domestic
+	domestic_minister = {
+	}
+	influence_minister = {
+	}
+	#Academy
+	military_academy = {
+	}
+	army_chief = {
+		
+		ISR_david_ben-gurion = {
+			
+			picture = generic_army_europe_2
+			
+			allowed = {
+				original_tag = ISR
+			}
+			
+
+			
+			traits = { army_chief_offensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		ISR_yagil_alon = {
+			
+			picture = generic_army_europe_3
+			
+			allowed = {
+				original_tag = ISR
+			}
+			
+
+			
+			traits = { army_chief_drill_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+
+	air_chief = {
+		ISR_ezer_weizman = {
+			
+			picture = generic_army_europe_2
+			
+			allowed = {
+				original_tag = ISR
+			}
+			
+
+			
+			traits = { air_air_combat_training_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+}
+
+	high_command = {
+		
+		ISR_ariel_sharon = {
+			
+			picture = generic_army_europe_1
+
+			allowed = {
+				original_tag = ISR
+			}
+			
+
+			
+			traits = { army_commando_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+		ISR_mickey_marcus = {
+			
+			picture = generic_army_europe_3
+
+			allowed = {
+				original_tag = ISR
+			}
+			
+
+			
+			traits = { army_logistics_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+		ISR_david_shaltiel = {
+			
+			picture = generic_army_europe_1
+
+			allowed = {
+				original_tag = ISR
+			}
+			
+
+			
+			traits = { army_cavalry_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		ISR_moshe_dayan = {
+			
+			picture = generic_army_europe_2
+
+			allowed = {
+				original_tag = ISR
+			}
+			
+
+			
+			traits = { army_concealment_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	
+	naval_manufacturer = {
+		
+		designer = yes
+
+		ISR_coastal_defence_manufacturer = {
+			
+			picture = generic_naval_manufacturer_1
+
+			allowed = {
+				original_tag = ISR
+			}
+			
+			research_bonus = {
+				naval_equipment = 0.10
+			}
+			
+			traits = { coastal_defence_naval_manufacturer  naval_manufacturer_trait }
+			ai_will_do = {
+				factor = 20
+			}			
+			equipment_bonus = {
+				
+			}
+		}
+
+	}
+	
+	industrial_concern = {
+					
+		ISR_israel_railways = {
+			
+			picture = generic_industrial_concern_1
+			
+			allowed = {
+				original_tag = ISR
+			}
+			
+			ai_will_do = {
+				factor = 20
+			}
+			
+			research_bonus = {
+				industry = 0.10
+			}
+			
+			traits = { industrial_concern  industrial_concern_trait }
+			
+			modifier = {
+			}
+		}
+	}
+	electrical_concern = {		
+		ISR_israel_electric_corporation = {
+			
+			picture = generic_electronics_concern_1
+			
+			allowed = {
+				original_tag = ISR
+			}
+			
+			ai_will_do = {
+				factor = 20
+			}
+			
+			research_bonus = {
+				electronics = 0.10
+			}
+			
+			traits = { electronics_concern  electrical_concern_trait }
+			
+			modifier = {
+			}
+		}
+	}
+	
+	theorist = {
+		ISR_yitzhak_rabin = {
+			
+			picture = generic_army_europe_1
+
+			allowed = {
+				original_tag = ISR
+			}
+			
+			cost = 150
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { military_theorist  theorist_trait }
+		}
+		ISR_ernst_david_bergmann = {
+			
+			picture = generic_army_europe_3
+
+			allowed = {
+				original_tag = ISR
+			}
+			
+			cost = 150
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { nuclear_scientist  theorist_trait }
+		}
+	}
+}

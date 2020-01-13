@@ -1,0 +1,3211 @@
+technologies = {
+	###Vertical positions
+	@1930 = 0
+	@1930_1 = 1
+	@1936 = 2
+	@1936_1 = 3
+	@1937 = 4
+	@1937_1 = 5
+	@1938 = 6
+	@1938_1 = 7
+	@1939 = 8
+	@1939_1 = 9
+	@1940 = 10
+	@1940_1 =11
+	@1941 = 12
+	@1941_1 = 13
+	@1942 = 14
+	@1942_1 = 15
+	@1943 = 16
+	@1944 = 18
+	@1945 = 20
+	@1946 = 22
+	@1947 = 24
+	@1948 = 26
+	@1949 = 28
+	@1950 = 30
+	@1951 = 32
+	
+	###Horizontal positions
+	@TRCK_RADIO = -3
+	@HQ = -2
+	@RECON_RADIO = -1
+	@EL_ME_ENG = 1
+	@RADAR = 3
+	
+	@BASIC_ENCRP = 8
+	@MECH_COMP = 7
+	@ELEC_COMP = 6
+	@LISTEN = 5
+	
+	@RCKS = 12
+	@RCKT_ENG = 13
+	@MSL = 14
+	@AEROSPACE = 15
+	@BAL_MISSILE = 16
+	
+	@JET_PROTOTYPE = 18
+	@JET_THEORY = 19
+	@JET_ENG = 20
+	@TRB_ENG = 21
+	
+	@FISS_EXP = 29
+	@ATOM_RES = 31
+	@IMP_PART = 33
+	
+	electronic_mechanical_engineering = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		# small boost to research speed
+		research_speed_factor = 0.02
+		path = {
+			leads_to_tech = HQ_communications
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = mechanical_computing
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = electronics_folder
+			position = { x = @EL_ME_ENG y = @1930 }
+		}
+		
+		ai_will_do = {
+			factor = 25
+			
+			modifier = {
+				factor = 3
+				EAI_timegate_1936/6 = yes
+			}
+			
+			modifier = {
+				factor = 3
+				EAI_timegate_1937/1 = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+		}		
+		categories = {
+			electronics
+		}
+	}
+	#### Land lines/ runners
+	HQ_communications = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		land_reinforce_rate = 0.04
+		
+		planning_speed = 0.05
+	
+		path = {
+			leads_to_tech = radio
+			research_cost_coeff = 1
+		}
+		start_year = 1936
+		research_cost = 1
+		folder = {
+			name = electronics_folder
+			position = { x = @HQ y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 20
+			
+			modifier = {
+				factor = 3
+				EAI_timegate_1936/6 = yes
+			}
+			
+			modifier = {
+				factor = 3
+				EAI_timegate_1937/1 = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+		}		
+		categories = {
+			electronics
+		}
+	}
+	radio = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		# units with radios can more efficiently join combats when there is room
+		land_reinforce_rate = 0.01
+		
+		enable_equipments = { 
+			radio_equipment_0
+		}
+		
+		infantry = {
+			#max_organisation = 1 #They already get the bonus from the equipment
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		ss_infantry = {
+			#max_organisation = 1 #They already get the bonus from the equipment
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		light_infantry = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		ss_light_infantry = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		marine = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		mountaineers = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		ss_mountaineers = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		paratrooper = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		ss_paratrooper = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		garrison = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 3
+         	}
+		}
+		ss_garrison = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 3
+         	}
+		}
+		nkvd = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		militia = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 3
+         	}
+		}
+		communist_militia = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 3
+         	}
+		}
+		luftwaffe_infantry = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		gurkha = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = radio_TT
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = radio_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = infantry_tt
+			custom_effect_tooltip = light_infantry_tt
+			custom_effect_tooltip = special_forces_tt
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		
+		}
+		
+		path = {
+			leads_to_tech = radio_detection 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = HQ_radio
+			research_cost_coeff = 1
+		}
+		start_year = 1937
+		research_cost = 1.3
+		folder = {
+			name = electronics_folder
+			position = { x = @HQ y = @1937 }
+		}
+		folder = {
+			name = support_folder
+			position = { x = 23 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 6000
+				AND = {
+					EAI_timegate_1936/7 = yes
+					prioritise_radios = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/2 = no
+			}
+		}
+		
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	HQ_radio = {
+		allow = { can_research_electronics_folder = yes } 
+	
+		DIV_HQ  = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 8
+         	}
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = radio_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = div_hq_tt
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}
+		
+		path = {
+			leads_to_tech = artillery_radio
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = corps_communications 
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1938
+		research_cost = 1.3
+		folder = {
+			name = electronics_folder
+			position = { x = @HQ y = @1938 }
+		}
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 6000
+				AND = {
+					EAI_timegate_1937/10 = yes
+					prioritise_radios = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+		
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	corps_communications = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		land_reinforce_rate = 0.01
+		planning_speed = 0.05
+		
+		DIV_HQ = {
+			need = {
+			   HQ_equipment = 2
+		    }
+			default_morale = 0.1
+		}
+		
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = electronics_folder
+			position = { x = @TRCK_RADIO y = @1938_1 }
+		}
+		
+		ai_will_do = {
+			factor = 7
+			modifier = {
+				factor = 2
+				num_of_military_factories > 35
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 65
+			}
+			modifier = {
+				factor = 3
+				tag = GER
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	# artillery radio
+	artillery_radio = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		path = {
+			leads_to_tech = recon_radio
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = vehicle_radio
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tank_radio
+			research_cost_coeff = 1
+		}
+		
+		category_line_artillery = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = radio_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = artillery_tt
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}
+		
+		research_cost = 1.8
+		start_year = 1939
+		folder = {
+			name = electronics_folder
+			position = { x = @HQ y = @1939 }
+		}
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 6000
+				AND = {
+					EAI_timegate_1938/10 = yes
+					prioritise_radios = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+		
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	vehicle_radio = {
+		allow = { can_research_electronics_folder = yes } 
+	
+		semi_motorized  = {
+			#max_organisation = 1
+			need = {
+				radio_equipment = 5
+         	}
+		}
+		ss_semi_motorized  = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 5
+         	}
+		}
+		motorized = {
+			#max_organisation = 1
+			need = {
+				radio_equipment = 10
+         	}
+		}
+		ss_motorized   = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 10
+         	}
+		}
+		mechanized = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 12
+         	}
+		}
+		amphibious_mechanized = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 12
+         	}
+		}
+		american_amph_lv = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 12
+         	}
+		}
+		ss_mechanized = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 12
+         	}
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = radio_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = semi_motorized_tt
+			custom_effect_tooltip = motorized_tt
+			custom_effect_tooltip = mechanized_tt
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}
+		
+		research_cost = 1.8
+		start_year = 1940
+		folder = {
+			name = electronics_folder
+			position = { x = @TRCK_RADIO y = @1940 }
+		}
+		
+		ai_will_do = {
+			base = 80
+			modifier = {
+				add = 6000
+				AND = {
+					EAI_timegate_1939/7 = yes
+					prioritise_radios = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+		
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	# tank radio
+	tank_radio = {
+		allow = { can_research_electronics_folder = yes } 
+
+		category_tanks = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 10
+         	}
+		}
+		path = {
+			leads_to_tech = tank_radio2
+			research_cost_coeff = 1
+		}		
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = radio_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = tanks_tt
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}
+		
+		research_cost = 1.8
+		start_year = 1941
+		folder = {
+			name = electronics_folder
+			position = { x = @HQ y = @1941 }
+		}
+		ai_will_do = {
+			factor = 20
+			
+			modifier = {
+				factor = 3
+				EAI_timegate_1937/1 = yes
+			}
+			
+			modifier = {
+				factor = 3
+				EAI_timegate_1939/6 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+		
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	# tank radio
+	tank_radio2 = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		research_cost = 2.2
+		path = {
+			leads_to_tech = tank_radio3
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = electronics_folder
+			position = { x = @HQ y = @1943 }
+		}
+		
+		category_all_armor = {
+			soft_attack = 0.01
+			hard_attack = 0.01
+			default_morale = 0.01
+			need = {
+			    radio_equipment = 2
+			}
+		}
+		
+		start_year = 1943
+		
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 3
+				num_of_military_factories > 30
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 70
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 100
+			}
+			modifier = {
+				factor = 3
+				tag = GER
+			}
+			modifier = {
+				factor = 4
+				tag = SOV
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	tank_radio3 = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		research_cost = 2.2
+		folder = {
+			name = electronics_folder
+			position = { x = @HQ y = @1945 }
+		}
+		
+		category_all_armor = {
+			max_strength = 0.02
+			need = {
+			    radio_equipment = 2
+			}
+		}
+		
+		start_year = 1945
+		
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 3
+				num_of_military_factories > 30
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 70
+			}
+			modifier = {
+				factor = 2
+				num_of_military_factories > 100
+			}
+			modifier = {
+				factor = 3
+				tag = GER
+			}
+			modifier = {
+				factor = 4
+				tag = SOV
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1944/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}		
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	#infantry radio
+	#infantry_radio = {
+	#
+	#	category_all_infantry = {
+	#		#max_organisation = 15
+	#		need = {
+    #           	infantry_radio_equipment = 10
+    #     	}
+	#	}
+	#	
+	#	research_cost = 2.5
+	#	start_year = 1941
+	#	folder = {
+	#		name = electronics_folder
+	#		position = { x = -3 y = 12 }
+	#	}
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#		
+	#		modifier = {
+	#			factor = 2
+	#			date > "1940.1.1"
+	#		}
+	#		
+	#		modifier = {
+	#			factor = 3
+	#			date > "1940.1.6"
+	#		}
+	#	}
+	#	
+	#	categories = {
+	#		electronics
+	#		radio_tech
+	#	}
+	#}
+	
+	#recon radio
+	recon_radio = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		recon = {
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 4
+         	}
+		}
+		recon_cav = { 
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 5
+         	}
+		}
+		recon_mot = { 
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		recon_ac = { 
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 8
+         	}
+		}
+		tankettes = { 
+			#max_organisation = 1
+			need = {
+               	radio_equipment = 6
+         	}
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = radio_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = recon_tt
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}
+		
+		research_cost = 1.8
+		start_year = 1940
+		folder = {
+			name = electronics_folder
+			position = { x = @RECON_RADIO y = @1940 }
+		}
+		
+		ai_will_do = {
+			base = 80
+			modifier = {
+				add = 6000
+				AND = {
+					EAI_timegate_1939/7 = yes
+					prioritise_radios = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+		
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	# air - ground communications
+	radio_detection = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		# 
+		enable_building = {
+			building = radar_station
+			level = 1
+		}
+		#production_speed_radar_station_factor = 0.08
+		path = {
+			leads_to_tech = avionics_improvements 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = decimetric_radar 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hfdf_tech
+			research_cost_coeff = 1
+		}		
+		start_year = 1937
+		research_cost = 1.5
+		folder = {
+			name = electronics_folder
+			position = { x = @RADAR y = @1937 }
+		}		
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 5000
+				EAI_timegate_1937/1 = yes
+				radar_tech_focus = yes
+			}	
+			modifier = {
+				add = 4000
+				radar_tech_focus_2 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radar_tech_tt
+			custom_effect_tooltip = radio_tech_tt
+		}
+		categories = {
+			electronics
+			radar_tech
+			radio_tech
+		}
+	}
+	avionics_improvements = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		air_accidents_factor = -0.05
+		path = {
+			leads_to_tech = advanced_avionics
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = electronics_folder
+			position = { x = @EL_ME_ENG y = @1937_1 }
+		}	
+		
+		ai_will_do = {
+			factor = 2
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			electronics
+			air_equipment
+		}
+	}
+	
+	advanced_avionics = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		air_accidents_factor = -0.02
+		air_weather_penalty = -0.05 
+		research_cost = 1.5
+		start_year = 1939
+		path = {
+			leads_to_tech = improved_avionics
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = electronics_folder
+			position = { x = @EL_ME_ENG y = @1939_1 }
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			electronics
+			air_equipment
+		}
+	}
+	improved_avionics = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		air_accidents_factor = -0.02
+		air_night_penalty = -0.05
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = electronics_folder
+			position = { x = @EL_ME_ENG y = @1941_1 }
+		}
+		dependencies = {
+			centimetric_radar = 1
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			electronics
+			air_equipment
+		}
+	}
+	
+	decimetric_radar = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		# can build radars/radar boost in air/sea combat depends on radar level
+		enable_building = {
+			building = radar_station
+			level = 2
+		}
+		production_speed_radar_station_factor = 0.08
+		static_anti_air_damage_factor = 0.02
+		static_anti_air_hit_chance_factor = 0.02
+		
+		path = {
+			leads_to_tech = improved_decimetric_radar 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = capital_ship_radar 
+			research_cost_coeff = 1
+		}
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = electronics_folder
+			position = { x = @RADAR y = @1938 }
+		}
+				
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 5000
+				radar_tech_focus = yes
+			}	
+			modifier = {
+				add = 4000
+				radar_tech_focus_2 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radar_tech_tt
+		}		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	improved_decimetric_radar = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# radar boost in air/sea combat depends on radar level
+		enable_building = {
+			building = radar_station
+			level = 3
+		}
+		production_speed_radar_station_factor = 0.08
+		static_anti_air_damage_factor = 0.02
+		static_anti_air_hit_chance_factor = 0.02
+		
+		path = {
+			leads_to_tech = centimetric_radar 
+			research_cost_coeff = 1
+		}	
+		research_cost = 2
+		start_year = 1939
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @RADAR y = @1939 }
+		}
+		
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 5000
+				EAI_timegate_1937/1 = yes
+				radar_tech_focus = yes
+			}	
+			modifier = {
+				add = 4000
+				radar_tech_focus_2 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radar_tech_tt
+		}		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	centimetric_radar = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# radar boost in air/sea combat depends on radar level
+		enable_building = {
+			building = radar_station
+			level = 4
+		}
+		production_speed_radar_station_factor = 0.08
+		static_anti_air_hit_chance_factor = 0.03
+		
+		path = {
+			leads_to_tech = improved_centimetric_radar 
+			research_cost_coeff = 1
+		}	
+		research_cost = 2.5
+		start_year = 1940
+
+		folder = {
+			name = electronics_folder
+			position = { x = @RADAR y = @1940 }
+		}
+		
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 5000
+				EAI_timegate_1937/1 = yes
+				radar_tech_focus = yes
+			}	
+			modifier = {
+				add = 4000
+				radar_tech_focus_2 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radar_tech_tt
+		}		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	improved_centimetric_radar = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# radar boost in air/sea combat depends on radar level
+		enable_building = {
+			building = radar_station
+			level = 5
+		}
+		production_speed_radar_station_factor = 0.08
+		static_anti_air_hit_chance_factor = 0.03
+		
+		path = {
+			leads_to_tech = advanced_centimetric_radar 
+			research_cost_coeff = 1
+		}	
+		research_cost = 2.5
+		start_year = 1941
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @RADAR y = @1941 }
+		}
+		
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 5000
+				EAI_timegate_1937/1 = yes
+				radar_tech_focus = yes
+			}	
+			modifier = {
+				add = 4000
+				radar_tech_focus_2 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radar_tech_tt
+		}		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	advanced_centimetric_radar = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# radar boost in air/sea combat depends on radar level
+		enable_building = {
+			building = radar_station
+			level = 6
+		}		
+		production_speed_radar_station_factor = 0.08
+		static_anti_air_hit_chance_factor = 0.04
+		
+		research_cost = 2.5
+		start_year = 1942	
+		folder = {
+			name = electronics_folder
+			position = { x = @RADAR y = @1942 }
+		}
+		
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 5000
+				AND = {
+					EAI_timegate_1941/1 = yes
+					radar_tech_focus = yes
+				}
+			}	
+			modifier = {
+				add = 4000
+				radar_tech_focus_2 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radar_tech_tt
+		}		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	hfdf_tech = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		local_factory_sabotage = -0.01
+		foreign_subversive_activites = -0.02
+		enemy_partisan_effect = -0.02
+		path = {
+			leads_to_tech = hfdf_tech2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = electronics_folder
+			position = { x = @LISTEN y = @1937_1 }
+		}	
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}		
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	hfdf_tech2 = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		local_factory_sabotage = -0.02
+		foreign_subversive_activites = -0.02
+		enemy_partisan_effect = -0.02
+		path = {
+			leads_to_tech = hfdf_tech3
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			radio_detection = 1
+		}
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = electronics_folder
+			position = { x = @LISTEN y = @1939_1 }
+		}	
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}		
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	hfdf_tech3 = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		local_factory_sabotage = -0.03
+		foreign_subversive_activites = -0.05
+		enemy_partisan_effect = -0.05
+		path = {
+			leads_to_tech = hfdf_tech3
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			radio_detection = 1
+		}
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = electronics_folder
+			position = { x = @LISTEN y = @1941_1 }
+		}	
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = radio_tech_tt
+		}		
+		categories = {
+			electronics
+			radio_tech
+		}
+	}
+	### Shipradar
+#	small_ship_radar = {
+#		## screens gain sea and air detection
+#		category_all_destroyer = {
+#			surface_detection = 0.05
+#			surface_visibility = 0.05
+#			anti_air_attack = 0.05
+#		}
+#		escort_carrier = {
+#			surface_detection = 0.05
+#			surface_visibility = 0.05
+#			anti_air_attack = 0.05
+#		}
+#		category_all_subs = {
+#			surface_detection = 0.01
+#			surface_visibility = 0.01
+#			anti_air_attack = 0.01
+#		}
+#		dependencies = {
+#			radio_detection = 1
+#		}
+#		
+#		research_cost = 0.75
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 2 y = 4 }
+#		}
+#		
+#		ai_will_do = {
+#			factor = 4
+#			modifier = {
+#				factor = 0
+#				trade_interdiction_doctrine = yes
+#			}
+#			modifier = {
+#				add = 5000
+#				tag = JAP
+#			}
+#		}
+#		
+#		categories = {
+#			electronics
+#			radar_tech
+#		}
+#	}
+#	medium_ship_radar = {
+#		## LC, CA, SPT gain sea and air detection
+#		light_cruiser = {
+#			surface_detection = 0.10
+#			surface_visibility = 0.10
+#			anti_air_attack = 0.10
+#		}
+#		heavy_cruiser = {
+#			surface_detection = 0.10
+#			surface_visibility = 0.10
+#			anti_air_attack = 0.10
+#		}
+#		pocket_battleship = {
+#			surface_detection = 0.10
+#			surface_visibility = 0.10
+#			anti_air_attack = 0.10
+#		}
+#		dependencies = {
+#			decimetric_radar = 1
+#		}
+#		
+#		research_cost = 0.5
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 2 y = 6 }
+#		}
+#		
+#		ai_will_do = {
+#			factor = 10
+#			modifier = {
+#				factor = 0
+#				trade_interdiction_doctrine = yes
+#			}
+#		}
+#		
+#		categories = {
+#			electronics
+#			radar_tech
+#		}
+#	}
+#	big_ship_radar = {
+#		## captials gain sea and air detection
+#		battle_cruiser = {
+#			surface_detection = 0.15
+#			surface_visibility = 0.15
+#			anti_air_attack = 0.15
+#		}
+#		category_all_battleship = {
+#			surface_detection = 0.15
+#			surface_visibility = 0.15
+#			anti_air_attack = 0.15
+#		}
+#		category_all_cruiser = {
+#			surface_detection = 0.15
+#			surface_visibility = 0.15
+#			anti_air_attack = 0.15
+#		}
+#		dependencies = {
+#			improved_decimetric_radar = 1
+#		}
+#		
+#		research_cost = 0.25
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 2 y = 8 }
+#		}
+#		
+#		ai_will_do = {
+#			factor = 10
+#			modifier = {
+#				factor = 0
+#				trade_interdiction_doctrine = yes
+#			}
+#		}
+#		
+#		categories = {
+#			electronics
+#			radar_tech
+#		}
+#	}
+	
+	mechanical_computing = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# small boost to research speed
+		research_speed_factor = 0.02
+		
+		path = {
+			leads_to_tech = computing_machine 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = electronic_computing_machine 
+			research_cost_coeff = 0.5
+		}
+		
+		research_cost = 2.5
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @MECH_COMP y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 10
+				radar_tech_focus = yes
+			}	
+			modifier = {
+				factor = 2
+				radar_tech_focus_2 = yes
+			}
+			modifier = {
+				factor = 2
+				EAI_timegate_1937/1 = yes
+			}
+			modifier = {
+				factor = 2
+				EAI_timegate_1938/1 = yes
+			}
+			modifier = {
+				factor = 2
+				EAI_timegate_1939/1 = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			computing_tech
+		}
+	}
+	
+	electronic_computing_machine = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		# small boost to research speed
+		research_speed_factor = 0.02
+		
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = electronics_folder
+			position = { x = @ELEC_COMP y = @1937 }
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+			modifier = {
+				factor = 4
+				EAI_timegate_1937/2 = yes
+			}
+			modifier = {
+				factor = 4
+				EAI_timegate_1937/6 = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			#encryption_tech
+			#decryption_tech
+			computing_tech
+		}
+	}
+	
+	computing_machine = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# small boost to research speed
+		research_speed_factor = 0.02
+		
+		path = {
+			leads_to_tech = improved_computing_machine 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = basic_encryption 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = basic_decryption 
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			electronic_computing_machine = 1
+		}
+		
+		research_cost = 2.5
+		start_year = 1938
+		folder = {
+			name = electronics_folder
+			position = { x = @MECH_COMP y = @1938 }
+		}
+		
+		ai_will_do = {
+			base = 1000
+			
+			modifier = {
+				factor = 4
+				EAI_timegate_1938/2 = yes
+			}
+			modifier = {
+				factor = 3
+				EAI_timegate_1938/12 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			#encryption_tech
+			#decryption_tech
+			computing_tech
+		}
+	}
+	
+	improved_computing_machine = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# small boost to research speed
+		research_speed_factor = 0.03
+		
+		path = {
+			leads_to_tech = advanced_computing_machine 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = improved_encryption 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = improved_decryption 
+			research_cost_coeff = 1
+		}	
+		research_cost = 2.5
+		start_year = 1940
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @MECH_COMP y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor 4
+				EAI_timegate_1939/10 = yes
+			}
+			modifier = {
+				factor 4
+				EAI_timegate_1939/11 = yes
+			}
+			modifier = {
+				factor 4
+				EAI_timegate_1939/12 = yes
+			}
+			modifier = {
+				factor 4
+				EAI_timegate_1940/1 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			#encryption_tech
+			#decryption_tech
+			computing_tech
+		}
+	}
+	
+	advanced_computing_machine = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# small boost to research speed
+		research_speed_factor = 0.03
+		
+		path = {
+			leads_to_tech = advanced_encryption 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = advanced_decryption 
+			research_cost_coeff = 1
+		}			
+		research_cost = 2.5
+		start_year = 1942
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @MECH_COMP y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 100
+				EAI_timegate_1942/1 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			#encryption_tech
+			#decryption_tech
+			computing_tech
+		}
+	}
+	
+	basic_encryption = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# encryption 1
+		encryption = 1
+		
+		research_cost = 1
+		start_year = 1938
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @BASIC_ENCRP y = @1938_1 }
+		}
+		
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 10 
+				is_major = yes 
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = encryption_tech_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			encryption_tech
+			computing_tech
+		}
+	}
+	
+	improved_encryption = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# encryption 2
+		encryption = 1
+		
+		research_cost = 1
+		start_year = 1940
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @BASIC_ENCRP y = @1940_1 }
+		}
+		
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 10 
+				is_major = yes 
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = encryption_tech_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			encryption_tech
+			computing_tech
+		}
+	}
+	
+	advanced_encryption = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# encryption 3
+		encryption = 1
+		
+		research_cost = 1
+		start_year = 1942
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @BASIC_ENCRP y = @1942_1 }
+		}
+		
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 10 
+				is_major = yes 
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = encryption_tech_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			encryption_tech
+			computing_tech
+		}
+	}
+	
+	basic_decryption = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# decryption 1
+		decryption = 1
+		path = {
+			leads_to_tech = hfdf_tech2
+			research_cost_coeff = 1
+		}		
+		research_cost = 1.5
+		start_year = 1938
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @ELEC_COMP y = @1938_1 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = decryption_tech_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			decryption_tech
+			computing_tech
+		}
+	}
+	
+	improved_decryption = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# decryption 2
+		decryption = 1
+		
+		research_cost = 1.5
+		start_year = 1940
+		path = {
+			leads_to_tech = hfdf_tech3
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = electronics_folder
+			position = { x = @ELEC_COMP y = @1940_1 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = decryption_tech_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			decryption_tech
+			computing_tech
+		}
+	}
+	
+	advanced_decryption = {
+		allow = { can_research_electronics_folder = yes } 
+
+		# decryption 3
+		decryption = 1
+		
+		research_cost = 1.5
+		start_year = 1942
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @ELEC_COMP y = @1942_1 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = decryption_tech_tt
+			custom_effect_tooltip = computing_tech_tt
+		}		
+		categories = {
+			electronics
+			decryption_tech
+			computing_tech
+		}
+	}
+#### Rockets ####
+	basic_missile_concepts = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		modifier_army_sub_unit_category_all_rocket_attack_factor = 0.01
+		path = {
+			leads_to_tech = liquid_fueled_rockets
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 0.87
+		start_year = 1930
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @MSL y = @1930 }
+		}
+	
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}	
+	liquid_fueled_rockets = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		experience_gain_rocket_artillery_training_factor = 0.05
+		experience_gain_motorized_rocket_brigade_training_factor = 0.05
+		path = {
+			leads_to_tech = basic_land_launched_rockets
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 0.75
+		start_year = 1936
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @MSL y = @1936 }
+		}
+	
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}
+	basic_land_launched_rockets = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		rocket_attack_factor = 0.05
+		path = {
+			leads_to_tech = ballistic_missile_concepts
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.0
+		start_year = 1937
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @MSL y = @1937 }
+		}
+	
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}
+	ballistic_missile_concepts = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		experience_gain_rocket_artillery_training_factor = 0.10
+		experience_gain_rocket_artillery_combat_factor = 0.10
+		experience_gain_motorized_rocket_brigade_training_factor = 0.10
+		experience_gain_motorized_rocket_brigade_combat_factor = 0.10	
+		path = {
+			leads_to_tech = early_guidance_systems
+			research_cost_coeff = 1
+		}
+		
+		path = {
+			leads_to_tech = aerospace_fabrication
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = experimental_rockets
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = early_missile_prototypes
+			research_cost_coeff = 1
+		}		
+		
+		research_cost = 1.0
+		start_year = 1940
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @MSL y = @1940 }
+		}
+	
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}
+	
+	early_guidance_systems = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		static_anti_air_hit_chance_factor = 0.02
+		path = {
+			leads_to_tech = rocket_engines
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.05
+		start_year = 1941
+		dependencies = {
+			advanced_avionics = 1 
+		}
+		folder = {
+			name = electronics_folder
+			position = { x = @MSL y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+			custom_effect_tooltip = electronics_tt
+		}		
+		categories = {
+			electronics
+			rocketry
+		}
+	}
+	experimental_rockets = {
+		allow = { can_research_electronics_folder = yes } 
+
+		enable_building = {
+			building = rocket_site
+			level = 2
+		}
+		
+		path = {
+			leads_to_tech = rocket_engines 
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.25
+		start_year = 1942
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @RCKS y = @1942 }
+		}
+	
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}	
+	rocket_engines = {
+		allow = { can_research_electronics_folder = yes } 
+
+		show_equipment_icon = yes
+
+		# can build v1s/rocket planes
+		enable_equipments = {
+			rocket_interceptor_equipment_1
+			guided_missile_equipment_1
+		}
+		
+		rocket_artillery = {
+			soft_attack = 0.05
+		}
+		rocket_artillery_brigade = {
+			soft_attack = 0.05
+		}
+		motorized_rocket_brigade = {
+			soft_attack = 0.05
+		}
+		
+		path = {
+			leads_to_tech = improved_rocket_engines
+			research_cost_coeff = 1
+		}
+		#path = {
+		#	leads_to_tech = jet_engines 
+		#	research_cost_coeff = 1
+		#}
+		
+		research_cost = 2
+		start_year = 1943
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @RCKT_ENG y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}		
+	}
+	improved_rocket_engines = {
+		allow = { can_research_electronics_folder = yes } 
+
+		show_equipment_icon = yes
+		
+		# can build v2s
+		
+		enable_equipments = {
+			rocket_interceptor_equipment_2
+			guided_missile_equipment_2
+		}
+		
+		rocket_artillery = {
+			soft_attack = 0.05
+		}
+		rocket_artillery_brigade = {
+			soft_attack = 0.05
+		}
+		motorized_rocket_brigade = {
+			soft_attack = 0.05
+		}
+		
+		path = {
+			leads_to_tech = long_range_rockets
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1944
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @RCKT_ENG y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}
+	
+	long_range_rockets = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		category_rock_air = {
+			air_range = 0.25
+		}
+		#path = {
+		#	leads_to_tech = surface_to_air_missiles
+		#	research_cost_coeff = 1
+		#}
+		
+		path = {
+			leads_to_tech = advanced_rocket_engines
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1945
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @RCKT_ENG y = @1945 }
+		}
+	
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}
+	
+	advanced_rocket_engines = {
+		allow = { can_research_electronics_folder = yes } 
+
+		show_equipment_icon = yes
+		
+		# can build ICBMs?
+		
+		enable_equipments = {
+			rocket_interceptor_equipment_3
+			guided_missile_equipment_3
+		}
+		
+		rocket_artillery = {
+			soft_attack = 0.05
+		}
+		rocket_artillery_brigade = {
+			soft_attack = 0.05
+		}
+		motorized_rocket_brigade = {
+			soft_attack = 0.05
+		}
+		
+		research_cost = 1.5
+		start_year = 1946
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @RCKT_ENG y = @1946 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}
+	early_missile_prototypes = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		category_missile = {
+			air_range = 0.05
+		}
+		path = {
+			leads_to_tech = air_to_air_missiles
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.35
+		start_year = 1943
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @BAL_MISSILE y = @1943 }
+		}
+	
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}
+	air_to_air_missiles = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		air_interception_attack_factor = 0.10
+		air_intercept_efficiency = 0.05
+		path = {
+			leads_to_tech = surface_to_air_missiles
+			research_cost_coeff = 1
+		}		
+		research_cost = 1.75
+		start_year = 1944
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @BAL_MISSILE y = @1944 }
+		}
+	
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}
+	surface_to_air_missiles = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		navy_anti_air_attack_factor = 0.08
+		static_anti_air_damage_factor = 0.08
+		
+		#path = {
+		#	leads_to_tech = modern_missile_prototypes
+		#	research_cost_coeff = 1
+		#}
+		
+		research_cost = 1.75
+		start_year = 1946
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @BAL_MISSILE y = @1946 }
+		}
+	
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			rocketry
+		}
+	}
+	aerospace_fabrication = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		air_strategic_bomber_defence_factor = 0.35
+		path = {
+			leads_to_tech = orbital_launch_pad
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1
+		start_year = 1948
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @AEROSPACE y = @1948 }
+		}
+	
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = rocketry_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			rocketry
+			air_equipment
+		}
+	}	
+	
+### Jets
+	early_turbojet_theories = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		air_chief_cost_factor = -0.05
+		path = {
+			leads_to_tech = improved_turbine_engines 
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1932
+		research_cost = 2
+		folder = {
+			name = electronics_folder
+			position = { x = @JET_THEORY y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			jet_technology
+			air_equipment
+		}
+	}
+	
+	improved_turbine_engines = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		air_agility_factor = 0.02
+		path = {
+			leads_to_tech = reaction_jet_engines 
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1938
+		research_cost = 2
+		folder = {
+			name = electronics_folder
+			position = { x = @JET_THEORY y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			jet_technology
+			air_equipment
+		}
+	}
+	
+	reaction_jet_engines = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		air_equipment_upgrade_xp_cost = -0.05
+		path = {
+			leads_to_tech = turbine_engine_improvements 
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1939
+		research_cost = 2
+		folder = {
+			name = electronics_folder
+			position = { x = @JET_ENG y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			jet_technology
+			air_equipment
+		}
+	}
+	
+	turbine_engine_improvements = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		category_all_air = {
+			maximum_speed = 0.05
+		}
+		path = {
+			leads_to_tech = jet_aircraft_prototype 
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1941
+		research_cost = 2
+		folder = {
+			name = electronics_folder
+			position = { x = @TRB_ENG y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			jet_technology
+			air_equipment
+		}
+	}
+	
+	jet_aircraft_prototype = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		air_mission_xp_gain_factor = 0.10
+		path = {
+			leads_to_tech = jet_aircraft_airframes 
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1941
+		research_cost = 2
+		folder = {
+			name = electronics_folder
+			position = { x = @JET_PROTOTYPE y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			jet_technology
+			air_equipment
+		}
+	}
+	
+	jet_aircraft_airframes = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		air_accidents_factor = -0.05
+		air_defence_factor = 0.05
+		path = {
+			leads_to_tech = jet_engines 
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @JET_THEORY y = @1942 }
+		}
+		
+		start_year = 1942
+		research_cost = 2
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			jet_technology
+			air_equipment
+		}
+	}
+	jet_engines = {
+		allow = { can_research_electronics_folder = yes } 
+	
+		path = {
+			leads_to_tech = jet_aircraft 
+			research_cost_coeff = 1
+		}	
+		
+		start_year = 1943
+		research_cost = 2
+		folder = {
+			name = electronics_folder
+			position = { x = @JET_THEORY y = @1943 }
+		}
+		folder = {
+			name = air_techs_folder
+			position = { x = 0 y = 12 }
+		}
+		
+		desc = "JET_ENGINES_SPECIAL"
+
+		on_research_complete = {
+			custom_effect_tooltip = JET_ENGINES_RESEARCHED
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = rocketry_tt
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}	
+		categories = {
+			rocketry
+			jet_technology
+			air_equipment
+		}
+	}
+	
+	jet_aircraft = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		category_jet = {
+			air_agility = 0.05
+		}
+		path = {
+			leads_to_tech = jet_engine_improvements 
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1944
+		research_cost = 2
+		folder = {
+			name = electronics_folder
+			position = { x = @JET_THEORY y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}		
+		categories = {
+			jet_technology
+			air_equipment
+		}
+	}
+	
+	jet_engine_improvements = {
+		allow = { can_research_electronics_folder = yes } 
+		
+		category_jet = {
+			air_range = 0.05
+			maximum_speed = 0.10
+		}	
+		path = {
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @JET_THEORY y = @1948 }
+		}
+		
+		start_year = 1948
+		research_cost = 2
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+			custom_effect_tooltip = rocketry_tt
+		}		
+		categories = {
+			jet_technology
+			air_equipment
+			rocketry
+		}
+	}	
+	### Nuclear stuff
+	atomic_research = {
+		allow = { can_research_nuclear_folder = yes } 
+
+		research_speed_factor = 0.01
+		
+		path = {
+			leads_to_tech = basic_particle_accelerators
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1935
+		research_cost = 5
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @ATOM_RES y = @1930 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}		
+		categories = {
+			nuclear
+		}
+	}
+	basic_particle_accelerators = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		production_speed_nuke_effect_factor = 0.05
+		path = {
+			leads_to_tech = fission_experiments
+			research_cost_coeff = 1
+		}
+		
+		path = {
+			leads_to_tech = improved_particle_sources
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1936
+		research_cost = 5
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @ATOM_RES y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}		
+		categories = {
+			nuclear
+		}
+	}
+	improved_particle_sources = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		production_speed_nuclear_reactor_factor = 0.02	
+		path = {
+			leads_to_tech = improved_particle_detectors
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1936
+		research_cost = 5
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @IMP_PART y = @1936_1 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 0.5
+				prioritise_nuke_reactor = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}		
+		categories = {
+			nuclear
+		}
+	}
+	
+	improved_particle_detectors = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		production_speed_nuclear_reactor_factor = 0.05	
+		production_speed_nuke_effect_factor = 0.02
+		path = {
+			leads_to_tech = scintilation_counter
+			research_cost_coeff = 1
+		}
+		
+		path = {
+			leads_to_tech = synchrotron_particle_accelerators
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1939
+		research_cost = 5
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @IMP_PART y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 0.5
+				prioritise_nuke_reactor = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}		
+		categories = {
+			nuclear
+		}
+	}
+	
+	synchrotron_particle_accelerators = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		production_speed_nuclear_reactor_factor = 0.05
+		production_speed_nuke_effect_factor = 0.05		
+		
+		start_year = 1943
+		research_cost = 4.5
+		folder = {
+			name = electronics_folder
+			position = { x = @ATOM_RES y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 0.5
+				prioritise_nuke_reactor = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}		
+		categories = {
+			nuclear
+		}
+	}
+	scintilation_counter = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		production_speed_nuclear_reactor_factor = 0.02	
+		nuclear_production_factor = 0.05
+		
+		path = {
+			leads_to_tech = research_reactors
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1944
+		research_cost = 4.5
+		folder = {
+			name = electronics_folder
+			position = { x = @IMP_PART y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 0.5
+				prioritise_nuke_reactor = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}		
+		categories = {
+			nuclear
+		}
+	}
+	
+	research_reactors = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		on_research_complete = {
+			add_research_slot = 1
+		}
+		path = {
+			leads_to_tech = nuclear_reactor_designs
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1946
+		research_cost = 5
+		dependencies = {
+			nuclear_reactor = 1
+			synchrotron_particle_accelerators = 1
+		}
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @IMP_PART y = @1946 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}		
+		categories = {
+			nuclear
+		}
+	}
+	
+	nuclear_reactor_designs = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		nuclear_production_factor = 0.10
+		production_speed_nuclear_reactor_factor = 0.15	
+		start_year = 1951
+		research_cost = 5
+		dependencies = {
+			nuclear_reactor = 1
+		}
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @IMP_PART y = @1951 }
+		}
+		
+		ai_will_do = {
+			base = 8000
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}		
+		categories = {
+			nuclear
+		}
+	}
+	
+	fission_experiments = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		research_speed_factor = 0.01
+		path = {
+			leads_to_tech = nuclear_fission
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1938
+		research_cost = 5
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @FISS_EXP y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}			
+		categories = {
+			nuclear
+		}
+	}
+	
+	nuclear_fission = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		research_speed_factor = 0.01
+		path = {
+			leads_to_tech = nuclear_weapons_research
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1940
+		research_cost = 5
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @FISS_EXP y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}		
+		categories = {
+			nuclear
+		}
+	}
+	nuclear_weapons_research = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		nuclear_production_factor = 0.05
+		path = {
+			leads_to_tech = nuclear_reactor
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1941
+		research_cost = 5
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @FISS_EXP y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}			
+		categories = {
+			nuclear
+		}
+	}	
+	nuclear_reactor = {
+		allow = { can_research_nuclear_folder = yes } 
+
+		# can build reactors
+		enable_building = {
+			building = nuclear_reactor
+			level = 1
+		}
+		
+		path = {
+			leads_to_tech = nuclear_weapons_production
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1943
+		research_cost = 5
+		folder = {
+			name = electronics_folder
+			position = { x = @FISS_EXP y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}			
+		categories = {
+			nuclear
+		}
+	}
+	nuclear_weapons_production = {
+		allow = { can_research_nuclear_folder = yes } 
+		
+		enable_building = {
+			building = nuclear_reactor
+			level = 2
+		}
+		
+		path = {
+			leads_to_tech = nukes
+			research_cost_coeff = 1
+		}
+		
+		start_year = 1944
+		research_cost = 5
+		folder = {
+			name = electronics_folder
+			position = { x = @FISS_EXP y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}			
+		categories = {
+			nuclear
+		}
+	}
+	nukes = {
+		allow = { can_research_nuclear_folder = yes } 
+	
+		start_year = 1945
+		research_cost = 5
+		
+		folder = {
+			name = electronics_folder
+			position = { x = @FISS_EXP y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 9999
+				prioritise_nukes = yes
+			}
+			modifier = {
+				factor = 2
+				priotise_nuke_after_drop = yes
+			}
+		}
+		
+		nuclear_production = 1
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = nuclear_tt
+		}			
+		categories = {
+			nuclear
+		}
+	}
+}

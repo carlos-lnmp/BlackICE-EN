@@ -1,0 +1,138 @@
+MCK_dcat_restoration_of_qing = {
+	
+	MCK_go_back_to_beijing = {
+		
+		icon = infiltrate_state
+
+		highlight_states = {
+			state = 608
+		}
+
+		available = {
+			owns_state = 608
+			controls_state = 608
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = MCK_restore_the_empire
+				has_completed_focus = MCK_peking_agreement
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		days_remove = 0
+
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			add_political_power = 150
+			add_stability = 0.15
+			if = {
+				limit = {
+					608 = { NOT = { is_core_of = ROOT }}
+				}
+				608 = { add_core_of = ROOT }
+			}
+			set_capital = 608
+			if = {
+				limit = {
+					has_global_flag = KMT_use_postal_romanisation
+				}
+				set_province_name = { id = 9843 name = KMT_peking_rom }
+				608 = { set_state_name = KMT_peking_rom }
+				else = {
+					set_province_name = { id = 9843 name = VICTORY_POINTS_9843 }
+					608 = { set_state_name = STATE_608 }
+				}
+			}
+		}
+	}
+}
+
+
+MCK_dcat_pacification = {
+	
+	MCK_sabotage_infrastructure = {
+		
+		icon = infiltrate_state
+
+		activation = {
+			any_state = {
+				is_owned_by = ROOT
+				is_controlled_by = ROOT
+				has_state_flag = MCK_unpacified
+			}
+		}
+
+		available = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = MCK_no_owned_controlled_unpacified_state
+					NOT = {
+						any_state = {
+							is_owned_by = ROOT
+							is_controlled_by = ROOT
+							has_state_flag = MCK_unpacified
+						}
+					}
+				}
+				has_completed_focus = MCK_fotify_heilungkiang_border
+			}
+		}
+
+		visible = {
+		}
+
+		is_good = no
+		
+		days_mission_timeout = MCK.MCK_sabotage_timer_infra
+
+		fixed_random_seed = no
+
+		fire_only_once = no
+		
+		timeout_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					has_state_flag = MCK_unpacified
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 1
+				}
+			}
+		}
+	}
+	
+	MCK_pacify_714 = {
+		
+		icon = infiltrate_state
+
+		highlight_states = {
+			state = 608
+		}
+
+		available = {
+			owns_state = 608
+			controls_state = 608
+		}
+
+		visible = {
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		days_remove = 0
+
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+		}
+	}
+}

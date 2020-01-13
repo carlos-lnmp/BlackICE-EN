@@ -1,0 +1,234 @@
+﻿###Spanish Morocco
+capital = 953
+
+oob = "MOR_1936"
+
+set_war_support = 0.15
+
+set_convoys = 5
+
+set_cosmetic_tag = MAR_SPR
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		#early_ship_hull_submarine = 1
+	}
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	tech_mountaineers = 1
+	SMG_team = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	desert_equipment = 1
+	tech_support = 1
+	################## artillery ###############
+	interwar_antitank = 1
+	gw_artillery = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+
+	ww1_battlefield_support = 1
+}
+
+add_ideas = { 	
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	age_19
+	officer_train_none
+	security_minor_restrictions
+	edu_minimal
+	
+	#unity_united_nation
+	foreign_isolationism
+	neutrality_idea
+}
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		Arab_Minor
+		CHI_incompetent_officers
+		Arab_hyper_inflation_1
+		Arab_Tribes
+	}
+}
+
+set_politics = {
+	ruling_party = neutrality
+	elections_allowed = yes
+	election_frequency = 36
+	last_election = 1936.1.1
+}
+
+set_popularities = {
+	socialism = 5
+	monarchism = 24
+	conservatism = 11
+	liberalism = 5
+	fascism = 11
+	communism = 3
+	neutrality = 41
+	ruling_party = 0
+	opposition_party = 0
+}
+##### Country leaders #####
+create_country_leader = {
+	name = "Luis Orgaz Yoldi"
+	desc = "Luis Orgaz Yoldi"
+	picture = "gfx/leaders/MOR/Portrait_Spain_Orgaz.dds"
+	expire = "1945.3.6"
+	ideology = falangism
+	traits = {
+		good_trainer
+		good_soldier
+		ambitious
+	}
+}
+create_country_leader = {
+	name = "Carlos Asensio Cabanillas"
+	desc = "Carlos Asensio Cabanillas"
+	picture = "gfx/leaders/MOR/Portrait_Spain_Carlos_Asensio_Cabanillas.tga"
+	expire = "1941.5.12"
+	ideology = falangism
+	traits = {
+		fortification_engineer
+	}
+}
+create_country_leader = {
+	name = "Juan Beigbeder Atienza"
+	desc = "Juan Beigbeder Atienza"
+	picture = "gfx/leaders/MOR/Portrait_Spain_Juan_Luis_Beigbeder_y_Atienza.tga"
+	expire = "1940.9.16"
+	ideology = falangism
+	traits = {
+		effective_leader
+	}
+}
+create_country_leader = {
+	name = "Luis Orgaz Yoldi"
+	desc = "Luis Orgaz Yoldi"
+	picture = "gfx/leaders/MOR/Portrait_Spain_Orgaz.dds"
+	expire = "1937.3.16"
+	ideology = falangism
+	traits = {
+		good_trainer
+		good_soldier
+		ambitious
+	}
+}
+create_country_leader = {
+	name = "Eduardo Sáenz de Buruaga"
+	desc = "Eduardo Sáenz de Buruaga"
+	picture = "gfx/leaders/MOR/Portrait_Spain_Eduardo_Saenz_de_Buruaga.tga"
+	expire = "1936.9.2"
+	ideology = falangism
+	traits = {
+		good_trainer
+	}
+}
+create_country_leader = {
+	name = "Arturo Álvarez-Buylla Godino"
+	desc = "Arturo Álvarez-Buylla Godino "
+	picture = "gfx/leaders/MOR/Portrait_Spain_Arturo_Alvarez-Buylla.tga"
+	expire = "1936.7.18"
+	ideology = despotism
+	traits = {
+		tough_guy
+		keen_pilot
+	}
+}
+create_country_leader = {
+	name = "Juan Moles Ormella"
+	desc = "Juan Moles Ormella"
+	picture = "gfx/leaders/MOR/Portrait_Spain_Juan_Molles_Ormella.tga"
+	expire = "1936.5.13"
+	ideology = despotism
+	traits = {
+		staunch_democrat
+		ambitious_reformer
+	}
+}
+create_country_leader = {
+	name = "Manuel Rico Avelló"
+	desc = "Manuel Rico Avelló"
+	picture = "gfx/leaders/MOR/Portrait_Spain_Manuel_Rico_Avello.tga"
+	expire = "1936.3.3"
+	ideology = despotism
+	traits = {
+		keen_sailor
+		careful_legalist
+	}
+}
+create_country_leader = {
+	name = "Osama Danid"
+	desc = ""
+	picture = "gfx/leaders/PAL/Portrait_Arabia_Generic_2.dds"
+	ideology = leninism
+	traits = {
+		#
+	}
+}
+#create_country_leader = { #this is the spanish morocco, not the french one, so it doesn't apply
+#	name = "Mohammed V"
+#	desc = "POLITICS_MOR_DESC"
+#	picture = "gfx/leaders/MAR/Portrait_Morocco_Mohammed_V.dds"
+#	expire = "1965.1.1"
+#	ideology = despotism
+#}
+##### Field Marshals #####
+##### Corps Commanders #####
+##### Navy leaders #####
+### EOF ###

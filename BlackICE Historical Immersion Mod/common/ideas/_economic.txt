@@ -1,0 +1,537 @@
+ideas = {
+	## ECONOMY
+	economy = {
+		law = yes
+ 
+		undisturbed_isolation = {
+			removal_cost = -1
+			cost = 100
+
+			available = {
+				always = no
+			}
+
+			level = 7
+			visible = {
+				tag = USA
+			}
+			on_add = {
+				set_temp_variable = { min_cons_goods_mod = 0.50 }
+				custom_effect_tooltip = "min_cons_goods_TT"
+				
+				set_country_flag = undisturbed_isolation
+				clr_country_flag = isolation
+				clr_country_flag = civilian_economy
+				clr_country_flag = low_economic_mobilisation
+				clr_country_flag = partial_economic_mobilisation
+				clr_country_flag = war_economy
+				clr_country_flag = tot_economic_mobilisation
+
+				set_dupe_economy_law = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.4
+				conscription_factor = -0.40
+				research_speed_factor = -0.09
+				political_power_factor = -0.10
+				stability_weekly = -0.002
+				production_speed_industrial_complex_factor = -0.5
+				production_speed_arms_factory_factor = -0.65
+				production_speed_dummy_3_factor = -0.5
+				production_speed_dockyard_factor = -0.40
+				production_speed_shipyard_factor = -0.40
+				production_speed_subyard_factor = -0.40
+				conversion_cost_civ_to_mil_factor = 0.5
+				conversion_cost_mil_to_civ_factor = 0.5
+				generate_wargoal_tension = 1.00
+				join_faction_tension = 0.20
+				lend_lease_tension = 0.50
+				send_volunteers_tension = 0.20
+				guarantee_tension = 0.75
+				line_change_production_efficiency_factor = -0.10
+				max_fuel_factor = -0.40
+			}
+
+			allowed_to_remove = {
+				if = {
+					limit = {
+						tag = USA
+					}
+					OR = {
+						threat > 0.5
+						has_war = yes
+					}
+				}
+			}
+
+			cancel_if_invalid = no
+		}
+		#
+		isolation = {
+			cost = 100
+			removal_cost = -1
+
+			available = {
+				always = no
+			}
+
+			level = 6
+
+			modifier = {
+				consumer_goods_factor = 0.35
+				research_speed_factor = -0.06
+				political_power_factor = -0.05
+				conscription_factor = -0.20
+				stability_weekly = -0.001
+				production_speed_industrial_complex_factor = -0.4
+				production_speed_arms_factory_factor = -0.45
+				production_speed_dummy_3_factor = -0.35
+				production_speed_dockyard_factor = -0.35
+				production_speed_shipyard_factor = -0.35
+				production_speed_subyard_factor = -0.35
+				conversion_cost_civ_to_mil_factor= 0.4
+				conversion_cost_mil_to_civ_factor = 0.4
+				generate_wargoal_tension = 1.00
+				join_faction_tension = 0.20
+				send_volunteers_tension = 0.20
+				guarantee_tension = 0.5
+				line_change_production_efficiency_factor = -0.05
+				max_fuel_factor = -0.30
+			}
+
+			on_add = {
+				set_temp_variable = { min_cons_goods_mod = 0.40 }
+				custom_effect_tooltip = "min_cons_goods_TT"
+				
+				set_dupe_economy_law = yes
+			}
+
+			allowed_to_remove = {
+				if = {
+					limit = {
+						tag = USA
+					}
+					OR = {
+						threat > 0.75
+						has_war = yes
+					}
+				}
+			}
+
+			cancel_if_invalid = no
+		}
+		#
+		civilian_economy = {
+
+			cost = 75
+			removal_cost = -1
+
+			level = 5
+
+			available = {
+			}
+
+			default = yes
+
+			on_add = {
+				set_temp_variable = { min_cons_goods_mod = 0.30 }
+				custom_effect_tooltip = "min_cons_goods_TT"
+				
+				if = {
+					limit = {
+						NOT = { has_country_flag = economy }
+						is_ai = no
+					}
+					set_country_flag = next_civilian_economy
+					set_variable = { economy_factor = 1 }
+					set_temp_variable = { economy_factor = 1 }
+					set_temp_variable = { temp_var = num_of_civilian_factories }
+					divide_temp_variable = { temp_var = 2 }
+					if = { limit = { check_variable = { temp_var < 10 } } set_temp_variable = { temp_var = 10 } }
+					multiply_temp_variable = { temp_var = economy_factor }
+					custom_effect_tooltip = take_time_TT
+					hidden_effect = { country_event = { id = law.52 hours = 1 } }
+					break = yes
+				}
+
+				set_dupe_economy_law = yes
+			}
+			modifier = {
+				consumer_goods_factor = 0.35
+				conscription_factor = -0.20
+				research_speed_factor = -0.05
+				political_power_factor = 0.10
+				production_speed_industrial_complex_factor = 0.15 #0.10
+				production_speed_arms_factory_factor = -0.2
+				production_speed_dummy_3_factor = -0.20
+				production_speed_dockyard_factor = 0.10
+				production_speed_shipyard_factor = 0.10
+				production_speed_subyard_factor = 0.10
+				conversion_cost_mil_to_civ_factor = -0.20
+				production_speed_infrastructure_factor = 0.24 #0.25
+				industrial_capacity_factory = -0.05
+				production_factory_max_efficiency_factor = -0.06
+				industrial_capacity_dockyard = -0.05
+				line_change_production_efficiency_factor = -0.05
+				max_fuel_factor = -0.20
+			}
+
+			cancel_if_invalid = no
+
+		}
+		#
+		low_economic_mobilisation = {
+			cost = 100
+			removal_cost = -1
+
+			level = 4
+
+			available = {
+
+				if =  { limit = { has_decision = economy } NOT = { has_decision = economy } }				can_take_low_economic_mobilisation = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.3
+				conscription_factor = -0.15
+				research_speed_factor = -0.03
+				political_power_factor = 0.05
+				stability_weekly = -0.001
+				production_speed_industrial_complex_factor = 0.075
+				production_speed_arms_factory_factor = -0.10
+				production_speed_dummy_3_factor = -0.05
+				production_speed_dockyard_factor = 0.05
+				production_speed_shipyard_factor = 0.05
+				production_speed_subyard_factor = 0.05
+				production_speed_infrastructure_factor = 0.12
+				production_speed_bunker_factor = 0.025
+				production_speed_pillbox_factor = 0.025
+				production_speed_coastal_bunker_factor = 0.025
+				production_speed_naval_base_factor = 0.05
+				conversion_cost_mil_to_civ_factor = -0.10
+				#industrial_capacity_factory = 0.0
+				#industrial_capacity_dockyard = 0.0
+				#production_factory_max_efficiency_factor = 0.0
+				line_change_production_efficiency_factor = -0.025
+				max_fuel_factor = -0.10
+				stability_weekly = -0.001
+			}
+
+			cancel_if_invalid = no
+			on_add = {
+				set_temp_variable = { min_cons_goods_mod = 0.25 }
+				custom_effect_tooltip = "min_cons_goods_TT"
+				
+				if = {
+					limit = {
+						NOT = { has_country_flag = economy }
+						is_ai = no
+					}
+					set_country_flag = next_low_economic_mobilisation
+					if = {
+						limit = {
+							OR = {
+								has_country_flag = civilian_economy
+								has_country_flag = partial_economic_mobilisation
+							}
+						}
+						set_variable = { economy_factor = 1 }
+						set_temp_variable = { economy_factor = 1 }
+					}
+					set_temp_variable = { temp_var = num_of_civilian_factories }
+					divide_temp_variable = { temp_var = 2 }
+					if = { limit = { check_variable = { temp_var < 10 } } set_temp_variable = { temp_var = 10 } }
+					multiply_temp_variable = { temp_var = economy_factor }
+					custom_effect_tooltip = take_time_TT
+					hidden_effect = { country_event = { id = law.52 hours = 1 } }
+					break = yes
+				}
+
+				set_dupe_economy_law = yes
+				
+				if = {
+					limit = {
+						tag = USA
+						has_completed_focus = USA_prepare_intervention
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+
+			}
+		}
+		#
+		partial_economic_mobilisation = {
+			cost = 125
+			removal_cost = -1
+
+			level = 3
+
+			available = {
+				if =  { limit = { has_decision = economy } NOT = { has_decision = economy } }				can_take_partial_economic_mobilisation = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.25
+				research_speed_factor = 0.01
+				conscription_factor = -0.05
+				political_power_factor = -0.05
+				stability_weekly = -0.0020
+				production_speed_industrial_complex_factor = -0.075
+				production_speed_arms_factory_factor = 0.1
+				production_speed_dummy_3_factor = 0.1
+				#production_speed_dockyard_factor = 0.0
+				#production_speed_shipyard_factor = 0.00
+				#production_speed_subyard_factor = 0.00
+				production_speed_bunker_factor = 0.05
+				production_speed_pillbox_factor = 0.05
+				production_speed_coastal_bunker_factor = 0.05
+				production_speed_naval_base_factor = 0.10
+				industrial_capacity_factory = 0.05
+				production_factory_max_efficiency_factor = 0.06
+				industrial_capacity_dockyard = 0.05
+				line_change_production_efficiency_factor = 0.025
+			}
+			
+			on_add = {
+				set_temp_variable = { min_cons_goods_mod = 0.20 }
+				custom_effect_tooltip = "min_cons_goods_TT"
+				
+				if = {
+					limit = {
+						NOT = { has_country_flag = economy }
+						is_ai = no
+					}
+					set_country_flag = next_partial_economic_mobilisation
+					if = {
+						limit = {
+							has_country_flag = civilian_economy
+						}
+						set_variable = { economy_factor = 2 }
+						set_temp_variable = { economy_factor = 2 }
+					}
+					if = {
+						limit = {
+							OR = {
+								has_country_flag = low_economic_mobilisation
+								has_country_flag = war_economy
+							}
+						}
+						set_variable = { economy_factor = 1 }
+						set_temp_variable = { economy_factor = 1 }
+					}
+					set_temp_variable = { temp_var = num_of_civilian_factories }
+					divide_temp_variable = { temp_var = 2 }
+					if = { limit = { check_variable = { temp_var < 10 } } set_temp_variable = { temp_var = 10 } }
+					multiply_temp_variable = { temp_var = economy_factor }
+					custom_effect_tooltip = take_time_TT
+					hidden_effect = { country_event = { id = law.52 hours = 1 } }
+					break = yes
+				}
+
+				set_dupe_economy_law = yes
+				
+				if = {
+					limit = {
+						tag = USA
+						has_completed_focus = USA_prepare_intervention
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+
+			}
+			cancel_if_invalid = no
+
+		}
+		#
+		war_economy = {
+			cost = 150
+			removal_cost = -1
+
+			level = 2
+
+			available = {
+				if =  { limit = { has_decision = economy } NOT = { has_decision = economy } }				can_take_war_economy = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.2
+				research_speed_factor = 0.03
+				political_power_factor = -0.10
+				stability_weekly = -0.003
+				production_speed_industrial_complex_factor = -0.15
+				production_speed_arms_factory_factor = 0.15
+				production_speed_dummy_3_factor = 0.15
+				production_speed_dockyard_factor = -0.05
+				production_speed_shipyard_factor = -0.05
+				production_speed_subyard_factor = -0.05
+				conversion_cost_civ_to_mil_factor= -0.10
+				enemy_partisan_effect = 0.05
+				production_speed_bunker_factor = 0.075
+				production_speed_pillbox_factor = 0.075
+				production_speed_coastal_bunker_factor = 0.075
+				production_speed_naval_base_factor = 0.05
+				industrial_capacity_factory = 0.10
+				production_factory_max_efficiency_factor = 0.12
+				industrial_capacity_dockyard = 0.10
+				line_change_production_efficiency_factor = 0.05
+				max_fuel_factor = 0.10
+			}
+
+			on_add = {
+				set_temp_variable = { min_cons_goods_mod = 0.15 }
+				custom_effect_tooltip = "min_cons_goods_TT"
+				
+				if = {
+					limit = {
+						NOT = { has_country_flag = economy }
+						is_ai = no
+					}
+					set_country_flag = next_war_economy
+					if = {
+						limit = {
+							has_country_flag = civilian_economy
+						}
+						set_variable = { economy_factor = 3 }
+						set_temp_variable = { economy_factor = 3 }
+					}
+					if = {
+						limit = {
+							has_country_flag = low_economic_mobilisation
+						}
+						set_variable = { economy_factor = 2 }
+						set_temp_variable = { economy_factor = 2 }
+					}
+					if = {
+						limit = {
+							OR = {
+								has_country_flag = partial_economic_mobilisation
+								has_country_flag = tot_economic_mobilisation
+							}
+						}
+						set_variable = { economy_factor = 1 }
+						set_temp_variable = { economy_factor = 1 }
+					}
+					set_temp_variable = { temp_var = num_of_civilian_factories }
+					divide_temp_variable = { temp_var = 2 }
+					if = { limit = { check_variable = { temp_var < 10 } } set_temp_variable = { temp_var = 10 } }
+					multiply_temp_variable = { temp_var = economy_factor }
+					custom_effect_tooltip = take_time_TT
+					hidden_effect = { country_event = { id = law.52 hours = 1 } }
+					break = yes
+				}
+
+				set_dupe_economy_law = yes
+				
+				if = {
+					limit = {
+						tag = USA
+						has_completed_focus = USA_prepare_intervention
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+
+			}
+			cancel_if_invalid = no
+
+		}
+
+		tot_economic_mobilisation = {
+			cost = 200
+			removal_cost = -1
+
+			level = 1
+
+			available = {
+				if =  { limit = { has_decision = economy } NOT = { has_decision = economy } }				can_take_tot_economic_mobilisation = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.15
+				research_speed_factor = 0.05
+				political_power_factor = -0.15
+				stability_weekly = -0.006
+				production_speed_industrial_complex_factor = -0.20
+				production_speed_arms_factory_factor = 0.20
+				production_speed_dummy_3_factor = 0.25
+				production_speed_dockyard_factor = -0.10
+				production_speed_shipyard_factor = -0.10
+				production_speed_subyard_factor = -0.10
+				conversion_cost_civ_to_mil_factor= -0.20
+				enemy_partisan_effect = 0.10
+				industrial_capacity_factory = 0.125
+				production_factory_max_efficiency_factor = 0.15
+				industrial_capacity_dockyard = 0.125
+				line_change_production_efficiency_factor = 0.075
+				max_fuel_factor = 0.15
+			}
+
+			on_add = {
+				set_temp_variable = { min_cons_goods_mod = 0.10 }
+				custom_effect_tooltip = "min_cons_goods_TT"
+				
+				if = {
+					limit = {
+						NOT = { has_country_flag = economy }
+						is_ai = no
+					}
+					set_country_flag = next_tot_economic_mobilisation
+					if = {
+						limit = {
+							has_country_flag = civilian_economy
+						}
+						set_variable = { economy_factor = 4 }
+						set_temp_variable = { economy_factor = 4 }
+					}
+					if = {
+						limit = {
+							has_country_flag = low_economic_mobilisation
+						}
+						set_variable = { economy_factor = 3 }
+						set_temp_variable = { economy_factor = 3 }
+					}
+					if = {
+						limit = {
+							has_country_flag = partial_economic_mobilisation
+						}
+						set_variable = { economy_factor = 2 }
+						set_temp_variable = { economy_factor = 2 }
+					}
+					if = {
+						limit = {
+							has_country_flag = war_economy
+						}
+						set_variable = { economy_factor = 1 }
+						set_temp_variable = { economy_factor = 1 }
+					}
+					set_temp_variable = { temp_var = num_of_civilian_factories }
+					divide_temp_variable = { temp_var = 2 }
+					if = { limit = { check_variable = { temp_var < 10 } } set_temp_variable = { temp_var = 10 } }
+					multiply_temp_variable = { temp_var = economy_factor }
+					custom_effect_tooltip = take_time_TT
+					hidden_effect = { country_event = { id = law.52 hours = 1 } }
+					break = yes
+				}
+
+				set_dupe_economy_law = yes
+				
+				if = {
+					limit = {
+						tag = USA
+						has_completed_focus = USA_prepare_intervention
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+			}
+			cancel_if_invalid = no
+
+		}
+	}
+
+	hidden_ideas
+}
+### EOF ###

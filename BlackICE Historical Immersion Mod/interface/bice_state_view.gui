@@ -1,0 +1,674 @@
+guiTypes = {	
+	#State Income viewbutton
+	containerWindowType = {
+		name = "state_income_container"
+		position = { x = 380 y = 7 } #990
+		
+		#Local Resource Factor 
+		containerWindowType = {
+			name = "local_resource_factor" 
+			position = { x = -240 y = 340 }
+			
+			iconType = {
+				name = "local_resources_icon"
+				spriteType ="GFX_excavation1_medium"
+				position = { x = -120 y = 1 }
+				scale = 0.53
+				#allwaystransparent = yes  
+				pdx_tooltip = "LOCAL_RES"  
+			}
+			instantTextBoxType = {
+				name = "local_resource_var"
+				position = { x = -78 y = 11 }
+				font = "hoi_18mbs"
+				text = "[?From.From.modifier@local_resources|+%0]"
+				maxWidth = 80
+				maxHeight = 20
+				format = center
+				allwaystransparent = yes  
+				pdx_tooltip = "LOCAL_RES_TT"  
+			}
+		}
+		containerWindowType = {
+			name = "local_supply_factor" 
+			position = { x = -240 y = 374 }
+			
+			iconType = {
+				name = "local_supply_icon"
+				spriteType ="GFX_mapicon_supply_red_bg"
+				position = { x = -115 y = 5 }
+				scale = 0.53
+				#allwaystransparent = yes  
+				pdx_tooltip = "LOCAL_SUPPLY_TT"    
+			}
+			instantTextBoxType = {
+				name = "local_supply_var"
+				position = { x = -78 y = 12 }
+				font = "hoi_18mbs"
+				text = "[?From.From.modifier@local_supplies|+%0]"
+				maxWidth = 80
+				maxHeight = 20
+				format = center
+				allwaystransparent = yes   
+			}
+		}
+		containerWindowType = {
+			name = "local_manpower_factor" 
+			position = { x = -240 y = 410 }
+			
+			iconType = {
+				name = "local_manpower_icon" 
+				spriteType ="GFX_manpower_icon"
+				position = { x = -115 y = 6 }
+				scale = 1.1
+				pdx_tooltip = "LOCAL_MANPOWER_TT" 
+			}
+			instantTextBoxType = {
+				name = "local_manpower_var"
+				position = { x = -78 y = 12 } 
+				font = "hoi_18mbs"
+				text = "[?From.From.modifier@local_manpower|+%0]"
+				maxWidth = 80
+				maxHeight = 20
+				format = center
+				allwaystransparent = yes   
+			}
+		}
+	
+		#Factories
+		containerWindowType = {
+			name = "factories" 
+			position = { x = 130 y = 74 }
+			
+			instantTextBoxType = {
+				name = "state_category"
+				position = { x = -62 y = -37 }
+				font = "hoi_20b"
+				text = "STATE_CATEGORY_DISPLAY"
+				maxWidth = 150
+				maxHeight = 23
+				format = center
+				pdx_tooltip "CAT_TT_2" 
+			}
+			instantTextBoxType = {
+				name = "state_special" 
+				position = { x = 0 y = 0 }
+				font = "hoi_20b"
+				text = "SPECIAL_BUILDINGS_TT"
+				maxWidth = 70
+				maxHeight = 23
+				format = centre
+				pdx_tooltip = "SPECIAL_BUILDINGS_TT_2" 
+			}
+			iconType = {
+				name = "building_picture_special"
+				quadTextureSprite ="GFX_buildings_strip"
+				position = { x = -46 y = -9 }
+				frame = 42
+				pdx_tooltip = "SPECIAL_BUILDINGS_TT_3" 
+			}
+			buttonType = {
+				name = "openbuttongarrison" #for garrison ui
+				position = {x=20 y=445}	
+				spriteType = "GFX_deployment_button" #needs cool gfx maybe 
+				#shortcut = "ESCAPE" #Special shortcut if needed
+			}
+			buttonType = {
+				name = "openbuttondecision" #for garrison ui
+				position = {x=-40 y=445}	
+				spriteType = "GFX_topbar_decisionview_button" #needs cool gfx maybe 
+				#shortcut = "ESCAPE" #Special shortcut if needed
+			}
+		}
+		
+		containerWindowType = {
+			name = "building_limiter" 
+			position = { x = 130 y = 74 }
+			
+			iconType = {
+				name = "air_base_background"
+				quadTextureSprite ="GFX_generic_text_bg_66"
+				position = { x = 4 y = 100 }
+				pdx_tooltip = "SPECIAL_BUILDINGS_TT_3" 
+			}
+			instantTextBoxType = {
+				name = "air_base_limit" 
+				position = { x = 1 y = 102 }
+				font = "hoi_20b"
+				text = "[From.From.GetAirportMax]"
+				maxWidth = 70
+				maxHeight = 23  
+				format = centre  
+				pdx_tooltip = "SPECIAL_BUILDINGS_TT_2" 
+			}
+			
+			iconType = {
+				name = "radar_background"
+				quadTextureSprite ="GFX_generic_text_bg_66"
+				position = { x = 4 y = 250 }
+				pdx_tooltip = "SPECIAL_BUILDINGS_TT_3" 
+			}
+			instantTextBoxType = {
+				name = "radar_limit" 
+				position = { x = 1 y = 252 }
+				font = "hoi_20b" 
+				text = "[From.From.GetRadarMax]"
+				maxWidth = 70
+				maxHeight = 23  
+				format = centre  
+				pdx_tooltip = "SPECIAL_BUILDINGS_TT_2" 
+			}
+		}
+	}
+	
+	containerWindowType = {
+		name = "state_category_overview_container"
+		position = { x = 500 y = 420 }
+		size = { width = 380 height = 600 }
+
+		fade_time = 300
+		fade_type = linear
+		moveable = yes
+		
+		iconType = {
+			name = "header" 
+			position = {x=0 y=5}	
+			spriteType = "GFX_state_decision_header"
+		}
+		background = {
+			name = "Background"
+			position = { x = 0 y = 46 }		
+			spriteType = "GFX_tiled_plain_bg2"
+		}
+		
+		
+		buttonType = {
+			name = "exitbutton" 
+			position = {x=344 y=15}	
+			spriteType = "GFX_closebutton"
+			pdx_tooltip = CLOSE
+		}
+		
+		instantTextBoxType = {
+			name = "head_title"
+			position = {x=100 y=22}
+			font = "hoi_20b"
+			text = "State Decisions"
+			maxWidth = 200
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = { 
+			name = "name_background" 
+			position = {x=70 y=58}	
+			spriteType = "GFX_sort_button_202x29_button"
+			scale = 1
+		}
+        iconType = { 
+			name = "decision_category_icon"
+			position = {x=12 y=12}	
+			spriteType = "GFX_decision_category_generic"
+			frame = 0
+		} 
+		instantTextBoxType = {
+			name = "state_name"
+			position = {x=-80 y=60}
+			font = "hoi_20b"
+			text = "[From.From.GetName]"
+			maxWidth = 500
+			maxHeight = 23
+			format = centre
+		}
+		
+		
+		containerWindowType = {
+			name = "state_decision_grid_container"
+			position = {x = 0 y = 95}
+			size = {width = 460 height = 18 } 
+            #margin = { top = 10 bottom = 10 }
+			Orientation = upper_left
+
+			#verticalScrollbar = "right_vertical_slider"
+			#background = {
+			#	name = "Background"
+			#	quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			#}
+			# this grid will be dynamically populated
+			gridboxtype = {
+				name = "state_decisions_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 402 height = 18 }
+				slotsize = { width = 402 height = 42 } #if width or height is 1, it will use slot element's dimension
+				max_slots_horizontal = 1
+				add_horizontal = no
+			}
+		}
+	}
+	
+	containerWindowType = {
+		name = "state_decision_grid_container"
+		position = { x = 0 y = 0}	
+		size = { width = 402 height = 18 }
+		
+        iconType = { 
+			name = "state_decision"
+			position = {x=0 y=0}	
+			spriteType = "GFX_state_decision"
+			frame = 1 
+		}   
+        buttonType = { 
+			name = "decision_button"
+			position = {x=327 y=5}	 
+			spriteType = "GFX_decision_select_icon_strip"
+			frame = 2
+		} 
+        iconType = { 
+			name = "decision_icon"
+			position = {x=16 y=5}	
+			spriteType = "GFX_decision_unknown"
+			frame = 0
+		} 
+		instantTextBoxType = {
+			name = "decision_name"
+			position = {x=70 y=8}
+			font = "hoi_20b"
+			text = "[GetStateDecisionName]"
+			maxWidth = 220
+			maxHeight = 23
+			format = left
+		}
+	} 
+	containerWindowType = {
+		name = "optionsforeconomy"
+		position = { x = 940 y = 430 }
+		size = { width = 310 height = 178 }
+		#moveable = yes
+		#verticalScrollbar = "right_vertical_slider"
+		background = {
+			name = "Background"
+			position = { x = 0 y = 0 }		
+			spriteType = "GFX_tiled_plain_bg2"
+		}
+		iconType = {
+			name = "header" 
+			position = {x=-3 y=0}	
+			spriteType = "GFX_state_decision_header"
+			scale =0.828
+		}
+		instantTextBoxType = {
+			name = "head_title"
+			position = {x=5 y=9}
+			font = "hoi_24header"
+			text = "Diplomatic Options"
+			maxWidth = 300
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "exitbutton" 
+			position = {x=275 y=7}	
+			spriteType = "GFX_closebutton"
+			pdx_tooltip = CLOSE
+			shortcut = "ESCAPE"
+			clicksound = click_close
+		}
+		containerWindowType = {
+			name = "state_garrison_grid_container" #i kinda don't care about the name at this point
+			position = {x = -2 y = 38}
+			size = {width =314 height = 142 } 
+			margin = { top = 8 left = 8 bottom=0}
+			Orientation = upper_left
+
+			verticalScrollbar = "right_vertical_slider"
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			}
+				buttonType = { 
+					name = "button_option1"
+					position = {x=1 y=1}	
+					spriteType = "GFX_diplo_actions_bg"
+					buttonText  = "Issue a Embargo"
+					buttonFont  = "hoi_18mbs"
+					#frame = 0
+				} 
+				buttonType = { 
+					name = "button_option1ally"
+					position = {x=245 y=0}	
+					spriteType = "GFX_allieshurray"
+					scale =0.7
+					#frame = 0
+				} 
+				buttonType = { 
+					name = "button_option2"
+					position = {x=1 y=33}	
+					spriteType = "GFX_diplo_actions_bg"
+					buttonText  = "Execute a Sanction"
+					buttonFont  = "hoi_18mbs"
+					#frame = 0
+				}
+				buttonType = { 
+					name = "button_option2ally"
+					position = {x=245 y=32}	
+					spriteType = "GFX_allieshurray"
+					scale =0.7
+					#frame = 0
+				} 
+				buttonType = { 
+					name = "button_option3"
+					position = {x=1 y=65}	
+					spriteType = "GFX_diplo_actions_bg"
+					buttonText  = "Trade Agreement"
+					buttonFont  = "hoi_18mbs"
+					#frame = 0
+				}
+				buttonType = { 
+					name = "button_option4"
+					position = {x=1 y=97}	
+					spriteType = "GFX_diplo_actions_bg"
+					buttonText  = "Request Guarantee"
+					buttonFont  = "hoi_18mbs"
+					#frame = 0
+				}
+				#buttonType = {  #for future reasons :D
+				#	name = "button_option5"
+				#	position = {x=1 y=129}	
+				#	spriteType = "GFX_diplo_actions_bg"
+				#	#frame = 0
+				#}
+		}
+		
+	
+	}
+	containerWindowType = {
+		name = "state_garrison_overview_container"
+		position = { x = 595 y = 440 }
+		size = { width = 406 height = 450 }
+
+		fade_time = 300
+		fade_type = linear
+		#moveable = yes
+		
+		iconType = {
+			name = "header" 
+			position = {x=0 y=5}	
+			spriteType = "GFX_state_decision_header"
+			scale =1.072
+		}
+		background = {
+			name = "Background"
+			position = { x = 0 y = 46 }		
+			spriteType = "GFX_tiled_plain_bg2"
+		}
+		buttonType = {
+			name = "exitbutton" 
+			position = {x=364 y=17}	
+			spriteType = "GFX_closebutton"
+			pdx_tooltip = CLOSE
+			shortcut = "ESCAPE"
+			clicksound = click_close
+		}
+		
+		instantTextBoxType = {
+			name = "head_title"
+			position = {x=110 y=22}
+			font = "hoi_20b"
+			text = "Local Garrison"
+			maxWidth = 200
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = { 
+			name = "militia_icon" 
+			position = {x=30 y=65}	  
+			spriteType = "GFX_unit_militia_icon_medium_white"
+			scale = 1
+			frame = 2
+		}
+		instantTextBoxType = {
+			name = "num_militia"
+			position = {x=0 y=67}
+			font = "hoi_24header"
+			text = "[?state_militia]"
+			maxWidth = 25 
+			maxHeight = 23
+			format = right
+		}
+		
+		buttonType = { 
+			name = "garrison_icon" 
+			position = {x=110 y=65}	
+			spriteType = "GFX_unit_garrison_icon_medium_white"
+			scale = 1
+			frame = 2
+		} 
+		instantTextBoxType = {
+			name = "num_garrison"
+			position = {x=80 y=67}
+			font = "hoi_24header"
+			text = "[?This.state_garrison]"
+			maxWidth = 25 
+			maxHeight = 23
+			format = right
+		}
+		
+		buttonType = { 
+			name = "cavalry_icon" 
+			position = {x=190 y=65}	
+			spriteType = "GFX_unit_cavalry_icon_medium_white"
+			scale = 1
+			frame = 2
+		} 
+		instantTextBoxType = {
+			name = "num_cavalry"
+			position = {x=160 y=67}
+			font = "hoi_24header"
+			text = "[?This.state_cavalry]"
+			maxWidth = 25 
+			maxHeight = 23
+			format = right
+		}
+		
+		buttonType = { 
+			name = "light_infantry_icon" 
+			position = {x=265 y=65}	
+			spriteType = "GFX_unit_light_infantry_icon_medium_white"
+			scale = 1
+			frame = 2
+		} 
+		instantTextBoxType = {
+			name = "num_light_infantry"
+			position = {x=235 y=67}
+			font = "hoi_24header"
+			text = "[?This.state_light_infantry]"
+			maxWidth = 25 
+			maxHeight = 23
+			format = right
+		}
+		
+		buttonType = { 
+			name = "infantry_icon" 
+			position = {x=340 y=65}	
+			spriteType = "GFX_unit_infantry_icon_medium_white"
+			scale = 1
+			frame = 2
+		} 
+		instantTextBoxType = {
+			name = "num_infantry"
+			position = {x=310 y=67}
+			font = "hoi_24header"
+			text = "[?This.state_infantry]"
+			maxWidth = 25 
+			maxHeight = 23
+			format = right
+		}
+		
+        iconType = { 
+			name = "decision_category_icon"
+			position = {x=4 y=14}	
+			spriteType = "GFX_decision_category_generic"
+			frame = 0
+		}  
+		instantTextBoxType = {
+			name = "num_recruitment"
+			position = {x=370 y=67}
+			font = "hoi_24header"
+			text = "[?state_recruitment^num]"
+			maxWidth = 25 
+			maxHeight = 23
+			format = right
+		}
+		
+        iconType = { 
+			name = "background_manpower"
+			position = {x=10 y=110 }	 
+			spriteType = "GFX_generic_box_small"
+		}  
+        iconType = { 
+			name = "icon_manpower"
+			position = {x=10 y=111 }	 
+			spriteType = "GFX_manpower_icon"
+			scale = 0.8
+		}  
+		instantTextBoxType = {
+			name = "num_manpower"
+			position = {x=15 y=111}
+			font = "hoi_20b"
+			text = "[?state_garrison_manpower]"
+			maxWidth = 80
+			maxHeight = 23
+			format = right
+		}
+		
+        iconType = { 
+			name = "background_strength"
+			position = {x=105 y=110 }	 
+			spriteType = "GFX_generic_box_small" 
+			frame = 1
+		}   
+        iconType = { 
+			name = "icon_strength"
+			position = {x=105 y=111 }	 
+			spriteType = "GFX_strenght_texticon"
+			scale = 1.5
+		}  
+		instantTextBoxType = {
+			name = "num_strength"
+			position = {x=105 y=111}
+			font = "hoi_20b"
+			text = "Strgth" 
+			maxWidth = 80
+			maxHeight = 23
+			format = right
+		}
+		
+        iconType = { 
+			name = "background_size"
+			position = {x=200 y=110 }	 
+			spriteType = "GFX_generic_box_smallest"
+			frame = 1
+		}   
+        iconType = { 
+			name = "icon_size"
+			position = {x=200 y=111 }	 
+			spriteType = "GFX_template_size"
+			scale = 1
+		} 
+		instantTextBoxType = {
+			name = "num_size"
+			position = {x=205 y=111}
+			font = "hoi_20b"
+			text = "[?num_battalions|0]" 
+			maxWidth = 62
+			maxHeight = 23
+			format = right
+		}
+		
+        iconType = { 
+			name = "background_training"
+			position = {x=275 y=110 }	 
+			spriteType = "GFX_generic_box_smallest"
+			frame = 1
+		}  
+		instantTextBoxType = {
+			name = "num_training"
+			position = {x=275 y=111}
+			font = "hoi_20b"
+			text = "TRNG" 
+			maxWidth = 62
+			maxHeight = 23
+			format = right
+		}
+		
+		
+        buttonType = { 
+			name = "force_deploy"
+			position = {x=360 y=110 }	 
+			spriteType = "GFX_command_power"
+		} 
+		
+		containerWindowType = {
+			name = "state_garrison_grid_container"
+			position = {x = 0 y = 150}
+			size = {width =406 height = 350 } 
+			margin = { top = 8 left = 0 bottom=0}
+			Orientation = upper_left
+
+			verticalScrollbar = "right_vertical_slider"
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			}
+			# this grid will be dynamically populated
+			gridboxtype = {
+				name = "state_garrison_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 392 height = 42 }
+				slotsize = { width = 382 height = 42 } #if width or height is 1, it will use slot element's dimension
+				max_slots_horizontal = 1
+				add_horizontal = no
+			}
+		}
+	}
+	
+	containerWindowType = {
+		name = "state_garrison_grid_container"
+		position = { x = 0 y = 0}	
+		size = { width = 402 height = 42 }
+		
+        iconType = { 
+			name = "state_decision"
+			position = {x=0 y=0}	
+			spriteType = "GFX_state_decision"
+			#frame = 0
+		} 
+        iconType = { 
+			name = "unit_icon"
+			position = {x=9 y=5}	
+			spriteType = "GFX_decision_unknown"
+		} 
+		instantTextBoxType = {
+			name = "recruitment_name"
+			position = {x=68 y=8}
+			font = "hoi_20b"    
+			text = "[GetRecruitmentType]"
+			maxWidth = 220
+			maxHeight = 23
+			format = left
+		}
+		
+		instantTextBoxType = {
+			name = "recruitment_time"
+			position = {x=310 y=8} 
+			font = "hoi_20b"
+			text = "[GetRecruitmentTime]" 
+			maxWidth = 50
+			maxHeight = 23
+			format = right
+		}
+	}
+	#Placeholder
+	containerWindowType = {
+		name = "building_blocker_window"
+	}
+}

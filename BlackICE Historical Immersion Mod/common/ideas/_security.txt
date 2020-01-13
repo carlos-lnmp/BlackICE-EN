@@ -1,0 +1,167 @@
+ideas = {
+	## Security
+	security = { 
+		law = yes
+		
+		security_liberty_first = {
+			
+			cost = 75
+			removal_cost = -1
+			
+			available = {
+				NOT = {
+					has_government = communism
+					has_government = fascism
+					has_government = monarchism
+					has_government = neutrality
+					has_idea = press_state
+					has_idea = press_censored
+				}
+			}
+			level = 4
+			modifier = {
+				political_power_factor = 0.10
+				enemy_partisan_effect = 0.10
+				foreign_subversive_activites = 0.10
+				drift_defence_factor = -0.16
+				stability_weekly = 0.001
+				resistance_tick_auto = 0.04
+				occupation_cost = 0.04
+			}
+			
+			on_add = {
+				set_country_flag = security_liberty_first
+				clr_country_flag = security_minor_restrictions
+				clr_country_flag = security_major_restrictions
+				clr_country_flag = security_police_state
+			}
+						
+			ai_will_do = {
+				factor = 0 
+			}
+		}
+		security_minor_restrictions = {
+			
+			cost = 75
+			removal_cost = -1
+			
+			available = {
+				NOT = {
+					has_government = communism
+					has_government = fascism
+					has_government = monarchism
+					has_government = neutrality
+					has_idea = press_state
+				}
+			}
+			level = 3
+			default = yes
+			
+			on_add = {
+				set_country_flag = security_minor_restrictions
+				clr_country_flag = security_liberty_first
+				clr_country_flag = security_major_restrictions
+				clr_country_flag = security_police_state
+			}
+			
+			modifier = {
+				political_power_factor = 0.05
+				enemy_partisan_effect = 0.05
+				foreign_subversive_activites = 0.05
+				drift_defence_factor = -0.08
+				resistance_tick_auto = 0.02
+				occupation_cost = 0.02
+				opposition_party_drift = 0.01
+			}
+					
+			ai_will_do = {
+				factor = 0 
+			}
+		}
+		security_major_restrictions = {
+			
+			cost = 75
+			removal_cost = -1
+			
+			available = {
+				NOT = { has_idea = press_free }
+				OR = {
+					AND = {
+						democratic_govt = yes
+						has_war = yes
+					}
+					has_government = fascism
+					has_government = communism
+					has_government = neutrality
+					has_government = monarchism
+				}
+			}	
+
+			on_add = {
+				set_country_flag = security_major_restrictions
+				clr_country_flag = security_liberty_first
+				clr_country_flag = security_minor_restrictions
+				clr_country_flag = security_police_state
+			}
+			
+			level = 2
+			modifier={
+				political_power_factor = -0.05
+				enemy_partisan_effect = -0.05
+				foreign_subversive_activites = -0.10
+				drift_defence_factor = 0.08
+				stability_weekly = -0.001
+				resistance_tick_auto = -0.02
+				occupation_cost = -0.02
+				opposition_party_drift = 0.02
+			}
+					
+			ai_will_do = {
+				factor = 0 
+			}
+		}
+		security_police_state = {
+			
+			cost = 75
+			removal_cost = -1
+			
+			available = {
+				OR = {
+					has_government = communism
+					has_government = fascism
+					has_government = monarchism
+					has_government = neutrality
+				}
+				NOT = {
+					has_idea = press_free
+					has_idea = press_regulated
+				}
+			}
+			
+			on_add = {
+				set_country_flag = security_police_state
+				clr_country_flag = security_liberty_first
+				clr_country_flag = security_minor_restrictions
+				clr_country_flag = security_major_restrictions
+			}
+			
+			level = 1
+			modifier = {
+				political_power_factor = -0.10
+				enemy_partisan_effect = -0.10
+				foreign_subversive_activites = -0.20
+				drift_defence_factor = 0.16
+				stability_weekly = -0.002
+				resistance_tick_auto = -0.04
+				occupation_cost = -0.04
+				opposition_party_drift = 0.03
+			}		
+					
+			ai_will_do = {
+				factor = 0 
+			}
+		}
+	}
+}
+
+### EOF ###

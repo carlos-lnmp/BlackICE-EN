@@ -1,0 +1,1065 @@
+###############################
+##### GERMAN WUNDER WAFFEN ####
+###############################
+
+#GER_Himmlers_occult_quests
+#GER_Project_Riese
+#GER_Ksiaz_Castle
+#GER_Complex_Rzeczka
+#GER_Complex_Wlodarz
+#GER_Complex_Osowka
+#GER_Complex_Sokolec
+#GER_Complex_Jugowice
+#GER_Complex_Sobon
+#GER_Ahnenerbe_studies
+#GER_Wewelsburg_castle
+#GER_die_glocke
+#GER_angora_rabbits
+#GER_Hitlers_Dog
+#GER_perfect_Horse
+#GER_Goerings_art
+#GER_Goebbels_massmedia
+#GER_goliah
+#GER_death_ray
+#GER_V3_cannon
+#GER_vortex_cannon
+#GER_Sonic_Cannon
+#GER_Landkreuzer
+
+
+GER_Wunderwaffen = {
+	
+	GER_Himmlers_occult_quests = {
+	
+		allowed = {
+			always = no
+		}
+
+		icon = generic_construction
+
+		cost = 100
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = GER_Himmlers_occult_quests
+		}
+		
+		highlight_states = {
+			state = 57
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			every_unit_leader = {
+				limit = { has_trait = waffen_ss_officer }
+				add_skill_level = 1 
+			}
+		}
+	}
+
+	GER_Project_Riese = {
+
+		icon = generic_construction
+		
+
+		available = {
+			has_completed_focus = GER_organisation_todt
+			has_completed_focus = GER_underground_factories
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Project_Riese
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			add_ideas = Project_Riese_complete
+		}
+		
+		complete_effect = {
+			random_owned_controlled_state = {
+				prioritize = { 66 }
+				add_extra_state_shared_building_slots = 2 
+				add_building_construction = {
+					type = truck_factory
+					level = 2 
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 66 }
+				add_extra_state_shared_building_slots = 2 
+				add_building_construction = {
+					type = Ltaircraft_factory
+					level = 2 
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 66 }
+				add_extra_state_shared_building_slots = 2 
+				add_building_construction = {
+					type = industrial_complex
+					level = 2 
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = Projekt_riese_tech_bonus
+				bonus = 0.15
+				uses = 2
+				category = construction_tech
+			}
+		}
+	}
+
+	GER_Ksiaz_Castle = {
+
+		icon = generic_construction
+
+		available = {
+			67 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+
+		cost = 150
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Ksiaz_Castle
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			67 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					province = 6512
+					instant_build = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+			
+		}
+	}	
+	
+	GER_Complex_Rzeczka = {
+
+		icon = generic_construction
+
+		available = {
+			67 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Complex_Rzeczka
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			67 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 9511
+					instant_build = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_Complex_Wlodarz = {
+
+		icon = generic_construction
+		
+		available = {
+			67 = { 
+				is_controlled_by_ROOT_or_ally = yes
+			} 
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Complex_Wlodarz
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			67 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 9457
+					instant_build = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_Complex_Osowka = {
+
+		icon = generic_construction
+
+		available = {
+			67 = { 
+				is_controlled_by_ROOT_or_ally = yes
+			} 
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Complex_Osowka
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			67 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 11467
+					instant_build = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_Complex_Sokolec = {
+
+		icon = generic_construction
+
+		available = {
+			67 = { 
+				is_controlled_by_ROOT_or_ally = yes
+			} 
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Complex_Sokolec
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			67 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 479
+					instant_build = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_Complex_Jugowice = {
+
+		icon = generic_construction
+
+		available = {
+			67 = { 
+				is_controlled_by_ROOT_or_ally = yes
+			} 
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Complex_Jugowice
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			67 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 479
+					instant_build = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_Complex_Sobon = {
+
+		icon = generic_construction
+	
+		available = {
+			67 = { 
+				is_controlled_by_ROOT_or_ally = yes
+			} 
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Complex_Sobon
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			67 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 11467
+					instant_build = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_Ahnenerbe_studies = {
+
+		icon = generic_construction
+
+		available = {
+			
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Ahnenerbe_studies
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			add_ideas = Ahnenerbe_influence
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_Wewelsburg_castle = {
+
+		icon = generic_construction
+
+		available = {
+			
+		}
+		
+		allowed = {
+			always = no 
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Wewelsburg_castle
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			add_ideas = Wewelsburg_ss
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_die_glocke = {
+
+		icon = generic_construction
+
+		available = {
+			
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_die_glocke
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			add_ideas = die_glocke
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_angora_rabbits = {
+
+		icon = generic_construction
+		
+		available = {
+			
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_angora_rabbits
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			add_ideas = Angora_rabbits
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_Hitlers_Dog = {
+
+		icon = generic_construction
+		
+		available = {
+			date > 1941.1.1
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Hitlers_Dog
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			add_ideas = Hitlers_dog
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_perfect_Horse = {
+
+		icon = generic_construction
+		
+		available = {
+			
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_perfect_Horse
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			set_technology = { The_perfect_horse = 1 }
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_Goerings_art = {
+
+		icon = generic_construction
+		
+		available = {
+			
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Goerings_art
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		complete_effect = {                 
+            add_ideas = Goerings_art             
+        }
+	}
+	
+	GER_Goebbels_massmedia = {
+
+		icon = generic_construction
+		
+		available = {
+			
+		}
+
+		cost = 100
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Goebbels_massmedia
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			add_ideas = Goebbels_propaganda
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_goliah = {
+
+		icon = generic_construction
+		
+		available = {
+			controls_state = 34
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_goliah
+			date > 1939.12.30
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			set_technology = { goliah_tech = 1 }
+			set_country_flag = goliath
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_death_ray = {
+
+		icon = generic_construction
+		
+		available = {
+			
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_death_ray
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			set_technology = { microwave_death_ray_tech = 1 }
+		}
+	}
+	
+	GER_V3_cannon = {
+
+		icon = generic_construction
+		
+		available = {
+			
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_V3_cannon
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			set_technology = { V3_cannon_tech = 1 }
+		}
+	}
+	
+	GER_vortex_cannon = {
+
+		icon = generic_construction
+
+		available = {
+			
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_vortex_cannon
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			set_technology = { vortex_cannon_tech = 1 }
+		}
+	}
+	
+	GER_Sonic_Cannon = {
+
+		icon = generic_construction
+		
+		available = {
+			
+		}
+
+		cost = 100
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			has_country_flag = GER_Sonic_Cannon
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			set_technology = { Sonic_Cannon_tech = 1 }
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_Landkreuzer = {
+	
+		icon = generic_construction
+
+		available = {
+			
+		}
+
+		cost = 100
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			tag = GER #how does the US gain the ratte?
+			has_country_flag = GER_Landkreuzer
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			political_power_cost = 0.2
+			research_speed_factor = 0.03
+			consumer_goods_factor = 0.03
+			enemy_partisan_effect = -0.05
+		}
+		
+		remove_effect = {
+			GER = { set_technology = { Landkreuzer_tech = 1 } }
+		}
+		
+		complete_effect = {
+			
+		}
+	}
+	
+	GER_enigma_mission = {
+
+		allowed = { always = no }
+
+		icon = ger_mefo_bills
+
+		available = {
+			always = yes
+		}
+
+		custom_cost_trigger = {
+			command_power > 4.9
+		}
+		custom_cost_text = cp_atleast_5
+
+		selectable_mission = yes
+		days_mission_timeout = 30
+		is_good = no
+		fire_only_once = no
+
+		cancel_trigger = {
+			hidden_trigger = {
+				has_country_flag = enigma_cracked
+			}
+		}
+
+		days_remove = GER_enigma_days?0
+		
+		remove_effect = {
+			hidden_effect = {
+				activate_mission = GER_enigma_mission
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_variable = { GER_enigma_days = days_mission_timeout@GER_enigma_mission }
+				add_command_power = -5 
+			}
+		}
+
+		timeout_effect = {
+			hidden_effect = {
+				activate_mission = GER_enigma_mission
+			}
+			ENG = {
+				activate_mission = ENG_enigma_mission
+				subtract_from_variable = { enigma_cost = 1 }
+				clamp_variable = {
+					var = enigma_cost
+					min = 0
+					max = 300
+				}	
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+}

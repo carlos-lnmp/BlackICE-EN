@@ -1,0 +1,50 @@
+ability = {
+	ITA_ADAPTIVE = {
+		name = ABILITY_ADAPTIVE
+		desc = ABILITY_ADAPTIVE_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			is_border_war = no
+			OWNER = {
+				has_completed_focus = ITA_adaption
+			}
+		}
+
+		unit_modifiers = {
+			terrain_penalty_reduction = 0.75
+			attrition = 0.05
+		}
+		
+		one_time_effect = {
+			add_temporary_buff_to_units = {
+				combat_entrenchment = 0.25
+				str_damage_multiplier = 0.05
+				combat_breakthrough = 0.05
+				days = 10
+				tooltip = ABILITY_ADAPTIVE_TOOLTIP
+			}		
+		}
+		cost = 0.04
+		duration = 240
+		
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					has_war_support > 0.4
+				}
+				
+				check_variable = { num_units_defensive_combats > 6 }
+				
+				set_temp_variable = { temp = avg_defensive_combat_status }
+				check_variable = { temp < 0.40 }
+				check_variable = { ai_random > temp }
+				add = 2
+			}
+		}
+	}
+}

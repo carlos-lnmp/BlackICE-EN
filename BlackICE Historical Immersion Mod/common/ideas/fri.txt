@@ -1,0 +1,273 @@
+ideas = {
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+	}
+	#Foreign
+	foreign_minister = {
+	}
+	#Propaganda/Security
+	interior_minister = {
+	}
+	#Intelligence
+	intel_minister = {
+	}
+	#Economic
+	economic_minister = {
+		FRI_jules_brevie = {
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { captain_of_industry  economic_minister_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+	}
+	#Political Advisers
+	political_advisor = {
+		FRI_ngo_dinh_nhu = {
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { liberal_reformer  political_advisor_trait }
+			
+			on_add = { country_event = political.13 }
+			
+			do_effect = {
+				NOT = { has_government = liberalism }
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FRI_ton_duc_thang = {
+			picture = generic_political_advisor_asia_2
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { communist_revolutionary  political_advisor_trait }
+			
+			on_add = { country_event = political.1 }
+			
+			do_effect = {
+				NOT = { has_government = communism }
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FRI_cuong_de = {
+			picture = generic_army_asia_1	
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { fascist_demagogue  political_advisor_trait }
+			
+			on_add = { country_event = political.7 }
+			
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FRI_fortification_engineer = {
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { smooth_talking_charmer  political_advisor_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		FRI_war_industrialist = {
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { compassionate_gentleman  political_advisor_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Domestic
+	domestic_minister = {
+	}
+	influence_minister = {
+	}
+	#Academy
+	military_academy = {
+	}
+	#Military
+	#Army
+	army_chief = {
+		FRI_voong_huu_trieu = {
+			picture = generic_army_asia_4
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { army_chief_defensive_1  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}		
+	}
+	#Air
+	air_chief = {
+		FRI_lai_de = {
+			picture = generic_air_asia_1
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { air_chief_all_weather_1  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Navy
+	navy_chief = {
+		FRI_hang_dinh_xuan = {
+			picture = generic_navy_asia_1
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { navy_chief_commerce_raiding_1  navy_chief_trait }
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_sub_bonus = yes 
+				}
+			}
+		}
+	}
+	#High Command
+	high_command = {
+		FRI_voong_van_dao = {
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { army_logistics_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+		FRI_tuan_ngoc_minh = {
+			picture = generic_army_asia_2
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { army_infantry_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+		FRI_lai_thao = {
+			picture = generic_army_asia_3
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			traits = { army_entrenchment_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Theorist
+	theorist = {
+		FRI_jean_tassigny = {
+			picture = generic_army_europe_1
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { military_theorist  theorist_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		FRI_georges_catroux = {
+			picture = generic_air_europe_1
+			
+			allowed = {
+				original_tag = FRI
+			}
+			
+			research_bonus = {
+				air_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+		FRI_jean_decoux = {
+			picture = generic_navy_europe_1
+			
+			allowed = {
+				original_tag = FRI
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			research_bonus = {
+				naval_doctrine = 0.07
+			}
+			
+			traits = { naval_theorist  theorist_trait }
+		}
+	}
+}
+### EOF ###

@@ -1,0 +1,5985 @@
+# Allows you to create your own dynamic keys
+# to be called in localization.
+# defined_text -> this is it, we're defining the text
+# text -> a discrete entry that can be picked to display in loc.
+# trigger -> determines if a text entry will be picked or not.
+# (The triggers need to be valid for the scope the key is called in
+# (eg Root or From.From).)
+# localization_key -> points to the localization key
+# that'll be used if trigger passes
+
+defined_text = { # Country
+	name = GetKdfWagenName
+	text = {
+		trigger = {
+			original_tag = GER
+			has_government = neutrality
+		}
+		localization_key = GER_KAISER_WAGEN_NAME
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			OR = {
+				has_government = communism
+				democratic_govt = yes
+			}
+		}
+		localization_key = GER_VOLKS_WAGEN_NAME
+	}
+	text = {
+		localization_key = GER_KDF_WAGEN_NAME
+	}
+}
+
+defined_text = { # Country
+	name = GetCoordinationTarget
+	text = {
+		trigger = {
+			has_variable = coordination_target
+		}
+		localization_key = "Current selected country : [?coordination_target.GetName|Y]"
+	}
+}
+
+defined_text = { # Country
+	name = GetArmyName
+	text = {
+		trigger = {
+			original_tag = GER
+		}
+		localization_key = COMMAND_GROUP_NAME_GENERIC
+	}
+	
+	text = {
+		trigger = {
+			NOT = { original_tag = GER }
+		}
+		localization_key = GER_COMMAND_GROUP_NAME_GENERIC
+	}
+}
+
+defined_text = { # Country
+	name = GetArmyGroupName
+	text = {
+		trigger = {
+			original_tag = GER
+		}
+		localization_key = ARMY_GROUP_NAME_GENERIC
+	}
+	
+	text = {
+		trigger = {
+			NOT = { original_tag = GER }
+		}
+		localization_key = GER_ARMY_GROUP_NAME_GENERIC
+	}
+}
+defined_text = { # Country
+	name = GetHermannGoringWerkeName
+	text = {
+		trigger = {
+			original_tag = GER
+			has_government = neutrality
+		}
+		localization_key = GER_HERMANN_GORING_WERKE_NAME_KAISER
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			has_government = communism
+		}
+		localization_key = GER_HERMANN_GORING_WERKE_NAME_COMMIE
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			has_government = fascism
+		}
+		localization_key = GER_HERMANN_GORING_WERKE_NAME_FASCIST
+	}
+	text = {
+		localization_key = GER_HERMANN_GORING_WERKE_NAME
+	}
+}
+
+defined_text = { # for PRC tree
+	name = GetManchuriaPuppet
+	text = {
+		trigger = {
+			MAN = {
+				OR = {
+					is_subject_of = JAP
+					has_cosmetic_tag = MAN_kwantung_army 
+				}
+			}
+		}
+		localization_key = PRC_provoke_japan_manchuria
+	}
+	text = {
+		localization_key = PRC_provoke_japan_korea
+	}
+}
+
+defined_text = { # for shared tree
+	name = GetVietnamOwner
+	text = {
+		trigger = {
+			671 = {
+				is_controlled_by = JAP
+			}
+		}
+		localization_key = CHI_vietnam_JAP
+	}
+	text = {
+		localization_key = CHI_vietnam_FRA
+	}
+}
+
+defined_text = { # Country
+	name = GetGermanTechnologyName
+	text = {
+		trigger = {
+			original_tag = RAJ
+			is_in_faction_with = JAP
+			NOT = { is_in_faction_with = GER }
+		}
+		localization_key = RAJ_german_technology_japan
+	}
+	text = {
+		localization_key = RAJ_german_technology_german
+	}
+}
+
+defined_text = { # Country
+	name = GetJAAFAName
+	text = {
+		trigger = {
+			original_tag = RAJ
+			is_in_faction_with = GER
+			NOT = { is_in_faction_with = JAP }
+		}
+		localization_key = RAJ_japanese_army_air_force_academy_german
+	}
+	text = {
+		localization_key = RAJ_japanese_army_air_force_academy_japan
+	}
+}
+
+defined_text = { #
+	name = GetWehrmachtAngerLevel
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = wehrmacht_anger value = 0 compare = less_than }
+
+		}
+		localization_key = SS_loyal
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = wehrmacht_anger value = 0 compare = greater_than_or_equals }
+			check_variable = { var = wehrmacht_anger value = 10 compare = less_than }
+
+		}
+		localization_key = SS_calm
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = wehrmacht_anger value = 10 compare = greater_than_or_equals }
+			check_variable = { var = wehrmacht_anger value = 20 compare = less_than }
+
+		}
+		localization_key = SS_worried
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = wehrmacht_anger value = 20 compare = greater_than_or_equals }
+			check_variable = { var = wehrmacht_anger value = 30 compare = less_than }
+
+		}
+		localization_key = SS_angry
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = wehrmacht_anger value = 30 compare = greater_than_or_equals }
+			check_variable = { var = wehrmacht_anger value = 40 compare = less_than }
+
+		}
+		localization_key = SS_plotting
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = wehrmacht_anger value = 40 compare = greater_than_or_equals }
+		}
+		localization_key = SS_rebellious
+	}
+}
+
+defined_text = { #
+	name = GetSSAngerLevel
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = SS_anger value = 0 compare = less_than }
+
+		}
+		localization_key = SS_loyal
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = SS_anger value = 0 compare = greater_than_or_equals }
+			check_variable = { var = SS_anger value = 10 compare = less_than }
+
+		}
+		localization_key = SS_calm
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = SS_anger value = 10 compare = greater_than_or_equals }
+			check_variable = { var = SS_anger value = 20 compare = less_than }
+
+		}
+		localization_key = SS_worried
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = SS_anger value = 20 compare = greater_than_or_equals }
+			check_variable = { var = SS_anger value = 30 compare = less_than }
+
+		}
+		localization_key = SS_angry
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = SS_anger value = 30 compare = greater_than_or_equals }
+			check_variable = { var = SS_anger value = 40 compare = less_than }
+
+		}
+		localization_key = SS_plotting
+	}
+	text = {
+		trigger = {
+			original_tag = GER
+			check_variable = { var = SS_anger value = 40 compare = greater_than_or_equals }
+		}
+		localization_key = SS_rebellious
+	}
+}
+
+defined_text = { # Country
+	name = GetRadarMax
+	text = {
+		trigger = {
+			FROM.FROM = { has_state_flag = small_airbase }
+		}
+		localization_key = "0/0"
+	}
+	text = {
+		trigger = {
+			FROM.FROM = { has_state_flag = medium_airbase }
+			ROOT = { NOT = { has_tech = radio_detection } }
+		}
+		localization_key = "0/0"
+	}
+	text = {
+		trigger = {
+			FROM.FROM = { 
+				has_state_flag = medium_airbase 
+				radar_station < 2
+			}
+			ROOT = { has_tech = radio_detection } 
+		}
+		localization_key = "[?From.From.building_level@radar_station]/1"
+	}
+	text = {
+		trigger = {
+			FROM.FROM = { 
+				has_state_flag = medium_airbase 
+				radar_station > 1
+			}
+			ROOT = { has_tech = radio_detection } 
+		}
+		localization_key = "1/1"
+	}
+}
+
+defined_text = { # Country
+	name = GetOilImport
+	text = {
+		trigger = {
+			check_variable = { oil_import > 0 }
+		}
+		localization_key =OIL_IMPORT
+	}
+}
+
+defined_text = { # Country
+	name = GetSteelImport
+	text = {
+		trigger = {
+			check_variable = { steel_import > 0 }
+		}
+		localization_key = STEEL_IMPORT
+	}
+}
+
+defined_text = { # Country
+	name = GetAluminiumImport
+	text = {
+		trigger = {
+			check_variable = { aluminium_import > 0 }
+		}
+		localization_key = ALUMINIUM_IMPORT
+	}
+}
+
+defined_text = { # Country
+	name = GetTungstenImport
+	text = {
+		trigger = {
+			check_variable = { tungsten_import > 0 }
+		}
+		localization_key = TUNGSTEN_IMPORT
+	}
+}
+
+defined_text = { # Country
+	name = GetChromiumImport
+	text = {
+		trigger = {
+			check_variable = { chromium_import > 0 }
+		}
+		localization_key = CHROMIUM_IMPORT
+	}
+}
+
+defined_text = { # Country
+	name = GetOccupiedStates
+	text = {
+		trigger = {
+			check_variable = { no > 0 }
+		}
+		localization_key = OCCUPIED_STATES
+	}
+}
+
+defined_text = { # Country
+	name = GetRubberConsumed
+	text = {
+		trigger = {
+			check_variable = { rubber_consumed > 0 }
+		}
+		localization_key = RUBBER_CONSUMED
+	}
+}
+
+
+defined_text = { # Country
+	name = GetAluminiumConsumed
+	text = {
+		trigger = {
+			check_variable = { aluminium_consumed > 0 }
+		}
+		localization_key = ALUMINIUM_CONSUMED
+	}
+}
+
+defined_text = { # Country
+	name = GetSteelConsumed
+	text = {
+		trigger = {
+			check_variable = { steel_consumed > 0 }
+		}
+		localization_key = STEEL_CONSUMED
+	}
+}
+
+defined_text = { # Country
+	name = GetOilConsumed
+	text = {
+		trigger = {
+			check_variable = { oil_consumed > 0 }
+		}
+		localization_key = OIL_CONSUMED
+	}
+}
+
+defined_text = { # Country
+	name = GetChromiumConsumed
+	text = {
+		trigger = {
+			check_variable = { chromium_consumed > 0 }
+		}
+		localization_key = CHROMIUM_CONSUMED
+	}
+}
+
+defined_text = { # Country
+	name = GetRubberStorageStatus
+	text = {
+		trigger = {
+			has_country_flag = stop_rubber_storing
+			check_variable = { rubber > 0 }
+		}
+		localization_key = START_RUBBER_STORING
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = stop_rubber_storing }
+			check_variable = { rubber > 0 }
+		}
+		localization_key = STOP_RUBBER_STORING
+	}
+	text = {
+		trigger = {
+			check_variable = { rubber < 0 }
+			check_variable = { rubber_storage > 0.99 }
+			check_variable = { rubber_deploy_consume > -1 }
+			NOT = { has_country_flag = stop_rubber_deploy }
+		}
+		localization_key = STOP_RUBBER_DEPLOY
+	}
+	text = {
+		trigger = {
+			check_variable = { rubber < 0 }
+			check_variable = { rubber_storage > 0.99 }
+			check_variable = { rubber_deploy_consume > -1 }
+			has_country_flag = stop_rubber_deploy
+		}
+		localization_key = START_RUBBER_DEPLOY
+	}
+}
+
+defined_text = { # Country
+	name = GetSteelStorageStatus
+	text = {
+		trigger = {
+			has_country_flag = stop_steel_storing
+			check_variable = { steel > 0 }
+		}
+		localization_key = START_STEEL_STORING
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = stop_steel_storing }
+			check_variable = { steel > 0 }
+		}
+		localization_key = STOP_STEEL_STORING
+	}
+	text = {
+		trigger = {
+			check_variable = { steel < 0 }
+			check_variable = { steel_storage > 0.99 }
+			check_variable = { steel_deploy_consume > -1 }
+			NOT = { has_country_flag = stop_steel_deploy }
+		}
+		localization_key = STOP_STEEL_DEPLOY
+	}
+	text = {
+		trigger = {
+			check_variable = { steel < 0 }
+			check_variable = { steel_storage > 0.99 }
+			check_variable = { steel_deploy_consume > -1 }
+			has_country_flag = stop_steel_deploy
+		}
+		localization_key = START_STEEL_DEPLOY
+	}
+}
+
+defined_text = { # Country
+	name = GetAluminiumStorageStatus
+	text = {
+		trigger = {
+			has_country_flag = stop_aluminium_storing
+			check_variable = { aluminium > 0 }
+		}
+		localization_key = START_ALUMINIUM_STORING
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = stop_aluminium_storing }
+			check_variable = { aluminium > 0 }
+		}
+		localization_key = STOP_ALUMINIUM_STORING
+	}
+	text = {
+		trigger = {
+			check_variable = { aluminium < 0 }
+			check_variable = { aluminium_storage > 0.99 }
+			check_variable = { aluminium_deploy_consume > -1 }
+			NOT = { has_country_flag = stop_aluminium_deploy }
+		}
+		localization_key = STOP_ALUMINIUM_DEPLOY
+	}
+	text = {
+		trigger = {
+			check_variable = { aluminium < 0 }
+			check_variable = { aluminium_storage > 0.99 }
+			check_variable = { aluminium_deploy_consume > -1 }
+			has_country_flag = stop_aluminium_deploy
+		}
+		localization_key = START_ALUMINIUM_DEPLOY
+	}
+}
+
+defined_text = { # Country
+	name = GetTungstenStorageStatus
+	text = {
+		trigger = {
+			has_country_flag = stop_tungsten_storing
+			check_variable = { tungsten > 0 }
+		}
+		localization_key = START_TUNGSTEN_STORING
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = stop_tungsten_storing }
+			check_variable = { tungsten > 0 }
+		}
+		localization_key = STOP_TUNGSTEN_STORING
+	}
+	text = {
+		trigger = {
+			check_variable = { tungsten < 0 }
+			check_variable = { tungsten_storage > 0.99 }
+			check_variable = { tungsten_deploy_consume > -1 }
+			NOT = { has_country_flag = stop_tungsten_deploy }
+		}
+		localization_key = STOP_TUNGSTEN_DEPLOY
+	}
+	text = {
+		trigger = {
+			check_variable = { tungsten < 0 }
+			check_variable = { tungsten_storage > 0.99 }
+			check_variable = { tungsten_deploy_consume > -1 }
+			has_country_flag = stop_tungsten_deploy
+		}
+		localization_key = START_TUNGSTEN_DEPLOY
+	}
+}
+
+
+defined_text = { # Country
+	name = GetChromiumStorageStatus
+	text = {
+		trigger = {
+			has_country_flag = stop_chromium_storing
+			check_variable = { chromium > 0 }
+		}
+		localization_key = START_CHROMIUM_STORING
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = stop_chromium_storing }
+			check_variable = { chromium > 0 }
+		}
+		localization_key = STOP_CHROMIUM_STORING
+	}
+	text = {
+		trigger = {
+			check_variable = { chromium < 0 }
+			check_variable = { chromium_storage > 0.99 }
+			check_variable = { chromium_deploy_consume > -1 }
+			NOT = { has_country_flag = stop_chromium_deploy }
+		}
+		localization_key = STOP_CHROMIUM_DEPLOY
+	}
+	text = {
+		trigger = {
+			check_variable = { chromium < 0 }
+			check_variable = { chromium_storage > 0.99 }
+			check_variable = { chromium_deploy_consume > -1 }
+			has_country_flag = stop_chromium_deploy
+		}
+		localization_key = START_CHROMIUM_DEPLOY
+	}
+}
+
+defined_text = { # Country
+	name = GetAluminiumStorage
+	text = {
+		trigger = {
+			check_variable = { aluminium_storage > 0 }
+		}
+		localization_key = "[?aluminium_storage|G0]"
+	}
+	text = {
+		trigger = {
+			check_variable = { aluminium_storage = 0 }
+		}
+		localization_key = "[?aluminium_storage|0]"
+	}
+}
+defined_text = { # Country
+	name = GetRubberStorage
+	text = {
+		trigger = {
+			check_variable = { rubber_storage > 0 }
+		}
+		localization_key = "[?rubber_storage|G0]"
+	}
+	text = {
+		trigger = {
+			check_variable = { rubber_storage = 0 }
+		}
+		localization_key = "[?rubber_storage|0]"
+	}
+}
+defined_text = { # Country
+	name = GetTungstenStorage
+	text = {
+		trigger = {
+			check_variable = { tungsten_storage > 0 }
+		}
+		localization_key = "[?tungsten_storage|G0]"
+	}
+	text = {
+		trigger = {
+			check_variable = { tungsten_storage = 0 }
+		}
+		localization_key = "[?tungsten_storage|0]"
+	}
+}
+defined_text = { # Country
+	name = GetChromiumStorage
+	text = {
+		trigger = {
+			check_variable = { chromium_storage > 0 }
+		}
+		localization_key = "[?chromium_storage|G0]"
+	}
+	text = {
+		trigger = {
+			check_variable = { chromium_storage = 0 }
+		}
+		localization_key = "[?chromium_storage|0]"
+	}
+}
+defined_text = { # Country
+	name = GetSteelStorage
+	text = {
+		trigger = {
+			check_variable = { steel_storage > 0 }
+		}
+		localization_key = "[?steel_storage|G0]"
+	}
+	text = {
+		trigger = {
+			check_variable = { steel_storage = 0 }
+		}
+		localization_key = "[?steel_storage|0]"
+	}
+}
+
+defined_text = { # Country
+	name = GetCivFuelLaw
+	text = {
+		trigger = {
+			has_idea = high_civ_fuel_usage
+		}
+		localization_key = high_civ_fuel_usage
+	}
+	text = {
+		trigger = {
+			has_idea = medium_civ_fuel_usage
+		}
+		localization_key = medium_civ_fuel_usage
+	}
+	text = {
+		trigger = {
+			has_idea = normal_civ_fuel_usage
+		}
+		localization_key = normal_civ_fuel_usage
+	}
+	text = {
+		trigger = {
+			has_idea = low_civ_fuel_usage
+		}
+		localization_key = low_civ_fuel_usage
+	}
+	text = {
+		trigger = {
+			has_idea = very_low_civ_fuel_usage
+		}
+		localization_key = very_low_civ_fuel_usage
+	}
+}
+
+defined_text = { # Country
+	name = GetCivFuelLawValue
+	text = {
+		trigger = {
+			has_idea = high_civ_fuel_usage
+		}
+		localization_key = "high_civ_fuel_usage_value"
+	}
+	text = {
+		trigger = {
+			has_idea = medium_civ_fuel_usage
+		}
+		localization_key = "medium_civ_fuel_usage_value"
+	}
+	text = {
+		trigger = {
+			has_idea = normal_civ_fuel_usage
+		}
+		localization_key = "normal_civ_fuel_usage_value"
+	}
+	text = {
+		trigger = {
+			has_idea = low_civ_fuel_usage
+		}
+		localization_key = "low_civ_fuel_usage_value"
+	}
+	text = {
+		trigger = {
+			has_idea = very_low_civ_fuel_usage
+		}
+		localization_key = "very_low_civ_fuel_usage_value"
+	}
+}
+
+defined_text = { # Country
+	name = GetOwnedStates
+	text = {
+		trigger = { 
+			check_variable = { num_owned_states > 0 }
+		}
+		localization_key = "owned_states_TT"
+	}
+}
+defined_text = { # Country
+	name = GetOccupiedStates
+	text = {
+		trigger = {
+			#check_variable = { num_occupied_states > 0 }
+		}
+		localization_key = "occupied_states_TT"
+	}
+}
+defined_text = { # Country
+	name = GetCoreStates
+	text = {
+		trigger = {
+			check_variable = { num_core_states > 0 }
+		}
+		localization_key = "core_states_TT"
+	}
+}
+defined_text = { # Country
+	name = GetOwnedCoreStates
+	text = {
+		trigger = {
+			#check_variable = { num_owned_core_states > 0 }
+		}
+		localization_key = "owned_core_states"
+	}
+}
+defined_text = { # Country
+	name = GetControlledCoreStates
+	text = {
+		trigger = {
+			#check_variable = { num_controlled_core_states > 0 }
+		}
+		localization_key = "controlled_core_states"
+	}
+}
+
+defined_text = { # Total
+	name = GetPopulationValue1
+	text = { 
+		trigger = {
+			has_variable = total_population
+		}
+		localization_key = "[?total_population|0]k"
+	}
+	text = { 
+		trigger = {
+			has_variable = total_population_k
+		}
+		localization_key = "[?total_population_k|2]M"
+	}
+	text = { 
+		trigger = {
+			check_variable = { total_population_k > 10000 }
+		}
+		localization_key = "[?total_population_k|1]M"
+	}
+}
+defined_text = { # Core
+	name = GetPopulationValue2
+	text = { 
+		trigger = {
+			has_variable = core_population
+		}
+		localization_key = "[?core_population|0]k"
+	}
+	text = { 
+		trigger = {
+			has_variable = core_population_k
+		}
+		localization_key = "[?core_population_k|2]M"
+	}
+	text = { 
+		trigger = {
+			check_variable = { core_population_k > 10000 }
+		}
+		localization_key = "[?core_population_k|1]M"
+	}
+}
+
+
+defined_text = { # Country
+	name = GetLicenseCost
+	text = {
+		trigger = {
+			check_variable = { licenses > 0 }
+		}
+		localization_key = LICENSES_TT
+	}
+}
+
+defined_text = {
+	name = GetStateCategory
+
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = wasteland
+			}
+		}
+		localization_key = CAT_WASTE
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = enclave
+			}
+		}
+		localization_key = CAT_ENCLAVE
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = tiny_island
+			}
+		}
+		localization_key = CAT_TINY_ISLAND
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = small_island
+			}
+		}
+		localization_key = CAT_SMALL_ISLAND
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = rural
+			}
+		}
+		localization_key = CAT_RURAL
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = small_town
+			}
+		}
+		localization_key = CAT_SMALL_TOWN
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = town
+			}
+		}
+		localization_key = CAT_TOWN
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = large_town
+			}
+		}
+		localization_key = CAT_LARGE_TOWN
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = pastoral
+			}
+		}
+		localization_key = CAT_PASTORAL
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = small_city
+			}
+		}
+		localization_key = CAT_SMALL_CITY
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = city
+			}
+		}
+		localization_key = CAT_CITY
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = large_city
+			}
+		}
+		localization_key = CAT_LARGE_CITY
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = small_metropolis
+			}
+		}
+		localization_key = CAT_SMALL_METROPOLIS
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = metropolis
+			}
+		}
+		localization_key = CAT_METROPOLIS
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = huge_metropolis
+			}
+		}
+		localization_key = CAT_HUGE_METROPOLIS
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = small_megalopolis
+			}
+		}
+		localization_key = CAT_SMALL_MEGALOPOLIS
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				OR = {
+					has_state_category = megalopolis
+					has_state_category = berlin
+				}
+			}
+		}
+		localization_key = CAT_MEGALOPOLIS
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				has_state_category = huge_megalopolis
+			}
+		}
+		localization_key = CAT_HUGE_MEGALOPOLIS
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentUniform
+	text = { #vissit
+		trigger = {
+			has_country_flag = show_number
+		}
+		localization_key = "UNIFORM_NUMBER"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = show_number }
+		}
+		localization_key = "UNIFORM_MODIFIER"
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentJetAir
+	text = { #vissit
+		trigger = {
+			has_country_flag = show_number
+		}
+		localization_key = "JETAIR_NUMBER"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = show_number }
+		}
+		localization_key = "JETAIR_MODIFIER"
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentTank
+	text = { #vissit
+		trigger = {
+			has_country_flag = show_number
+		}
+		localization_key = "TANK_NUMBER"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = show_number }
+		}
+		localization_key = "TANK_MODIFIER"
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentTruck
+	text = { #vissit
+		trigger = {
+			has_country_flag = show_number
+		}
+		localization_key = "TRUCK_NUMBER"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = show_number }
+		}
+		localization_key = "TRUCK_MODIFIER"
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentArty
+	text = { #vissit
+		trigger = {
+			has_country_flag = show_number
+		}
+		localization_key = "ARTY_NUMBER"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = show_number }
+		}
+		localization_key = "ARTY_MODIFIER"
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentArms
+	text = { #vissit 
+		trigger = {
+			has_country_flag = show_number
+		}
+		localization_key = "ARMS_NUMBER_1"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = show_number }
+		}
+		localization_key = "ARMS_MODIFIER_1"
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentLtAir
+	text = { #vissit 
+		trigger = {
+			has_country_flag = show_number
+		}
+		localization_key = "LTAIR_NUMBER_1"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = show_number }
+		}
+		localization_key = "LTAIR_MODIFIER_1"
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentHvAir
+	text = { #vissit 
+		trigger = {
+			has_country_flag = show_number
+		}
+		localization_key = "HVAIR_NUMBER_1"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = show_number }
+		}
+		localization_key = "HVAIR_MODIFIER_1"
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentShipyard
+	text = { #vissit 
+		trigger = {
+			has_country_flag = show_number
+		}
+		localization_key = "SHIPYARD_NUMBER_1"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = show_number }
+		}
+		localization_key = "SHIPYARD_MODIFIER_1"
+	}
+}
+
+
+defined_text = { # Country
+	name = GetCurrentSubyard
+	text = { #vissit 
+		trigger = {
+			has_country_flag = show_number
+		}
+		localization_key = "SUBYARD_NUMBER_1"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = show_number }
+		}
+		localization_key = "SUBYARD_MODIFIER_1"
+	}
+}
+
+
+defined_text = { # Country
+	name = GetUniformNumber
+	text = {
+		trigger = {
+			NOT = {
+				has_idea = uniformfactory1
+				has_idea = uniformfactory2
+				has_idea = uniformfactory3
+				has_idea = uniformfactory4
+				has_idea = uniformfactory5
+				has_idea = uniformfactory6
+				has_idea = uniformfactory7
+				has_idea = uniformfactory8
+				has_idea = uniformfactory9
+				has_idea = uniformfactory10
+				has_idea = uniformfactory11
+				has_idea = uniformfactory12
+				has_idea = uniformfactory13
+				has_idea = uniformfactory14
+				has_idea = uniformfactory15
+				has_idea = uniformfactory16
+				has_idea = uniformfactory17
+				has_idea = uniformfactory18
+				has_idea = uniformfactory19
+				has_idea = uniformfactory20
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory1
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory2
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory3
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory4
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory5
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory6
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory7
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory8
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory9
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory10
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory11
+		}
+		localization_key = "11"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory12
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory13
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory14
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory15
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory16
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory17
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory18
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory19
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			has_idea = uniformfactory20
+		}
+		localization_key = "20"
+	}
+}
+
+defined_text = { # Country
+	name = GetJetAirNumber
+	text = {
+		trigger = {
+			NOT = {
+				has_idea = jetaircraftfactory1
+				has_idea = jetaircraftfactory2
+				has_idea = jetaircraftfactory3
+				has_idea = jetaircraftfactory4
+				has_idea = jetaircraftfactory5
+				has_idea = jetaircraftfactory6
+				has_idea = jetaircraftfactory7
+				has_idea = jetaircraftfactory8
+				has_idea = jetaircraftfactory9
+				has_idea = jetaircraftfactory10
+				has_idea = jetaircraftfactory11
+				has_idea = jetaircraftfactory12
+				has_idea = jetaircraftfactory13
+				has_idea = jetaircraftfactory14
+				has_idea = jetaircraftfactory15
+				has_idea = jetaircraftfactory16
+				has_idea = jetaircraftfactory17
+				has_idea = jetaircraftfactory18
+				has_idea = jetaircraftfactory19
+				has_idea = jetaircraftfactory20
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory1
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory2
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory3
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory4
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory5
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory6
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory7
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory8
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory9
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory10
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory11
+		}
+		localization_key = "11"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory12
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory13
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory14
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory15
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory16
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory17
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory18
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory19
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			has_idea = jetaircraftfactory20
+		}
+		localization_key = "20"
+	}
+}
+
+defined_text = { # Country
+	name = GetTankNumber
+	text = {
+		trigger = {
+			NOT = {
+				has_idea = tankfactory1
+				has_idea = tankfactory2
+				has_idea = tankfactory3
+				has_idea = tankfactory4
+				has_idea = tankfactory5
+				has_idea = tankfactory6
+				has_idea = tankfactory7
+				has_idea = tankfactory8
+				has_idea = tankfactory9
+				has_idea = tankfactory10
+				has_idea = tankfactory11
+				has_idea = tankfactory12
+				has_idea = tankfactory13
+				has_idea = tankfactory14
+				has_idea = tankfactory15
+				has_idea = tankfactory16
+				has_idea = tankfactory17
+				has_idea = tankfactory18
+				has_idea = tankfactory19
+				has_idea = tankfactory20
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory1
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory2
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory3
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory4
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory5
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory6
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory7
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory8
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory9
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory10
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory11
+		}
+		localization_key = "11"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory12
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory13
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory14
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory15
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory16
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory17
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory18
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory19
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			has_idea = tankfactory20
+		}
+		localization_key = "20"
+	}
+}
+
+defined_text = { # Country
+	name = GetTruckNumber
+	text = {
+		trigger = {
+			NOT = {
+				has_idea = truckfactory1
+				has_idea = truckfactory2
+				has_idea = truckfactory3
+				has_idea = truckfactory4
+				has_idea = truckfactory5
+				has_idea = truckfactory6
+				has_idea = truckfactory7
+				has_idea = truckfactory8
+				has_idea = truckfactory9
+				has_idea = truckfactory10
+				has_idea = truckfactory11
+				has_idea = truckfactory12
+				has_idea = truckfactory13
+				has_idea = truckfactory14
+				has_idea = truckfactory15
+				has_idea = truckfactory16
+				has_idea = truckfactory17
+				has_idea = truckfactory18
+				has_idea = truckfactory19
+				has_idea = truckfactory20
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory1
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory2
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory3
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory4
+		}
+		localization_key = "6.84"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory5
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory6
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory7
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory8
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory9
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory10
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory11
+		}
+		localization_key = "11"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory12
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory13
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory14
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory15
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory16
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory17
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory18
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory19
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			has_idea = truckfactory20
+		}
+		localization_key = "20"
+	}
+}
+
+defined_text = { # Country
+	name = GetArtilleryNumber
+	text = {
+		trigger = {
+			NOT = {
+				has_idea = artilleryfactory1
+				has_idea = artilleryfactory2
+				has_idea = artilleryfactory3
+				has_idea = artilleryfactory4
+				has_idea = artilleryfactory5
+				has_idea = artilleryfactory6
+				has_idea = artilleryfactory7
+				has_idea = artilleryfactory8
+				has_idea = artilleryfactory9
+				has_idea = artilleryfactory10
+				has_idea = artilleryfactory11
+				has_idea = artilleryfactory12
+				has_idea = artilleryfactory13
+				has_idea = artilleryfactory14
+				has_idea = artilleryfactory15
+				has_idea = artilleryfactory16
+				has_idea = artilleryfactory17
+				has_idea = artilleryfactory18
+				has_idea = artilleryfactory19
+				has_idea = artilleryfactory20
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory1
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory2
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory3
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory4
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory5
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory6
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory7
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory8
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory9
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory10
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory11
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory12
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory13
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory14
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory15
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory16
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory17
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory18
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory19
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			has_idea = artilleryfactory20
+		}
+		localization_key = "20"
+	}
+}
+
+defined_text = { # Country
+	name = GetSmallArmsNumber
+	text = {
+		trigger = {
+			NOT = {
+				has_idea = smallarmsfactory1
+				has_idea = smallarmsfactory2
+				has_idea = smallarmsfactory3
+				has_idea = smallarmsfactory4
+				has_idea = smallarmsfactory5
+				has_idea = smallarmsfactory6
+				has_idea = smallarmsfactory7
+				has_idea = smallarmsfactory8
+				has_idea = smallarmsfactory9
+				has_idea = smallarmsfactory10
+				has_idea = smallarmsfactory11
+				has_idea = smallarmsfactory12
+				has_idea = smallarmsfactory13
+				has_idea = smallarmsfactory14
+				has_idea = smallarmsfactory15
+				has_idea = smallarmsfactory16
+				has_idea = smallarmsfactory17
+				has_idea = smallarmsfactory18
+				has_idea = smallarmsfactory19
+				has_idea = smallarmsfactory20
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory1
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory2
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory3
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory4
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory5
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory6
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory7
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory8
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory9
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory10
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory11
+		}
+		localization_key = "11"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory12
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory13
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory14
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory15
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory16
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory17
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory18
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory19
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			has_idea = smallarmsfactory20
+		}
+		localization_key = "20"
+	}
+}
+
+defined_text = { # Country
+	name = GetLtAirNumber
+	text = {
+		trigger = {
+			NOT = {
+				has_idea = ltaircraftfactory1
+				has_idea = ltaircraftfactory2
+				has_idea = ltaircraftfactory3
+				has_idea = ltaircraftfactory4
+				has_idea = ltaircraftfactory5
+				has_idea = ltaircraftfactory6
+				has_idea = ltaircraftfactory7
+				has_idea = ltaircraftfactory8
+				has_idea = ltaircraftfactory9
+				has_idea = ltaircraftfactory10
+				has_idea = ltaircraftfactory11
+				has_idea = ltaircraftfactory12
+				has_idea = ltaircraftfactory13
+				has_idea = ltaircraftfactory14
+				has_idea = ltaircraftfactory15
+				has_idea = ltaircraftfactory16
+				has_idea = ltaircraftfactory17
+				has_idea = ltaircraftfactory18
+				has_idea = ltaircraftfactory19
+				has_idea = ltaircraftfactory20
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory1
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory2
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory3
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory4
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory5
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory6
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory7
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory8
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory9
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory10
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory11
+		}
+		localization_key = "11"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory12
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory13
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory14
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory15
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory16
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory17
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory18
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory19
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			has_idea = ltaircraftfactory20
+		}
+		localization_key = "20"
+	}
+}
+
+defined_text = { # Country
+	name = GetHvAirNumber
+	text = {
+		trigger = {
+			NOT = {
+				has_idea = hvaircraftfactory1
+				has_idea = hvaircraftfactory2
+				has_idea = hvaircraftfactory3
+				has_idea = hvaircraftfactory4
+				has_idea = hvaircraftfactory5
+				has_idea = hvaircraftfactory6
+				has_idea = hvaircraftfactory7
+				has_idea = hvaircraftfactory8
+				has_idea = hvaircraftfactory9
+				has_idea = hvaircraftfactory10
+				has_idea = hvaircraftfactory11
+				has_idea = hvaircraftfactory12
+				has_idea = hvaircraftfactory13
+				has_idea = hvaircraftfactory14
+				has_idea = hvaircraftfactory15
+				has_idea = hvaircraftfactory16
+				has_idea = hvaircraftfactory17
+				has_idea = hvaircraftfactory18
+				has_idea = hvaircraftfactory19
+				has_idea = hvaircraftfactory20
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory1
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory2
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory3
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory4
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory5
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory6
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory7
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory8
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory9
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory10
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory11
+		}
+		localization_key = "11"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory12
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory13
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory14
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory15
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory16
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory17
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory18
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory19
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			has_idea = hvaircraftfactory20
+		}
+		localization_key = "20"
+	}
+}
+
+defined_text = { # Country
+	name = GetShipyardNumber
+	text = {
+		trigger = {
+			NOT = {
+				has_idea = shipyardfactory1
+				has_idea = shipyardfactory2
+				has_idea = shipyardfactory3
+				has_idea = shipyardfactory4
+				has_idea = shipyardfactory5
+				has_idea = shipyardfactory6
+				has_idea = shipyardfactory7
+				has_idea = shipyardfactory8
+				has_idea = shipyardfactory9
+				has_idea = shipyardfactory10
+				has_idea = shipyardfactory11
+				has_idea = shipyardfactory12
+				has_idea = shipyardfactory13
+				has_idea = shipyardfactory14
+				has_idea = shipyardfactory15
+				has_idea = shipyardfactory16
+				has_idea = shipyardfactory17
+				has_idea = shipyardfactory18
+				has_idea = shipyardfactory19
+				has_idea = shipyardfactory20
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory1
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory2
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory3
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory4
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory5
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory6
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory7
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory8
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory9
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory10
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory11
+		}
+		localization_key = "11"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory12
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory13
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory14
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory15
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory16
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory17
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory18
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory19
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			has_idea = shipyardfactory20
+		}
+		localization_key = "20"
+	}
+}
+
+defined_text = { # Country
+	name = GetSubyardNumber
+	text = {
+		trigger = {
+			NOT = {
+				has_idea = subyardfactory1
+				has_idea = subyardfactory2
+				has_idea = subyardfactory3
+				has_idea = subyardfactory4
+				has_idea = subyardfactory5
+				has_idea = subyardfactory6
+				has_idea = subyardfactory7
+				has_idea = subyardfactory8
+				has_idea = subyardfactory9
+				has_idea = subyardfactory10
+				has_idea = subyardfactory11
+				has_idea = subyardfactory12
+				has_idea = subyardfactory13
+				has_idea = subyardfactory14
+				has_idea = subyardfactory15
+				has_idea = subyardfactory16
+				has_idea = subyardfactory17
+				has_idea = subyardfactory18
+				has_idea = subyardfactory19
+				has_idea = subyardfactory20
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory1
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory2
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory3
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory4
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory5
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory6
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory7
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory8
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory9
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory10
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory11
+		}
+		localization_key = "11"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory12
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory13
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory14
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory15
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory16
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory17
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory18
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory19
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			has_idea = subyardfactory20
+		}
+		localization_key = "20"
+	}
+}
+
+defined_text = { # Country
+	name = GetGovernmentFilter
+	text = {
+		trigger = {
+			check_variable = { Government_filter = 1 }
+		}
+		localization_key = "Fascist Countries"
+	}
+	text = {
+		trigger = {
+			check_variable = { Government_filter = 2 }
+		}
+		localization_key = "Communist Countries"
+	}
+	text = {
+		trigger = {
+			check_variable = { Government_filter = 3 }
+		}
+		localization_key = "Conservatist Countries"
+	}
+	text = {
+		trigger = {
+			check_variable = { Government_filter = 4 }
+		}
+		localization_key = "Liberalist Countries"
+	}
+	text = {
+		trigger = {
+			check_variable = { Government_filter = 5 }
+		}
+		localization_key = "Socialist Countries"
+	}
+	text = {
+		trigger = {
+			check_variable = { Government_filter = 6 }
+		}
+		localization_key = "Monarchist Countries"
+	}
+	text = {
+		trigger = {
+			check_variable = { Government_filter = 7 }
+		}
+		localization_key = "Neutral Countries"
+	}
+}
+
+defined_text = {
+	name = GetRubberLoc1
+	text = {
+		trigger = {
+			OR = { 
+				has_country_flag = use_up_rubber
+				check_variable = { rubber_storage = rubber_storage_cap }
+				check_variable = { resource@rubber < 1 }
+			}
+		}
+		localization_key = "/"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_rubber }
+		}
+		localization_key = "[?resource@rubber]"
+	}
+}
+
+defined_text = {
+	name = GetRubberLoc2
+	text = {
+		trigger = {
+			has_country_flag = use_up_rubber
+		}
+		localization_key = "[?rubber_output]"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_rubber }
+		}
+		localization_key = "/"
+	}
+}
+
+defined_text = {
+	name = GetAluminiumLoc1
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = use_up_aluminium
+				check_variable = { aluminium_storage = aluminium_storage_cap }
+				check_variable = { resource@aluminium < 1 }
+			}
+		}
+		localization_key = "/"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_aluminium }
+		}
+		localization_key = "[?resource@aluminium]"
+	}
+}
+
+defined_text = {
+	name = GetAluminiumLoc2
+	text = {
+		trigger = {
+			has_country_flag = use_up_aluminium
+		}
+		localization_key = "[?aluminium_output]"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_aluminium }
+		}
+		localization_key = "/"
+	}
+}
+
+defined_text = {
+	name = GetChromiumLoc1
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = use_up_chromium
+				check_variable = { chromium_storage = chromium_storage_cap }
+				check_variable = { resource@chromium < 1 }
+			}
+		}
+		localization_key = "/"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_chromium }
+		}
+		localization_key = "[?resource@chromium]"
+	}
+}
+
+defined_text = {
+	name = GetChromiumLoc2
+	text = {
+		trigger = {
+			has_country_flag = use_up_chromium
+		}
+		localization_key = "[?chromium_output]"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_chromium }
+		}
+		localization_key = "/"
+	}
+}
+
+defined_text = {
+	name = GetTungstenLoc1
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = use_up_tungsten
+				check_variable = { tungsten_storage = tungsten_storage_cap }
+				check_variable = { resource@tungsten < 1 }
+			}
+		}
+		localization_key = "/"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_tungsten }
+		}
+		localization_key = "[?resource@tungsten]"
+	}
+}
+
+defined_text = {
+	name = GetTungstenLoc2
+	text = {
+		trigger = {
+			OR = {
+				
+				check_variable = { tungsten_output > 0 }
+			}
+		}
+		localization_key = "[?tungsten_output]"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_chromium }
+		}
+		localization_key = "/"
+	}
+}
+
+
+defined_text = {
+	name = GetSteelLoc1
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = use_up_steel
+				check_variable = { steel_storage = steel_storage_cap }
+				check_variable = { resource@steel < 1 }
+			}
+		}
+		localization_key = "/"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_steel }
+		}
+		localization_key = "[?resource@steel]"
+	}
+}
+
+defined_text = {
+	name = GetSteelLoc2
+	text = {
+		trigger = {
+			has_country_flag = use_up_steel
+		}
+		localization_key = "[?steel_output]"
+	}
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_steel }
+		}
+		localization_key = "/"
+	}
+}
+
+defined_text = {
+	name = GetMaxSpecialFactorySlots
+
+	text = {
+		trigger = {
+			FROM.FROM = {
+				is_coastal = yes
+			}
+		}
+		localization_key = "40"
+	}
+	text = {
+		trigger = {
+			FROM.FROM = {
+				is_coastal = no
+			}
+		}
+		localization_key = "32"
+	}
+}
+
+defined_text = {
+	name = GetResearchCentreLoss
+
+	text = {
+		trigger = {
+			check_variable = { research_centre_lost > 0 }
+		}
+		localization_key = CENTRE_OCC_TT
+	}
+}
+
+defined_text = {
+	name = GetResearchCentre1
+	text = {
+		trigger = {
+			has_variable = research_state_1
+		}
+		localization_key = "[?research_state_1.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre1
+	text = {
+		trigger = {
+			has_variable = research_state_1
+		}
+		localization_key = "[?research_state_1.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre1
+	text = {
+		trigger = {
+			has_variable = research_state_1
+		}
+		localization_key = "[?research_state_1.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre1
+	text = {
+		trigger = {
+			has_variable = research_state_1
+		}
+		localization_key = "[?research_state_1.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre2
+	text = {
+		trigger = {
+			has_variable = research_state_2
+		}
+		localization_key = "[?research_state_2.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre3
+	text = {
+		trigger = {
+			has_variable = research_state_3
+		}
+		localization_key = "[?research_state_3.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre4
+	text = {
+		trigger = {
+			has_variable = research_state_4
+		}
+		localization_key = "[?research_state_4.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre5
+	text = {
+		trigger = {
+			has_variable = research_state_5
+		}
+		localization_key = "[?research_state_5.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre6
+	text = {
+		trigger = {
+			has_variable = research_state_6
+		}
+		localization_key = "[?research_state_6.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre7
+	text = {
+		trigger = {
+			has_variable = research_state_7
+		}
+		localization_key = "[?research_state_7.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre8
+	text = {
+		trigger = {
+			has_variable = research_state_8
+		}
+		localization_key = "[?research_state_8.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre9
+	text = {
+		trigger = {
+			has_variable = research_state_9
+		}
+		localization_key = "[?research_state_9.GetName]"
+	}
+}
+defined_text = {
+	name = GetResearchCentre10
+	text = {
+		trigger = {
+			has_variable = research_state_10
+		}
+		localization_key = "[?research_state_10.GetName]"
+	}
+}
+
+defined_text = {
+	name = GetCasualtiesAmount
+	text = {
+		trigger = {
+			casualties < 100000
+		}
+		localization_key = "[?casualties]"
+	}
+	text = {
+		trigger = {
+			casualties > 100000
+		}
+		localization_key = "[?casualties_k|0]K"
+	}
+	text = {
+		trigger = {
+			casualties > 1000000
+			set_temp_variable = { casualties_k_k = casualties_k }
+			divide_temp_variable = { casualties_k_k = 1000 }
+		}
+		localization_key = "[?casualties_k_k|2]M"
+	}
+}
+defined_text = {
+	name = GetRecentBomb 
+	text = {
+		trigger = {
+			check_variable = { days_since_last_strategic_bombing < 1 }
+		}
+		localization_key = BOMB_TT_1
+	}
+	text = {
+		trigger = {
+			check_variable = { days_since_last_strategic_bombing > 1 }
+		}
+		localization_key = BOMB_TT_2
+	}
+}
+
+defined_text = {
+	name = GetTankTT
+	text = {
+		trigger = {
+			check_variable = { Tank_Buildings > 0 }
+		}
+		localization_key = TANK_TT
+	}
+}
+defined_text = {
+	name = GetTruckTT
+	text = {
+		trigger = {
+			check_variable = { Truck_Buildings > 0 }
+		}
+		localization_key = TRUCK_TT
+	}
+}
+defined_text = {
+	name = GetArtyTT
+	text = {
+		trigger = {
+			check_variable = { Artillery_Buildings > 0 }
+		}
+		localization_key = ARTY_TT
+	}
+}
+defined_text = {
+	name = GetSmallarmsTT
+	text = {
+		trigger = {
+			check_variable = { Small_Arms_Buildings > 0 }
+		}
+		localization_key = SMALLARMS_TT
+	}
+}
+defined_text = {
+	name = GetJetAirTT
+	text = {
+		trigger = {
+			check_variable = { Jetaircraft_Buildings > 0 }
+		}
+		localization_key = JETAIR_TT
+	}
+}
+defined_text = {
+	name = GetUniformTT
+	text = {
+		trigger = {
+			check_variable = { Uniform_Buildings > 0 }
+		}
+		localization_key = UNIFORM_TT
+	}
+}
+defined_text = {
+	name = GetLtAirTT
+	text = {
+		trigger = {
+			check_variable = { Ltaircraft_Buildings > 0 }
+		}
+		localization_key = LTAIR_TT
+	}
+}
+defined_text = {
+	name = GetHvAirTT
+	text = {
+		trigger = {
+			check_variable = { Hvaircraft_Buildings > 0 }
+		}
+		localization_key = HVAIR_TT
+	}
+}
+defined_text = {
+	name = GetShipTT
+	text = {
+		trigger = {
+			check_variable = { Shipyard_Buildings > 0 }
+		}
+		localization_key = SHIPYARD_TT
+	}
+}
+defined_text = {
+	name = GetSubTT
+	text = {
+		trigger = {
+			check_variable = { subyard_Buildings > 0 }
+		}
+		localization_key = SUBYARD_TT
+	}
+}
+
+defined_text = {
+	name = GetWarPeace
+	text = {
+		trigger = {
+			has_war = no
+		}
+		localization_key = "At Peace"
+	}
+	text = {
+		trigger = {
+			has_war = yes
+		}
+		localization_key = "At War"
+	}
+}
+
+defined_text = { 
+	name = GetFreeCIC
+	text = {
+		trigger = {
+			num_of_available_civilian_factories > 0 
+		}
+		localization_key = CIC_FREE
+	}
+}
+defined_text = { 
+	name = GetUsedCIC
+	text = {
+		trigger = {
+			check_variable = { Root.modifier@consumer_goods_factor > 0 }
+		}
+		localization_key = CIC_CONS
+	}
+}
+defined_text = { 
+	name = GetFreeNIC
+	text = {
+		trigger = {
+			num_of_available_naval_factories > 0 
+		}
+		localization_key = NIC_FREE
+	}
+}
+defined_text = { 
+	name = GetFreeMIC
+	text = {
+		trigger = {
+			num_of_available_military_factories > 0 
+		}
+		localization_key = MIC_FREE
+	}
+}
+defined_text = { 
+	name = GetEquipFacTT
+	text = {
+		trigger = {
+			check_variable = { country_specialy > 0 }
+		}
+		localization_key = EQUIP_FAC_TT
+	}
+}
+
+defined_text = { 
+	name = GetMapModeFilter
+	text = {
+		trigger = {
+			check_variable = { mapmode_filter = 0 }
+		}
+		localization_key = "Stability"
+	}
+	text = {
+		trigger = {
+			check_variable = { mapmode_filter = 1 }
+		}
+		localization_key = "War Support"
+	}
+	text = {
+		trigger = {
+			check_variable = { mapmode_filter = 2 }
+		}
+		localization_key = "Surrender Level"
+	}
+	text = {
+		trigger = {
+			check_variable = { mapmode_filter = 3 }
+		}
+		localization_key = "Consumer Goods"
+	}
+	text = {
+		trigger = {
+			check_variable = { mapmode_filter = 4 }
+		}
+		localization_key = "Surrender Limit"
+	}
+}
+
+defined_text = { 
+	name = GetRubberStatus
+	text = {
+		trigger = {
+			check_variable = { rubber_output = 0 }
+		}
+		localization_key = "RUBBER_TOP_TT_1"
+	}
+	text = {
+		trigger = {
+			check_variable = { rubber_output > 0 }
+		}
+		localization_key = "RUBBER_TOP_TT_2"
+	}
+}
+
+defined_text = { 
+	name = GetTungstenStatus
+	text = {
+		trigger = {
+			check_variable = { tungsten_output = 0 }
+		}
+		localization_key = "TUNGSTEN_TOP_TT_1"
+	}
+	text = {
+		trigger = {
+			check_variable = { tungsten_output > 0 }
+		}
+		localization_key = "TUNGSTEN_TOP_TT_2"
+	}
+}
+
+defined_text = { 
+	name = GetChromiumStatus
+	text = {
+		trigger = {
+			check_variable = { chromium_output = 0 }
+		}
+		localization_key = "CHROMIUM_TOP_TT_1"
+	}
+	text = {
+		trigger = {
+			check_variable = { chromium_output > 0 }
+		}
+		localization_key = "CHROMIUM_TOP_TT_2"
+	}
+}
+
+defined_text = { 
+	name = GetAluminiumStatus
+	text = {
+		trigger = {
+			check_variable = { aluminium_output = 0 }
+		}
+		localization_key = "ALUMINIUM_TOP_TT_1"
+	}
+	text = {
+		trigger = {
+			check_variable = { aluminium_output > 0 }
+		}
+		localization_key = "ALUMINIUM_TOP_TT_2"
+	}
+}
+
+defined_text = { 
+	name = GetSteelStatus
+	text = {
+		trigger = {
+			check_variable = { steel_output = 0 }
+		}
+		localization_key = "STEEL_TOP_TT_1"
+	}
+	text = {
+		trigger = {
+			check_variable = { steel_output > 0 }
+		}
+		localization_key = "STEEL_TOP_TT_2"
+	}
+}
+
+
+defined_text = { 
+	name = GetRubberStorageState
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_rubber }
+		}
+		localization_key = "rubber_storage_active"
+	}
+	text = {
+		trigger = {
+			has_country_flag = use_up_rubber
+		}
+		localization_key = "rubber_storage_inactive"
+	}
+}
+defined_text = { 
+	name = GetAluminiumStorageState
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_aluminium }
+		}
+		localization_key = "aluminium_storage_active"
+	}
+	text = {
+		trigger = {
+			has_country_flag = use_up_aluminium
+		}
+		localization_key = "aluminium_storage_inactive"
+	}
+}
+defined_text = { 
+	name = GetSteelStorageState
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_steel }
+		}
+		localization_key = "steel_storage_active"
+	}
+	text = {
+		trigger = {
+			has_country_flag = use_up_steel
+		}
+		localization_key = "steel_storage_inactive"
+	}
+}
+defined_text = { 
+	name = GetChromiumStorageState
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_chromium }
+		}
+		localization_key = "chromium_storage_active"
+	}
+	text = {
+		trigger = {
+			has_country_flag = use_up_chromium
+		}
+		localization_key = "chromium_storage_inactive"
+	}
+}
+defined_text = { 
+	name = GetTungstenStorageState
+	text = {
+		trigger = {
+			NOT = { has_country_flag = use_up_tungsten }
+		}
+		localization_key = "tungsten_storage_active"
+	}
+	text = {
+		trigger = {
+			has_country_flag = use_up_tungsten
+		}
+		localization_key = "tungsten_storage_inactive"
+	}
+}
+
+defined_text = {  
+	name = GetUnitLeaderLvlUp
+	text = { 
+		trigger = {
+			FROM = {
+				has_unit_leader_flag = defence_skill
+				has_unit_leader_flag = planning_skill
+				has_unit_leader_flag = supply_skill
+			}
+		}
+		localization_key = "Defense, Planning and Logistics"
+	}
+	text = {
+		trigger = {
+			FROM = {
+				has_unit_leader_flag = attack_skill
+				has_unit_leader_flag = planning_skill
+				has_unit_leader_flag = supply_skill
+			}
+		}
+		localization_key = "Attack, Planning and Logistics"
+	}
+	text = {
+		trigger = {
+			FROM = {
+				has_unit_leader_flag = attack_skill
+				has_unit_leader_flag = defence_skill
+				has_unit_leader_flag = supply_skill
+			}
+		}
+		localization_key = "Attack, Defense and Logistics"
+	}
+	text = {
+		trigger = {
+			FROM = {
+				has_unit_leader_flag = attack_skill
+				has_unit_leader_flag = defence_skill
+				has_unit_leader_flag = planning_skill
+			}
+		}
+		localization_key = "Attack, Defense and Planning"
+	}
+}
+
+defined_text = {  
+	name = GetGeneralTraitAverage
+	text = {
+		trigger = {
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 1.5
+				compare = less_than_or_equals
+			}
+		}
+		localization_key = "Commander Average : Mindless"
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 1.5
+				compare = greater_than_or_equals
+			}
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 2.5
+				compare = less_than_or_equals
+			}
+		}
+		localization_key = "Commander Average : Incompetent"
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 2.5
+				compare = greater_than_or_equals
+			}
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 3.5
+				compare = less_than_or_equals
+			}
+		}
+		localization_key = "Commander Average : Terrible"
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 3.5
+				compare = greater_than_or_equals
+			}
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 4.5
+				compare = less_than_or_equals
+			}
+		}
+		localization_key = "Commander Average : Bad"
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 4.5
+				compare = greater_than_or_equals
+			}
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 5.5
+				compare = less_than_or_equals
+			}
+		}
+		localization_key = "Commander Average : Decent"
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 5.5
+				compare = greater_than_or_equals
+			}
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 6.5
+				compare = less_than_or_equals
+			}
+		}
+		localization_key = "Commander Average : Competent"
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 6.5
+				compare = greater_than_or_equals
+			}
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 7.5
+				compare = less_than_or_equals
+			}
+		}
+		localization_key = "Commander Average : Awesome"
+	}
+	text = {
+		trigger = {
+			check_variable = { 
+				var = unit_leader_average_trait_level 
+				value = 7.5
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = "Commander Average : Masterful"
+	}
+}
+
+
+defined_text = { 
+	name = GetUnitLeaderPersonalityTrait
+	text = {
+		trigger = {
+			has_trait = Mindless_General
+		}
+		localization_key = "Mindless General"
+	}
+	text = {
+		trigger = {
+			has_trait = Incompetent_General
+		}
+		localization_key = "Incompetent General"
+	}
+	text = {
+		trigger = {
+			has_trait = Terrible_General
+		}
+		localization_key = "Terrible General"
+	}
+	text = {
+		trigger = {
+			has_trait = Bad_General
+		}
+		localization_key = "Bad General"
+	}
+	text = {
+		trigger = {
+			has_trait = Decent_General
+		}
+		localization_key = "Decent General"
+	}
+	text = {
+		trigger = {
+			has_trait = Competent_General
+		}
+		localization_key = "Competent General"
+	}
+	text = {
+		trigger = {
+			has_trait = Awesome_General
+		}
+		localization_key = "Awesome General"
+	}
+	text = {
+		trigger = {
+			has_trait = Masterful_General
+		}
+		localization_key = "Masterful General"
+	}
+	text = {
+		trigger = {
+			has_trait = Genius_General
+		}
+		localization_key = "Genius General"
+	}
+}
+
+defined_text = { 
+	name = GetRecentLandAcquisition
+	text = {
+		trigger = {
+			check_variable = { #< 50
+				var = recent_major_land_acquisition 
+				value = 50
+				compare = less_than_or_equals
+			}
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			check_variable = { #< 100
+				var = recent_major_land_acquisition 
+				value = 100
+				compare = less_than_or_equals
+			}
+			check_variable = { #> 50
+				var = recent_major_land_acquisition 
+				value = 50
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			check_variable = { #< 150
+				var = recent_major_land_acquisition 
+				value = 150
+				compare = less_than_or_equals
+			}
+			check_variable = { #> 100
+				var = recent_major_land_acquisition 
+				value = 100
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			check_variable = { #> 150
+				var = recent_major_land_acquisition 
+				value = 150
+				compare = greater_than_or_equals
+			}
+			check_variable = { #< 200
+				var = recent_major_land_acquisition 
+				value = 200
+				compare = less_than_or_equals
+			}
+		}
+		localization_key = "1"
+	}
+}
+#CONSTRUCTION
+
+
+defined_text = { 
+	name = GetConstructionLineBuilding
+	text = {
+		trigger = {
+			has_state_flag = infrastructure
+		}
+		localization_key = "Infrastructure"
+	}
+	text = {
+		trigger = {
+			has_state_flag = civilian_factory
+		}
+		localization_key = "Civilian Factory"
+	}
+	text = {
+		trigger = {
+			has_state_flag = military_factory
+		}
+		localization_key = "Military Factory"
+	}
+}
+
+defined_text = { 
+	name = GetConstructionLineBuildingAmount
+	text = {
+		trigger = {
+			
+		}
+		localization_key = ""
+	}
+	text = {
+		trigger = {
+			has_state_flag = military_factory
+		}
+		localization_key = ""
+	}
+}
+
+
+defined_text = { 
+	name = GetFreeBuildingSlots
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 1
+				include_locked = no
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 2 
+				include_locked = no
+			}
+		}
+		localization_key = "1"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 3
+				include_locked = no
+			}
+		}
+		localization_key = "2"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 4
+				include_locked = no
+			}
+		}
+		localization_key = "3"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 5
+				include_locked = no
+			}
+		}
+		localization_key = "4"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 6
+				include_locked = no
+			}
+		}
+		localization_key = "5"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 7
+				include_locked = no
+			}
+		}
+		localization_key = "6"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 8
+				include_locked = no
+			}
+		}
+		localization_key = "7"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 9
+				include_locked = no
+			}
+		}
+		localization_key = "8"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 10
+				include_locked = no
+			}
+		}
+		localization_key = "9"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 11
+				include_locked = no
+			}
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 12
+				include_locked = no
+			}
+		}
+		localization_key = "11"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 13
+				include_locked = no
+			}
+		}
+		localization_key = "12"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 14
+				include_locked = no
+			}
+		}
+		localization_key = "13"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 15
+				include_locked = no
+			}
+		}
+		localization_key = "14"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 16
+				include_locked = no
+			}
+		}
+		localization_key = "15"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 17
+				include_locked = no
+			}
+		}
+		localization_key = "16"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 18
+				include_locked = no
+			}
+		}
+		localization_key = "17"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 19
+				include_locked = no
+			}
+		}
+		localization_key = "18"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 20
+				include_locked = no
+			}
+		}
+		localization_key = "19"
+	}
+	text = {
+		trigger = {
+			free_building_slots = {
+				building = dummy_1
+				size < 21
+				include_locked = no
+			}
+		}
+		localization_key = "20"
+	}
+}
+
+
+defined_text = { 
+	name = GetSpecialTopbar
+	text = {
+		trigger = {
+			check_variable = { num_specialised > special_forces_cap_TT }
+		}
+		localization_key = "[?special_forces_cap_TT|0R]"
+	}
+	text = {
+		localization_key = "[?special_forces_cap_TT|0]"
+	}
+}
+defined_text = { 
+	name = GetSpecialForcesComp
+	text = {
+		trigger = {
+			check_variable = { num_specialised > 0 }
+		}
+		localization_key = "SPECIAL_FORCES_COMP"
+	}
+}
+defined_text = { 
+	name = GetSpecialForcesOverLimit
+	text = {
+		trigger = {
+			check_variable = { num_specialised > special_forces_cap_TT }
+		}
+		localization_key = "SPECIAL_FORCES_OVER_LIMIT"
+	}
+	text = {
+		localization_key = "特种部队:"
+	}
+}
+defined_text = { 
+	name = GetSpecialForcesOverLimitDebuff
+	text = {
+		trigger = {
+			check_variable = { num_specialised > special_forces_cap_TT }
+		}
+		localization_key = "([?num_specialised_over_limit|R%1])"
+	}
+}
+defined_text = { 
+	name = GetSpecialForcesOverLimitTrainingDebuff
+	text = {
+		trigger = {
+			check_variable = { num_specialised > special_forces_cap_TT }
+		}
+		localization_key = "([?special_forces_training_debuff|R%1])"
+	}
+}
+defined_text = { 
+	name = GetMountaineerSF
+	text = {
+		trigger = {
+			check_variable = { num_battalions_with_type@mountaineers > 0 }
+		}
+		localization_key = "SPECIAL_FORCES_MOUNTAINEER"
+	}
+}
+defined_text = { 
+	name = GetMountSupportSF
+	text = {
+		trigger = {
+			check_variable = { num_battalions_with_type@mount_support > 0 }
+		}
+		localization_key = "SPECIAL_FORCES_MOUNT_SUPPORT"
+	}
+}
+
+defined_text = { 
+	name = GetMarineSF
+	text = {
+		trigger = {
+			check_variable = { num_battalions_with_type@marine > 0 }
+		}
+		localization_key = "SPECIAL_FORCES_MARINES"
+	}
+}
+defined_text = { 
+	name = GetAmphMechSF
+	text = {
+		trigger = {
+			check_variable = { num_battalions_with_type@amphibious_mechanized > 0 }
+		}
+		localization_key = "SPECIAL_FORCES_AMPH_MECH"
+	}
+}
+defined_text = { 
+	name = GetAmphMechUSSF
+	text = {
+		trigger = {
+			check_variable = { num_battalions_with_type@american_amph_lv > 0 }
+		}
+		localization_key = "SPECIAL_FORCES_AMPH_MECH_US"
+	}
+}
+defined_text = { 
+	name = GetAmphSupportSF
+	text = {
+		trigger = {
+			check_variable = { num_battalions_with_type@amph_support > 0 }
+		}
+		localization_key = "SPECIAL_FORCES_AMPH_SUPPORT"
+	}
+}
+
+defined_text = { 
+	name = GetParatrooperSF
+	text = {
+		trigger = {
+			check_variable = { num_battalions_with_type@paratrooper > 0 }
+		}
+		localization_key = "SPECIAL_FORCES_PARATROOPER"
+	}
+}
+defined_text = { 
+	name = GetParaSupportSF
+	text = {
+		trigger = {
+			check_variable = { num_battalions_with_type@para_support > 0 }
+		}
+		localization_key = "SPECIAL_FORCES_PARA_SUPPORT"
+	}
+}
+
+defined_text = { 
+	name = GetCommandoSF
+	text = {
+		trigger = {
+			check_variable = { num_battalions_with_type@commando > 0 }
+		}
+		localization_key = "SPECIAL_FORCES_COMMANDO"
+	}
+}
+
+defined_text = { 
+	name = SFmodifier1
+	text = {
+		trigger = {
+			NOT = { check_variable = { modifier@modifier_army_sub_unit_category_special_forces_attack_factor = 0 } }
+		}
+		localization_key = "SPECIAL_FORCES_MODIFIER_1"
+	}
+}
+defined_text = { 
+	name = SFmodifier2
+	text = {
+		trigger = {
+			NOT = { check_variable = { modifier@modifier_army_sub_unit_category_special_forces_defence_factor = 0 } }
+		}
+		localization_key = "SPECIAL_FORCES_MODIFIER_2"
+	}
+}
+defined_text = { 
+	name = SFmodifier3
+	text = {
+		trigger = {
+			NOT = { check_variable = { modifier@special_forces_training_time_factor = 0 } }
+		}
+		localization_key = "SPECIAL_FORCES_MODIFIER_3"
+	}
+}
+defined_text = { 
+	name = SFmodifier4
+	text = {
+		trigger = {
+			NOT = { check_variable = { modifier@special_forces_no_supply_grace = 0 } }
+		}
+		localization_key = "SPECIAL_FORCES_MODIFIER_4"
+	}
+}
+defined_text = { 
+	name = SFmodifier5
+	text = {
+		trigger = {
+			NOT = { check_variable = { modifier@special_forces_out_of_supply_factor = 0 } }
+		}
+		localization_key = "SPECIAL_FORCES_MODIFIER_5"
+	}
+}
+
+defined_text = { 
+	name = GetArmyStrengthResearchValue
+	text = {
+		trigger = {
+			has_idea = army_strength_0
+			set_temp_variable = { temp = -0.1 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_1
+			set_temp_variable = { temp = -0.08 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_2
+			set_temp_variable = { temp = -0.06 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_3
+			set_temp_variable = { temp = -0.04 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_4
+			set_temp_variable = { temp = -0.02 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_5
+			set_temp_variable = { temp = 0.0 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_6
+			set_temp_variable = { temp = 0.02 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_7
+			set_temp_variable = { temp = 0.04 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_8
+			set_temp_variable = { temp = 0.06 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_9
+			set_temp_variable = { temp = 0.08 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_10
+			set_temp_variable = { temp = 0.1 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+}
+defined_text = { 
+	name = GetOffensiveArmyStrengthResearchValue
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_0
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = -0.1 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_1
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = -0.08 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_2
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = -0.06 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_3
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = -0.04 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_4
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = -0.02 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_5
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = 0 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_6
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = 0.02 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_7
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = 0.04 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_8
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = 0.06 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_9
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = 0.08 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_idea = [DOCTRINE]_army_strength_10
+				}
+				DOCTRINE = "[This.GetOffensiveDoctrine]"
+			}
+			set_temp_variable = { temp = 0.1 }
+		} 
+		localization_key = "[?temp|%0=+]"
+	}
+}
+defined_text = { 
+	name = GetHQStrengthResearchValue
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_0
+		} 
+		localization_key = "-5%"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_1
+		} 
+		localization_key = "1%"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_2
+		} 
+		localization_key = "2%"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_3
+		} 
+		localization_key = "3%"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_4
+		} 
+		localization_key = "4%"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_5
+		} 
+		localization_key = "5%"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_6
+		} 
+		localization_key = "6%"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_7
+		} 
+		localization_key = "7%"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_8
+		} 
+		localization_key = "8%"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_9
+		} 
+		localization_key = "9%"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_10
+		} 
+		localization_key = "10%"
+	}
+}
+defined_text = { 
+	name = GetOffensiveDoctrine
+	text = {
+		trigger = {
+			has_tech = blitzkrieg
+		}
+		localization_key = "blitzkrieg"
+	}
+	text = {
+		trigger = {
+			has_tech = superior_firepower
+		}
+		localization_key = "superior_firepower"
+	}
+	text = {
+		trigger = {
+			has_tech = mass_assault
+		}
+		localization_key = "mass_assault"
+	}
+	text = {
+		trigger = {
+			has_tech = methodical_battle
+		}
+		localization_key = "methodical_battle"
+	}
+	text = {
+		trigger = {
+			has_tech = assault_operations
+		}
+		localization_key = "assault_operations"
+	}
+	text = {
+		trigger = {
+			has_tech = guerilla_warfare
+		}
+		localization_key = "guerilla_warfare"
+	}
+}
+defined_text = { 
+	name = GetLightArmorString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = blitzkrieg
+				has_tech = assault_operations
+			}
+		} 
+		localization_key = "Doctrine_light_armor"
+	}
+}
+defined_text = { 
+	name = GetMediumArmorString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = blitzkrieg
+				has_tech = assault_operations
+			}
+		}
+		localization_key = "Doctrine_medium_armor"
+	}
+}
+defined_text = { 
+	name = GetHeavyArmorString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = blitzkrieg
+				has_tech = assault_operations
+			}
+		}
+		localization_key = "Doctrine_heavy_armor"
+	}
+}
+defined_text = { 
+	name = GetMotorizedString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = blitzkrieg
+				has_tech = methodical_battle
+				has_tech = assault_operations
+			}
+		} 
+		localization_key = "Doctrine_motorized"
+	}
+}
+defined_text = { 
+	name = GetMechanizedString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = blitzkrieg
+				has_tech = methodical_battle
+				has_tech = assault_operations
+			}
+		} 
+		localization_key = "Doctrine_mechanized"
+	}
+}
+defined_text = { 
+	name = GetSupportString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = superior_firepower
+			}
+		} 
+		localization_key = "Doctrine_support"
+	}
+}
+defined_text = { 
+	name = GetArtilleryString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = superior_firepower
+			}
+		} 
+		localization_key = "Doctrine_artillery"
+	}
+}
+defined_text = { 
+	name = GetInfantryString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = mass_assault
+			}
+		} 
+		localization_key = "Doctrine_infantry"
+	}
+}
+defined_text = { 
+	name = GetLightInfantryString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = mass_assault
+			}
+		} 
+		localization_key = "Doctrine_light_infantry"
+	}
+}
+defined_text = { 
+	name = GetHQString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = assault_operations
+			}
+		} 
+		localization_key = "Doctrine_hq"
+	}
+}
+defined_text = { 
+	name = GetMilitiaString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = guerilla_warfare
+			}
+		} 
+		localization_key = "Doctrine_militia"
+	}
+}
+defined_text = { 
+	name = GetPartisanString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = guerilla_warfare
+			}
+		} 
+		localization_key = "Doctrine_partisan"
+	}
+}
+defined_text = { 
+	name = GetCavalryString
+	text = {
+		trigger = {
+			OR = {
+				has_tech = guerilla_warfare
+			}
+		} 
+		localization_key = "Doctrine_cavalry"
+	}
+}
+defined_text = { 
+	name = GetArmyStrengthNextLevel
+	text = {
+		trigger = {
+			has_idea = army_strength_0
+		} 
+		localization_key = "200"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_1
+		} 
+		localization_key = "400"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_2
+		} 
+		localization_key = "600"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_3
+		} 
+		localization_key = "800"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_4
+		} 
+		localization_key = "1000"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_5
+		} 
+		localization_key = "1200"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_6
+		} 
+		localization_key = "1400"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_7
+		} 
+		localization_key = "1600"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_8
+		} 
+		localization_key = "1800"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_9
+		} 
+		localization_key = "2000"
+	}
+	text = {
+		trigger = {
+			has_idea = army_strength_10
+		} 
+		localization_key = "/"
+	}
+}
+defined_text = { 
+	name = GetOffensiveArmyStrengthNextLevel
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_0
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "200"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_1
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "400"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_2
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "600"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_3
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "800"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_4
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "1000"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_5
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "1200"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_6
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "1400"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_7
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "1600"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_8
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "1800"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_9
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "2000"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {		
+					has_idea = [DOCTRINE]_army_strength_10
+				}
+				DOCTRINE = "[Root.GetOffensiveDoctrine]"
+			}
+		} 
+		localization_key = "/"
+	}
+}
+defined_text = { 
+	name = GetHQArmyStrengthNextLevel
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_0
+		} 
+		localization_key = "200"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_1
+		} 
+		localization_key = "400"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_2
+		} 
+		localization_key = "600"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_3
+		} 
+		localization_key = "800"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_4
+		} 
+		localization_key = "1000"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_5
+		} 
+		localization_key = "1200"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_6
+		} 
+		localization_key = "1400"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_7
+		} 
+		localization_key = "1600"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_8
+		} 
+		localization_key = "1800"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_9
+		} 
+		localization_key = "2000"
+	}
+	text = {
+		trigger = {
+			has_idea = HQ_army_strength_10
+		} 
+		localization_key = "/"
+	}
+}
+defined_text = { 
+	name = GetNavyStrengthNextLevel
+	text = {
+		trigger = {
+			has_idea = tiny_navy
+		} 
+		localization_key = "75"
+	}
+	text = {
+		trigger = {
+			has_idea = small_navy
+		} 
+		localization_key = "200"
+	}
+	text = {
+		trigger = {
+			has_idea = average_navy
+		} 
+		localization_key = "350"
+	}
+	text = {
+		trigger = {
+			has_idea = large_navy
+		} 
+		localization_key = "500"
+	}
+	text = {
+		trigger = {
+			has_idea = huge_navy
+		} 
+		localization_key = "/"
+	}
+}
+defined_text = { 
+	name = GetRecentStateControllerChange
+	text = { 
+		trigger = {
+			has_variable = resource_state_change
+		}
+		localization_key = "LOCAL_RES_TT"
+	}
+	text = {
+		localization_key = "LOCAL_RES_TT_0"
+	}
+}
+
+
+defined_text = { 
+	name = selected_slotname
+	text = {
+		trigger = {
+			has_variable = selected_research_slot
+			NOT = {
+				check_variable = { selected_research_slot = 1 }
+				check_variable = { selected_research_slot = 2 }
+			}
+		}
+		localization_key = "selected_slot_name"
+	}
+	text = {
+		trigger = {
+			has_variable = selected_research_slot
+			OR = {
+				check_variable = { selected_research_slot = 1 }
+				check_variable = { selected_research_slot = 2 }
+			}
+		}
+		localization_key = "selected_slot_name_base"
+	}
+	text = {
+		localization_key = "SELECT A RESEARCH SLOT"
+	}
+}
+defined_text = { 
+	name = research_infantry
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:infantry_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_infantry"
+	}
+}
+defined_text = { 
+	name = research_support
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:support_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_support"
+	}
+}
+defined_text = { 
+	name = research_artillery
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:artillery_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_artillery"
+	}
+}
+defined_text = { 
+	name = research_tank_techs
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:tank_techs_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_tank_techs"
+	}
+}
+defined_text = { 
+	name = research_armor
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:armor_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_armor"
+	}
+}
+defined_text = { 
+	name = research_air_techs
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:air_techs_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_air_techs"
+	}
+}
+defined_text = { 
+	name = research_air_techs_army
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:air_techs_folder_army
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_air_techs_army"
+	}
+}
+defined_text = { 
+	name = research_air_techs_navy
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:air_techs_folder_navy
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_air_techs_navy"
+	}
+}
+defined_text = { 
+	name = research_naval
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:naval_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_naval"
+	}
+}
+defined_text = { 
+	name = research_naval_techs
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:naval_techs_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_naval_techs"
+	}
+}
+defined_text = { 
+	name = research_industry
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:industry_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_industry"
+	}
+}
+defined_text = { 
+	name = research_ww1_doctrine
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:ww1_land_doctrine_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_ww1_doctrine"
+	}
+}
+defined_text = { 
+	name = research_doctrine
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:land_doctrine_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_doctrine"
+	}
+}
+defined_text = { 
+	name = research_naval_doctrine
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:naval_doctrine_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_naval_doctrine"
+	}
+}
+defined_text = { 
+	name = research_air_doctrine
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:air_doctrine_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_air_doctrine"
+	}
+}
+defined_text = { 
+	name = research_electronics
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:electronics_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_electronics"
+	}
+}
+defined_text = { 
+	name = research_nuclear
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:nuclear_folder 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_nuclear"
+	}
+}
+defined_text = { 
+	name = research_special_forces
+	text = {
+		trigger = {
+				meta_trigger = {
+					text = {
+						has_state_flag = SLOT_[TAG]:special_forces 
+					}
+					TAG = "[Root.GetTag]"
+				}
+			
+		}
+		localization_key = "research_allowed_special_forces"
+	}
+}
+
+defined_text = { 
+	name = GetCapital
+	text = {
+		trigger = {
+			has_variable = original_capital
+			NOT = { tag = GER }
+		}
+		localization_key = "[?original_capital.GetName]"
+	}
+	text = {
+		trigger = {
+			has_variable = original_capital
+			tag = GER 
+		}
+		localization_key = "Berlin"
+	}
+}
+defined_text = { 
+	name = GetEnemyCapital
+	text = {
+		trigger = {
+			has_variable = capital_@FROM
+		}
+		localization_key = "[?capital_@FROM.GetName]"
+	}
+}
+
+defined_text = { 
+	name = GetStability
+	text = {
+		trigger = {
+			check_variable = { modifier@stability_weekly > 0 }
+		}
+		localization_key = TOPBAR_INCREASE
+	}
+	text = {
+		trigger = {
+			check_variable = { modifier@stability_weekly < 0 }
+		}
+		localization_key = TOPBAR_DECREASE
+	}
+}
+defined_text = { 
+	name = GetWarSupport
+	text = {
+		trigger = {
+			check_variable = { modifier@war_support_weekly > 0 }
+		}
+		localization_key = TOPBAR_INCREASE
+	}
+	text = {
+		trigger = {
+			check_variable = { modifier@war_support_weekly < 0 }
+		}
+		localization_key = TOPBAR_DECREASE
+	}
+}
+defined_text = { 
+	name = MilitaryEffectWarScore
+	text = { 
+		trigger = {
+			any_war_score > 0 
+		}
+		localization_key = "Military_Effect_War_Score"
+	}
+}
+
+
+ 
+
+
+defined_text = { 
+	name = GetRecruitmentType
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_state_flag = militia_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "Militia"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_state_flag = garrison_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "Garrison"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_state_flag = cavalry_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "Cavalry"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_state_flag = light_infantry_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "Light Infantry"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_state_flag = infantry_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "Infantry"
+	}
+	text = {
+		localization_key = "No Triggers Matching"
+	}
+}
+defined_text = { 
+	name = GetRecruitmentTime
+	text = {
+		trigger = {
+			state = From.state_recruitment^0
+		}
+		localization_key = "[?From.recruitment_time]"
+	}
+	text = {
+		trigger = {
+			NOT = { state = From.state_recruitment^0 }
+			meta_trigger = {
+				text = {
+					has_state_flag = militia_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "120"
+	}
+	text = {
+		trigger = {
+			NOT = { state = From.state_recruitment^0 }
+			meta_trigger = {
+				text = {
+					has_state_flag = garrison_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "90"
+	}
+	text = {
+		trigger = {
+			NOT = { state = From.state_recruitment^0 }
+			meta_trigger = {
+				text = {
+					has_state_flag = cavalry_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "90"
+	}
+	text = {
+		trigger = {
+			NOT = { state = From.state_recruitment^0 }
+			meta_trigger = {
+				text = {
+					has_state_flag = light_infantry_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "90"
+	}
+	text = {
+		trigger = {
+			NOT = { state = From.state_recruitment^0 }
+			meta_trigger = {
+				text = {
+					has_state_flag = infantry_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "90"
+	}
+}
+
+defined_text = { 
+	name = GetRecruitmentUnitIcon
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_state_flag = militia_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "GFX_unit_militia_icon_medium_white"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_state_flag = garrison_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "GFX_unit_garrison_icon_medium_white"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_state_flag = cavalry_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "GFX_unit_cavalry_icon_medium_white"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_state_flag = light_infantry_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "GFX_unit_light_infantry_icon_medium_white"
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					has_state_flag = infantry_[STATE_NAME]_[ROOT]
+				}
+				ROOT = "[Root.GetTag]"
+				STATE_NAME = "[From.GetName]"
+			}
+		}
+		localization_key = "GFX_unit_infantry_icon_medium_white"
+	}
+}
+
+
+defined_text = { 
+	name = GetStateDecisionName
+	text = {
+		trigger = {
+			state = 1
+		}
+		localization_key = "state_decision_1_name"
+	}
+	text = {
+		trigger = {
+			state = 2
+		}
+		localization_key = "state_decision_2_name"
+	}
+	text = {
+		trigger = {
+			state = 3
+		}
+		localization_key = "state_decision_3_name"
+	}
+	text = {
+		trigger = {
+			state = 4
+		}
+		localization_key = "state_decision_4_name"
+	}
+	text = {
+		trigger = {
+			state = 5
+		}
+		localization_key = "state_decision_5_name"
+	}
+	text = {
+		trigger = {
+			state = 6
+		}
+		localization_key = "state_decision_6_name"
+	}
+	text = {
+		trigger = {
+			state = 7
+		}
+		localization_key = "state_decision_7_name"
+	}
+	text = {
+		trigger = {
+			state = 8
+		}
+		localization_key = "state_decision_8_name"
+	}
+	text = {
+		trigger = {
+			state = 9
+		}
+		localization_key = "state_decision_9_name"
+	}
+	text = {
+		trigger = {
+			state = 10
+		}
+		localization_key = "state_decision_10_name"
+	}
+	text = {
+		localization_key = "No Triggers Matching"
+	}
+	
+}
+defined_text = { 
+	name = DeploymentCadetTraining
+	text = {
+		trigger = {
+			has_idea = train_none
+		}
+		localization_key = "train_none_string"
+	}
+	text = {
+		trigger = {
+			has_idea = train_low
+		}
+		localization_key = "train_low_string"
+	}
+	text = {
+		trigger = {
+			has_idea = train_medium
+		}
+		localization_key = "train_medium_string"
+	}
+	text = {
+		trigger = {
+			has_idea = train_high
+		}
+		localization_key = "train_high_string"
+	}
+	text = {
+		trigger = {
+			has_idea = train_elite
+		}
+		localization_key = "train_elite_string"
+	}
+}
+
+defined_text = { 
+	name = DeploymentConscription
+	text = {
+		trigger = {
+			has_idea = cons_expanded_draft
+		}
+		localization_key = "cons_expanded_draft_string"
+	}
+	text = {
+		trigger = {
+			has_idea = cons_extensive_draft
+		}
+		localization_key = "cons_extensive_draft_string"
+	}
+	text = {
+		trigger = {
+			has_idea = cons_barrel
+		}
+		localization_key = "cons_barrel_string"
+	}
+}
+
+defined_text = { 
+	name = DeploymentMobilization
+	text = {
+		trigger = {
+			has_idea = mob_reserve
+		}
+		localization_key = "mob_reserve_string"
+	}
+	text = {
+		trigger = {
+			has_idea = mob_standing
+		}
+		localization_key = "mob_standing_string"
+	}
+	text = {
+		trigger = {
+			has_idea = mob_limited
+		}
+		localization_key = "mob_limited_string"
+	}
+}
+
+defined_text = { # Country
+	name = GetAirportMax
+	text = {
+		trigger = {
+			FROM.FROM = { has_state_flag = small_airbase }
+		}
+		localization_key = "[?From.From.building_level@air_base]/1"
+	}
+	text = {
+		trigger = {
+			FROM.FROM = { has_state_flag = medium_airbase }
+		}
+		localization_key = "[?From.From.building_level@air_base]/3"
+	}
+}
+defined_text = { # Country
+	name = GetRadarMax
+	text = {
+		trigger = {
+			FROM.FROM = { has_state_flag = small_airbase }
+		}
+		localization_key = "0/0"
+	}
+	text = {
+		trigger = {
+			FROM.FROM = { has_state_flag = medium_airbase }
+			ROOT = { NOT = { has_tech = radio_detection } }
+		}
+		localization_key = "0/0"
+	}
+	text = {
+		trigger = {
+			FROM.FROM = { 
+				has_state_flag = medium_airbase 
+				radar_station < 2
+			}
+			ROOT = { has_tech = radio_detection } 
+		}
+		localization_key = "[?From.From.building_level@radar_station]/1"
+	}
+	text = {
+		trigger = {
+			FROM.FROM = { 
+				has_state_flag = medium_airbase 
+				radar_station > 1
+			}
+			ROOT = { has_tech = radio_detection } 
+		}
+		localization_key = "1/1"
+	}
+}
+
+defined_text = { # Country
+	name = GetTerrainAttackModifierPrefix
+	text = {
+		trigger = {
+			check_variable = { attack > 0 }
+		}
+		localization_key = "PLUS_G"
+	}
+	text = {
+		trigger = {
+			check_variable = { attack < 0 }
+		}
+		localization_key = "MINUS_R"
+	}
+}
+defined_text = { # Country
+	name = GetTerrainDefenceModifierPrefix
+	text = {
+		trigger = {
+			check_variable = { defence > 0 }
+		}
+		localization_key = "PLUS_G"
+	}
+	text = {
+		trigger = {
+			check_variable = { defence < 0 }
+		}
+		localization_key = "MINUS_R"
+	}
+}
+defined_text = { # Country
+	name = GetTerrainMovementModifierPrefix
+	text = {
+		trigger = {
+			check_variable = { movement > 0 }
+		}
+		localization_key = "PLUS_G"
+	}
+	text = {
+		trigger = {
+			check_variable = { movement < 0 }
+		}
+		localization_key = "MINUS_R"
+	}
+}
+
+defined_text = { # Country
+	name = GetSelectedTankFactoriesSubtypes
+	text = {
+		trigger = {
+			has_idea_with_trait = balanced_armor_production
+		}
+		localization_key = ""
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = light_armor_production
+		}
+		localization_key = "_light_armor"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = medium_armor_production
+		}
+		localization_key = "_medium_armor"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = heavy_armor_production
+		}
+		localization_key = "_heavy_armor"
+	}
+	
+}
+
+defined_text = { # Country
+	name = GetSelectedTruckFactoriesSubtypes
+	text = {
+		trigger = {
+			has_idea_with_trait = balanced_vehicle_production
+		}
+		localization_key = ""
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = light_vehicle_production
+		}
+		localization_key = "_light"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = heavy_vehicle_production
+		}
+		localization_key = "_heavy"
+	}
+}
+
+defined_text = { # Country
+	name = GetSelectedArtilleryFactoriesSubtypes
+	text = {
+		trigger = {
+			has_idea_with_trait = balanced_artillery_production
+		}
+		localization_key = ""
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = light_artillery_production
+		}
+		localization_key = "_light"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = medium_artillery_production
+		}
+		localization_key = "_medium"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = heavy_artillery_production
+		}
+		localization_key = "_heavy"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = secondary_artillery_production
+		}
+		localization_key = "_secondary"
+	}
+}
+
+defined_text = { # Country
+	name = GetSelectedSmallArmsFactoriesSubtypes
+	text = {
+		trigger = {
+			has_idea_with_trait = balanced_smallarms_production
+		}
+		localization_key = ""
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = rifle_smallarms_production
+		}
+		localization_key = "_rifles"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = secondary_smallarms_production
+		}
+		localization_key = "_secondary"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = support_smallarms_production
+		}
+		localization_key = "_support"
+	}
+}
+
+defined_text = { # Country
+	name = GetSelectedJetAirFactoriesSubtypes
+	text = {
+		trigger = {
+			has_idea_with_trait = balanced_jet_production
+		}
+		localization_key = ""
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = light_jet_production
+		}
+		localization_key = "_light"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = heavy_jet_production
+		}
+		localization_key = "_heavy"
+	}
+}
+
+defined_text = { # Country
+	name = GetSelectedLtAirFactoriesSubtypes
+	text = {
+		trigger = {
+			has_idea_with_trait = balanced_aircraft_production
+		}
+		localization_key = ""
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = fighter_production
+		}
+		localization_key = "_fighter"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = hv_fighter_production
+		}
+		localization_key = "_hv_fighter"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = CAS_production
+		}
+		localization_key = "_CAS"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = light_bomber_production
+		}
+		localization_key = "_bomber"
+	}
+}
+
+defined_text = { # Country
+	name = GetSelectedHvAirFactoriesSubtypes
+	text = {
+		trigger = {
+			has_idea_with_trait = balanced_hv_aircraft_production
+		}
+		localization_key = ""
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = medium_bomber_production
+		}
+		localization_key = "_medium_bomber"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = heavy_bomber_production
+		}
+		localization_key = "_heavy_bomber"
+	}
+	text = {
+		trigger = {
+			has_idea_with_trait = naval_bomber_production
+		}
+		localization_key = "_naval_bomber"
+	}
+}
+
+
+defined_text = { # Country
+	name = GetOppositionPartyTooltip
+	text = {
+		trigger = {
+			#has_idea = 
+		}
+		localization_key = ""
+	}
+}
+defined_text = { # Country
+	name = GetOpposition_Arab_Minor
+	text = {
+		trigger = {
+			has_idea = Arab_Minor
+		}
+		localization_key = ""
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

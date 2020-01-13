@@ -1,0 +1,593 @@
+ideas = {
+
+	hidden_ideas = {
+		BMP_respite = {
+			## no effect just an AI flag
+		}
+	}
+
+	country = {
+
+
+		BMP_jewish_militias1 = {
+			
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+	
+			modifier = {
+				conscription = 0.02
+				autonomy_gain = 0.1
+			}
+		}
+
+		BMP_fortify_the_mandate = {
+			
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			picture = generic_production_bonus
+	
+			modifier = {
+				production_speed_bunker_factor = 0.2
+				production_speed_coastal_bunker_factor = 0.2
+				production_speed_anti_air_building_factor = 0.2
+			}
+		}
+		
+		BMP_jewish_immigration {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = bmp_jewish_immigration
+
+			modifier = {
+				monthly_population = 1.5
+			##	stability_factor = -0.05
+				stability_weekly = -0.005
+				monarchism_drift = -0.001
+				opposition_party_drift = 0.01
+			}
+		}
+
+		BMP_limited_jewish_immigration {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = bmp_jewish_immigration
+
+			modifier = {
+				monthly_population = 0.1
+			}
+		}
+		
+		BMP_arab_revolt {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = FRA_scw_intervention_republicans_focus
+
+			modifier = {
+				stability_factor = -0.15
+				stability_weekly = -0.001
+				communism_drift = 0.01
+				fascism_drift = 0.01
+				conservatism_drift = 0.005
+				liberalism_drift = 0.005
+				socialism_drift = -0.005
+				monarchism_drift = 0.02
+				war_support_factor = -0.3
+				
+			}
+		}
+		
+		BMP_peel_commission {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			
+			picture = generic_constitutional_guarantees
+			
+			modifier = {
+				stability_factor = -0.05
+				
+			}
+		}
+		
+		BMP_encourage_smuggling {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = bmp_jewish_immigration
+
+			modifier = {
+				monthly_population = 0.15
+				socialism_drift = 0.005
+				conservatism_drift = 0.001
+				liberalism_drift = 0.001
+				
+			}
+		}
+		BMP_Riots {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = chi_army_corruption
+
+			modifier = {
+			}
+		}
+		BMP_British_Rule {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = ast_abandon_the_westminster_system
+
+			modifier = {
+			political_power_gain = -0.25
+			autonomy_gain = -0.1
+			}
+		}
+
+##########
+	BMP_death_of_izz_ad-din_al-qassam {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = FRA_scw_intervention_republicans_focus
+
+			modifier = {
+				stability_factor = -0.05
+				war_support_factor = -0.1
+			}
+	}
+
+	BMP_arab_general_strikes = {
+			picture = generic_production_bonus
+			
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				industrial_capacity_factory =  -0.4
+				stability_factor = -0.1
+				production_speed_buildings_factor = -0.4
+				neutrality_drift = -0.01
+			}
+		}
+		
+	Arab_Meddle = {
+			picture = generic_secret_police
+			
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				monarchism_drift = 0.02
+				fascism_drift = 0.01
+				industry_free_repair_factor = -0.05
+			}
+		}
+		
+	}
+##########
+## note due to the nature of BMP around the time-frame ministers are intentionally limited
+	head_of_state = {
+	}
+	foreign_minister = {
+	}
+	#Propaganda/Security
+	interior_minister = {
+		BMP_yitzhak_zvi = {
+			
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = BMP
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { 
+				socialist
+				hearts_and_minds
+interior_minister_trait
+			}
+		}
+	}
+	#Intelligence
+	intel_minister = {
+	}
+	#Economic
+	economic_minister = {
+		BMP_pinhas_rutenberg = {
+			
+			picture = generic_political_advisor_europe_2
+			
+			allowed = {
+				original_tag = BMP
+			}
+			
+			traits = { 
+				captain_of_industry
+				anti_communist
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+		BMP_walter_guinness = {
+			
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = BMP
+			}
+			
+			traits = { 
+				neutral
+				keen_sailor
+				administrative_genius 
+economic_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		BMP_ernest_bevin = {
+			
+			picture = generic_political_advisor_europe_3
+			
+			allowed = {
+				original_tag = BMP
+			}
+			
+			traits = { 
+				neutral
+				war_industrialist 
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+	}
+	#Domestic
+	domestic_minister = {
+		BMP_zev_jabotinsky = {
+			
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = BMP
+			}
+			
+			traits = { 
+				conservative
+				domestminster_industry
+domestic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+		BMP_haim-moshe_shapira = {
+			
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = BMP
+			}
+			
+			traits = { 
+				liberal
+				domestminster_industry
+domestic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+		BMP_hussam_jarallah = {
+			
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = BMP
+			}
+			
+			traits = { 
+				monarchist
+				domestminster_xeno
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+	}
+	#Political
+	political_advisor = {
+
+		BMP_amin_al-husseini = {
+			
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = BMP
+			}
+			
+			traits = { 
+				fascist
+				monarchist
+				popular_figurehead 
+political_advisor_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+	}
+	influence_minister = {
+		BMP_guy3 = {
+			allowed = {
+				original_tag = "BMP"
+			}
+			picture = generic_army_arab_1
+			available = {
+
+			}
+
+			traits = { 
+				political_fearmonger
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Academy
+	military_academy = {
+	}
+	army_chief = {
+
+		BMP_orde_wingate = {
+			
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = BMP
+			}
+			
+
+			
+			traits = { army_chief_drill_3  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+
+	navy_chief = {
+
+
+	}
+
+	high_command = {
+
+		BMP_evelyn_barker = {
+			
+			picture = generic_army_europe_2
+
+			allowed = {
+				original_tag = BMP
+			}
+			
+
+			
+			traits = { army_infantry_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+		BMP_charles_tegart = {
+			
+			picture = generic_army_europe_3
+
+			allowed = {
+				original_tag = BMP
+			}
+			
+
+			
+			traits = { army_entrenchment_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+		BMP_John_Rymer-Jones = {
+			
+			picture = generic_army_europe_1
+
+			allowed = {
+				original_tag = BMP
+			}
+			
+
+			
+			traits = { army_artillery_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	
+	naval_manufacturer = {
+		
+		designer = yes
+
+
+			BMP_coastal_defence_manufacturer = {
+			
+				picture = generic_naval_manufacturer_1
+				
+				allowed = {
+					original_tag = BMP
+				}
+			
+				research_bonus = {
+					naval_equipment = 0.10
+				}
+			
+				traits = { coastal_defence_naval_manufacturer  naval_manufacturer_trait }
+			
+				equipment_bonus = {
+				
+				}
+				ai_will_do = {
+					factor = 20
+				}			
+			}
+
+	}
+
+	industrial_concern = {
+					
+		BMP_palestine_railways = {
+			
+			picture = generic_build_infrastructure
+			
+			available = {
+				has_completed_focus = BMP_improve_palestinian_railways
+			}
+			allowed = {
+				original_tag = BMP
+			}
+			
+			research_bonus = {
+				industry = 0.08
+			
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { industrial_concern  industrial_concern_trait }
+			
+			modifier = { production_speed_infrastructure_factor = 0.1
+			}
+			
+			cost = 100
+		}
+	}
+	electrical_concern = {		
+		BMP_palestine_electric_company = {
+			
+			picture = generic_electronics_concern_1
+			
+			allowed = {
+				original_tag = BMP
+			}
+			
+
+			ai_will_do = {
+				factor = 20
+			}			
+			research_bonus = {
+				electronics = 0.10
+			}
+			
+			traits = { electronics_concern  electrical_concern_trait }
+			
+			modifier = {
+			}
+		}
+	}
+	theorist = {
+		BMP_orde_wingate1 = {
+			
+			picture = generic_army_arab_1
+
+			allowed = {
+				original_tag = BMP
+			}
+			research_bonus = {
+				cat_attack_docs = 0.10
+				ww1_doctrine = 0.03
+			}			
+			cost = 150
+			
+			traits = { military_theorist  theorist_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+}

@@ -1,0 +1,234 @@
+law_changes = {
+	cadet_training_standards = {
+		icon = generic_political_discourse
+		
+		allowed = {
+			#always = no
+		}
+
+		available = {
+		}
+
+		visible = {
+			has_country_flag = cadet_training_standards
+		}
+
+		fire_only_once = no
+
+		days_remove = cadet_training_standards_var
+		
+
+		cost = 0
+		
+		modifier = { 
+			training_time_army_factor = 0.1
+			minimum_training_level  = 0.1
+			army_org_factor = -0.08
+			army_morale_factor = -0.1
+		}
+		
+		complete_effect = {
+		
+		}
+		
+		remove_effect = {
+			level_up_cadet_training = yes
+			clr_country_flag = cadet_training_standards
+			clear_variable = cadet_training_standards_var
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+	
+	officer_training_standards = {
+		icon = generic_political_discourse
+		
+		allowed = {
+			#always = no
+		}
+
+		available = {
+		}
+
+		visible = {
+			has_country_flag = officer_training_standards
+		}
+
+		fire_only_once = no
+
+		days_remove = officer_training_standards_var
+		
+
+		cost = 0
+		
+		modifier = { 
+			army_org_factor = -0.08
+			army_morale_factor = -0.08
+			dig_in_speed_factor = -0.1
+			attrition = 0.03
+		}
+		
+		complete_effect = {
+		
+		}
+		
+		remove_effect = {
+			level_up_officer_training = yes
+			clr_country_flag = officer_training_standards
+			clear_variable = officer_training_standards_var
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+	
+	economy = {
+		icon = generic_political_discourse
+		
+		allowed = {
+			#always = no
+		}
+
+		available = {
+		}
+
+		visible = {
+			has_country_flag = economy
+		}
+
+		fire_only_once = no
+
+		days_remove = economy_var
+		
+
+		cost = 0
+		
+		modifier = { 
+			stability_factor = -0.08
+			production_factory_efficiency_gain_factor = -0.1
+			production_factory_max_efficiency_factor = -0.06
+			industrial_capacity_factory = -0.04
+			industrial_capacity_dockyard = -0.04
+		}
+		
+		complete_effect = {
+		
+		}
+		
+		remove_effect = {
+			#level_up_economy_law = yes
+			clear_variable = economy_var
+			clear_variable = economy_factor
+			
+			clr_country_flag = tot_economic_mobilisation
+			clr_country_flag = war_economy
+			clr_country_flag = partial_economic_mobilisation
+			clr_country_flag = low_economic_mobilisation
+			clr_country_flag = civilian_economy
+			
+			if = {
+				limit = {
+					has_country_flag = next_tot_economic_mobilisation
+				}
+				add_ideas = tot_economic_mobilisation
+				set_country_flag = tot_economic_mobilisation
+				clr_country_flag = next_tot_economic_mobilisation
+			}
+			if = {
+				limit = {
+					has_country_flag = next_war_economy
+				}
+				add_ideas = war_economy
+				set_country_flag = war_economy
+				clr_country_flag = next_war_economy
+			}
+			if = {
+				limit = {
+					has_country_flag = next_partial_economic_mobilisation
+				}
+				add_ideas = partial_economic_mobilisation
+				set_country_flag = partial_economic_mobilisation
+				clr_country_flag = next_partial_economic_mobilisation
+			}
+			if = {
+				limit = {
+					has_country_flag = next_low_economic_mobilisation
+				}
+				add_ideas = low_economic_mobilisation
+				set_country_flag = low_economic_mobilisation
+				clr_country_flag = next_low_economic_mobilisation
+			}
+			if = {
+				limit = {
+					has_country_flag = next_civilian_economy
+				}
+				add_ideas = civilian_economy
+				set_country_flag = civilian_economy
+				clr_country_flag = next_civilian_economy
+			}
+			
+			clr_country_flag = next_tot_economic_mobilisation
+			clr_country_flag = next_partial_economic_mobilisation
+			clr_country_flag = next_low_economic_mobilisation
+			clr_country_flag = next_war_economy
+			clr_country_flag = next_civilian_economy
+			
+			clr_country_flag = economy
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+	
+	labor_laws = {
+		icon = generic_political_discourse
+		
+		allowed = {
+			#always = no
+		}
+
+		available = {
+		}
+
+		visible = {
+			has_country_flag = labor_laws
+		}
+
+		fire_only_once = no
+
+		days_remove = labor_laws_var
+		
+
+		cost = 0
+		
+		modifier = { 
+			stability_factor = -0.08
+			production_factory_efficiency_gain_factor = -0.08
+			production_factory_max_efficiency_factor = -0.06
+			industrial_capacity_factory = -0.06
+			industrial_capacity_dockyard = -0.06
+		}
+		
+		complete_effect = {
+		
+		}
+		
+		remove_effect = {
+			level_up_labor_law = yes
+			clr_country_flag = labor_laws
+			clear_variable = labor_laws_var
+		}
+		
+		remove_trigger = {
+			has_country_flag = train_the_workforce
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+}

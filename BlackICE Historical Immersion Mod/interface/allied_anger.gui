@@ -1,0 +1,106 @@
+
+guiTypes = {
+	containerWindowType = {
+		name = "allied_anger"
+		position = {x=300 y=90}
+		size = { width=270 height=100 }
+		iconType ={
+			name ="allied_anger_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x=315 y=179 }
+			pdx_tooltip = "show_allied_anger"
+		}
+        
+		iconType = {
+			name = "allied_anger" 
+			position = {x=317 y=181}	
+			spriteType = "GFX_allied_anger"
+			pdx_tooltip = "show_allied_anger"
+		}
+    	instantTextBoxType = {
+			name ="allied_anger_text"
+			position = { x= 333 y = 181 }
+			font = "hoi_20b"
+	 	 	text = "[?GER.allied_anger]"   
+			format = right  
+			maxWidth = 46 
+			maxHeight = 24
+			fixedsize = yes 
+			 
+			pdx_tooltip = "show_allied_anger"
+		}
+		#buttonType ={ 
+		#	name ="allied_anger_test"#use this for testing features
+		#	spriteType = "GFX_add_one"
+		#	position = { x=285 y=179 }
+		#}
+	}
+	
+	containerWindowType = {
+		name = "party_popularity"
+		position = {x=109 y=-59}
+		size = { width=270 height=100 }
+		 
+    	instantTextBoxType = {
+			name ="root_name"
+			position = { x= 150 y = 114 }
+			font = "hoi_18mbs"
+	 	 	text = "[Root.GetNameDef]"
+			format = centre 
+			maxWidth = 160
+			maxHeight = 40
+			fixedsize = yes
+			allwaystransparent = yes
+		}
+		
+		iconType ={
+			name = "population_background"
+			spriteType = "GFX_diplo_unity_large_bg"
+			position = { x=77 y=186 } 
+			pdx_tooltip = "population_TT" 
+		}
+		iconType ={   
+			name = "population_icon"      
+			spriteType = "GFX_population_icon"
+			position = { x=93 y=190 } 
+			pdx_tooltip = "population_TT"
+		}
+		instantTextBoxType = {
+			name ="population_value"  
+			position = { x= 80 y = 223 }
+			font = "hoi_18mbs"
+	 	 	text = "[Root.GetPopulationValue2]"  
+	 	 	#text = "167.6M" 
+			format = centre  
+			maxWidth = 58          
+			maxHeight = 40
+			fixedsize = yes
+			allwaystransparent = yes	 
+		}
+		
+		 
+		iconType ={
+			name = "states_background"
+			spriteType = "GFX_diplo_unity_large_bg" 
+			position = { x=77 y=254 }
+			pdx_tooltip = "states_TT"
+		}
+		iconType ={
+			name = "states_icon"
+			spriteType = "GFX_state_icon" 
+			position = { x=96 y=260 } 
+			pdx_tooltip = "states_TT"
+		}
+		instantTextBoxType = {
+			name ="states_value"
+			position = { x= 80 y = 291 }
+			font = "hoi_18mbs" 
+	 	 	text = "[?num_controlled_states|0]"
+			format = centre 
+			maxWidth = 58
+			maxHeight = 40
+			fixedsize = yes
+			allwaystransparent = yes	
+		}
+	}
+}

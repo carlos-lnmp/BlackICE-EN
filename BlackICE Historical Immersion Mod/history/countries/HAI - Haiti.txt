@@ -1,0 +1,163 @@
+﻿capital = 318
+
+oob = "HAI_1936"
+
+set_war_support = 0.15
+
+set_convoys = 5
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval = 1
+		generic_naval_tech = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		#early_ship_hull_submarine = 1
+	}
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	############# infantry #############
+	infantry_weapons = 1
+	tech_infantry_uniforms = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	############ support ############
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	############ air ############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############ WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	
+	ww1_battlefield_support = 1
+}
+
+add_ideas = { 	
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	age_19
+	officer_train_none
+	security_minor_restrictions
+	edu_minimal
+	foreign_isolationism
+	neutrality_idea
+}
+
+set_country_flag = monroe_doctrine
+
+set_politics = {
+	ruling_party = conservatism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	conservatism = 100
+	fascism = 0
+	communism = 0
+}
+##################################################
+create_country_leader = {
+	name = "Sténio Vincent"
+	desc = "POLITICS_STENIO_VINCENT_DESC"
+	picture = "portrait_hai_stenio_vincent.dds" #gfx/leaders/HAI/Portrait_Haiti_Stenio_Vincent.dds
+	expire = "1965.1.1"
+	ideology = social_conservatism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Jacques Roumain"
+	desc = "POLITICS_JACQUES_ROUMAIN_DESC"
+	picture = "gfx/leaders/South America/Portrait_South_America_Generic_1.dds"
+	expire = "1965.1.1"
+	ideology = marxism
+	traits = {
+		#
+	}
+}
+##### FIELD MARSHALS ################
+create_field_marshal = {
+	name = "Panzeroo"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_1.dds"
+	traits = { Masterful_General career_officer infantry_officer fortress_buster_FM }
+	skill = 5
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 3
+}
+create_field_marshal = {
+	name = "Maverick87"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_2.dds"
+	traits = { Masterful_General cavalry_officer armor_officer panzer_leader offensive_doctrine_FM }
+	skill = 4
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 3
+}
+##### CORP COMMANDERS #########################
+create_corps_commander = {
+	name = "Lavaud"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_1.dds"
+	traits = { Bad_General }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 3
+}
+##### NAVY COMMANDERS #############################
+create_navy_leader = {
+	name = "Admiral Ackbar"
+	portrait_path = "gfx/leaders/HAI/Portrait_Admiral Ackbar.dds"
+	traits = { blockade_runner spotter }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 4
+}
+### EOF ###

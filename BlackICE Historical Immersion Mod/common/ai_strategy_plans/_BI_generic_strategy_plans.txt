@@ -1,0 +1,219 @@
+
+AI_industry_research = { 
+	name = "AI Industry Research"
+	desc = "AI Industry Research, needs to be seperate to pick Dispersed / Concentrated more often"
+
+	enable = {
+		NOT = { has_industry_techs_1936 = yes }
+	}
+	abort_when_not_enabled = yes
+
+	research = {
+		concentrated_industry_category = 50.0
+		dispersed_industry_category = 50.0
+		construction_tech = 50.0
+	}
+}
+
+AI_default_research = { 
+	name = "Default Research"
+	desc = "Default AI Research Ratios"
+
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+
+	research = {
+		#INDUSTRY
+		concentrated_industry_category = 50.0
+		dispersed_industry_category = 50.0
+		tool_tech = 40.0
+		industry = 40.0
+		construction_tech = 40.0
+		
+		#ELECTRONICS
+		electronics =  24.0
+		radio_tech =  24.0
+		computing_tech =  24.0
+		radar_tech = 24.0
+		encryption_tech = 24.0
+		decryption_tech = 24.0
+		
+		#INFANTRY
+		infantry_weapons = 24.0
+		infantry_tech = 24.0
+		motorized_equipment = 24.0
+		marine_tech = 24.0
+		
+		#ARTILLERY
+		artillery = 24.0
+		
+		#SUPPORT
+		support_tech = 24.0	
+		
+		#TANKS
+		armor = 24.0
+		
+		#AIRCRAFT
+		air_equipment = 24.0
+		
+		#DOCTRINES
+		cat_mobile_warfare = 300.0
+		cat_superior_firepower = 300.0
+		cat_grand_battle_plan = 300.0
+		cat_mass_assault = 300.0
+		cat_assault_operations = 300.0
+		cat_guerilla_warfare = 300.0
+		cat_depth = 300.0
+		cat_prepared_defense = 300.0
+		cat_containment = 300.0
+		cat_elastic_defence = 300.0
+		
+		ww1_doctrine = 300.0
+		
+		#NAVAL
+		naval_equipment = 24.0
+	}
+}
+
+AI_major_air_research = { 
+	name = "Major Air Research Boost"
+	desc = "Major should keep aircraft up to date"
+
+	enable = {
+		OR = {
+			tag = USA 
+			tag = GER 
+			tag = ENG 
+			tag = SOV
+			tag = JAP
+			tag = ITA
+			#tag = FRA
+		}
+	}
+	abort_when_not_enabled = yes
+
+	research = {
+		#AIRCRAFT
+		air_equipment = 24.0
+	}
+}
+AI_major_tank_research = { 
+	name = "Major tank Research Boost"
+	desc = "Major should keep tanks up to date"
+
+	enable = {
+		OR = {
+			tag = USA 
+			tag = GER 
+			tag = ENG 
+			tag = SOV
+			tag = JAP
+			tag = ITA
+			#tag = FRA
+		}
+	}
+	abort_when_not_enabled = yes
+
+	research = {
+		#TANKS
+		armor = 24.0
+	}
+}
+
+AI_rocketry_research = { 
+	name = "Rocketry Research"
+	desc = "Slowly getting into Rocket Research, its mostly useless for AI"
+
+	enable = {
+		date > 1942.1.1
+		
+	}
+	abort_when_not_enabled = yes
+	
+	research = {
+		rocketry = 24.0
+		jet_technology = 24.0
+	}
+}
+AI_nuclear_research = { 
+	name = "Nuclear Research"
+	desc = "Prioritise getting a Nuke on the Field"
+
+	enable = {
+		date > 1942.1.1
+		OR = {
+			tag = USA 
+			tag = GER 
+			tag = ENG 
+			tag = SOV
+		}
+		
+	}
+	abort_when_not_enabled = yes
+	
+	research = {
+		nuclear = 24.0
+	}
+}
+
+AI_complete_infantry_research = { 
+	name = "Complete Infantry Research"
+	desc = "Complete all infantry related techs that add equipment like mortars and hmg asap"
+
+	enable = {
+		NOT = {
+			has_tech = hmg
+			is_researching_technology = hmg
+			has_tech = mortars
+			is_researching_technology = mortars
+		}
+	}
+	abort = {
+		OR = {
+			has_tech = hmg
+			is_researching_technology = hmg
+		}
+		OR = {
+			has_tech = mortars
+			is_researching_technology = mortars
+		}
+	}
+	
+	research = {
+		infantry_weapons = 24.0
+	}
+}
+
+
+AI_defensive_doctrine_research = { 
+	name = "Defensive Land Doctrine Research"
+	desc = "Prioritise Defensive Land Doctrine Research, an investment for the future"
+
+	enable = {
+		OR = {
+			tag = FRA 
+			tag = POL 
+			tag = CZE 
+			tag = HOL 
+			tag = DEN 
+			tag = BEL 
+			tag = NOR 
+			tag = CHI 
+		}
+		has_capitulated = no 
+		has_war = no 
+	}
+	abort_when_not_enabled = yes
+	
+	research = {
+		cat_depth = 300.0
+		cat_prepared_defense = 300.0
+		cat_containment = 300.0
+		cat_elastic_defence = 300.0
+	}
+}
+
+
+

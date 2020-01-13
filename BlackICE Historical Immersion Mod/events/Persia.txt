@@ -1,0 +1,584 @@
+﻿###########################
+# Iran Events
+###########################
+
+add_namespace = persia
+#France Recall's its commanders from Iran
+country_event = {
+	id = persia.1
+	title = persia.1.t
+	desc = persia.1.d
+	picture = GFX_report_event_pierre_laval
+
+	is_triggered_only = yes
+
+	option = { 
+		name = persia.1.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+#Iran Tries to Neogiate
+country_event = {
+	id = persia.2
+	title = persia.2.t
+	desc = persia.2.d
+	picture = GFX_report_event_generic_parliament
+
+	is_triggered_only = yes
+
+	option = { 
+		#No way!
+		name = persia.2.a
+		ai_chance = {
+			factor = 97
+		}
+		add_political_power = 5
+		reverse_add_opinion_modifier = {
+			target = PER
+			modifier = betrayed_our_cause
+		}
+		PER = {
+			country_event = { id = persia.3 }
+		}
+	}
+	option = { 
+		#Small concessions
+		name = persia.2.b
+		ai_chance = {
+			factor = 3
+		}
+		add_political_power = -5
+		reverse_add_opinion_modifier = {
+			target = PER
+			modifier = refused_help
+		}
+		add_resource = {
+			type = oil
+			amount = -4
+			state = 413
+		}
+		add_resource = {
+			type = oil
+			amount = 4
+			state = 411
+		}
+		PER = {
+			country_event = { id = persia.4 }
+		}
+	}	
+	option = { 
+		#Allow free trade
+		name = persia.2.c
+		ai_chance = {
+			factor = 0
+		}
+		add_political_power = -25
+		reverse_add_opinion_modifier = {
+			target = PER
+			modifier = offered_support
+		}
+		ENG = {
+			remove_resource_rights = 413
+		}
+		PER = {
+			country_event = { id = persia.5 }
+		}
+	}	
+}
+country_event = {
+	id = persia.3
+	title = persia.3.t
+	desc = persia.3.d
+	picture = GFX_news_event_generic_rally
+
+	is_triggered_only = yes
+
+	option = { 
+		name = persia.3.a
+		ai_chance = {
+			factor = 100
+		}
+		add_war_support = 0.1
+	}
+}
+country_event = {
+	id = persia.4
+	title = persia.4.t
+	desc = persia.4.d
+	picture = GFX_news_event_generic_rally
+
+	is_triggered_only = yes
+
+	option = { 
+		name = persia.4.a
+		ai_chance = {
+			factor = 100
+		}
+		effect_tooltip = {
+			add_resource = {
+				type = oil
+				amount = -4
+				state = 413
+			}
+			add_resource = {
+				type = oil
+				amount = 4
+				state = 411
+			}	
+		}
+	}
+}
+country_event = {
+	id = persia.5
+	title = persia.5.t
+	desc = persia.5.d
+	picture = GFX_news_event_generic_rally
+
+	is_triggered_only = yes
+
+	option = { 
+		name = persia.4.a
+		ai_chance = {
+			factor = 100
+		}
+		set_country_flag = oil_back
+		remove_ideas = PER_aioc_idea
+		effect_tooltip = {
+			ENG = {
+				remove_resource_rights = 413
+			}
+		}
+	}
+}
+country_event = {
+	id = persia.6
+	title = persia.6.t
+	desc = persia.6.d
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+
+	option = { 
+		name = persia.6.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+country_event = {
+	id = persia.7
+	title = persia.7.t
+	desc = persia.7.d
+	picture = GFX_report_event_british_inspect_troops
+
+	is_triggered_only = yes
+	trigger = {
+		country_exists = PER
+		PER = {
+			not = {
+				is_in_faction_with = ENG
+				is_in_faction_with = SOV
+			}
+		}
+	}
+			
+	option = { #Pressure Iran to stop German Investment
+		name = persia.7.a
+		trigger = {
+			PER = { has_country_flag = industry_aid_removed }
+		}
+		ai_chance = {
+			factor = 100
+		}
+		PER = { country_event = persia.8 }
+	}
+	option = { #Pressure Iran to Embargo the axis, done if they already accepted stopping investment
+		name = persia.7.b
+		trigger = {
+			PER = { not = { has_country_flag = industry_aid_removed  } }
+		}
+		ai_chance = {
+			factor = 100
+		}
+		PER = { country_event = persia.9 }
+	}
+	option = { #Pressure Iran to become a puppet (done if they already accepted our other requests)
+		name = persia.7.c
+		trigger = {
+			PER = { has_country_flag = embargo_axis  } 
+		}
+		ai_chance = {
+			factor = 100
+		}
+		PER = { country_event = persia.10 }
+	}
+	option = { #Leave them alone, no real idea why you would take this?
+		name = persia.7.e
+
+		ai_chance = {
+			factor = 0
+		}
+		hidden_effect = { country_event = { id = persia.7 days = 188 } } #try again in 6 months
+	}
+}
+country_event = {
+	id = persia.8
+	title = persia.8.t
+	desc = persia.8.d
+	picture = GFX_report_event_arab_revolt_gfxaddon
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			ENG = { country_event = { id = persia.7 days = 188 } }
+		}
+	}
+	option = { #No Way!
+		name = persia.8.a
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 10
+		ENG = {
+			add_opinion_modifier = {
+				target = PER
+				modifier = protest_action
+			}
+			PER_anger_ENG = yes
+		}
+	}
+	option = { #We accept your demands
+		name = persia.8.b
+		ai_chance = {
+			factor = 0
+		}
+		clr_country_flag = industry_aid_removed
+		remove_ideas = { 
+			PER_german_investment
+			PER_german_investment2
+		}	
+	}	
+}
+country_event = {
+	id = persia.9
+	title = persia.9.t
+	desc = persia.9.d
+	picture = GFX_report_event_arab_revolt_gfxaddon
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			ENG = { country_event = { id = persia.7 days = 188 } }
+		}
+	}
+	option = { #No Way!
+		name = persia.8.a
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 10
+		ENG = {
+			add_opinion_modifier = {
+				target = PER
+				modifier = protest_action
+			}
+			PER_anger_ENG = yes 
+		}
+	}
+	option = { #We accept your demands
+		name = persia.8.b
+		ai_chance = {
+			factor = 0
+		}
+		every_other_country = {
+			limit = {
+				or = {
+					is_in_faction_with = GER
+					tag = GER
+				}
+			}
+			reverse_add_opinion_modifier = {
+				target = PER
+				modifier = embargo
+			}
+		}
+		set_country_flag = embargo_axis
+	}	
+}
+country_event = {
+	id = persia.10
+	title = persia.10.t
+	desc = persia.10.d
+	picture = GFX_report_event_arab_revolt_gfxaddon
+
+	is_triggered_only = yes
+
+	option = { #No Way!
+		name = persia.8.a
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 10
+		hidden_effect = {
+			ENG = { country_event = { id = persia.7 days = 188 } }
+		}
+		ENG = {
+			add_opinion_modifier = {
+				target = PER
+				modifier = protest_action
+			}
+			PER_anger_ENG = yes
+		}
+	}
+	option = { #We accept your demands
+		name = persia.8.b
+		ai_chance = {
+			factor = 0
+		}
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			ENG = {
+				set_autonomy = {
+					target = PER
+					autonomous_state = autonomy_colony
+					freedom_level = 0.1
+				}
+			}
+			load_focus_tree = generic_focus
+		}
+		else = {
+			ENG = { puppet = PER }
+		}			
+	}
+}
+country_event = {
+	id = persia.11
+	title = persia.11.t
+	desc = persia.11.d
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+	trigger = {
+		country_exists = PER
+		PER = {
+			not = {
+				is_in_faction_with = ENG
+				is_in_faction_with = SOV
+			}
+		}
+	}
+			
+	option = { #Pressure Iran for claim on oil 
+		name = persia.11.a
+		trigger = {
+			PER = { not = { has_country_flag = sov_oil } }
+		}
+		ai_chance = {
+			factor = 100
+		}
+		PER = { country_event = persia.12 }
+	}
+	option = { #Pressure Iran for Khorasan
+		name = persia.11.b
+		trigger = {
+			PER = { 
+				not = { has_country_flag = Khor_claim  } 
+				has_country_flag = sov_oil
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+		PER = { country_event = persia.13 }
+	}
+	option = { #Pressure Iran to become a puppet (done if they already accepted our other requests)
+		name = persia.11.c
+		trigger = {
+			PER = { has_country_flag = Khor_claim  } 
+		}
+		ai_chance = {
+			factor = 100
+		}
+		PER = { country_event = persia.14 }
+	}
+	option = { #Leave them alone, no real idea why you would take this?
+		name = persia.7.e
+
+		ai_chance = {
+			factor = 0
+		}
+		hidden_effect = { country_event = { id = persia.11 days = 180 } } #try again in 6 months
+	}
+}
+country_event = {
+	id = persia.12
+	title = persia.12.t
+	desc = persia.12.d
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+
+	option = { #No Way!
+		name = persia.8.a
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 10
+		hidden_effect = {
+			SOV = { country_event = { id = persia.11 days = 200 } }
+		}
+		SOV = {
+			add_opinion_modifier = {
+				target = PER
+				modifier = protest_action
+			}
+			PER_anger_SOV = yes
+		}
+	}
+	option = { #We accept your demands
+		name = persia.8.b
+		ai_chance = {
+			factor = 0
+		}
+		give_resource_rights = { receiver = SOV state = 411 }
+		set_country_flag = sov_oil	
+	}
+}
+country_event = {
+	id = persia.13
+	title = persia.13.t
+	desc = persia.13.d
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+
+	option = { #No Way!
+		name = persia.8.a
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 10
+		hidden_effect = {
+			SOV = { country_event = { id = persia.11 days = 200 } }
+		}
+		SOV = {
+			add_opinion_modifier = {
+				target = PER
+				modifier = protest_action
+			}
+			PER_anger_SOV = yes
+		}
+	}
+	option = { #We accept your demands
+		name = persia.8.b
+		ai_chance = {
+			factor = 0
+		}
+		SOV = {
+			transfer_state = 416
+			add_state_claim = 416
+		}
+		set_country_flag = Khor_claim	
+	}
+}
+country_event = {
+	id = persia.14
+	title = persia.14.t
+	desc = persia.14.d
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+
+	option = { #No Way!
+		name = persia.8.a
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 10
+		hidden_effect = {
+			SOV = { country_event = { id = persia.11 days = 200 } }
+		}
+		SOV = {
+			add_opinion_modifier = {
+				target = PER
+				modifier = protest_action
+			}
+			PER_anger_SOV = yes
+		}
+	}
+	option = { #We accept your demands
+		name = persia.8.b
+		ai_chance = {
+			factor = 0
+		}
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			SOV = {
+				set_autonomy = {
+					target = PER
+					autonomous_state = autonomy_colony
+					freedom_level = 0.1
+				}
+			}
+			load_focus_tree = generic_focus
+		}
+		else = {
+			SOV = { puppet = PER }
+		}			
+	}
+}
+country_event = {
+	id = persia.15
+	title = persia.15.t
+	desc = persia.15.d
+	picture = GFX_news_event_generic_rally
+
+	is_triggered_only = yes
+	immediate = {
+		add_popularity = {
+			ideology = monarchism
+			popularity = -0.1
+		}
+	}
+	option = { 
+		name = persia.15.a
+		ai_chance = {
+			factor = 40
+		}
+		add_political_power = -50
+		add_stability = -0.1
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}		
+	}
+	option = { 
+		name = persia.15.b
+		ai_chance = {
+			factor = 40
+		}
+		add_ideas = { 
+			PER_religion
+			labor_none
+		}		
+	}
+	option = { 
+		name = persia.15.c
+		ai_chance = {
+			factor = 20
+		}
+		add_ideas = { 
+			PER_ghasem_kashani
+		}		
+	}
+	
+}

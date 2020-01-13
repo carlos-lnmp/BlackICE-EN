@@ -1,0 +1,155 @@
+﻿capital = 622
+
+oob = "ZXL_1936"
+
+set_stability = 0.45
+
+add_manpower = 80000
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+	}
+}
+set_technology = {
+	BICE_sub_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	mountain_equipment = 1
+	tech_mountaineers = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## artillery ###############
+	################## armor ##############
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### economy ############
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	ww1_artillery = 1
+	foot_runners = 1
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	ww1_battlefield_support = 1
+}
+
+add_ideas = {
+	incompetent_industry_fake
+	incompetent_industry_fake_navy
+	closed_economy
+	#service_by_requirement
+	tot_economic_mobilisation
+	cg_displaced_warlords
+	cu_is_warlord
+	KMT_weak_army
+	CHI_nine_power_treaty
+}
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		PRC_government_corruption
+		CHI_ineffective_bureaucracy_warlord
+		CHI_ineffective_bureaucracy
+	}
+}
+
+create_corps_commander = {
+	name = "Zhang Xueliang"		
+	portrait_path = "gfx/leaders/kmt_mod/Portrait_Zhang_Xueliang.dds"
+	traits = { inflexible_strategist old_guard }
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+	id = 3612
+	skill = 2
+}
+
+create_corps_commander = {
+	name = "Yang Hucheng"		
+	portrait_path = "gfx/leaders/kmt_mod/Portrait_Yang_Hucheng.dds"
+	traits = { inflexible_strategist }
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+	id = 3613
+	skill = 3
+}
+create_corps_commander = {
+	name = "Zhang Zuoxiang"		
+	portrait_path = "gfx/leaders/kmt_mod/Portrait_Zhang_Zuoxiang.dds"
+	traits = { cavalry_officer }
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+	id = 3614
+	skill = 2
+}
+
+add_opinion_modifier = {
+	modifier = KMT_discontent
+	target = CHI
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {		
+		neutrality = 93
+		fascism = 7
+}
+
+set_country_flag = is_warlords
+
+create_country_leader = {
+	name = "Yang Hucheng"
+	desc = "POLITICS_YANG_HUCHENG_DESC"
+	picture = "gfx/leaders/kmt_mod/Portrait_Yang_Hucheng.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+		neutral
+	}
+}
+
+create_country_leader = {
+	name = "Zhang Xueliang"
+	desc = "POLITICS_ZHANG_XUE_LIANG_DESC"
+	picture = "gfx/leaders/kmt_mod/Portrait_Zhang_Xueliang.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+		#
+	}
+}

@@ -1,0 +1,849 @@
+ideas = {
+
+	country = {
+		sisu = {
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_morale_factor = 0.25
+				attrition = -0.2
+				army_core_attack_factor = 0.2
+				army_core_defence_factor = 0.2
+				stability_factor = 0.05
+				#ai_focus_defense_factor = 0.35
+			}
+		}
+        FIN_propaganda = {
+			removal_cost = -1
+		
+			picture = FRA_national_mobilization_focus
+
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = no
+			}
+			
+			modifier = {
+				stability_factor = 0.02
+				conscription = 0.02
+				army_core_defence_factor = 0.1
+			}
+		}
+		FIN_motitus_tactics = {
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = SOV_scientist_defect
+			
+			modifier = {
+				winter_attrition_factor = -0.3
+				out_of_supply_factor = -0.1
+			}
+		}
+		FIN_white_guard_idea = {
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+			
+			modifier = {
+				conscription = 0.02
+			}
+		}
+		FIN_mannerheim_legacy_idea = {
+			picture = FRA_fortification_focus
+		
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				production_speed_bunker_factor = 0.08
+			}
+		}
+        civilian_kitchens_idea = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_goods_red_bonus
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+		FIN_communism_banned = {
+			picture = anti_soviet_pact_red
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			modifier = {
+				communism_drift = -0.15
+			}
+		}
+	}
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+	#Pehr Evind Svinhufvud president from 1931 - 1937
+	FIN_pehr_evind = {
+			picture = generic_political_advisor_europe_1
+
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				elder_statesman 
+				conservative
+				anti_communist
+head_of_state_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+			
+		}
+	#Kyösti Kallio from 1937-1940
+		FIN_kyosti_kallio = {
+			picture = generic_political_advisor_europe_2
+
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				dealbroker
+				liberal
+				anti_communist
+				charismatic
+head_of_state_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Foreign
+	foreign_minister = {
+		FIN_rudolf_holsti = {
+			picture = generic_political_advisor_europe_1
+
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				ideological_crusader 
+				liberal
+				anti_fascist
+foreign_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FIN_vaino_voionmaa = {
+			picture = generic_political_advisor_europe_2
+
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				tough_negotiator
+				socialist
+				intellectual
+foreign_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Propaganda/Security
+	interior_minister = {
+		FIN_urho_kekkonen = {
+			picture = generic_political_advisor_europe_3
+
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				liberal	
+				efficient_sociopath 
+				ambitious	
+interior_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FIN_bruno_salmiala = {
+			picture = generic_political_advisor_europe_6
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				fascist
+				crime_fighter
+interior_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Intelligence
+	intel_minister = {
+		FIN_ernst_born = {
+			picture = generic_political_advisor_europe_4
+
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				liberal	
+				dismal_enigma					
+intel_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Economic
+	economic_minister = {
+		FIN_hannes_ryoma = {
+			picture = generic_political_advisor_europe_2
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				captain_of_industry 
+				socialist
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+		FIN_juho_niukkanen = {
+			picture = generic_political_advisor_europe_1
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				war_industrialist 
+				liberal
+				organizer
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		FIN_rainer_fieandt = {
+			picture = generic_political_advisor_europe_4
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				financial_expert 
+				apolitical
+economic_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		FIN_heikki_niskanen = {
+			picture = generic_political_advisor_europe_5
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				fortification_engineer 
+				neutral
+economic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FIN_ilmari_killinen = {
+			picture = generic_political_advisor_europe_2
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				industrial_planner
+				conservative
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+		FIN_jaakko_keto = {
+			picture = generic_political_advisor_europe_3
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				military_entrepreneur
+				socialist
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		FIN_vilho_annala = {
+			picture = generic_political_advisor_europe_6
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				fascist
+				public_works_focus
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+	}
+	#Domestic
+	domestic_minister = {
+		FIN_pekka_heikkinen = {
+			picture = generic_political_advisor_europe_2
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 				
+				liberal
+				domestminster_farms
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FIN_pietari_salmenoja = {
+			picture = generic_political_advisor_europe_1
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 				
+				socialist
+				transport_minster
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		FIN_oskari_mantere = {
+			picture = generic_political_advisor_europe_3
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 				
+				conservative
+				domestminster_science
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FIN_uuno_hannula = {
+			picture = generic_political_advisor_europe_5
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 				
+				liberal
+				domestminster_education
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FIN_karl_fagerholm = {
+			picture = generic_political_advisor_europe_6
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 				
+				socialist
+				domestminster_health
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FIN_paavo_susitaival = {
+			picture = generic_political_advisor_europe_4
+				
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 				
+				fascist
+				domestminster_xeno
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+	}
+	#Political Advisers
+	political_advisor = {
+		FIN_antti_hackzell = {
+			picture = generic_political_advisor_europe_3
+			
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { 
+				silent_workhorse
+				conservative
+political_advisor_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	influence_minister = {
+
+		FIN_guy2 = {
+			allowed = {
+				original_tag = "FIN"
+			}
+			picture = generic_political_advisor_europe_2
+			available = {
+
+			}
+
+			traits = { 
+				angry_warrior
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+
+		FIN_guy5 = {
+			allowed = {
+				original_tag = "FIN"
+			}
+			picture = generic_political_advisor_europe_5
+			available = {
+
+			}
+
+			traits = { 
+				unyeilding_defender
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Academy
+	military_academy = {
+	}
+	#Theorist
+	theorist = {
+		FIN_akseli_anttila = {
+			picture = generic_army_europe_2		
+			
+			allowed = {
+				original_tag = FIN
+			}
+
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { 
+				military_theorist
+				communist
+theorist_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		FIN_vaino_valve = {
+			picture = generic_navy_europe_2
+
+			allowed = {
+				original_tag = FIN
+			}
+			
+			research_bonus = {
+				naval_doctrine = 0.07
+			}
+			
+			traits = { 
+				naval_theorist
+				spirit_of_genghis
+theorist_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Military
+	#Supreme Commanders
+	supreme_commander = {
+		#FIN_hugo_osterman_sc = {
+		#	picture = generic_army_europe_2
+		#	
+		#	allowed = {
+		#		original_tag = FIN
+		#	}
+		#	
+		#	traits = { army_chief_offensive_2  supreme_commander_trait }
+		#	
+		#	ai_will_do = {
+		#		factor = 1
+		#	}
+		#}
+		#FIN_carl_mannerheim_sc = {
+		#	picture = generic_army_europe_3
+		#	
+		#	allowed = {
+		#		original_tag = FIN
+		#	}
+		#	
+		#	available = {
+		#		date > 1939.10.1
+		#	}
+		#	
+		#	traits = { supreme_com_defensive  supreme_commander_trait }
+		#	
+		#	ai_will_do = {
+		#		factor = 1
+		#	}
+		#}
+	}
+	#Army
+	army_chief = {
+		FIN_lauri_malmberg = {
+			picture = generic_army_europe_2
+			
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { army_chief_drill_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FIN_hugo_osterman = {
+			picture = generic_army_europe_2
+			
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { army_chief_offensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FIN_carl_mannerheim = {
+			picture = generic_army_europe_3
+			
+			allowed = {
+				original_tag = FIN
+			}
+			
+
+			
+			traits = { army_chief_defensive_3  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Air
+	air_chief = {
+		FIN_jarl_lundqvist = {
+			picture = generic_air_europe_3
+			
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { air_chief_all_weather_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		FIN_olavi_sarko = {
+			picture = generic_air_europe_1
+			
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { air_chief_ground_support_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+	}
+	#Navy
+	navy_chief = {
+		FIN_olavi_arho = {
+			picture = generic_navy_europe_2
+			
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { navy_chief_commerce_raiding_2  navy_chief_trait }
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_sub_bonus = yes 
+				}
+			}
+		}
+		FIN_eero_rahola = {
+			picture = generic_navy_europe_1
+			
+			allowed = {
+				original_tag = FIN
+			}
+			
+			traits = { navy_chief_decisive_battle_2  navy_chief_trait }
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_fleet_bonus = yes 
+				}
+			}	
+		}
+	}
+	#High Command
+	high_command = {
+		FIN_karl_oesch = {
+			allowed = {
+				original_tag = FIN
+			}
+			
+			picture = generic_army_europe_3
+			
+			traits = { army_regrouping_3  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		FIN_valio_porvari = {
+			allowed = {
+				original_tag = FIN
+			}
+			
+			picture = generic_air_europe_1
+			
+			traits = { air_air_superiority_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		FIN_lauri_tiainen = {
+			allowed = {
+				original_tag = FIN
+			}
+			
+			picture = generic_army_europe_1
+			
+			traits = { army_commando_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		FIN_harald_ohquist = {
+			allowed = {
+				original_tag = FIN
+			}
+			
+			picture = generic_army_europe_2
+			
+			traits = { army_regrouping_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Designers
+	#Naval
+	naval_manufacturer = {
+		designer = yes
+		
+		crichton = {
+			picture = generic_naval_manufacturer_1
+			
+			allowed = {
+				original_tag = FIN
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			research_bonus = {
+				naval_equipment = 0.10
+			}
+			# submarine and defence ship production
+			
+			traits = { ships_manufacturer  naval_manufacturer_trait }
+		}
+	}
+	#Aircraft
+	aircraft_manufacturer = { 
+		designer = yes
+		
+		valtion_lentokonetehdas = {
+			picture = generic_air_manufacturer_3
+			
+			allowed = {
+				original_tag = FIN
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			research_bonus = {
+				air_equipment = 0.10
+			}
+			
+			traits = { light_aircraft_manufacturer  aircraft_manufacturer_trait }
+			# assembled Junkers, fast bombers
+		
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+}
+### EOF ###

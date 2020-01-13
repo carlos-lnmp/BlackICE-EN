@@ -1,0 +1,250 @@
+﻿###########################
+# Arab Events
+###########################
+
+add_namespace = Arab
+
+#### Tribal movements ###
+country_event = {
+	id = Arab.1
+	title = Arab.1.t
+	desc  = Arab.1.desc
+	picture = GFX_news_event_016
+	
+	trigger = {
+		is_Arab = yes
+		is_ai = no
+		OR = {
+			has_idea = Arab_Tribes
+			has_idea = Arab_Tribes2
+			has_idea = Arab_Tribes3
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 360
+		modifier = {
+			factor = 0.5 
+			has_idea = Arab_Tribes
+		}
+		modifier = {
+			factor = 0.8 
+			has_idea = Arab_Tribes2
+		}
+	}
+	immediate = {
+		###
+	}
+	option = { #ok
+		name = Arab.1.a
+						
+		random_list = {
+			60 = {
+				if = { 
+					limit = { has_government = socialism }
+					add_popularity = {
+						ideology = socialism
+						popularity = -0.03
+					}
+				}
+				if = { 
+					limit = { has_government = conservatism }
+					add_popularity = {
+						ideology = conservatism
+						popularity = -0.03
+					}
+				}
+				if = { 
+					limit = { has_government = liberalism }
+					add_popularity = {
+						ideology = liberalism
+						popularity = -0.03
+					}
+				}
+				if = { 
+					limit = { has_government = neutrality }
+					add_popularity = {
+						ideology = neutrality
+						popularity = -0.03
+					}
+				}
+				if = { 
+					limit = { has_government = monarchism }
+					add_popularity = {
+						ideology = monarchism
+						popularity = -0.03
+					}
+				}
+			}
+			30 = {  
+				if = { 
+					limit = { has_government = socialism }
+					add_popularity = {
+						ideology = socialism
+						popularity = -0.06
+					}
+				}
+				if = { 
+					limit = { has_government = conservatism }
+					add_popularity = {
+						ideology = conservatism
+						popularity = -0.06
+					}
+				}
+				if = { 
+					limit = { has_government = liberalism }
+					add_popularity = {
+						ideology = liberalism
+						popularity = -0.06
+					}
+				}
+				if = { 
+					limit = { has_government = neutrality }
+					add_popularity = {
+						ideology = neutrality
+						popularity = -0.06
+					}
+				}
+				if = { 
+					limit = { has_government = monarchism }
+					add_popularity = {
+						ideology = monarchism
+						popularity = -0.06
+					}
+				}
+			}
+			10 = { 
+				if = { 
+					limit = { has_government = socialism }
+					add_popularity = {
+						ideology = socialism
+						popularity = -0.12
+					}
+				}
+				if = { 
+					limit = { has_government = conservatism }
+					add_popularity = {
+						ideology = conservatism
+						popularity = -0.12
+					}
+				}
+				if = { 
+					limit = { has_government = liberalism }
+					add_popularity = {
+						ideology = liberalism
+						popularity = -0.12
+					}
+				}
+				if = { 
+					limit = { has_government = neutrality }
+					add_popularity = {
+						ideology = neutrality
+						popularity = -0.12
+					}
+				}
+				if = { 
+					limit = { has_government = monarchism }
+					add_popularity = {
+						ideology = monarchism
+						popularity = -0.12
+					}
+				}
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+		
+		}
+	}
+}
+
+##### Saudi Arabia ###
+news_event = {
+	id = Arab.2 # Al Madina (newspaper in SAU)
+	title = Arab.2.t
+	desc  = Arab.2.desc
+	picture = GFX_report_event_journalist_speech
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	trigger = {
+		#date > 1937.4.8
+		tag = SAU
+	}
+
+	
+	option = { 
+	name = Arab.1.a
+	add_stability = 0.01
+	country_event = { id = Arab.3 days = 307 }
+	ai_chance = {
+		factor = 100
+		}
+	}
+	
+}
+
+news_event = {
+	id = Arab.3 # Dhahran founded 
+	title = Arab.3.t
+	desc  = Arab.3.desc
+	picture = GFX_news_event_generic_rally
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SAU
+		#date > 1938.2.9 
+	}
+	
+	option = { 
+	name = Arab.1.a
+		capital_scope = {		
+			add_manpower = 1000
+			}
+	ai_chance = {
+		factor = 100	
+		}
+	}
+	
+}
+country_event = {
+	id = Arab.4 #YEM aids ITA
+	title = Arab.4.t
+	desc  = Arab.4.desc
+	picture = GFX_news_event_generic_rally
+	is_triggered_only = yes
+	trigger = {
+		tag = ITA
+	}
+	
+	immediate = {
+		add_manpower = 100
+		effect_tooltip = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 100
+				producer = YEM
+			}
+			add_equipment_to_stockpile = {
+				type = horse_equipment_0
+				amount = 50
+				producer = YEM
+			}
+			add_opinion_modifier = {
+				target = YEM
+				modifier = small_increase
+			}
+		}
+	}
+	option = { #ok
+		name = Arab.1.a
+		ai_chance = {
+			factor = 100	
+		}
+	}
+}
+	

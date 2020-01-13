@@ -1,0 +1,185 @@
+﻿capital = 165
+
+oob = "CAT_1936"
+
+set_research_slots = 2
+
+set_convoys = 10
+
+set_stability = 0.5
+
+set_war_support = 0.15
+
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	############### infantry #############
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	tech_infantry_uniforms = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	############### supports ############
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	subtech_recon_cav_1 = 1
+	tech_ac_recon = 1
+	############### artillery ##############
+	gw_artillery = 1
+	interwar_artillery = 1
+	interwar_antiair = 1
+	interwar_antitank = 1
+	############## aircraft ##############
+	early_fighter = 1
+	early_bomber = 1
+	naval_bomber1 = 1
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	tech_hawker_fury_equipment_1 = 1 
+	############### ships ###############
+	generic_naval_tech = 1
+	early_submarine = 1
+	generic_naval = 1
+	early_destroyer = 1
+	basic_destroyer = 1
+	early_light_cruiser = 1
+	early_heavy_cruiser = 1
+	basic_heavy_cruiser = 1
+	early_battleship = 1
+	################# WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	small_unit_raids = 1
+	night_patrols = 1
+	complex_trench_systems = 1
+	barbed_wire = 1
+	pillboxes = 1
+	basic_MG_defences = 1
+	
+	ww1_artillery = 1
+	artillery_concentration = 1
+	artillery_observers = 1
+	balloon_observers = 1
+	foot_runners = 1
+	carrier_pidgeons = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	
+	ww1_battlefield_support = 1
+	weather_reporting = 1
+	terrain_mapping = 1
+	first_aid_stations = 1
+}
+
+add_ideas = { 	
+	constitutional_republic2
+	export_focus
+	tax_low
+	tariffs_average
+	
+	partial_economic_mobilisation
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_general
+	train_medium
+	officer_train_low
+	age_19
+	security_liberty_first
+
+	edu_low
+
+	foreign_neutral
+}
+
+set_country_flag = constitutional_republic2
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		CHI_incompetent_officers
+	}
+}
+
+set_politics = {
+	ruling_party = socialism
+	elections_allowed = yes
+	election_frequency = 48
+	last_election = 1936.1.1
+}
+
+set_popularities = {
+	socialism = 50
+	liberalism = 20
+	conservatism = 15
+	fascism = 0
+	communism = 5
+	neutrality = 10
+}
+#################################
+create_country_leader = {
+	name = "Lluis Companys"
+	desc = "POLITICS_COMPANYS_DESC"
+	picture = "Portrait_Catalonia_Companys.dds"
+	expire = "1965.1.1"
+	ideology = social_democracy
+	traits = {
+		cornered_fox
+		socialist
+	}
+}
+
+create_country_leader = {
+	name = "Joaquín Maurín"
+	desc = "POLITICS_MAURIN_DESC"
+	picture = "Portrait_Catalonia_Maurin.dds"
+	expire = "1965.1.1"
+	ideology = leninism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "José María Fontana"
+	desc = "POLITICS_FONTANA_DESC"
+	picture = "Portrait_Catalonia_Fontana.dds"
+	expire = "1965.1.1"
+	ideology = falangism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Francesc Cambó"
+	desc = "POLITICS_CAMBO_DESC"
+	picture = "Portrait_Catalonia_Cambo.dds"
+	expire = "1965.1.1"
+	ideology = moderate #not moderatism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = { #better than nothing
+	name = "Govern Provisional"
+	desc = "POLITICS_GOVERN_DESC"
+	picture = "Portrait_Catalonia_Govern.dds"
+	expire = "1965.1.1"
+	ideology = provisional_government #moderatism
+	#traits = {
+		#
+	#}
+}

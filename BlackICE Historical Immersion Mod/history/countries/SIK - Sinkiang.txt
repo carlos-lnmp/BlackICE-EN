@@ -1,0 +1,155 @@
+﻿capital = 617
+set_convoys = 5
+oob = "SIK_1936"
+
+set_war_support = 0.25
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		#early_ship_hull_submarine = 1
+	}
+}
+
+set_technology = {
+	######### setup techs ##########
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	soviet_armor_tech = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## armor ##############
+	gwtank = 1
+	################## aircraft ##############
+generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	soviet_air_tech = 1
+	early_CAS = 1
+	################# ships ################
+	generic_naval_tech = 1
+	generic_naval = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	ww1_battlefield_support = 1
+}
+
+add_ideas = { 	
+	
+	civilian_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	age_19
+	officer_train_none
+	security_minor_restrictions
+	edu_minimal
+	foreign_isolationism
+	neutrality_idea
+	CHI_nine_power_treaty
+	SIK_divided_nation
+	CHI_ineffective_bureaucracy
+	CHI_ineffective_bureaucracy_warlord
+}
+
+set_politics = {
+	ruling_party = communism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	communism = 55
+	conservatism = 3 
+	liberalism = 1
+	socialism = 6
+	fascism = 5
+	monarchism = 10
+	neutrality = 20
+}
+###################################################################
+create_country_leader = {
+	name = "Sheng Shicai"
+	desc = "POLITICS_SHENG_SHICAI_DESC"
+	picture = "gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds"
+	expire = "1965.1.1"
+	ideology = marxism
+	traits = {
+		ineffective_politician3
+	}
+}
+create_country_leader = {
+	name = "Osman Batur"
+	desc = ""
+	picture = "gfx/leaders/Asia/Portrait_Asia_Generic_1.dds"
+	expire = "1965.1.1"
+	ideology = syndicalism
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Muhammad Amin Bughra"
+	desc = ""
+	picture = "gfx/leaders/Asia/Portrait_Asia_Generic_1.dds"
+	expire = "1965.1.1"
+	ideology = pseudo_fascism
+	traits = {
+	}
+}
+create_corps_commander = {
+	name = "Yuan Ling-yun"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+	traits = { Terrible_General }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Chiang Yu-fen"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+	traits = { Terrible_General }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
+### EOF ###

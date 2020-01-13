@@ -1,0 +1,1876 @@
+Research = {
+	research_centre_1_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_1 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_1
+			NOT = { has_country_flag = research_centre_lost_1 } 
+			var:research_state_1 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_1
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			#add_research_slot = -1
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_1
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_1_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_1 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_1
+			has_country_flag = research_centre_lost_1
+			var:research_state_1 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_1
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			#add_research_slot = 1
+		}
+	}
+		
+	research_centre_2_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_2 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_2
+			NOT = { has_country_flag = research_centre_lost_2 } 
+			var:research_state_2 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_2
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			#add_research_slot = -1
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_2
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_2_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_2 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_2
+			has_country_flag = research_centre_lost_2
+			var:research_state_2 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_2
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			#add_research_slot = 1
+		}
+	}
+	
+	research_centre_3_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_3 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_3
+			NOT = { has_country_flag = research_centre_lost_3 } 
+			var:research_state_3 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_3
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_3 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_3
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_3_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_3 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_3
+			has_country_flag = research_centre_lost_3
+			var:research_state_3 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_3
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_3 } 
+		}
+	}
+	
+	research_centre_4_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_4 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_4
+			NOT = { has_country_flag = research_centre_lost_4 } 
+			var:research_state_4 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_4
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_4 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_4
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_4_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_4 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_4
+			has_country_flag = research_centre_lost_4
+			var:research_state_4 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_4
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_4 } 
+		}
+	}
+	
+	research_centre_5_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_5 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_5
+			NOT = { has_country_flag = research_centre_lost_5 } 
+			var:research_state_5 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_5
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_5 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_5
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_5_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_5 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_5
+			has_country_flag = research_centre_lost_5
+			var:research_state_5 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_5
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_5 } 
+		}
+	}
+	
+	research_centre_6_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_6 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_6
+			NOT = { has_country_flag = research_centre_lost_6 } 
+			var:research_state_6 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_6
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_6 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_6
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_6_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_6 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_6
+			has_country_flag = research_centre_lost_6
+			var:research_state_6 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_6
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_6 } 
+		}
+	}
+	
+	research_centre_7_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_7 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_7
+			NOT = { has_country_flag = research_centre_lost_7 } 
+			var:research_state_7 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_7
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_7 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_7
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_7_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_7 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_7
+			has_country_flag = research_centre_lost_7
+			var:research_state_7 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_7
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_7 } 
+		}
+	}
+	research_centre_8_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_8 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_8
+			NOT = { has_country_flag = research_centre_lost_8 } 
+			var:research_state_8 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_8
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_8 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_8
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_8_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_8 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_8
+			has_country_flag = research_centre_lost_8
+			var:research_state_8 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_8
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_8 } 
+		}
+	}
+	research_centre_9_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_9 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_9
+			NOT = { has_country_flag = research_centre_lost_9 } 
+			var:research_state_9 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_9
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_9 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_9
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_9_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_9 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_9
+			has_country_flag = research_centre_lost_9
+			var:research_state_9 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_9
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_9 } 
+		}
+	}
+	research_centre_10_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_10 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_10
+			NOT = { has_country_flag = research_centre_lost_10 } 
+			var:research_state_10 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_10
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_10 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_10
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_10_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_10 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_10
+			has_country_flag = research_centre_lost_10
+			var:research_state_10 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_10
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_10 } 
+		}
+	}
+	research_centre_11_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_11 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_11
+			NOT = { has_country_flag = research_centre_lost_11 } 
+			var:research_state_11 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_11
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_11 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_11
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_11_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_11 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_11
+			has_country_flag = research_centre_lost_11
+			var:research_state_11 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_11
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_11 } 
+		}
+	}
+	research_centre_12_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_12 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_12
+			NOT = { has_country_flag = research_centre_lost_12 } 
+			var:research_state_12 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_12
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_12 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_12
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_12_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_12 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_12
+			has_country_flag = research_centre_lost_12
+			var:research_state_12 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_12
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_12 } 
+		}
+	}
+	research_centre_13_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_13 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_13
+			NOT = { has_country_flag = research_centre_lost_13 } 
+			var:research_state_13 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_13
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_13 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_13
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_13_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_13 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_13
+			has_country_flag = research_centre_lost_13
+			var:research_state_13 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_13
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_13 } 
+		}
+	}
+	research_centre_14_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_14 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_14
+			NOT = { has_country_flag = research_centre_lost_14 } 
+			var:research_state_14 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_14
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_14 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_14
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_14_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_14 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_14
+			has_country_flag = research_centre_lost_14
+			var:research_state_14 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_14
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_14 } 
+		}
+	}
+	research_centre_15_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_15 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_15
+			NOT = { has_country_flag = research_centre_lost_15 } 
+			var:research_state_15 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_15
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_15 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_15
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_15_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_15 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_15
+			has_country_flag = research_centre_lost_15
+			var:research_state_15 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_15
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_15 } 
+		}
+	}
+	research_centre_16_lost = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_16 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_16
+			NOT = { has_country_flag = research_centre_lost_16 } 
+			var:research_state_16 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		is_good = no
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #You have 2 weeks to regain the Research centre, after that you loose the slot
+		
+		timeout_effect = {
+			ROOT = {
+				set_country_flag = research_centre_lost_16
+				add_to_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = -1
+			remove_from_array = { research_slots = research_state_16 } 
+			
+			random_other_country = {
+				limit = {
+					controls_state = var:Root.research_state_16
+				}
+				random_research_centre = yes
+			}
+		}
+	}
+	research_centre_16_regained = {
+	
+		icon = generic_research
+
+		allowed = {
+			
+		}
+
+		available = {
+			var:research_state_16 = {						
+				NOT = { 
+					CONTROLLER = { 
+						OR = {
+							is_in_faction_with = ROOT 
+							tag = ROOT
+							is_subject_of = ROOT
+						}
+					} 
+				}
+			}
+		}
+		
+		activation = {
+			has_variable = research_state_16
+			has_country_flag = research_centre_lost_16
+			var:research_state_16 = {
+				CONTROLLER = {
+					OR = {
+						is_in_faction_with = ROOT 
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		
+		is_good = yes
+
+		visible = {
+			
+		}
+		
+		days_remove = 1
+		days_mission_timeout = 14 #Hold the centre for 2 weeks, then you regain your slot
+		
+		timeout_effect = {
+			ROOT = {
+				clr_country_flag = research_centre_lost_16
+				subtract_from_variable = { research_centre_lost = 1 }
+			}
+			add_research_slot = 1
+			add_to_array = { research_slots = research_state_16 } 
+		}
+	}
+	research_centre_construction = {
+	
+		icon = generic_research
+
+		available = {
+			num_of_factories > 74
+		}
+		cost = 50
+		ai_will_do = {
+			base = 100
+		}
+		visible = {
+			num_of_factories > 50
+			not = { has_country_flag = construct_slot_gained }
+			date > 1938.01.01
+		}
+		
+		complete_effect = { 
+			set_country_flag = construct_slot_gained
+			add_research_slot = 1
+			add_research_centre = yes
+			SLOT:industry_folder #needs to be changed to construction once we make that	
+		}			
+		
+	}	
+}
+
+
+
+
+
+
+

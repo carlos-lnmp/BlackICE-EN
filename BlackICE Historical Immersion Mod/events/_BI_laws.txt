@@ -1,0 +1,731 @@
+﻿add_namespace = law
+
+#Democratic to Dictatorship Press Switch
+news_event = {
+	id = law.1
+	title = law.1.t
+	desc = law.1.desc
+	picture = GFX_news_event_vote
+	
+	trigger = {
+		OR = {
+			AND = {
+				NOT = { has_government = liberalism }
+				has_country_flag = was_liberal
+			}
+			AND = {
+				NOT = { has_government = conservatism }
+				has_country_flag = was_conservative
+			}
+			AND = {
+				NOT = { has_government = socialism }
+				has_country_flag = was_socialist
+			}
+		}
+		OR = {
+			has_government = fascism
+			has_government = communism
+		}
+		OR = {	
+			has_idea = press_free
+			has_idea = press_regulated
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	immediate = {
+	}
+	
+	option = {
+		name = law.1.a
+		add_ideas = press_state
+		set_country_flag = press_state
+	}
+}
+#Dictatorship to Democratic Press Switch
+news_event = {
+	id = law.2
+	title = law.2.t
+	desc = law.2.desc
+	picture = GFX_news_event_vote
+	
+	trigger = {
+		OR = {
+			AND = {
+				NOT = { has_government = communism }
+				has_country_flag = was_communist
+			}
+			AND = {
+				NOT = { has_government = fascism }
+				has_country_flag = was_fascist
+			}
+			AND = {
+				NOT = { has_government = monarchism }
+				has_country_flag = was_monarchist
+			}
+			AND = {
+				NOT = { has_government = neutrality }
+				has_country_flag = was_neutral
+			}
+		}
+		has_war = no
+		NOT = { 
+			has_idea = press_free
+			has_idea = press_regulated
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	immediate = {
+	}
+	
+	option = {
+		name = law.2.a
+		add_ideas = press_regulated
+		set_country_flag = press_regulated
+	}
+}
+#Democratic to Monarchy Press Switch
+news_event = {
+	id = law.3
+	title = law.3.t
+	desc = law.3.desc
+	picture = GFX_news_event_vote
+	
+	trigger = {
+		has_government = monarchism
+		OR = {
+			has_country_flag = was_liberal
+			has_country_flag = was_conservative
+			has_country_flag = was_socialist
+		}
+		OR = {	
+			has_idea = press_free
+			has_idea = press_regulated
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	immediate = {
+		
+	}
+	
+	option = {
+		name = law.3.a
+		add_ideas = press_censored
+		set_country_flag = press_censored
+	}
+}
+#Labor Laws
+country_event = {
+	id = law.6
+	title = law.6.t
+	desc = law.6.desc
+	picture = GFX_event_ammo_producer
+	hidden = yes
+	
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	option = {
+		name = law.6.a
+		trigger = {
+			has_idea = labor_allowed
+			has_idea = labor_encouraged
+		}
+		swap_ideas = {
+			add_idea = labor_transition
+			remove_idea = labor_allowed
+		}
+	}
+	option = {
+		name = law.6.b
+		trigger = {
+			has_idea = labor_allowed
+			has_idea = labor_homefront
+		}
+		swap_ideas = {
+			add_idea = labor_transition
+			remove_idea = labor_allowed
+		}
+		clr_country_flag = labor_allowed
+	}
+	option = {
+		name = law.6.c
+		trigger = {
+			has_idea = labor_encouraged
+			has_idea = labor_homefront
+		}
+		if = { limit = { NOT = { has_country_flag = labor_step_down } }
+			swap_ideas = {
+				add_idea = labor_transition
+				remove_idea = labor_encouraged
+			}
+			clr_country_flag = labor_step_down
+		}
+		if = { limit = { has_country_flag = labor_step_down }
+			swap_ideas = {
+				add_idea = labor_transition
+				remove_idea = labor_homefront
+			}
+			clr_country_flag = labor_step_down
+		}
+	}
+	option = {
+		name = law.6.d
+		trigger = {
+			has_idea = labor_none
+			has_idea = labor_encouraged
+		}
+		swap_ideas = {
+			add_idea = labor_transition
+			remove_idea = labor_none
+		}
+	}
+	option = {
+		name = law.6.e
+		trigger = {
+			has_idea = labor_none
+			has_idea = labor_homefront
+		}
+		swap_ideas = {
+			add_idea = labor_transition
+			remove_idea = labor_none
+		}
+	}
+}
+
+country_event = {
+	id = law.4
+	title = law.4.t
+	desc = law.4.desc
+	picture = GFX_event_ammo_producer
+	hidden = yes
+	
+	trigger = {
+		has_idea = labor_transition
+	}
+
+	mean_time_to_happen = { days = 180 }
+
+	immediate = {
+	}
+	
+	option = {
+		name = law.4.a
+		swap_ideas = {
+			add_idea = labor_transition2
+			remove_idea = labor_transition
+		}
+	}
+}
+
+country_event = {
+	id = law.5
+	title = law.5.t
+	desc = law.5.desc
+	picture = GFX_report_event_IPR_news
+	hidden = yes
+	trigger = {
+		has_idea = labor_transition2
+	}
+	mean_time_to_happen = { days = 180 }
+
+	immediate = {
+	}
+	
+	option = {
+		name = law.5.a
+		remove_ideas = labor_transition2
+	}
+}
+
+country_event = {
+	id = law.7
+	title = law.7.t
+	desc = law.7.desc
+	picture = GFX_report_event_chinese_soldiers
+	hidden = yes
+	
+	trigger = {
+		has_idea = low_training_standards
+		NOT = {
+			has_idea = train_none
+			has_idea = train_low
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+
+	immediate = {
+		add_ideas = low_training_standards
+	}
+	
+	option = {
+		name = law.7.a
+	}
+}
+
+country_event = {
+	id = law.8
+	title = law.8.t
+	desc = law.8.desc
+	picture = GFX_report_event_chinese_soldiers
+	hidden = yes
+	
+	trigger = {
+		has_idea = low_training_standards
+	}
+	mean_time_to_happen = { days = 150 }
+
+	immediate = {
+		swap_ideas = {
+			remove_idea = low_training_standards
+			add_idea = low_training_standards2
+		}
+	}
+	
+	option = {
+		name = law.8.a
+	}
+}
+
+country_event = {
+	id = law.9
+	title = law.9.t
+	desc = law.9.desc
+	picture = GFX_report_event_chinese_soldiers
+	hidden = yes
+	
+	trigger = {
+		has_idea = low_training_standards2
+	}
+	
+	mean_time_to_happen = { days = 150 }
+
+	immediate = {
+		swap_ideas = {
+			add_idea = low_training_standards2
+			remove_idea = low_training_standards
+		}
+		clr_country_flag = low_training_standards
+	}
+	
+	option = {
+		name = law.9.a
+	}
+}
+
+country_event = {
+	id = law.10
+	title = law.10.t
+	desc = law.10.desc
+	picture = GFX_report_event_chinese_soldiers
+	hidden = yes
+	
+	trigger = {
+		has_idea = low_training_standards2
+		NOT = {
+			has_idea = train_none
+			has_idea = train_low
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+
+	immediate = {
+		add_ideas = low_training_standards2
+	}
+	
+	option = {
+		name = law.10.a
+	}
+}
+
+country_event = {
+	id = law.11
+	title = law.11.t
+	desc = law.11.desc
+	picture = GFX_report_event_korean_war_march
+	hidden = yes
+	
+	trigger = {
+		has_idea = low_training_standards
+		has_idea = train_low
+	}
+	
+	mean_time_to_happen = { days = 30 }
+
+	immediate = {
+		remove_ideas = low_training_standards
+	}
+	
+	option = {
+		name = law.11.a
+	}
+}
+
+country_event = {
+	id = law.12
+	title = law.12.t
+	desc = law.12.desc
+	picture = GFX_report_event_korean_war_march
+	hidden = yes
+	
+	trigger = {
+		has_idea = low_training_standards2
+		has_idea = train_none
+	}
+	mean_time_to_happen = { days = 2 }
+
+	immediate = {
+		remove_ideas = low_training_standards2
+	}
+	
+	option = {
+		name = law.12.a
+	}
+}
+
+country_event = { 
+	id = law.13
+	hidden = yes
+	
+	mean_time_to_happen = { days = 2 }
+	
+	trigger = {
+		has_idea = mob_general
+		NOT = { has_idea = CHI_nine_power_treaty }
+		NOT = { has_completed_focus = GER_mobilize_the_reich } #Germany
+		
+		NOT = {
+			any_other_country = {
+				OR = {
+					has_war_with = ROOT 
+					is_justifying_wargoal_against = ROOT
+					has_wargoal_against = ROOT
+					threat > 0.5
+					ROOT = { 	
+						OR = {
+							is_justifying_wargoal_against = PREV
+							has_wargoal_against = PREV
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		add_ideas = mob_reserve
+		if = {
+			limit = {
+				can_take_mob_general = yes
+			}
+			add_ideas = mob_general
+		}
+		else_if = {
+			limit = {
+				can_take_mob_standing = yes
+			}
+			add_ideas = mob_standing
+		}
+		else_if = {
+			limit = {
+				can_take_mob_limited = yes
+			}
+			add_ideas = mob_limited
+		}
+	}
+	
+	
+	option = { }
+}
+
+country_event = { 
+	id = law.14
+	hidden = yes
+	
+	mean_time_to_happen = { months = 2 }
+	
+	trigger = {
+		set_temp_variable = { temp = 0 }
+		add_to_temp_variable = { temp = has_stability }
+		multiply_temp_variable = { temp = 3 }
+		add_to_temp_variable = { temp = has_war_support }
+		is_independent_china_or_warlord = no	
+		multiply_temp_variable = { temp = 25 }
+		#divide_temp_variable = { temp = 2 }
+		
+		OR = {
+			AND = {
+				check_variable = { var = temp value = 25 compare = less_than_or_equals }
+				check_variable = { var = temp value = 0 compare = greater_than_or_equals }
+				NOT = { has_idea = unity_civil_war }
+			}
+			AND = {
+				check_variable = { var = temp value = 50 compare = less_than_or_equals }
+				check_variable = { var = temp value = 25 compare = greater_than_or_equals }
+				NOT = { has_idea = unity_broken_nation }
+			}
+			AND = {
+				check_variable = { var = temp value = 75 compare = less_than_or_equals }
+				check_variable = { var = temp value = 50 compare = greater_than_or_equals }
+				NOT = { has_idea = unity_divided_nation }
+			}
+			AND = {
+				check_variable = { var = temp value = 100 compare = less_than_or_equals }
+				check_variable = { var = temp value = 75 compare = greater_than_or_equals }
+				NOT = { has_idea = unity_united_nation }
+			}
+		}
+	}
+	
+	immediate = {
+		log = "Unity Law | [?temp] | [Root.GetName]"
+		add_unity_idea = yes
+	}
+	
+	
+	option = { }
+}
+
+country_event = { #cadet training law changed 
+	id = law.50
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = no
+		NOT = { has_country_flag = cadet_training_standards }
+	}
+	
+	immediate = {
+		set_country_flag = cadet_training_standards
+		set_variable = { cadet_training_standards_var = num_divisions }
+		every_army_leader = {
+			limit = {
+				check_variable = { num_special > 0 }
+			}
+			add_to_variable = { Root.cadet_training_standards_var = num_special }
+		}
+		divide_variable = { cadet_training_standards_var = 2 }
+		if = {
+			limit = {
+				check_variable = { cadet_training_standards_var < 11 }
+			}
+			set_variable = { cadet_training_standards_var = 10 }
+		}
+		level_down_cadet_training = yes
+		#if = 
+		#	limit = 
+		#		has_country_flag = 
+		#level_down_cadet_training = yes
+		activate_decision = cadet_training_standards
+	}
+	
+	
+	option = { }
+}
+
+country_event = { #officer training law changed
+	id = law.51
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = no
+		NOT = { has_country_flag = officer_training_standards }
+	}
+	
+	immediate = {
+		set_country_flag = officer_training_standards
+		set_variable = { officer_training_standards_var = num_divisions }
+		divide_variable = { officer_training_standards_var = 2 }
+		every_army_leader = {
+			limit = {
+				check_variable = { num_special > 0 }
+			}
+			add_to_variable = { Root.cadet_training_standards_var = num_special }
+		}
+		if = {
+			limit = {
+				check_variable = { officer_training_standards_var < 11 }
+			}
+			set_variable = { officer_training_standards_var = 10 }
+		}
+		level_down_officer_training = yes
+		activate_decision = officer_training_standards
+	}
+	
+	
+	option = { }
+}
+
+country_event = { #economy law
+	id = law.52
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = no
+		NOT = { has_country_flag = economy }
+	}
+	
+	immediate = {
+		set_country_flag = economy
+		set_variable = { economy_var = num_of_civilian_factories }
+		divide_variable = { economy_var = 2 }
+		if = {
+			limit = {
+				check_variable = { economy_var < 11 }
+			}
+			set_variable = { economy_var = 10 }
+		}
+		multiply_variable = { economy_var = economy_factor }
+		#level_down_economy_law = yes
+		
+		if = {
+			limit = {
+				has_country_flag = civilian_economy
+			}
+			add_ideas = civilian_economy
+		}
+		if = {
+			limit = {
+				has_country_flag = low_economic_mobilisation
+			}
+			add_ideas = low_economic_mobilisation
+		}
+		if = {
+			limit = {
+				has_country_flag = partial_economic_mobilisation
+			}
+			add_ideas = partial_economic_mobilisation
+		}
+		if = {
+			limit = {
+				has_country_flag = war_economy
+			}
+			add_ideas = war_economy
+		}
+		if = {
+			limit = {
+				has_country_flag = tot_economic_mobilisation
+			}
+			add_ideas = tot_economic_mobilisation
+		}
+		
+		activate_decision = economy
+	}
+	
+	
+	option = { }
+}
+
+country_event = { #labor laws
+	id = law.53
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = no
+		NOT = { has_country_flag = labor_laws }
+	}
+	
+	immediate = {
+		set_country_flag = labor_laws
+		set_variable = { labor_laws_var = num_of_military_factories }
+		divide_variable = { labor_laws_var = 2 }
+		if = {
+			limit = {
+				check_variable = { labor_laws_var < 11 }
+			}
+			set_variable = { labor_laws_var = 10 }
+		}
+		level_down_labor_law = yes
+		activate_decision = labor_laws
+	}
+	
+	
+	option = { }
+}
+
+country_event = { #Strike Chance
+	id = law.100
+	hidden = yes
+	
+	trigger = {
+		is_ai = no
+		check_variable = { worker_mood_TT > 4.99 }
+	}
+	
+	mean_time_to_happen = {
+		months = 2 
+	}
+	
+	option = {
+		name = "Strike Chance"
+		random_list = {
+			20 = {
+				modifier = { add = 1 check_variable = { worker_mood_TT > 0.99 } }
+				modifier = { add = 1 check_variable = { worker_mood_TT > 1.99 } }
+				modifier = { add = 1 check_variable = { worker_mood_TT > 2.99 } }
+				modifier = { add = 1 check_variable = { worker_mood_TT > 3.99 } }
+				modifier = { add = 1 check_variable = { worker_mood_TT > 4.99 } }
+				modifier = { add = 2 check_variable = { worker_mood_TT > 5.99 } }
+				modifier = { add = 2 check_variable = { worker_mood_TT > 6.99 } }
+				modifier = { add = 2 check_variable = { worker_mood_TT > 7.99 } }
+				modifier = { add = 2 check_variable = { worker_mood_TT > 8.99 } }
+				modifier = { add = 2 check_variable = { worker_mood_TT > 9.99 } }
+				modifier = { add = 3 check_variable = { worker_mood_TT > 10.99 } }
+				modifier = { add = 3 check_variable = { worker_mood_TT > 11.99 } }
+				modifier = { add = 3 check_variable = { worker_mood_TT > 12.99 } }
+				modifier = { add = 3 check_variable = { worker_mood_TT > 13.99 } }
+				modifier = { add = 4 check_variable = { worker_mood_TT > 14.99 } }
+				modifier = { add = 4 check_variable = { worker_mood_TT > 15.99 } }
+				modifier = { add = 5 check_variable = { worker_mood_TT > 16.99 } }
+				modifier = { add = 5 check_variable = { worker_mood_TT > 17.99 } }
+				modifier = { add = 5 check_variable = { worker_mood_TT > 18.99 } }
+				modifier = { add = 5 check_variable = { worker_mood_TT > 19.99 } }
+				
+				modifier = { factor = 0.9 check_variable = { modifier@production_speed_dummy_2_factor > 0.09 } }
+				modifier = { factor = 0.9 check_variable = { modifier@production_speed_dummy_2_factor > 0.19 } }
+				modifier = { factor = 0.9 check_variable = { modifier@production_speed_dummy_2_factor > 0.29 } }
+				modifier = { factor = 0.9 check_variable = { modifier@production_speed_dummy_2_factor > 0.39 } }
+				modifier = { factor = 0.9 check_variable = { modifier@production_speed_dummy_2_factor > 0.49 } }
+				modifier = { factor = 0.9 check_variable = { modifier@production_speed_dummy_2_factor > 0.59 } }
+				modifier = { factor = 0.9 check_variable = { modifier@production_speed_dummy_2_factor > 0.69 } }
+				modifier = { factor = 0.9 check_variable = { modifier@production_speed_dummy_2_factor > 0.79 } }
+				modifier = { factor = 0.9 check_variable = { modifier@production_speed_dummy_2_factor > 0.89 } }
+				modifier = { factor = 0.9 check_variable = { modifier@production_speed_dummy_2_factor > 0.99 } }
+				
+				modifier = { factor = 1.1 check_variable = { modifier@production_speed_dummy_2_factor < -0.09 } }
+				modifier = { factor = 1.1 check_variable = { modifier@production_speed_dummy_2_factor < -0.19 } }
+				modifier = { factor = 1.1 check_variable = { modifier@production_speed_dummy_2_factor < -0.29 } }
+				modifier = { factor = 1.1 check_variable = { modifier@production_speed_dummy_2_factor < -0.39 } }
+				modifier = { factor = 1.1 check_variable = { modifier@production_speed_dummy_2_factor < -0.49 } }
+				modifier = { factor = 1.1 check_variable = { modifier@production_speed_dummy_2_factor < -0.59 } }
+				modifier = { factor = 1.1 check_variable = { modifier@production_speed_dummy_2_factor < -0.69 } }
+				modifier = { factor = 1.1 check_variable = { modifier@production_speed_dummy_2_factor < -0.79 } }
+				modifier = { factor = 1.1 check_variable = { modifier@production_speed_dummy_2_factor < -0.89 } }
+				modifier = { factor = 1.1 check_variable = { modifier@production_speed_dummy_2_factor < -0.99 } }
+			
+				country_event = { id = stability.22 days = 10 random = 1000 }
+			}
+			
+			80 = { }
+		}
+	}
+	
+}
+### EOF ###

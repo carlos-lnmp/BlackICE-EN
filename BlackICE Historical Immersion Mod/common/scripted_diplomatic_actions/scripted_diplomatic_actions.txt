@@ -1,0 +1,323 @@
+#scripted_diplomatic_actions = {
+#
+#	AI_subject_build_options = { # will be used in most localizations
+#	
+#		allowed = { #if action is valid
+#			always = yes
+#		}
+#		visible = { #if action is visible on gui
+#			always = yes
+#		}
+#		selectable = { #if action is selectable on gui
+#			always = yes
+#		}
+#
+#		requires_acceptance = yes # if true the action will require acceptance of target country
+#		cost = 10 # pp cost, can be zero
+#		command_power = 10 # cp cost, can be zero
+#
+#		cost_string = loc_key # if you have a custom cost, use this loc to display it
+#		show_acceptance_on_action_button = yes # set to no if acceptance shouldn't be displayed on the action button
+#
+#		icon = 1 # icon frame to use in notification
+#
+#       #for effects/triggers/variables, from is the sender and this is receiver
+#
+#		# runs when the action is sent
+#		on_sent_effect = {
+#		}
+#
+#		# runs when the action is properly sent and accepted
+#		complete_effect = {
+#		}
+#
+#		# runs when the action is properly sent and rejected
+#		reject_effect = {
+#		}
+#
+#		# SEND POPUP CUSTOMIZATION
+#		# use diplomatic_action as context in scripted gui
+#		send_scripted_gui = send_scripted_gui_name # if specified, the diplomatic action will use this scripted gui before sending the request. the player (or ai) can make changes on that gui and store stuff as variable to customize action
+#		reset_send_effect = { # if action has a send scripted gui, this effect will be used for clearing the state of gui (will run when player opens the scripted gui by sending the action or when ai proposes action
+#			# clear action
+#			if = {
+#				limit = { 
+#					from = {
+#						is_ai = yes
+#					}
+#				}
+#				# initialize for ai
+#			}
+#		}
+#		can_be_sent = { # send button will be disabled if no
+#			always = yes
+#		}
+#		send_description = loc_key # if there is no scripted gui, this desc will be used in send yes/no pop up
+#
+#
+#		# RECEIVE POPUP CUSTOMIZATION
+#		# use diplomatic_action as context in scripted gui
+#		receive_scripted_gui = receive_scripted_gui_name #if specified the receiver of the action will get this scripted gui instead of yes-no popup when they receive the propose
+#		reset_receive_effect = {
+#			# clear action
+#			if = {
+#				limit = { 
+#					from = {
+#						is_ai = yes
+#					}
+#				}
+#				# change stuff for ai
+#			}
+#		}
+#		can_be_accepted = { # accept button will be disabled if no
+#			always = yes
+#		}
+#		request_description = loc_key # if there is no scripted gui, this desc will be used in send yes/no pop up
+#
+#		
+#		# PLAYER FEEDBACK ON ACCEPT/REJECT
+#		accept_title = loc_key #can be overridden to customize accepted/rejected pop ups for the sender
+#		accept_description = loc_key
+#		reject_title = loc_key
+#		reject_description = loc_key
+#	
+#		
+#		# AI
+#		# a list of ai_will_do entries that will be used to decide if AI should accept or reject a request
+#		ai_acceptance = {
+#			condition = { # name is used for loc
+#				base = 100
+#			}
+#		}
+#
+#		# ai_will_do to decide if AI should send this action or not
+#		ai_desire = {
+#			factor = -1
+#		}
+#	}
+#}
+scripted_diplomatic_actions = {
+	
+	AI_partisan_notification = {
+
+		allowed = {
+			always = no
+		}
+		
+		selectable = {
+			always = no
+			#FROM = { is_ai = no } #i hope this stops the performance intensive check
+			ROOT = { 
+				is_ai = yes 
+				#any_owned_state = {
+				#	is_controlled_by = ROOT 
+				#	check_variable = { resistance > 0.9 }
+				#}
+			}
+		}
+		
+		visible = {
+			always = no
+		}
+		
+		cost = 0
+		
+		icon = 14
+		send_description = AI_SUBJECT_BUILD_OPTIONS_ACTION_DESC
+		#accept_description = AI_SUBJECT_BUILD_OPTIONS_ACTION_DESC
+		
+		on_sent_effect = {
+			
+		}
+		
+		ai_acceptance = {
+			condition = {
+				base = 100 
+			}
+		}
+	}
+	diplomatic_options = {
+
+		allowed = {
+			always = no
+		}
+		
+		selectable = {
+			ROOT={
+				NOT = { 
+					has_country_flag=inthemiddleofoptions
+				}
+			}
+		}
+		
+		visible = {
+			has_global_flag=wip
+		}
+		
+		cost = 0
+		
+		icon = 14
+		
+		on_sent_effect = {
+			
+		}
+		
+		complete_effect = {
+			FROM = { set_country_flag = options_with@ROOT  } 
+			ROOT={set_country_flag=inthemiddleofoptions}
+		}
+		requires_acceptance = no
+		show_acceptance_on_action_button = no 
+		can_be_accepted = { # accept button will be disabled if no
+			always = no
+		}
+		can_be_sent = { # send button will be disabled if no
+			always = no
+		}
+		
+	}
+	technology_pact = {
+
+		allowed = {
+			always = no
+		}
+		
+		selectable = {
+			
+		}
+		
+		visible = {
+			always = no
+			
+		}
+		
+		cost = 0
+		
+		icon = 14
+		
+		on_sent_effect = {
+			
+		}
+		
+		complete_effect = {
+			
+		}
+		requires_acceptance = no
+		show_acceptance_on_action_button = no 
+		can_be_accepted = { # accept button will be disabled if no
+			
+		}
+		can_be_sent = { # send button will be disabled if no
+			
+		}
+		
+	}
+	trade_agreement = {
+
+		allowed = {
+			always = no
+		}
+		
+		selectable = {
+			
+		}
+		
+		visible = {
+			always = no
+			
+		}
+		
+		cost = 0
+		
+		icon = 14
+		
+		on_sent_effect = {
+			
+		}
+		
+		complete_effect = {
+			
+		}
+		requires_acceptance = no
+		show_acceptance_on_action_button = no 
+		can_be_accepted = { # accept button will be disabled if no
+			
+		}
+		can_be_sent = { # send button will be disabled if no
+			
+		}
+		
+	}
+	trade_agreement_extensive = { #between faction members
+
+		allowed = {
+			always = no
+		}
+		
+		selectable = {
+			
+		}
+		
+		visible = {
+			always = no
+			
+		}
+		
+		cost = 0
+		
+		icon = 14
+		
+		on_sent_effect = {
+			
+		}
+		
+		complete_effect = {
+			
+		}
+		requires_acceptance = no
+		show_acceptance_on_action_button = no 
+		can_be_accepted = { # accept button will be disabled if no
+			
+		}
+		can_be_sent = { # send button will be disabled if no
+			
+		}
+		
+	}
+	sanctions = {
+
+		allowed = {
+			always = no
+		}
+		
+		selectable = {
+			
+		}
+		
+		visible = {
+			always = no
+			
+		}
+		
+		cost = 0
+		
+		icon = 14
+		
+		on_sent_effect = {
+			
+		}
+		
+		complete_effect = {
+			
+		}
+		requires_acceptance = no
+		show_acceptance_on_action_button = no 
+		can_be_accepted = { # accept button will be disabled if no
+			
+		}
+		can_be_sent = { # send button will be disabled if no
+			
+		}
+		
+	}
+}

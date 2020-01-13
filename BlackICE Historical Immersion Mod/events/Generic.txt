@@ -1,0 +1,1971 @@
+﻿###########################
+# turkey Events
+###########################
+
+add_namespace = generic
+
+# President dies
+country_event = {
+	id = generic.1
+	title = generic.1.t
+	desc = { 
+		text = generic.1.d_neutral_good
+		trigger = {
+			has_government = FROM
+		}
+	}
+	desc = {
+		text = generic.1.d_bad
+		trigger = {
+			NOT = { has_government = FROM }
+		}
+	}
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = generic.1.a
+		trigger = {
+			has_government = FROM
+		}
+	}
+	option = {
+		name = generic.1.b
+		trigger = {
+			NOT = { has_government = FROM }
+		}
+	}
+}
+
+# Generic request to join major Alliance
+country_event = {
+	id = generic.2
+	title = generic.2.t
+	desc = { # FROM and ROOT are Democratic
+		text = generic.2.d.a
+		trigger = {
+			AND = {
+				FROM = {
+					democratic_govt = yes
+				}
+				democratic_govt = yes
+			}
+		}
+	}
+	desc = { # FROM and ROOT are Fascist
+		text = generic.2.d.b
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = fascism
+				}
+				has_government = fascism
+			}
+		}
+	}
+	desc = { # FROM and ROOT are Communist
+		text = generic.2.d.c
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = communism
+				}
+				has_government = communism
+			}
+		}
+	}
+	desc = { # FROM and ROOT are Monarchist
+		text = generic.2.d.c
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = monarchism
+				}
+				has_government = monarchism
+			}
+		}
+	}
+	desc = { # FROM and ROOT are different ideologies
+		text = generic.2.d.e
+		trigger = {
+			NOT = {
+				AND = {
+					FROM = {
+						democratic_govt = yes
+					}
+					democratic_govt = yes
+				}
+				AND = {
+					FROM = {
+						has_government = fascism
+					}
+					has_government = fascism
+				}
+				AND = {
+					FROM = {
+						has_government = monarchism
+					}
+					has_government = monarchism
+				}
+				AND = {
+					FROM = {
+						has_government = communism
+					}
+					has_government = communism
+				}
+			}
+		}
+	}
+	picture = GFX_report_event_generic_read_write
+
+	immediate = {
+		hidden_effect = {
+			save_event_target_as = alliance_inviter
+			FROM = {
+				save_event_target_as = alliance_applicant
+			}
+		}
+	}
+
+	is_triggered_only = yes
+	
+	option = { #Agree / Both Democratic
+		name = generic.2.a
+		trigger = {
+			AND = {
+				FROM = {
+					democratic_govt = yes
+				}
+				democratic_govt = yes
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		add_to_faction = FROM
+		FROM = { country_event = { id = generic.3 hours = 6 } }
+		hidden_effect = {
+			set_country_flag = alliance_inviter@ROOT
+			FROM = { set_country_flag = alliance_applicant@ROOT }
+			news_event = { id = news.289 hours = 12 }
+		}
+	}
+	option = { #Agree / Both Fascist
+		name = generic.2.b
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = fascism
+				}
+				has_government = fascism
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		add_to_faction = FROM
+		FROM = { country_event = { id = generic.3 hours = 6 } }
+		hidden_effect = {
+			set_country_flag = alliance_inviter@ROOT
+			FROM = { set_country_flag = alliance_applicant@ROOT }
+			news_event = { id = news.289 hours = 12 }
+		}
+	}
+	option = { #Agree / Both Communist
+		name = generic.2.c
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = communism
+				}
+				has_government = communism
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		add_to_faction = FROM
+		FROM = { country_event = { id = generic.3 hours = 6 } }
+		hidden_effect = {
+			set_country_flag = alliance_inviter@ROOT
+			FROM = { set_country_flag = alliance_applicant@ROOT }
+			news_event = { id = news.289 hours = 12 }
+		}
+	}
+	option = { #Agree / Both Monarchist
+		name = generic.2.g
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = monarchism
+				}
+				has_government = monarchism
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		add_to_faction = FROM
+		FROM = { country_event = { id = generic.3 hours = 6 } }
+		hidden_effect = {
+			set_country_flag = alliance_inviter@ROOT
+			FROM = { set_country_flag = alliance_applicant@ROOT }
+			news_event = { id = news.289 hours = 12 }
+		}
+	}
+	option = { #Agree / Both different
+		name = generic.2.e
+		trigger = {
+			NOT = {
+				AND = {
+					FROM = {
+						democratic_govt = yes
+					}
+					democratic_govt = yes
+				}
+				AND = {
+					FROM = {
+						has_government = fascism
+					}
+					has_government = fascism
+				}
+				AND = {
+					FROM = {
+						has_government = communism
+					}
+					has_government = communism
+				}
+				AND = {
+					FROM = {
+						has_government = monarchism
+					}
+					has_government = monarchism
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		add_to_faction = FROM
+		FROM = { country_event = { id = generic.3 hours = 6 } }
+		hidden_effect = {
+			set_country_flag = alliance_inviter@ROOT
+			FROM = { set_country_flag = alliance_applicant@ROOT }
+			news_event = { id = news.289 hours = 12 }
+		}
+	}
+	
+	option = { #Reject
+		name = generic.2.f
+		ai_chance = { factor = 0 }
+		FROM = { 
+			country_event = { id = generic.4 hours = 6 }
+		}
+	}
+}
+
+# Generic accepted request to join major Alliance
+country_event = {
+	id = generic.3
+	title = generic.3.t
+	desc = generic.3.d
+
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = generic.3.a
+		trigger = {
+			AND = {
+				FROM = {
+					democratic_govt = yes
+				}
+				democratic_govt = yes
+			}
+		}
+	}
+	option = {
+		name = generic.3.b
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = fascism
+				}
+				has_government = fascism
+			}
+		}
+
+
+	}
+	option = {
+		name = generic.3.c
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = communism
+				}
+				has_government = communism
+			}
+		}
+	}
+	option = {
+		name = generic.3.f
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = monarchism
+				}
+				has_government = monarchism
+			}
+		}
+	}
+	option = {
+		name = generic.3.e
+		trigger = {
+			NOT = {
+				AND = {
+					FROM = {
+						democratic_govt = yes
+					}
+					democratic_govt = yes
+				}
+				AND = {
+					FROM = {
+						has_government = fascism
+					}
+					has_government = fascism
+				}
+				AND = {
+					FROM = {
+						has_government = communism
+					}
+					has_government = communism
+				}
+				AND = {
+					FROM = {
+						has_government = monarchism
+					}
+					has_government = monarchism
+				}
+			}
+		}
+	}
+}
+
+# Generic rejected request to join major Alliance
+country_event = {
+	id = generic.4
+	title = generic.4.t
+	desc = generic.4.d
+	
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	option = {
+		name = generic.4.a
+		trigger = {
+			AND = {
+				FROM = {
+					democratic_govt = yes
+				}
+				democratic_govt = yes
+			}
+		}
+	}
+	option = {
+		name = generic.4.b
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = fascism
+				}
+				has_government = fascism
+			}
+		}
+	}
+	option = {
+		name = generic.4.c
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = communism
+				}
+				has_government = communism
+			}
+		}
+	}
+	option = {
+		name = generic.4.f
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = monarchism
+				}
+				has_government = monarchism
+			}
+		}
+	}
+	option = {
+		name = generic.4.e
+		trigger = {
+			NOT = {
+				AND = {
+					FROM = {
+						democratic_govt = yes
+					}
+					democratic_govt = yes
+				}
+				AND = {
+					FROM = {
+						has_government = fascism
+					}
+					has_government = fascism
+				}
+				AND = {
+					FROM = {
+						has_government = communism
+					}
+					has_government = communism
+				}
+				AND = {
+					FROM = {
+						has_government = monarchism
+					}
+					has_government = monarchism
+				}
+			}
+		}
+	}
+}
+
+#####################################################################
+#####################################################################
+
+# Generic invitaton to join major Alliance
+country_event = {
+	id = generic.5
+	title = generic.5.t
+	desc = { # FROM and ROOT are Democratic
+		text = generic.5.d.a
+		trigger = {
+			AND = {
+				FROM = {
+					democratic_govt = yes
+				}
+				democratic_govt = yes
+			}
+		}
+	}
+	desc = { # FROM and ROOT are Fascist
+		text = generic.5.d.b
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = fascism
+				}
+				has_government = fascism
+			}
+		}
+	}
+	desc = { # FROM and ROOT are Communist
+		text = generic.5.d.c
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = communism
+				}
+				has_government = communism
+			}
+		}
+	}
+	desc = { # FROM and ROOT are Monarchist
+		text = generic.3.d.b
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = monarchism
+				}
+				has_government = monarchism
+			}
+		}
+	}
+	desc = { # FROM and ROOT are different ideologies
+		text = generic.5.d.e
+		trigger = {
+			NOT = {
+				AND = {
+					FROM = {
+						democratic_govt = yes
+					}
+					democratic_govt = yes
+				}
+				AND = {
+					FROM = {
+						has_government = fascism
+					}
+					has_government = fascism
+				}
+				AND = {
+					FROM = {
+						has_government = communism
+					}
+					has_government = communism
+				}
+				AND = {
+					FROM = {
+						has_government = monarchism
+					}
+					has_government = monarchism
+				}
+			}
+		}
+	}
+	picture = GFX_report_event_generic_read_write
+
+	immediate = {
+		hidden_effect = {
+			save_event_target_as = alliance_applicant
+			FROM = {
+				save_event_target_as = alliance_inviter
+			}
+		}
+	}
+
+	is_triggered_only = yes
+	
+	option = { #Agree / Both Democratic
+		name = generic.5.a
+		trigger = {
+			AND = {
+				FROM = {
+					democratic_govt = yes
+				}
+				democratic_govt = yes
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = { 
+			add_to_faction = ROOT
+			country_event = { id = generic.6 hours = 6 } 
+		}
+		hidden_effect = {
+			set_country_flag = alliance_applicant@ROOT
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+			news_event = { id = news.289 hours = 12 }
+		}
+	}
+	option = { #Agree / Both Fascist
+		name = generic.5.b
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = fascism
+				}
+				has_government = fascism
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = { 
+			add_to_faction = ROOT
+			country_event = { id = generic.6 hours = 6 } 
+		}
+		hidden_effect = {
+			set_country_flag = alliance_applicant@ROOT
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+			news_event = { id = news.289 hours = 12 }
+		}
+	}
+	option = { #Agree / Both Communist
+		name = generic.5.c
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = communism
+				}
+				has_government = communism
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = { 
+			add_to_faction = ROOT
+			country_event = { id = generic.6 hours = 6 }
+		}
+		hidden_effect = {
+			set_country_flag = alliance_applicant@ROOT
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+			news_event = { id = news.289 hours = 12 }
+		}
+	}
+	option = { #Agree / Both Monarchist
+		name = generic.5.f
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = monarchism
+				}
+				has_government = monarchism
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = { 
+			add_to_faction = ROOT
+			country_event = { id = generic.6 hours = 6 }
+		}
+		hidden_effect = {
+			set_country_flag = alliance_applicant@ROOT
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+			news_event = { id = news.289 hours = 12 }
+		}
+	}
+	option = { #Agree / Both different
+		name = generic.5.e
+		trigger = {
+			NOT = {
+				AND = {
+					FROM = {
+						democratic_govt = yes
+					}
+					democratic_govt = yes
+				}
+				AND = {
+					FROM = {
+						has_government = fascism
+					}
+					has_government = fascism
+				}
+				AND = {
+					FROM = {
+						has_government = communism
+					}
+					has_government = communism
+				}
+				AND = {
+					FROM = {
+						has_government = monarchism
+					}
+					has_government = monarchism
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = { 
+			add_to_faction = ROOT
+			country_event = { id = generic.6 hours = 6 }
+		}
+		hidden_effect = {
+			set_country_flag = alliance_applicant@ROOT
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+			news_event = { id = news.289 hours = 12 }
+		}
+	}
+	
+	option = { #Reject
+		name = generic.2.f
+		ai_chance = { factor = 0 }
+		FROM = { 
+			country_event = { id = generic.7 hours = 6 }
+		}
+	}
+}
+
+# Generic accepted invitation to join major Alliance
+country_event = {
+	id = generic.6
+	title = generic.6.t
+	desc = generic.6.d
+
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = generic.3.a
+		trigger = {
+			AND = {
+				FROM = {
+					democratic_govt = yes
+				}
+				democratic_govt = yes
+			}
+		}
+	}
+	option = {
+		name = generic.3.b
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = fascism
+				}
+				has_government = fascism
+			}
+		}
+
+
+	}
+	option = {
+		name = generic.3.c
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = communism
+				}
+				has_government = communism
+			}
+		}
+	}
+	option = {
+		name = generic.3.f
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = monarchism
+				}
+				has_government = monarchism
+			}
+		}
+	}
+	option = {
+		name = generic.3.e
+		trigger = {
+			NOT = {
+				AND = {
+					FROM = {
+						democratic_govt = yes
+					}
+					democratic_govt = yes
+				}
+				AND = {
+					FROM = {
+						has_government = fascism
+					}
+					has_government = fascism
+				}
+				AND = {
+					FROM = {
+						has_government = communism
+					}
+					has_government = communism
+				}
+				AND = {
+					FROM = {
+						has_government = monarchism
+					}
+					has_government = monarchism
+				}
+			}
+		}
+	}
+}
+
+# Generic rejected invitation to join major Alliance
+country_event = {
+	id = generic.7
+	title = generic.7.t
+	desc = generic.7.d
+	
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	option = {
+		name = generic.7.a
+		trigger = {
+			AND = {
+				FROM = {
+					democratic_govt = yes
+				}
+				democratic_govt = yes
+			}
+		}
+	}
+	option = {
+		name = generic.4.b
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = fascism
+				}
+				has_government = fascism
+			}
+		}
+	}
+	option = {
+		name = generic.4.c
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = communism
+				}
+				has_government = communism
+			}
+		}
+	}
+	option = {
+		name = generic.4.f
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = monarchism
+				}
+				has_government = monarchism
+			}
+		}
+	}
+	option = {
+		name = generic.4.e
+		trigger = {
+			NOT = {
+				AND = {
+					FROM = {
+						democratic_govt = yes
+					}
+					democratic_govt = yes
+				}
+				AND = {
+					FROM = {
+						has_government = fascism
+					}
+					has_government = fascism
+				}
+				AND = {
+					FROM = {
+						has_government = communism
+					}
+					has_government = communism
+				}
+				AND = {
+					FROM = {
+						has_government = monarchism
+					}
+					has_government = monarchism
+				}
+			}
+		}
+	}
+}
+
+# Enemy attempting to destroy Suez
+country_event = {
+	id = generic.12
+	title = generic.12.t
+	desc = generic.12.d
+	
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = generic.12.a
+		custom_effect_tooltip = canals_tt
+	}	
+}
+
+# Enemy attempting to destroy Panama
+country_event = {
+	id = generic.13
+	title = generic.13.t
+	desc = generic.13.d
+	
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = generic.12.a
+		custom_effect_tooltip = canals_tt
+	}	
+}
+
+# Object to Attaches
+country_event = {
+	id = generic.14
+	title = generic.14.t
+	desc = generic.14.d
+	
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Agree - recall attache
+	option = {
+		name = generic.14.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				factor = 1.5
+				has_opinion = { target = FROM value > 50 }
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = { target = FROM value > 75 }
+			}
+		}
+		random_other_country = {
+			limit = {
+				has_war_with = FROM
+				has_attache_from = ROOT
+			}
+			ROOT = { recall_attache = PREV }
+		}
+		FROM = {
+			country_event = { id = generic.15 days = 1 }
+		}
+		clr_country_flag = object_attache_going_on
+	}	
+
+	# Reject demands
+	option = {
+		name = generic.14.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 2
+				has_opinion = { target = FROM value < 0 }
+			}
+			modifier = {
+				factor = 3
+				has_opinion = { target = FROM value < -20 }
+			}
+			modifier = {
+				factor = 3
+				has_opinion = { target = FROM value < -50 }
+			}
+		}
+		custom_effect_tooltip = attache_political_power_tt
+		if = {
+			limit = {
+				NOT = { strength_ratio = { tag = FROM ratio < 3 } }
+			}
+			if = {
+				limit = {
+					has_opinion = { target = FROM value > -25 }
+					NOT = { has_opinion = { target = FROM value > 0 } }
+				}
+				add_political_power = -5
+			}
+			if = {
+				limit = {
+					has_opinion = { target = FROM value > 0 }
+					NOT = { has_opinion = { target = FROM value > 50 } }
+	
+				}
+				add_political_power = -10
+			}
+			if = {
+				limit = { has_opinion = { target = FROM value > 50 } }
+				add_political_power = -15
+			}
+		}
+		if = {
+			limit = {
+				strength_ratio = { tag = FROM ratio < 3 }
+				NOT = { strength_ratio = { tag = FROM ratio < 2.5 } }
+			}
+			if = {
+				limit = {
+					has_opinion = { target = FROM value > -25 }
+					NOT = { has_opinion = { target = FROM value > 0 } }
+				}
+				add_political_power = -10
+			}
+			if = {
+				limit = {
+					has_opinion = { target = FROM value > 0 }
+					NOT = { has_opinion = { target = FROM value > 50 } }
+	
+				}
+				add_political_power = -20
+			}
+			if = {
+				limit = { has_opinion = { target = FROM value > 50 } }
+				add_political_power = -30
+			}
+		}
+		if = {
+			limit = {
+				strength_ratio = { tag = FROM ratio < 2.5 }
+				NOT = { strength_ratio = { tag = FROM ratio < 2 } }
+			}
+			if = {
+				limit = {
+					has_opinion = { target = FROM value > -25 }
+					NOT = { has_opinion = { target = FROM value > 0 } }
+				}
+				add_political_power = -15
+			}
+			if = {
+				limit = {
+					has_opinion = { target = FROM value > 0 }
+					NOT = { has_opinion = { target = FROM value > 50 } }
+	
+				}
+				add_political_power = -30
+			}
+			if = {
+				limit = { has_opinion = { target = FROM value > 50 } }
+				add_political_power = -45
+			}
+		}
+		if = {
+			limit = {
+				strength_ratio = { tag = FROM ratio < 2 }
+				NOT = { strength_ratio = { tag = FROM ratio < 1.5 } }
+			}
+			if = {
+				limit = {
+					has_opinion = { target = FROM value > -25 }
+					NOT = { has_opinion = { target = FROM value > 0 } }
+				}
+				add_political_power = -20
+			}
+			if = {
+				limit = {
+					has_opinion = { target = FROM value > 0 }
+					NOT = { has_opinion = { target = FROM value > 50 } }
+	
+				}
+				add_political_power = -40
+			}
+			if = {
+				limit = { has_opinion = { target = FROM value > 50 } }
+				add_political_power = -60
+			}
+		}
+		if = {
+			limit = {
+				strength_ratio = { tag = FROM ratio < 1.5 }
+			}
+			if = {
+				limit = {
+					has_opinion = { target = FROM value > -25 }
+					NOT = { has_opinion = { target = FROM value > 0 } }
+				}
+				add_political_power = -25
+			}
+			if = {
+				limit = {
+					has_opinion = { target = FROM value > 0 }
+					NOT = { has_opinion = { target = FROM value > 50 } }
+	
+				}
+				add_political_power = -50
+			}
+			if = {
+				limit = { has_opinion = { target = FROM value > 50 } }
+				add_political_power = -75
+			}
+		}
+		FROM = {
+			add_opinion_modifier = { target = ROOT modifier = rejected_demands }
+			country_event = { id = generic.16 days = 1 }
+		}
+		hidden_effect = {
+			set_country_flag = { flag = rejected_withdrawing_attache value = 1 days = 90 }
+			set_country_flag = { flag = rejected_withdrawing_attache@FROM value = 1 days = 365 }
+			clr_country_flag = object_attache_going_on
+		}
+		if = {
+			limit = {
+				FROM = { has_government = fascism }
+				NOT = { has_government = fascism }
+				fascism > 0.1
+				NOT = { fascism > 0.2 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_fascism_tt
+			add_stability = -0.025
+		}
+		if = {
+			limit = {
+				FROM = { has_government = fascism }
+				NOT = { has_government = fascism }
+				fascism > 0.2
+				NOT = { fascism > 0.3 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_fascism_tt
+			add_stability = -0.05
+		}
+		if = {
+			limit = {
+				FROM = { has_government = fascism }
+				NOT = { has_government = fascism }
+				fascism > 0.3
+				NOT = { fascism > 0.4 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_fascism_tt
+			add_stability = -0.075
+		}
+		if = {
+			limit = {
+				FROM = { has_government = fascism }
+				NOT = { has_government = fascism }
+				fascism > 0.4
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_fascism_tt
+			add_stability = -0.1
+		}
+		if = {
+			limit = {
+				FROM = { has_government = communism }
+				communism > 0.1
+				NOT = { communism > 0.2 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_communism_tt
+			add_stability = -0.025
+		}
+		if = {
+			limit = {
+				FROM = { has_government = communism }
+				NOT = { has_government = communism }
+				communism > 0.2
+				NOT = { communism > 0.3 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_communism_tt
+			add_stability = -0.05
+		}
+		if = {
+			limit = {
+				FROM = { has_government = communism }
+				NOT = { has_government = communism }
+				communism > 0.3
+				NOT = { communism > 0.4 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_communism_tt
+			add_stability = -0.075
+		}
+		if = {
+			limit = {
+				FROM = { has_government = communism }
+				NOT = { has_government = communism }
+				communism > 0.4
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_communism_tt
+			add_stability = -0.1
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				conservatism > 0.1
+				NOT = { conservatism > 0.2 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.025
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				liberalism > 0.1
+				NOT = { liberalism > 0.2 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.025
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				socialism > 0.1
+				NOT = { socialism > 0.2 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.025
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				conservatism > 0.2
+				NOT = { conservatism > 0.3 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.05
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				liberalism > 0.2
+				NOT = { liberalism > 0.3 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.05
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				socialism > 0.2
+				NOT = { socialism > 0.3 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.05
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				conservatism > 0.3
+				NOT = { conservatism > 0.4 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.075
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				liberalism > 0.3
+				NOT = { liberalism > 0.4 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.075
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				socialism > 0.3
+				NOT = { socialism > 0.4 }
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.075
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				conservatism > 0.4
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.1
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				liberalism > 0.4
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.1
+		}
+		if = {
+			limit = {
+				FROM = { democratic_govt = yes }
+				NOT = { democratic_govt = yes }
+				socialism > 0.4
+				strength_ratio = { tag = FROM ratio < 1.2 }
+			}
+			custom_effect_tooltip = attache_democratic_tt
+			add_stability = -0.1
+		}
+	}	
+}
+# Notification event that TAG withdrew attache
+country_event = {
+	id = generic.15
+	title = generic.15.t
+	desc = generic.15.d
+	
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = excellent
+	}	
+}
+
+# Notification event that TAG refused to withdraw attache
+country_event = {
+	id = generic.16
+	title = generic.16.t
+	desc = generic.16.d
+	
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = generic.16.a
+		effect_tooltip = {
+			add_opinion_modifier = { target = FROM modifier = rejected_demands }
+		}
+	}	
+}
+
+# Notification event that leader has gotten sick
+unit_leader_event = {
+	id = generic.17
+	title = generic.17.t
+	desc = generic.17.d
+	
+	picture = GFX_report_event_military_planning
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			FROM = {
+				set_unit_leader_flag = {
+					flag = recently_sick
+					value = 1
+					days = 180
+				}
+			}
+		}
+	}
+
+	option = {
+		name = unfortunate
+		effect_tooltip = {
+			FROM = {
+				add_timed_unit_leader_trait = {
+					trait = sick
+					days = 30
+				}
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					check_variable = { random < 0.02 }
+				}
+				FROM = { unit_leader_event = { id = generic.19 days = 20 random = 60 } } #dont spam
+			}
+		}
+	}	
+}
+
+# Notification event that leader has been wounded
+country_event = {
+	id = generic.18
+	title = generic.18.t
+	desc = generic.18.d
+	
+	picture = GFX_report_event_military_planning
+
+	is_triggered_only = yes
+
+	option = {
+		name = unfortunate
+		effect_tooltip = {
+			FROM = {
+				add_timed_unit_leader_trait = {
+					trait = wounded
+					days = 90
+				}
+			}
+		}
+	}	
+}
+
+#After unit leader was sick theres a chance he becomes a substance addict
+unit_leader_event = {
+	id = generic.19
+	title = generic.19.t
+	desc = generic.19.d
+	
+	picture = GFX_report_event_military_planning
+
+	is_triggered_only = yes
+
+	option = {
+		name = unfortunate
+		#effect_tooltip = {
+			FROM = {
+				add_timed_unit_leader_trait = {
+					trait = substance_abuser
+					days = 180
+				}
+			}
+		#}
+	}	
+}
+
+unit_leader_event = {
+	id = generic.20
+	title = generic.20.t
+	desc = generic.20.d
+	
+	picture = GFX_report_event_military_planning
+
+	is_triggered_only = yes
+	
+	immediate = {
+		random_unit_leader = {
+			limit = {
+				has_unit_leader_flag = {
+					flag = recent_level_change
+					days < 2
+				}
+			}
+			save_event_target_as = Unit_leader
+		}
+	}
+
+	option = {
+		name = "Good to hear"
+		unit_leader_level_up = yes
+	}	
+}
+
+unit_leader_event = {
+	id = generic.21
+	title = generic.21.t
+	desc = generic.21.d
+	
+	picture = GFX_report_event_military_planning
+
+	is_triggered_only = yes
+	
+	immediate = {
+		random_unit_leader = {
+			limit = {
+				has_unit_leader_flag = {
+					flag = recent_level_change
+					days < 1
+				}
+				NOT = {
+					has_unit_leader_flag = selected
+				}
+			}
+			set_unit_leader_flag = {
+				flag = selected
+				days = 1
+				value = 1
+			}
+			save_event_target_as = Unit_leader
+		}
+	}
+
+	option = {
+		name = unfortunate
+		unit_leader_level_down = yes
+	}	
+}
+
+#Unit Leaders levels down a trait if he has a high trait and didnt fight in the last months
+unit_leader_event = {
+	id = generic.22
+	title = generic.22.t
+	desc = generic.22.d
+	
+	picture = GFX_report_event_military_planning
+
+	is_triggered_only = yes
+	
+	immediate = {
+		random_unit_leader = {
+			limit = {
+				has_unit_leader_flag = {
+					flag = recent_out_of_shape
+					days < 1
+				}
+				NOT = {
+					has_unit_leader_flag = selected
+				}
+			}
+			set_unit_leader_flag = {
+				flag = selected
+				days = 1
+				value = 1
+			}
+			save_event_target_as = Unit_leader
+		}
+	}
+
+	option = {
+		name = "We need to get him to the Front"
+		if = {
+			limit = {
+				has_event_target = Unit_leader
+			}
+			event_target:Unit_leader = {
+				add_timed_unit_leader_trait = {
+					trait = out_of_shape
+					days = 90
+				}
+			}
+		}
+	}	
+}
+
+#Unit Leaders levels up
+unit_leader_event = {
+	id = generic.23
+	title = generic.23.t
+	desc = generic.23.d
+	
+	picture = GFX_report_event_military_planning
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Good"
+		effect_tooltip = { 
+			FROM = {
+				if = {
+					limit = {
+						has_unit_leader_flag = defence_skill
+					}
+					add_defense = 1
+				}
+				if = {
+					limit = {
+						has_unit_leader_flag = attack_skill
+					}
+					add_attack = 1
+				}
+				if = {
+					limit = {
+						has_unit_leader_flag = planning_skill
+					}
+					add_planning = 1
+				}
+				if = {
+					limit = {
+						has_unit_leader_flag = supply_skill
+					}
+					add_logistics = 1
+				}
+			}
+		}
+	}	
+	
+	#option = {
+	#	name = "Assign him to additional training"
+	#	FROM = {
+	#	}
+	#}
+	
+	#option = {
+	#	name = "Assign him to training later"
+	#	ROOT = { set_country_flag = unit_leader_event_hide }
+	#}
+}
+
+#Unit leader becoming a war hero after winning a lot of battles
+unit_leader_event = {
+	id = generic.24
+	title = generic.24.t
+	desc = generic.24.d
+	
+	picture = GFX_report_event_military_planning
+
+	is_triggered_only = yes
+	
+	immediate = {
+		random_unit_leader = {
+			limit = {
+				has_unit_leader_flag = {
+					flag = recent_war_hero
+					days < 1
+				}
+				NOT = {
+					has_unit_leader_flag = selected
+				}
+			}
+			set_unit_leader_flag = {
+				flag = selected
+				days = 1
+				value = 1
+			}
+			save_event_target_as = Unit_leader
+		}
+	}
+
+	option = {
+		name = "Good"
+		add_war_support = 0.05
+		if = {
+			limit = {
+				has_event_target = Unit_leader
+			}
+			event_target:Unit_leader = {
+				add_timed_unit_leader_trait = {
+					trait = war_hero
+					days = 90
+				}
+			}
+		}
+	}	
+}
+
+#Army Leader becoming a warhero
+country_event = {
+	id = generic.25
+	hidden = yes
+
+	trigger = {
+		is_ai = no
+		has_war = yes
+		NOT = { has_country_flag = war_hero }
+		any_army_leader = {
+			check_variable = { unit_leader_battle > 399 }		
+			
+			OR = {
+				has_trait = Genius_General
+				has_trait = Masterful_General
+				has_trait = Awesome_General
+			}
+				
+			has_unit_leader_flag = { #had a combat last 2 months
+				flag = recent_battle
+				days > 60
+			}
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = {
+			flag = war_hero
+			value = 1
+			days = 180
+		}
+		random_army_leader = {
+			limit = {
+				check_variable = { unit_leader_battle > 399 }		
+				
+				OR = {
+					has_trait = Genius_General
+					has_trait = Masterful_General
+					has_trait = Awesome_General
+				}
+					
+				has_unit_leader_flag = { #had a combat last 2 months
+					flag = recent_battle
+					days < 60
+				}
+			}
+			clear_variable = unit_leader_battle 
+			set_unit_leader_flag = {
+				flag = recent_war_hero
+				value = 1
+				days = 1
+			}
+			unit_leader_event = { id = generic.24 }
+		}
+	}
+
+	option = {
+	
+	}	
+}
+
+#Unit Leader getting out of shape
+country_event = {
+	id = generic.26
+	hidden = yes
+	
+	trigger = {
+		always = no
+		is_ai = no
+		has_war = yes
+		any_army_leader = {	
+			is_field_marshal = no
+			has_unit_leader_flag = { #was out of combat for 90 days
+				flag = recent_battle
+				days > 90
+			}
+			
+			has_variable = unit_leader_battle
+			
+			OR = {
+				has_trait = Genius_General
+				has_trait = Masterful_General
+				has_trait = Awesome_General
+			}
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		random_army_leader = {
+			limit = {
+				is_field_marshal = no
+				has_unit_leader_flag = { #was out of combat for 90 days
+					flag = recent_battle
+					days > 90
+				}
+				has_variable = unit_leader_battle
+				OR = {
+					has_trait = Genius_General
+					has_trait = Masterful_General
+					has_trait = Awesome_General
+				}
+			}
+			clear_variable = unit_leader_battle
+			set_unit_leader_flag = recent_battle
+			set_unit_leader_flag = {
+				flag = recent_out_of_shape
+				value = 1
+				days = 1
+			}
+			unit_leader_event = { id = generic.22 }
+		}
+	}
+
+	option = {
+	
+	}	
+}
+
+#Unit Leader leveling up his trait
+country_event = {
+	id = generic.27
+	hidden = yes
+
+	trigger = {
+		is_ai = no
+		any_army_leader = {
+			is_field_marshal = no
+			NOT = { has_trait = Genius_General }
+			NOT = { has_unit_leader_flag = recent_level_change }
+
+			set_temp_variable = { traits = num_traits }
+			multiply_temp_variable = { traits = 15 }
+			
+			set_temp_variable = { personality_trait = leader_modifier@max_commander_army_size }
+			if = {
+				limit = {
+					check_variable = { personality_trait < 0 }
+				}
+				set_temp_variable = { personality_trait = 1 }
+			}
+			multiply_temp_variable = { personality_trait = 15 }
+			
+			add_to_temp_variable = { traits = personality_trait }
+			check_variable = { unit_leader_battle > traits }
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		random_army_leader = {
+			limit = {
+			is_field_marshal = no
+				NOT = { has_trait = Genius_General }
+				NOT = { has_unit_leader_flag = recent_level_change }
+
+				set_temp_variable = { traits = num_traits }
+				multiply_temp_variable = { traits = 15 }
+				
+				set_temp_variable = { personality_trait = leader_modifier@max_commander_army_size }
+				if = {
+					limit = {
+						check_variable = { personality_trait < 0 }
+					}
+					set_temp_variable = { personality_trait = 1 }
+				}
+				multiply_temp_variable = { personality_trait = 15 }
+				
+				add_to_temp_variable = { traits = personality_trait }
+				check_variable = { unit_leader_battle > traits }
+			}
+			clear_variable = unit_leader_battle
+			set_unit_leader_flag = {
+				flag = recent_level_change
+				value = 1
+				days = 60
+			}
+			unit_leader_event = { id = generic.20 } 
+		}
+	}
+
+	option = {
+	
+	}	
+}
+
+#Unit Leader leveling down his trait
+country_event = {
+	id = generic.28
+	hidden = yes
+
+	trigger = {
+		is_ai = no
+		any_unit_leader = {
+			is_field_marshal = no
+			NOT = { has_trait = Mindless_General }
+			NOT = { has_unit_leader_flag = recent_level_change }
+			
+			check_variable = { unit_leader_battle < -10 }
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		random_unit_leader = {
+			limit = {
+				is_field_marshal = no
+				NOT = { has_trait = Mindless_General }
+				NOT = { has_unit_leader_flag = recent_level_change }
+				
+				check_variable = { unit_leader_battle < -10 }
+			}
+			clear_variable = unit_leader_battle
+			set_unit_leader_flag = {
+				flag = recent_level_change
+				value = 1
+				days = 60
+			}
+			unit_leader_event = { id = generic.21 } 
+		}
+	}
+
+	option = {
+	
+	}	
+}
+
+#Field marshall event after promotion, general traits getting shrekt
+country_event = {
+	id = generic.30
+	hidden = yes
+
+	is_triggered_only = yes
+	
+	immediate = {
+		every_unit_leader = {	
+			limit = {
+				is_field_marshal = yes
+				OR = {
+					has_trait = Mindless_General
+					has_trait = Incompetent_General
+					has_trait = Terrible_General
+					has_trait = Bad_General
+					has_trait = Decent_General
+					has_trait = Competent_General
+					has_trait = Awesome_General
+					has_trait = Masterful_General
+					has_trait = Genius_General
+				}
+			}
+			remove_unit_leader_trait = Mindless_General
+			remove_unit_leader_trait = Incompetent_General
+			remove_unit_leader_trait = Terrible_General
+			remove_unit_leader_trait = Bad_General
+			remove_unit_leader_trait = Decent_General
+			remove_unit_leader_trait = Competent_General
+			remove_unit_leader_trait = Awesome_General
+			remove_unit_leader_trait = Masterful_General
+			remove_unit_leader_trait = Genius_General
+		}
+	}
+
+	option = {
+		
+	}	
+}
+
+country_event = { 
+	id = generic.31 #Unused
+	hidden = yes
+
+	trigger = {
+		is_ai = no 
+		any_unit_leader = {
+			has_trait = Good_General
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		every_unit_leader = {	
+			limit = {
+				has_trait = Good_General
+			}
+			remove_unit_leader_trait = Good_General
+		}
+	}
+
+	option = {
+		
+	}	
+}
+country_event = {
+	id = generic.39
+	hidden = yes
+
+	trigger = {
+		is_major = yes 
+		NOT = { has_idea = major_country }
+	}
+	
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = {
+		add_ideas = major_country
+	}
+	
+	option = {
+	}
+}
+
+country_event = {
+	id = generic.42
+	title = generic.42.t
+	desc = generic.42.desc
+	
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = generic.42.a
+		set_country_flag = blew_up_suez
+		set_global_flag = SUEZ_CANAL_BLOCKED
+		country_event = { id = wtt_news.40 hours = 6 }
+	}	
+	
+	option = {
+		name = generic.42.b
+		set_global_flag = { flag = no_suez_destruction days = 10 }
+	}
+}
+
+
+##############
+#####EOF######
+##############

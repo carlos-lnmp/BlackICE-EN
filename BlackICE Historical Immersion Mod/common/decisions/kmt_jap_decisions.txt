@@ -1,0 +1,354 @@
+JAP_dcat_invasion_of_china = {
+	
+	JAP_establish_PGR = {
+		
+		icon = generic_political_discourse
+
+		highlight_states = {
+			state = 608
+		}
+
+		available = {
+			has_government = fascism
+			608 = {
+				controller = {
+					OR = {
+						tag = JAP
+						is_puppet_of = JAP
+					}
+					has_full_control_of_state = 608
+				}
+			}
+		}
+
+		visible = {
+			always = no
+			original_tag = JAP
+			has_government = fascism
+			NOT = {
+				country_exists = PGR
+				has_global_flag = is_1939_start
+				PGR = {
+					has_country_flag = bridge_choose_die
+				}
+				has_war_together_with = HYQ
+			}
+			OR = {
+				any_country = {
+					OR = {
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+					divisions_in_state = {
+						state = 608
+						size > 0
+					}
+				}
+				any_country = {
+					OR = {
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+					controls_state = 608
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 0
+
+		ai_will_do = {
+			factor = 1000
+		}
+		complete_effect = {
+			PGR = {
+				hidden_effect = { add_ideas = cg_false }
+				add_state_claim = 609
+				add_state_claim = 608
+				add_state_claim = 614
+				add_state_claim = 597
+				add_state_claim = 615
+				add_state_claim = 770
+				add_state_claim = 743
+				transfer_state = 608
+				set_capital = 608
+				hidden_effect = {
+					add_ideas = PRC_enemy_partisan_1
+				}
+				every_state = {
+					limit = {
+						is_claimed_by = PGR
+						owner = { tag = JAP }
+					}
+					PGR = {
+						transfer_state = PREV
+					}
+				}
+			}
+			JAP = {
+				set_autonomy = {
+					target = PGR
+					autonomous_state = autonomy_puppet
+				}
+			}
+			EHA = {
+				country_event = { id = jap.4 days = 1 }
+			}
+			hidden_effect = {
+				PGR = {
+					diplomatic_relation = {
+						relation = military_access
+						country = MEN
+						active = yes
+					}
+					MEN = {
+						diplomatic_relation = {
+							relation = military_access
+							country = PGR
+							active = yes
+						}
+					}
+					if = {
+						limit = {
+							country_exists = RGR
+						}
+						diplomatic_relation = {
+							relation = military_access
+							country = RGR
+							active = yes
+						}
+						RGR = {
+							diplomatic_relation = {
+								relation = military_access
+								country = PGR
+								active = yes
+							}
+						}
+					}
+					load_oob = "PGR_established"
+				}
+			}
+		}
+	}
+	
+	JAP_establish_RGR = {
+		
+		icon = generic_political_discourse
+
+		highlight_states = {
+			state = 613
+		}
+
+		available = {
+			has_government = fascism
+			613 = {
+				controller = {
+					OR = {
+						tag = JAP
+						is_puppet_of = JAP
+					}
+					has_full_control_of_state = 613
+				}
+			}
+		}
+
+		visible = {
+			always = no
+			original_tag = JAP
+			has_government = fascism
+			NOT = {
+				country_exists = RGR
+				has_global_flag = is_1939_start
+				RGR = {
+					has_country_flag = bridge_choose_die
+				}
+				has_war_together_with = HYQ
+			}
+			OR = {
+				any_country = {
+					OR = {
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+					divisions_in_state = {
+						state = 613
+						size > 0
+					}
+				}
+				any_country = {
+					OR = {
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+					controls_state = 613
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 0
+
+		ai_will_do = {
+			factor = 1000			
+		}
+		complete_effect = {
+			RGR = {
+				add_state_claim = 596
+				add_state_claim = 606
+				add_state_claim = 613
+				add_state_claim = 598
+				add_state_claim = 769
+				add_state_claim = 749
+				transfer_state = 613
+				set_capital = 613
+				hidden_effect = {
+					add_ideas = PRC_enemy_partisan_1
+				}
+				every_state = {
+					limit = {
+						is_core_of = CHI
+						owner = { tag = JAP }
+						NOT = {
+							state = 524
+							state = 745
+						}
+					}
+					RGR = {
+						transfer_state = PREV
+					}
+				}
+			}
+			JAP = {
+				set_autonomy = {
+					target = RGR
+					autonomous_state = autonomy_puppet
+				}
+			}
+			hidden_effect = {
+				RGR = {
+					load_focus_tree = MEN_focus
+					inherit_technology = JAP
+					diplomatic_relation = {
+						relation = military_access
+						country = MEN
+						active = yes
+					}
+					MEN = {
+						diplomatic_relation = {
+							relation = military_access
+							country = RGR
+							active = yes
+						}
+					}
+					if = {
+						limit = {
+							country_exists = PGR
+						}
+						diplomatic_relation = {
+							relation = military_access
+							country = PGR
+							active = yes
+						}
+						PGR = {
+							diplomatic_relation = {
+								relation = military_access
+								country = RGR
+								active = yes
+							}
+						}
+					}
+					if = {
+						limit = {
+							country_exists = EHA
+						}
+						diplomatic_relation = {
+							relation = military_access
+							country = EHA
+							active = yes
+						}
+						EHA = {
+							diplomatic_relation = {
+								relation = military_access
+								country = RGR
+								active = yes
+							}
+						}
+					}
+					load_oob = "RGR_established"
+				}
+			}
+		}
+	}
+	
+	JAP_establish_WJW = {
+		
+		icon = generic_political_discourse
+
+		available = {
+			has_government = fascism
+			PGR = {
+				exists = yes
+				has_capitulated = no
+				is_subject_of = ROOT
+				has_war_with = CHI
+			}
+			RGR = {
+				exists = yes
+				has_capitulated = no
+				is_subject_of = ROOT
+				has_war_with = CHI
+			}
+		}
+
+		visible = {
+			always = no
+			original_tag = JAP
+			has_government = fascism
+			has_offensive_war_with = CHI
+			CHI = {
+				surrender_progress > 0.59
+			}
+			any_state = {
+				is_core_of = CHI
+				controller = {
+					OR = {
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_global_flag = KMT_wjw_contacted_jap
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 0
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				date > 1940.1.1
+				factor = 5000
+			}
+		}
+		complete_effect = {
+			CHI = {
+				effect_tooltip = {
+					start_civil_war = {
+						ideology = fascism
+						capital = 613
+					}
+				}
+			} 
+			hidden_effect = {
+				country_event = { id = jap.10 }
+			}
+			custom_effect_tooltip = mck_puppet_wjw_tt
+		}
+	}
+}

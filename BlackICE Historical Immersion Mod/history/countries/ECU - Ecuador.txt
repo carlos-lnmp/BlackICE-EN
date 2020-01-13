@@ -1,0 +1,136 @@
+﻿capital = 305
+
+oob = "ECU_1936"
+
+set_war_support = 0.15
+
+set_convoys = 5
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval = 1
+		generic_naval_tech = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+	}
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## aircraft ##############
+	early_fighter = 1
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	################## ships ##############
+	early_submarine = 1
+	early_destroyer = 1
+	basic_destroyer = 1
+	early_light_cruiser = 1
+	early_heavy_cruiser = 1
+	early_battleship = 1
+	early_battlecruiser = 1
+	early_carrier = 1
+	################## WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	
+	ww1_battlefield_support = 1
+	############### naval doctrines ##################
+	nrm_pre_ww1_naval_doctrine = 1
+	nrm_mahanian_concepts = 1
+	nrm_jeune_ecole_concepts = 1
+	nrm_commerce_warfare = 1
+	nrm_destroyer_support = 1
+	nrm_destroyer_screen = 1
+	nrm_destroyer_torpedo_tactics = 1
+	nrm_submarine_tactics_early = 1
+	nrm_submarine_raiding = 1
+	nrm_submarine_torpedo_tactics = 1
+}
+
+add_ideas = { 	
+	constitutional_republic
+	export_focus
+	tax_low
+	tariffs_average
+	
+	isolation
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	age_19
+	officer_train_none
+	security_minor_restrictions
+	edu_minimal
+	foreign_isolationism
+	neutrality_idea
+}
+
+set_country_flag = constitutional_republic
+
+set_country_flag = monroe_doctrine
+
+set_country_flag = debug_country
+
+set_politics = {
+	ruling_party = socialism
+	last_election = "1933.12.15"
+	election_frequency = 84
+	elections_allowed = yes
+}
+
+set_popularities = {
+	socialism = 100
+	fascism = 0
+	communism = 0
+}
+##########################################
+create_country_leader = {
+	name = "Federico Páez"
+	desc = "POLITICS_FEDERICO_PAEZ_DESC"
+	picture = "GFX_Portrait_ecuador_federico_paez"
+	expire = "1965.1.1"
+	ideology = social_democracy
+	traits = {
+		#
+	}
+}
+### EOF ###

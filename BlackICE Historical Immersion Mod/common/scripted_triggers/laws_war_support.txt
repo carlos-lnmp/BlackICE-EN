@@ -1,0 +1,1905 @@
+has_unsupported_economic_law = {
+	if = {
+		limit = {
+			has_idea = partial_economic_mobilisation
+		}
+		has_idea = partial_economic_mobilisation
+		has_war_support < 0.25
+	}
+	else_if = {
+		limit = {
+			has_idea = war_economy
+		}
+		has_idea = war_economy
+		has_war_support < 0.5
+	}
+	else_if = {
+		limit = {
+			has_idea = tot_economic_mobilisation
+		}
+		has_idea = tot_economic_mobilisation
+		has_war_support < 0.8
+	}
+	else = {
+		always = no
+	}
+}
+has_supported_economic_law = {
+	if = {
+		limit = {
+			has_idea = partial_economic_mobilisation
+		}
+		OR = {
+			has_war_support > 0.25
+			NOT = { has_idea = partial_economic_mobilisation }
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = war_economy
+		}
+		OR = {
+			has_war_support > 0.5
+			NOT = { has_idea = war_economy }
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = tot_economic_mobilisation
+		}
+		OR = {
+			has_war_support > 0.8
+			NOT = { has_idea = tot_economic_mobilisation }
+		}
+	}
+}
+
+has_unsupported_manpower_law = {
+	if = {
+		limit = {
+			has_idea = age_18
+		}
+		has_idea = age_18
+
+		hidden_trigger = {
+			is_independent_china_or_warlord = no
+			NOT = { tag = ENG } 
+		}
+		
+		has_war_support < 0.15
+	}
+	else_if = {
+		limit = {
+			has_idea = age_17
+		}	
+		has_idea = age_17
+			
+		hidden_trigger = { 
+			is_independent_china_or_warlord = no
+			NOT = { tag = FRA tag = ENG } 
+		}
+		
+		has_war_support < 0.2
+		NOT = { has_government = communism }
+		NOT = { has_government = fascism }
+	}
+	else_if = {
+		limit = {
+			has_idea = age_16
+		}
+		has_idea = age_16
+		
+		has_war_support < 0.25
+		NOT = { has_government = communism }
+		NOT = { has_government = fascism }
+		is_independent_china_or_warlord = no
+	}
+	else_if = {
+		limit = {
+			has_idea = age_15
+		}
+		has_idea = age_15
+		
+		has_war_support < 0.3
+		NOT = { has_government = communism }
+		NOT = { has_government = fascism }
+		is_independent_china_or_warlord = no
+	}
+	else_if = {
+		limit = {
+			has_idea = age_14
+		}
+		has_idea = age_14
+	}
+	else_if = {
+		limit = {
+			has_idea = age_13
+		}
+		has_idea = age_13
+	}
+	else_if = {
+		limit = {
+			has_idea = age_12
+		}
+		has_idea = age_12
+	}
+	else_if = {
+		limit = {
+			has_idea = age_11
+		}
+		has_idea = age_11
+	}
+	else_if = {
+		limit = {
+			has_idea = age_10
+		}
+		has_idea = age_10
+	}
+	else = {
+		always = no
+	}
+}
+has_supported_manpower_law = {
+	if = {
+		limit = {
+			has_idea = age_18
+		}
+		OR = {
+			has_war_support > 0.15
+			NOT = { has_idea = age_18 }
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = age_17
+		}	
+		OR = {
+			has_war_support > 0.20
+			NOT = { has_idea = age_17 }
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = age_16
+		}
+		OR = {
+			has_war_support > 0.25
+			NOT = { has_idea = age_16 }
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = age_15
+		}
+		OR = {
+			has_war_support > 0.3
+			NOT = { has_idea = age_15 }
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = age_14
+		}
+		NOT = { has_idea = age_14 }
+	}
+	else_if = {
+		limit = {
+			has_idea = age_13
+		}
+		NOT = { has_idea = age_13 }
+	}
+	else_if = {
+		limit = {
+			has_idea = age_12
+		}
+		NOT = { has_idea = age_12 }
+	}
+	else_if = {
+		limit = {
+			has_idea = age_11
+		}
+		NOT = { has_idea = age_11 }
+	}
+	else_if = {
+		limit = {
+			has_idea = age_10
+		}
+		NOT = { has_idea = age_10 }
+	}
+}
+
+has_unsupported_conscription_law = {
+	if = {
+		limit = {
+			has_idea = cons_one
+		}
+		has_idea = cons_one
+
+		hidden_trigger = { 
+			is_independent_china_or_warlord = no
+			NOT = { tag = ENG } 
+		}
+		
+		has_war_support < 0.1
+	}
+	else_if = {
+		limit = {
+			has_idea = cons_two
+			}	
+			hidden_trigger = { 
+				NOT = { 				
+					tag = FRA tag = ENG 
+				}
+				is_independent_china_or_warlord = no 
+			}
+			has_idea = cons_two
+			has_war_support < 0.25
+			NOT = { has_government = communism }
+			NOT = { has_government = fascism }
+	}
+	else_if = {
+		limit = {
+			has_idea = cons_three
+		}
+		has_idea = cons_three
+		has_war_support < 0.4
+		NOT = { has_government = communism }
+		NOT = { has_government = fascism }
+		is_independent_china_or_warlord = no 
+	}
+	else_if = {
+		limit = {
+			has_idea = cons_expanded_draft
+		}
+		has_idea = cons_expanded_draft
+		has_war_support < 0.5
+		NOT = { has_government = communism }
+		NOT = { has_government = fascism }
+		is_independent_china_or_warlord = no 
+	}
+	else_if = {
+		limit = {
+			has_idea = cons_extensive_draft
+		}
+		has_idea = cons_extensive_draft
+	}
+	else_if = {
+		limit = {
+			has_idea = cons_barrel
+		}
+		has_idea = cons_barrel
+	}
+	else = { 
+		always = no
+	}
+}
+has_supported_conscription_law = {
+	if = {
+		limit = {
+			has_idea = cons_one
+		}
+		OR = {
+			has_war_support > 0.1
+			NOT = { has_idea = cons_one }
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = cons_two
+		}	
+		OR = {
+			has_war_support > 0.25
+			NOT = { has_idea = cons_two }
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = cons_three
+		}
+		OR = {
+			has_war_support > 0.40
+			NOT = { has_idea = cons_three }
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = cons_expanded_draft
+		}
+		OR = {
+			has_war_support > 0.50
+			NOT = { has_idea = cons_expanded_draft }
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = cons_extensive_draft
+		}
+		NOT = { has_idea = cons_extensive_draft }
+	}
+	else_if = {
+		limit = {
+			has_idea = cons_barrel
+		}
+		NOT = { has_idea = cons_barrel }
+	}
+}
+has_excessive_army_size = { 
+	OR = { 
+		AND = {
+			num_of_factories < 25 
+			has_army_manpower = { size = 250000 }
+			has_manpower < 1
+			NOT = {
+				TAG = RAJ
+			}
+			is_independent_china_or_warlord = no 
+			NOT = {
+				has_government = communism
+			}
+		}
+		AND = {
+			num_of_factories < 50
+			has_army_manpower = { size = 500000 }
+			has_manpower < 1
+			NOT = {
+				TAG = RAJ
+			}
+			is_independent_china_or_warlord = no 
+			NOT = {
+				has_government = communism
+			}
+		}
+		AND = {
+			num_of_factories < 75 
+			has_army_manpower = { size = 750000 }
+			has_manpower < 1
+			NOT = {
+				TAG = RAJ
+			}
+			is_independent_china_or_warlord = no 
+			NOT = {
+				has_government = communism
+			}
+		}
+		AND = {
+			num_of_factories < 100 
+			has_army_manpower = { size = 1000000 }
+			has_manpower < 1
+			NOT = {
+				TAG = RAJ
+			}
+			is_independent_china_or_warlord = no 
+			NOT = {
+				has_government = communism
+			}
+		}
+		AND = {
+			has_army_manpower = { size = 2500000 }
+			has_manpower < 1
+			democratic_govt = yes
+		}
+		AND = {
+			has_army_manpower = { size = 3000000 }
+			has_manpower < 1
+			has_government = fascism
+		}
+	}
+}
+
+####################
+### LAW TRIGGERS ###
+####################
+
+can_take_mob_reserve = {
+	NOT = { has_country_flag = Organizing }
+}
+
+can_take_mob_standing = {
+	OR = {
+		has_idea = mob_reserve
+		has_country_flag = mob_reserve_active
+	}
+	OR = {
+		has_war = yes
+		has_war_support > 0.6
+		has_idea = low_economic_mobilisation
+		has_idea = partial_economic_mobilisation
+		has_idea = war_economy
+		has_idea = CHI_nine_power_treaty
+		any_country = {
+			OR = {
+				is_justifying_wargoal_against = ROOT
+				has_wargoal_against = ROOT
+				custom_trigger_tooltip = {
+					tooltip = is_justifying_wargoal
+					ROOT = { 	
+						is_justifying_wargoal_against = PREV
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_government = fascism
+					has_government = communism
+					has_government = monarchism
+				}
+			}
+			threat > 0.2
+		}
+		if = {
+			limit = {
+				OR = {
+					has_government = fascism
+					has_government = communism
+					has_government = monarchism
+				}
+			}
+			AND = {
+				if = {
+					limit = {
+						has_government = fascism
+					}
+					fascism > 0.79
+				}
+				if = {
+					limit = {
+						has_government = communism
+					}
+					communism > 0.79
+				}
+				if = {
+					limit = {
+						has_government = monarchism
+					}
+					monarchism > 0.79
+				}
+				threat > 0.15
+			}
+		}
+	}
+	OR = {
+		has_idea = tax_low
+		has_idea = tax_average
+		has_idea = tax_high
+		has_idea = tax_extreme
+	}
+	
+	NOT = {
+		has_country_flag = Organizing
+		has_country_flag = Demobilizing
+	}
+}
+
+can_take_mob_limited = {	
+	OR = {
+		has_idea = mob_standing
+		has_country_flag = mob_standing_active
+	}
+	OR = {
+		has_war = yes
+		has_idea = partial_economic_mobilisation
+		has_idea = war_economy
+		threat > 0.3
+		has_idea = CHI_nine_power_treaty
+		any_country = {
+			OR = {
+				is_justifying_wargoal_against = ROOT
+				has_wargoal_against = ROOT
+				custom_trigger_tooltip = {
+					tooltip = is_justifying_wargoal
+					ROOT = { 	
+						is_justifying_wargoal_against = PREV
+					}
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			OR = {
+				has_idea = officers_purged 		
+				has_idea = officers_purged_2 			
+				has_idea = officers_purged_3 			
+				has_idea = officers_purged_4 			
+				has_idea = officers_purged_5 			
+				has_idea = officers_purged_6 			
+				has_idea = officers_purged_7 			
+				has_idea = officers_purged_8 			
+			}		
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOV_has_not_officers_purged_tt
+			NOT = { has_idea = officers_purged }			
+			NOT = { has_idea = officers_purged_2 }			
+			NOT = { has_idea = officers_purged_3 }			
+			NOT = { has_idea = officers_purged_4 }			
+			NOT = { has_idea = officers_purged_5 }			
+			NOT = { has_idea = officers_purged_6 }			
+			NOT = { has_idea = officers_purged_7 }			
+			NOT = { has_idea = officers_purged_8 }				
+		}
+	}
+	
+	NOT = {
+		has_country_flag = Organizing
+		has_country_flag = Demobilizing
+	}
+}
+
+can_take_mob_general = {
+	OR = {
+		has_idea = mob_limited
+		has_country_flag = mob_limited_active 		
+	}
+	any_country = {
+		OR = {
+			has_idea = CHI_nine_power_treaty
+			has_war_with = ROOT 
+			is_justifying_wargoal_against = ROOT
+			has_wargoal_against = ROOT
+			custom_trigger_tooltip = {
+				tooltip = is_justifying_wargoal
+				ROOT = { 	
+					is_justifying_wargoal_against = PREV
+				}
+			}
+			threat > 0.5
+		}
+	}
+	
+	NOT = {
+		has_country_flag = Organizing
+		has_country_flag = Demobilizing
+	}
+	
+	if = {
+		limit = {
+			tag = SOV
+			OR = {
+				has_idea = officers_purged 		
+				has_idea = officers_purged_2 			
+				has_idea = officers_purged_3 			
+				has_idea = officers_purged_4 			
+				has_idea = officers_purged_5 			
+				has_idea = officers_purged_6 			
+				has_idea = officers_purged_7 			
+				has_idea = officers_purged_8 			
+				has_idea = officers_purged_9 			
+				has_idea = officers_purged_10 
+			}		
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOV_has_not_officers_purged_tt
+			NOT = { has_idea = officers_purged }			
+			NOT = { has_idea = officers_purged_2 }			
+			NOT = { has_idea = officers_purged_3 }			
+			NOT = { has_idea = officers_purged_4 }			
+			NOT = { has_idea = officers_purged_5 }			
+			NOT = { has_idea = officers_purged_6 }			
+			NOT = { has_idea = officers_purged_7 }			
+			NOT = { has_idea = officers_purged_8 }			
+			NOT = { has_idea = officers_purged_9 }			
+			NOT = { has_idea = officers_purged_10 }			
+		}
+	}
+	if = {
+		limit = {
+			tag = JAP
+		}
+		has_completed_focus = JAP_mobilization_law
+	}
+			
+}
+
+can_level_up_mobilization = { #does not include general mob
+	if = {
+		limit = {
+			has_idea = mob_reserve
+		}
+		can_take_mob_standing = yes 
+	}
+	else_if = {
+		limit = {
+			has_idea = mob_standing
+		}
+		can_take_mob_limited = yes 
+	}
+	else = {
+		always = no 
+	}
+}
+
+#ECONOMY
+
+can_take_low_economic_mobilisation = {
+	OR = {
+		has_war = yes
+		threat > 0.15
+		has_government = fascism	
+		has_government = communism	
+		has_government = monarchism
+		
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+	if = {
+		limit = {
+			has_completed_focus = USA_prepare_intervention
+			has_defensive_war = no
+		}
+		has_war_support > 0.3
+		congress_high_support_trigger = yes
+	}	
+}
+
+can_take_partial_economic_mobilisation = {
+	#has_idea = low_economic_mobilisation
+	OR = {	
+		has_war = yes
+		threat > 0.30
+		
+		has_government = fascism	
+		has_government = communism	
+		AND = {
+			monarchism > 0.80
+			threat > 0.20
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		OR = {
+			has_completed_focus = HUN_secret_rearmament
+			NOT = { has_idea = HUN_treaty_of_triannon }
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = USA_prepare_intervention
+			has_defensive_war = no
+		}
+		has_war_support > 0.5
+		congress_high_support_trigger = yes
+	}
+}
+
+can_take_war_economy = {
+	#has_idea = partial_economic_mobilisation
+	OR = {
+		if = {
+			limit = {
+				has_government = fascism
+			}
+			threat > 0.4
+		}
+		else_if = {
+			limit = {
+				has_government = communism
+			}
+			threat > 0.4
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_government = fascism
+					has_government = communism
+				}
+			}
+			threat > 0.5
+		}
+		AND = {
+			has_war = yes
+			any_enemy_country = {
+				ic_ratio = { 
+					tag = ROOT 
+					ratio > 0.5
+				}
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+	if = {
+		limit = {
+			has_completed_focus = USA_prepare_intervention
+			has_defensive_war = no
+		}
+		has_war_support > 0.75
+		congress_high_support_trigger = yes
+	}	
+}
+
+can_take_tot_economic_mobilisation = {
+	#has_idea = war_economy
+	has_war = yes
+	threat > 0.75
+	any_enemy_country = {
+		ic_ratio = { 
+			tag = ROOT 
+			ratio > 0.6
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+	if = {
+		limit = {
+			has_completed_focus = USA_prepare_intervention
+			has_defensive_war = no
+		}
+		has_war_support > 0.9
+		congress_high_support_trigger = yes
+	}
+}
+
+can_level_up_economy = {
+	if = {
+		limit = {
+			has_idea = civilian_economy
+		}
+		can_take_low_economic_mobilisation = yes 
+	}
+	else_if = {
+		limit = {
+			has_idea = low_economic_mobilisation
+		}
+		can_take_partial_economic_mobilisation = yes 
+	}
+	else_if = {
+		limit = {
+			has_idea = partial_economic_mobilisation
+		}
+		can_take_war_economy = yes 
+	}
+	else_if = {
+		limit = {
+			has_idea = war_economy
+		}
+		can_take_tot_economic_mobilisation = yes 
+	}
+	else = {
+		always = no 
+	}
+}
+
+#CONSCRIPTION
+can_take_cons_one = {
+	if = {
+		limit = {
+			tag = BUL
+		}
+		not = { has_idea = BUL_second_national_catastrophe }
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_an_indian_sandhurst
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_cons_two = {
+	OR = {
+		has_government = fascism
+		has_government = communism
+		has_government = monarchism
+		has_government = neutrality
+		AND = {
+			has_war = yes
+			enemies_strength_ratio > 0.3
+		}					
+	}
+	if = {
+		limit = {
+			tag = BUL
+		}
+		not = { has_idea = BUL_second_national_catastrophe }
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_cons_three = {
+	OR = {
+		has_government = fascism
+		has_government = communism
+		has_government = monarchism
+		has_government = neutrality
+		AND = {
+			has_war = yes
+			enemies_strength_ratio > 0.3
+		}					
+	}
+	if = {
+		limit = {
+			tag = BUL
+		}
+		not = { has_idea = BUL_second_national_catastrophe }
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_cons_expanded_draft = {
+	has_war_support > 0.5
+	OR = {
+		has_country_flag  = tax_average
+		has_country_flag  = tax_high
+		has_country_flag  = tax_extreme
+	}
+	AND = {
+		has_war = yes
+		enemies_strength_ratio > 0.5
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_cons_extensive_draft = {
+	OR = {
+		has_war_support > 0.6
+		surrender_progress > 0
+	}
+	OR = {
+		has_country_flag  = tax_average
+		has_country_flag  = tax_high
+		has_country_flag  = tax_extreme
+	}
+	AND = {
+		has_war = yes
+		enemies_strength_ratio > 0.8
+	}
+	has_idea = cons_expanded_draft
+	OR = {
+		has_idea  = age_15
+		has_idea  = age_14
+		has_idea  = age_13
+		has_idea  = age_12
+		has_idea  = age_11
+		has_idea  = age_10
+		
+	}	
+}
+
+
+can_take_cons_barrel = {
+	OR = {
+		has_war_support > 0.7
+		surrender_progress > 0
+	}
+	OR = {
+		has_country_flag  = tax_average
+		has_country_flag  = tax_high
+		has_country_flag  = tax_extreme
+	}
+	AND = {
+		has_war = yes
+		enemies_strength_ratio > 1
+	}
+	has_idea  = cons_extensive_draft
+	OR = {
+		has_idea  = age_12
+		has_idea  = age_11
+		has_idea  = age_10	
+	}
+}
+
+can_level_up_conscription = {
+	if = {
+		limit = {
+			has_idea = cons_volunteer
+		}
+		can_take_cons_one = yes 
+	}
+	if = {
+		limit = {
+			has_idea = cons_one
+		}
+		can_take_cons_two = yes 
+	}
+	if = {
+		limit = {
+			has_idea = cons_two
+		}
+		can_take_cons_three = yes 
+	}
+	if = {
+		limit = {
+			has_idea = cons_three
+		}
+		can_take_cons_expanded_draft = yes 
+	}
+	if = {
+		limit = {
+			has_idea = cons_expanded_draft
+		}
+		can_take_cons_extensive_draft = yes 
+	}
+	if = {
+		limit = {
+			has_idea = cons_extensive_draft
+		}
+		can_take_cons_barrel = yes 
+	}
+}
+
+#MANPOWER
+can_take_age_19 = {
+
+}
+
+can_take_age_18 = {
+
+}
+
+can_take_age_17 = {
+	NOT = {
+		has_idea = cons_volunteer
+	}
+}
+
+can_take_age_16 = {
+	has_war = yes
+	OR = {
+		has_idea = cons_three
+		has_idea = cons_expanded_draft
+		has_idea = cons_extensive_draft
+		has_idea = cons_barrel
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_age_15 = {
+	has_war = yes
+	OR = {
+		has_idea = cons_three
+		has_idea = cons_expanded_draft
+		has_idea = cons_extensive_draft
+		has_idea = cons_barrel
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_age_14 = {
+	has_war = yes
+	OR = {
+		has_idea = cons_expanded_draft
+		has_idea = cons_extensive_draft
+		has_idea = cons_barrel
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_age_13 = {
+	has_war = yes
+	OR = {
+			has_war_support > 0.4
+			surrender_progress > 0
+		}
+	OR = {
+		has_idea = cons_expanded_draft
+		has_idea = cons_extensive_draft
+		has_idea = cons_barrel
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_age_12 = {
+	OR = {
+		has_war_support > 0.5
+		surrender_progress > 0
+	}
+	has_war = yes
+	OR = {
+		has_idea = cons_expanded_draft
+		has_idea = cons_extensive_draft
+		has_idea = cons_barrel
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_age_11 = {
+	has_war = yes
+	OR = {
+		has_war_support > 0.6
+		surrender_progress > 0
+	}
+	OR = {
+		has_idea = cons_extensive_draft
+		has_idea = cons_barrel
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_age_10 = {
+	has_war = yes
+	OR = {
+		has_war_support > 0.7
+		surrender_progress > 0
+	}
+	OR = {
+		has_idea = cons_extensive_draft
+		has_idea = cons_barrel
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_level_up_manpower = {
+	if = {
+		limit = {
+			has_idea = age_19
+		}
+		can_take_age_18 = yes 
+	}
+	if = {
+		limit = {
+			has_idea = age_18
+		}
+		can_take_age_17 = yes 
+	}
+	if = {
+		limit = {
+			has_idea = age_17
+		}
+		can_take_age_16 = yes 
+	}
+	if = {
+		limit = {
+			has_idea = age_16
+		}
+		can_take_age_15 = yes 
+	}
+	if = {
+		limit = {
+			has_idea = age_15
+		}
+		can_take_age_14 = yes 
+	}
+	if = {
+		limit = {
+			has_idea = age_14
+		}
+		can_take_age_13 = yes 
+	}
+	if = {
+		limit = {
+			has_idea = age_13
+		}
+		can_take_age_12 = yes 
+	}
+	if = {
+		limit = {
+			has_idea = age_12
+		}
+		can_take_age_11 = yes 
+	}
+	if = {
+		limit = {
+			has_idea = age_11
+		}
+		can_take_age_10 = yes 
+	}
+}
+
+can_take_bonds_peace = {
+
+}
+
+can_take_bonds_basic = {
+
+}
+
+can_take_bonds_war_domestic = {
+	OR = { 
+		has_government = fascism
+		has_government = monarchism
+		has_government = neutrality
+	}
+	has_war = yes
+	has_idea = bonds_basic
+			
+}
+
+can_take_bonds_war_international = {
+	OR = { 
+		democratic_govt = yes
+		has_government = monarchism
+	}
+	has_war = yes
+	has_idea = bonds_basic
+			
+}
+
+can_take_bonds_war_public = {
+	has_war = yes
+	OR = { 
+		democratic_govt = yes
+		has_government = monarchism
+	}
+	has_idea = bonds_war_international
+			
+}
+
+can_take_bonds_state_requisition = {
+	has_war = yes
+	OR = { 
+		has_government = fascism
+		has_government = communism
+		has_government = monarchism
+		has_government = neutrality
+	}
+	OR = {
+		AND = {
+			has_government = communism
+			has_idea = bonds_basic
+		}
+		has_idea = bonds_war_domestic
+	}	
+}
+
+can_take_bonds_print = {
+	has_war = yes
+	OR = {
+		has_idea = bonds_state_requisition
+		has_idea = bonds_war_public
+	}
+}
+	
+can_level_up_bonds = {
+	if = {
+		limit = {
+			has_idea = bonds_peace
+		}
+		can_take_bonds_basic = yes
+	}
+	else_if = {
+		limit = {
+			has_idea = bonds_basic
+		}
+		OR = {
+			can_take_bonds_war_domestic = yes
+			can_take_bonds_war_international = yes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = bonds_war_domestic
+		}
+		can_take_bonds_state_requisition = yes
+	}
+	else_if = {
+		limit = {
+			has_idea = bonds_war_international
+		}
+		can_take_bonds_war_public = yes
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = bonds_state_requisition
+				has_idea = bonds_war_public
+			}
+		}
+		can_take_bonds_print = yes
+	}
+}
+	
+can_take_train_none = {
+
+}	
+
+can_take_train_low = {
+	if = {
+		limit = {
+			tag = SOV
+		}
+		NOT = { has_country_flag = purges }
+	}
+}
+
+can_take_train_medium = {
+	has_idea = train_low
+	if = {
+		limit = {
+			tag = SOV
+		}
+		NOT = { has_country_flag = purges }
+	}
+}
+
+can_take_train_high = {
+	has_idea = train_medium
+	if = {
+		limit = {
+			tag = SOV
+			OR = {
+				has_idea = officers_purged 		
+				has_idea = officers_purged_2 			
+				has_idea = officers_purged_3 			
+				has_idea = officers_purged_4 			
+				has_idea = officers_purged_5 			
+				has_idea = officers_purged_6 			
+				has_idea = officers_purged_7 			
+				has_idea = officers_purged_8 			
+				has_idea = officers_purged_9 			
+				has_idea = officers_purged_10 
+			}		
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOV_has_not_officers_purged_tt
+			NOT = { has_idea = officers_purged }			
+			NOT = { has_idea = officers_purged_2 }			
+			NOT = { has_idea = officers_purged_3 }			
+			NOT = { has_idea = officers_purged_4 }			
+			NOT = { has_idea = officers_purged_5 }			
+			NOT = { has_idea = officers_purged_6 }			
+			NOT = { has_idea = officers_purged_7 }			
+			NOT = { has_idea = officers_purged_8 }			
+			NOT = { has_idea = officers_purged_9 }			
+			NOT = { has_idea = officers_purged_10 }			
+		}
+	}
+}
+
+can_take_train_elite = {
+	has_idea = train_high
+	OR = {
+		has_idea = tax_low
+		has_idea = tax_average
+		has_idea = tax_high
+		has_idea = tax_extreme
+	}
+	NOT = { has_idea = officer_train_none }
+	if = {
+		limit = {
+			tag = SOV
+			OR = {
+				has_idea = officers_purged 		
+				has_idea = officers_purged_2 			
+				has_idea = officers_purged_3 			
+				has_idea = officers_purged_4 			
+				has_idea = officers_purged_5 			
+				has_idea = officers_purged_6 			
+				has_idea = officers_purged_7 			
+				has_idea = officers_purged_8 			
+				has_idea = officers_purged_9 			
+				has_idea = officers_purged_10 
+			}		
+		}
+		custom_trigger_tooltip = {
+			tooltip = SOV_has_not_officers_purged_tt
+			NOT = { has_idea = officers_purged }			
+			NOT = { has_idea = officers_purged_2 }			
+			NOT = { has_idea = officers_purged_3 }			
+			NOT = { has_idea = officers_purged_4 }			
+			NOT = { has_idea = officers_purged_5 }			
+			NOT = { has_idea = officers_purged_6 }			
+			NOT = { has_idea = officers_purged_7 }			
+			NOT = { has_idea = officers_purged_8 }			
+			NOT = { has_idea = officers_purged_9 }			
+			NOT = { has_idea = officers_purged_10 }			
+		}
+	}
+}
+
+can_level_up_cadet_training = {
+	if = {
+		limit = {
+			has_idea = train_none
+		}
+		can_take_train_low = yes 
+	}
+	else_if = {
+		limit = {
+			has_idea = train_low
+		}
+		can_take_train_medium = yes 
+	}
+	else_if = {
+		limit = {
+			has_idea = train_medium
+		}
+		can_take_train_high = yes 
+	}
+	else_if = {
+		limit = {
+			has_idea = train_high
+		}
+		can_take_train_elite = yes 
+	}
+}
+
+can_take_cons_volunteer = {
+
+}
+
+can_take_cons_one = {
+	if = {
+		limit = {
+			tag = BUL
+		}
+		not = { has_idea = BUL_second_national_catastrophe }
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_an_indian_sandhurst
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_cons_two = {
+	OR = {
+		has_government = fascism
+		has_government = communism
+		has_government = monarchism
+		has_government = neutrality
+		AND = {
+			has_war = yes
+			enemies_strength_ratio > 0.3
+		}					
+	}
+	if = {
+		limit = {
+			tag = BUL
+		}
+		not = { has_idea = BUL_second_national_catastrophe }
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_cons_three = {
+	OR = {
+		has_government = fascism
+		has_government = communism
+		has_government = monarchism
+		has_government = neutrality
+		AND = {
+			has_war = yes
+			enemies_strength_ratio > 0.3
+		}					
+	}
+	if = {
+		limit = {
+			tag = BUL
+		}
+		not = { has_idea = BUL_second_national_catastrophe }
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_cons_expanded_draft = {
+	has_war_support > 0.5
+	OR = {
+		has_idea  = tax_average
+		has_idea  = tax_high
+		has_idea  = tax_extreme
+	}
+	AND = {
+		has_war = yes
+		enemies_strength_ratio > 0.5
+	}
+	if = {
+		limit = {
+			original_tag = AST
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = AST_citizen_military_forces
+	}
+	if = {
+		limit = {
+			original_tag = CAN
+			has_dlc = "Together for Victory"
+		}
+		has_completed_focus = CAN_commit_to_the_war
+	}
+	if = {
+		limit = {
+			original_tag = RAJ
+			has_dlc = "Together for Victory"
+		}
+		or = {
+			is_subject = no
+			has_completed_focus = RAJ_indian_gentlemen_officers
+		}
+	}
+	if = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+		}
+		NOT = { has_idea = HUN_treaty_of_triannon }
+	}
+}
+
+can_take_cons_extensive_draft = {
+	OR = {
+			has_war_support > 0.6
+			surrender_progress > 0
+		}
+	OR = {
+		has_idea  = tax_average
+		has_idea  = tax_high
+		has_idea  = tax_extreme
+	}
+	AND = {
+		has_war = yes
+		enemies_strength_ratio > 0.8
+	}
+	has_idea = cons_expanded_draft
+	OR = {
+		has_idea  = age_15
+		has_idea  = age_14
+		has_idea  = age_13
+		has_idea  = age_12
+		has_idea  = age_11
+		has_idea  = age_10
+		
+	}
+}
+can_take_cons_barrel = {
+	OR = {
+		has_war_support > 0.7
+		surrender_progress > 0
+	}
+	OR = {
+		has_idea  = tax_average
+		has_idea  = tax_high
+		has_idea  = tax_extreme
+	}
+	AND = {
+		has_war = yes
+		enemies_strength_ratio > 1
+	}
+	has_idea  = cons_extensive_draft
+	OR = {
+		has_idea  = age_12
+		has_idea  = age_11
+		has_idea  = age_10	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

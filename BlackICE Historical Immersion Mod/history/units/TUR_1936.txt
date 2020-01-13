@@ -1,0 +1,517 @@
+﻿instant_effect = {
+	set_country_flag = placed_research_centre
+
+	add_research_slot = 1
+	49 = { state_add_research_centre = yes }
+	SLOT:infantry_folder = yes
+	SLOT:support_folder = yes
+	SLOT:artillery_folder = yes
+	
+	add_research_slot = 1
+	868 = { state_add_research_centre = yes }
+	SLOT:industry_folder = yes
+}
+
+##### TEMPLATES #####
+division_template = {
+	name = "Piyade Tümeni"  	
+	division_names_group = TUR_INF_01		# Infantry Division
+	template_counter = 114
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+
+		artillery_brigade = { x = 3 y = 0 }
+		artillery_brigade = { x = 3 y = 1 }
+		artillery_brigade = { x = 3 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		engineer = { x = 0 y = 2 }   
+	}
+}
+division_template = {
+	name = "Dağcı Tugayı" 	
+	division_names_group = TUR_MTN_01			# Mountain Brigade
+	template_counter = 3007
+	
+	regiments = {
+		mountaineers = { x = 0 y = 0 }
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }
+		
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+
+		mountain_artillery_brigade = { x = 2 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Iç Güvenlik Tugayı" 	
+	division_names_group = TUR_GAR_01			# Fortress Brigade - garrison brigade, lower experience and equipment
+	template_counter = 85
+	priority = 0
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Süvari Tümeni" 		
+	division_names_group = TUR_CAV_01		# Cavalry Division
+	template_counter = 209
+	
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+		cavalry = { x = 0 y = 3 }
+		
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 1 y = 2 }
+		cavalry = { x = 1 y = 3 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Militia"  
+	# Note: all forces at reserve levels in 1936
+	template_counter = 70
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#	
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+##### OOB #####
+units = {
+	##### Türk Ordusu #####
+	#division= {	
+	#	name = "Türk Ordusu" 
+	##	location = 11811
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.1
+	#}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 11811
+		division_template = "Süvari Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	## VI. Kolordu ##
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 11811
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 17
+		}
+		location = 11811
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 20
+		}
+		location = 11811
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	### Birinci Ordu ###
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 11
+		}
+		location = 9833
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 9833
+		division_template = "Süvari Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	## III. Kolordu ##
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 11842
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 23
+		}
+		location = 3893
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 24
+		}
+		location = 11842
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	## IV. Kolordu ##
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 6895
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 22
+		}
+		location = 6895
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 6895
+		division_template = "Dağcı Tugayı" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+
+	### Ikinci Ordu ###
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 39
+		}
+		location = 947
+		division_template = "Dağcı Tugayı" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	## I. Kolordu ##
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 4112
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 16
+		}
+		location = 4112
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+
+		name = "Izmir Iç Güvenlik Tugayı"
+		location = 4112
+		division_template = "Iç Güvenlik Tugayı"
+		force_equipment_variants = { infantry_equipment_0 = { owner = "TUR" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+	}
+	## II.  Kolordu ##
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 849
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 18
+		}
+		location = 849
+		division_template = "Dağcı Tugayı" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	## V. Kolordu ##
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 947
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 25
+		}
+		location = 947
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	### Üçüncü Ordu ###
+	## VII. Kolordu ##
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 4512
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 4512
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	## VIII. Kolordu ##
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 11894
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 15
+		}
+		location = 11894
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	## IX. Kolordu ##
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 10403
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 10472
+		division_template = "Piyade Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 10472
+		division_template = "Süvari Tümeni" 
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}				
+}
+##### AIR FORCE #####
+air_wings = {
+	##### Türk Hava Kuvvetleri #####
+	49 = { 
+		# 1. Havacı Alayı -- Curtiss F11C Hawk II fighters (technically CAG fighters)
+		#Curtiss Hawk II
+		#curtiss_hawk_ii_equipment_1 =  { 
+		#	owner = "TUR" 
+		#	creator = "USA"
+		#	amount = 19
+		#}
+		#Curtiss Hawk III
+		#pre_war_mr_equipment_7 =  { 
+		#	owner = "TUR" 
+		#	creator = "USA"
+		#	amount = 1
+		#}
+		#curtiss_hawk_ii_equipment_1 = { #Liscensed produced
+		#	owner = "TUR"
+		#	amount = 11
+		#}
+		# 2. Havacı Alayı -- Letov S.16T light bombers
+		CAS_equipment_1 = {
+			owner = "TUR" 
+			amount = 16
+		}
+	}
+}
+##### INSTANT #####
+instant_effect = {
+##### PRODUCTION #####
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "TUR"
+		}
+		requested_factories = 1
+		progress = 0.43
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = curtiss_hawk_ii_equipment_1
+			creator = "TUR"
+		}
+		requested_factories = 1
+		progress = 0.47
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_uniforms_0
+			creator = "TUR"
+		}
+		requested_factories = 1
+		progress = 0.22
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = horse_equipment_0
+			creator = "TUR"
+		}
+		requested_factories = 1
+		progress = 0.22
+		efficiency = 100
+	}
+##### ADDED TO STOCKPILE #####
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_1
+		amount = 5600
+		producer = TUR
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+		amount = 3500
+		producer = TUR
+	}
+	add_equipment_to_stockpile = {
+		type = horse_equipment_0
+		amount = 1400
+		producer = TUR
+	}
+}
+### EOF ###

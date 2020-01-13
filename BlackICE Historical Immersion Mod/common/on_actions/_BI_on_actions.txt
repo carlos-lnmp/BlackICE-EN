@@ -1,0 +1,775 @@
+
+on_actions = {
+
+
+    on_daily = {
+		effect = {
+			if = { #This is the biggest performance drain - after this it only runs on the player countries, which are very few
+				limit = { #only for players or playtesters
+					has_country_flag = player_only
+				}
+
+				if = {
+					limit = {
+						tag = GER
+						has_country_flag = recent_major_land_acquisition
+					}
+					add_to_variable = { recent_major_land_acquisition = 1 }
+				}
+				if = {
+					limit = { 
+						has_global_flag = wip 
+					}
+					update_construction_lines = yes
+					state_recruitment_effect = yes 
+				}
+				set_special_forces_cap = yes
+			#Civilian Fuel Consumption
+				set_variable = { civ_fuel_usage_var = modifier@consumer_goods_factor }
+
+				multiply_variable = { civ_fuel_usage_var = civ_fuel_usage_factor }
+
+				multiply_variable = { civ_fuel_usage_var = -1 }
+				if = { limit = { check_variable = { civ_fuel_usage_var < -0.99 } }
+					set_variable = { civ_fuel_usage_var = -0.99 }
+				}
+				
+				#XP cap
+				if = {
+					limit = {
+						has_army_experience > max_army_xp 
+					}
+					army_experience = -1000
+					army_experience = max_army_xp
+				}
+				if = {
+					limit = {
+						has_air_experience > max_air_xp 
+					}
+					air_experience = -1000
+					air_experience = max_air_xp
+				}
+				if = {
+					limit = {
+						has_navy_experience > max_navy_xp 
+					}
+					navy_experience = -1000
+					navy_experience = max_navy_xp
+				}
+				
+				set_temp_variable = { factory_output_factor_temp = modifier@production_speed_factory_output_factor }
+				add_to_temp_variable = { factory_output_factor_temp = modifier@modifier_army_sub_unit_category_factory_attack_factor }
+				add_to_temp_variable = { factory_output_factor_temp = 1 }
+
+				set_temp_variable = { factory_output_temp = modifier@industrial_capacity_factory }
+				multiply_temp_variable = { factory_output_temp = factory_output_factor_temp }
+				subtract_from_temp_variable = { factory_output_temp = modifier@industrial_capacity_factory }
+
+				set_variable = { factory_output_factor = factory_output_temp }
+				
+				if = { limit = { 
+						check_variable = { factory_output_factor_temp < 1 } #negative factor
+						check_variable = { factory_output_factor > 0 } #positive gain
+					}
+					multiply_variable = { factory_output_factor = -1 }
+				}
+				else_if = { limit = { 
+						check_variable = { factory_output_factor_temp > 1 } #positive factor
+						check_variable = { factory_output_factor < 0 } #negative gain
+					}
+					multiply_variable = { factory_output_factor = -1 }
+				}
+
+				set_temp_variable = { dockyard_output_factor_temp = modifier@production_speed_dockyard_output_factor }
+				add_to_temp_variable = { dockyard_output_factor_temp = modifier@modifier_army_sub_unit_category_dockyard_attack_factor }
+				add_to_temp_variable = { dockyard_output_factor_temp = 1 }
+
+				set_temp_variable = { dockyard_output_temp = modifier@industrial_capacity_dockyard }
+				multiply_temp_variable = { dockyard_output_temp = dockyard_output_factor_temp }
+				subtract_from_temp_variable = { dockyard_output_temp = modifier@industrial_capacity_dockyard }
+
+				set_variable = { dockyard_output_factor = dockyard_output_temp }
+				
+				if = { limit = { 
+						check_variable = { dockyard_output_factor_temp < 1 } #negative factor
+						check_variable = { dockyard_output_factor > 0 } #positive gain
+					}
+					multiply_variable = { dockyard_output_factor = -1 }
+				}
+				else_if = { limit = { 
+						check_variable = { dockyard_output_factor_temp > 1 } #positive factor
+						check_variable = { dockyard_output_factor < 0 } #negative gain
+					}
+					multiply_variable = { dockyard_output_factor = -1 }
+				}
+					
+				if = {
+					limit = {
+						NOT = { has_country_flag = show_number }
+					}
+					update_EIC_production_gui = yes 
+				}
+					
+				calculate_min_cons_goods_modifier = yes 
+				set_temp_variable = { cons_goods_temp = modifier@consumer_goods_factor }
+				subtract_from_temp_variable = { cons_goods_temp = min_cons_goods_value }
+				clear_variable = min_cons_goods_value
+				if = {
+					limit = {
+						check_variable = { min_cons_goods > cons_goods_temp }
+					}
+					
+					set_variable = { min_cons_goods_value = min_cons_goods }
+					
+					subtract_from_variable = { min_cons_goods_value = cons_goods_temp }
+					if = { limit = { NOT = { has_dynamic_modifier = { modifier = min_consumer_goods } } }
+					add_dynamic_modifier = {
+						modifier = min_consumer_goods
+					} }
+				}
+
+			#Ruling Party drift
+				clear_variable = fascism_modifier
+				clear_variable = communism_modifier
+				clear_variable = conservatism_modifier
+				clear_variable = liberalism_modifier
+				clear_variable = socialism_modifier
+				clear_variable = neutrality_modifier
+				clear_variable = monarchism_modifier
+
+				clear_variable = fascism_modifier_2
+				clear_variable = communism_modifier_2
+				clear_variable = conservatism_modifier_2
+				clear_variable = liberalism_modifier_2
+				clear_variable = socialism_modifier_2
+				clear_variable = neutrality_modifier_2
+				clear_variable = monarchism_modifier_2
+
+				if = {
+					limit = {
+						NOT = { check_variable = { modifier@opposition_party_drift = -0.99 } }
+					}
+
+					if = { limit = { NOT = { has_dynamic_modifier = { #so that not every country updates it daily
+						modifier = opposition_party_modifier } } }
+						add_dynamic_modifier = {
+							modifier = opposition_party_modifier
+						}
+					}
+
+					set_temp_variable = { opposition_drift = modifier@opposition_party_drift }
+					add_to_temp_variable = { opposition_drift = 0.99 }
+
+					set_temp_variable = { fascism = party_popularity@fascism }
+					clamp_temp_variable = {
+						var = fascism
+						min = 0.1
+						max = 0.5
+					}
+					divide_temp_variable = { fascism = 5 }
+					set_variable = { fascism_modifier_2 = fascism }
+
+					set_temp_variable = { communism = party_popularity@communism }
+					clamp_temp_variable = {
+						var = communism
+						min = 0.1
+						max = 0.5
+					}
+					divide_temp_variable = { communism = 5 }
+					set_variable = { communism_modifier_2 = communism }
+
+					set_temp_variable = { conservatism = party_popularity@conservatism }
+					clamp_temp_variable = {
+						var = conservatism
+						min = 0.1
+						max = 0.5
+					}
+					divide_temp_variable = { conservatism = 5 }
+					set_variable = { conservatism_modifier_2 = conservatism }
+
+					set_temp_variable = { liberalism = party_popularity@liberalism }
+					clamp_temp_variable = {
+						var = liberalism
+						min = 0.1
+						max = 0.5
+					}
+					divide_temp_variable = { liberalism = 5 }
+					set_variable = { liberalism_modifier_2 = liberalism }
+
+					set_temp_variable = { socialism = party_popularity@socialism }
+					clamp_temp_variable = {
+						var = socialism
+						min = 0.1
+						max = 0.5
+					}
+					divide_temp_variable = { socialism = 5 }
+					set_variable = { socialism_modifier_2 = socialism }
+					#democratic countries are more likely to see opposition from other democratic parties
+					if = {
+						limit = {
+							democratic_govt = yes
+						}
+						multiply_variable = { conservatism_modifier_2 = 1.5 }
+						multiply_variable = { liberalism_modifier_2 = 1.5 }
+						multiply_variable = { socialism_modifier_2 = 1.5 }
+					}
+						
+					set_temp_variable = { neutrality = party_popularity@neutrality }
+					clamp_temp_variable = {
+						var = neutrality
+						min = 0.1
+						max = 0.5
+					}
+					divide_temp_variable = { neutrality = 5 }
+					set_variable = { neutrality_modifier_2 = neutrality }
+
+					set_temp_variable = { monarchism = party_popularity@monarchism }
+					clamp_temp_variable = {
+						var = monarchism
+						min = 0.1
+						max = 0.5
+					}
+					divide_temp_variable = { monarchism = 5 }
+					set_variable = { monarchism_modifier_2 = monarchism }
+
+					multiply_variable = { fascism_modifier_2 = opposition_drift }
+					multiply_variable = { communism_modifier_2 = opposition_drift }
+					multiply_variable = { conservatism_modifier_2 = opposition_drift }
+					multiply_variable = { liberalism_modifier_2 = opposition_drift }
+					multiply_variable = { socialism_modifier_2 = opposition_drift }
+					multiply_variable = { neutrality_modifier_2 = opposition_drift }
+					multiply_variable = { monarchism_modifier_2 = opposition_drift }
+
+					if = { limit = { has_government = fascism } clear_variable = fascism_modifier_2 }
+					else_if = { limit = { has_government = communism } clear_variable = communism_modifier_2 }
+					else_if = { limit = { has_government = conservatism } clear_variable = conservatism_modifier_2 }
+					else_if = { limit = { has_government = liberalism } clear_variable = liberalism_modifier_2 }
+					else_if = { limit = { has_government = socialism } clear_variable = socialism_modifier_2 }
+					else_if = { limit = { has_government = neutrality } clear_variable = neutrality_modifier_2 }
+					else_if = { limit = { has_government = monarchism } clear_variable = monarchism_modifier_2 }
+				}
+
+				if = {
+					limit = {
+						NOT = { check_variable = { modifier@ruling_party_drift = -0.99 } }
+					}
+
+					#set_variable = { anti_ruling_modifier = modifier@ruling_party_drift }
+					#divide_variable = { anti_ruling_modifier = 0.1 }
+					#multiply_variable = { anti_ruling_modifier = -1 }
+
+					if = { limit = { NOT = { has_dynamic_modifier = { #so that not every country updates it daily
+						modifier = ruling_party_modifier } } }
+						add_dynamic_modifier = {
+							modifier = ruling_party_modifier
+						}
+					}
+
+					if = {
+						limit = {
+							has_government = fascism
+						}
+						set_variable = { fascism_modifier = modifier@ruling_party_drift }
+						add_to_variable = { fascism_modifier = 0.99 }
+					}
+					else_if = {
+						limit = {
+							has_government = communism
+						}
+						set_variable = { communism_modifier = modifier@ruling_party_drift }
+						add_to_variable = { communism_modifier = 0.99 }
+					}
+					else_if = {
+						limit = {
+							has_government = conservatism
+						}
+						set_variable = { conservatism_modifier = modifier@ruling_party_drift }
+						add_to_variable = { conservatism_modifier = 0.99 }
+					}
+					else_if = {
+						limit = {
+							has_government = liberalism
+						}
+						set_variable = { liberalism_modifier = modifier@ruling_party_drift }
+						add_to_variable = { liberalism_modifier = 0.99 }
+					}
+					else_if = {
+						limit = {
+							has_government = socialism
+						}
+						set_variable = { socialism_modifier = modifier@ruling_party_drift }
+						add_to_variable = { socialism_modifier = 0.99 }
+					}
+					else_if = {
+						limit = {
+							has_government = neutrality
+						}
+						set_variable = { neutrality_modifier = modifier@ruling_party_drift }
+						add_to_variable = { neutrality_modifier = 0.99 }
+					}
+					else_if = {
+						limit = {
+							has_government = monarchism
+						}
+						set_variable = { monarchism_modifier = modifier@ruling_party_drift }
+						add_to_variable = { monarchism_modifier = 0.99 }
+					}
+					#force_update_dynamic_modifier = yes
+				}
+
+			#Production Interface
+
+				set_variable = { production_starting_efficiency = modifier@production_factory_start_efficiency_factor }
+				multiply_variable = { production_starting_efficiency = 100 }
+				add_to_variable = { production_starting_efficiency = 10 } #Base
+
+			#Building tooltip
+				clear_variable = Total_Buildings
+				add_to_variable = { Total_Buildings = num_of_civilian_factories }
+				add_to_variable = { Total_Buildings = num_of_military_factories }
+				add_to_variable = { Total_Buildings = num_of_naval_factories }
+				add_to_variable = { Total_Buildings = country_specialy }
+
+				set_variable = { num_of_consumer_civilian_factories = num_of_civilian_factories }
+				subtract_from_variable = { num_of_consumer_civilian_factories = num_of_available_civilian_factories }
+
+				if = {
+					limit = {
+						has_country_flag = rubber_storage
+					}
+					#No Oil because of Fuel
+					### RUBBER
+					clear_variable = estimate_rubber
+					if = {
+						limit = {
+							check_variable = { resource@rubber > 0 }
+							NOT = { has_country_flag = use_up_rubber }
+						}
+						add_to_variable = { rubber_storage = resource@rubber }
+						set_variable = { estimate_rubber = rubber_storage_cap }
+						subtract_from_variable = { estimate_rubber = oil_storage }
+						divide_variable = { estimate_rubber = resource@oil }
+					}
+					if = {
+						limit = {
+							check_variable = { rubber_storage > rubber_storage_cap }
+						}
+						set_variable = { rubber_storage = rubber_storage_cap }
+					}
+					if = {
+						limit = {
+							has_country_flag = use_up_rubber
+						}
+						subtract_from_variable = { rubber_storage = rubber_output }
+						set_variable = { estimate_rubber = rubber_storage }
+						divide_variable = { estimate_rubber = rubber_output }
+					}
+					if = {
+						limit = {
+							check_variable = { rubber_storage < 0 }
+						}
+						if = {
+							limit = { has_country_flag = use_up_rubber }
+							meta_effect = {
+								text = {
+									modify_building_resources = {
+										building = rubber_storage
+										resource = rubber
+										amount = [RUBBER]
+									}
+								}
+								RUBBER = original_rubber_storage_output
+							}
+							clr_country_flag = use_up_rubber
+							clear_variable = original_rubber_storage_output
+							clear_variable = rubber_output 
+						}
+						set_variable = { rubber_storage = 0 }
+					}
+				}
+
+				if = {
+					limit = {
+						has_country_flag = tungsten_storage
+					}
+					### TUNGSTEN
+					clear_variable = estimate_tungsten
+					if = {
+						limit = {
+							check_variable = { resource@tungsten > 0 }
+							NOT = { has_country_flag = use_up_tungsten }
+						}
+						add_to_variable = { tungsten_storage = resource@tungsten }
+						set_variable = { estimate_tungsten = tungsten_storage_cap }
+						subtract_from_variable = { estimate_tungsten = tungsten_storage }
+						divide_variable = { estimate_tungsten = resource@tungsten }
+					}
+					if = {
+						limit = {
+							check_variable = { tungsten_storage > tungsten_storage_cap }
+						}
+						set_variable = { tungsten_storage = tungsten_storage_cap }
+					}
+					if = {
+						limit = {
+							has_country_flag = use_up_tungsten
+						}
+						subtract_from_variable = { tungsten_storage = tungsten_output }
+						set_variable = { estimate_tungsten = tungsten_storage }
+						divide_variable = { estimate_tungsten = tungsten_output }
+					}
+					if = {
+						limit = {
+							check_variable = { tungsten_storage < 0 }
+						}
+						if = {
+							limit = { has_country_flag = use_up_tungsten }
+							meta_effect = {
+								text = {
+									modify_building_resources = {
+										building = tungsten_storage
+										resource = tungsten
+										amount = [TUNGSTEN]
+									}
+								}
+								TUNGSTEN = original_tungsten_storage_output
+							}
+							clr_country_flag = use_up_tungsten
+							clear_variable = original_tungsten_storage_output
+							clear_variable = tungsten_output 
+						}
+						set_variable = { tungsten_storage = 0 }
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = aluminium_storage
+					}
+					### ALUMINIUM
+					clear_variable = estimate_aluminium
+					if = {
+						limit = {
+							check_variable = { resource@aluminium > 0 }
+							NOT = { has_country_flag = use_up_aluminium }
+						}
+						add_to_variable = { aluminium_storage = resource@aluminium }
+						set_variable = { estimate_aluminium = aluminium_storage_cap }
+						subtract_from_variable = { estimate_aluminium = aluminium_storage }
+						divide_variable = { estimate_aluminium = resource@aluminium }
+					}
+					if = {
+						limit = {
+							check_variable = { aluminium_storage > aluminium_storage_cap }
+						}
+						set_variable = { aluminium_storage = aluminium_storage_cap }
+					}
+					if = {
+						limit = {
+							has_country_flag = use_up_aluminium
+						}
+						subtract_from_variable = { aluminium_storage = aluminium_output }
+						set_variable = { estimate_aluminium = aluminium_storage }
+						divide_variable = { estimate_aluminium = aluminium_output }
+					}
+					if = {
+						limit = {
+							check_variable = { aluminium_storage < 0 }
+						}
+						if = {
+							limit = { has_country_flag = use_up_aluminium }
+							meta_effect = {
+								text = {
+									modify_building_resources = {
+										building = aluminium_storage
+										resource = aluminium
+										amount = [ALUMINIUM]
+									}
+								}
+								ALUMINIUM = original_aluminium_storage_output
+							}
+							clr_country_flag = use_up_aluminium
+							clear_variable = original_aluminium_storage_output
+							clear_variable = aluminium_output 
+						}
+						set_variable = { aluminium_storage = 0 }
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = steel_storage
+					}
+					### STEEL
+					clear_variable = estimate_steel
+					if = {
+						limit = {
+							check_variable = { resource@steel > 0 }
+							NOT = { has_country_flag = use_up_steel }
+						}
+						add_to_variable = { steel_storage = resource@steel }
+						set_variable = { estimate_steel = steel_storage_cap }
+						subtract_from_variable = { estimate_steel = steel_storage }
+						divide_variable = { estimate_steel = resource@steel }
+					}
+					if = {
+						limit = {
+							check_variable = { steel_storage > steel_storage_cap }
+						}
+						set_variable = { steel_storage = steel_storage_cap }
+					}
+					if = {
+						limit = {
+							has_country_flag = use_up_steel
+						}
+						subtract_from_variable = { steel_storage = steel_output }
+						set_variable = { estimate_steel = steel_storage }
+						divide_variable = { estimate_steel = steel_output }
+					}
+					if = {
+						limit = {
+							check_variable = { steel_storage < 0 }
+						}
+						if = {
+							limit = { has_country_flag = use_up_steel }
+							meta_effect = {
+								text = {
+									modify_building_resources = {
+										building = steel_storage
+										resource = steel
+										amount = [STEEL]
+									}
+								}
+								STEEL = original_steel_storage_output
+							}
+							clr_country_flag = use_up_steel
+							clear_variable = original_steel_storage_output
+							clear_variable = steel_output 
+						}
+						set_variable = { steel_storage = 0 }
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = chromium_storage
+					}
+					### CHROMIUM
+					clear_variable = estimate_chromium
+					if = {
+						limit = {
+							check_variable = { resource@chromium > 0 }
+							NOT = { has_country_flag = use_up_chromium }
+						}
+						add_to_variable = { chromium_storage = resource@chromium }
+						set_variable = { estimate_chromium = chromium_storage_cap }
+						subtract_from_variable = { estimate_chromium = chromium_storage }
+						divide_variable = { estimate_chromium = resource@chromium }
+					}
+					if = {
+						limit = {
+							check_variable = { chromium_storage > chromium_storage_cap }
+						}
+						set_variable = { chromium_storage = chromium_storage_cap }
+					}
+					if = {
+						limit = {
+							has_country_flag = use_up_chromium
+						}
+						subtract_from_variable = { chromium_storage = chromium_output }
+						set_variable = { estimate_chromium = chromium_storage }
+						divide_variable = { estimate_chromium = chromium_output }
+					}
+					if = {
+						limit = {
+							check_variable = { chromium_storage < 0 }
+						}
+						if = {
+							limit = { has_country_flag = use_up_chromium }
+							meta_effect = {
+								text = {
+									modify_building_resources = {
+										building = chromium_storage
+										resource = chromium
+										amount = [CHROMIUM]
+									}
+								}
+								CHROMIUM = original_chromium_storage_output
+							}
+							clr_country_flag = use_up_chromium
+							clear_variable = original_chromium_storage_output
+							clear_variable = chromium_output 
+						}
+						set_variable = { chromium_storage = 0 }
+					}
+				}
+			}
+		}
+	}
+
+	#Root new, from old
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { 
+						is_ai = yes 
+						OR = {
+							major_country = yes 
+							any_enemy_country = { player_only_trigger = yes }
+						}
+					}
+				}
+				FROM.FROM = {
+					set_temp_variable = { infra = building_level@infrastructure }
+					remove_building  = {
+						type = infrastructure
+						level = infra
+					}
+					set_building_level = {
+						type = infrastructure
+						level = infra
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					always = no
+					FROM.FROM = {
+						supply_depot > 0
+					}
+					ROOT = { has_war_with = FROM }
+				}
+				FROM.FROM = {
+					save_event_target_as = supply_depot_state
+					random_neighbor_state = {
+						limit = {
+							NOT = {
+								is_owned_by = FROM
+								is_owned_by = ROOT
+							}
+							is_controlled_by = FROM
+						}
+						save_event_target_as = supply_depot_state_check_neighbor
+					}
+				}
+				FROM = { save_event_target_as = supply_depot_state_controller_check }
+				country_event = EAI_M.136
+			}
+			if = {
+				limit = {
+					FROM.FROM = { is_on_continent = africa }
+					FROM = { original_tag = ITA }
+					NOT = { 
+						ITA ={
+							any_of_scopes = {
+								array = controlled_states 
+
+								is_on_continent = africa 
+							}
+						}
+					}
+				}
+				ITA = {
+					add_ideas = ITA_bad_war
+				}
+			}
+			if = {
+				limit = {
+					FROM.FROM = { is_core_of = BUR }
+					FROM = { 
+						or = {
+							original_tag = JAP 
+							is_in_faction_with = JAP
+						}
+					}
+					JAP = {
+						has_country_flag = helped_BUR
+					}
+				}
+				BUR = {
+					country_event = burma.5
+				}
+				JAP = {
+					clr_country_flag = helped_BUR
+				}
+			}
+			##Island Hopping
+			if = {
+				limit = {
+					FROM = { tag = JAP }
+					ROOT = { tag = USA }
+					FROM.FROM = {
+						has_state_flag = JAP_controls
+					}
+				}
+				FROM.FROM = {  
+				 	set_state_flag = USA_controls
+				 	clr_state_flag = JAP_controls
+				}
+			 	if = { limit = { original_tag = USA } 
+			 		USA_island_hopping_level_up = yes
+			 	}
+		 		JAP = {
+		 			JAP_island_hopping_level_down = yes 
+		 		}
+			}
+			if = {
+				limit = {
+					FROM = { tag = USA }
+					ROOT = { tag = JAP }
+					FROM.FROM = {
+						has_state_flag = USA_controls
+					}
+				}
+				FROM.FROM = { 
+				 	set_state_flag = JAP_controls 
+				 	clr_state_flag = USA_controls 
+				}
+		 		if = { limit = { original_tag = JAP } 
+		 			JAP_island_hopping_level_up = yes 
+		 		}
+		 		USA = {
+					USA_island_hopping_level_down = yes
+		 		} 
+			}			
+		}
+	}
+	# ROOT is capitulated country, FROM is winner
+	on_capitulation = {
+		effect = {
+			#Vichy Event Chain
+			if = {
+				limit = {
+					ROOT = {
+						tag = FRA
+						is_in_faction_with = ENG
+					}
+					FROM = { is_in_faction_with = GER }
+				}
+				country_event = france.10
+			}
+			# Yay you got Norway
+			if = {
+				limit = {
+					ROOT = {
+						tag = NOR
+					}
+					FROM = { is_in_faction_with = GER }
+				}
+				GER = {
+					add_ideas = { NOR_GER_bonus }
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tag = HOL
+					}
+				}
+				INS = { 
+					remove_resource_rights = 716 
+					remove_resource_rights = 672
+				}
+			}
+		}
+	}
+}

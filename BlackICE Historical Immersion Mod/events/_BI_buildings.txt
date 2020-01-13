@@ -1,0 +1,975 @@
+﻿add_namespace = BICE_buildings
+
+country_event = {
+	id = BICE_buildings.0
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {	 
+		if = {
+			limit = {
+				OR = {
+					has_tech = armor_industry3 
+					has_tech = dispersed_armor_industry3 
+				}
+			}
+			if = { limit = { check_variable = { Tank_Buildings > 20 } }
+				set_variable = { Tank_Buildings = 20 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = armor_industry2 
+					has_tech = dispersed_armor_industry2
+				}
+			}
+			if = { limit = { check_variable = { Tank_Buildings > 15 } }
+				set_variable = { Tank_Buildings = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = armor_industry
+					has_tech = dispersed_armor_industry
+				}
+			}
+			if = { limit = { check_variable = { Tank_Buildings > 10 } }
+				set_variable = { Tank_Buildings = 10 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_tech = armor_industry
+					has_tech = dispersed_armor_industry
+				}
+			}
+			if = { limit = { check_variable = { Tank_Buildings > 5 } }
+				set_variable = { Tank_Buildings = 5 }
+			}
+		}
+		
+		if = {
+			limit = {
+				OR = {
+					has_tech = vehicle_industry3 
+					has_tech = dispersed_vehicle_industry3 
+				}
+			}
+			if = { limit = { check_variable = { Truck_Buildings > 20 } }
+				set_variable = { Truck_Buildings = 20 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = vehicle_industry2
+					has_tech = dispersed_vehicle_industry2
+				}
+			}
+			if = { limit = { check_variable = { Truck_Buildings > 15 } }
+				set_variable = { Truck_Buildings = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = vehicle_industry
+					has_tech = dispersed_vehicle_industry
+				}
+			}
+			if = { limit = { check_variable = { Truck_Buildings > 10 } }
+				set_variable = { Truck_Buildings = 10 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_tech = vehicle_industry
+					has_tech = dispersed_vehicle_industry
+				}
+			}
+			if = { limit = { check_variable = { Truck_Buildings > 5 } }
+				set_variable = { Truck_Buildings = 5 }
+			}
+		}
+		
+		
+		if = {
+			limit = {
+				OR = {
+					has_tech = Jetaircraft_industry3 
+					has_tech = dispersed_Jetaircraft_industry3 
+				}
+			}
+			if = { limit = { check_variable = { Jetaircraft_Buildings > 20 } }
+				set_variable = { Jetaircraft_Buildings = 20 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = Jetaircraft_industry2
+					has_tech = dispersed_Jetaircraft_industry2
+				}
+			}
+			if = { limit = { check_variable = { Jetaircraft_Buildings > 15 } }
+				set_variable = { Jetaircraft_Buildings = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = Jetaircraft_industry
+					has_tech = dispersed_Jetaircraft_industry
+				}
+			}
+			if = { limit = { check_variable = { Jetaircraft_Buildings > 10 } }
+				set_variable = { Jetaircraft_Buildings = 10 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_tech = Jetaircraft_industry
+					has_tech = dispersed_Jetaircraft_industry
+				}
+			}
+			if = { limit = { check_variable = { Jetaircraft_Buildings > 5 } }
+				set_variable = { Jetaircraft_Buildings = 5 }
+			}
+		}
+		
+		if = {
+			limit = {
+				OR = {
+					has_tech = artillery_industry3 
+					has_tech = dispersed_artillery_industry3 
+				}
+			}
+			if = { limit = { check_variable = { Artillery_Buildings > 20 } }
+				set_variable = { Artillery_Buildings = 20 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = artillery_industry2
+					has_tech = dispersed_artillery_industry2
+				}
+			}
+			if = { limit = { check_variable = { Artillery_Buildings > 15 } }
+				set_variable = { Artillery_Buildings = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = artillery_industry
+					has_tech = dispersed_artillery_industry
+				}
+			}
+			if = { limit = { check_variable = { Artillery_Buildings > 10 } }
+				set_variable = { Artillery_Buildings = 10 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_tech = artillery_industry
+					has_tech = dispersed_artillery_industry
+				}
+			}
+			if = { limit = { check_variable = { Artillery_Buildings > 5 } }
+				set_variable = { Artillery_Buildings = 5 }
+			}
+		}
+		
+		if = {
+			limit = {
+				OR = {
+					has_tech = smallarms_industry3
+					has_tech = dispersed_smallarms_industry3
+				}
+			}
+			if = { limit = { check_variable = { Small_Arms_Buildings > 20 } }
+				set_variable = { Small_Arms_Buildings = 20 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = smallarms_industry2
+					has_tech = dispersed_smallarms_industry2
+				}
+			}
+			if = { limit = { check_variable = { Small_Arms_Buildings > 15 } }
+				set_variable = { Small_Arms_Buildings = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = smallarms_industry
+					has_tech = dispersed_smallarms_industry
+				}
+			}
+			if = { limit = { check_variable = { Small_Arms_Buildings > 10 } }
+				set_variable = { Small_Arms_Buildings = 10 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_tech = smallarms_industry
+					has_tech = dispersed_smallarms_industry
+				}
+			}
+			if = { limit = { check_variable = { Small_Arms_Buildings > 5 } }
+				set_variable = { Small_Arms_Buildings = 5 }
+			}
+		}
+		
+		
+		if = {
+			limit = {
+				OR = {
+					has_tech = uniform_industry3
+					has_tech = dispersed_uniform_industry3
+				}
+			}
+			if = { limit = { check_variable = { Uniform_Buildings > 20 } }
+				set_variable = { Uniform_Buildings = 20 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = uniform_industry2
+					has_tech = dispersed_uniform_industry2
+				}
+			}
+			if = { limit = { check_variable = { Uniform_Buildings > 15 } }
+				set_variable = { Uniform_Buildings = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = uniform_industry
+					has_tech = dispersed_uniform_industry
+				}
+			}
+			if = { limit = { check_variable = { Uniform_Buildings > 10 } }
+				set_variable = { Uniform_Buildings = 10 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_tech = uniform_industry
+					has_tech = dispersed_uniform_industry
+				}
+			}
+			if = { limit = { check_variable = { Uniform_Buildings > 5 } }
+				set_variable = { Uniform_Buildings = 5 }
+			}
+		}
+		
+		if = {
+			limit = {
+				OR = {
+					has_tech = Ltaircraft_industry3
+					has_tech = dispersed_Ltaircraft_industry3
+				}
+			}
+			if = { limit = { check_variable = { Ltaircraft_Buildings > 20 } }
+				set_variable = { Ltaircraft_Buildings = 20 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = Ltaircraft_industry2
+					has_tech = dispersed_Ltaircraft_industry2
+				}
+			}
+			if = { limit = { check_variable = { Ltaircraft_Buildings > 15 } }
+				set_variable = { Ltaircraft_Buildings = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = Ltaircraft_industry
+					has_tech = dispersed_Ltaircraft_industry
+				}
+			}
+			if = { limit = { check_variable = { Ltaircraft_Buildings > 10 } }
+				set_variable = { Ltaircraft_Buildings = 10 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_tech = Ltaircraft_industry
+					has_tech = dispersed_Ltaircraft_industry
+				}
+			}
+			if = { limit = { check_variable = { Ltaircraft_Buildings > 5 } }
+				set_variable = { Ltaircraft_Buildings = 5 }
+			}
+		}
+		
+		
+		if = {
+			limit = {
+				OR = {
+					has_tech = Hvaircraft_industry3
+					has_tech = dispersed_Hvaircraft_industry3
+				}
+			}
+			if = { limit = { check_variable = { Hvaircraft_Buildings > 20 } }
+				set_variable = { Hvaircraft_Buildings = 20 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = Hvaircraft_industry2
+					has_tech = dispersed_Hvaircraft_industry2
+				}
+			}
+			if = { limit = { check_variable = { Hvaircraft_Buildings > 15 } }
+				set_variable = { Hvaircraft_Buildings = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = Hvaircraft_industry
+					has_tech = dispersed_Hvaircraft_industry
+				}
+			}
+			if = { limit = { check_variable = { Hvaircraft_Buildings > 10 } }
+				set_variable = { Hvaircraft_Buildings = 10 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_tech = Hvaircraft_industry
+					has_tech = dispersed_Hvaircraft_industry
+				}
+			}
+			if = { limit = { check_variable = { Hvaircraft_Buildings > 5 } }
+				set_variable = { Hvaircraft_Buildings = 5 }
+			}
+		}
+		
+		
+		if = {
+			limit = {
+				OR = {
+					has_tech = ship_industry3
+					has_tech = dispersed_ship_industry3
+				}
+			}
+			if = { limit = { check_variable = { Shipyard_Buildings > 20 } }
+				set_variable = { Shipyard_Buildings = 20 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = ship_industry2
+					has_tech = dispersed_ship_industry2
+				}
+			}
+			if = { limit = { check_variable = { Shipyard_Buildings > 15 } }
+				set_variable = { Shipyard_Buildings = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = ship_industry
+					has_tech = dispersed_ship_industry
+				}
+			}
+			if = { limit = { check_variable = { Shipyard_Buildings > 10 } }
+				set_variable = { Shipyard_Buildings = 10 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_tech = ship_industry
+					has_tech = dispersed_ship_industry
+				}
+			}
+			if = { limit = { check_variable = { Shipyard_Buildings > 5 } }
+				set_variable = { Shipyard_Buildings = 5 }
+			}
+		}
+		
+		
+		if = {
+			limit = {
+				OR = {
+					has_tech = sub_industry3
+					has_tech = dispersed_sub_industry3
+				}
+			}
+			if = { limit = { check_variable = { subyard_Buildings > 20 } }
+				set_variable = { subyard_Buildings = 20 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = sub_industry2
+					has_tech = dispersed_sub_industry2
+				}
+			}
+			if = { limit = { check_variable = { subyard_Buildings > 15 } }
+				set_variable = { subyard_Buildings = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_tech = sub_industry
+					has_tech = dispersed_sub_industry
+				}
+			}
+			if = { limit = { check_variable = { subyard_Buildings > 10 } }
+				set_variable = { subyard_Buildings = 10 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_tech = sub_industry
+					has_tech = dispersed_sub_industry
+				}
+			}
+			if = { limit = { check_variable = { subyard_Buildings > 5 } }
+				set_variable = { subyard_Buildings = 5 }
+			}
+		}
+		
+		#Adds the correct factory ideas
+		add_EIC_ideas = yes
+	
+		clear_variable = country_specialy 
+		add_to_variable = { country_specialy = subyard_Buildings }
+		add_to_variable = { country_specialy = Shipyard_Buildings }
+		add_to_variable = { country_specialy = Hvaircraft_Buildings }
+		add_to_variable = { country_specialy = Ltaircraft_Buildings }
+		add_to_variable = { country_specialy = Jetaircraft_Buildings }
+		add_to_variable = { country_specialy = Uniform_Buildings }
+		add_to_variable = { country_specialy = Small_Arms_Buildings }
+		add_to_variable = { country_specialy = Artillery_Buildings }
+		add_to_variable = { country_specialy = Truck_Buildings }
+		add_to_variable = { country_specialy = Tank_Buildings }
+	
+		if = { limit = { check_variable = { country_specialy = 0 } }
+			clear_variable = country_specialy }
+		if = { limit = { check_variable = { Tank_Buildings = 0 } }
+			clear_variable = Tank_Buildings }
+		if = { limit = { check_variable = { Truck_Buildings = 0 } }
+			clear_variable = Truck_Buildings }
+		if = { limit = { check_variable = { Uniform_Buildings = 0 } }
+			clear_variable = Uniform_Buildings }
+		if = { limit = { check_variable = { Small_Arms_Buildings = 0 } }
+			clear_variable = Small_Arms_Buildings }
+		if = { limit = { check_variable = { Jetaircraft_Buildings = 0 } }
+			clear_variable = Jetaircraft_Buildings }
+		if = { limit = { check_variable = { Artillery_Buildings = 0 } }
+			clear_variable = Artillery_Buildings }
+		if = { limit = { check_variable = { Ltaircraft_Buildings = 0 } }
+			clear_variable = Ltaircraft_Buildings }
+		if = { limit = { check_variable = { Hvaircraft_Buildings = 0 } }
+			clear_variable = Hvaircraft_Buildings }
+		if = { limit = { check_variable = { Shipyard_Buildings = 0 } }
+			clear_variable = Shipyard_Buildings }
+		if = { limit = { check_variable = { subyard_Buildings = 0 } }
+			clear_variable = subyard_Buildings }
+		if = {
+			limit = {
+				is_ai = yes
+				NOT = { player_only_trigger = yes }
+			}
+			clear_variable = country_specialy 
+			
+			clear_variable = rubber_storage_cap
+			clear_variable = aluminium_storage_cap
+			clear_variable = tungsten_storage_cap
+			clear_variable = steel_storage_cap
+			clear_variable = chromium_storage_cap
+		}
+	 }
+	 
+}
+
+country_event = {
+	id = BICE_buildings.1
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		clear_variable = Tank_Buildings
+		clear_variable = Truck_Buildings
+		clear_variable = Uniform_Buildings
+		clear_variable = Small_Arms_Buildings
+		clear_variable = Jetaircraft_Buildings
+		clear_variable = Artillery_Buildings
+		clear_variable = Ltaircraft_Buildings
+		clear_variable = Hvaircraft_Buildings
+		clear_variable = Shipyard_Buildings
+		clear_variable = subyard_Buildings
+		
+		clear_variable = rubber_storage_buildings
+		clear_variable = tungsten_storage_buildings
+		clear_variable = aluminium_storage_buildings
+		clear_variable = steel_storage_buildings
+		clear_variable = chromium_storage_buildings
+		
+		for_each_loop = { 
+			array = Root.controlled_states
+			
+			var:v = {
+				clear_variable = state_specialty_building
+				
+				set_temp_variable = { local_factories = modifier@local_factories }
+				add_to_temp_variable = { local_factories = 1 }
+				
+				set_temp_variable = { temp = building_level@tank_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Tank_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@truck_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Truck_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@uniform_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Uniform_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@smallarms_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Small_Arms_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@Jetaircraft_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Jetaircraft_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@artillery_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Artillery_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@Ltaircraft_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Ltaircraft_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@Hvaircraft_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Hvaircraft_Buildings = temp }
+				
+				if = {
+					limit = {
+						is_coastal = yes 
+					}
+					set_temp_variable = { temp = building_level@shipyard }
+					multiply_temp_variable = { temp = local_factories }
+					add_to_variable = { Root.Shipyard_Buildings = temp }
+					
+					set_temp_variable = { temp = building_level@subyard }
+					multiply_temp_variable = { temp = local_factories }
+					add_to_variable = { Root.subyard_Buildings = temp }
+				}
+				
+				if = { limit = { check_variable = { state_specialty_building = 0 } } clear_variable = state_specialty_building } 
+				
+				if = {
+					limit = { 
+						supply_depot > 0 
+						NOT = { has_state_flag = supply_depot_state }
+					}
+					set_state_flag = supply_depot_state
+					CONTROLLER = { save_event_target_as = country }
+					
+					add_province_modifier = {
+						province = {
+							all_provinces = yes 
+						}
+						static_modifiers = { supply_depot }
+					}
+					every_neighbor_state = {
+						limit = {
+							is_controlled_by = event_target:country
+						}
+						add_province_modifier = {
+							province = {
+								all_provinces = yes 
+							}
+							static_modifiers = { supply_depot }
+						}
+					}
+					every_state = { limit = { check_variable = { region = Prev.region } } 
+						set_state_flag = supply_depot_state
+						PREV = { add_to_variable = { supply_depot_states = 1 } }
+						add_building_construction = {
+							type = supply_depot
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+				
+				if = {
+					limit = {
+						police_station > 0 
+						NOT = { 
+							OWNER = { controls_state = PREV }
+							has_state_flag = police_station_state 
+						}
+					}
+					
+					OWNER = {
+						clear_variable = police_station
+						clear_variable = foreign_police_station_var
+						clear_variable = foreign_police_station_var_1
+						every_owned_state = {
+							limit = {
+								police_station > 0 
+								NOT = { is_controlled_by = PREV }
+							}
+							add_to_variable = { Prev.police_station = 1 }
+						}
+						set_variable = { foreign_police_station_var = police_station }
+						
+						set_variable = { foreign_police_station_var_1 = foreign_police_station_var }
+						divide_variable = { foreign_police_station_var_1 = 50 }
+						multiply_variable = { foreign_police_station_var_1 = -1 }
+						
+						divide_variable = { foreign_police_station_var = 100 }
+						multiply_variable = { foreign_police_station_var = -1 }
+						if = { 	
+							limit = { 
+								has_dynamic_modifier = {
+									modifier = foreign_police_station
+								}
+							}
+							remove_dynamic_modifier = {
+								modifier = foreign_police_station
+							}
+						}
+						add_dynamic_modifier = {
+							modifier = foreign_police_station
+						}
+					}
+
+					every_state = { limit = { check_variable = { region = Prev.region } } 
+						set_state_flag = police_station_state
+						add_building_construction = {
+							type = police_station
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+		round_variable = subyard_Buildings 
+		round_variable = Shipyard_Buildings 
+		round_variable = Hvaircraft_Buildings 
+		round_variable = Ltaircraft_Buildings 
+		round_variable = Jetaircraft_Buildings 
+		round_variable = Uniform_Buildings 
+		round_variable = Small_Arms_Buildings 
+		round_variable = Artillery_Buildings 
+		round_variable = Truck_Buildings 
+		round_variable = Tank_Buildings	
+		check_special_buildings = yes
+	}
+}
+
+country_event = {
+	id = BICE_buildings.2
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		clear_variable = Tank_Buildings
+		clear_variable = Truck_Buildings
+		clear_variable = Uniform_Buildings
+		clear_variable = Small_Arms_Buildings
+		clear_variable = Jetaircraft_Buildings
+		clear_variable = Artillery_Buildings
+		clear_variable = Ltaircraft_Buildings
+		clear_variable = Hvaircraft_Buildings
+		clear_variable = Shipyard_Buildings
+		clear_variable = subyard_Buildings
+		
+		for_each_loop = { 
+			array = Root.controlled_states
+			
+			var:v = {
+				clear_variable = state_specialty_building
+				
+				set_temp_variable = { local_factories = modifier@local_factories }
+				add_to_temp_variable = { local_factories = 1 }
+				
+				set_temp_variable = { temp = building_level@tank_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Tank_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@truck_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Truck_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@uniform_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Uniform_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@smallarms_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Small_Arms_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@Jetaircraft_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Jetaircraft_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@artillery_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Artillery_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@Ltaircraft_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Ltaircraft_Buildings = temp }
+				
+				set_temp_variable = { temp = building_level@Hvaircraft_factory }
+				add_to_variable = { state_specialty_building = temp }
+				multiply_temp_variable = { temp = local_factories }
+				add_to_variable = { Root.Hvaircraft_Buildings = temp }
+				
+				if = {
+					limit = {
+						is_coastal = yes 
+					}
+					set_temp_variable = { temp = building_level@shipyard }
+					multiply_temp_variable = { temp = local_factories }
+					add_to_variable = { Root.Shipyard_Buildings = temp }
+					
+					set_temp_variable = { temp = building_level@subyard }
+					multiply_temp_variable = { temp = local_factories }
+					add_to_variable = { Root.subyard_Buildings = temp }
+				}
+				
+				if = { limit = { check_variable = { state_specialty_building = 0 } } clear_variable = state_specialty_building } 
+				
+			}
+		}
+		round_variable = subyard_Buildings 
+		round_variable = Shipyard_Buildings 
+		round_variable = Hvaircraft_Buildings 
+		round_variable = Ltaircraft_Buildings 
+		round_variable = Jetaircraft_Buildings 
+		round_variable = Uniform_Buildings 
+		round_variable = Small_Arms_Buildings 
+		round_variable = Artillery_Buildings 
+		round_variable = Truck_Buildings 
+		round_variable = Tank_Buildings	
+		check_special_buildings = yes
+	}
+}
+
+country_event = {
+	id = BICE_buildings.3
+	hidden = yes 
+	
+	is_triggered_only = yes 
+	
+	immediate = {
+		clear_variable = rubber_storage_cap
+		clear_variable = rubber_storage_buildings
+		clear_variable = tungsten_storage_cap
+		clear_variable = tungsten_storage_buildings
+		clear_variable = aluminium_storage_cap
+		clear_variable = aluminium_storage_buildings
+		clear_variable = steel_storage_cap
+		clear_variable = steel_storage_buildings
+		clear_variable = chromium_storage_cap
+		clear_variable = chromium_storage_buildings
+		for_each_loop = {
+			array = Root.controlled_states
+			var:v = {
+				if = {
+					limit = {
+						rubber_storage > 0
+					}
+					ROOT = { 
+						set_country_flag = rubber_storage 
+						add_to_variable = { rubber_storage_cap = 4000 }
+						add_to_variable = { rubber_storage_buildings = 1 }
+					}
+				}
+				if = {
+					limit = {
+						aluminium_storage > 0
+					}
+					ROOT = { 
+						set_country_flag = aluminium_storage 
+						add_to_variable = { aluminium_storage_cap = 4000 }
+						add_to_variable = { aluminium_storage_buildings = 1 }
+					}
+				}
+				if = {
+					limit = {
+						tungsten_storage > 0
+					}
+					ROOT = { 
+						set_country_flag = tungsten_storage 
+						add_to_variable = { tungsten_storage_cap = 4000 }
+						add_to_variable = { tungsten_storage_buildings = 1 }
+					}
+				}
+				if = {
+					limit = {
+						steel_storage > 0
+					}
+					ROOT = { 
+						set_country_flag = steel_storage 
+						add_to_variable = { steel_storage_cap = 4000 }
+						add_to_variable = { steel_storage_buildings = 1 }
+					}
+				}
+				if = {
+					limit = {
+						chromium_storage > 0
+					}
+					ROOT = { 
+						set_country_flag = chromium_storage 
+						add_to_variable = { chromium_storage_cap = 4000 }
+						add_to_variable = { chromium_storage_buildings = 1 }
+					}
+				}
+			}
+		}
+		set_temp_variable = { temp_var = modifier@production_speed_dummy_2_factor }
+		add_to_temp_variable = { temp_var = 1 }	
+		
+		multiply_variable = { rubber_storage_cap = temp_var }
+		multiply_variable = { aluminium_storage_cap = temp_var }
+		multiply_variable = { tungsten_storage_cap = temp_var }
+		multiply_variable = { steel_storage_cap = temp_var }
+		multiply_variable = { chromium_storage_cap = temp_var }
+		
+	}
+	
+}
+country_event = {
+	id = BICE_buildings.4
+	hidden = yes 
+	title = BICE_buildings.4.t
+	is_triggered_only = yes 
+	
+	immediate = {
+		clear_variable = coal_fuel
+		if = {
+			limit = {
+				has_completed_focus = GER_coal_liquidization
+			}
+			for_each_loop = {
+				array = Root.controlled_states
+				var:v = {
+					if = {
+						limit = {
+							steel_refinery > 0
+						}
+						ROOT = { 
+							set_country_flag = has_steel_refinery 
+							add_to_variable = { coal_fuel = 126 } # runs weekly, starting value at 18 units per day so 126						
+						}
+					}
+				}
+			}
+		}
+		else = {
+			for_each_loop = {
+				array = Root.controlled_states
+				var:v = {
+					if = {
+						limit = {
+							steel_refinery > 0
+						}
+						ROOT = { 
+							set_country_flag = has_steel_refinery 
+							add_to_variable = { coal_fuel = 84 } # runs weekly, starting value at 12 units per day so 84						
+						}
+					}
+				}
+			}
+		}
+		set_temp_variable = { temp_var = coal_fuel }
+		if = { 
+			limit = {
+				has_tech = coal_liquid3
+			}
+			multiply_variable = { temp_var = 1.45 } #25 + 20% bonuses
+		}			
+		else_if = { 
+			limit = {
+				has_tech = coal_liquid2
+			}
+			multiply_variable = { temp_var = 1.20 }
+		}
+		add_fuel = temp_var
+		country_event = {
+			id = BICE_buildings.4
+			days = 7		
+		}		
+	}
+	
+}	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,604 @@
+
+######################################################
+#	CONSTRUCTION
+######################################################
+
+available_AIR = { # air bases
+	CONTROLLER = {
+		OR = {
+			tag = ROOT
+			AND = {
+				is_puppet_of = ROOT
+				OR = {
+					has_autonomy_state = autonomy_integrated_puppet
+					has_autonomy_state = autonomy_puppet
+					has_autonomy_state = autonomy_colony
+				}
+			}
+		}
+	}
+	free_building_slots = {
+		building = air_base
+		size > 0
+		include_locked = no
+	}
+	NOT = { free_building_slots = { building = air_base size < 7 include_locked = no } }
+	NOT = {
+		any_neighbor_state = {
+			CONTROLLER = { OR = { tag = ROOT AND = { is_puppet_of = ROOT OR = { has_autonomy_state = autonomy_integrated_puppet has_autonomy_state = autonomy_puppet has_autonomy_state = autonomy_colony } } } }
+			free_building_slots = { building = air_base size < 7 include_locked = no }
+		}
+	}
+}
+
+available_RADAR = {
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = radar_station size > 0 include_locked = no }
+}
+
+available_INF = {
+	is_controlled_by = ROOT
+	free_building_slots = {
+		building = infrastructure
+		size > 0
+		include_locked = no
+	}
+}
+
+has_city = {
+	any_province_building_level = {
+		province = {
+			all_provinces = yes
+			limit_to_victory_point = yes 
+		}
+		building = bunker
+		level < 11
+	}
+}
+
+no_border = {
+	NOT = { any_neighbor_state = { NOT = { is_controlled_by = ROOT } } }
+}
+
+no_enemy_border = {
+	NOT = { any_neighbor_state = { CONTROLLER = { has_war_with = ROOT } } }
+}
+
+available_REF = {
+	free_building_slots = { building = synthetic_refinery size > 0 include_locked = no }
+}
+
+available_RUB = {
+	free_building_slots = { building = synthetic_rubber_refinery size > 0 include_locked = no }
+}
+
+available_STM = {
+	free_building_slots = { building = steel_refinery size > 0 include_locked = no }
+}
+
+available_NIC = {
+	free_building_slots = { building = dockyard size > 0 include_locked = no }
+}
+
+available_TANK = {
+	free_building_slots = { building = tank_factory size > 0 include_locked = no }
+	NOT = { has_state_flag = TANK }
+}
+
+available_TRUCK = {
+	free_building_slots = { building = truck_factory size > 0 include_locked = no }
+	NOT = { has_state_flag = TRUCK }
+}
+
+available_JETAIR = {
+	free_building_slots = { building = Jetaircraft_factory size > 0 include_locked = no }
+	NOT = { has_state_flag = JETAIR }
+}
+
+available_ARMS = {
+	free_building_slots = { building = smallarms_factory size > 0 include_locked = no }
+	NOT = { has_state_flag = ARMS }
+}
+
+available_ARTY = {
+	free_building_slots = { building = artillery_factory size > 0 include_locked = no }
+	NOT = { has_state_flag = ARTY }
+}
+
+available_SHIPYARD = {
+	is_coastal = yes 
+	free_building_slots = { building = shipyard size > 0 include_locked = no }
+	NOT = { has_state_flag = SHIPYARD }
+}
+
+available_SUBYARD = {
+	is_coastal = yes 
+	free_building_slots = { building = subyard size > 0 include_locked = no }
+	NOT = { has_state_flag = SUBYARD }
+}
+
+available_LTAIR = {
+	free_building_slots = { building = Ltaircraft_factory size > 0 include_locked = no }
+	NOT = { has_state_flag = LTAIR }
+}
+
+available_HVAIR = {
+	free_building_slots = { building = Hvaircraft_factory size > 0 include_locked = no }
+	NOT = { has_state_flag = HVAIR }
+}
+
+available_state_10 = { # 100% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 1 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+available_state_9 = { # 90% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 2 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+available_state_8 = { # 80% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 3 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+available_state_7 = { # 70% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 4 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+available_state_6 = { # 60% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 5 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+available_state_5 = { # 50% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 6 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+available_state_4 = { # 40% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 7 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+available_state_3 = { # 30% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 8 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+available_state_2 = { # 20% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 9 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+available_state_1 = { # 10% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 10 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+available_state_0 = { # 0% infr
+	is_controlled_by = ROOT
+
+	free_building_slots = { building = infrastructure size < 11 include_locked = no }
+
+	free_building_slots = { building = dummy size > 0 include_locked = no }
+	
+	check_variable = { CIC_built < 6 }
+	check_variable = { MIC_built < 6 }
+}
+
+radar_location = { # all existing radar locations
+	OR = {
+		state = 848 #tokyo
+		state = 645 #iwo jima
+		state = 648 #marcus
+		state = 684 #caroline
+		state = 646 #saipan
+		state = 629 #hawaii
+		state = 632 #wake
+		state = 336 #singapore
+
+		state = 631 #midway
+		state = 630 #johnston
+
+		state = 327 #manila
+		state = 422 #ceylon
+
+		state = 845 #moscow
+		state = 217 #stalingrad
+		state = 137 #sevastopol
+		state = 195 #leningrad
+
+		state = 116 #malta
+		state = 118 #gibraltar
+		state = 126 #london
+		state = 447 #alexandria
+
+		state = 847 #washington
+		state = 378 #san francisco
+		state = 386 #seattle
+		state = 366 #florida
+
+		state = 685 #panama
+
+		state = 60  #thuringen
+		state = 5 	#ostpreussen
+
+		state = 846 #rome
+
+		state = 876	#madrid
+
+		state = 844	#paris
+
+		state = 868 #istanbul
+
+		radar_station > 1
+
+		has_state_flag = radar_site
+	}
+}
+
+radar_location_2 = { # good radar locations
+	OR = {
+		state = 848 #tokyo
+		state = 645 #iwo jima
+		state = 648 #marcus
+		state = 684 #caroline
+		state = 646 #saipan
+		state = 629 #hawaii
+		state = 632 #wake
+		state = 336 #singapore
+
+		state = 631 #midway
+		state = 630 #johnston
+
+		state = 327 #manila
+		state = 422 #ceylon
+
+		state = 845 #moscow
+		state = 217 #stalingrad
+		state = 137 #sevastopol
+		state = 195 #leningrad
+
+		state = 116 #malta
+		state = 118 #gibraltar
+		state = 126 #london
+		state = 447 #alexandria
+
+		state = 847 #washington
+		state = 378 #san francisco
+		state = 386 #seattle
+		state = 366 #florida
+
+		state = 685 #panama
+
+		state = 60  #thuringen
+		state = 5 	#ostpreussen
+
+		state = 846 #rome
+
+		state = 876	#madrid
+
+		state = 844	#paris
+
+		state = 868 #istanbul
+	}
+}
+
+region_priority = { # prioritise building in a certain area
+	OR = {
+		AND = { ROOT = { NOT = { original_tag = SOV original_tag = CHI } } is_in_home_area = yes }
+
+		AND = { ROOT = { original_tag = SOV } central_russia = yes }
+
+		AND = { ROOT = { original_tag = CHI } western_china = yes }
+	}
+}
+
+restrict_location = { # force the AI to build in the region priority area
+	OR = {
+		ROOT = { original_tag = SOV }
+	}
+}
+
+central_russia = {
+	OR = {
+		region = 149
+		region = 152
+		region = 134
+		region = 135
+		region = 147
+		region = 14
+		region = 151
+		region = 136
+		region = 138
+		region = 150
+		region = 40
+		region = 137
+		region = 133
+		region = 251
+	}
+	NOT = {
+		state = 240
+		state = 223
+		state = 222
+		state = 220
+		state = 240
+		state = 260
+		state = 258
+		state = 245
+		state = 218
+		state = 234
+		state = 231
+		state = 230
+	}
+}
+
+ural_industrial_region = {
+	OR = {
+		state = 398
+		state = 651
+		state = 582
+		state = 573
+		state = 581
+		state = 653
+		state = 572
+		state = 403
+	}
+}
+
+western_china = {
+	OR = {
+		region = 322
+		region = 601
+		region = 805
+		region = 287
+	}
+	NOT = { is_coastal = yes }
+}
+
+######################################################
+#	MISC
+######################################################
+
+dont_invade = { # prevent invasions against a specific tag when it is a bad idea
+	strength_ratio = { tag = ROOT ratio > 0.5 }
+
+	any_state = {
+		is_controlled_by = PREV
+		is_in_home_area = yes
+
+		any_neighbor_state = {
+			is_controlled_by = ROOT
+			is_in_home_area = yes
+		}
+	}
+}
+
+major_country = { # true majors in the game
+	has_country_flag = original_major_country
+}
+
+civil_war_country = { # civil war country tags
+	OR = {
+		tag = D01
+		tag = D02
+		tag = D03
+		tag = D04
+		tag = D05
+		tag = D06
+		tag = D07
+		tag = D08
+		tag = D09
+		tag = D10
+		tag = D11
+		tag = D12
+		tag = D13
+		tag = D14
+		tag = D15
+	}
+}
+
+neutral_country = { # true neutrals
+	NOT = { has_war = yes }
+	OR = {
+		tag = BEL
+		tag = SWI
+		tag = SWE
+		tag = IRE
+	}
+}
+######################################################
+#	TEMPLATES
+######################################################
+
+####################################
+####	SUPERIOR FIREPOWER		####
+####################################
+
+####################################
+### -- BASE TEMPLATE
+####################################
+
+TRIGGER:SF_infantry_BASE/FOCUS:BASE = {
+	NOT = { has_country_flag = starting_infantry_template }
+}
+
+TRIGGER:SF_infantry_BASE/FOCUS:AIR_1 = {
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+TRIGGER:SF_infantry_BASE/FOCUS:AIR_2 = {
+	has_tech = HVantiair2
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+TRIGGER:SF_infantry_BASE/FOCUS:AT_1 = {
+	has_tech = HVantitank1
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+TRIGGER:SF_infantry_BASE/FOCUS:AT_AA_1 = {
+	has_tech = HVantitank1
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+TRIGGER:SF_infantry_BASE/FOCUS:AT_AA_2 = {
+	has_tech = HVantiair2
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+####################################
+### -- MOUNTAIN TEMPLATE
+####################################
+
+TRIGGER:SF_infantry_MOUNT/FOCUS:BASE = {
+	#NOT = { has_country_flag = starting_infantry_template }
+}
+
+TRIGGER:SF_infantry_MOUNT/FOCUS:AIR_1 = {
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+TRIGGER:SF_infantry_MOUNT/FOCUS:AIR_2 = {
+	has_tech = HVantiair2
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+TRIGGER:SF_infantry_MOUNT/FOCUS:AT_1 = {
+	has_tech = HVantitank1
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+TRIGGER:SF_infantry_MOUNT/FOCUS:AT_AA_1 = {
+	has_tech = HVantitank1
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+TRIGGER:SF_infantry_MOUNT/FOCUS:AT_AA_2 = {
+	has_tech = HVantiair2
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+####################################
+### -- MED ARTY TEMPLATE
+####################################
+
+TRIGGER:SF_infantry_MED_ARTY/FOCUS:BASE = {
+	NOT = { has_country_flag = starting_infantry_template }
+}
+
+TRIGGER:increase_infantry_width = {
+	check_variable = { field_strength > 0.95 }
+
+	if = {
+		limit = {
+			original_tag = GER 
+		}
+		has_war = no
+		has_army_manpower = {
+			size > 1000000
+		}
+	}
+}
+
+####################################
+### -- ANTI TANK INFANTRY
+####################################
+
+TRIGGER:SF_AT_infantry/VARIANT:BASE = {
+	has_capitulated = no
+}
+
+TRIGGER:SF_AT_infantry/VARIANT:MED_ARTY_1 = {
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+TRIGGER:SF_AT_infantry/VARIANT:MED_ARTY_2 = {
+	has_capitulated = no
+	check_variable = { field_strength > 0.95 }
+}
+
+log = {
+	has_country_flag = log 
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,160 @@
+﻿capital = 458
+
+oob = "TUN_1936"
+
+set_war_support = 0.15
+
+set_convoys = 5
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		generic_naval = 1
+		generic_naval_tech = 1
+	}
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	#tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	tech_mountaineers = 1
+	SMG_team = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	desert_equipment = 1
+	tech_support = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+
+	ww1_battlefield_support = 1
+}
+
+add_ideas = { 	
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	officer_train_none
+	age_19
+	security_minor_restrictions
+	edu_minimal
+	
+	#unity_united_nation		
+	foreign_isolationism
+	neutrality_idea
+}
+
+if = {
+	limit = { 
+		has_dlc = "Together for Victory" 
+	}
+	add_to_tech_sharing_group = french_research
+}
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		Arab_Minor
+		CHI_incompetent_officers
+		Arab_hyper_inflation_1
+		Arab_Tribes
+	}
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	conservatism = 0
+	fascism = 0
+	communism = 0
+	neutrality = 100
+	ruling_party = 0
+	opposition_party = 0
+}
+################################################################
+create_country_leader = {
+	name = "Ahmed Hilmi Pasha"
+	desc = ""
+	picture = "gfx/leaders/PAL/Portrait_Arabia_Generic_2.dds"
+	ideology = centrism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Amin al-Husseini"
+	desc = ""
+	picture = "gfx/leaders/PAL/Portrait_Arabia_Generic_1.dds"
+	ideology = fascism_ideology
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Bulus Farah"
+	desc = ""
+	picture = "gfx/leaders/PAL/Portrait_Arabia_Generic_2.dds"
+	ideology = leninism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Mohamed el-Amine Bey"
+	desc = "POLITICS_TUN2_DESC"
+	picture = "gfx/leaders/TUN/Portrait_Tunisia_Lamine_Bey.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+}
+### EOF ###

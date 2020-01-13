@@ -1,0 +1,609 @@
+﻿instant_effect = {
+	set_country_flag = placed_research_centre
+	
+	add_research_slot = 1
+	79 = { state_add_research_centre = yes }
+	SLOT:infantry_folder = yes
+	SLOT:support_folder = yes
+	SLOT:artillery_folder = yes
+
+	add_research_slot = 1
+	46 = { state_add_research_centre = yes }
+	SLOT:industry_folder = yes
+}
+
+##### TEMPLATES #####
+division_template = {
+	name = "Divizia Infanterie"			
+	division_names_group = ROM_INF_01				# Infantry Division
+	# Note: also represents Guards, Fortress divisions
+	template_counter = 114
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+		# 2x 100mm howitzer bns, on average
+		artillery_brigade = { x = 3 y = 0 }	
+		artillery_brigade = { x = 3 y = 1}
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 } 
+		recon_cav = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Munte Brigada"		
+	division_names_group = ROM_MTN_01						# Mountain Brigade
+	template_counter = 3007
+	
+	regiments = {
+		mountaineers = { x = 0 y = 0 }
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }
+		
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+
+		mountain_artillery_brigade = { x = 2 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }  
+		recon_cav = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Cavalerie Brigada" 			
+	division_names_group = ROM_CAV_01					# Cavalry Brigade
+	# Note: regiments within the brigade were battalion-sized units
+	template_counter = 209
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Blindata Regimentul" 	
+	division_names_group = ROM_ARM_01							# Armor Regiment
+	# Note: 2nd regiment created and merged with motorized inf to create Armor Division in 1940
+	template_counter = 240
+	
+	regiments = {
+		light_armor_axis = { x = 0 y = 0 }
+		light_armor_axis = { x = 0 y = 1 }
+		
+		# added motorized not to make it a death trap
+		motorized = { x = 1 y = 0 }           
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Garrison"		
+	division_names_group = ROM_GAR_01			
+	template_counter =  86
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+		
+		garrison = { x = 2 y = 0 }
+		garrison = { x = 2 y = 1 }
+		garrison = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#	
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+
+instant_effect = {
+	if = {
+		limit = {
+			is_ai = yes 
+		}
+		division_template = {
+			name = "Divizia Infanterie"				
+			template_counter = 114
+			
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+			
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+				
+				artillery_brigade = { x = 3 y = 0}	
+				artillery_brigade = { x = 3 y = 1}
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 } 
+				recon = { x = 0 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Munte Brigada"		
+			template_counter = 3007
+			
+			regiments = {
+				mountaineers = { x = 0 y = 0 }
+				mountaineers = { x = 0 y = 1 }
+				mountaineers = { x = 0 y = 2 }
+				
+				mountaineers = { x = 1 y = 0 }
+				mountaineers = { x = 1 y = 1 }
+				mountaineers = { x = 1 y = 2 }
+
+				mountain_artillery_brigade = { x = 2 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }  
+				recon = { x = 0 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Cavalerie Brigada" 		
+			template_counter = 209
+			
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+				cavalry = { x = 0 y = 2 }
+
+				cavalry = { x = 1 y = 0 }
+				cavalry = { x = 1 y = 1 }
+				cavalry = { x = 1 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+			}
+		}
+		division_template = {
+			name = "Blindata Regimentul" 	
+			template_counter = 240
+			
+			regiments = {
+				semi_motorized = { x = 0 y = 0 }
+				semi_motorized = { x = 0 y = 1 }
+				
+				semi_motorized = { x = 1 y = 0 }     
+				semi_motorized = { x = 1 y = 1 }        
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+			}
+		}
+	}
+}
+		
+##### OOB #####
+units = {
+	##### Fortele Terestre Române #####
+	#division= {	
+	#	name = "Fortele Terestre Române" 
+	#	location = 818
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.1
+	#}
+	# Corp 1 Armata
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 818
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 818
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.7
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 11
+		}
+		location = 818
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 818
+		division_template = "Cavalerie Brigada"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.7
+	}
+	# Corp 2 Armata
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 52
+		}
+		location = 9617
+		division_template = "Divizia Infanterie"			# Guards division: elite, latest equipment
+		start_experience_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 9617
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 9617
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 9617
+		division_template = "Cavalerie Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.8
+	}
+	division = {
+		name = "1 Blindata Regimentul"
+		location = 9617
+		division_template = "Blindata Regimentul"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.8
+	}
+	# Corp 3 Armata
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 6706
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 15
+		}
+		location = 6706
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 21
+		}
+		location = 6706
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	# Corp 4 Armata
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 9716
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 9716
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 9716
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 9716
+		division_template = "Cavalerie Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.8
+	}
+	# Corp 5 Armata
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 3663
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 3663
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
+		location = 3663
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	# Corp 6 Armata
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 16
+		}
+		location = 6682
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 17
+		}
+		location = 6697
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 18
+		}
+		location = 3696
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 20
+		}
+		location = 713
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 6682
+		division_template = "Cavalerie Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.8
+	}
+	# Corp 7 Armata
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 690
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 690
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 19
+		}
+		location = 690
+		division_template = "Divizia Infanterie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.6
+	}
+	# Corp Alpinisti
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 6711
+		division_template = "Munte Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 6711
+		division_template = "Munte Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 6711
+		division_template = "Munte Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 6711
+		division_template = "Munte Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.8
+	}			
+}
+##### AIRFORCE #####
+### Fortele Aeriene Regale ale României (FFAR) ###
+air_wings = {
+	46 = {
+		# Grup 1 Avion de Vanatoare -- PZL P.11 fighters
+		fighter_equipment_0 = {
+			owner = "ROM" 
+			amount = 48
+		}
+	}
+	79 = {
+		# Grup 2 Avion de Vanatoare -- IAR 14, 15 fighters
+		fighter_equipment_0 = {
+			owner = "ROM" 
+			amount = 24
+		}
+	}
+}
+##### PRODUCTION #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "ROM"
+		}
+		requested_factories = 2
+		progress = 0.87
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "ROM"
+		}
+		requested_factories = 1
+		progress = 0.19
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_0
+			creator = "ROM"
+		}
+		requested_factories = 1
+		progress = 0.24
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = light_tank_equipment_axis_1
+			creator = "ROM" 
+		}
+		requested_factories = 1
+		progress = 0.4
+		efficiency = 50
+	}
+}
+### EOF ###

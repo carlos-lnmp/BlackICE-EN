@@ -1,0 +1,168 @@
+ideas = {
+	## Education
+	education = { 
+		law = yes
+		
+		edu_minimal = {
+			cost = 125
+			removal_cost = -1
+			
+			available = {
+			}
+			
+			level = 4
+			
+			modifier = {
+				research_speed_factor = -0.03
+				planning_speed = -0.02
+				industrial_capacity_factory = 0.04
+				industrial_capacity_dockyard = 0.04
+				max_planning = -0.02
+				political_power_factor = 0.07
+				consumer_goods_factor = -0.0
+				production_speed_buildings_factor = 0.04
+				war_support_weekly = 0.0005
+			}
+			
+			allowed_to_remove = {
+			}
+			
+			cancel_if_invalid = no
+
+			ai_will_do = {
+   				factor = 0
+   			}
+		}
+		#
+		edu_low = {
+			cost = 125
+			removal_cost = -1
+			available = {
+				OR = {
+					has_idea = tax_low
+					has_idea = tax_average
+					has_idea = tax_high
+					has_idea = tax_extreme
+				}
+			}
+			
+			default = yes
+			
+			level = 3
+
+			modifier = {
+				research_speed_factor = 0.0
+				planning_speed = 0.02
+				industrial_capacity_factory = 0.02
+				industrial_capacity_dockyard = 0.02
+				max_planning = 0.02
+				political_power_factor = 0.03
+				consumer_goods_factor = 0.01
+				production_speed_buildings_factor = 0.02
+				stability_weekly = 0.0005
+				war_support_weekly = 0.0
+			}
+			
+			allowed_to_remove = {
+			}
+			
+			cancel_if_invalid = no
+
+			ai_will_do = {
+   				factor = 0
+   			}
+		}
+		#
+		edu_high = {
+			cost = 250
+			removal_cost = -1
+			
+			available = {
+				OR = {
+					has_idea = tax_average
+					has_idea = tax_high
+					has_idea = tax_extreme
+				}
+			}
+			
+			level = 2
+			
+			modifier = {
+				research_speed_factor = 0.03
+				planning_speed = 0.06
+				industrial_capacity_factory = -0.02
+				industrial_capacity_dockyard = -0.02
+				max_planning = 0.06
+				political_power_factor = -0.05
+				consumer_goods_factor = 0.03
+				production_speed_buildings_factor = -0.02
+				stability_weekly = 0.001
+				war_support_weekly = -0.0005
+			}
+			
+			cancel_if_invalid = no
+
+			ai_will_do = {
+   				factor = 10
+				modifier = {
+					factor = 0
+					has_manpower < 900000
+					is_major = yes
+					has_war = yes
+				}
+				modifier = {
+					factor = 0
+					has_manpower < 450000
+					is_major = no
+					has_war = yes
+				}
+   			}
+		}
+		#
+		edu_excellent = {
+			cost = 250
+			removal_cost = -1
+			
+			available = {
+				OR ={ 
+					has_idea = tax_high
+					has_idea = tax_extreme
+				}
+			}
+			
+			level = 1
+			
+			modifier = {
+				research_speed_factor = 0.06
+				planning_speed = 0.10
+				max_planning = 0.10
+				industrial_capacity_factory = -0.04
+				industrial_capacity_dockyard = -0.04
+				consumer_goods_factor = 0.04
+				political_power_factor = -0.09
+				production_speed_buildings_factor = -0.04
+				stability_weekly = 0.0015
+				war_support_weekly = -0.001
+			}
+			
+			cancel_if_invalid = no
+
+			ai_will_do = {
+   				factor = 10
+				modifier = {
+					factor = 0
+					has_manpower < 1000000
+					is_major = yes
+					has_war = yes
+				}
+				modifier = {
+					factor = 0
+					has_manpower < 500000
+					is_major = no
+					has_war = yes
+				}
+			}
+		}
+	}
+}
+### EOF ###

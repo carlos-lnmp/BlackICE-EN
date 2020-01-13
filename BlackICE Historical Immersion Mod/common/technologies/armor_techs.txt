@@ -1,0 +1,1846 @@
+technologies = {
+	@1918 = 0
+	@1932 = 2
+	@1934 = 4
+	@1936 = 6
+	@1937 = 8
+	@1938 = 10
+	@1939 = 12
+	@1939_1 = 13
+	@1940 = 14
+	@1941 = 16
+	@1942 = 18
+	@1943 = 20
+	@1944 = 22
+	@1945 = 24
+	@1946 = 26
+	# Horizontal position
+	@AC_RECON = 0
+	@TANKET = 3
+	@LT_VEH = 6
+	
+	@ROT_TRT = 10
+	@HRSTMAN_SUS = 11
+	@LF_SUS = 12
+	@TORSION_SUS = 13
+	@DCK_BLLS = 14
+	@TK_DES = 15
+	@BD_ARM = 16
+	@GAS_ENG = 18
+	@DSL_ENG = 20
+	
+	@CAP_ARM_LT = 24
+	@CAP_ARM_MED = 28
+	
+	@BERGER = 33
+	@COM = 37
+	
+	tank_designs = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		tank_manufacturer_cost_factor = -0.10
+		
+		category_all_armor = {
+			reliability = 0.01
+			soft_attack = 0.05
+			hard_attack = 0.05
+		}
+		
+		path = {
+			leads_to_tech = leaf_suspension
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = gas_engine
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = diesel_engine
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = rotating_turret
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = bolted_armor
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_ger_ostketten
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_ger_skirts
+			research_cost_coeff = 1
+		}
+	
+		research_cost = 0.8
+		start_year = 1920
+		folder = {
+			name = tank_techs_folder
+			position = { x = @TK_DES y = @1918 }
+		}	
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}		
+		categories = {
+			armor
+		}
+	}
+	leaf_suspension = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_light_armor = {
+			maximum_speed = 0.02
+			default_morale = 0.1			
+		}
+		
+		path = {
+			leads_to_tech = christie_suspension
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = duck_bills
+			research_cost_coeff = 1
+		}		
+	
+		research_cost = 0.8
+		start_year = 1934
+		folder = {
+			name = tank_techs_folder
+			position = { x = @LF_SUS y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			armor
+			tool_tech
+		}
+	}
+	christie_suspension = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_all_armor = {
+			default_morale = 0.1
+		}
+		category_medium_armor = {
+			maximum_speed = 0.01
+		}
+		
+		path = {
+			leads_to_tech = horstmann_suspension
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = torsion_suspension
+			research_cost_coeff = 1
+		}
+	
+		research_cost = 0.8
+		start_year = 1938
+		folder = {
+			name = tank_techs_folder
+			position = { x = @LF_SUS y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			armor
+			tool_tech
+		}
+	}
+	horstmann_suspension = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_all_armor = {
+			default_morale = 0.1
+		}
+		category_medium_armor = {
+			maximum_speed = 0.01
+		}
+		
+		research_cost = 0.82
+		start_year = 1939
+		folder = {
+			name = tank_techs_folder
+			position = { x = @HRSTMAN_SUS y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_armor_tech_focus = yes
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			armor
+			tool_tech
+		}
+	}
+	torsion_suspension = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_heavy_armor = {
+			maximum_speed = 0.01
+			default_morale = 0.1
+		}
+		category_superheavy_armor = {
+			default_morale = 0.1
+		}
+		
+		research_cost = 0.9
+		start_year = 1939
+		folder = {
+			name = tank_techs_folder
+			position = { x = @TORSION_SUS y = @1939_1 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				AND = {
+					EAI_timegate_1938/7 = yes	
+					EAI_armor_tech_focus = yes
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			armor
+			tool_tech
+		}
+	}
+	duck_bills = {
+		allow = { can_research_tank_techs_folder = yes } 
+	
+		category_all_armor = {
+			maximum_speed = 0.01
+		}
+		
+		research_cost = 1.05
+		start_year = 1939
+		folder = {
+			name = tank_techs_folder
+			position = { x = @DCK_BLLS y = @1939 }
+		}
+			
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_armor_tech_focus = yes
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		categories = {
+			armor
+		}
+	}
+	bolted_armor = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		modifier_army_sub_unit_category_all_armor_defence_factor = 0.1
+		
+		path = {
+			leads_to_tech = welded_armor
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 0.8
+		start_year = 1937
+		folder = {
+			name = tank_techs_folder
+			position = { x = @BD_ARM y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		categories = {
+			armor
+		}
+	}
+	welded_armor = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_all_armor = {
+			armor_value = 0.03
+		}
+		
+		dependencies = {
+			steel_industry_i = 1
+		}
+		
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = tank_techs_folder
+			position = { x = @BD_ARM y = @1939_1 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_armor_tech_focus = yes
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		categories = {
+			armor
+		}
+	}
+	rotating_turret = {	
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_all_armor = {
+			soft_attack = 0.15
+			hard_attack = 0.1
+		}
+		
+		path = {
+			leads_to_tech = gun_stabilization
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 0.85
+		start_year = 1936
+		folder = {
+			name = tank_techs_folder
+			position = { x = @ROT_TRT y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		categories = {
+			armor
+		}
+	}
+	gun_stabilization = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_all_armor = {
+			breakthrough = 0.1
+			soft_attack = 0.05
+			hard_attack = 0.05
+		}
+		
+		dependencies = {
+			electronic_mechanical_engineering = 1
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = tank_techs_folder
+			position = { x = @ROT_TRT y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = electronics_tt
+		}
+		categories = {
+			armor
+			electronics
+		}
+	}
+	gas_engine = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		modifier_army_sub_unit_category_all_armor_speed_factor = 0.05
+		
+		xor = { diesel_engine }
+		
+		path = {
+			leads_to_tech = gas_engine2
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			hidden_effect = {
+				
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+
+		}
+		
+		research_cost = 1
+		start_year = 1934
+		folder = {
+			name = tank_techs_folder
+			position = { x = @GAS_ENG y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = { 
+				factor = 0 
+				OR = {
+					has_tech = diesel_engine
+					is_researching_technology = diesel_engine
+				}
+			}
+		}
+		categories = {
+			armor
+		}
+	}
+	gas_engine2 = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_light_armor = {
+			maximum_speed = 0.02
+		}		
+		path = {
+			leads_to_tech = gas_engine3
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = tank_techs_folder
+			position = { x = @GAS_ENG y = @1937 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		categories = {
+			armor
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+	}
+	gas_engine3 = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_light_armor = {
+			maximum_speed = 0.01
+		}
+		category_medium_armor = {
+			maximum_speed = 0.02
+		}
+		path = {
+			leads_to_tech = gas_engine4
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1940
+		folder = {
+			name = tank_techs_folder
+			position = { x = @GAS_ENG y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		categories = {
+			armor
+		}
+	}
+	gas_engine4 = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_light_armor = {
+			maximum_speed = 0.01
+		}
+		category_medium_armor = {
+			maximum_speed = 0.01
+		}
+		category_heavy_armor = {
+			maximum_speed = 0.01
+		}
+		category_all_armor = {
+			breakthrough = 0.05
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = tank_techs_folder
+			position = { x = @GAS_ENG y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		categories = {
+			armor
+		}
+	}
+	diesel_engine = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_all_armor = {
+			fuel_consumption_factor = -0.01
+			fuel_capacity = 0.05
+		}
+		
+		xor = { gas_engine }
+		
+		path = {
+			leads_to_tech = diesel_engine2
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			hidden_effect = {
+				
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		
+		research_cost = 1.15
+		start_year = 1934
+		folder = {
+			name = tank_techs_folder
+			position = { x = @DSL_ENG y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = { 
+				factor = 0 
+				OR = {
+					has_tech = gas_engine
+					is_researching_technology = gas_engine
+				}
+			}
+		}
+		categories = {
+			armor
+		}
+	}
+	diesel_engine2 = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_all_armor = {
+			fuel_consumption_factor = -0.05
+		}
+		modifier_army_sub_unit_category_all_armor_defence_factor = 0.02	
+
+		path = {
+			leads_to_tech = diesel_engine3
+			research_cost_coeff = 1
+		}
+		research_cost = 1.15
+		start_year = 1938
+		folder = {
+			name = tank_techs_folder
+			position = { x = @DSL_ENG y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		categories = {
+			armor
+		}
+	}
+	diesel_engine3 = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_all_armor = {
+			fuel_consumption_factor = -0.07
+		}
+		org_loss_when_moving = -0.05
+
+		path = {
+			leads_to_tech = diesel_engine4
+			research_cost_coeff = 1
+		}
+		research_cost = 1.15
+		start_year = 1942
+		folder = {
+			name = tank_techs_folder
+			position = { x = @DSL_ENG y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		categories = {
+			armor
+		}
+	}
+	diesel_engine4 = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		category_all_armor = {
+			fuel_consumption_factor = -0.08
+			default_morale = 0.01
+		}
+		category_heavy_armor = {
+			default_morale = 0.01
+		}
+		category_superheavy_armor = {
+			default_morale = 0.01
+		}		
+
+		research_cost = 1.15
+		start_year = 1945
+		folder = {
+			name = tank_techs_folder
+			position = { x = @DSL_ENG y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1944/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}
+		categories = {
+			armor
+		}
+	}
+	################### Armored car Recon ###########
+	tech_ac_recon = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		enable_equipments = { 
+			motorized_AC_equipment_06
+		}
+		enable_subunits = {
+			recon_ac
+		}
+		recon_ac = {
+			#recon = 1
+		}
+		path = {
+			leads_to_tech = tech_ac_recon2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1918
+		folder = {
+			name = tank_techs_folder
+			position = { x = @AC_RECON y = @1918 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = recon_tech_tt
+		}		
+		categories = {
+			support_tech
+			recon_tech
+		}
+		
+		ai_will_do = {
+			factor = 40
+		}
+	}
+	
+	tech_ac_recon2 = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		recon_ac = {
+			recon = 1
+		}
+		enable_equipments = { motorized_AC_equipment_07
+		}
+		path = {
+			leads_to_tech = tech_ac_recon3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = tank_techs_folder
+			position = { x = @AC_RECON y = @1936 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = recon_tech_tt
+		}		
+		categories = {
+			support_tech
+			recon_tech
+		}
+		
+		ai_will_do = {
+			factor = 40
+		}
+	}
+	
+	tech_ac_recon3 = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		#enable_equipments = {
+		#	reconac_equipment_1
+		#}
+		enable_equipments = { motorized_AC_equipment_08
+		}
+		recon_ac = {
+			recon = 1
+		}
+		path = {
+			leads_to_tech = tech_ac_recon4
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = tank_techs_folder
+			position = { x = @AC_RECON y = @1939 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = recon_tech_tt
+		}		
+		categories = {
+			support_tech
+			recon_tech
+		}
+		
+		ai_will_do = {
+			factor = 40
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+	}
+	tech_ac_recon4 = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		recon_ac = {
+			recon = 1
+		}
+		enable_equipments = { motorized_AC_equipment_09
+		}
+		path = {
+			leads_to_tech = tech_ac_recon5
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1942
+		folder = {
+			name = tank_techs_folder
+			position = { x = @AC_RECON y = @1942 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = recon_tech_tt
+		}		
+		categories = {
+			support_tech
+			recon_tech
+		}
+		
+		ai_will_do = {
+			factor = 40
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+	}
+	tech_ac_recon5 = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		
+		enable_equipments = {
+			motorized_AC_equipment_099
+		}
+		recon_ac = {
+			recon = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1945
+		folder = {
+			name = tank_techs_folder
+			position = { x = @AC_RECON y = @1945 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = recon_tech_tt
+		}		
+		categories = {
+			support_tech
+			recon_tech
+		}
+		
+		ai_will_do = {
+			factor = 40
+			modifier = {
+				factor = 0
+				EAI_timegate_1944/7 = no
+			}
+		}
+	}
+	################### Tankettes ###########
+	tech_Tankettes = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		Tankettes = {
+			recon = 1
+		}
+		
+		enable_subunits = {
+			Tankettes
+		}
+		
+		enable_equipments = {
+			tankette_equipment_0
+		}	
+		path = {
+			leads_to_tech = tech_Tankettes2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = tank_techs_folder
+			position = { x = @TANKET y = @1934 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = armor_tt
+		}		
+		categories = {
+			support_tech
+			armor
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	tech_Tankettes2 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		Tankettes = {
+			recon = 3
+		}
+		enable_equipments = {
+			tankette_equipment_1
+		}	
+		path = {
+			leads_to_tech = tech_Tankettes3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = tank_techs_folder
+			position = { x = @TANKET y = @1938 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = armor_tt
+		}		
+		categories = {
+			support_tech
+			armor
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	tech_Tankettes3 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		Tankettes = {
+			recon = 4
+		}
+		enable_equipments = {
+			tankette_equipment_2
+		}	
+		#path = {
+		#	leads_to_tech = tech_Tankettes4
+		#	research_cost_coeff = 1
+		#}
+
+		research_cost = 1.5
+		start_year = 1940
+		folder = {
+			name = tank_techs_folder
+			position = { x = @TANKET y = @1940 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = armor_tt
+		}		
+		categories = {
+			support_tech
+			armor
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+########################## Disabled############################
+#	tech_Tankettes4 = {
+#
+#		Tankettes = {
+#			recon = 5
+#		}
+#		enable_equipments = {
+#			tankette_equipment_3
+#		}	
+#		
+#		research_cost = 1.5
+#		start_year = 1942
+#		folder = {
+#			name = tank_techs_folder
+#			position = { x = -2 y = -9 }
+#		}
+#		
+#		categories = {
+#			support_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 20
+#		}
+#	}
+################################################	
+	################### Liaison Vehicles ###########
+	tech_Gun_Carriers = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			motorized_lia_equipment_01
+		}
+		#enable_equipments = { motorized_lia_equipment }
+		
+		path = {
+			leads_to_tech = tech_Gun_Carriers2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1932
+		folder = {
+			name = tank_techs_folder
+			position = { x = @LT_VEH y = @1932 }
+		}
+		folder = {
+			name = support_folder
+			position = { x = 14 y = 0 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+		}		
+		categories = {
+			support_tech
+			motorized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 20
+		}
+	}
+	
+	tech_Gun_Carriers2 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			motorized_lia_equipment_02
+		}
+		
+		path = {
+			leads_to_tech = tech_Gun_Carriers3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = tank_techs_folder
+			position = { x = @LT_VEH y = @1936 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+		}		
+		categories = {
+			support_tech
+			motorized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 20
+		}
+	}
+	
+	tech_Gun_Carriers3 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			motorized_lia_equipment_03
+		}
+		
+		DIV_HQ  = {
+			recon = 2
+		}
+		#path = {
+		#	leads_to_tech = tech_Gun_Carriers4
+		#	research_cost_coeff = 1
+		#}
+
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = tank_techs_folder
+			position = { x = @LT_VEH y = @1939 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = support_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+		}		
+		categories = {
+			support_tech
+			motorized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 20
+				EAI_timegate_1938/7 = yes
+			}
+		}
+	}
+	tech_ger_ostketten = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		allow_branch = {
+			original_tag = GER
+		}
+		
+		dependencies = {
+			german_tech = 1
+		}
+		
+		enable_tactic = tactic_winterketten
+
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = tank_techs_folder
+			position = { x = @LF_SUS y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+	}
+	tech_ger_skirts = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		allow_branch = {
+			original_tag = GER
+		}
+		dependencies = {
+			german_tech = 1
+		}
+		
+		category_all_armor = {
+			armor_value = 0.05
+		}
+
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = tank_techs_folder
+			position = { x = @BD_ARM y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 100 
+				EAI_armor_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+	}
+	### Captured light armour ###
+	light_captured_armor_tech_1 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			captured_light_tank_equipment_0
+		}
+		
+		production_speed_foreign_light_armor_1_factor = 1
+		
+		path = {
+			leads_to_tech = light_captured_armor_tech_2
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = "foreign_lt_armor_TT"
+			custom_effect_tooltip = "foreign_lt_armor_1"
+			custom_effect_tooltip = "captured_light_tank_equipment_0"
+			custom_effect_tooltip = "foreign_lt_armor_2"
+			custom_effect_tooltip = "captured_light_tank_equipment_1"
+			custom_effect_tooltip = "foreign_lt_armor_3"
+			custom_effect_tooltip = "captured_light_tank_equipment_2"
+			custom_effect_tooltip = "foreign_lt_armor_4"
+			custom_effect_tooltip = "captured_light_tank_equipment_3"
+			custom_effect_tooltip = "foreign_lt_armor_5"
+			custom_effect_tooltip = "captured_light_tank_equipment_4"
+			custom_effect_tooltip = "foreign_lt_armor_end"
+		}
+		
+		research_cost = 1
+		start_year = 1934
+		folder = {
+			name = tank_techs_folder
+			position = { x = @CAP_ARM_LT y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	light_captured_armor_tech_2 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			captured_light_tank_equipment_1
+		}
+		
+		production_speed_foreign_light_armor_1_factor = -0.6
+		production_speed_foreign_light_armor_2_factor = 0.6
+		
+		path = {
+			leads_to_tech = light_captured_armor_tech_3
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = "foreign_lt_armor_TT"
+			custom_effect_tooltip = "foreign_lt_armor_1"
+			custom_effect_tooltip = "captured_light_tank_equipment_0"
+			custom_effect_tooltip = "foreign_lt_armor_2"
+			custom_effect_tooltip = "captured_light_tank_equipment_1"
+			custom_effect_tooltip = "foreign_lt_armor_3"
+			custom_effect_tooltip = "captured_light_tank_equipment_2"
+			custom_effect_tooltip = "foreign_lt_armor_4"
+			custom_effect_tooltip = "captured_light_tank_equipment_3"
+			custom_effect_tooltip = "foreign_lt_armor_5"
+			custom_effect_tooltip = "captured_light_tank_equipment_4"
+			custom_effect_tooltip = "foreign_lt_armor_end"
+		}
+		
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = tank_techs_folder
+			position = { x = @CAP_ARM_LT y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	light_captured_armor_tech_3 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			captured_light_tank_equipment_2
+		}
+		
+		production_speed_foreign_light_armor_1_factor = -0.30
+		production_speed_foreign_light_armor_2_factor = -0.30
+		production_speed_foreign_light_armor_3_factor = 0.60
+		
+		path = {
+			leads_to_tech = light_captured_armor_tech_4
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = "foreign_lt_armor_TT"
+			custom_effect_tooltip = "foreign_lt_armor_1"
+			custom_effect_tooltip = "captured_light_tank_equipment_0"
+			custom_effect_tooltip = "foreign_lt_armor_2"
+			custom_effect_tooltip = "captured_light_tank_equipment_1"
+			custom_effect_tooltip = "foreign_lt_armor_3"
+			custom_effect_tooltip = "captured_light_tank_equipment_2"
+			custom_effect_tooltip = "foreign_lt_armor_4"
+			custom_effect_tooltip = "captured_light_tank_equipment_3"
+			custom_effect_tooltip = "foreign_lt_armor_5"
+			custom_effect_tooltip = "captured_light_tank_equipment_4"
+			custom_effect_tooltip = "foreign_lt_armor_end"
+		}
+		
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = tank_techs_folder
+			position = { x = @CAP_ARM_LT y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	light_captured_armor_tech_4 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			captured_light_tank_equipment_3
+		}
+		
+		production_speed_foreign_light_armor_1_factor = -0.10
+		production_speed_foreign_light_armor_2_factor = -0.30
+		production_speed_foreign_light_armor_3_factor = -0.20
+		production_speed_foreign_light_armor_4_factor = 0.60
+		
+		path = {
+			leads_to_tech = light_captured_armor_tech_5
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = "foreign_lt_armor_TT"
+			custom_effect_tooltip = "foreign_lt_armor_1"
+			custom_effect_tooltip = "captured_light_tank_equipment_0"
+			custom_effect_tooltip = "foreign_lt_armor_2"
+			custom_effect_tooltip = "captured_light_tank_equipment_1"
+			custom_effect_tooltip = "foreign_lt_armor_3"
+			custom_effect_tooltip = "captured_light_tank_equipment_2"
+			custom_effect_tooltip = "foreign_lt_armor_4"
+			custom_effect_tooltip = "captured_light_tank_equipment_3"
+			custom_effect_tooltip = "foreign_lt_armor_5"
+			custom_effect_tooltip = "captured_light_tank_equipment_4"
+			custom_effect_tooltip = "foreign_lt_armor_end"
+		}
+		
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = tank_techs_folder
+			position = { x = @CAP_ARM_LT y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	light_captured_armor_tech_5 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			captured_light_tank_equipment_4
+		}
+		production_speed_foreign_light_armor_1_factor = 0.00
+		production_speed_foreign_light_armor_2_factor = 0.00
+		production_speed_foreign_light_armor_3_factor = -0.40
+		production_speed_foreign_light_armor_4_factor = -0.20
+		production_speed_foreign_light_armor_5_factor = 0.60
+		
+		on_research_complete = {
+			custom_effect_tooltip = "foreign_lt_armor_TT"
+			custom_effect_tooltip = "foreign_lt_armor_1"
+			custom_effect_tooltip = "captured_light_tank_equipment_0"
+			custom_effect_tooltip = "foreign_lt_armor_2"
+			custom_effect_tooltip = "captured_light_tank_equipment_1"
+			custom_effect_tooltip = "foreign_lt_armor_3"
+			custom_effect_tooltip = "captured_light_tank_equipment_2"
+			custom_effect_tooltip = "foreign_lt_armor_4"
+			custom_effect_tooltip = "captured_light_tank_equipment_3"
+			custom_effect_tooltip = "foreign_lt_armor_5"
+			custom_effect_tooltip = "captured_light_tank_equipment_4"
+			custom_effect_tooltip = "foreign_lt_armor_end"
+		}
+		
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = tank_techs_folder
+			position = { x = @CAP_ARM_LT y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	medium_captured_armor_tech_1 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			captured_tank_equipment_0
+		}
+		
+		production_speed_foreign_medium_armor_1_factor = 1
+		
+		enable_subunits = {
+			captured_armor
+		}
+		
+		path = {
+			leads_to_tech = medium_captured_armor_tech_2
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = "foreign_med_armor_TT"
+			custom_effect_tooltip = "foreign_med_armor_1"
+			custom_effect_tooltip = "captured_tank_equipment_0"
+			custom_effect_tooltip = "foreign_med_armor_2"
+			custom_effect_tooltip = "captured_tank_equipment_1"
+			custom_effect_tooltip = "foreign_med_armor_3"
+			custom_effect_tooltip = "captured_tank_equipment_2"
+			custom_effect_tooltip = "foreign_med_armor_4"
+			custom_effect_tooltip = "captured_tank_equipment_3"
+			custom_effect_tooltip = "foreign_med_armor_5"
+			custom_effect_tooltip = "captured_tank_equipment_4"
+			custom_effect_tooltip = "foreign_lt_armor_end"
+		}
+		
+		research_cost = 1
+		start_year = 1934
+		folder = {
+			name = tank_techs_folder
+			position = { x = @CAP_ARM_MED y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	medium_captured_armor_tech_2 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			captured_tank_equipment_1
+		}
+		
+		path = {
+			leads_to_tech = medium_captured_armor_tech_3
+			research_cost_coeff = 1
+		}
+		
+		production_speed_foreign_medium_armor_1_factor = -0.6
+		production_speed_foreign_medium_armor_2_factor = 0.6
+		
+		on_research_complete = {
+			custom_effect_tooltip = "foreign_med_armor_TT"
+			custom_effect_tooltip = "foreign_med_armor_1"
+			custom_effect_tooltip = "captured_tank_equipment_0"
+			custom_effect_tooltip = "foreign_med_armor_2"
+			custom_effect_tooltip = "captured_tank_equipment_1"
+			custom_effect_tooltip = "foreign_med_armor_3"
+			custom_effect_tooltip = "captured_tank_equipment_2"
+			custom_effect_tooltip = "foreign_med_armor_4"
+			custom_effect_tooltip = "captured_tank_equipment_3"
+			custom_effect_tooltip = "foreign_med_armor_5"
+			custom_effect_tooltip = "captured_tank_equipment_4"
+			custom_effect_tooltip = "foreign_lt_armor_end"
+		}
+		
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = tank_techs_folder
+			position = { x = @CAP_ARM_MED y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	medium_captured_armor_tech_3 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			captured_tank_equipment_2
+		}
+		
+		path = {
+			leads_to_tech = medium_captured_armor_tech_4
+			research_cost_coeff = 1
+		}
+		
+		production_speed_foreign_medium_armor_1_factor = -0.30
+		production_speed_foreign_medium_armor_2_factor = -0.30
+		production_speed_foreign_medium_armor_3_factor = 0.60
+		
+		on_research_complete = {
+			custom_effect_tooltip = "foreign_med_armor_TT"
+			custom_effect_tooltip = "foreign_med_armor_1"
+			custom_effect_tooltip = "captured_tank_equipment_0"
+			custom_effect_tooltip = "foreign_med_armor_2"
+			custom_effect_tooltip = "captured_tank_equipment_1"
+			custom_effect_tooltip = "foreign_med_armor_3"
+			custom_effect_tooltip = "captured_tank_equipment_2"
+			custom_effect_tooltip = "foreign_med_armor_4"
+			custom_effect_tooltip = "captured_tank_equipment_3"
+			custom_effect_tooltip = "foreign_med_armor_5"
+			custom_effect_tooltip = "captured_tank_equipment_4"
+			custom_effect_tooltip = "foreign_lt_armor_end"
+		}
+		
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = tank_techs_folder
+			position = { x = @CAP_ARM_MED y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	medium_captured_armor_tech_4 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			captured_tank_equipment_3
+		}
+		
+		path = {
+			leads_to_tech = medium_captured_armor_tech_5
+			research_cost_coeff = 1
+		}
+		
+		production_speed_foreign_medium_armor_1_factor = -0.10
+		production_speed_foreign_medium_armor_2_factor = -0.30
+		production_speed_foreign_medium_armor_3_factor = -0.20
+		production_speed_foreign_medium_armor_4_factor = 0.60
+		
+		on_research_complete = {
+			custom_effect_tooltip = "foreign_med_armor_TT"
+			custom_effect_tooltip = "foreign_med_armor_1"
+			custom_effect_tooltip = "captured_tank_equipment_0"
+			custom_effect_tooltip = "foreign_med_armor_2"
+			custom_effect_tooltip = "captured_tank_equipment_1"
+			custom_effect_tooltip = "foreign_med_armor_3"
+			custom_effect_tooltip = "captured_tank_equipment_2"
+			custom_effect_tooltip = "foreign_med_armor_4"
+			custom_effect_tooltip = "captured_tank_equipment_3"
+			custom_effect_tooltip = "foreign_med_armor_5"
+			custom_effect_tooltip = "captured_tank_equipment_4"
+			custom_effect_tooltip = "foreign_lt_armor_end"
+		}
+		
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = tank_techs_folder
+			position = { x = @CAP_ARM_MED y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	medium_captured_armor_tech_5 = {
+		allow = { can_research_tank_techs_folder = yes } 
+
+		enable_equipments = {
+			captured_tank_equipment_4
+		}
+		
+		production_speed_foreign_medium_armor_1_factor = 0.00
+		production_speed_foreign_medium_armor_2_factor = 0.00
+		production_speed_foreign_medium_armor_3_factor = -0.40
+		production_speed_foreign_medium_armor_4_factor = -0.20
+		production_speed_foreign_medium_armor_5_factor = 0.60
+		
+		on_research_complete = {
+			custom_effect_tooltip = "foreign_med_armor_TT"
+			custom_effect_tooltip = "foreign_med_armor_1"
+			custom_effect_tooltip = "captured_tank_equipment_0"
+			custom_effect_tooltip = "foreign_med_armor_2"
+			custom_effect_tooltip = "captured_tank_equipment_1"
+			custom_effect_tooltip = "foreign_med_armor_3"
+			custom_effect_tooltip = "captured_tank_equipment_2"
+			custom_effect_tooltip = "foreign_med_armor_4"
+			custom_effect_tooltip = "captured_tank_equipment_3"
+			custom_effect_tooltip = "foreign_med_armor_5"
+			custom_effect_tooltip = "captured_tank_equipment_4"
+			custom_effect_tooltip = "foreign_lt_armor_end"
+		}
+		
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = tank_techs_folder
+			position = { x = @CAP_ARM_MED y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	################### Recovery tanks ###########
+	tech_recovery_tanks = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		enable_equipments = {
+			recovery_tank_equipment_0
+		}
+	
+		path = {
+			leads_to_tech = tech_recovery_tanks_II
+			research_cost_coeff = 1
+		}
+		category_light_armor = {
+			reliability_factor = 0.05
+			#casualty_trickleback = 0.05
+			need = {
+               	recovery_tank_equipment = 1
+         	}
+		}
+		category_medium_armor = {
+			reliability_factor = 0.05
+			#casualty_trickleback = 0.05
+			need = {
+               	recovery_tank_equipment = 1
+         	}
+		}
+		
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = tank_techs_folder
+			position = { x = @BERGER y = @1939 }
+		}
+		
+		categories = {
+			support_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_recovery_tanks_II = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		allow_branch = {
+			NOT = { original_tag = FRA }
+		}
+		enable_equipments = {
+			recovery_tank_equipment_1
+		}
+		
+		category_heavy_armor = {
+			reliability_factor = 0.05
+			#casualty_trickleback = 0.05
+			need = {
+               	recovery_tank_equipment = 1
+         	}
+		}
+		category_superheavy_armor = {
+			reliability_factor = 0.05
+			#casualty_trickleback = 0.05
+			need = {
+               	recovery_tank_equipment = 2
+		  	}
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = tank_techs_folder
+			position = { x = @BERGER y = @1944 }
+		}
+		
+		categories = {
+			support_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	################### Command tanks ###########
+	tech_command_tanks = {
+		allow = { can_research_tank_techs_folder = yes } 
+		
+		enable_equipments = {
+			command_tank_equipment_0
+		}
+		
+		path = {
+			leads_to_tech = tech_command_tanks_II
+			research_cost_coeff = 1
+		}
+		
+		category_all_armor = {
+			breakthrough = 0.05
+			#max_organisation = 10
+		}
+		category_light_armor = {
+			need = {
+				command_tank_equipment = 1
+			}
+		}
+		category_medium_armor = {
+			need = {
+				command_tank_equipment = 1
+			}
+		}
+		
+		research_cost = 2
+		start_year = 1938
+		folder = {
+			name = tank_techs_folder
+			position = { x = @COM y = @1938 }
+		}
+		
+		categories = {
+			support_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_command_tanks_II = {
+		allow = { can_research_tank_techs_folder = yes } 
+	
+		allow_branch = {
+			NOT = { original_tag = FRA }
+		}
+		enable_equipments = {
+			command_tank_equipment_1
+		}
+		
+		category_all_armor = {
+			breakthrough = 0.05
+			#max_organisation = 10
+		}
+		
+		category_heavy_armor = {
+			need = {
+               	command_tank_equipment = 1
+         	}
+		}
+		category_superheavy_armor = {
+			need = {
+             	command_tank_equipment = 1
+		  	}
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = tank_techs_folder
+			position = { x = @COM y = @1944 }
+		}
+		
+		categories = {
+			support_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+	

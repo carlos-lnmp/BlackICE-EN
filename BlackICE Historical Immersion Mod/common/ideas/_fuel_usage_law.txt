@@ -1,0 +1,282 @@
+ideas = {
+	#Controls how much fuel the population gets
+	civ_fuel_usage = {
+		high_civ_fuel_usage = {
+			name = high_civ_fuel_usage
+			cost = 85
+			removal_cost = -1
+			level = 5
+			available = {
+				
+			}
+			
+			modifier = {
+				ruling_party_drift = 0.03
+				political_power_factor = 0.06
+				stability_weekly = 0.0025
+				local_resources_factor = -0.06
+				global_building_slots_factor = -0.05
+			}
+			
+			on_add = {
+				custom_effect_tooltip = high_civ_fuel_TT
+				set_country_flag = high_civ_fuel_usage
+				clr_country_flag = low_civ_fuel_usage
+				custom_effect_tooltip = civ_fuel_usage_TT
+				
+				calculate_civilian_fuel_factor = yes
+				
+				custom_effect_tooltip = current_civ_fuel_usage_TT
+				custom_effect_tooltip = divider
+				custom_effect_tooltip = current_civ_fuel_usage_BASE
+				custom_effect_tooltip = current_civ_fuel_usage_FACTOR
+				custom_effect_tooltip = current_civ_fuel_usage_LAW
+				if = {
+					limit = {
+						has_tech = wood_engines
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_WOOD_1
+				}
+				if = {
+					limit = {
+						has_tech = wood_engines2
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_WOOD_2
+				}
+				if = {
+					limit = {
+						has_country_flag = rationed_petrol
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_rationed_petrol
+				}
+			}
+			
+			ai_will_do = {
+				base = 0			
+			}
+		}
+		medium_civ_fuel_usage = {
+			name = medium_civ_fuel_usage
+			cost = 85
+			#default = yes
+			removal_cost = -1
+			level = 4
+			available = {
+				
+			}
+			
+			modifier = {
+				ruling_party_drift = 0.02
+				political_power_factor = 0.03
+				stability_weekly = 0.0015
+				local_resources_factor = -0.03
+				global_building_slots_factor = -0.03
+				
+			}
+			
+			on_add = {
+				custom_effect_tooltip = medium_civ_fuel_TT
+				clr_country_flag = high_civ_fuel_usage
+				clr_country_flag = low_civ_fuel_usage
+				custom_effect_tooltip = civ_fuel_usage_TT
+				
+				calculate_civilian_fuel_factor = yes
+				
+				custom_effect_tooltip = current_civ_fuel_usage_TT
+				custom_effect_tooltip = divider
+				custom_effect_tooltip = current_civ_fuel_usage_BASE
+				custom_effect_tooltip = current_civ_fuel_usage_FACTOR
+				custom_effect_tooltip = current_civ_fuel_usage_LAW
+				if = {
+					limit = {
+						has_tech = wood_engines
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_WOOD_1
+				}
+				if = {
+					limit = {
+						has_tech = wood_engines2
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_WOOD_2
+				}
+				if = {
+					limit = {
+						has_country_flag = rationed_petrol
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_rationed_petrol
+				}
+			}
+			
+			ai_will_do = {
+				base = 0			
+			}
+		}
+		normal_civ_fuel_usage = {
+			name = normal_civ_fuel_usage
+			cost = 90
+			default = yes
+			removal_cost = -1
+			level = 3
+			available = {
+				
+			}
+			
+			modifier = {
+				
+			}
+			
+			on_add = {
+				#custom_effect_tooltip = normal_civ_fuel_TT
+				clr_country_flag = high_civ_fuel_usage
+				clr_country_flag = low_civ_fuel_usage
+				custom_effect_tooltip = civ_fuel_usage_TT
+				
+				calculate_civilian_fuel_factor = yes
+				
+				custom_effect_tooltip = current_civ_fuel_usage_TT
+				custom_effect_tooltip = divider
+				custom_effect_tooltip = current_civ_fuel_usage_BASE
+				custom_effect_tooltip = current_civ_fuel_usage_FACTOR
+				custom_effect_tooltip = current_civ_fuel_usage_LAW
+				if = {
+					limit = {
+						has_tech = wood_engines
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_WOOD_1
+				}
+				if = {
+					limit = {
+						has_tech = wood_engines2
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_WOOD_2
+				}
+				if = {
+					limit = {
+						has_country_flag = rationed_petrol
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_rationed_petrol
+				}
+			}
+			
+			ai_will_do = {
+				base = 0			
+			}
+		}
+		low_civ_fuel_usage = {
+			name = low_civ_fuel_usage
+			cost = 100
+			removal_cost = -1
+			level = 2
+			
+			available = {
+				NOT = {
+					has_idea = security_liberty_first
+					has_idea = civilian_economy
+				}
+			}
+			
+			modifier = {
+				opposition_party_drift = 0.01
+				political_power_factor = -0.03
+				stability_weekly = -0.001
+				war_support_weekly = -0.001
+				local_resources_factor = 0.03
+			}
+			
+			on_add = {
+				custom_effect_tooltip = low_civ_fuel_TT
+				set_country_flag = low_civ_fuel_usage
+				clr_country_flag = high_civ_fuel_usage
+				custom_effect_tooltip = civ_fuel_usage_TT
+				
+				calculate_civilian_fuel_factor = yes
+				
+				custom_effect_tooltip = current_civ_fuel_usage_TT
+				custom_effect_tooltip = divider
+				custom_effect_tooltip = current_civ_fuel_usage_BASE
+				custom_effect_tooltip = current_civ_fuel_usage_FACTOR
+				custom_effect_tooltip = current_civ_fuel_usage_LAW
+				if = {
+					limit = {
+						has_tech = wood_engines
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_WOOD_1
+				}
+				if = {
+					limit = {
+						has_tech = wood_engines2
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_WOOD_2
+				}
+				if = {
+					limit = {
+						has_country_flag = rationed_petrol
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_rationed_petrol
+				}
+			}
+			
+			ai_will_do = {
+				base = 0			
+			}
+		}
+		very_low_civ_fuel_usage = {
+			name = very_low_civ_fuel_usage
+			cost = 125
+			removal_cost = -1
+			level = 1
+			available = {
+				NOT = {
+					has_idea = security_liberty_first
+					has_idea = security_minor_restrictions
+					has_idea = civilian_economy
+				}				
+			}
+			
+			modifier = {
+				opposition_party_drift = 0.02
+				political_power_factor = -0.06
+				stability_weekly = -0.002
+				war_support_weekly = -0.002
+				local_resources_factor = 0.06
+			}
+			
+			on_add = {
+				custom_effect_tooltip = very_low_civ_fuel_TT
+				set_country_flag = very_low_civ_fuel_usage
+				clr_country_flag = high_civ_fuel_usage
+				custom_effect_tooltip = civ_fuel_usage_TT
+				
+				calculate_civilian_fuel_factor = yes
+				
+				custom_effect_tooltip = current_civ_fuel_usage_TT
+				custom_effect_tooltip = divider
+				custom_effect_tooltip = current_civ_fuel_usage_BASE
+				custom_effect_tooltip = current_civ_fuel_usage_FACTOR
+				custom_effect_tooltip = current_civ_fuel_usage_LAW
+				if = {
+					limit = {
+						has_tech = wood_engines
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_WOOD_1
+				}
+				if = {
+					limit = {
+						has_tech = wood_engines2
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_WOOD_2
+				}
+				if = {
+					limit = {
+						has_country_flag = rationed_petrol
+					}
+					custom_effect_tooltip = current_civ_fuel_usage_rationed_petrol
+				}
+			}
+			
+			ai_will_do = {
+				base = 0			
+			}
+		}
+	}
+}

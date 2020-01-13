@@ -1,0 +1,245 @@
+﻿instant_effect = {
+	set_country_flag = placed_research_centre
+	
+	add_research_slot = 1
+	285 = { state_add_research_centre = yes }
+	SLOT:industry_folder = yes
+
+	add_research_slot = 1
+	517 = { state_add_research_centre = yes }
+	SLOT:electronics_folder = yes
+	SLOT:air_techs_folder = yes
+	SLOT:naval_doctrine_folder = yes
+}
+
+division_template = {
+	name = "CMF Division"	# Citizen Militia Divisions were reserves assigned to various military districts
+	template_counter = 82
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+		garrison = { x = 0 y = 3 }
+
+		infantry = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+
+		militia  = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+		
+		artillery_brigade_mot = { x = 3 y = 0 }
+	}
+	support = {
+	   	DIV_HQ = { x = 0 y = 0 }
+		recon_mot = { x = 0 y = 1 }
+		engineer = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Cavalry Division"  
+	division_names_group = AST_CAV_01
+	template_counter = 210
+	
+	regiments = {
+		semi_motorized = { x = 0 y = 0 }
+		semi_motorized = { x = 0 y = 1 }
+		semi_motorized = { x = 0 y = 2 }
+
+		semi_motorized = { x = 1 y = 0 }
+		semi_motorized = { x = 1 y = 1 }
+		semi_motorized = { x = 1 y = 2 }
+
+		semi_motorized = { x = 2 y = 0 }
+		semi_motorized = { x = 2 y = 1 }
+		semi_motorized = { x = 2 y = 2 }
+
+		artillery_brigade_mot = { x = 3 y = 0 }
+		artillery_brigade_mot = { x = 3 y = 1 }
+		artillery_brigade_mot = { x = 3 y = 2 }
+	}
+	support = {
+	   	DIV_HQ = { x = 0 y = 0 }
+		recon_mot = { x = 0 y = 1 }
+		engineer = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Infantry Division"	
+	division_names_group = AST_INF_01		
+	template_counter = 114
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+
+      	infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+
+       	infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+
+		artillery_brigade_mot = { x = 3 y = 0 }
+		artillery_brigade_mot = { x = 3 y = 1 }
+		artillery_brigade_mot = { x = 3 y = 2 }
+		
+	}
+	support = {
+       	DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		recon_mot = { x = 0 y = 2 }
+		maintenance_company = { x = 0 y = 3 }
+		logistics_company = { x = 0 y = 4 }
+		field_hospital = { x = 1 y = 0 }
+	}
+}
+
+units = {
+	##### Royal Australian Army #####
+	#division= {	
+	#	name = "Royal Australian Army" 
+	#	location = 7859
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.1
+	#}
+	
+	division= {	
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 1652 # Perth
+		division_template = "Infantry Division"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+
+	}
+	division= {	
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 7564 # Brisbane
+		division_template = "Cavalry Division"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.6
+
+	}
+	# 2nd Military District -- New South Wales
+	division= {	
+		name = "1st Military District"
+		location = 12406 # Sydney
+		division_template = "CMF Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "2nd Military District"
+		location = 7859 # Canberra
+		division_template = "CMF Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.3
+
+	}
+
+	# 3rd Military District -- New South Wales
+	division= {	
+		name = "3rd Military District"
+		location = 7798 # Melbourne
+		division_template = "CMF Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "4th Military District"
+		location = 7798 # Melbourne
+		division_template = "CMF Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 7798 # Melbourne
+		division_template = "Cavalry Division"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.6
+
+	}
+}
+
+air_wings = {
+
+	285 = {
+		# RAAF Stations Richmond -- Hawker Demons, Westland Wapitis
+		vickers_valentia_equipment_1 =  {
+			owner = "AST" 
+			amount = 12
+		}
+		hawker_demon_equipment_1 =  {
+			owner = "AST" 
+			amount = 12
+		}
+	}
+	517 = {
+		# RAAF Station Laverton -- Hawker Demons, Westland Wapitis
+		vickers_valentia_equipment_1 =  {
+			owner = "AST" 
+			amount = 12
+		}
+		hawker_demon_equipment_1 =  {
+			owner = "AST" 
+			amount = 12
+		}
+	}
+}
+
+
+##### Starting Production #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "AST"
+		}
+		requested_factories = 1
+		progress = 0.75
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_uniforms_0
+			creator = "AST"
+		}
+		requested_factories = 1
+		progress = 0.54
+		efficiency = 100
+	}
+	################ Stockpile ##################
+		add_equipment_to_stockpile = {
+		type = infantry_equipment_1
+			amount = 2500
+			producer = ENG
+		}
+		add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+			amount = 1800
+			producer = ENG
+		}
+		add_equipment_to_stockpile = {
+		type = motorized_equipment_1
+			amount = 500
+			producer = ENG
+		}
+}

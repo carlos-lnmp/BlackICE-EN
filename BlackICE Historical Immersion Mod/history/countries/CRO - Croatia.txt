@@ -1,0 +1,150 @@
+﻿capital = 109
+
+oob = "CRO_1936"
+
+set_research_slots = 2
+
+set_war_support = 0.15
+
+set_convoys = 5
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	subtech_recon_cav_1 = 1
+	tech_support = 1
+	tech_recon = 1
+	################## armor ##############
+	tech_Tankettes = 1
+	gwtank_axis = 1
+	basic_light_tank_axis = 1
+	generic_armor_axis = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	################# ships ################
+	generic_naval_tech = 1
+	early_submarine = 1
+	generic_naval = 1
+	early_destroyer = 1
+	early_light_cruiser = 1
+	early_heavy_cruiser = 1
+	early_battleship = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	
+	ww1_battlefield_support = 1
+}
+
+add_ideas = { 	
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_censored
+	key_industries
+	labor_none
+	fdi_encouraged
+	
+	cons_two
+	foreign_volunteers
+	mob_standing
+	train_none
+	age_17
+	officer_train_none
+	security_minor_restrictions
+	edu_minimal
+	foreign_cooperative
+	neutrality_idea
+}
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		CHI_incompetent_officers
+	}
+}
+
+set_politics = {
+	ruling_party = fascism
+	last_election = "1935.6.9"
+	election_frequency = 12
+	elections_allowed = no # none after offset 1
+}
+
+set_popularities = {
+	conservatism = 15
+	fascism = 75
+	communism = 10
+}
+##### Country Leaders #####
+create_country_leader = {
+	name = "Ante Pavelic"
+	desc = "POLITICS_ANTE_PAVELIC_DESC"
+	picture = "Portrait_Croatia_Ante_Pavelic.dds"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+	}
+}
+##### Field Marshals #####
+##### Corps Commanders #####
+create_corps_commander = {
+	name = "Begic, "
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
+	traits = { Decent_General armor_officer }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 3
+}
+create_corps_commander = {
+	name = "Kvaternik, S."
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
+	traits = { old_guard Competent_General defensive_doctrine_CC }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 3
+}
+create_corps_commander = {
+	name = "Percevic, von"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
+	traits = { Awesome_General offensive_doctrine_CC }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 3
+	logistics_skill = 3
+}
+##### Navy Leaders #####
+create_navy_leader = {
+	name = "Steinfl, "
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
+	traits = { seawolf }
+	skill = 1
+}
+### EOF ###

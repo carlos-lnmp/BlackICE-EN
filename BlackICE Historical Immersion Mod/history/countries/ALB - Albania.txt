@@ -1,0 +1,164 @@
+﻿capital = 44
+
+OOB = "ALB_1936"
+
+set_convoys = 5
+set_war_support = 0.15
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		#early_ship_hull_coastal_submarine = 1
+	}
+}
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_support = 1
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## artillery ###############
+	################## armor ##############
+	#generic_armor = 1
+	tech_Tankettes = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### economy ############
+	############ ww1 doctrines
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	ww1_artillery = 1
+	foot_runners = 1
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	ww1_battlefield_support = 1
+}
+
+add_ideas = { 	
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	officer_train_none
+	age_19
+	security_minor_restrictions
+	edu_minimal
+
+	foreign_isolationism
+	neutrality_idea
+}
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		CHI_incompetent_officers
+	}
+}
+
+set_country_flag = neutrality_idea
+
+set_politics = {
+	ruling_party = monarchism
+	last_election = "1933.3.5"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	monarchism = 100
+	conservatism = 0
+	fascism = 0
+	communism = 0
+	neutrality = 0
+}
+##### Country Leaders #####
+#Victor Emmanuel III of Italy after 39
+create_country_leader = {
+	name = "King Zog"
+	desc = "POLITICS_KING_ZOG_DESC"
+	picture = "Portrait_Albania_King_Zog.dds"
+	expire = "1965.1.1"
+	ideology = absolutism
+	traits = {
+		assassination_survivor
+	}
+}
+create_country_leader = {
+	name = "Enver Hoxha"
+	desc = "Bunker Man"
+	picture = "gfx/leaders/ALB/Portrait_Albania_Enver_Hoxha.tga"
+	expire = "1985.4.11"
+	ideology = anti_revisionism #hoxhaism
+	traits = {
+		#
+	}
+}
+##### Field Marshal #####
+create_field_marshal = {
+	name = "Xhemal Aranitasi"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
+	traits = { Bad_General}
+	skill = 2
+	attack_skill = 1
+    defense_skill = 3
+    planning_skill = 2
+    logistics_skill = 1
+}
+##### Country Leaders #####
+create_corps_commander = {
+	name = "Agimi"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
+	traits = { Terrible_General panzer_leader }
+	skill = 1
+	attack_skill = 2
+    defense_skill = 1
+    planning_skill = 1
+    logistics_skill = 1
+}
+
+##### Navy Leaders #####
+create_navy_leader = {
+	name = "Delvinë"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
+	traits = { naval_lineage }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 1
+}
+### EOF ###

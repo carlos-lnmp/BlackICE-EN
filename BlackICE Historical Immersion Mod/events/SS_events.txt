@@ -1,0 +1,4896 @@
+﻿###########################
+# German SS Events
+###########################
+add_namespace = ss_event
+###########################
+# Technology activations Hidden-events #
+### Heavy AAA (Flak 88)
+#country_event = {
+#	id = ss_event.1
+#}
+country_event = {
+	id = ss_event.2
+	
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		tag = GER
+		has_tech = rocket_artillery
+	}
+	
+	option = {
+		name = "Set Tech"
+		set_technology = { ss_rocketartillery_tech = 1 }
+	}
+}
+#country_event = {
+#	id = ss_event.3
+#}
+country_event = {
+	id = ss_event.4
+	
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		tag = GER
+		has_tech = subtech_panzer_v_spaa_equipment_1
+	}
+	
+	option = {
+		name = "Set Tech"
+		set_technology = { hiddentech_ss_pzv_spaa = 1 }
+	}
+}
+# LSSAH Starting OOB player WachBtl
+country_event = {
+	id = ss_event.665
+	title = ss_event.665.t
+	desc = ss_event.665.d
+	
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.665.a
+		
+		hidden_effect = {
+			#UNIT
+			896 = {
+				create_unit = {
+					division = "division_name = { is_name_ordered = yes name_order = 1 } division_template = \"LSSAH Wach-Battalion\" start_experience_factor = 0.9"
+					owner = GER
+				}
+			}
+		}
+		#FLAG
+		set_country_flag = SS_LSSAH_I
+		custom_effect_tooltip = GER_wach_btl_LSSAH_tt
+	}
+}
+# Starting SS Battalion
+country_event = {
+	id = ss_event.666
+	title = ss_event.666.t
+	desc = ss_event.666.d
+	picture = GFX_report_event_historical_SS
+	
+	fire_only_once = yes
+	
+	trigger = {
+		has_country_flag = SS_enabled
+		NOT = { has_country_flag = SS_Start }
+	}
+	
+	mean_time_to_happen = {
+		days = 5
+	}
+	
+	option = {
+		name = ss_event.666.a
+		#TEMPLATE
+		division_template = {
+			name = "SS-Standarte Germania(s-mot Rgt.)"				# SS-Standarte regiments (elite equipment & training)
+			division_names_group = GER_VT_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1006	# S-mot Regiment
+			
+			regiments = {
+				ss_semi_motorized = { x = 0 y = 0 }
+				ss_semi_motorized = { x = 0 y = 1 }
+				ss_semi_motorized = { x = 0 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				military_police = { x = 0 y = 2 }
+				maintenance_company = { x = 0 y = 3 }
+				logistics_company = { x = 0 y = 4 }
+				
+				anti_tank = { x = 1 y = 0 }
+			}
+		}
+		division_template = {
+			name = "SS-Standarte Deutschland(s-mot Rgt.)"			# SS-Standarte regiments (elite equipment & training)
+			division_names_group = GER_VT_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1007	# S-mot Regiment
+			
+			regiments = {
+				ss_semi_motorized = { x = 0 y = 0 }
+				ss_semi_motorized = { x = 0 y = 1 }
+				ss_semi_motorized = { x = 0 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				military_police = { x = 0 y = 2 }
+				maintenance_company = { x = 0 y = 3 }
+				logistics_company = { x = 0 y = 4 }
+				
+				anti_tank = { x = 1 y = 0 }
+			}
+		}
+		hidden_effect = {
+			#UNITS
+			56 = {
+				create_unit = {
+					division = "division_name = { is_name_ordered = yes name_order = 1 } division_template = \"SS-Standarte Germania(s-mot Rgt.)\" start_experience_factor = 0.6 start_equipment_factor = 0.4"
+					owner = GER
+					prioritize_location = 241
+				}
+			}
+			52 = {
+				create_unit = {
+					division = "division_name = { is_name_ordered = yes name_order = 2 } division_template = \"SS-Standarte Deutschland(s-mot Rgt.)\" start_experience_factor = 0.6 start_equipment_factor = 0.4"
+					owner = GER
+					prioritize_location = 692
+				}
+			}
+		}
+		#FLAG
+		set_country_flag = SS_Start
+		custom_effect_tooltip = GER_SS_Forming_D_G_VT_tt
+	}
+}
+# SS-Totenkopfverbände ss garrisons
+country_event = {
+	id = ss_event.667
+	title = ss_event.667.t
+	desc = ss_event.667.d
+	picture = GFX_report_event_totenkopf
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.667.a
+		hidden_effect = {
+			#UNIT 
+			52 = {
+				create_unit = {
+					division = "division_name = { is_name_ordered = yes name_order = 1 } division_template = \"SS-Totenkopf\" start_experience_factor = 0.5 start_equipment_factor = 0.1"
+					owner = GER
+					prioritize_location = 3705
+				}
+			}
+			64 = {
+				create_unit = {
+					division = "division_name = { is_name_ordered = yes name_order = 2 } division_template = \"SS-Totenkopf\" start_experience_factor = 0.5 start_equipment_factor = 0.1"
+					owner = GER
+					prioritize_location = 375
+				}
+			}
+			60 = {
+				create_unit = {
+					division = "division_name = { is_name_ordered = yes name_order = 3 } division_template = \"SS-Totenkopf\" start_experience_factor = 0.5 start_equipment_factor = 0.1"
+					owner = GER
+					prioritize_location = 425
+				}
+			}
+			set_technology = { ss_garrison_tech = 1 }
+		}
+		#FLAG 
+		set_country_flag = SS_TV_1_2_3
+		custom_effect_tooltip = GER_SS_TK_123
+		create_corps_commander = {
+			name = "Eicke, Theodor"
+			picture = "Portrait_Germany_Theodor_Eicke.dds"
+			traits = { waffen_ss_officer offensive_doctrine_CC Competent_General }
+			skill = 2
+			id = 229
+		}
+	}
+}
+# 4. SS-TK Standarte 'Ostmark'
+country_event = {
+	id = ss_event.642
+	title = ss_event.642.t
+	desc = ss_event.642.d
+	picture = GFX_report_event_totenkopf
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.642.a
+		hidden_effect = {
+			#UNIT 
+			53 = {
+				create_unit = {
+					division = "division_name = { is_name_ordered = yes name_order = 4 } division_template = \"SS-Totenkopf Standarte\" start_experience_factor = 0.5 start_equipment_factor = 0.1"
+					owner = GER
+					prioritize_location = 532
+				}
+			}
+		}
+		#FLAG
+		set_country_flag = SS_TV_4
+		custom_effect_tooltip = GER_SS_TV_4_tt
+	}
+}
+# TK-Reiter-Standarte
+country_event = {
+	id = ss_event.644
+	title = ss_event.644.t
+	desc = ss_event.644.d
+	picture = GFX_report_event_totenkopf
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.644.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS-TV-Reiter"	# Represents SS Garrison/ Guard units
+			division_names_group = GER_TK_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1015
+			
+			regiments = {
+				ss_cavalry = { x = 0 y = 0 }				# Lower-quality equipment and training
+				ss_cavalry = { x = 0 y = 1 }
+				ss_cavalry = { x = 0 y = 2 }
+				ss_cavalry = { x = 0 y = 3 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+			}
+		}
+		
+		#UNIT 
+		862 = {
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 12 } division_template = \"SS-TV-Reiter\" start_experience_factor = 0.01 start_equipment_factor = 0.25"
+				owner = GER
+				prioritize_location = 3544
+			}
+		}
+		
+		#FLAG
+		set_country_flag = SS_TV_Reiter
+	}
+}
+##########################################
+### SS-Verfügungstruppe combat brigade ###
+country_event = {
+	id = ss_event.668
+	title = ss_event.668.t
+	desc = ss_event.668.d
+	picture = GFX_report_event_SSVT
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.668.a
+		custom_effect_tooltip = GER_SS_VT
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Verfügungstruppen"
+			division_names_group = GER_VT_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1009	# S-mot Brigade
+			
+			regiments = {
+				ss_semi_motorized = { x = 0 y = 0 }
+				ss_semi_motorized = { x = 0 y = 1 }
+				ss_semi_motorized = { x = 0 y = 2 }
+				
+				ss_semi_motorized = { x = 1 y = 0 }
+				ss_semi_motorized = { x = 1 y = 1 }
+				ss_semi_motorized = { x = 1 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 2 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				military_police = { x = 0 y = 2 }
+				maintenance_company = { x = 0 y = 3 }
+				logistics_company = { x = 0 y = 4 }
+				
+				anti_tank = { x = 1 y = 0 }
+			}
+		}
+		hidden_effect = {
+			#UNIT
+			896 = { #East Berlin
+				create_unit = {
+					division = "division_name = { is_name_ordered = yes name_order = 4 } division_template = \"SS Verfügungstruppen\" start_experience_factor = 0.7 start_equipment_factor = 0.5"
+					owner = GER
+				}
+			}
+		}
+		#FLAG
+		set_country_flag = SS_VT_brig
+	}
+}
+#### Verfugungstruppen and Reich-division event-chain ####
+#SS Standarte 'Der Führer' 1938_3.1 in Vienna
+country_event = {
+	id = ss_event.689
+	title = ss_event.689.t
+	desc = ss_event.689.d
+	picture = GFX_report_event_historical_SS
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.689.a
+		#TEMPLATE
+		division_template = {
+			name = "SS-Standarte Fuhrer(s-mot Rgt.)"					# SS-Standarte regiments (elite equipment & training)
+			division_names_group = GER_VT_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1008	# S-mot Regiment
+			
+			regiments = {
+				ss_semi_motorized = { x = 0 y = 0 }
+				ss_semi_motorized = { x = 0 y = 1 }
+				ss_semi_motorized = { x = 0 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				military_police = { x = 0 y = 2 }
+				maintenance_company = { x = 0 y = 3 }
+				logistics_company = { x = 0 y = 4 }
+				
+				anti_tank = { x = 1 y = 0 }
+			}
+		}
+		hidden_effect = {
+			#UNIT	
+			4 = {
+				create_unit = {
+					division = "division_name = { is_name_ordered = yes name_order = 3 } division_template = \"SS-Standarte Fuhrer(s-mot Rgt.)\" start_experience_factor = 0.6 start_equipment_factor = 0.2"
+					owner = GER
+					prioritize_location = 11666
+				}
+			}
+		}
+		#FLAG
+		set_country_flag = SS_Start_II
+		custom_effect_tooltip = GER_SS_Forming_F_VT_tt
+	}
+}
+### Forming the SS-VT Division   ### Add 3rd Inf-Rgt.(s-mot). Add 2
+country_event = {
+	id = ss_event.640
+	title = ss_event.640.t
+	desc = ss_event.640.d
+	picture = GFX_report_event_SS_VT_Division
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		#CLEAR OLD TEMPLATE
+		delete_unit_template_and_units = {
+			division_template = "SS Verfügungstruppen"
+			division_template = "SS-Standarte Fuhrer(s-mot Rgt.)"
+		}
+	}
+	
+	option = {
+		name = ss_event.640.a
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Verfügungstruppe-Division"
+			division_names_group = GER_VT_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1011
+			
+			regiments = {
+				ss_semi_motorized = { x = 0 y = 0 }
+				ss_semi_motorized = { x = 0 y = 1 }
+				ss_semi_motorized = { x = 0 y = 2 }
+				
+				ss_semi_motorized = { x = 1 y = 0 }
+				ss_semi_motorized = { x = 1 y = 1 }
+				ss_semi_motorized = { x = 1 y = 2 }
+				
+				ss_semi_motorized = { x = 2 y = 0 }
+				ss_semi_motorized = { x = 2 y = 1 }
+				ss_semi_motorized = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				anti_tank = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				anti_air = { x = 1 y = 2 }
+			}
+		}
+		
+		#UNIT 
+		52 = { #Oberbayern
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 5 } division_template = \"SS Verfügungstruppe-Division\" start_experience_factor = 0.7"
+				owner = GER
+				prioritize_location = 3705
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = ss_vt_division_39
+	}
+}
+## Player ## Motorize the SS VT-Division. Add 2 Add SS Stürmgeschutz and Recon(mot) ##
+## Rename SS VT-Division to SS-Division 'Reich' ##
+country_event = {
+	id = ss_event.641
+	title = ss_event.641.t
+	desc = ss_event.641.d
+	picture = GFX_report_event
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.641.a
+		
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = {
+				division_template = "SS Verfügungstruppe-Division"
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS-Division Reich"
+			division_names_group = GER_VT_01
+			is_locked = yes					#Only 1 unit allowed
+			template_counter = 1012
+			priority = 2
+			
+			regiments = {
+				ss_motorized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_motorized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_motorized = { x = 2 y = 0 }
+				ss_motorized = { x = 2 y = 1 }
+				ss_motorized = { x = 2 y = 2 }
+				
+				ss_mechanized = { x = 3 y = 0 }
+				
+				ss_artillery_brigade_mot = { x = 4 y = 0 }
+				ss_artillery_brigade_mot = { x = 4 y = 1 }
+				ss_artillery_brigade_mot = { x = 4 y = 2 }
+				ss_light_assault_panzer = { x = 4 y = 3 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				combat_engineer = { x = 0 y = 1 }
+				military_police = { x = 0 y = 2 }
+				anti_air = { x = 0 y = 3 }
+				recon_mot = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				anti_tank = { x = 1 y = 2 }
+			}
+		}
+		
+		#UNIT 
+		896 = { #Berlin
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 6 } division_template = \"SS-Division Reich\" start_experience_factor = 0.75"
+				owner = GER 
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = ss_division_reich
+	}
+}
+## Player ## SS Pzgren-Division Das Reich
+## Mechanize the SS-Division and rename to SS-Division 'Das Reich' ##
+country_event = {
+	id = ss_event.643
+	title = ss_event.643.t
+	desc = ss_event.643.d
+	picture = GFX_report_event
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.643.a
+		ai_chance = { factor = 100 }
+		
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = {
+				division_template = "SS-Division Reich"
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Panzergrenadier-Division Das Reich"
+			division_names_group = GER_VT_01
+			is_locked = yes					#Only 1 unit allowed
+			template_counter = 1012
+			priority = 2
+			
+			regiments = {
+				ss_mechanized = { x = 0 y = 0 }
+				ss_mechanized = { x = 0 y = 1 }
+				ss_mechanized = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_mechanized = { x = 1 y = 1 }
+				ss_mechanized = { x = 1 y = 2 }
+				
+				ss_panzer_iii = { x = 2 y = 0 }
+				ss_panzer_iv = { x = 2 y = 1 }
+				ss_panzer_vi = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+				
+				ss_panzer_iii_td = { x = 4 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				combat_engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+				anti_tank = { x = 1 y = 4 }
+			}
+		}
+		
+		#UNIT 
+		896 = { #Berlin
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 7 } division_template = \"SS Panzergrenadier-Division Das Reich\" start_experience_factor = 0.5 start_equipment_factor = 0.8"
+				owner = GER
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = ss_pzgren_division_dasreich
+	}
+}
+## SS Pz-Division Das Reich
+## Armor up the SS Pzgren-Division to SS Pz-Division and rename to SS Pz-Division 'Das Reich' ##
+country_event = {
+	id = ss_event.645
+	title = ss_event.645.t
+	desc = ss_event.645.d
+	picture = GFX_report_event
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.645.a
+		ai_chance = { factor = 100 }
+		
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = {
+				division_template = "SS Panzergrenadier-Division Das Reich"
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Panzer-Division Das Reich"
+			division_names_group = GER_VT_01
+			is_locked = yes					#Only 1 unit allowed
+			template_counter = 1013
+			priority = 2
+			
+			regiments = {
+				ss_panzer_iv = { x = 0 y = 0 }
+				ss_panzer_v = { x = 0 y = 1 }
+				ss_panzer_vi = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_mechanized = { x = 1 y = 1 }
+				ss_mechanized = { x = 1 y = 2 }
+				
+				ss_mechanized = { x = 2 y = 0 }
+				ss_mechanized = { x = 2 y = 1 }
+				ss_mechanized = { x = 2 y = 2 }
+				
+				ss_heavy_panzer_art = { x = 3 y = 0 }
+				ss_heavy_panzer_art = { x = 3 y = 1 }
+				ss_heavy_panzer_art = { x = 3 y = 2 }
+				ss_motorized_rocket_brigade = { x = 3 y = 3 }
+				
+				ss_panzer_iii_td = { x = 4 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				combat_engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+				anti_tank = { x = 1 y = 4 }
+			}
+		}
+		
+		#UNIT 
+		896 = { #Berlin
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 8 } division_template = \"SS Panzer-Division Das Reich\" start_experience_factor = 0.85"
+				owner = GER
+				#prioritize_location = 
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = ss_pz_division_dasreich
+	}
+}
+#### End Reich-division event-chain ####
+########################################
+#### START LSSAH event chain ####
+country_event = {
+	id = ss_event.664
+	title = ss_event.664.t
+	desc = ss_event.664.d
+	picture = GFX_event_ss_division_lssah
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.664.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "LSSAH Infanterie-Regiment"
+			division_names_group = GER_LSSAH_01
+			is_locked = yes
+			template_counter = 1001
+			priority = 2
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+				
+				ss_artillery_brigade = { x = 1 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+			}
+		}
+		hidden_effect = {
+			#UNIT
+			896 = { #East Berlin
+				create_unit = {
+					division = "division_name = { is_name_ordered = yes name_order = 2 } division_template = \"LSSAH Infanterie-Regiment\" start_experience_factor = 0.9"
+					owner = GER
+					#prioritize_location = 13259
+				}
+			}
+		}
+		#FLAG
+		set_country_flag = LSSAH_regiment_38
+		custom_effect_tooltip = LSSAH_regiment_38_tt
+	}
+}
+### Motorize regiment to mot Inf.-Btl and mot Art.-Btl
+country_event = {
+	id = ss_event.663
+	title = ss_event.663.t
+	desc = ss_event.663.d
+	picture = GFX_report_event_ss_lssah_regiment_38
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.663.a
+		
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = { 
+				division_template = "LSSAH Infanterie-Regiment" 
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "LSSAH Infanterie-Regiment (mot.)"
+			division_names_group = GER_LSSAH_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1001
+			
+			regiments = {
+				ss_motorized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 1 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				combat_engineer = { x = 0 y = 2 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				signal_company = { x =1 y = 3 }
+			}
+		}
+		#UNIT 
+		896 = { #East Berlin
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 3 } division_template = \"LSSAH Infanterie-Regiment (mot.)\" start_experience_factor = 0.9"
+				owner = GER
+				#prioritize_location = 
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = LSSAH_regiment_39
+		
+	}
+}
+### early 1940 Expand LSSAH Regt 1 Flak Batterie, 1 more Arty btl, 1 Assaultgun btl
+country_event = {
+	id = ss_event.662
+	title = ss_event.662.t
+	desc = ss_event.662.d
+	picture = GFX_report_event_ss_lssah_regiment_39
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.662.a
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = { 
+				division_template = "LSSAH Infanterie-Regiment (mot.)" 
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "LSSAH Infanterie-Regiment (mot.) 1940"
+			division_names_group = GER_LSSAH_01
+			is_locked = yes
+			template_counter = 1001
+			priority = 2
+			
+			regiments = {
+				ss_motorized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 1 y = 0 }
+				ss_artillery_brigade_mot = { x = 1 y = 1 }
+				ss_panzer_iii_td = { x = 1 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				combat_engineer = { x = 0 y = 2 }
+				maintenance_company = { x = 0 y = 3 }
+				logistics_company = { x = 0 y = 4 }
+				
+				field_hospital = { x = 1 y = 0 }
+				signal_company = { x = 1 y = 1 }
+			}
+		}
+
+		#UNIT 
+		57 = { #East Berlin
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 3 } division_template = \"LSSAH Infanterie-Regiment (mot.) 1940\" start_experience_factor = 0.9"
+				owner = GER
+				prioritize_location = 6622
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = LSSAH_regiment_40
+	}
+}
+### ss_event.661 June 1940 Expand LSSAH Rgt to LSSAH Brigade (2 mot-Inf.-Rgt)
+country_event = {
+	id = ss_event.661
+	title = ss_event.661.t
+	desc = ss_event.661.d
+	picture = GFX_report_event_ss_lssah_regiment_40
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.661.a
+		
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = { 
+				division_template = "LSSAH Infanterie-Regiment (mot.) 1940" 
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "LSSAH Infanterie-Brigade (mot.)"
+			division_names_group = GER_LSSAH_01
+			is_locked = yes
+			template_counter = 1002
+			priority = 2
+			
+			regiments = {
+				ss_motorized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_motorized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				
+				ss_artillery_brigade_mot = { x = 2 y = 0 }
+				ss_artillery_brigade_mot = { x = 2 y = 1 }
+				
+				ss_panzer_iii_td = { x = 3 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				combat_engineer = { x = 0 y = 2 }
+				recon_mot = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 4 }
+				
+				logistics_company = { x = 1 y = 0 }
+				field_hospital = { x = 1 y = 1 }
+				signal_company = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+			}
+		}
+
+		#UNIT 
+		28 = { #Metz
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 4 } division_template = \"LSSAH Infanterie-Brigade (mot.)\" start_experience_factor = 0.9"
+				owner = GER
+				prioritize_location = 9559
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = LSSAH_brigade_40
+	}
+}
+### ss_event.660 Febr 1942 Expand LSSAH Brigade to Division 
+### adding 1 Pz-Rgt (2xPZ III and 1 PzIV Btl),1 Recon AC Comp.
+country_event = {
+	id = ss_event.660
+	title = ss_event.660.t
+	desc = ss_event.660.d
+	picture = GFX_report_event_ss_lssah_div_mot_42
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.660.a
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = { 
+				division_template = "LSSAH Infanterie-Brigade (mot.)" 
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "LSSAH Infanterie-Division (mot.)"
+			division_names_group = GER_LSSAH_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1003
+			
+			regiments = {
+				ss_motorized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_motorized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_panzer_iii = { x = 2 y = 0 }
+				ss_panzer_iii = { x = 2 y = 1 }
+				ss_panzer_iv = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+				
+				ss_panzer_iii_td = { x = 4 y = 0 }
+				ss_anti_tank_brigade_mot =  { x = 4 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				combat_engineer = { x = 0 y = 2 }
+				recon_ac = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 4 }
+				logistics_company = { x = 1 y = 0 }
+				field_hospital = { x = 1 y = 1 }
+				signal_company = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+			}
+		}
+
+		#UNIT 
+		843 = { #Prague
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 5 } division_template = \"LSSAH Infanterie-Division (mot.)\" start_experience_factor = 0.9"
+				owner = GER 
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = LSSAH_mot_div_42
+	}
+}
+### ss_event.659 Nov 1942 Expand LSSAH Division to Pzgren-Div
+country_event = {
+	id = ss_event.659
+	title = ss_event.659.t
+	desc = ss_event.659.d
+	picture = GFX_report_event_ss_lssah_pzgrendiv_42
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = ss_event.659.a
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = { 
+				division_template = "LSSAH Infanterie-Division (mot.)" 
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "LSSAH Panzergrenadier-Division"
+			division_names_group = GER_LSSAH_01
+			is_locked = yes
+			template_counter = 1004
+			priority = 2
+			
+			regiments = {
+				ss_motorized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_motorized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_panzer_iii = { x = 2 y = 0 }
+				ss_panzer_iii = { x = 2 y = 1 }
+				ss_panzer_iv = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+				ss_panzer_iii_td = { x = 3 y = 3 }
+				
+				ss_anti_tank_brigade_mot =  { x = 4 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				combat_engineer = { x = 0 y = 2 }
+				recon_ac = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 4 }
+				logistics_company = { x = 1 y = 0 }
+				field_hospital = { x = 1 y = 1 }
+				signal_company = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+			}
+		}
+
+		#UNIT 
+		916 = { #Fiume Croatia
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 6 } division_template = \"LSSAH Panzergrenadier-Division\" start_experience_factor = 0.9"
+				owner = GER
+				prioritize_location = 11654
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = LSSAH_pzgren_div_42
+		
+	}
+}
+### ss_event.658 Nov 1942 Refit SS Pzgren-Div LSSAH to SS Pz.-Div LSSAH
+### Change Art-Rgt.(mot to Pz-Art-Rgt. Add 1 SS Rocket-Art-Btl. Move StuG to 5th Rgt
+country_event = {
+	id = ss_event.658
+	title = ss_event.658.t
+	desc = ss_event.658.d
+	picture = GFX_report_event_ss_lssah_pzgrendiv_42
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = ss_event.658.a
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = { 
+				division_template = "LSSAH Panzergrenadier-Division" 
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "LSSAH Panzer-Division"
+			division_names_group = GER_LSSAH_01
+			is_locked = yes
+			template_counter = 1005
+			priority = 2
+			
+			regiments = {
+				ss_panzer_iii = { x = 0 y = 0 }
+				ss_panzer_iv = { x = 0 y = 1 }
+				ss_panzer_vi = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_mechanized = { x = 1 y = 1 }
+				ss_mechanized = { x = 1 y = 2 }
+				
+				ss_mechanized = { x = 2 y = 0 }
+				ss_mechanized = { x = 2 y = 1 }
+				ss_mechanized = { x = 2 y = 2 }
+				
+				ss_heavy_panzer_art = { x = 3 y = 0 }
+				ss_heavy_panzer_art = { x = 3 y = 1 }
+				ss_heavy_panzer_art = { x = 3 y = 2 }
+				ss_motorized_rocket_brigade = { x = 3 y = 3 }
+				
+				ss_panzer_iii_td = { x = 4 y = 0 }
+				ss_anti_tank_brigade_mot =  { x = 4 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				combat_engineer = { x = 0 y = 2 }
+				recon_ac = { x = 0 y = 3 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				signal_company = { x = 1 y = 3 }
+				anti_air = { x = 1 y = 4 }
+			}
+		}
+
+		#UNIT 
+		916 = { #Fiume Croatia
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 6 } division_template = \"LSSAH Panzer-Division\" start_experience_factor = 0.9"
+				owner = GER
+				prioritize_location = 11654
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = LSSAH_pz_div_43
+	}
+}
+###############################
+#### End LSSAH event-chain ####
+###############################
+########################################
+#### Totenkopf-division event-chain ####
+country_event = {
+	id = ss_event.650
+	title = ss_event.650.t
+	desc = ss_event.650.d
+	picture = GFX_report_event_totenkopf_inf_division
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.650.a
+		ai_chance = { factor = 100 }
+		
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = { 
+				division_template = "SS-Totenkopf"
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS-Division (mot.) Totenkopf" 			
+			division_names_group = GER_TK_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1016
+			
+			regiments = {
+				ss_motorized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_motorized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_motorized = { x = 2 y = 0 }
+				ss_motorized = { x = 2 y = 1 }
+				ss_motorized = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				combat_engineer = { x = 0 y = 2 }
+				artillery_heavy = { x = 0 y = 3 }
+				anti_tank = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				signal_company = { x = 1 y = 3 }
+			}
+		}
+		
+		#UNIT 
+		52 = { #Oberbayern
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 13 } division_template = \"SS-Division (mot.) Totenkopf\" start_experience_factor = 0.25 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 3705
+			}
+		}
+		
+		#FLAG
+		set_country_flag = totenkopf_div_39
+		
+	}
+}
+country_event = {
+	id = ss_event.651
+	title = ss_event.651.t
+	desc = ss_event.651.d
+	picture = GFX_report_event_totenkopf_pzgren_division
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.651.b
+		
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = { 
+				division_template = "SS-Division (mot.) Totenkopf" 
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Panzergrenadier-Division Totenkopf" 			
+			division_names_group = GER_TK_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1017
+			
+			regiments = {
+				ss_mechanized = { x = 0 y = 0 }
+				ss_mechanized = { x = 0 y = 1 }
+				ss_mechanized = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_mechanized = { x = 1 y = 1 }
+				ss_mechanized = { x = 1 y = 2 }
+				
+				ss_panzer_iii = { x = 2 y = 0 }
+				ss_panzer_iv = { x = 2 y = 1 }
+				ss_panzer_vi = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+				
+				ss_panzer_iii_td = { x = 4 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_ac = { x = 0 y = 1 }
+				combat_engineer = { x = 0 y = 2 }
+				artillery_heavy = { x = 0 y = 3 }
+				anti_tank = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				signal_company = { x = 1 y = 3 }
+				anti_air = { x = 1 y = 4 }
+			}
+		}
+		
+		#UNIT 
+		23 = { #Poitou
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 14 } division_template = \"SS Panzergrenadier-Division Totenkopf\" start_experience_factor = 0.75 start_equipment_factor = 0.8"
+				owner = GER
+				prioritize_location = 595
+			}
+		}
+		
+		#FLAG
+		set_country_flag = totenkopf_pzgren_div_42
+	}
+}
+country_event = {
+	id = ss_event.652
+	title = ss_event.652.t
+	desc = ss_event.652.d
+	picture = GFX_report_event_totenkopf_pz_division
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.652.b
+		
+		#CLEAR OLD TEMPLATE
+		hidden_effect = {
+			delete_unit_template_and_units = { 
+				division_template = "SS Panzergrenadier-Division Totenkopf"
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Panzer-Division Totenkopf" 			
+			division_names_group = GER_TK_01
+			priority = 2
+			template_counter = 1018
+			
+			regiments = {
+				ss_panzer_iii = { x = 0 y = 0 }
+				ss_panzer_iv = { x = 0 y = 1 }
+				ss_panzer_v = { x = 0 y = 2 }
+				ss_panzer_vi = { x = 0 y = 3 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_mechanized = { x = 1 y = 1 }
+				ss_mechanized = { x = 1 y = 2 }
+				
+				ss_mechanized = { x = 2 y = 0 }
+				ss_mechanized = { x = 2 y = 1 }
+				ss_mechanized = { x = 2 y = 2 }
+				
+				ss_heavy_panzer_art = { x = 3 y = 0 }
+				ss_heavy_panzer_art = { x = 3 y = 1 }
+				ss_heavy_panzer_art = { x = 3 y = 2 }
+				
+				ss_panzer_iii_td = { x = 4 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_ac = { x = 0 y = 1 }
+				combat_engineer = { x = 0 y = 2 }
+				artillery_heavy = { x = 0 y = 3 }
+				anti_tank = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				signal_company = { x = 1 y = 3 }
+				anti_air_heavy = { x = 1 y = 4 }
+			}
+		}
+		
+		#UNIT 
+		52 = { #Oberbayern
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 15 } division_template = \"SS Panzer-Division Totenkopf\" start_experience_factor = 0.75 start_equipment_factor = 0.8"
+				owner = GER
+				prioritize_location = 3705
+			}
+		}
+		
+		#FLAG
+		set_country_flag = totenkopf_pz_div_44
+	}
+}
+#### End Totenkopf-division event-chain ####
+#### Begin Wiking-Division event-chain #####
+# ss_event.671
+# SS Wiking Regiments
+country_event = {
+	id = ss_event.671
+	title = ss_event.671.t
+	desc = ss_event.671.d
+	picture = GFX_event_ss_division_wiking
+	
+	is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = ss_event.671.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Regiment 'Nordland'"
+			division_names_group = GER_WK_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1019
+			
+			regiments = {
+				ss_motorized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 1 y = 0 }
+			}
+		}
+		division_template = {
+			name = "SS Regiment 'Westland'"
+			division_names_group = GER_WK_01
+			is_locked = yes
+			priority = 2
+			template_counter = 1020
+			
+			regiments = {
+				ss_motorized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 1 y = 0 }
+			}
+		}
+		#UNIT 
+		50 = { #Württemberg
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 1 } division_template = \"SS Regiment 'Nordland'\" start_experience_factor = 0.35 start_equipment_factor = 0.75"
+				owner = GER
+				prioritize_location = 694 #Truppenübunsplatz Heuburg
+			}
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 2 } division_template = \"SS Regiment 'Westland'\" start_experience_factor = 0.35 start_equipment_factor = 0.75"
+				owner = GER
+				prioritize_location = 694 #Truppenübunsplatz Heuburg
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = ss_wiking_regts
+	}
+}
+# SS Wiking Mot.Inf.-Division
+country_event = {
+	id = ss_event.673
+	title = ss_event.673.t
+	desc = ss_event.673.d
+	picture = GFX_event_ss_division_wiking
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.673.a
+		ai_chance = { factor = 100 }
+		
+		#CLEAR OLD TEMPLATE
+		delete_unit_template_and_units = {
+			division_template = "SS Regiment 'Nordland'"
+			division_template = "SS Regiment 'Westland'"
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Division(mot) 'Wiking'"
+			division_names_group = GER_WK_01
+			is_locked = yes   #only 1 allowed
+			priority = 2
+			template_counter = 1021
+			
+			regiments = {
+				ss_motorized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_motorized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_motorized = { x = 2 y = 0 }
+				ss_motorized = { x = 2 y = 1 }
+				ss_motorized = { x = 2 y = 2 }
+				
+				ss_panzer_spaa = { x = 3 y = 0 }
+				
+				ss_artillery_brigade_mot = { x = 4 y = 0 }
+				ss_artillery_brigade_mot = { x = 4 y = 1 }
+				ss_artillery_brigade_mot = { x = 4 y = 2 }
+				ss_artillery_brigade_mot = { x = 4 y = 3 }
+				ss_anti_tank_brigade = { x = 4 y = 4 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air_heavy = { x = 1 y = 3 }
+			}
+		}
+		
+		#UNIT 
+		50 = { #Württemberg
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 3 } division_template = \"SS Division(mot) 'Wiking'\" start_experience_factor = 0.8 start_equipment_factor = 0.8"
+				owner = GER
+				prioritize_location = 694 #Truppenübunsplatz Heuburg
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = ss_wiking_mot
+	}
+}
+# SS Wiking Pzgren.-Division
+country_event = {
+	id = ss_event.669
+	title = ss_event.669.t
+	desc = ss_event.669.d
+	picture = GFX_event_ss_division_wiking
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.669.a
+		ai_chance = { factor = 100 }
+		
+		#CLEAR OLD TEMPLATE
+		delete_unit_template_and_units = {
+			division_template = "SS Division(mot) 'Wiking'"
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Pzgren-Division 'Wiking'"
+			division_names_group = GER_WK_01
+			is_locked = yes   #only 1 allowed
+			priority = 2
+			template_counter = 1022
+			
+			regiments = {
+				ss_mechanized = { x = 0 y = 0 }
+				ss_mechanized  = { x = 0 y = 1 }
+				ss_mechanized  = { x = 0 y = 2 }
+				
+				ss_mechanized  = { x = 1 y = 0 }
+				ss_mechanized  = { x = 1 y = 1 }
+				ss_mechanized  = { x = 1 y = 2 }
+				
+				ss_mechanized  = { x = 2 y = 0 }
+				ss_mechanized  = { x = 2 y = 1 }
+				ss_mechanized  = { x = 2 y = 2 }
+				
+				ss_panzer_iii = { x = 3 y = 0 }
+				ss_panzer_iv = { x = 3 y = 1 }
+				ss_panzer_spaa = { x = 3 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 4 y = 0 }
+				ss_artillery_brigade_mot = { x = 4 y = 1 }
+				ss_artillery_brigade_mot = { x = 4 y = 2 }
+				ss_artillery_brigade_mot = { x = 4 y = 3 }
+				ss_anti_tank_brigade = { x = 4 y = 4 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air_heavy = { x = 1 y = 3 }
+			}
+		}
+		
+		#UNIT 
+		50 = { #Württemberg
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 4 } division_template = \"SS Pzgren-Division('Wiking'\" start_experience_factor = 0.8 start_equipment_factor = 0.8"
+				owner = GER
+				prioritize_location = 694 #Truppenübunsplatz Heuburg
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = ss_wiking_pzgren
+	}
+}
+# SS Wiking Pz.-Division
+country_event = {
+	id = ss_event.670
+	title = ss_event.670.t
+	desc = ss_event.670.d
+	picture = GFX_event_ss_division_wiking
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.670a
+		ai_chance = { factor = 100 }
+		
+		#CLEAR OLD TEMPLATE
+		delete_unit_template_and_units = {
+			division_template = "SS Pzgren-Division 'Wiking'"
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Pz-Division 'Wiking'"
+			division_names_group = GER_WK_01
+			is_locked = yes   #only 1 allowed
+			priority = 2
+			template_counter = 1023
+			
+			regiments = {
+				ss_mechanized = { x = 0 y = 0 }
+				ss_mechanized  = { x = 0 y = 1 }
+				ss_mechanized  = { x = 0 y = 2 }
+				
+				ss_mechanized  = { x = 1 y = 0 }
+				ss_mechanized  = { x = 1 y = 1 }
+				ss_mechanized  = { x = 1 y = 2 }
+				
+				ss_mechanized  = { x = 2 y = 0 }
+				ss_mechanized  = { x = 2 y = 1 }
+				ss_mechanized  = { x = 2 y = 2 }
+				
+				ss_panzer_iii = { x = 3 y = 0 }
+				ss_panzer_iv = { x = 3 y = 1 }
+				ss_panzer_spaa = { x = 3 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 4 y = 0 }
+				ss_artillery_brigade_mot = { x = 4 y = 1 }
+				ss_artillery_brigade_mot = { x = 4 y = 2 }
+				ss_artillery_brigade_mot = { x = 4 y = 3 }
+				ss_anti_tank_brigade = { x = 4 y = 4 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air_heavy = { x = 1 y = 3 }
+			}
+		}
+		
+		#UNIT 
+		50 = { #Württemberg
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 4 } division_template = \"SS Division(Pzgren) 'Wiking'\" start_experience_factor = 0.8 start_equipment_factor = 0.8"
+				owner = GER
+				prioritize_location = 694 #Truppenübunsplatz Heuburg
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = ss_wiking_pzgren
+	}
+}
+# 5. SS Pz-Division Wiking
+country_event = {
+	id = ss_event.680
+	title = ss_event.680.t
+	desc = ss_event.680.d
+	picture = GFX_ss_division_wiking
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.680.a
+		ai_chance = { factor = 100 }
+		
+		#CLEAR OLD TEMPLATE
+		delete_unit_template_and_units = {
+			division_template = "SS Pzgren-Division 'Wiking'"
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Pz-Division 'Wiking'"
+			division_names_group = GER_WK_01
+			is_locked = yes   #only 1 allowed
+			priority = 2
+			template_counter = 1022
+			
+			regiments = {
+				ss_panzer_iii = { x = 0 y = 0 }
+				ss_panzer_iv = { x = 0 y = 1 }
+				ss_panzer_v = { x = 0 y = 2 }
+				ss_panzer_spaa = { x = 0 y = 3 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_mechanized  = { x = 1 y = 1 }
+				ss_mechanized  = { x = 1 y = 2 }
+				
+				ss_mechanized  = { x = 2 y = 0 }
+				ss_mechanized  = { x = 2 y = 1 }
+				ss_mechanized  = { x = 2 y = 2 }
+				
+				ss_mechanized  = { x = 3 y = 0 }
+				ss_mechanized  = { x = 3 y = 1 }
+				ss_mechanized  = { x = 3 y = 2 }
+				
+				ss_heavy_panzer_art = { x = 4 y = 0 }
+				ss_heavy_panzer_art = { x = 4 y = 1 }
+				ss_heavy_panzer_art = { x = 4 y = 2 }
+				ss_heavy_panzer_art = { x = 4 y = 3 }
+				ss_anti_tank_brigade = { x = 4 y = 4 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air_heavy = { x = 1 y = 3 }
+			}
+		}
+		
+		#UNIT 
+		50 = { #Württemberg
+			create_unit = {
+				division = "division_name = { is_name_ordered = yes name_order = 5 } division_template = \"SS Pz-Division 'Wiking'\" start_experience_factor = 0.85 start_equipment_factor = 0.85"
+				owner = GER
+				prioritize_location = 694 #Truppenübunsplatz Heuburg
+			}
+		}
+		
+		#FLAG 
+		set_country_flag = ss_wiking_pz
+	}
+}
+### UNUSED
+country_event = {
+	id = ss_event.672
+	title = ss_event.672.t
+	desc = ss_event.672.d
+	picture = GFX_report_event_german_soldiers_in_line
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.672.a
+		hidden_effect = {
+			load_oob = "GER_Polizei"	# Polizei Division
+			#set_country_flag = 
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+### UNUSED
+# Schutzstaffel_expansion
+country_event = {
+	id = ss_event.674
+	title = ss_event.674.t
+	desc = ss_event.674.d
+	picture = GFX_news_event_german_inspect_troops
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.674.a
+		ai_chance = { factor = 100 }
+		
+		hidden_effect = {
+			load_oob = "GER_Himmler_HQ"
+			#set_country_flag = 
+		}
+		#create_field_marshal = {
+		#	name = "Himmler, Heinrich"	#1936
+		#	picture = "Portrait_Germany_Heinrich_Himmler.dds"
+		#	traits = { waffen_ss_officer  Mindless_General }
+		#	skill = 1
+		#	id = 209
+		#}
+		create_corps_commander = {
+			name = "Vahl, Herbert-Ernst"	#1943
+			picture = "Portrait_Germany_Vahl.dds"
+			traits = { waffen_ss_officer panzer_leader offensive_doctrine_CC Competent_General}
+			skill = 3
+			id = 210
+		}
+		create_corps_commander = {
+			name = "Lippert, Michael"	#1942
+			picture = "Portrait_Germany_generic_ss_2.dds"
+			traits = { waffen_ss_officer Decent_General}
+			skill = 2
+			id = 211
+		}
+		create_corps_commander = {
+			name = "Fegelein, Hans Hermann"
+			picture = "Portrait_Germany_Hans_Georg_Otto_Hermann_Fegelein.dds"
+			traits = { waffen_ss_officer defensive_doctrine_CC Decent_General}
+			skill = 2
+			id = 212
+		}
+		create_corps_commander = {
+			name = "Dirlewanger, Oskar"	#1944
+			picture = "Portrait_Germany_Dirlewanger.dds"
+			traits = { waffen_ss_officer Mindless_General }
+			skill = 1
+			id = 213
+		}
+		create_corps_commander = {
+			name = "Gille, Herbert Otto"
+			picture = "Portrait_Germany_Herbert_Otto_Wilhelm_Hermann_Gille.dds"
+			traits = { waffen_ss_officer panzer_leader defensive_doctrine_CC Competent_General}
+			skill = 3
+			id = 214
+		}
+		create_corps_commander = {
+			name = "Lammerding, Heinz"	#1942
+			picture = "Portrait_Germany_Lammerding.dds"
+			traits = { waffen_ss_officer Competent_General  }
+			skill = 2
+			id = 215
+		}
+		create_corps_commander = {
+			name = "Meyer, Kurt"
+			picture = "Portrait_Germany_Kurt_Meyer.dds"
+			traits = { waffen_ss_officer panzer_leader defensive_doctrine_CC inspirational_leader}
+			skill = 3
+			id = 216
+		}
+		create_corps_commander = {
+			name = "Peiper, Joachim"	#1944
+			picture = "Portrait_Germany_Peiper.dds"
+			traits = { waffen_ss_officer panzer_leader gung_ho_general }
+			skill = 2
+			id = 217
+		}
+		create_corps_commander = {
+			name = "Priess, Herman"	#1943
+			picture = "Portrait_Germany_Priess.dds"
+			traits = { waffen_ss_officer panzer_leader defensive_doctrine_CC Competent_General}
+			skill = 3
+			id = 218
+		}
+		create_corps_commander = {
+			name = "Simon, Max"	#1942
+			picture = "Portrait_Germany_Simon.dds"
+			traits = { waffen_ss_officer offensive_doctrine_CC Competent_General}
+			skill = 3
+			id = 219
+		}
+		create_corps_commander = {
+			name = "Witt, Fritz"	#1943
+			picture = "Portrait_Germany_Witt.dds"
+			traits = { waffen_ss_officer panzer_leader Competent_General}
+			skill = 3
+			id = 220
+		}
+	}
+}
+
+# SS junkerschulen
+country_event = {
+	id = ss_event.679
+	title = ss_event.679.t
+	desc = ss_event.679.d
+	picture = GFX_report_event_ss_junkerschulen_bt
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.679.a
+		ai_chance = { factor = 100 }
+		add_political_power = 150
+		create_corps_commander = {
+			name = "Mülverstedt, Arthur"	#1939
+			picture = "Portrait_Germany_Mulverstedt.dds"
+			traits = { waffen_ss_officer  Incompetent_General}
+			skill = 1
+			id = 221
+		}
+		create_corps_commander = {
+			name = "Bittrich, Wilhelm"	#1940
+			picture = "Portrait_Germany_Bittrich.dds"
+			traits = { waffen_ss_officer panzer_leader defensive_doctrine_CC Terrible_General }
+			skill = 3
+			id = 222
+		}
+		create_corps_commander = {
+			name = "Kleinheisterkamp, Matthias"	#1941
+			picture = "Portrait_Germany_Kleinheisterkamp.dds"
+			traits = { waffen_ss_officer offensive_doctrine_CC Decent_General}
+			skill = 4
+			id = 223
+		}
+		create_corps_commander = {
+			name = "Bach-Zelewski, Erich von dem"	#1941
+			picture = "Portrait_Germany_Zelewski.dds"
+			traits = { waffen_ss_officer offensive_doctrine_CC Terrible_General}
+			skill = 1
+			id = 224
+		}
+		create_corps_commander = {
+			name = "Baum, Otto"	#1940
+			picture = "Portrait_Germany_Otto_Baum.dds"
+			traits = { waffen_ss_officer offensive_doctrine_CC defensive_doctrine_CC Decent_General}
+			skill = 3
+			id = 225
+		}
+		create_corps_commander = {
+			name = "Wünnenberg, Alfred Bernhard"
+			picture = "Portrait_Germany_Alfred_Bernhard_Wernnenberg.dds"
+			traits = { waffen_ss_officer panzer_leader Decent_General}
+			skill = 3
+			id = 226
+		}
+		
+		52 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+### UNUSED
+
+# Ahistorical SS Choice # enables buildable units
+country_event = {
+	id = ss_event.675
+	title = ss_event.675.t
+	desc = ss_event.675.d
+	picture = GFX_report_event_waffen_ss_officer_ahist
+
+	is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = ss_event.675.a
+		
+		ai_chance = { factor = 1 }
+		hidden_effect = {
+			load_oob = "unlock_ss_infantry"
+			load_oob = "unlock_ss_garrison"
+			load_oob = "GER_SS_Start"
+			set_technology = { ss_panzer_i_tech = 1 }
+			set_technology = { ss_panzer_ii_tech = 1 }
+		}
+		set_country_flag = ahistorical_ss
+	}
+}
+### UNUSED
+
+# GER_LSSAH_division # SS 1 Division (1939)
+country_event = {
+	id = ss_event.676
+	title = ss_event.676.t
+	desc = ss_event.676.d
+	picture = GFX_event_ss_division_lssah1
+
+	is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = ss_event.676.a
+		set_country_flag = division_LSSAH_39
+		hidden_effect = {
+			load_oob = "GER_LSSAH_inf_division_39"
+		}
+		ai_chance = { factor = 1 }
+	}
+}
+### UNUSED
+
+#GER_Das_Reich_division # SS 2 Division (1940)
+country_event = {
+	id = ss_event.677
+	title = ss_event.677.t
+	desc = ss_event.677.d
+	picture = GFX_event_armor_producer
+
+	is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = ss_event.677.a
+		set_country_flag = division_dasreich_40
+		hidden_effect = {
+			load_oob = "GER_Das_Reich_division"
+			
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+### UNUSED
+
+#GER_Totenkopf_division # SS 3 Division (1941)
+country_event = {
+	id = ss_event.678
+	title = ss_event.678.t
+	desc = ss_event.678.d
+	picture = GFX_report_event_totenkopf
+
+	is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = ss_event.678.a
+		set_country_flag = division_totenkopf_41
+		hidden_effect = {
+			load_oob = "GER_Totenkopf_division"
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+country_event = {
+	id = ss_event.681
+	title = ss_event.681.t
+	desc = ss_event.681.d
+	picture = GFX_event_ger_ss_panzer_iii
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = GER
+		has_tech = tech_panzer_iii_equipment_1
+		has_country_flag = SS_Start
+		check_variable = { global.days_passed > 1613 } # 1940-06-01
+	}
+	
+	option = {
+		name = ss_event.681.b
+		ai_chance = { factor = 100 }
+		
+		set_country_flag = ss_panzer_iii_tech
+		set_technology = { ss_panzer_iii_tech = 1 }	
+	}
+}
+country_event = {
+	id = ss_event.682
+	title = ss_event.682.t
+	desc = ss_event.682.d
+	picture = GFX_event_ger_ss_panzer_iv
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = GER
+		has_tech = tech_panzer_iv_equipment_1
+		has_country_flag = SS_Start
+		check_variable = { global.days_passed > 1978 } # 1941-06-01
+	}
+	option = {
+		name = ss_event.682.b
+		ai_chance = { factor = 100 }
+		
+		set_country_flag = ss_panzer_iv_tech
+		set_technology = { ss_panzer_iv_tech = 1 }	
+	}
+}
+country_event = {
+	id = ss_event.683
+	title = ss_event.683.t
+	desc = ss_event.683.d
+	picture = GFX_event_ger_ss_panzer_v
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = GER
+		has_tech = tech_panzer_v_equipment_1
+		has_country_flag = SS_Start
+		check_variable = { global.days_passed > 2343 } # 1942-06-01
+	}
+	
+	option = {
+		name = ss_event.683.b
+		ai_chance = { factor = 100 }
+		
+		set_country_flag = ss_panzer_v_tech
+		set_technology = { ss_panzer_v_tech = 1 }
+	}
+}
+country_event = {
+	id = ss_event.684
+	title = ss_event.684.t
+	desc = ss_event.684.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.684.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		}
+		division_template = {
+			name = "SS Infanterie" 			
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+				
+				ss_infantry = { x = 1 y = 0 }
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+				
+				ss_infantry = { x = 2 y = 0 }
+				ss_infantry = { x = 2 y = 1 }
+				ss_infantry = { x = 2 y = 2 }
+				
+				ss_artillery_brigade = { x = 3 y = 0 }
+				ss_artillery_brigade = { x = 3 y = 1 }
+				ss_artillery_brigade = { x = 3 y = 2 }	
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 4 }
+				logistics_company = { x = 1 y = 0 }
+				field_hospital = { x = 1 y = 1 }
+			}
+			
+			priority = 0
+		}
+		
+		#FLAG 
+		set_country_flag = focus_foreign_SS_units_yes
+		
+		#MISC 
+		add_ideas = GER_foreign_SS_unit_recruitment
+		add_manpower = 500000
+	}
+}
+country_event = {
+	id = ss_event.685
+	title = ss_event.685.t
+	desc = ss_event.685.d
+	picture = GFX_event_foreign_SS_units_recruitment
+	
+	fire_only_once = yes
+	
+	trigger = {
+			check_variable = { global.days_passed > 2070 } # 1941-09-01
+		930 = { is_controlled_by = GER }
+		has_country_flag = focus_foreign_SS_units_yes
+		
+		OR = {
+			NOT = { has_country_flag = focus_foreign_SS_units_no }
+			NOT = { has_country_flag = ss_division_nord_no }
+			NOT = { has_country_flag = ss_division_nord }
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = ss_event.685.a
+		set_country_flag = ss_division_nord
+		
+		hidden_effect = {
+			load_oob = "GER_Nord"	# SS-Division Nord
+		}
+		
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = ss_event.685.b
+		set_country_flag = ss_division_nord_no
+		
+		ai_chance = { factor = 0 }
+	}
+}
+country_event = {
+	id = ss_event.686
+	title = ss_event.686.t
+	desc = { 
+		text = ss_event.686.desc.a
+		trigger = { has_country_flag = SS_TV }
+	}
+	desc = { 
+		text = ss_event.686.desc.b
+		trigger = { has_country_flag = ahistorical_SS }
+	}
+	desc = { 
+		text = ss_event.686.desc.c
+		trigger = { not = {85 = { is_controlled_by = GER }}}
+	}
+	picture = GFX_event_heimwehr_danzig
+	
+	fire_only_once = yes
+	
+	trigger = {
+		85 = { is_controlled_by = GER }
+		has_country_flag = focus_schutzstaffel
+		#is_historical_focus_on = yes
+		
+		OR = {
+			NOT = { has_country_flag = ss_danzig_heimwehr_hist }
+			NOT = { has_country_flag = ss_danzig_heimwehr_ahist }
+			NOT = { has_country_flag = ss_danzig_heimwehr_no }
+		}
+	}
+	
+	option = {
+		name = ss_event.686.a
+		trigger = {
+			has_country_flag = SS_TV
+		}
+
+		set_country_flag = ss_danzig_heimwehr_hist
+		
+		hidden_effect = {
+			load_oob = "GER_SS_Danzig"	# Danzig Heimwehr
+		}
+		
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = ss_event.686.b
+		trigger = { 
+			has_country_flag = ahistorical_SS
+		}
+		
+		set_country_flag = ss_danzig_heimwehr_ahist
+		
+		hidden_effect = {
+			load_oob = "GER_SS_Danzig_ahist"	# Danzig Heimwehr
+		}
+		
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = ss_event.686.c
+		set_country_flag = ss_danzig_heimwehr_no
+		
+		ai_chance = { factor = 0 }
+	}
+}
+# SS junkerschulen
+country_event = {
+	id = ss_event.687
+	title = ss_event.687.t
+	desc = ss_event.687.d
+	picture = GFX_report_event_ss_junkerschulen
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.687.a
+		add_political_power = 75
+		
+		create_corps_commander = {
+			name = "Skorzeny, Otto"	#1944
+			picture = "Portrait_Germany_Skorzeny.dds"
+			traits = { waffen_ss_officer commando gung_ho_general }
+			skill = 2
+			id = 227
+		}
+		create_corps_commander = {
+			name = "Meyszner, August"	#1938
+			picture = "Portrait_Austrian_August_Meyszner.dds"
+			traits = { waffen_ss_officer Incompetent_General}
+			skill = 1
+			id = 228
+		}
+		
+		152  = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+country_event = {
+	id = ss_event.688
+	title = ss_event.688.t
+	desc = ss_event.688.d
+	picture = GFX_report_event_ger_ss_panzer_v
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = GER
+		has_tech = tech_heavy_panzer_equipment_2
+		not = { has_country_flag = ss_panzer_vi_tech }
+		or = {
+			has_country_flag = ahistorical_ss
+			AND = { 
+			check_variable = { global.days_passed > 2557 } # 1943-01-01
+				has_country_flag = SS_Start
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = ss_event.688.a
+		set_country_flag = ss_panzer_vi_tech
+		trigger = {
+			has_country_flag = ahistorical_ss
+		}
+		hidden_effect = {
+			set_technology = { ss_panzer_v_tech = 1 }
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = ss_event.688.b
+		set_country_flag = ss_panzer_vi_tech
+		trigger = {
+			has_country_flag = SS_Start
+		}
+		hidden_effect = {
+			set_technology = { ss_panzer_vi_tech = 1 }
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+country_event = {
+	id = ss_event.691
+	title = ss_event.691.t
+	desc = ss_event.691.d
+	picture = GFX_event_ger_ss_panzer_iii
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = GER
+		has_tech = subtech_panzer_iii_td_equipment_1
+		has_country_flag = SS_Start
+		check_variable = { global.days_passed > 1461 } # 1940-01-01
+	}
+	
+	option = {
+		name = ss_event.691.a
+		ai_chance = { factor = 100 }
+		
+		set_country_flag = ss_panzer_iii_td_flag
+		set_technology = { ss_panzer_iii_td_tech = 1 }
+	}
+}
+country_event = {
+	id = ss_event.693
+	title = ss_event.693.t
+	desc = ss_event.693.d
+	picture = GFX_event_ger_ss_panzer_iii
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = GER
+		has_tech = mechanised_infantry2
+		check_variable = { global.days_passed > 1826 } # 1941-01-01
+	}
+	
+	option = {
+		name = ss_event.693.a
+		ai_chance = { factor = 100 }
+		
+		set_technology = { ss_mechinfantry_tech = 1 }
+	}
+}
+country_event = {
+	id = ss_event.694
+	title = ss_event.694.t
+	desc = ss_event.694.d
+	picture = GFX_event_ger_panzerjagd_lt
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = GER
+		check_variable = { global.days_passed > 731 } # 1938-01-01
+		has_country_flag = SS_start
+		has_tech = subtech_light_panzer_td_equipment_1
+	}
+	
+	option = {
+		name = ss_event.694.a
+		ai_chance = { factor = 100 }
+		
+		set_technology = { ss_light_panzer_td_tech = 1 }
+	}
+}
+
+country_event = {
+	id = ss_event.695
+	title = ss_event.695.t
+	desc = ss_event.695.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.695.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Kavallerie-Brigade"	
+			priority = 0
+			
+			regiments = {
+				ss_cavalry = { x = 0 y = 0 }				
+				ss_cavalry = { x = 0 y = 1 }
+				ss_cavalry = { x = 0 y = 2 }
+
+				ss_cavalry = { x = 1 y = 0 }				
+				ss_cavalry = { x = 1 y = 1 }
+				ss_cavalry = { x = 1 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}	
+		}
+		
+		#UNIT 
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"SS-Kavallerie Brigade\" division_template = \"SS Kavallerie-Brigade\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+		
+		hidden_effect = {
+			set_technology = { ss_cavalry_tech = 1 }
+		}
+		
+	}
+
+}
+country_event = {
+	id = ss_event.696
+	title = ss_event.696.t
+	desc = ss_event.696.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.696.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Infanterie-Brigade"
+			priority = 0
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+
+				ss_infantry = { x = 1 y = 0 }				
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+		}
+		
+		#UNIT 
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"1. SS Infanterie-Brigade\" division_template = \"SS Infanterie-Brigade\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+		
+		#FLAG
+		set_country_flag = ss_infantry_brigade
+		
+	}
+	
+}
+country_event = {
+	id = ss_event.697
+	title = ss_event.697.t
+	desc = ss_event.697.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.697.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie-Brigade" } }
+		division_template = {
+			name = "SS Infanterie-Brigade"
+			priority = 0
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+
+				ss_infantry = { x = 1 y = 0 }				
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+		} }
+		
+		#UNIT 
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"2. SS Infanterie-Brigade\" division_template = \"SS Infanterie-Brigade\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+		
+	}
+	
+}
+country_event = {
+	id = ss_event.698
+	title = ss_event.698.t
+	desc = ss_event.698.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ss_event.698.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie-Brigade" } }
+		division_template = {
+			name = "SS Infanterie-Brigade"
+			priority = 0
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+
+				ss_infantry = { x = 1 y = 0 }				
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+		} }
+		
+		#UNIT 
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"SS-Brigade 'Schuldt'\" division_template = \"SS Infanterie-Brigade\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.699
+	title = ss_event.699.t
+	desc = ss_event.699.d
+	picture = GFX_report_event_7th_ss_fre_geb_div_prinz_eugen
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.699.a
+		ai_chance = { factor = 100 }
+		
+		#MISC
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = { has_tech = ss_mountaineers_tech }
+					
+				}
+				set_technology = { ss_mountaineers_tech = 1 }
+			}
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Gebirgsjäger-Division"	
+
+			regiments = {
+				ss_mountaineers = { x = 0 y = 0 }				
+				ss_mountaineers = { x = 0 y = 1 }
+				ss_mountaineers = { x = 0 y = 2 }
+
+				ss_mountaineers = { x = 1 y = 0 }				
+				ss_mountaineers = { x = 1 y = 1 }
+				ss_mountaineers = { x = 1 y = 2 }
+				
+				ss_mountaineers = { x = 2 y = 0 }				
+				ss_mountaineers = { x = 2 y = 1 }
+				ss_mountaineers = { x = 2 y = 2 }
+
+				ss_mountain_artillery_brigade = { x = 3 y = 0 }	
+				ss_mountain_artillery_brigade = { x = 3 y = 1 }	
+				ss_mountain_artillery_brigade = { x = 3 y = 2 }	
+				
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+			}
+			
+			priority = 2
+		}
+		
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"7. SS-Freiwillige Gebirgsjäger-Division 'Prinz Eugen'\" division_template = \"SS Gebirgsjäger-Division\" start_experience_factor = 0.7 start_equipment_factor = 0.8"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.700
+	title = ss_event.700.t
+	desc = ss_event.700.d
+	picture = GFX_report_event_8th_ss_kav_florian_geyer
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.700.a
+		ai_chance = { factor = 100 }
+		
+		#MISC
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = { has_tech = ss_cavalry_tech }
+					
+				}
+				set_technology = { ss_cavalry_tech = 1 }
+			
+			}
+			load_oob = "GER_ss_florian_geyer"
+		}
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Kavallerie-Division"	
+
+			regiments = {
+				ss_cavalry = { x = 0 y = 0 }				
+				ss_cavalry = { x = 0 y = 1 }
+				ss_cavalry = { x = 0 y = 2 }
+
+				ss_cavalry = { x = 1 y = 0 }				
+				ss_cavalry = { x = 1 y = 1 }
+				ss_cavalry = { x = 1 y = 2 }
+
+				ss_cavalry = { x = 2 y = 0 }				
+				ss_cavalry = { x = 2 y = 1 }
+				ss_cavalry = { x = 2 y = 2 }
+
+				ss_artillery_brigade = { x = 3 y = 0 }
+				ss_artillery_brigade = { x = 3 y = 1 }
+				ss_artillery_brigade = { x = 3 y = 2 }	
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_cav = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+			}
+			priority = 0
+			
+		}
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"8. SS-Kavallerie Division 'Florian Geyer'\" division_template = \"SS Kavallerie-Division\" start_experience_factor = 0.7 start_equipment_factor = 0.8"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+		
+		
+	}
+	
+}
+country_event = {
+	id = ss_event.701
+	title = ss_event.701.t
+	desc = ss_event.701.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.701.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie-Brigade" } }
+		division_template = {
+			name = "SS Infanterie-Brigade"
+			priority = 0
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+
+				ss_infantry = { x = 1 y = 0 }				
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"SS Freiwilligen-Korps 'Serbis.'\" division_template = \"SS Infanterie-Brigade\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+	
+}
+country_event = {
+	id = ss_event.702
+	title = ss_event.702.t
+	desc = ss_event.702.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.702.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie-Brigade" } }
+		division_template = {
+			name = "SS Infanterie-Brigade"
+			priority = 0
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+
+				ss_infantry = { x = 1 y = 0 }				
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"SS Waffensturm-Brigade 'RONA.'\" division_template = \"SS Infanterie-Brigade\" start_experience_factor = 0.6 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+	
+}
+country_event = {
+	id = ss_event.703
+	title = ss_event.703.t
+	desc = ss_event.703.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.703.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Panzer-Division"		
+			priority = 2
+			
+			regiments = {
+				ss_panzer_iv = { x = 0 y = 0 }
+				ss_panzer_iv = { x = 0 y = 1 }
+				ss_panzer_v = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_motorized = { x = 2 y = 0 }
+				ss_motorized = { x = 2 y = 1 }
+				ss_motorized = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+				ss_anti_tank_brigade =  { x = 3 y = 3}
+			}
+			
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				combat_engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+				anti_tank = { x = 1 y = 4 }
+			}
+		}
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"9. SS Panzer-Division 'Hohenstaufen'\" division_template = \"SS Panzer-Division\" start_experience_factor = 0.7 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+		
+		#FLAG
+		set_country_flag = SS_Pz_Division
+	}
+
+}
+country_event = {
+	id = ss_event.704
+	title = ss_event.704.t
+	desc = ss_event.704.d
+	picture = GFX_report_event_10th_ss_panzer_div_frundsberg
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.704.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Panzer-Division" } }
+		division_template = {
+			name = "SS Panzer-Division"		
+			priority = 2
+			
+			regiments = {
+				ss_panzer_iv = { x = 0 y = 0 }
+				ss_panzer_iv = { x = 0 y = 1 }
+				ss_panzer_v = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_motorized = { x = 2 y = 0 }
+				ss_motorized = { x = 2 y = 1 }
+				ss_motorized = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+				ss_anti_tank_brigade =  { x = 3 y = 3}
+			}
+			
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				combat_engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+				anti_tank = { x = 1 y = 4 }
+			}
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"10. SS Panzer-Division 'Frundsberg'\" division_template = \"SS Panzer-Division\" start_experience_factor = 0.7 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+		
+	}
+	
+}
+country_event = {
+	id = ss_event.705
+	title = ss_event.705.t
+	desc = ss_event.705.d
+	picture = GFX_report_event_12th_panzer_div_hitlerjugend
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.705.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Panzer-Division II"		
+			priority = 2
+			
+			regiments = {
+				ss_panzer_iv = { x = 0 y = 0 }
+				ss_panzer_v = { x = 0 y = 1 }
+				ss_panzer_v = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_mechanized = { x = 2 y = 0 }
+				ss_motorized = { x = 2 y = 1 }
+				ss_motorized = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+				ss_anti_tank_brigade =  { x = 3 y = 3}
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				combat_engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+				anti_tank = { x = 1 y = 4 }
+			}
+		} 
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"12. SS Panzer-Division 'Hitlerjugend'\" division_template = \"SS Panzer-Division II\" start_experience_factor = 0.9 start_equipment_factor = 0.2"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ss_event.706
+	title = ss_event.706.t
+	desc = ss_event.706.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.706.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Panzergrenadier-Division II" } }
+		division_template = {
+			name = "SS Panzergrenadier-Division II" 			
+			
+			regiments = {
+				ss_mechanized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_mechanized = { x = 2 y = 0 }
+				ss_motorized = { x = 2 y = 1 }
+				ss_motorized = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+				
+				ss_panzer_iii_td = { x = 4 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				combat_engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+				anti_tank = { x = 1 y = 4 }
+			}
+			
+			priority = 2
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"16. SS Panzergrenadier-Division 'Reichsführer'\" division_template = \"SS Panzergrenadier-Division II\" start_experience_factor = 0.7 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+	
+}
+country_event = {
+	id = ss_event.707
+	title = ss_event.707.t
+	desc = ss_event.707.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.707.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Panzergrenadier-Division II" } }
+		division_template = {
+			name = "SS Panzergrenadier-Division II" 			
+			
+			regiments = {
+				ss_mechanized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_mechanized = { x = 2 y = 0 }
+				ss_motorized = { x = 2 y = 1 }
+				ss_motorized = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+				
+				ss_panzer_iii_td = { x = 4 y = 0 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				combat_engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+				anti_tank = { x = 1 y = 4 }
+			}
+			
+			priority = 2
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"17. SS Panzergrenadier-Division 'Götz von Berlichingen'\" division_template = \"SS Panzergrenadier-Division II\" start_experience_factor = 0.7 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+
+}
+country_event = {
+	id = ss_event.708
+	title = ss_event.708.t
+	desc = ss_event.708.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.708.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Panzergrenadier-Division" 			
+			
+			regiments = {
+				ss_mechanized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_mechanized = { x = 2 y = 0 }
+				ss_motorized = { x = 2 y = 1 }
+				ss_motorized = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+			
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				recon_ac = { x = 0 y = 2 }
+				combat_engineer = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+				anti_air = { x = 1 y = 3 }
+				anti_tank = { x = 1 y = 4 }
+			}
+			
+			priority = 2
+		} 
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"11. SS Freiwiligen-Panzergrenadier-Division 'Nordland'\" division_template = \"SS Panzergrenadier-Division\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+	
+}
+country_event = {
+	id = ss_event.709
+	title = ss_event.709.t
+	desc = ss_event.709.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.709.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Gebirgsjäger-Division" } }
+		division_template = {
+			name = "SS Gebirgsjäger-Division"	
+
+			regiments = {
+				ss_mountaineers = { x = 0 y = 0 }				
+				ss_mountaineers = { x = 0 y = 1 }
+				ss_mountaineers = { x = 0 y = 2 }
+
+				ss_mountaineers = { x = 1 y = 0 }				
+				ss_mountaineers = { x = 1 y = 1 }
+				ss_mountaineers = { x = 1 y = 2 }
+				
+				ss_mountaineers = { x = 2 y = 0 }				
+				ss_mountaineers = { x = 2 y = 1 }
+				ss_mountaineers = { x = 2 y = 2 }
+
+				ss_mountain_artillery_brigade = { x = 3 y = 0 }	
+				ss_mountain_artillery_brigade = { x = 3 y = 1 }	
+				ss_mountain_artillery_brigade = { x = 3 y = 2 }	
+				
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+			}
+			
+			priority = 2
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"13. SS Waffen-Gebirgsjäger-Division 'Handschar'\" division_template = \"SS Gebirgsjäger-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+	
+}
+country_event = {
+	id = ss_event.710
+	title = ss_event.710.t
+	desc = ss_event.710.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.710.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"14. SS Waffen Grenadier-Division\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.711
+	title = ss_event.711.t
+	desc = ss_event.711.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.711.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"15. SS Waffen Grenadier-Division\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+
+}
+country_event = {
+	id = ss_event.712
+	title = ss_event.712.t
+	desc = ss_event.712.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.712.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Panzergrenadier-Division III" 			
+			
+			regiments = {
+				ss_mechanized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_mechanized = { x = 2 y = 0 }
+				ss_motorized = { x = 2 y = 1 }
+				ss_motorized = { x = 2 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 3 y = 0 }
+				ss_artillery_brigade_mot = { x = 3 y = 1 }
+				ss_artillery_brigade_mot = { x = 3 y = 2 }
+			
+				}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_ac = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				anti_tank = { x = 0 y = 4 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+			}
+			
+			priority = 2
+		}
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"18. SS Freiwillige-Panzergrenadier-Division 'Horst Wessel'\" division_template = \"SS Panzergrenadier-Division III\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+
+}
+country_event = {
+	id = ss_event.713
+	title = ss_event.713.t
+	desc = ss_event.713.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.713.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"19. SS Waffen-Grenadier-Division\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+
+}
+country_event = {
+	id = ss_event.714
+	title = ss_event.714.t
+	desc = ss_event.714.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.714.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"20. SS Waffen-Grenadier-Division\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+	
+}
+country_event = {
+	id = ss_event.715
+	title = ss_event.715.t
+	desc = ss_event.715.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.715.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Gebirgsjäger-Division" } }
+		division_template = {
+			name = "SS Gebirgsjäger-Division"	
+
+			regiments = {
+				ss_mountaineers = { x = 0 y = 0 }				
+				ss_mountaineers = { x = 0 y = 1 }
+				ss_mountaineers = { x = 0 y = 2 }
+
+				ss_mountaineers = { x = 1 y = 0 }				
+				ss_mountaineers = { x = 1 y = 1 }
+				ss_mountaineers = { x = 1 y = 2 }
+				
+				ss_mountaineers = { x = 2 y = 0 }				
+				ss_mountaineers = { x = 2 y = 1 }
+				ss_mountaineers = { x = 2 y = 2 }
+
+				ss_mountain_artillery_brigade = { x = 3 y = 0 }	
+				ss_mountain_artillery_brigade = { x = 3 y = 1 }	
+				ss_mountain_artillery_brigade = { x = 3 y = 2 }	
+				
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+			}
+			
+			priority = 2
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"21. SS Waffen-Gebirgsjäger-Division 'Skanderbeg'\" division_template = \"SS Gebirgsjäger-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+		
+		hidden_effect = {
+			
+			load_oob = "GER_ss_skanderbeg"
+		}
+		
+	}
+
+}
+country_event = {
+	id = ss_event.716
+	title = ss_event.716.t
+	desc = ss_event.716.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.716.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Kavallerie-Division" } }
+		division_template = {
+			name = "SS Kavallerie-Division"	
+
+			regiments = {
+				ss_cavalry = { x = 0 y = 0 }				
+				ss_cavalry = { x = 0 y = 1 }
+				ss_cavalry = { x = 0 y = 2 }
+
+				ss_cavalry = { x = 1 y = 0 }				
+				ss_cavalry = { x = 1 y = 1 }
+				ss_cavalry = { x = 1 y = 2 }
+
+				ss_cavalry = { x = 2 y = 0 }				
+				ss_cavalry = { x = 2 y = 1 }
+				ss_cavalry = { x = 2 y = 2 }
+
+				ss_artillery_brigade = { x = 3 y = 0 }
+				ss_artillery_brigade = { x = 3 y = 1 }
+				ss_artillery_brigade = { x = 3 y = 2 }	
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_cav = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+			}
+			priority = 0
+			
+		} }
+		
+		#UNIT
+		155 = { #Transdanubia
+			create_unit = {
+				division = "name = \"22. SS Freiwilligen-Kavallerie-Division 'Maria Theresia'\" division_template = \"SS Kavallerie-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6703
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.717
+	title = ss_event.717.t
+	desc = ss_event.717.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.717.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Gebirgsjäger-Division" } }
+		division_template = {
+			name = "SS Gebirgsjäger-Division"	
+
+			regiments = {
+				ss_mountaineers = { x = 0 y = 0 }				
+				ss_mountaineers = { x = 0 y = 1 }
+				ss_mountaineers = { x = 0 y = 2 }
+
+				ss_mountaineers = { x = 1 y = 0 }				
+				ss_mountaineers = { x = 1 y = 1 }
+				ss_mountaineers = { x = 1 y = 2 }
+				
+				ss_mountaineers = { x = 2 y = 0 }				
+				ss_mountaineers = { x = 2 y = 1 }
+				ss_mountaineers = { x = 2 y = 2 }
+
+				ss_mountain_artillery_brigade = { x = 3 y = 0 }	
+				ss_mountain_artillery_brigade = { x = 3 y = 1 }	
+				ss_mountain_artillery_brigade = { x = 3 y = 2 }	
+				
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+			}
+			
+			priority = 2
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"23. SS Waffen-Gebirgsjäger-Division 'Kama'\" division_template = \"SS Gebirgsjäger-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.718
+	title = ss_event.718.t
+	desc = ss_event.718.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.718.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie-Brigade" } }
+		division_template = {
+			name = "SS Infanterie-Brigade"
+			priority = 0
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+
+				ss_infantry = { x = 1 y = 0 }				
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"SS-Regiment 'Kama'\" division_template = \"SS Infanterie-Brigade\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+
+}
+country_event = {
+	id = ss_event.719
+	title = ss_event.719.t
+	desc = ss_event.719.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.719.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Gebirgsjäger-Division" } }
+		division_template = {
+			name = "SS Gebirgsjäger-Division"	
+
+			regiments = {
+				ss_mountaineers = { x = 0 y = 0 }				
+				ss_mountaineers = { x = 0 y = 1 }
+				ss_mountaineers = { x = 0 y = 2 }
+
+				ss_mountaineers = { x = 1 y = 0 }				
+				ss_mountaineers = { x = 1 y = 1 }
+				ss_mountaineers = { x = 1 y = 2 }
+				
+				ss_mountaineers = { x = 2 y = 0 }				
+				ss_mountaineers = { x = 2 y = 1 }
+				ss_mountaineers = { x = 2 y = 2 }
+
+				ss_mountain_artillery_brigade = { x = 3 y = 0 }	
+				ss_mountain_artillery_brigade = { x = 3 y = 1 }	
+				ss_mountain_artillery_brigade = { x = 3 y = 2 }	
+				
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+			}
+			
+			priority = 2
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"24. SS Waffen-Gebirgsjäger-Division 'Karstjager'\" division_template = \"SS Gebirgsjäger-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+
+}
+country_event = {
+	id = ss_event.720
+	title = ss_event.729.t
+	desc = ss_event.719.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.720.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"25. SS Waffen-Grenadier-Division 'Hunyadi'\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.721
+	title = ss_event.721.t
+	desc = ss_event.721.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.721.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"26. SS Waffen-Grenadier-Division 'Hunyadi'\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.722
+	title = ss_event.722.t
+	desc = ss_event.722.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.722.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie" } }
+		division_template = {
+			name = "SS Infanterie" 			
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+				
+				ss_infantry = { x = 1 y = 0 }
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+				
+				ss_infantry = { x = 2 y = 0 }
+				ss_infantry = { x = 2 y = 1 }
+				ss_infantry = { x = 2 y = 2 }
+				
+				ss_artillery_brigade = { x = 3 y = 0 }
+				ss_artillery_brigade = { x = 3 y = 1 }
+				ss_artillery_brigade = { x = 3 y = 2 }	
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 4 }
+				logistics_company = { x = 1 y = 0 }
+				field_hospital = { x = 1 y = 1 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"27. SS Freiwilligen-Grenadier-Division 'Langemarck'\" division_template = \"SS Infanterie\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.723
+	title = ss_event.723.t
+	desc = ss_event.723.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.723.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie" } }
+		division_template = {
+			name = "SS Infanterie" 			
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+				
+				ss_infantry = { x = 1 y = 0 }
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+				
+				ss_infantry = { x = 2 y = 0 }
+				ss_infantry = { x = 2 y = 1 }
+				ss_infantry = { x = 2 y = 2 }
+				
+				ss_artillery_brigade = { x = 3 y = 0 }
+				ss_artillery_brigade = { x = 3 y = 1 }
+				ss_artillery_brigade = { x = 3 y = 2 }	
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 4 }
+				logistics_company = { x = 1 y = 0 }
+				field_hospital = { x = 1 y = 1 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"28. SS Freiwilligen-Grenadier-Division 'Wallonien'\" division_template = \"SS Infanterie\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.724
+	title = ss_event.724.t
+	desc = ss_event.724.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.724.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"30. SS Waffen-Grenadier-Division\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+	
+}
+country_event = {
+	id = ss_event.725
+	title = ss_event.725.t
+	desc = ss_event.725.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.725.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"Waffen-Grenadier-Regiment 'Bulgaris'\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.3 start_equipment_factor = 0.1"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.726
+	title = ss_event.726.t
+	desc = ss_event.726.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.726.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"31. SS Freiwilligen-Grenadier-Division\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.5"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.727
+	title = ss_event.727.t
+	desc = ss_event.727.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.727.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"Waffen.Verband der SS 'Osttürkis'\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.3 start_equipment_factor = 0.1"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.728
+	title = ss_event.728.t
+	desc = ss_event.728.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.728.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"Waffen.Verband der SS 'Kaukasien'\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.3 start_equipment_factor = 0.1"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.729
+	title = ss_event.729.t
+	desc = ss_event.729.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.729.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"Waffen-Grenadier-Regiment 'Rumänis'\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.3 start_equipment_factor = 0.1"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.730
+	title = ss_event.730.t
+	desc = ss_event.730.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.730.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie" } }
+		division_template = {
+			name = "SS Infanterie" 			
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+				
+				ss_infantry = { x = 1 y = 0 }
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+				
+				ss_infantry = { x = 2 y = 0 }
+				ss_infantry = { x = 2 y = 1 }
+				ss_infantry = { x = 2 y = 2 }
+				
+				ss_artillery_brigade = { x = 3 y = 0 }
+				ss_artillery_brigade = { x = 3 y = 1 }
+				ss_artillery_brigade = { x = 3 y = 2 }	
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 4 }
+				logistics_company = { x = 1 y = 0 }
+				field_hospital = { x = 1 y = 1 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"33. SS Waffen-Grenadier-Division  'Charlemagne'\" division_template = \"SS Infanterie\" start_experience_factor = 0.5 start_equipment_factor = 0.3"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.731
+	title = ss_event.731.t
+	desc = ss_event.731.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.731.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"34. SS Freiwilligen-Grenadier-Division  'Landstorm Nederland'\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.2"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.732
+	title = ss_event.732.t
+	desc = ss_event.732.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.732.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Kavallerie-Division" } }
+		division_template = {
+			name = "SS Kavallerie-Division"	
+
+			regiments = {
+				ss_cavalry = { x = 0 y = 0 }				
+				ss_cavalry = { x = 0 y = 1 }
+				ss_cavalry = { x = 0 y = 2 }
+
+				ss_cavalry = { x = 1 y = 0 }				
+				ss_cavalry = { x = 1 y = 1 }
+				ss_cavalry = { x = 1 y = 2 }
+
+				ss_cavalry = { x = 2 y = 0 }				
+				ss_cavalry = { x = 2 y = 1 }
+				ss_cavalry = { x = 2 y = 2 }
+
+				ss_artillery_brigade = { x = 3 y = 0 }
+				ss_artillery_brigade = { x = 3 y = 1 }
+				ss_artillery_brigade = { x = 3 y = 2 }	
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_cav = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				
+				maintenance_company = { x = 1 y = 0 }
+				logistics_company = { x = 1 y = 1 }
+				field_hospital = { x = 1 y = 2 }
+			}
+			priority = 0
+			
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"37. SS Freiwilligen-Kavallerie-Division  'Lützow'\" division_template = \"SS Kavallerie-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.2"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.733
+	title = ss_event.733.t
+	desc = ss_event.733.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.733.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"29. SS Waffen-Grenadier-Division\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.2"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+	
+}
+country_event = {
+	id = ss_event.734
+	title = ss_event.734.t
+	desc = ss_event.734.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.734.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		division_template = {
+			name = "SS Panzergrenadier-Division IV" 			
+			
+			regiments = {
+				ss_mechanized = { x = 0 y = 0 }
+				ss_motorized = { x = 0 y = 1 }
+				ss_motorized = { x = 0 y = 2 }
+				
+				ss_mechanized = { x = 1 y = 0 }
+				ss_motorized = { x = 1 y = 1 }
+				ss_motorized = { x = 1 y = 2 }
+				
+				ss_artillery_brigade_mot = { x = 2 y = 0 }
+				ss_artillery_brigade_mot = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_ac = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				anti_tank = { x = 0 y = 3 }
+			}
+		}
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"Freiwilligen-Panzergrenadier-Division 'Nederland'\" division_template = \"SS Panzergrenadier-Division IV\" start_experience_factor = 0.4 start_equipment_factor = 0.1"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.735
+	title = ss_event.735.t
+	desc = ss_event.735.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.735.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie-Brigade" } }
+		division_template = {
+			name = "SS Infanterie-Brigade"
+			priority = 0
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+
+				ss_infantry = { x = 1 y = 0 }				
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"1. Ungarisches SS-Sturmjäger Regiment\" division_template = \"SS Infanterie-Brigade\" start_experience_factor = 0.5 start_equipment_factor = 0.2"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.736
+	title = ss_event.736.t
+	desc = ss_event.736.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.736.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"36. SS Waffen-Grenadier-Division\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.4 start_equipment_factor = 0.2"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.737
+	title = ss_event.737.t
+	desc = ss_event.737.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.737.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie" } }
+		division_template = {
+			name = "SS Infanterie" 			
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+				
+				ss_infantry = { x = 1 y = 0 }
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+				
+				ss_infantry = { x = 2 y = 0 }
+				ss_infantry = { x = 2 y = 1 }
+				ss_infantry = { x = 2 y = 2 }
+				
+				ss_artillery_brigade = { x = 3 y = 0 }
+				ss_artillery_brigade = { x = 3 y = 1 }
+				ss_artillery_brigade = { x = 3 y = 2 }	
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 4 }
+				logistics_company = { x = 1 y = 0 }
+				field_hospital = { x = 1 y = 1 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"35. SS Polizei-Grenadier-Division\" division_template = \"SS Infanterie\" start_experience_factor = 0.3 start_equipment_factor = 0.1"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.738
+	title = ss_event.738.t
+	desc = ss_event.738.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.738.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Waffen-Grenadier-Division" } }
+		division_template = {
+			name = "SS Waffen-Grenadier-Division"	
+
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }				
+				fascist_militia = { x = 0 y = 1 }
+				fascist_militia = { x = 0 y = 2 }
+
+				fascist_militia = { x = 1 y = 0 }				
+				fascist_militia = { x = 1 y = 1 }
+				fascist_militia = { x = 1 y = 2 }
+
+				ss_artillery_brigade = { x = 2 y = 0 }
+				ss_artillery_brigade = { x = 2 y = 1 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				military_police = { x = 0 y = 1 }
+				recon_cav  = { x = 0 y = 2 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"32. SS Freiwilligen-Grenadier-Division '30.Januar'\" division_template = \"SS Waffen-Grenadier-Division\" start_experience_factor = 0.3 start_equipment_factor = 0.1"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.739
+	title = ss_event.739.t
+	desc = ss_event.739.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.739.a
+		ai_chance = { factor = 100 }
+		
+		#TEMPLATE
+		if = { limit = { NOT = { has_template = "SS Infanterie" } }
+		division_template = {
+			name = "SS Infanterie" 			
+			
+			regiments = {
+				ss_infantry = { x = 0 y = 0 }
+				ss_infantry = { x = 0 y = 1 }
+				ss_infantry = { x = 0 y = 2 }
+				
+				ss_infantry = { x = 1 y = 0 }
+				ss_infantry = { x = 1 y = 1 }
+				ss_infantry = { x = 1 y = 2 }
+				
+				ss_infantry = { x = 2 y = 0 }
+				ss_infantry = { x = 2 y = 1 }
+				ss_infantry = { x = 2 y = 2 }
+				
+				ss_artillery_brigade = { x = 3 y = 0 }
+				ss_artillery_brigade = { x = 3 y = 1 }
+				ss_artillery_brigade = { x = 3 y = 2 }	
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon_mot = { x = 0 y = 1 }
+				engineer = { x = 0 y = 2 }
+				military_police = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 4 }
+				logistics_company = { x = 1 y = 0 }
+				field_hospital = { x = 1 y = 1 }
+			}
+			
+			priority = 0
+		} }
+		
+		#UNIT
+		64 = { #Brandenburg
+			create_unit = {
+				division = "name = \"38. SS Grenadier-Division 'Nibelungen'\" division_template = \"SS Infanterie\" start_experience_factor = 0.3 start_equipment_factor = 0.1"
+				owner = GER
+				prioritize_location = 6521
+			}
+		}
+	}
+}
+country_event = {
+	id = ss_event.740
+	title = ss_event.740.t
+	desc = ss_event.740.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.740.a
+		ai_chance = { factor = 100 }
+		
+		add_ideas = Hitleryouth
+	}
+}
+country_event = {
+	id = ss_event.741
+	title = ss_event.741.t
+	desc = ss_event.741.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.741.a
+		ai_chance = { factor = 100 }
+		
+		add_ideas = Hitleryouth_war
+	}
+	
+}
+country_event = {
+	id = ss_event.742
+	title = ss_event.742.t
+	desc = ss_event.742.d
+	picture = GFX_report_event_historical_SS
+	
+	is_triggered_only = yes
+		
+	option = {
+		name = ss_event.742.a
+		ai_chance = { factor = 100 }
+		
+		add_ideas = Hitleryouth_reserves
+		add_manpower = 500000
+	}
+}
+## EOF ##

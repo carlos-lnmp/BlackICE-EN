@@ -1,0 +1,5604 @@
+technologies = {
+
+
+#########################
+#### Offensive Trees ####
+#########################
+
+# Mobile Warfare 
+	blitzkrieg = { 
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { superior_firepower mass_assault methodical_battle assault_operations guerilla_warfare }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_tanks = {
+			max_organisation = 1
+		}
+		category_all_armor = {
+			default_morale = 0.1
+		}
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}		
+		enable_tactic = tactic_breakthrough
+		
+		motorized = {
+			max_organisation = 5
+		}
+		ss_motorized = {
+			max_organisation = 5
+		}
+		mechanized = {
+			max_organisation = 5
+		}
+		amphibious_mechanized = {
+			max_organisation = 5
+		}
+		american_amph_lv = {
+			max_organisation = 5
+		}
+		ss_mechanized = {
+			max_organisation = 5
+		}
+		
+		path = {
+			leads_to_tech = firebrigades 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			modifier = {
+				factor = 0 
+				NOT = { has_country_flag = EAI_FOCUS/LAND/mobile_warfare }
+			}
+		}
+	}
+	firebrigades = { #Branch focused on mobile warfares
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		category_all_infantry = {
+			max_organisation = 2
+		}
+		category_tanks = {
+			max_organisation = 1
+		}
+		
+		path = {
+			leads_to_tech = mobile_infantry 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = armored_spearhead 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}	
+	armored_spearhead = { #Branch focused on Tanks
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		 
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		dependencies = {
+			armor_support  = 1
+		}
+		xor = {
+			mobile_infantry
+		}
+		
+		category_tanks = {
+			max_organisation = 3
+			breakthrough = 0.20
+		}
+				
+		
+		enable_tactic = tactic_blitz
+		
+	
+		path = {
+			leads_to_tech = mobile_warfare
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}	
+	mobile_warfare = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		on_research_complete = {
+			set_land_doctrine_laws = yes
+			hidden_effect = {
+				
+			}
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}
+
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		path = {
+			leads_to_tech = schwerpunk 
+			research_cost_coeff = 1
+		}		
+		category_all_armor = {
+			breakthrough = 0.20
+		}
+		
+		planning_speed = 0.5
+		army_speed_factor = 0.10
+		enable_tactic = tactic_unexpected_thrust
+		org_loss_when_moving = -0.1
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		doctrine = yes	
+		research_cost = 3
+
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 6 }
+		}
+		
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_attack_docs
+		}
+		
+		ai_will_do = {
+			factor = 10  #defines also adjust this value
+			modifier = {
+				factor = 10 #this should mean researching doctrine all the time
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	schwerpunk = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_tanks = {
+			max_organisation = 2
+		}
+		category_all_armor = {
+			default_morale = 0.1
+		}
+		
+		path = {
+			leads_to_tech = kampfgruppe 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}	
+	
+	
+	mobile_infantry = { #Branch focuses on infantry, included Motorised and Mechanised.
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		dependencies = {
+			mobile_doctrines = 1
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		xor={
+			armored_spearhead
+		}
+		semi_motorized  = {
+			maximum_speed = 0.07
+			default_morale = 0.2
+		}
+		ss_semi_motorized = {
+			maximum_speed = 0.07
+			default_morale = 0.2
+		}
+		motorized = {
+			maximum_speed = 0.1
+			default_morale = 0.2
+		}
+		ss_motorized = {
+			maximum_speed = 0.1
+			default_morale = 0.2
+		}
+		mechanized = {
+			maximum_speed = 0.1
+			default_morale = 0.2
+		}
+		amphibious_mechanized = {
+			maximum_speed = 0.1
+			default_morale = 0.2
+		}
+		american_amph_lv = {
+			maximum_speed = 0.1
+			default_morale = 0.2
+		}
+		ss_mechanized = {
+			maximum_speed = 0.1
+			default_morale = 0.2
+		}
+		
+		#army_infantry_speed_factor = 0.1
+		
+		path = {
+			leads_to_tech = mass_motorization 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0 
+				tag = GER
+			}
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	
+	mass_motorization = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		category_all_infantry = {
+			max_organisation = 2
+		}
+		
+		#army_infantry_speed_factor = 0.1
+		
+		path = {
+			leads_to_tech = mechanised_offensive 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	
+	mechanised_offensive = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		semi_motorized  = {
+			max_organisation = 2
+		}
+		ss_semi_motorized  = {
+			max_organisation = 2
+		}
+		motorized = {
+			max_organisation = 2
+		}
+		ss_motorized   = {
+			max_organisation = 2
+		}
+		mechanized = {
+			max_organisation = 2
+		}
+		amphibious_mechanized = {
+			max_organisation = 2
+		}
+		american_amph_lv = {
+			max_organisation = 2
+		}
+		ss_mechanized = {
+			max_organisation = 2
+		}
+		
+		#army_infantry_speed_factor = 0.15
+		
+		category_tanks = {
+			max_organisation = 2
+		}
+
+		enable_tactic = tactic_blitz
+		
+		path = {
+			leads_to_tech = kampfgruppe 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	
+
+	kampfgruppe = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+	
+	    no_supply_grace = 24
+
+		category_all_infantry = {
+			default_morale = 0.1
+			max_organisation = 2
+		}
+		category_all_armor = {
+		    default_morale = 0.1
+		    soft_attack = 0.1
+		}
+		# faster planning
+		planning_speed = 0.2
+		semi_motorized  = {
+			max_organisation = 10
+			default_morale = 0.2
+		}
+		ss_semi_motorized  = {
+			max_organisation = 10
+			default_morale = 0.2
+		}
+		motorized = {
+			max_organisation = 10
+			default_morale = 0.2
+		}
+		ss_motorized   = {
+			max_organisation = 10
+			default_morale = 0.2
+		}
+		mechanized = {
+			max_organisation = 10
+			default_morale = 0.2
+		}
+		amphibious_mechanized = {
+			max_organisation = 10
+			default_morale = 0.2
+		}
+		american_amph_lv = {
+			max_organisation = 10
+			default_morale = 0.2
+		}
+		ss_mechanized = {
+			max_organisation = 10
+			default_morale = 0.2
+		}		
+		enable_tactic = tactic_overwhelming_fire
+		
+		path = {
+			leads_to_tech = modern_blitzkrieg 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 10 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			#modifier = {
+			#	factor = 0 
+			#	tag = GER 
+			#	NOT = { has_completed_focus = GER_kampfgruppes }
+			#}
+		}
+	}
+	modern_blitzkrieg = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		army_speed_factor = 0.05
+		category_all_armor = {
+			max_organisation = 2
+			default_morale = 0.1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+		
+	}
+# Superior Firepower 
+
+	superior_firepower = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { mass_assault methodical_battle assault_operations guerilla_warfare blitzkrieg }
+		on_research_complete = {
+			set_land_doctrine_laws = yes
+			hidden_effect = {
+				
+			}
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_superior_firepower_tt
+
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+
+		path = {
+			leads_to_tech = intergrated_support 
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		
+		category_all_armor = {
+			soft_attack = 0.10
+			hard_attack = 0.10
+		}
+		category_front_line = {
+			 soft_attack = 0.02
+		}
+		
+		enable_tactic = breakthrough
+
+		doctrine = yes	
+		research_cost = 3.01
+		
+		categories = {
+			land_doctrine
+			cat_superior_firepower
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			modifier = {
+				factor = 0 
+				NOT = { has_country_flag = EAI_FOCUS/LAND/superior_firepower }
+			}
+		}
+	}
+	intergrated_support = { #This Branch is focused on boosting stuff in the support column 
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		dependencies = {
+			artillery_observers = 1
+		}
+		#xor={
+		#	dispersed_support
+		#}
+	
+		category_support_battalions = {
+			soft_attack = 0.25
+		}
+		
+		path = {
+			leads_to_tech = regimental_combat_teams 
+			research_cost_coeff = 1
+		}
+
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_superior_firepower_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_superior_firepower
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	regimental_combat_teams = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		dependencies = {
+			continuous_fire = 1
+		}
+		category_support_battalions = {
+			max_organisation = 10
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		enable_tactic = tactic_overwhelming_fire
+		
+		path = {
+			leads_to_tech = centralized_fire_control
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_superior_firepower_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_superior_firepower
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	centralized_fire_control = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_army = {
+			soft_attack = 0.05
+		}
+		
+		path = {
+			leads_to_tech = forward_observers 
+			research_cost_coeff = 1
+		}
+
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_superior_firepower_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_superior_firepower
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}	
+	forward_observers = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		dependencies = {
+			artillery_observers = 1
+		}
+		land_reinforce_rate = 0.02
+		enable_tactic = tactic_barrage
+		recon = {
+			recon = 1
+		}
+		recon_ac = { 
+			recon = 1 
+		}
+		recon_mot = { 
+			recon = 1 
+		}
+		recon_cav = { 
+			recon = 1 
+		}
+		tankettes = { 
+			recon = 1 
+		}
+		
+		path = {
+			leads_to_tech = advanced_firebases 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_superior_firepower_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_superior_firepower
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	
+	advanced_firebases = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_all_infantry = {
+			max_organisation = 1
+			default_morale = 0.05
+		}
+		category_tanks = {
+			max_organisation = 2
+		}
+		category_all_armor = {
+			default_morale = 0.05
+		}
+		path = {
+			leads_to_tech = breakthrough_priority 
+			research_cost_coeff = 1
+		}			
+		path = {
+			leads_to_tech = shock_and_awe 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_superior_firepower_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_superior_firepower
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 10 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	breakthrough_priority = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { shock_and_awe }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_tanks = {
+			max_organisation = 1
+			breakthrough = 0.10
+		}
+		category_all_infantry = {
+			max_organisation = 2
+			breakthrough = 0.10
+		}
+		
+		enable_tactic = tactic_breakthrough
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_superior_firepower_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_superior_firepower
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}	
+	shock_and_awe = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { breakthrough_priority }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_army = { 
+			soft_attack = 0.1 
+			hard_attack = 0.1
+		}
+		
+		enable_tactic = tactic_blitz
+				
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_superior_firepower_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_superior_firepower
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	
+###Deep Battle
+	mass_assault = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { superior_firepower methodical_battle assault_operations guerilla_warfare blitzkrieg }
+		on_research_complete = {
+			set_land_doctrine_laws = yes
+			hidden_effect = {
+				
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mass_assault_tt	
+		}
+		experience_loss_factor = 0.10
+		DIV_HQ = {
+			casualty_trickleback = -0.10
+		}
+			
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		path = {
+			leads_to_tech = continuous_offensive
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		land_reinforce_rate = 0.02
+		
+		minimum_training_level = -0.1
+
+		doctrine = yes	
+		research_cost = 3.02
+	
+		categories = {
+			land_doctrine
+			cat_mass_assault
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			modifier = {
+				factor = 0 
+				NOT = { has_country_flag = EAI_FOCUS/LAND/mass_assault }
+			}
+		}
+	}
+	vast_offensives = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		supply_consumption_factor = -0.08
+		
+		infantry = {
+			combat_width = -0.2
+		}
+		ss_infantry = {
+			combat_width = -0.2
+		}
+		guards_infantry = {
+			combat_width = -0.2
+		}
+		light_infantry = {
+			combat_width = -0.2
+		}
+		ss_light_infantry = {
+			combat_width = -0.2
+		}
+
+		
+		enable_tactic = tactic_relentless_assault
+		path = {
+			leads_to_tech = pocket_defence
+			research_cost_coeff = 1
+		}		
+
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mass_assault_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_mass_assault
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	peoples_army = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+	
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		
+		
+		#Increased Partisan effect on your land occupied by others
+		partisan_effect = 0.1 #10% more partisan effects
+		#Land Units take less attrition
+		attrition = -0.1 #take 10% less attrition losses
+		
+		enable_tactic = tactic_human_wave_tactics
+		
+		
+		path = {
+			leads_to_tech = large_front_offensive
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = human_infantry_offensive
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mass_assault_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_mass_assault
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				factor = 0
+				AND = {
+					tag = SOV
+					EAI_timegate_1938/7 = no
+				}
+			}
+			modifier = {
+				add = 100
+					prioritise_land_doctrine = yes
+			}
+		}
+	}
+	large_front_offensive = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_all_infantry = {
+			max_organisation = 10
+		}
+		category_tanks = {
+			max_organisation = 2
+		}
+		
+		path = {
+			leads_to_tech = vast_offensives 
+			research_cost_coeff = 1
+		}		
+
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mass_assault_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_mass_assault
+			cat_attack_docs
+		}
+
+		xor = { human_infantry_offensive }
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	human_infantry_offensive = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { large_front_offensive }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		infantry = {
+			default_morale = 0.30
+		}
+		ss_infantry = {
+			default_morale = 0.30
+		}
+		guards_infantry = {
+			default_morale = 0.30
+		}
+
+		path = {
+			leads_to_tech = vast_offensives 
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mass_assault_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_mass_assault
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	continuous_offensive = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		category_all_infantry = {
+			default_morale = 0.03
+		}
+		org_loss_when_moving = -0.25
+		
+		enable_tactic = tactic_backhand_blow
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mass_assault_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_mass_assault
+			cat_attack_docs
+		}
+		path = {
+			leads_to_tech = peoples_army
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	pocket_defence = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+
+		#reduced pocketed combat penalty and/or reduces the out of supply penalty or increases time before moving to worse penalty
+		no_supply_grace = 48 # more hours before supply penalty changes
+		out_of_supply_factor = -0.10
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+
+		path = {
+			leads_to_tech = flood_the_gap
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = operational_concentration
+			research_cost_coeff = 1
+		}
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mass_assault_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_mass_assault
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 10 }
+		}
+		
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+		
+	}
+	operational_concentration = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { flood_the_gap }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		max_planning = 0.05
+		army_speed_factor = 0.02
+		decryption_factor = 0.10
+		
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mass_assault_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_mass_assault
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	flood_the_gap = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { operational_concentration }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		land_reinforce_rate = 0.20
+		
+		enable_tactic = tactic_backhand_blow
+		path = {
+			leads_to_tech = pocket_defence
+			research_cost_coeff = 1
+		}
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mass_assault_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_mass_assault
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}	
+
+# Methodical Battle 
+
+	methodical_battle = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { superior_firepower mass_assault assault_operations guerilla_warfare blitzkrieg }
+		on_research_complete = {
+			set_land_doctrine_laws = yes
+			hidden_effect = {
+				
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_grand_battle_plan_tt
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5 
+	
+		planning_speed = 0.25
+		
+		path = {
+			leads_to_tech = c3i_theory
+			research_cost_coeff = 1
+		}
+		
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.99
+		
+		categories = {
+			land_doctrine
+			cat_grand_battle_plan
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			modifier = {
+				factor = 0 
+				NOT = { has_country_flag = EAI_FOCUS/LAND/methodical_battle }
+			}
+		}
+	}
+	c3i_theory = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		land_reinforce_rate = 0.02
+		category_all_infantry = {
+			max_organisation = 5
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_grand_battle_plan_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_grand_battle_plan
+			cat_attack_docs
+		}
+		path = {
+			leads_to_tech = grand_battle_plan
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	grand_battle_plan = { # Strategic Offensive: Planning speed:+++, Planning Bonus:+++, Recovery rate:++
+		allow = { can_research_land_doctrine_folder = yes } 
+		
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		planning_speed = 0.20
+		max_planning = 0.15
+		army_morale	= 0.1
+		
+		path = {
+			leads_to_tech = mechanized_wave
+			research_cost_coeff = 1
+		}	
+		path = {
+			leads_to_tech = strategic_counterattack
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3.2
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_grand_battle_plan_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_grand_battle_plan
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	mechanized_wave = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { strategic_counterattack }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		category_tanks = {
+			max_organisation = 1
+		}
+
+		category_all_armor = {
+			default_morale = 0.1
+		}
+		
+		mechanized = {
+			max_organisation = 3
+			default_morale = 0.1
+		}
+		amphibious_mechanized = {
+			max_organisation = 3
+			default_morale = 0.1
+		}
+		american_amph_lv = {
+			max_organisation = 3
+			default_morale = 0.1
+		}
+		ss_mechanized = {
+			max_organisation = 3
+			default_morale = 0.1
+		}
+		motorized = {
+			max_organisation = 3
+			default_morale = 0.1
+		}	
+		ss_motorized = {
+			max_organisation = 3
+			default_morale = 0.1
+		}	
+		guards_motorized = {
+			max_organisation = 4
+			default_morale = 0.15
+		}		
+		path = {
+			leads_to_tech = large_front_operations
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_grand_battle_plan_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_grand_battle_plan
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	strategic_counterattack = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { mechanized_wave }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_light_infantry = {
+			max_organisation = 5
+			breakthrough = 0.1
+		}
+		enable_tactic = relentless_as
+		
+		
+		path = {
+			leads_to_tech = large_front_operations
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_grand_battle_plan_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_grand_battle_plan
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	large_front_operations = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		supply_consumption_factor = -0.10
+
+		enable_tactic = tactic_relentless_assault
+		
+		path = {
+			leads_to_tech = dispersed_support
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = assault_concentration 
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_grand_battle_plan_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_grand_battle_plan
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	dispersed_support = { 
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+			
+		category_line_artillery = {
+			default_morale = 0.20
+			initiative = 0.01
+			soft_attack = 0.1
+		}
+		
+		path = {
+			leads_to_tech = flexiable_armour 
+			research_cost_coeff = 1
+		}
+
+		xor = { assault_concentration }
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_grand_battle_plan_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_grand_battle_plan
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 10 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	assault_concentration = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		category_army = {
+			breakthrough = 0.07
+		}	
+		max_planning = 0.1
+		army_bonus_air_superiority_factor = 0.05
+		xor = { dispersed_support }
+		enable_tactic = tactic_overwhelming_fire
+		
+		path = {
+			leads_to_tech = flexiable_armour 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_grand_battle_plan_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_grand_battle_plan
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 10 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	flexiable_armour = { 
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_all_armor = {
+			maximum_speed = 0.15
+			breakthrough = 0.05
+		}
+		category_mobile = {
+			maximum_speed = 0.15
+			breakthrough = 0.05
+		}	
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_grand_battle_plan_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_grand_battle_plan
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}	
+#Assault Operations
+	assault_operations = { 
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { superior_firepower mass_assault methodical_battle guerilla_warfare blitzkrieg }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+			
+		max_planning = 0.20
+		
+		path = {
+			leads_to_tech = grand_assault
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_assault_operations_tt
+			custom_effect_tooltip = cat_decisive_battle_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_assault_operations
+			cat_decisive_battle
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			modifier = {
+				factor = 0 
+				NOT = { has_country_flag = EAI_FOCUS/LAND/assault_operations }
+			}
+		}
+	}
+	grand_assault = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_army = {
+			breakthrough = 0.10
+			soft_attack = 0.05
+		}
+		
+		enable_tactic = tactic_planned_attack
+		
+		path = {
+			leads_to_tech = central_planning 
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_assault_operations_tt
+			custom_effect_tooltip = cat_decisive_battle_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_assault_operations
+			cat_decisive_battle
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	central_planning = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		max_planning = 0.1
+		planning_speed = 0.1
+		
+		
+		path = {
+			leads_to_tech = infiltration_assault 
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_assault_operations_tt
+			custom_effect_tooltip = cat_decisive_battle_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_assault_operations
+			cat_decisive_battle
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	infiltration_assault = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+	
+		supply_consumption_factor = -0.10
+		
+		path = {
+			leads_to_tech = armored_operations 
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_assault_operations_tt
+			custom_effect_tooltip = cat_decisive_battle_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_assault_operations
+			cat_decisive_battle
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	armored_operations = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_tanks = {
+			max_organisation = 2
+		}
+		category_all_armor = {
+			default_morale = 0.1
+		}
+		
+		enable_tactic = tactic_breakthrough
+		
+		
+		path = {
+			leads_to_tech = infiltration_in_depth 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = branch_interoperation
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_assault_operations_tt
+			custom_effect_tooltip = cat_decisive_battle_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_assault_operations
+			cat_decisive_battle
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	} 
+	branch_interoperation = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_all_infantry = {
+			max_organisation = 1
+		}
+		category_tanks = {
+			max_organisation = 1
+		}
+		xor = { infiltration_in_depth }
+			
+		path = {
+			leads_to_tech = assault_breakthrough 
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_assault_operations_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_assault_operations
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 10 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	
+	assault_breakthrough = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_army = {
+			breakthrough = 0.08
+		}
+		
+		enable_tactic = tactic_breakthrough
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_assault_operations_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_assault_operations
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}		
+		}
+	}
+	infiltration_in_depth = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		xor = { branch_interoperation }
+		path = {
+			leads_to_tech = night_assault_tactics
+			research_cost_coeff = 1
+		}
+		land_reinforce_rate = 0.02
+		
+		recon = {
+			recon = 1
+		}
+		recon_ac = { 
+			recon = 1 
+		}
+		recon_mot = { 
+			recon = 1 
+		}
+		recon_cav = { 
+			recon = 1 
+		}
+		tankettes = { 
+			recon = 1 
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_decisive_battle_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_decisive_battle
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 10 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	night_assault_tactics = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		#reduce land night combat penalty
+		land_night_attack = 0.2 # negates half of base penalty
+	
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_decisive_battle_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_decisive_battle
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 12 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+
+
+#Guerrilla Warfare
+	guerilla_warfare = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { superior_firepower mass_assault methodical_battle assault_operations blitzkrieg }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_tanks = {
+			max_organisation = -5
+			max_strength = -0.10
+			combat_width = 0.2
+			#default_morale = -0.05	
+			supply_consumption = 0.10
+		}
+		category_special_forces = {
+			max_organisation = -5
+			max_strength = -0.05
+			#combat_width = 0.1
+			supply_consumption = 0.05
+		}
+		category_mobile = {
+			max_organisation = -3
+			default_morale = -0.05
+			supply_consumption = 0.05
+		}
+		infantry = {
+			combat_width = 0.1
+		}		
+		ss_infantry = {
+			combat_width = 0.1
+		}	
+		out_of_supply_factor = -0.20
+		category_army = {
+			default_morale = 0.2
+		}
+		militia = {
+			initiative = 0.02
+		}
+		light_infantry = {
+			initiative = 0.02
+		}
+		ss_light_infantry = {
+			initiative = 0.02
+		}
+		cavalry = {
+			max_organisation = 3
+			default_morale = 0.05
+			supply_consumption = -0.04
+		}
+		partisan_effect = 0.2
+		
+		enable_tactic = tactic_guerrilla_tactics
+		
+		doctrine = yes	
+		research_cost = 3.3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_guerilla_warfare_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_guerilla_warfare
+			cat_attack_docs
+		}
+		path = {
+			leads_to_tech = ambush_tactics
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nd_conscription
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = unconventional_warfare
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			modifier = {
+				factor = 0 
+				NOT = { has_country_flag = EAI_FOCUS/LAND/guerilla_warfare }
+			}
+		}
+	}
+	nd_conscription = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		conscription = 0.005
+		production_speed_partisan_size_factor = 0.15
+		minimum_training_level = -0.15
+		experience_loss_factor = 0.25
+		stability_weekly = -0.001
+		
+		path = {
+			leads_to_tech = werwolf_guerillas 
+			research_cost_coeff = 1
+		}
+
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_guerilla_warfare_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_guerilla_warfare
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -2 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+		
+	}
+	werwolf_guerillas = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		partisan = {
+			max_organisation = 2
+		}
+		militia = {
+			max_organisation = 3
+		}			
+		#Increased Partisan effect on your land occupied by others
+		conscription = 0.005
+		production_speed_partisan_size_factor = 0.15
+		partisan_effect = 0.1 #10% more partisan effects
+		enemy_army_bonus_air_superiority_factor = -0.15
+		
+		enable_tactic = tactic_guerrilla_tactics
+		
+		doctrine = yes	
+		research_cost = 3.3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_guerilla_warfare_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_guerilla_warfare
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -2 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	ambush_tactics = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		resistance_tick_in_states_controlled_by_enemy = 0.05
+		production_speed_partisan_experience_factor = 0.1
+		partisan = {
+			soft_attack = 0.05
+			maximum_speed = 0.10
+		}
+		cavalry = {
+			recon = 1
+		}
+		militia = {
+			recon = 0.5
+			soft_attack = 0.10
+		}
+		light_infantry = {
+			soft_attack = 0.03
+		}
+		ss_light_infantry = {
+			soft_attack = 0.03
+		}
+		path = {
+			leads_to_tech = human_wave_offensive
+			research_cost_coeff = 1
+		}		
+		partisan_effect = 0.10
+		
+		enable_tactic = tactic_ambush_adv
+		
+		doctrine = yes	
+		research_cost = 3.3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_guerilla_warfare_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_guerilla_warfare
+			cat_attack_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	human_wave_offensive = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		resistance_tick_in_states_controlled_by_enemy = 0.01
+		production_speed_partisan_amount_factor = 0.2
+		conscription = 0.008
+		partisan = {
+			combat_width = -0.4
+		}			
+		light_infantry = {
+			maximum_speed = 0.10
+		}		
+		ss_light_infantry = {
+			maximum_speed = 0.10
+		}
+		militia = {
+			combat_width = -0.4
+		}
+		cavalry = {
+			maximum_speed = 0.05
+			soft_attack = 0.03
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_guerilla_warfare_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_guerilla_warfare
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	unconventional_warfare = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		resistance_tick_in_states_controlled_by_enemy = 0.02
+		production_speed_partisan_strength_factor = 0.2
+		partisan = {
+			soft_attack = 0.10
+		}
+		cavalry = {
+			need = {
+				infantry_uniforms = -11
+				infantry_equipment = -5
+         	}	
+			maximum_speed = 0.05
+		}
+		militia = {
+			need = {
+				infantry_uniforms = -10
+				infantry_equipment = -5
+         	}
+			supply_consumption = -0.02
+		}
+		light_infantry = {
+			need = {
+				infantry_uniforms = -4
+				infantry_equipment = -2
+         	}
+			breakthrough = 0.2
+		}
+		ss_light_infantry = {
+			need = {
+				infantry_uniforms = -4
+				infantry_equipment = -2
+         	}
+			breakthrough = 0.2
+		}
+		infantry = {
+			need = {
+				infantry_uniforms = -6
+				infantry_equipment = -6
+         	}
+		}
+		ss_infantry = {
+			need = {
+				infantry_uniforms = -6
+				infantry_equipment = -6
+         	}
+		}
+		path = {
+			leads_to_tech = local_knowledge
+			research_cost_coeff = 1
+		}
+			
+
+		doctrine = yes	
+		research_cost = 3.3
+		on_research_complete = {
+			custom_effect_tooltip = unconventional_warfare_tt
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_guerilla_warfare_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_guerilla_warfare
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 2 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	local_knowledge = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		militia = {
+			hard_attack = 0.10
+		}
+		light_infantry = {
+			initiative = 0.01
+		}	
+		ss_light_infantry = {
+			initiative = 0.01
+		}		
+		resistance_tick_in_states_controlled_by_enemy = 0.03
+		production_speed_partisan_experience_factor = 0.25
+		supply_consumption_factor = -0.10
+		army_core_attack_factor = 0.02
+		army_core_defence_factor = 0.03
+			
+
+		doctrine = yes	
+		research_cost = 3.3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_guerilla_warfare_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_guerilla_warfare
+			cat_attack_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 2 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+#########################
+#### Defensive Trees ####
+#########################
+
+#Defense in Depth
+	defence_in_depth = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { prepared_defense elastic_defence attritional_containment }
+		
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		max_dig_in = 5
+
+		category_light_infantry = {
+			max_organisation = 5
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		
+		path = {
+			leads_to_tech = trench_warfare
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_depth_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_depth
+			cat_defense_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			modifier = {
+				factor = 0 
+				NOT = { has_country_flag = EAI_FOCUS/LAND/defence_in_depth }
+			}
+		}
+	}
+	trench_warfare = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_depth_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_depth
+			cat_defense_docs
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		production_speed_pillbox_factor = 0.05
+		max_dig_in = 10
+		dig_in_speed_factor = 0.25 #25% bonus
+		
+		path = {
+			leads_to_tech = home_defense 
+			research_cost_coeff = 1
+		}
+		
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.99
+		
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	home_defense = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_depth_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_depth
+			cat_defense_docs
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+	
+		army_core_defence_factor = 0.10
+		amphibious_invasion_defence = 0.10 #put this in place of core supply
+		industry_air_damage_factor = -0.05
+		#core supply bonus?
+		
+		path = {
+			leads_to_tech = tactical_control
+			research_cost_coeff = 1
+		}
+		
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.99
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	tactical_control = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+
+		land_reinforce_rate = 0.02
+	
+		enable_tactic = tactic_tactical_withdrawal
+		
+		path = {
+			leads_to_tech = impassible_line 
+			research_cost_coeff = 1
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_depth_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_depth
+			cat_defense_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	impassible_line = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+
+		category_artillery = {
+			max_organisation = 5
+			default_morale = 0.05
+		}
+		army_artillery_defence_factor = 0.10
+		cas_damage_reduction = 0.10
+		recon_factor_while_entrenched = 0.10
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_depth_tt
+		}			
+		categories = {
+			land_doctrine
+			cat_depth
+			cat_defense_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+#Prepared Defense
+	prepared_defense = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { defence_in_depth elastic_defence attritional_containment }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		category_all_infantry = {
+			defense = 0.10
+			max_organisation = 1
+		}
+		
+		path = {
+			leads_to_tech = overwhelming_firepower 
+			research_cost_coeff = 1
+		}
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_prepared_defense_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_prepared_defense
+			cat_defense_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			modifier = {
+				factor = 0 
+				NOT = { has_country_flag = EAI_FOCUS/LAND/prepared_defense }
+			}
+		}
+	}
+	overwhelming_firepower = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		category_line_artillery = {
+			soft_attack = 0.1
+		}
+		
+		enable_tactic = tactic_overwhelming_fire
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_prepared_defense_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_prepared_defense
+			cat_defense_docs
+		}
+		path = {
+			leads_to_tech = combined_arms 
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	combined_arms = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		category_all_armor = {
+			hard_attack = 0.05
+			soft_attack = 0.05
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_prepared_defense_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_prepared_defense
+			cat_defense_docs
+		}
+		path = {
+			leads_to_tech = delay  
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	delay = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		
+		category_all_infantry = {
+			max_organisation = 2
+		}
+		
+		enable_tactic = tactic_delay
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_defense_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 6 }
+		}
+		path = {
+			leads_to_tech = mobile_defence 
+			research_cost_coeff = 1
+		}		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	mobile_defence = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		category_all_infantry = {
+			defense = 0.15
+		}
+		
+		enable_tactic = tactic_elastic_defense
+		
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_mobile_warfare_tt
+		}
+		categories = {
+			land_doctrine
+			cat_mobile_warfare
+			cat_defense_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+#Elastic Defense
+	elastic_defence = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { defence_in_depth prepared_defense attritional_containment }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		land_reinforce_rate = 0.03
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		category_tanks = {
+			max_organisation = 1
+		}
+
+		category_all_armor = {
+			maximum_speed = 0.12
+		}
+	
+		enable_tactic = tactic_elastic_defense
+
+		path = {
+			leads_to_tech = backhand_blow
+			research_cost_coeff = 1
+		}		
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_elastic_defence_tt
+		}
+		categories = {
+			land_doctrine
+			cat_elastic_defence
+			cat_defense_docs
+		}	
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			modifier = {
+				factor = 0 
+				NOT = { has_country_flag = EAI_FOCUS/LAND/elastic_defence }
+			}
+		}
+	}
+	backhand_blow = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+	
+		enable_tactic = tactic_backhand_blow
+		
+		path = {
+			leads_to_tech = tactical_withdrawal 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_elastic_defence_tt
+		}
+		categories = {
+			land_doctrine
+			cat_elastic_defence
+			cat_defense_docs
+		}
+		path = {
+			leads_to_tech = tactical_withdrawal
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}		
+	}
+	tactical_withdrawal = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		land_reinforce_rate = 0.02
+	
+		enable_tactic = tactic_tactical_withdrawal
+		
+		path = {
+			leads_to_tech = mobile_armor
+			research_cost_coeff = 1
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_elastic_defence_tt
+		}
+		categories = {
+			land_doctrine
+			cat_elastic_defence
+			cat_defense_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	mobile_armor = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		land_reinforce_rate = 0.03
+
+		modifier_army_sub_unit_category_all_armor_defence_factor = 0.15
+		category_tanks = {
+			max_organisation = 2
+		}
+		
+		path = {
+			leads_to_tech = strongpoint_focus 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_elastic_defence_tt
+		}
+		categories = {
+			land_doctrine
+			cat_elastic_defence
+			cat_defense_docs
+		}	
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	strongpoint_focus = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		army_artillery_defence_factor = 0.10
+		max_dig_in_factor = 0.05
+		amphibious_invasion_defence = 0.05
+		#enable_tactic = Defend Bridge
+		#enable_tactic = Close Quarters Local Strongpoint
+		
+		path = {
+			leads_to_tech = strongpoint_focus 
+			research_cost_coeff = 1
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_elastic_defence_tt
+		}
+		categories = {
+			land_doctrine
+			cat_elastic_defence
+			cat_defense_docs
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+#Attritional Containment
+	attritional_containment = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor = { defence_in_depth prepared_defense elastic_defence }
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		category_all_infantry = {
+			max_organisation = 4
+		}
+
+		enable_tactic = tactic_delay
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_containment_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_containment
+			cat_defense_docs
+		}
+		path = {
+			leads_to_tech = air_land_battle 
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+			modifier = {
+				factor = 0 
+				NOT = { has_country_flag = EAI_FOCUS/LAND/attritional_containment }
+			}
+		}
+	}
+	air_land_battle = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+
+		category_front_line = {
+			max_organisation = 1
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		#combat advantage when air superior
+		army_bonus_air_superiority_factor = 0.05
+		enemy_army_bonus_air_superiority_factor = -0.10
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_containment_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_containment
+			cat_defense_docs
+		}
+		path = {
+			leads_to_tech = concentrated_fire_plans 
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	concentrated_fire_plans = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		category_army = {
+			hard_attack = 0.10
+		}
+	
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_containment_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_containment
+			cat_defense_docs
+		}
+		path = {
+			leads_to_tech = volkssturm 
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 0
+				AND = {
+					tag = SOV
+					EAI_timegate_1938/7 = no
+				}
+			}
+			modifier = {
+				add = 100
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	volkssturm = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		conscription = 0.005
+		
+		dig_in_speed_factor = 0.3
+		max_dig_in = -1
+		partisan_effect = 0.05
+		category_light_infantry = {
+			default_morale = 0.1
+			hard_attack = 0.2
+			soft_attack = 0.05
+		}
+		
+		path = {
+			leads_to_tech = deep_operations
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_containment_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_containment
+			cat_defense_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+	}
+	deep_operations = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		category_tanks = {
+			max_organisation = 1
+			recon = 0.2
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+
+		
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_containment_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_containment
+			cat_defense_docs
+		}
+
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+#########################
+##### Command Tree ######
+#########################
+	interservice_hq = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		experience_gain_factor = 0.05
+		DIV_HQ = {
+			max_organisation = 5
+		}
+		command_power_gain = 0.01
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		
+
+		doctrine = yes	
+		research_cost = 2.5
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_command_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_command
+		}
+
+		path = {
+			leads_to_tech = brigade_hq
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -3 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	brigade_hq = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		DIV_HQ = {
+			max_organisation = 12
+			initiative = 0.01
+		}		
+		command_power_gain = 0.01
+		max_command_power = 5
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5		
+
+		doctrine = yes	
+		research_cost = 2.5
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_command_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_command
+		}
+		path = {
+			leads_to_tech = corps_hq
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	corps_hq = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		DIV_HQ = {
+			max_strength = 0.25
+			max_organisation = 10
+		}		
+		command_power_gain = 0.01
+		max_command_power_mult = 0.05
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5		
+
+		doctrine = yes	
+		research_cost = 2.5
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_command_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_command
+		}
+		path = {
+			leads_to_tech = army_hq
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 3 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	army_hq = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		experience_gain_factor = 0.05
+		max_army_group_size = 1	
+		DIV_HQ = {
+			max_organisation = 6
+		}		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5		
+
+		doctrine = yes	
+		research_cost = 2.5
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_command_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_command
+		}
+		path = {
+			leads_to_tech = army_group_hq
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 2 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	army_group_hq = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		DIV_HQ = {
+			max_organisation = 5
+		}		
+		max_marshal_army_group_size = 1	
+		command_power_gain_mult = 0.05
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5		
+
+		doctrine = yes	
+		research_cost = 2.5
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_command_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_command
+		}
+		path = {
+			leads_to_tech = supreme_hq
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -2 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	supreme_hq = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		DIV_HQ = {
+			initiative = 0.01
+			max_organisation = 6
+		}			
+		promote_cost_factor = -0.25	
+		experience_gain_army_unit_factor = 0.10
+		command_power_gain_mult = 0.05
+		max_command_power_mult = 0.10
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5		
+
+		doctrine = yes	
+		research_cost = 2.5
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_command_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_command
+		}
+		path = {
+			#leads_to_tech = army_hq
+			#research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+#########################
+#### Support Trees ######
+#########################
+## Operation support
+	operational_support = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		mobilization_speed = 0.10
+		org_loss_when_moving = -0.05
+		reassignment_duration_factor = -0.05
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}	
+		path = {
+			leads_to_tech = supply_transportation_doc
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = strategic_redeployment
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = medicine_doctrine
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = license_equipment
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = -1 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	license_equipment = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		license_production_speed = 0.10
+		license_purchase_cost = -0.10
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}
+		path = {
+			leads_to_tech = adaptive_equipment
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	adaptive_equipment = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		land_equipment_upgrade_xp_cost = -0.10
+		equipment_upgrade_xp_cost = -0.05
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	medicine_doctrine = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		experience_loss_factor = -0.03
+		wounded_chance_factor = -0.05
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}
+		path = {
+			leads_to_tech = combat_medicine
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -3 y = 1 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	combat_medicine = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		war_support_weekly = 0.001
+		
+		
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}
+		path = {
+			leads_to_tech = medical_evacuation
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -3 y = 3 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	medical_evacuation = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		experience_loss_factor = -0.10
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}
+		path = {
+			leads_to_tech = pilot_rescue
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -3 y = 5 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	pilot_rescue = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		air_wing_xp_loss_when_killed_factor = -0.20 
+		air_ace_generation_chance_factor = 0.03
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -3 y = 7 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	strategic_redeployment = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		army_speed_factor = 0.05
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}
+		path = {
+			leads_to_tech = strategic_redeployment2
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	strategic_redeployment2 = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		army_speed_factor = 0.05
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	supply_transportation_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		supply_consumption_factor = -0.02
+		army_fuel_capacity_factor  = 0.05
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}
+		path = {
+			leads_to_tech = supply_organisation_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 3 y = 1 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	supply_organisation_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		org_loss_when_moving = -0.05
+		army_fuel_capacity_factor = 0.05
+		army_morale_factor = 0.05
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}
+		path = {
+			leads_to_tech = logistical_warfare
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 3 y = 3 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	logistical_warfare = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		equipment_capture = 0.02
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_operational_support_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_operational_support
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 3 y = 5 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+### Brigade Doctrines	
+	brigade_doctrine = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		skill_bonus_factor = 0.1
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		dependencies = {
+			infantry_MG_coordination = 1
+			rolling_barrage = 1
+			stormtroopers = 1
+			sniper_pits = 1
+			aircraft_observers = 1 
+			telephone_communications = 1
+			infantry_tank_artillery_coordination = 1
+			cavalry_exploitation = 1
+			first_aid_stations = 1
+		}
+		
+
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+
+		path = {
+			leads_to_tech = infantry_training_doc
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = mobile_training_doc
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = recon_training_doc
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = armor_training_doc
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = artillery_training_doc
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = -1 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}	
+	infantry_training_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		experience_gain_infantry_training_factor = 0.20
+		experience_gain_light_infantry_training_factor = 0.20
+		experience_gain_garrison_training_factor = 0.20
+		experience_gain_militia_training_factor = 0.20
+		experience_gain_marine_training_factor = 0.20
+		experience_gain_mountaineers_training_factor = 0.20
+		experience_gain_paratrooper_training_factor = 0.20
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+		path = {
+			leads_to_tech = infantry_command_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 4 y= 1 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	infantry_command_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		experience_gain_infantry_combat_factor = 0.10
+		experience_gain_light_infantry_combat_factor = 0.10
+		experience_gain_garrison_combat_factor = 0.10
+		experience_gain_militia_combat_factor = 0.10
+		experience_gain_marine_combat_factor = 0.10
+		experience_gain_mountaineers_combat_factor = 0.10
+		experience_gain_paratrooper_combat_factor = 0.10
+		max_command_power_mult = 0.02
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+		path = {
+			leads_to_tech = improved_combined_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 4 y= 3 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+
+	mobile_training_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		experience_gain_cavalry_training_factor = 0.20
+		experience_gain_semi_motorized_training_factor = 0.20
+		experience_gain_motorized_training_factor = 0.20
+		experience_gain_mechanized_training_factor = 0.20
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+		path = {
+			leads_to_tech = mobile_command_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 2 y= 1 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	mobile_command_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		experience_gain_cavalry_combat_factor = 0.10
+		experience_gain_semi_motorized_combat_factor = 0.10
+		experience_gain_motorized_combat_factor = 0.10
+		experience_gain_mechanized_combat_factor = 0.10
+		max_command_power_mult = 0.02
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+		path = {
+			leads_to_tech = improved_combined_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 2 y= 3 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	recon_training_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		experience_gain_recon_training_factor = 0.20
+		experience_gain_recon_cav_training_factor = 0.20
+		experience_gain_recon_mot_training_factor = 0.20
+		experience_gain_recon_ac_training_factor = 0.20
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+		path = {
+			leads_to_tech = recon_command_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y= 1 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	recon_command_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		
+		experience_gain_recon_combat_factor = 0.10
+		experience_gain_recon_cav_combat_factor = 0.10
+		experience_gain_recon_mot_combat_factor = 0.10
+		experience_gain_recon_ac_combat_factor = 0.10
+		max_command_power_mult = 0.02
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+		path = {
+			leads_to_tech = improved_combined_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y= 3 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	improved_combined_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		on_research_complete = {
+			set_land_doctrine_laws = yes
+			add_ideas = {
+				improved_combined_doc_idea
+			}
+		}
+		dependencies = {
+			recon_command_doc = 1
+			mobile_command_doc = 1
+			infantry_command_doc = 1
+			artillery_command_doc = 1
+			armor_command_doc = 1
+		}
+			
+		category_army = {
+			max_strength = 0.05
+			maximum_speed = 0.05
+		}
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y= 6 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	armor_training_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		on_research_complete = {
+			set_land_doctrine_laws = yes
+			custom_effect_tooltip = armor_training_doc_tt
+			hidden_effect = {
+				add_ideas = {
+					armor_training_doc_idea
+				}
+			}
+		}
+		
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+		path = {
+			leads_to_tech = armor_command_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -2 y= 1 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	armor_command_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		on_research_complete = {
+			set_land_doctrine_laws = yes
+			custom_effect_tooltip = armor_command_doc_tt
+			hidden_effect = {
+				add_ideas = {
+					armor_command_doc_idea
+				}
+			}
+		}
+		
+		max_command_power_mult = 0.02
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+		path = {
+			leads_to_tech = improved_combined_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -2 y= 3 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	artillery_training_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		experience_gain_artillery_brigade_training_factor = 0.20
+		experience_gain_artillery_brigade_med_training_factor = 0.20
+		experience_gain_artillery_brigade_mot_training_factor = 0.20
+		experience_gain_artillery_brigade_mot_med_training_factor = 0.20
+		experience_gain_artillery_division_training_factor = 0.20
+		experience_gain_mountain_artillery_brigade_training_factor = 0.20
+		experience_gain_mountain_artillery_brigade_mot_training_factor = 0.20
+		experience_gain_airborne_artillery_brigade_training_factor = 0.20
+		experience_gain_rocket_artillery_brigade_training_factor = 0.20
+		experience_gain_motorized_rocket_brigade_training_factor = 0.20		
+	
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+		path = {
+			leads_to_tech = artillery_command_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -4 y= 1 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+	artillery_command_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+	
+		
+		experience_gain_artillery_brigade_combat_factor = 0.10
+		experience_gain_artillery_brigade_med_combat_factor = 0.10
+		experience_gain_artillery_brigade_mot_combat_factor = 0.10
+		experience_gain_artillery_brigade_mot_med_combat_factor = 0.10
+		experience_gain_artillery_division_combat_factor = 0.10
+		experience_gain_mountain_artillery_brigade_combat_factor = 0.10
+		experience_gain_mountain_artillery_brigade_mot_combat_factor = 0.10
+		experience_gain_airborne_artillery_brigade_combat_factor = 0.10
+		experience_gain_rocket_artillery_brigade_combat_factor = 0.10
+		experience_gain_motorized_rocket_brigade_combat_factor = 0.10	
+		max_command_power_mult = 0.02
+		
+		xp_research_type = army
+		xp_research_cost = 100
+		xp_research_bonus =0.5
+		
+		doctrine = yes	
+		research_cost = 3
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+			custom_effect_tooltip = cat_brigade_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+			cat_brigade_doctrine
+		}
+		path = {
+			leads_to_tech = improved_combined_doc
+			research_cost_coeff = 1
+		}		
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -4 y= 3 }
+		}
+		
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 10 
+				prioritise_land_doctrine = yes
+			}
+		}
+	}
+
+########### Special Forces Branch
+	tech_special_forces = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		
+		category_special_forces = {
+			acclimatization_hot_climate_gain_factor = 0.05
+			acclimatization_cold_climate_gain_factor = 0.05
+		}
+		
+		dependencies = {
+			battlefield_commissions = 1
+			weather_reporting = 1
+			terrain_mapping = 1
+			camouflage_positions = 1
+		}
+
+		path = {
+			leads_to_tech = advanced_special_forces
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = improved_special_forces
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+		}
+	}
+
+
+	advanced_special_forces = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor={
+			improved_special_forces
+		}
+
+		category_special_forces = {
+			max_organisation = 5
+			defense = 0.05
+		}
+
+		special_forces_training_time_factor = 0.1
+		
+		path = {
+			leads_to_tech = extreme_environment_training
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 2 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = improved_special_forces
+					is_researching_technology = improved_special_forces
+				}
+			}
+		}
+	}
+
+	improved_special_forces = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		xor={
+			advanced_special_forces
+		}
+
+		special_forces_cap = 0.05
+		special_forces_training_time_factor = -0.1
+		
+		path = {
+			leads_to_tech = survival_training
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 2 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = advanced_special_forces
+					is_researching_technology = advanced_special_forces
+				}
+			}
+		}
+	}
+
+
+	extreme_environment_training = {
+		allow = { can_research_land_doctrine_folder = yes } 
+
+		category_special_forces = {
+			acclimatization_hot_climate_gain_factor = 0.50
+			acclimatization_cold_climate_gain_factor = 0.50
+		}
+		
+		special_forces_no_supply_grace = 48
+		special_forces_training_time_factor = 0.1
+		
+		path = {
+			leads_to_tech = elite_forces
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -1 y = 4 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+		}
+	}
+
+
+	survival_training = {
+		allow = { can_research_land_doctrine_folder = yes } 
+
+		category_special_forces = {
+			acclimatization_hot_climate_gain_factor = 0.20
+			acclimatization_cold_climate_gain_factor = 0.20
+		}
+		
+		special_forces_out_of_supply_factor = -0.1
+		
+		path = {
+			leads_to_tech = elite_forces
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 1 y = 4 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+		}
+	}
+	elite_forces = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		category_special_forces = {
+			acclimatization_hot_climate_gain_factor = 0.20
+			acclimatization_cold_climate_gain_factor = 0.20
+			max_organisation = 5
+			soft_attack = 0.05
+		}
+		
+		special_forces_no_supply_grace = 48
+
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 6 }
+		}
+		path = {
+			leads_to_tech = amphibious_operations
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = alphine_battles
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = airhead_doc
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+		}
+	}
+	airhead_doc = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		paratrooper_aa_defense = 0.05
+		experience_gain_paratrooper_combat_factor = 0.05
+		extra_paratrooper_supply_grace = 12
+		
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 2 y = 8 }
+		}
+		path = {
+			leads_to_tech = vertical_envelopment
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+		}
+	}
+	vertical_envelopment = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		paratrooper_count_per_plane = 0.10
+		paradrop_organization_factor = 0.10
+		paratrooper = {
+			initiative = 0.05
+		}
+		ss_paratrooper = {
+			initiative = 0.05
+		}
+		
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 2 y = 10 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+		}
+	}
+	alphine_battles = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		acclimatization_cold_climate_gain_factor = 0.05
+		experience_gain_gurkha_combat_factor = 0.05
+		experience_gain_mountaineers_combat_factor = 0.05
+		gurkha = {
+			initiative = 0.05
+			recon = 0.10
+		}
+		mountaineers = {
+			initiative = 0.05
+		}
+		ss_mountaineers = {
+			initiative = 0.05
+		}
+		
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = 0 y = 9 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+		}
+	}
+	amphibious_operations = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		shore_bombardment_bonus = 0.05
+		river_crossing_factor = -0.10
+		experience_gain_marine_combat_factor = 0.05
+		
+
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -2 y = 8 }
+		}
+		path = {
+			leads_to_tech = beachhead_consolidation
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+		}
+	}
+	beachhead_consolidation = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		extra_marine_supply_grace = 24
+		marine = {
+			defense = 0.15
+			recon = 0.25
+		}
+		
+
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -2 y = 10 }
+		}
+		path = {
+			leads_to_tech = operational_landings
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+		}
+	}
+	operational_landings = {
+		allow = { can_research_land_doctrine_folder = yes } 
+		naval_invasion_penalty = -0.10
+		naval_invasion_capacity = 5
+		shore_bombardment_bonus = 0.05
+		marine = {
+			default_morale = 0.01
+		}
+
+		research_cost = 2
+		doctrine = yes
+		folder = {
+			name = land_doctrine_folder
+			position = { x = -2 y = 12 }
+		}
+		path = {
+			leads_to_tech = operational_landings
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = land_doctrine_tt
+		}		
+		categories = {
+			land_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+		}
+	}
+}

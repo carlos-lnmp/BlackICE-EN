@@ -1,0 +1,85 @@
+#Add to scripted triggers if more levels of hyper inflation is added
+
+#Important to put HIGHEST first
+GER_enigma_up = {
+	# Every Improvement go's up 2 levels.
+	custom_effect_tooltip = "Enigma Code Improved  "
+	if = {
+		limit = { has_idea = GER_enigma_4 }
+		swap_ideas = {
+			remove_idea = GER_enigma_4
+			add_idea = GER_enigma_6
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_enigma_3 }
+		swap_ideas = {
+			remove_idea = GER_enigma_3
+			add_idea = GER_enigma_5
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_enigma_2 }
+		swap_ideas = {
+			remove_idea = GER_enigma_2
+			add_idea = GER_enigma_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_enigma_1 }
+		swap_ideas = {
+			remove_idea = GER_enigma_1
+			add_idea = GER_enigma_3
+		}		
+	}
+	else_if = {
+		limit = { NOT = { has_idea = GER_enigma_1 } }
+		add_ideas = GER_enigma_2
+	}
+}
+
+#Important to put LOWEST first
+GER_enigma_down = {
+custom_effect_tooltip = "Enigma Code Cracked  "
+	if = {
+		limit = { has_idea = GER_enigma_1 }
+		remove_ideas = GER_enigma_1 
+		set_country_flag = enigma_cracked
+	}
+	if = {
+		limit = { has_idea = GER_enigma_2 }
+		swap_ideas = {
+			remove_idea = GER_enigma_2
+			add_idea = GER_enigma_1
+		}
+	}
+	if = {
+		limit = { has_idea = GER_enigma_3 }
+		swap_ideas = {
+			remove_idea = GER_enigma_3
+			add_idea = GER_enigma_2
+		}
+	}
+	if = {
+		limit = { has_idea = GER_enigma_4 }
+		swap_ideas = {
+			remove_idea = GER_enigma_4
+			add_idea = GER_enigma_3
+		}
+	}
+	if = {
+		limit = { has_idea = GER_enigma_5 }
+		swap_ideas = {
+			remove_idea = GER_enigma_5
+			add_idea = GER_enigma_4
+		}
+	}
+	if = {
+		limit = { has_idea = GER_enigma_6 }
+		swap_ideas = {
+			remove_idea = GER_enigma_6
+			add_idea = GER_enigma_5
+		}
+	}
+}
+

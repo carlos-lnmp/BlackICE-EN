@@ -1,0 +1,152 @@
+﻿capital = 319
+
+oob = "DOM_1936"
+
+set_convoys = 5
+
+set_war_support = 0.15
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+	#set_naval_oob = "DOM_1936_naval_legacy"
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		#early_ship_hull_submarine = 1
+	}
+	#set_naval_oob = "DOM_1936_naval"
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## artillery ###############
+	gw_artillery = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############ WW1 doctrines ################
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	
+	ww1_battlefield_support = 1
+	############### naval doctrines ##################
+	nrm_pre_ww1_naval_doctrine = 1
+	nrm_mahanian_concepts = 1
+	nrm_jeune_ecole_concepts = 1
+	nrm_commerce_warfare = 1
+	nrm_destroyer_support = 1
+	nrm_destroyer_screen = 1
+	nrm_destroyer_torpedo_tactics = 11
+	nrm_submarine_tactics_early = 1
+	nrm_submarine_raiding = 1
+	nrm_submarine_torpedo_tactics = 1
+}
+
+add_ideas = { 	
+	constitutional_republic
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	age_19
+	officer_train_none
+	security_minor_restrictions
+	edu_minimal
+
+	foreign_isolationism
+	neutrality_idea
+}
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		CHI_incompetent_officers
+	}
+}
+
+set_country_flag = constitutional_republic
+
+set_country_flag = monroe_doctrine
+
+set_politics = {
+	ruling_party = fascism
+	last_election = "1934.5.16"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	conservatism = 0
+	fascism = 100
+	communism = 0
+}
+##### Country Leaders #####
+create_country_leader = {
+	name = "Rafael Trujillo"
+	desc = "POLITICS_RAFAEL_TRUJILLO_DESC"
+	picture = "portrait_dom_rafael_trujillo.dds" #gfx/leaders/DOM/Portrait_Dom_Trujilo.dds
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+	}
+}
+##### Field Marshals #####
+##### Corps Commanders #####
+
+create_corps_commander = {
+	name = "Costa-Ruiz, da"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_3.dds"
+	traits = { old_guard Bad_General logistics_wizard_CC }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+##### Navy Leaders #####
+
+### EOF ###

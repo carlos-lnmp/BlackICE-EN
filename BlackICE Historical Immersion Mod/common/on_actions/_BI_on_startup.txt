@@ -1,0 +1,835 @@
+
+on_actions = {
+	on_startup = {
+		effect = {
+	####################
+	#### EVERY STATE 
+	####################
+			if = {
+				limit = { NOT = { has_global_flag = BI_startup_state_effect } }
+				set_global_flag = { flag = BI_startup_state_effect days = 1 }
+				
+				every_state = {
+					set_region_variables = yes
+					
+					if = {
+						limit = {
+							is_capital = yes 
+						}
+						OWNER = { 
+							PREV = { 
+								set_state_flag = capital_@PREV 
+								set_state_flag = EAI_original_capital_@ROOT
+							} 
+							set_variable = { original_capital = Prev.id }
+							set_country_flag = EAI_capital_saved
+						}
+					}
+					if = {
+						limit = { 
+							EAI_radar_location = yes 
+						}
+						set_state_flag = EAI_radar_site
+					}
+
+					if = {
+						limit = {
+							is_core_of = MAN
+							OWNER = {
+								NOT = { tag = MAN }
+							}
+						}
+						remove_core_of = MAN
+					}
+					clear_variable = state_taxes
+
+					OWNER = {
+						add_to_variable = { total_population = Prev.state_population_k }
+						
+						if = { 
+							limit = {
+								PREV = { is_core_of = PREV }
+							}
+							add_to_variable = { num_controlled_core_states = 1 }
+							if = {
+								limit = {
+									PREV = { is_owned_by = PREV }
+								}
+								add_to_variable = { num_owned_core_states = 1 }
+							}
+							add_to_variable = { core_population = Prev.state_population_k }
+						}
+					}
+				}
+			}
+	####################
+	#### EVERY COUNTRY 
+	####################
+			if = {
+				limit = { NOT = { has_global_flag = BI_startup_country_effect } }
+				set_global_flag = { flag = BI_startup_country_effect days = 1 }
+				set_global_flag = on_startup
+				every_country = {	
+					country_event = EAI_background.5
+					country_event = mod_country.1 #Population 
+					
+					# Temporarily set these to old values until finished
+					set_variable = { max_army_xp = 800 }
+					set_variable = { max_navy_xp = 500 }
+					set_variable = { max_air_xp = 500 }
+					
+					set_dupe_economy_law = yes				
+					set_all_law_country_flags = yes
+					set_special_forces_cap = yes 
+					calculate_equipment_supplied_ratio = yes
+					
+					if = {
+						limit = {
+							check_variable = { research_slots_total < 2 }
+						}
+						set_variable = { research_slots_total = 2 }
+					}
+					
+					set_country_flag = research_centres
+					country_event = EAI_M.8000 #Research Centre placement
+					
+					country_event = military_size.1
+					country_event = blackiceevents.104 #checking generic armor techs
+					country_event = BICE_buildings.1 #EIC Buildings
+					country_event = EAI_M.13	
+					
+					if = {
+						limit = {
+							OR = {
+								original_tag = GER
+								original_tag = ENG
+								original_tag = SOV
+								original_tag = JAP
+								original_tag = USA
+								original_tag = SWE
+								original_tag = LUX
+								original_tag = BEL
+								original_tag = HOL
+								original_tag = CZE
+								original_tag = POL
+								original_tag = AUS
+								original_tag = LIT
+								original_tag = EST
+								original_tag = LAT
+								original_tag = ROM
+								original_tag = ITA
+								original_tag = SER
+								original_tag = SWI
+								original_tag = TUR
+								original_tag = NOR
+								original_tag = DEN
+								original_tag = FIN
+								original_tag = IRE
+								original_tag = HUN
+								original_tag = BHU
+								original_tag = CAN
+								original_tag = CHI
+								original_tag = MEN
+								original_tag = MAN
+								original_tag = NEP
+								original_tag = SIK
+								original_tag = TIB
+								original_tag = MON
+								original_tag = TAN
+								original_tag = SLO
+								original_tag = PRC
+								original_tag = ICE
+								original_tag = GER
+								
+								
+							}
+						}
+						set_country_flag = winter_is_coming
+						add_timed_idea = {
+							idea = winter_heating
+							days = 60
+						}
+					}
+					if = {
+						limit = {
+							tag = GER 
+						}
+						add_ideas = hermann_goering
+						add_ideas = heinrich_himmler
+					}
+					if = {
+						limit = {
+							tag = JAP 
+						}
+						add_ideas = sadao_araki
+					}
+					if = {
+						limit = {
+							any_owned_state = {
+								is_coastal = yes
+							}
+						}
+						set_country_flag = coastal_state
+					}
+
+					set_variable = { original_max_manpower_k = max_manpower_k }
+				
+					if = {
+						limit = {
+							is_independent_china_or_warlord = no
+						}
+						add_unity_idea = yes
+					}				
+					if = { limit = { has_government = monarchism }
+						set_country_flag = monarchy_set
+					}
+					if = {
+						limit = {
+							OR = {
+								original_tag = SWE
+								original_tag = DEN
+								original_tag = NOR
+								original_tag = ALB
+								original_tag = GRE
+								original_tag = TUR
+								original_tag = SWI
+								original_tag = SER
+								original_tag = YUG
+								original_tag = ROM
+								original_tag = SPR
+								original_tag = LAT
+								original_tag = EST
+								original_tag = LIT
+								original_tag = AUS
+								original_tag = POL
+								original_tag = CZE
+								original_tag = HOL
+								original_tag = BEL
+								original_tag = LUX
+								original_tag = DEN
+								original_tag = BUL
+								original_tag = POR
+								original_tag = FIN
+								original_tag = IRE
+								original_tag = HUN
+								original_tag = CAN
+								original_tag = SAF
+								original_tag = CRO
+								original_tag = SPA
+								original_tag = WGR
+								original_tag = DDR
+								original_tag = ISR
+								original_tag = UKR
+								original_tag = GEO
+								original_tag = KAZ
+								original_tag = AZR
+								original_tag = ARM
+								original_tag = BLR
+								original_tag = QUE
+								original_tag = NEW
+								original_tag = VLA
+								original_tag = WLL
+								original_tag = SAP
+								original_tag = ICE
+								original_tag = NZL
+								original_tag = AST
+								original_tag = MNT
+							}
+						}
+						add_ideas = generic_supreme_commander
+					}
+					if = {
+						limit = {
+							OR = {
+								original_tag = BHU
+								original_tag = CHI
+								original_tag = PRC
+								original_tag = KOR
+								original_tag = MEN
+								original_tag = MAN
+								original_tag = NEP
+								original_tag = PHI
+								original_tag = SIA
+								original_tag = SIK
+								original_tag = TIB
+								original_tag = YUN
+								original_tag = MON
+								original_tag = TAN
+								original_tag = GXC
+								original_tag = SHX
+								original_tag = XSM
+								original_tag = VIN
+								original_tag = CAM
+								original_tag = MAL
+								original_tag = INS
+								original_tag = LAO
+							}
+						}
+						add_ideas = generic_supreme_commander_a1
+					}
+					#if = {
+						#limit = { has_government = neutrality is_ai = yes }
+						#add_ideas = generic_neutral_advisor
+					#}
+					
+					if = {
+						limit = {
+							has_tech = marines
+							NOT = { has_template_containing_unit = marine }
+						}
+						load_oob = "unlock_marines"
+					}
+					if = {
+						limit = {
+							has_tech = tech_mountaineers
+							NOT = { has_template_containing_unit = mountaineers }
+						}
+						load_oob = "unlock_mountineers"
+					}
+					if = {
+						limit = {
+							has_tech = paratroopers
+							NOT = { has_template_containing_unit = paratrooper }
+						}
+						load_oob = "unlock_paratrooper"
+					}
+					####################
+					#### PLAYER ONLY
+					####################
+					if = {
+						limit = { is_ai = no }
+						
+						#set_country_flag = EAI_config_STARTUP 
+						set_country_flag = EAI_show_country_config_decisions 
+						
+						add_to_array = { global.players = THIS }
+						
+						add_dynamic_modifier = {
+							modifier = output_factor
+						}
+						set_temp_variable = { temp = max_manpower_k }
+						divide_temp_variable = { temp = 1000 }
+						set_variable = { max_manpower_k_k = temp }
+
+						add_to_variable = { Total_Buildings = num_of_civilian_factories }
+						add_to_variable = { Total_Buildings = num_of_military_factories }
+						add_to_variable = { Total_Buildings = num_of_naval_factories }
+
+						set_variable = { num_of_consumer_civilian_factories = num_of_civilian_factories }
+						subtract_from_variable = { num_of_consumer_civilian_factories = num_of_available_civilian_factories }
+					
+						set_variable = { establish_government_projects_cost = 25 }
+						
+						DIPLOMACY_GUARANTEE_EFFECT = yes
+						DIPLOMACY_REVOKE_GUARANTEE_EFFECT = yes
+						DIPLOMACY_RELEASE_NATION_EFFECT = yes
+						DIPLOMACY_ACCESS_EFFECT = yes
+						DIPLOMACY_INCOMING_LEND_LEASE_EFFECT = yes
+						DIPLOMACY_REQUEST_LICENSED_PRODUCTION_EFFECT = yes
+						DIPLOMACY_GENERATE_WARGOAL_EFFECT = yes
+						DIPLOMACY_BOOST_PARTY_POPULARITY_EFFECT = yes
+						DIPLOMACY_STAGE_COUP_EFFECT = yes
+						DIPLOMACY_LEAVE_FACTION_EFFECT = yes
+						DIPLOMACY_ASSUME_FACTION_LEADERSHIP_EFFECT = yes
+						DIPLOMACY_KICK_FROM_FACTION_EFFECT = yes
+						DIPLOMACY_SEND_VOLUNTEERS_EFFECT = yes
+						
+						country_event = EAI_M.123  #Research Centre building speed malus
+
+						calculate_civilian_fuel_factor = yes
+
+						#If the country switched to human AI give it all the AI bonuses
+						country_event = { id = EAI_C.0 days = 1 }	#Construction Queue
+						country_event = { id = EAI_M.122 days = 1 } #Normal Difficulty and Airrange
+						country_event = { id = EAI_M.124 days = 1 } #Command Power
+
+						if = {
+							limit = {
+								has_dlc = "Man the Guns"
+							}
+							set_global_flag = MTG
+						}
+						if = {
+							limit = {
+								has_dlc = "Together for Victory"
+							}
+							set_global_flag = TFV
+						}
+						if = {
+							limit = {
+								has_dlc = "Death or Dishonor"
+							}
+							set_global_flag = DOD
+						}
+						GER = { set_country_flag = original_major_country }
+						ITA = { set_country_flag = original_major_country }
+						JAP = { set_country_flag = original_major_country }
+						ENG = { set_country_flag = original_major_country }
+						FRA = { set_country_flag = original_major_country }
+						USA = { set_country_flag = original_major_country }
+						SOV = { set_country_flag = original_major_country }
+
+						if = {
+							limit = {
+								OR = {
+									original_tag = GER
+									original_tag = ENG
+									original_tag = ITA
+									is_in_faction_with = ENG
+								}
+							}
+							set_country_flag = allied_anger_visible
+						}
+						
+						set_country_flag = show_number
+						add_dynamic_modifier = {
+							modifier = civ_fuel_usage
+						}
+						country_event = blackiceevents.150
+						country_event = politics.900
+						
+						if = {
+							limit = {
+								is_ironman = yes 
+							}
+							country_event = blackiceevents.106
+						}
+						if = {
+							limit = {
+								is_historical_focus_on = no
+							}
+							country_event = blackiceevents.105
+						}
+						if = {
+							limit = {
+								not = {
+									has_dlc = "Waking the Tiger"
+								}
+							}
+							## lets players turn on focus trees that are usually off for balance reasons
+							country_event = blackiceevents.11
+						}
+						
+						if = {
+							limit = {
+								capital_scope = {
+									is_on_continent = europe 
+								}
+							}
+							set_global_flag = europe_player
+						}
+						else_if = {
+							limit = {
+								capital_scope = {
+									is_on_continent = asia 
+								}
+							}
+							set_global_flag = asia_player
+						}
+						else_if = {
+							limit = {
+								capital_scope = {
+									is_on_continent = oceania 
+								}
+							}
+							set_global_flag = oceania_player
+						}
+						else_if = {
+							limit = {
+								capital_scope = {
+									is_on_continent = middle_east 
+								}
+							}
+							set_global_flag = middle_east_player
+						}
+						else_if = {
+							limit = {
+								capital_scope = {
+									is_on_continent = north_america 
+								}
+							}
+							set_global_flag = north_america_player
+						}
+						else_if = {
+							limit = {
+								capital_scope = {
+									is_on_continent = south_america 
+								}
+							}
+							set_global_flag = south_america_player
+						}
+					}
+					####################
+					#### AI ONLY
+					####################
+					else_if = {
+						limit = { is_ai = yes }
+						
+						#if = { limit = { EAI_use_harshest_occupation = yes } 
+						#	every_country = {
+						#		ROOT = {
+						#			meta_effect = {
+						#				text = {
+						#					add_ai_strategy = {
+						#						type = occupation_policy
+						#						id = [TAG]
+						#						value = 2
+						#					}	
+						#				}
+						#				TAG = "[Prev.GetTag]"
+						#				
+						#			}
+						#		}
+						#	}
+						#}
+
+						EAI_set_land_doctrine_flags = yes
+						
+						set_global_flag = EAI_lend_lease
+						set_global_flag = EAI_anti_aggression_diplomacy
+						
+						add_ideas = EAI_resistance_effects_reduced
+						
+						country_event = EAI_C.0 #CONSTRUCTION QUEUE
+						country_event = EAI_M.122 #COMMAND POWER
+						
+						set_technology = { BICE_airrange_balance = 1 }
+						set_technology = { amphibious_bonus = 1 }
+						
+						if = {
+							limit = {
+								is_major = yes
+							}
+							research_WW1 = yes
+							set_country_flag = AI_major
+							
+							army_experience = 100 
+							air_experience = 100 
+							navy_experience = 200
+							
+							add_offsite_building = { type = fuel_silo level = 2 }
+						}
+						
+						if = {
+							limit = {
+								tag = ECU 
+							}
+							# AC_set_global_variables
+							country_event = AC_event.101
+							set_country_flag = pulse_january
+							set_country_flag = debug_country
+							set_variable = { global.amount_of_pulses_passed = 0 }
+						}
+						HOL = { set_country_flag = no_units }
+						BEL = { set_country_flag = no_units }
+						LUX = { set_country_flag = no_units }
+						DEN = { set_country_flag = no_units }
+						NOR = { set_country_flag = no_units }
+						AUS = { set_country_flag = no_units }
+						CZE = { set_country_flag = no_units }
+						POL = { set_country_flag = no_units }
+						IRE = { set_country_flag = no_units }
+						SWE = { set_country_flag = no_units }
+						SWI = { set_country_flag = no_units }
+						POR = { set_country_flag = no_units }
+						SPR = { set_country_flag = no_units }
+						ALB = { set_country_flag = no_units }
+						GRE = { set_country_flag = no_units }
+						YUG = { set_country_flag = no_units }
+						LAT = { set_country_flag = no_units }
+						EST = { set_country_flag = no_units }
+						LIT = { set_country_flag = no_units }
+						FIN = { set_country_flag = no_units }
+						
+						AFG = { set_country_flag = no_units }
+						PER = { set_country_flag = no_units }
+						IRQ = { set_country_flag = no_units }
+						SYR = { set_country_flag = no_units }
+						LEB = { set_country_flag = no_units }
+						JOR = { set_country_flag = no_units }
+						BMP = { set_country_flag = no_units }
+						EGY = { set_country_flag = no_units }
+						TUN = { set_country_flag = no_units }
+						MAR = { set_country_flag = no_units }
+						MOR = { set_country_flag = no_units }
+						YEM = { set_country_flag = no_units }
+						SAU = { set_country_flag = no_units }
+						OMA = { set_country_flag = no_units }
+						ETH = { set_country_flag = no_units }
+						NEP = { set_country_flag = no_units }
+						BHU = { set_country_flag = no_units }
+						TIB = { set_country_flag = no_units }
+						SIA = { set_country_flag = no_units }
+						FRI = { set_country_flag = no_units }
+						TAN = { set_country_flag = no_units }
+						MON = { set_country_flag = no_units }
+						MEN = { set_country_flag = no_units }
+						MAN = { set_country_flag = no_units }
+						INS = { set_country_flag = no_units }
+						MEX = { set_country_flag = no_units }
+						
+						
+						
+						
+						if = {
+							limit = {
+								capital_scope = {
+									is_on_continent = south_america 
+								}
+							}
+							set_country_flag = no_units
+						}
+						if = {
+							limit = {
+								num_of_controlled_states < 2
+							}
+							set_country_flag = no_units
+						}
+						
+						
+					}
+				}
+		#####################
+		#### MISC EFFECTS 
+		#####################
+		
+				if = {
+					limit = {
+						MAN = { is_ai = yes }
+						JAP = { is_ai = yes }
+					}
+					MAN = { give_resource_rights = { receiver = JAP state = 328 } }
+				}
+				
+				#Mexican oil concessions
+				MEX = {
+					give_resource_rights = { receiver = ENG state = 476 }
+					give_resource_rights = { receiver = ENG state = 477 }
+					give_resource_rights = { receiver = USA state = 479 }
+					give_resource_rights = { receiver = USA state = 480 }
+				}
+				#Iraq oil concessions
+				IRQ = {
+					give_resource_rights = { receiver = ENG state = 291 }
+					give_resource_rights = { receiver = ENG state = 676 }
+				}
+				#Iran oil concessions
+				PER = {
+					give_resource_rights = { receiver = ENG state = 413 }
+					give_resource_rights = { receiver = ENG state = 412 }
+				}
+				#Dutch East Indies trade
+				INS = { 
+					give_resource_rights = { receiver = HOL state = 716 }
+					give_resource_rights = { receiver = HOL state = 672 }
+				}
+				#Man Steel
+				MAN = {
+					give_resource_rights = { receiver = JAP state = 716 }
+				}
+				
+				449 = {
+					add_extra_state_shared_building_slots = 1 
+					add_building_construction = {
+						type = recruitment_building
+						level = 1 
+						instant_build = yes
+					}
+				}
+				SPR = {
+					country_event = { id = spain.55 days = 1 }
+					country_event = { id = spain.70 days = 4 }
+					country_event = { id = spain.72 days = 6 }
+					country_event = { id = spain.56 days = 20 }
+					country_event = { id = spain.76 days = 34 } 
+					country_event = { id = spain.75 days = 52 } 
+					country_event = { id = spain.71 days = 90 } 
+				}
+				IRE = {
+					country_event = { id = ireland.10 days = 249 }
+				}
+				FRA = {
+					add_ideas = FRA_protected_by_the_maginot_line_1
+				}
+				JAP = {
+					set_country_flag = araki_powerful
+					country_event = { id = jap.1 days = 55 }
+					
+				}
+				USA = {
+					set_rule = { can_send_volunteers = no }
+				}
+				GER = {
+					add_ideas = hermann_goering
+					country_event = { id = blackiceairevents.1 days = 154 }
+				}
+				SAU = {
+					country_event = { id = Arab.2 days = 463 }
+				}
+				AST = {
+					country_event = { id = australia.25 days = 22 }
+				}
+				BMP = {
+					country_event = { id = mandate.10 days = 100 }
+				}
+				ENG = {
+					country_event = { id = britain.16 days = 20 }
+				}
+				CAN = {
+					country_event = { id = canada.1 days = 306 }
+				}
+				NOR = {
+					country_event = { id = norway.4 days = 1505 }
+				}
+				IRQ = {
+					country_event = { id = iraq.4 days = 1189 }
+					if = {
+						limit = {
+							is_ai = yes
+						}
+						add_timed_idea = {
+							idea = ai_monarch
+							days = 1100
+						}
+					}
+				}
+				BUL = {
+					country_event = { id = bulgarian_news.3 days = 2795 random = 48 }
+				}
+				SIK = {
+					country_event = { id = xinjiang.1 days = 515 }
+				}
+				PRC = {
+					country_event = { id = prc.127 days = 335 random = 5 }
+				}					
+				TIB = {
+					country_event = { id = himalaya_tibet.25 days = 1097 random = 360 }
+				}				
+				PER = {
+					if = { 
+						limit = {
+							is_ai = yes
+						}
+						add_ideas = PER_neutral
+					}
+					else = {
+						add_ideas = neutrality_idea
+					}
+				}	
+				RAJ = {
+					country_event = { id = burma.1 days = 456 }
+				}
+				CHI = {
+					country_event = { id = xian.1 days = 346 }
+					if = {
+						limit = {
+							is_ai = yes
+						}
+						remove_ideas = CHI_army_corruption_1
+					}
+				}
+				MEN = {
+					country_event = { id = jap.107 days = 813 }
+				}
+				YUT = {
+					country_event = { id = jyutgwai.1 days = 130 random = 6 }
+				}
+				SCC = {
+					country_event = { id = jyutgwai.1 days = 55 random = 10 }
+				}				
+				#Initializing the global.small_airbase_list array#
+
+				if = {
+					limit = {
+						NOT = { has_global_flag = airbase_list_created }
+					}
+					set_global_flag = airbase_list_created
+
+					###Pacific Islands###
+					add_to_array = { global.small_airbase_list = 555 } #Kuril Islands, JAP
+					add_to_array = { global.small_airbase_list = 650 } #Attu Island, USA
+					add_to_array = { global.small_airbase_list = 647 } #Palau, JAP
+					add_to_array = { global.small_airbase_list = 734 } #Nendo, France
+					add_to_array = { global.small_airbase_list = 643 } #Ellice Islands, UK
+					add_to_array = { global.small_airbase_list = 726 } #Samoa, NZL
+					add_to_array = { global.small_airbase_list = 641 } #Tahiti, FRA
+					add_to_array = { global.small_airbase_list = 642 } #Phoenix Island, USA
+					add_to_array = { global.small_airbase_list = 631 } #Midway Island, USA
+					add_to_array = { global.small_airbase_list = 630 } #Johnston Atoll, USA
+					add_to_array = { global.small_airbase_list = 727 } #Line islands, USA
+					add_to_array = { global.small_airbase_list = 632 } #Wake Island, USA
+					add_to_array = { global.small_airbase_list = 648 } #Marcus Island, JAP
+					add_to_array = { global.small_airbase_list = 725 } #Nauru, UK
+					add_to_array = { global.small_airbase_list = 270 } #Pitcairn Island, UK
+					add_to_array = { global.small_airbase_list = 649 } #Galapagos Islands, ECU
+					add_to_array = { global.small_airbase_list = 633 } #Marshall Islands, JAP
+					add_to_array = { global.small_airbase_list = 639 } #Gilbert Islands, UK
+					
+					add_to_array = { global.medium_airbase_list = 684 } #Caroline islands, JAP, LglobalE chain
+					add_to_array = { global.medium_airbase_list = 646 } #Saipan, JAP, Small Island
+					add_to_array = { global.medium_airbase_list = 638 } #Guam, USA,
+					add_to_array = { global.medium_airbase_list = 636 } #Fiji, UK
+
+					###Indian Ocean###
+					add_to_array = { global.small_airbase_list = 712 } #Cocos, UK
+					add_to_array = { global.small_airbase_list = 711 } #Christmas Island, UK
+					add_to_array = { global.small_airbase_list = 733 } #Andaman, UK
+					add_to_array = { global.small_airbase_list = 710 } #Diego Garcia, UK
+					add_to_array = { global.small_airbase_list = 281 } #Maldives, UK
+					add_to_array = { global.small_airbase_list = 709 } #Seychelles, UK
+					add_to_array = { global.small_airbase_list = 708 } #Comoros, FRA
+					add_to_array = { global.small_airbase_list = 706 } #Reunion, FRA
+					add_to_array = { global.small_airbase_list = 707 } #Mauritius, UK
+					add_to_array = { global.small_airbase_list = 713 } #Kerguelen, FRA
+					add_to_array = { global.small_airbase_list = 833 } #Bahrain, UK
+					add_to_array = { global.medium_airbase_list = 834 } #Quatar, UK
+
+
+					###Atlantic###
+					add_to_array = { global.small_airbase_list = 720 } #South Georgia, UK
+					add_to_array = { global.small_airbase_list = 299 } #Falklands, UK
+					add_to_array = { global.small_airbase_list = 704 } #Saint Helena, UK
+					add_to_array = { global.small_airbase_list = 703 } #Ascension, UK
+					add_to_array = { global.small_airbase_list = 705 } #Sao Tome, POR
+					add_to_array = { global.small_airbase_list = 702 } #Cape Verde, POR
+					add_to_array = { global.small_airbase_list = 697 } #Madeira, POR
+					add_to_array = { global.small_airbase_list = 696 } #Bermuda, UK
+					add_to_array = { global.small_airbase_list = 337 } #Faroes, DEN-UK
+					add_to_array = { global.medium_airbase_list = 698 } #Azores, POR
+					add_to_array = { global.medium_airbase_list = 178 } #Canary Islands, SPR
+					add_to_array = { global.medium_airbase_list = 279 } #Equitorial Guniea, SPR
+
+					###Caribbean###
+					add_to_array = { global.small_airbase_list = 690 } #Northern Bahamas, UK
+					add_to_array = { global.small_airbase_list = 693 } #Southern Bahamas, UK				
+					add_to_array = { global.small_airbase_list = 694 } #French Caribbean, FRA
+					add_to_array = { global.small_airbase_list = 308 } #Leeward Islands, UK
+					add_to_array = { global.small_airbase_list = 692 } #Windward Islands, UK
+					add_to_array = { global.small_airbase_list = 691 } #Trinidad, UK
+					add_to_array = { global.small_airbase_list = 695 } #Curacao, HOL
+					add_to_array = { global.medium_airbase_list = 685 } #Panama Canal, USA (oh yeah I did)
+					add_to_array = { global.medium_airbase_list = 689 } #Jamaica, UK
+					add_to_array = { global.medium_airbase_list = 686 } #Puerto Rico, USA
+
+					### EUROPE ###
+					add_to_array = { global.small_airbase_list = 836 } #Channel Islands, UK
+					add_to_array = { global.small_airbase_list = 145 } #Aland, FIN
+					add_to_array = { global.small_airbase_list = 958 } #Pantelleria, ITA
+					add_to_array = { global.medium_airbase_list = 124 } #Gotland, SWE
+
+					for_each_scope_loop = {
+						array = global.small_airbase_list
+
+						set_state_flag = small_airbase
+					}
+					for_each_scope_loop = {
+						array = global.medium_airbase_list
+
+						set_state_flag = medium_airbase
+					}
+				}
+			}
+
+		}
+	}
+}

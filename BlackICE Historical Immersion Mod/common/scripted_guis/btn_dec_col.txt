@@ -1,0 +1,73 @@
+scripted_gui = {
+
+	btn_dec_col = {
+		context_type = player_context
+		
+		window_name = "btn_dec_col"
+		parent_window_token = decision_tab
+        
+		visible = {
+			player_only_trigger = yes
+		}
+		
+		effects = {
+			btn_dec_col_but_click={
+				if ={
+					limit={
+						has_country_flag=hideext
+					}
+					clr_country_flag =hideext
+				}
+				else={
+					set_country_flag=hideext
+				}				
+			}
+			btn_dec_col_text_click={
+				if ={
+					limit={
+						has_country_flag=hideext
+					}
+					clr_country_flag =hideext
+				}
+				else={
+					set_country_flag=hideext
+				}				
+			}
+		}
+		
+		triggers = {
+		}
+	}
+	optionsforeconomy = {
+		context_type = player_context
+		window_name = "optionsforeconomy"
+		#parent_window_token = send_diplomacy_scripted_popup_window
+        
+		visible = {
+			has_country_flag=inthemiddleofoptions
+		}
+		
+		effects = {
+			exitbutton_click={
+				clr_country_flag=inthemiddleofoptions
+			}
+			button_option1_click={
+					
+			}
+			button_option2_click={
+					
+			}
+			button_option3_click={
+					
+			}
+			button_option4_click={
+					
+			}
+		}
+		
+		triggers = {
+			
+		}
+	}
+}
+### EOF ###

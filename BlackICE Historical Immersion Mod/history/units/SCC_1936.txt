@@ -1,0 +1,84 @@
+﻿division_template = {
+	name = "Juntuán"				
+
+	regiments = {
+		infantry = { x = 0 y = 0 }	
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+	}
+}
+division_template = {
+	name = "Qibing Jun"	
+
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+
+
+### OOB ###
+units = {
+	division = {
+		name = "Chongqing Jingbei"
+		location = 6999
+		division_template = "Juntuán"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.3
+
+	}
+	division = {
+		name = "Chongqing Jingbei"
+		location = 6999
+		division_template = "Juntuán"
+		start_experience_factor = 0.15
+		start_equipment_factor = 0.3
+
+	}
+	division = {
+		name = "Chengdu Jingbei"
+		location = 4925
+		division_template = "Juntuán"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division = {
+		name = "4 Qibing Jun"
+		location = 4925
+		division_template = "Qibing Jun"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division = {
+		name = "8 Lujun Shi"
+		location = 4925
+		division_template = "Juntuán"
+		start_equipment_factor = 0.3
+
+	}
+}
+
+### STARTING PRODUCTION ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "SCC"
+		}
+		requested_factories = 1
+		progress = 0.55
+		efficiency = 100
+	}	
+}

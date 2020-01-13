@@ -1,0 +1,236 @@
+﻿capital = 328
+
+set_war_support = 0.25
+
+oob = "MAN_1936"
+
+set_convoys = 25
+
+set_research_slots = 2
+
+set_stability = 0.6
+
+set_country_flag = JAP_air
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		nrm_battery_basic = 1
+		early_ship_hull_submarine = 1
+		
+		# Naval techs
+		basic_torpedo = 1
+	}
+	set_naval_oob = "MAN_1936_naval"
+}
+
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_support = 1
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	############## artillery #######
+	gw_artillery = 1
+	################## aircraft ##############
+	############### WW1 Doctrines ##########
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+
+	ww1_battlefield_support = 1
+}
+
+add_ideas = { 	
+	puyi
+	kantogun_administration
+	MCK_dongbei_partisan
+	MCK_reliant_idea
+	MCK_opium_plantation
+	
+	export_focus		
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_censored
+	key_industries
+	labor_none
+	fdi_encouraged
+	
+	cons_two
+	foreign_volunteers
+	mob_standing
+	train_none
+	age_17
+	security_minor_restrictions
+	officer_train_none
+	edu_minimal
+	foreign_cooperative
+	neutrality_idea
+}
+
+diplomatic_relation = {
+	relation = military_access
+	country = MEN
+	active = yes
+}
+
+MEN = {
+	diplomatic_relation = {
+		relation = military_access
+		country = EHA
+		active = yes
+	}
+}
+
+activate_decision = ban_communist_party
+activate_decision = ban_conservative_party
+activate_decision = ban_liberal_party
+activate_decision = ban_socialist_party
+
+set_politics = {
+	ruling_party = monarchism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_variable = { MCK_sabotage_timer_infra = 60 }
+set_popularities = {
+	monarchism = 63
+	fascism = 37
+	neutrality = 0
+	ruling_party = 0
+	opposition_party = 0
+}
+#################################################################
+create_country_leader = {
+	name = "Emperor Puyi"
+	desc = "POLITICS_Emperor Puyi_DESC"
+	picture = "Portrait_Manchuria_Henry_Pu_Yi.dds" #Generic_Pu_Yi.dds
+	expire = "1965.1.1"
+	ideology = absolutism
+	traits = {
+		monarchist
+	}
+}
+##### Field Marshal ###############################################
+create_field_marshal = {
+	name = "Zhang Jinghui"
+	portrait_path = "GFX_portrait_man_zhang_jinghui"
+	traits = { old_guard infantry_officer }
+	skill = 2
+	
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 2
+}
+##### CORPS COMMANDERS ###############################################
+create_corps_commander = {
+	name = "Zhang Haipeng"
+	GFX = "GFX_portrait_man_zhang_haipeng"
+	traits = {  }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Zhang Jinghui"
+	GFX = "GFX_portrait_man_zhang_jinghui"
+	traits = { infantry_officer }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Aisin Gioro Xiqia"
+	GFX = "GFX_portrait_man_aisin_gioro_xiqia"
+	traits = { career_officer }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 1
+}
+create_corps_commander = {
+	name = "Yoshiko Kawashima"
+	gfx = "GFX_portrait_man_yoshiko_kawashima"
+	traits = { cavalry_officer }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+	female = yes
+}
+### Ship Variants ###
+if = {
+    limit = {
+		NOT = { has_dlc = "Man the Guns" }
+	}
+    ### Ship Variants ###
+}
+if = {
+    limit = {
+		has_dlc = "Man the Guns"
+	}
+    # Destroyers #
+    create_equipment_variant = {
+        name = "Momo class"
+        type = nrm_ship_hull_destroyer_1
+        #name_group = MAN_DD_HISTORICAL
+        parent_version = 0
+		role_icon_index = 8
+        modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_060
+			fixed_ship_sonar_slot = empty
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x5
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ML_1
+			custom_slot_2 = nrm_support_destroyer_ASW_2
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_5 = nrm_support_destroyer_AA_1
+			custom_slot_6 = empty
+        }
+    }
+}
+### EOF ###

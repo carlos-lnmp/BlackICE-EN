@@ -1,0 +1,841 @@
+ideas = {
+
+	country = {
+		TUR_ideological_fanaticism_focus = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				stability_factor = 0.05
+			}
+		}
+			TUR_haydarpasa = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
+		TUR_militarism_focus = {
+			allowed = {
+				original_tag = TUR
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription = 0.025
+				enemy_partisan_effect = -0.1
+			}
+		}
+		TUR_authoritarianism_focus = {
+			allowed = {
+				original_tag = TUR
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					democratic_govt = yes
+				}
+			}
+
+			removal_cost = -1
+
+			picture = generic_intel_bonus
+
+			modifier = {
+				liberalism_drift = -0.05
+				liberalism_acceptance = -100
+				socialism_drift = -0.05
+				socialism_acceptance = -100
+				conservatism_drift = -0.05
+				conservatism_acceptance = -100
+			}
+		}
+		TUR_revanchism_focus = {
+			allowed = {
+				original_tag = TUR
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_intel_bonus
+
+			modifier = {
+				justify_war_goal_time = -0.25
+				generate_wargoal_tension = -0.4
+			}
+		}
+		TUR_internationalism_focus = {
+			allowed = {
+				original_tag = TUR
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_goods_red_bonus
+
+			modifier = {
+				trade_opinion_factor = 0.2
+			}
+		}
+	}
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+		abdulmejid_ii = {
+			picture = generic_political_advisor_europe_5
+			allowed = {
+				original_tag = TUR
+			}
+			
+			available = {
+				NOT = { has_country_flag = abdulmejid_dead }
+				original_tag = TUR
+				OR = { 
+					has_government = monarchism
+					democratic_govt = yes
+				}
+			}
+			ai_will_do = {
+				factor = 20
+			}
+			traits = { monarchist popular_figurehead good_soldier  head_of_state_trait }
+		}
+		ahmed_iv = {	
+			picture = generic_political_advisor_europe_5
+			allowed = {
+				original_tag = TUR
+
+			}
+			available = {
+				has_country_flag = abdulmejid_dead
+				original_tag = TUR
+				OR = { 
+					has_government = monarchism
+					democratic_govt = yes
+				}
+			}
+			ai_will_do = {
+				factor = 20
+			}
+			visible = {
+				has_country_flag = abdulmejid_dead
+			}
+
+			traits = { monarchist popular_figurehead  head_of_state_trait }
+		}
+		TUR_mustafa_ataturk = {
+			picture = generic_political_advisor_europe_2
+			allowed = {
+				original_tag = TUR
+			}
+			available = {
+					democratic_govt = yes
+			}			
+			traits = { 
+				great_leader
+head_of_state_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		TUR_ismet_inonu = {	
+			picture = generic_political_advisor_europe_1
+			allowed = {
+				original_tag = TUR
+
+			}
+			available = {
+				has_country_flag = abdulmejid_dead
+				original_tag = TUR
+			}
+			visible = { 
+				has_country_flag = abdulmejid_dead
+			}
+			ai_will_do = {
+				factor = 20
+			}
+			traits = { war_hero  head_of_state_trait }
+		}
+	}
+	#Foreign
+	foreign_minister = {
+		TUR_hassan_saka = {
+			picture = generic_political_advisor_europe_2
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { ideological_crusader  foreign_minister_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		TUR_sukru_saracoglu = {
+			picture = generic_political_advisor_europe_1
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 
+				socialist
+				tough_negotiator
+foreign_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+	}
+	#Propaganda/Security
+	interior_minister = {
+		TUR_refik_saydam = {
+			picture = generic_political_advisor_europe_3
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 
+				intellectual
+				hearts_and_minds
+interior_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Intelligence
+	intel_minister = {
+		TUR_faik_kurdoglu = {
+			picture = generic_political_advisor_europe_2
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 
+				socialist
+				dismal_enigma
+intel_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Economic
+	economic_minister = {
+		TUR_mumtaz_okmen = {
+			picture = generic_political_advisor_europe_1
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { captain_of_industry  economic_minister_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}	
+		}
+		TUR_kazim_ozalp = {
+			picture = generic_political_advisor_europe_3
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 
+				socialist
+				war_industrialist
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		TUR_fuat_agrali = {
+			picture = generic_political_advisor_europe_2
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 
+				socialist
+				financial_expert
+economic_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		TUR_ali_cetinkaya = {
+			picture = generic_political_advisor_europe_5
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 					
+				quartermaster_general
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+			}
+		}
+		TUR_celal_bayar = {
+			picture = generic_political_advisor_europe_5
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 					
+				capitalist
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0
+			}
+		}
+	}
+	#Domestic
+	domestic_minister = {
+		TUR_sukru_kaya = {
+			picture = generic_political_advisor_europe_4
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 		
+				schemer
+				domestminster_xeno				
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		TUR_tevfik_aras = {
+			picture = generic_political_advisor_europe_6
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 		
+				schemer
+				domestminster_health				
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		TUR_saffet_arikan = {
+			picture = generic_political_advisor_europe_5
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 					
+				organizer
+				domestminster_education
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		TUR_ali_tarhan = {
+			picture = generic_political_advisor_europe_1
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 	
+				ambitious
+				trade_minister				
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		TUR_resat_erkmen = {
+			picture = generic_political_advisor_europe_2
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { 	
+				domestminster_farms			
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}		
+	}
+	#Political Advisors
+	political_advisor = {
+	}
+	influence_minister = {
+		TUR_generic_staunch_traditionalist = {
+
+			picture = generic_political_advisor_south_america_2
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			traits = { staunch_traditionalist  influence_minister_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		TUR_guy1 = {
+			allowed = {
+				original_tag = "TUR"
+			}
+			picture = generic_political_advisor_europe_1
+			available = {
+
+			}
+
+			traits = { 
+				steady_peace 
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_defensive_buildup = no 
+				}
+			}
+		}
+		TUR_guy2 = {
+			allowed = {
+				original_tag = "TUR"
+			}
+			picture = generic_political_advisor_europe_2
+			available = {
+
+			}
+
+			traits = { 
+				angry_warrior
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		TUR_guy3 = {
+			allowed = {
+				original_tag = "TUR"
+			}
+			picture = generic_political_advisor_europe_3
+			available = {
+
+			}
+
+			traits = { 
+				political_fearmonger
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		TUR_guy5 = {
+			allowed = {
+				original_tag = "TUR"
+			}
+			picture = generic_political_advisor_europe_5
+			available = {
+
+			}
+
+			traits = { 
+				unyeilding_defender
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_defensive_buildup = yes 
+				}
+			}
+		}
+	}
+	#Academy
+	military_academy = {
+	}
+	#Theorist
+	theorist = {
+		TUR_mehmet_gunaltay = {
+			picture = generic_army_europe_2
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+
+			traits = { military_theorist  theorist_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		#TUR_refik_saydam = {
+		#	picture = generic_political_advisor_europe_1
+		#
+		#	allowed = {
+		#		original_tag = TUR
+		#	}
+		#
+		#	research_bonus = {
+		#		air_doctrine = 0.07
+		#	}
+		#
+		#	traits = { air_warfare_theorist  theorist_trait }
+		#}
+	}
+	#MILITARY
+	#Supreme Commanders
+	supreme_commander = {
+	}
+	#Army
+	army_chief = {
+		TUR_kazim_orbay = {
+			picture = generic_army_europe_1
+
+			allowed = {
+				original_tag = TUR
+			}
+			
+			traits = { army_chief_offensive_2  army_chief_trait }
+
+			ai_will_do = { 
+				factor = 0 
+			}
+		}
+		TUR_fevzi_cakmak = {
+			picture = generic_army_europe_3
+
+			allowed = {
+				original_tag = TUR
+			}
+			
+			traits = { army_chief_defensive_2  army_chief_trait }
+
+			ai_will_do = { 
+				factor = 20 
+			}
+		}
+	}
+	#Air
+	air_chief = {
+		TUR_memduh_tagmac = {
+			picture = generic_air_europe_3
+
+			allowed = {
+				original_tag = TUR
+			}
+			
+			traits = { air_chief_night_operations_2  air_chief_trait }
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		TUR_ali_orlungat = {
+			picture = generic_air_europe_1
+
+			allowed = {
+				original_tag = TUR
+			}
+			
+			traits = { air_chief_ground_support_2  air_chief_trait }
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Navy
+	navy_chief = {
+		TUR_mehmet_ali_ungen = {
+			picture = generic_navy_europe_3
+
+			allowed = {
+				original_tag = TUR
+			}
+			
+			traits = { navy_chief_decisive_battle_2  navy_chief_trait }
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		TUR_rauf_orbay = {
+			picture = generic_navy_europe_3
+
+			allowed = {
+				original_tag = TUR
+			}
+			
+			traits = { navy_chief_old_guard  navy_chief_trait }
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#High Command
+	high_command = {
+		TUR_sabiha_gokcen = {
+			picture = sabiha_gocen
+
+			allowed = {
+				original_tag = TUR
+			}
+			
+			traits = { air_strategic_bombing_3  high_command_trait }
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		TUR_abdurrahman_gurman = {
+			picture = generic_army_europe_3
+
+			allowed = {
+				original_tag = TUR
+			}
+			
+			traits = { army_armored_2  high_command_trait }
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		TUR_ali_fuat_cebesoy = {
+			picture = generic_navy_europe_1
+
+			allowed = {
+				original_tag = TUR
+			}
+			
+			traits = { navy_screen_2  high_command_trait }
+
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_sub_bonus = no 
+				}
+			}
+		}
+		TUR_erkan_gataly = {
+			picture = generic_navy_europe_2
+
+			allowed = {
+				original_tag = TUR
+			}
+			
+			traits = { navy_fleet_logistics_2  high_command_trait }
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Designers
+	#Aircraft
+	aircraft_manufacturer = {
+		designer = yes
+
+		thk = {
+			picture = generic_air_manufacturer_3
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			research_bonus = {
+				air_equipment = 0.10
+			}
+
+			traits = { light_aircraft_manufacturer  aircraft_manufacturer_trait }
+
+			equipment_bonus = {
+				# trainers, and air ambulances?
+			}
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		ktf = {
+			picture = generic_air_manufacturer_1
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			research_bonus = {
+				air_equipment = 0.10
+			}
+
+			traits = { medium_aircraft_manufacturer  aircraft_manufacturer_trait }
+
+			equipment_bonus = {
+				# assembled license aircrafts from across the world
+			}
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Naval
+	naval_manufacturer = {
+		designer = yes
+
+		golcuk_nsy = {
+			picture = generic_naval_manufacturer_1
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			research_bonus = {
+				naval_equipment = 0.10
+			}
+
+			traits = { ships_manufacturer  naval_manufacturer_trait }
+			ai_will_do = { 
+				factor = 20 
+			}
+		}
+	}
+	#Materials
+	materiel_manufacturer = {
+		designer = yes
+
+		MKE = {
+			picture = generic_infantry_equipment_manufacturer_2
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			research_bonus = {
+				infantry_weapons = 0.10
+			}
+
+			equipment_bonus = {
+				# rifles and pistols
+			}
+			ai_will_do = { 
+				factor = 20 
+			}
+			traits = { infantry_equipment_manufacturer  materiel_manufacturer_trait }
+		}
+		istanbul_military_industries = {
+			picture = generic_infantry_equipment_manufacturer_3
+			
+			allowed = {
+				original_tag = TUR
+			}
+			
+			research_bonus = {
+				infantry_weapons = 0.10
+			}
+			ai_will_do = { 
+				factor = 20 
+			}			
+			equipment_bonus = {
+				# rifles and pistols
+			}
+			
+			traits = { infantry_equipment_manufacturer  materiel_manufacturer_trait }
+		}
+	}
+}
+### EOF ###

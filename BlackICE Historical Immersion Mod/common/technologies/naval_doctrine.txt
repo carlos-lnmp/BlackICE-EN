@@ -1,0 +1,7883 @@
+technologies = {
+
+	@VERT_0 = 0
+	@VERT_1 = 2
+	@VERT_2 = 5
+	@VERT_3 = 7
+	@VERT_4 = 9
+	@VERT_5 = 11
+	@VERT_6 = 13
+	@VERT_6h = 14
+	@VERT_7 = 15
+	@VERT_7h = 16
+	@VERT_8 = 17
+	@VERT_8h = 18
+	@VERT_9 = 19
+	@VERT_9h = 20
+	@VERT_10 = 21
+	@VERT_10h = 22
+	@VERT_11 = 23
+	@VERT_11h = 24
+	@VERT_12 = 25
+	@VERT_12h = 26
+	
+	@START = 10
+	@SPLIT1 = 7
+	@SPLIT2 = 13
+	@SPLIT3 = 30
+	@BB_TREE = 5
+	@CA_TREE = 10
+	@CA_TREE_L1 = 9
+	@CA_TREE_R1 = 11
+	@DD_TREE = 22
+	@DD_TREE_L1 = 21
+	@DD_TREE_R1 = 23
+	@SS_TREE = 30
+	@SS_TREE_L1 = 29
+	@SS_TREE_R1 = 31
+	@CV_TREE = -2
+	@CV_TREE_L2 = -4
+	@CV_TREE_L1 = -3
+	@CV_TREE_R1 = -1
+	@CV_TREE_R2 = 0
+	@CV_TREE_L3 = -5
+	@MINE_TREE = 15
+	@CONVOY_TREE = 26
+	@FLEETTRAIN_TREE = 3
+	@DECBAT_TREE = 7
+	@DECBAT_TREE_L1 = 6
+	@DECBAT_TREE_R1 = 8
+	@FIB_TREE = 12
+	@FIB_TREE_L1 = 11
+	@FIB_TREE_R1 = 13
+	@TI_TREE = 17
+
+	nrm_pre_ww1_naval_doctrine = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 2
+			#default_morale = -0.05
+		}
+		category_all_cruiser = {
+			max_organisation = 2
+			#default_morale = -0.05
+		}
+		category_all_destroyer = {
+			max_organisation = 2
+			#default_morale = -0.05
+		}
+		category_all_carrier = {
+			#default_morale = -0.05
+			carrier_size = -0.15
+		}
+		category_all_subs = {
+			#default_morale = -0.05
+			sub_visibility = 0.05
+		}
+		
+		naval_torpedo_screen_penetration_factor = 0.01
+		navy_capital_ship_defence_factor = -0.05
+		navy_screen_defence_factor = -0.05
+		navy_carrier_air_agility_factor = -0.15
+		navy_carrier_air_targetting_factor = -0.15
+		navy_carrier_air_attack_factor = -0.15
+		#####
+		xp_research_type = navy
+		xp_research_cost = 15
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_mahanian_concepts 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_jeune_ecole_concepts 
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @START y = @VERT_0 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#WW1 Capital/Cruiser Branch Precursor
+	nrm_mahanian_concepts = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 2
+		}
+		category_all_cruiser = {
+			max_organisation = 1
+		}
+		
+		navy_capital_ship_attack_factor = 0.02
+		navy_capital_ship_defence_factor = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 15
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_battlefleet_concentration 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_cruiser_warfare
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SPLIT1 y = @VERT_1 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#WW1 Cruiser/Destroyer/Submarine Branch Precursor
+	nrm_jeune_ecole_concepts = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			max_organisation = 1
+		}
+		category_all_destroyer = {
+			max_organisation = 2
+		}
+		
+		navy_screen_attack_factor = 0.02
+		navy_screen_defence_factor = 0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		spotting_chance = 0.01
+		convoy_raiding_efficiency_factor = 0.02
+		naval_retreat_speed = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 15
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_cruiser_warfare
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_destroyer_support
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_mine_warfare
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_commerce_warfare
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SPLIT2 y = @VERT_1 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#WW1 Submarine Branch Precursor
+	nrm_commerce_warfare = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			surface_visibility = -0.01
+		}
+		
+		spotting_chance = 0.01
+		convoy_raiding_efficiency_factor = 0.03
+		naval_retreat_speed = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 10
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_submarine_tactics_early
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_cruiser
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SPLIT3 y = @VERT_1 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@pocket_battleship }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@heavy_cruiser }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_cruiser }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#WW1 Capital Branch
+	nrm_battlefleet_concentration = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 3
+			#default_morale = 0.01
+		}
+		
+		navy_capital_ship_attack_factor = 0.02
+		navy_capital_ship_defence_factor = 0.02
+		naval_hit_chance = 0.01
+		positioning = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 10
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_scouting_force
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_capital
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @BB_TREE y = @VERT_2 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@battleship }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@battle_cruiser }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_scouting_force = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			surface_detection = 0.1
+		}
+		
+		navy_capital_ship_attack_factor = 0.01
+		navy_capital_ship_defence_factor = 0.01
+		spotting_chance = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 20
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_fleet_formation
+			research_cost_coeff = 1
+		}
+		
+		path = {
+			leads_to_tech = nrm_naval_aviation
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_capital
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @BB_TREE y = @VERT_3 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@battleship }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@battle_cruiser }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fleet_formation = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 4
+			surface_visibility = -0.01
+		}
+		
+		navy_capital_ship_attack_factor = 0.02
+		navy_capital_ship_defence_factor = 0.02
+		naval_hit_chance = 0.01
+		positioning = 0.01
+		naval_retreat_speed = 0.02
+		screening_efficiency = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 30
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_fleet_coordination
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_capital
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @BB_TREE y = @VERT_4 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@battleship }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@battle_cruiser }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fleet_coordination = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 6
+			#default_morale = 0.01
+		}
+		
+		navy_capital_ship_attack_factor = 0.01
+		navy_capital_ship_defence_factor = 0.01
+		naval_hit_chance = 0.01
+		positioning = 0.02
+		screening_efficiency = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.75
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_capital
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @BB_TREE y = @VERT_5 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@battleship }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@battle_cruiser }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#WW1 Cruiser Branch
+	nrm_cruiser_warfare = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			max_organisation = 2
+		}
+		
+		navy_capital_ship_attack_factor = 0.01
+		navy_capital_ship_defence_factor = 0.01
+		navy_screen_attack_factor = 0.01
+		navy_screen_defence_factor = 0.01
+		naval_hit_chance = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 10
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_cruiser_battleline_support
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_cruiser_flotilla_leader
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CA_TREE y = @VERT_2 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@pocket_battleship }
+				multiply_temp_variable = { ai_add = 3 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@heavy_cruiser }
+				multiply_temp_variable = { ai_add = 3 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_cruiser }
+				multiply_temp_variable = { ai_add = 3 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_cruiser_battleline_support = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			max_organisation = 3
+		}
+		
+		navy_capital_ship_attack_factor = 0.015
+		navy_capital_ship_defence_factor = 0.015
+		naval_hit_chance = 0.01
+		positioning = 0.005
+		screening_efficiency = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 20
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_independent_cruiser_operation
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CA_TREE_L1 y = @VERT_3 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@pocket_battleship }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@heavy_cruiser }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_cruiser_flotilla_leader = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			max_organisation = 1
+			surface_detection = 0.05
+		}
+		category_all_destroyer = {
+			surface_detection = 0.1
+		}
+		
+		navy_screen_attack_factor = 0.015
+		navy_screen_defence_factor = 0.015
+		positioning = 0.005
+		naval_torpedo_screen_penetration_factor = 0.01
+		screening_efficiency = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 20
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_independent_cruiser_operation
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CA_TREE_R1 y = @VERT_3 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_cruiser }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_independent_cruiser_operation = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			max_organisation = 2
+			surface_detection = 0.05
+			convoy_raiding_coordination = 0.1
+			#default_morale = 0.01
+			surface_visibility = -0.01
+		}
+		
+		navy_capital_ship_attack_factor = 0.01
+		navy_capital_ship_defence_factor = 0.01
+		navy_screen_attack_factor = 0.01
+		navy_screen_defence_factor = 0.01
+		convoy_escort_efficiency = 0.01
+		convoy_raiding_efficiency_factor = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 30
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_cruiser_patrols
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CA_TREE y = @VERT_4 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@pocket_battleship }
+				multiply_temp_variable = { ai_add = 3 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@heavy_cruiser }
+				multiply_temp_variable = { ai_add = 3 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_cruiser }
+				multiply_temp_variable = { ai_add = 3 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_cruiser_patrols = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			max_organisation = 2
+			surface_detection = 0.05
+			#default_morale = 0.01
+		}
+		
+		navy_capital_ship_attack_factor = 0.01
+		navy_capital_ship_defence_factor = 0.01
+		navy_screen_attack_factor = 0.01
+		navy_screen_defence_factor = 0.01
+		spotting_chance = 0.02
+		convoy_escort_efficiency = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.75
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CA_TREE y = @VERT_5 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@pocket_battleship }
+				multiply_temp_variable = { ai_add = 3 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@heavy_cruiser }
+				multiply_temp_variable = { ai_add = 3 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_cruiser }
+				multiply_temp_variable = { ai_add = 3 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#WW1 Destroyer Branch
+	nrm_destroyer_support = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 3
+			torpedo_attack = 0.03
+		}
+		
+		navy_screen_attack_factor = 0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		convoy_escort_efficiency = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 10
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_destroyer_screen
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE y = @VERT_2 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_destroyer_screen = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 2
+			torpedo_attack = 0.02
+			#default_morale = 0.01
+			surface_detection = 0.05
+		}
+		
+		naval_torpedo_screen_penetration_factor = 0.01
+		screening_efficiency = 0.03
+		convoy_escort_efficiency = 0.02
+		naval_retreat_speed = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 20
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_destroyer_torpedo_tactics
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_trade_protection
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE y = @VERT_3 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_destroyer_torpedo_tactics = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 3
+			torpedo_attack = 0.05
+		}
+		
+		navy_screen_attack_factor = 0.01
+		naval_torpedo_screen_penetration_factor = 0.02
+		naval_torpedo_hit_chance_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 30
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_independent_destroyer_operation
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE y = @VERT_4 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_independent_destroyer_operation = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 2
+			#default_morale = 0.01
+			surface_detection = 0.1
+			sub_detection = 0.1
+			surface_visibility = -0.02
+		}
+		
+		navy_screen_attack_factor = 0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		screening_efficiency = 0.02
+		convoy_escort_efficiency = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.75
+		
+		path = {
+			leads_to_tech = nrm_destroyer_fleet_operations
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_destroyer_patrol_operations
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE y = @VERT_5 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#Destroyer Branch
+	nrm_destroyer_fleet_operations = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_destroyer_patrol_operations }
+		}
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 4
+			torpedo_attack = 0.02
+			surface_detection = 0.05
+		}
+		
+		navy_screen_attack_factor = 0.01
+		navy_screen_defence_factor = 0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		screening_efficiency = 0.02
+		navy_anti_air_attack_factor = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 75
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_destroyer_patrol_operations }
+		
+		path = {
+			leads_to_tech = nrm_destroyer_screen_improved
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE_L1 y = @VERT_6 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+					tag = USA
+					tag = ITA
+					tag = FRA
+					tag = GER
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_destroyer_patrol_operations = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_destroyer_fleet_operations }
+		} 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 2
+			sub_detection = 0.1
+			sub_attack = 0.05
+		}
+		
+		convoy_escort_efficiency = 0.05
+		spotting_chance = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 75
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_destroyer_fleet_operations }
+		
+		path = {
+			leads_to_tech = nrm_destroyer_screen_improved
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE_R1 y = @VERT_6 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = CAN
+					tag = NZL
+					tag = AST
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_destroyer_screen_improved = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 3
+			torpedo_attack = 0.02
+			#default_morale = 0.01
+		}
+		
+		navy_screen_attack_factor = 0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		screening_efficiency = 0.03
+		naval_retreat_speed = 0.02
+		positioning = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_destroyer_asw_tactics
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE y = @VERT_7 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+					tag = ITA
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_destroyer_asw_tactics = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 3
+			sub_detection = 0.1
+			sub_attack = 0.05
+		}
+		
+		convoy_escort_efficiency = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_destroyer_torpedo_advanced
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE y = @VERT_8 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_destroyer_torpedo_advanced = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 3
+			torpedo_attack = 0.05
+		}
+		
+		navy_screen_attack_factor = 0.01
+		naval_torpedo_screen_penetration_factor = 0.02
+		naval_torpedo_hit_chance_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_destroyer_aa_escort
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_destroyer_hunter_killer
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE y = @VERT_9 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_destroyer_aa_escort = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 3
+			anti_air_attack = 0.1
+		}
+		
+		navy_screen_attack_factor = 0.01
+		navy_anti_air_attack_factor = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_destroyer_advanced_tactics
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE_L1 y = @VERT_10 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+				}
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_destroyer_hunter_killer = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 2
+			sub_detection = 0.15
+			sub_attack = 0.1
+		}
+		
+		convoy_escort_efficiency = 0.10
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_destroyer_advanced_tactics
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE_R1 y = @VERT_10 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_destroyer_advanced_tactics = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_destroyer = {
+			max_organisation = 5
+			#default_morale = 0.01
+			torpedo_attack = 0.05
+			anti_air_attack = 0.02
+			sub_detection = 0.05
+			surface_detection = 0.05
+			surface_visibility = -0.01
+		}
+		
+		navy_screen_attack_factor = 0.01
+		navy_screen_defence_factor = 0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		screening_efficiency = 0.02
+		convoy_escort_efficiency = 0.02
+		naval_retreat_speed = 0.02
+		positioning = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_destroyer_advanced_tactics
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DD_TREE y = @VERT_11 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 10
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#Convoy Branch
+	nrm_trade_protection = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		convoy_escort_efficiency = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_escort_patrols
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_convoy
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_convoy_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CONVOY_TREE y = @VERT_3 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+					tag = ITA
+					tag = FRA
+					tag = GER
+				}
+				factor = 15
+			}
+			modifier = {
+				factor = 5
+				has_war = yes
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_escort_patrols = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			sub_detection = 0.02
+			sub_attack = 0.02
+		}
+		category_all_destroyer = {
+			sub_detection = 0.02
+			sub_attack = 0.02
+		}
+		convoy_escort_efficiency = 0.10
+		#####
+		xp_research_type = navy
+		xp_research_cost = 75
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_convoy_sailing
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_convoy
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_convoy_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CONVOY_TREE y = @VERT_5 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+					tag = ITA
+				}
+				factor = 15
+			}
+			modifier = {
+				factor = 5
+				has_war = yes
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_convoy_sailing = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			sub_detection = 0.03
+			sub_attack = 0.03
+		}
+		category_all_destroyer = {
+			sub_detection = 0.03
+			sub_attack = 0.03
+		}
+		convoy_escort_efficiency = 0.10
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_carrier_convoy
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		dependencies = {
+			nrm_destroyer_screen_improved = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_convoy
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_convoy_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CONVOY_TREE y = @VERT_7 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+				factor = 15
+			}
+			modifier = {
+				factor = 5
+				has_war = yes
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_convoy = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			sub_detection = 0.1
+		}
+
+		convoy_escort_efficiency = 0.15
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_integrated_convoy_defence
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		dependencies = {
+			nrm_carrier_development = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_convoy
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_convoy_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CONVOY_TREE y = @VERT_9 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 15
+			}
+			modifier = {
+				factor = 5
+				has_war = yes
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_integrated_convoy_defence = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			sub_detection = 0.05
+		}
+		category_all_cruiser = {
+			sub_detection = 0.05
+			sub_attack = 0.05
+		}
+		category_all_destroyer = {
+			sub_detection = 0.05
+			sub_attack = 0.05
+		}
+		convoy_escort_efficiency = 0.15
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_convoy
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_convoy_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CONVOY_TREE y = @VERT_11 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@destroyer }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 10
+			}
+			modifier = {
+				factor = 5
+				has_war = yes
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#WW1 Submarine Branch
+	nrm_submarine_tactics_early = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 2
+			torpedo_attack = 0.03
+			sub_visibility = -0.01
+			#default_morale = 0.01
+		}
+		
+		sub_retreat_speed = 0.03
+		naval_torpedo_reveal_chance_factor = -0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 10
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_submarine_raiding
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE y = @VERT_2 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_raiding = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 1
+			torpedo_attack = 0.02
+			surface_detection = 0.05
+			convoy_raiding_coordination = 0.05
+			sub_visibility = -0.01
+		}
+		
+		sub_retreat_speed = 0.02
+		naval_torpedo_reveal_chance_factor = -0.01
+		navy_submarine_attack_factor = 0.01
+		navy_submarine_defence_factor = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 20
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_submarine_torpedo_tactics
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE y = @VERT_3 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_torpedo_tactics = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 1
+			torpedo_attack = 0.05
+			sub_visibility = -0.01
+		}
+		
+		sub_retreat_speed = 0.02
+		naval_torpedo_reveal_chance_factor = -0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 30
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_submarine_offensive_operations
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_submarine_fleet_operations
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE y = @VERT_4 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#Submarine Branch
+	nrm_submarine_offensive_operations = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_submarine_fleet_operations }
+		} 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 1
+			torpedo_attack = 0.05
+		}
+		
+		sub_retreat_speed = 0.02
+		naval_torpedo_reveal_chance_factor = -0.01
+		navy_submarine_attack_factor = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.75
+		
+		xor = { nrm_submarine_fleet_operations }
+		
+		path = {
+			leads_to_tech = nrm_submarine_raiding_improved
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE_L1 y = @VERT_5 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+					tag = FRA
+					tag = USA
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_fleet_operations = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_submarine_offensive_operations }
+		} 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 2
+			surface_detection = 0.05
+		}
+		
+		sub_retreat_speed = 0.02
+		spotting_chance = 0.01
+		naval_torpedo_reveal_chance_factor = -0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.75
+		
+		xor = { nrm_submarine_offensive_operations }
+		
+		path = {
+			leads_to_tech = nrm_submarine_scouting
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE_R1 y = @VERT_5 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+					tag = ITA
+					tag = ENG
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_raiding_improved = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 1
+			convoy_raiding_coordination = 0.05
+			surface_detection = 0.05
+			sub_visibility = -0.01
+			#default_morale = 0.01
+		}
+		
+		sub_retreat_speed = 0.02
+		naval_torpedo_reveal_chance_factor = -0.01
+		convoy_raiding_efficiency_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 75
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_submarine_tactics_improved
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE_L1 y = @VERT_6 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+					tag = USA
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_scouting = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 2
+			surface_detection = 0.05
+			sub_visibility = -0.01
+			#default_morale = 0.01
+		}
+		
+		sub_retreat_speed = 0.02
+		spotting_chance = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 75
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_submarine_tactics_improved
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE_R1 y = @VERT_6 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+					tag = ITA
+					tag = ENG
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_tactics_improved = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 2
+			surface_detection = 0.05
+			convoy_raiding_coordination = 0.05
+			sub_visibility = -0.01
+			#default_morale = 0.01
+		}
+		
+		sub_retreat_speed = 0.02
+		navy_submarine_attack_factor = 0.02
+		navy_submarine_defence_factor = 0.02
+		naval_torpedo_reveal_chance_factor = -0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_submarine_torpedo_improved
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE y = @VERT_7 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = JAP
+					tag = ITA
+					tag = ENG
+				}
+				factor = 15
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 25
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_torpedo_improved = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 1
+			torpedo_attack = 0.05
+		}
+		
+		sub_retreat_speed = 0.02
+		navy_submarine_attack_factor = 0.02
+		naval_torpedo_reveal_chance_factor = -0.02
+		naval_torpedo_screen_penetration_factor = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_submarine_long_range
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_submarine_unrestricted
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_submarine_evasion
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE y = @VERT_8 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = JAP
+					tag = ITA
+					tag = ENG
+				}
+				factor = 15
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_unrestricted = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			torpedo_attack = 0.05
+			surface_detection = 0.1
+			convoy_raiding_coordination = 0.1
+		}
+		
+		sub_retreat_speed = 0.01
+		navy_submarine_attack_factor = 0.01
+		navy_submarine_defence_factor = 0.01
+		naval_torpedo_reveal_chance_factor = -0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_submarine_wolfpack
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		dependencies = {
+			nrm_trade_interdiction = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE_L1 y = @VERT_9 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 30
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_long_range = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			naval_range = 0.1
+			#default_morale = 0.01
+		}
+		
+		naval_torpedo_reveal_chance_factor = -0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE y = @VERT_10 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = GER
+					tag = JAP
+				}
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_evasion = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 2
+			sub_visibility = -0.02
+			#default_morale = 0.01
+		}
+		
+		sub_retreat_speed = 0.02
+		navy_submarine_defence_factor = 0.02
+		naval_torpedo_reveal_chance_factor = -0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_submarine_tactics_advanced
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE_R1 y = @VERT_9 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = GER
+					tag = ENG
+				}
+				factor = 10
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_wolfpack = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 3
+			surface_detection = 0.1
+			convoy_raiding_coordination = 0.3
+		}
+		
+		sub_retreat_speed = 0.02
+		navy_submarine_attack_factor = 0.02
+		navy_submarine_defence_factor = 0.02
+		naval_torpedo_reveal_chance_factor = -0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE_L1 y = @VERT_11 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_submarine_tactics_advanced = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_subs = {
+			max_organisation = 2
+			torpedo_attack = 0.05
+			surface_detection = 0.05
+			sub_visibility = -0.02
+			convoy_raiding_coordination = 0.1
+			#default_morale = 0.01
+		}
+		
+		sub_retreat_speed = 0.03
+		navy_submarine_attack_factor = 0.02
+		navy_submarine_defence_factor = 0.02
+		naval_torpedo_reveal_chance_factor = -0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @SS_TREE_R1 y = @VERT_11 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@coastal_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@lr_submarine }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = GER
+				}
+				factor = 10
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#Decisive Battle Branch
+	nrm_decisive_battle = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_fleet_in_being }
+			NOT = { has_tech = nrm_trade_interdiction }
+		} 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 5
+			surface_detection = 0.05
+		}
+		category_all_cruiser = {
+			max_organisation = 5
+			surface_detection = 0.05
+		}
+		
+		navy_capital_ship_attack_factor = 0.02
+		navy_capital_ship_defence_factor = -0.01
+		navy_screen_attack_factor = 0.02
+		navy_screen_defence_factor = -0.01
+		naval_hit_chance = 0.02
+		naval_torpedo_screen_penetration_factor = 0.01
+		positioning = 0.01
+		naval_retreat_chance = -0.02
+		convoy_escort_efficiency = -0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 75
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_fleet_in_being nrm_trade_interdiction }
+		
+		path = {
+			leads_to_tech = nrm_db_offensive_tactics
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		dependencies = {
+			nrm_fleet_coordination = 1
+			nrm_independent_cruiser_operation = 1
+			nrm_cruiser_flotilla_leader = 1
+			nrm_destroyer_torpedo_tactics = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_decisive_battle
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_decisive_battle_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DECBAT_TREE y = @VERT_6h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 50
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_db_offensive_tactics = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 3
+		}
+		category_all_cruiser = {
+			max_organisation = 3
+		}
+		category_all_destroyer = {
+			max_organisation = 2
+			torpedo_attack = 0.05
+		}
+		
+		navy_capital_ship_attack_factor = 0.03
+		navy_screen_attack_factor = 0.03
+		naval_hit_chance = 0.02
+		naval_torpedo_screen_penetration_factor = 0.01
+		naval_retreat_chance = -0.01
+		screening_efficiency = -0.01
+		convoy_escort_efficiency = -0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_db_battleline_tactics
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_db_cruiser_torpedo
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_decisive_battle
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_decisive_battle_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DECBAT_TREE y = @VERT_7h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 50
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_db_battleline_tactics = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 5
+			#default_morale = 0.01
+		}
+		category_all_cruiser = {
+			max_organisation = 2
+		}
+		
+		navy_capital_ship_attack_factor = 0.02
+		navy_capital_ship_defence_factor = 0.02
+		naval_hit_chance = 0.01
+		screening_efficiency = 0.01
+		positioning = 0.01
+		naval_retreat_chance = -0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_db_combined_carrier
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_decisive_battle
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_decisive_battle_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DECBAT_TREE_L1 y = @VERT_8h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 50
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_db_cruiser_torpedo = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			max_organisation = 3
+			torpedo_attack = 0.1
+		}
+		category_all_destroyer = {
+			max_organisation = 2
+			torpedo_attack = 0.05
+		}
+		
+		navy_screen_attack_factor = 0.02
+		navy_screen_defence_factor = 0.02
+		naval_torpedo_screen_penetration_factor = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_db_heavy_scouting
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_decisive_battle
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_decisive_battle_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DECBAT_TREE_R1 y = @VERT_8h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 50
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_db_combined_carrier = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 3
+			#default_morale = 0.01
+		}
+		category_all_battleship = {
+			max_organisation = 2
+		}
+		category_all_cruiser = {
+			max_organisation = 2
+		}
+		
+		sortie_efficiency = 0.05
+		navy_carrier_air_agility_factor = 0.05
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.1
+		port_strike = 0.15
+		positioning = 0.01
+		screening_efficiency = 0.02
+		navy_anti_air_attack_factor = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_db_forward_operations
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		dependencies = {
+			nrm_carrier_development = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_decisive_battle
+			naval_doctrine_carrier
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_decisive_battle_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DECBAT_TREE_L1 y = @VERT_9h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 50
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_db_heavy_scouting = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 5
+			surface_detection = 0.1
+			surface_visibility = -0.01
+		}
+		category_all_cruiser = {
+			max_organisation = 3
+			surface_detection = 0.05
+			#default_morale = 0.01
+			surface_visibility = -0.01
+		}
+		category_all_destroyer = {
+			max_organisation = 1
+			surface_detection = 0.05
+			#default_morale = 0.01
+			surface_visibility = -0.01
+		}
+		
+		spotting_chance = 0.02
+		positioning = 0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_db_forward_operations
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_decisive_battle
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_decisive_battle_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DECBAT_TREE_R1 y = @VERT_9h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 40
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_db_forward_operations = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_surface_ship = {
+			naval_range = 0.05
+			max_organisation = 2
+			surface_detection = 0.05
+			#default_morale = 0.01
+		}
+		
+		naval_coordination = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_db_grand_battlefleet
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		dependencies = {
+			nrm_db_combined_carrier = 1
+			nrm_db_heavy_scouting = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_decisive_battle
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_decisive_battle_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DECBAT_TREE y = @VERT_10h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 30
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_db_grand_battlefleet = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 3
+		}
+		category_all_cruiser = {
+			max_organisation = 3
+		}
+		category_all_destroyer = {
+			max_organisation = 3
+		}
+		
+		navy_capital_ship_attack_factor = 0.03
+		navy_capital_ship_defence_factor = 0.02
+		navy_screen_attack_factor = 0.03
+		navy_screen_defence_factor = 0.02
+		naval_hit_chance = 0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		positioning = 0.01
+		naval_retreat_chance = -0.01
+		navy_anti_air_attack_factor = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_decisive_battle
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_decisive_battle_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @DECBAT_TREE y = @VERT_11h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 30
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#Fleet in Being Branch
+	nrm_fleet_in_being = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_decisive_battle }
+			NOT = { has_tech = nrm_trade_interdiction }
+		} 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 4
+		}
+		category_all_cruiser = {
+			max_organisation = 4
+		}
+		category_all_destroyer = {
+			max_organisation = 4
+		}
+		
+		navy_capital_ship_attack_factor = 0.01
+		navy_capital_ship_defence_factor = 0.02
+		navy_screen_attack_factor = 0.01
+		navy_screen_defence_factor = 0.02
+		naval_hit_chance = 0.01
+		positioning = 0.01
+		naval_retreat_speed = 0.01
+		screening_efficiency = 0.02
+		convoy_escort_efficiency = 0.02
+		repair_speed_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 75
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_decisive_battle nrm_trade_interdiction }
+		
+		path = {
+			leads_to_tech = nrm_fib_power_projection
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_fib_sealane_defence
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		dependencies = {
+			nrm_fleet_formation = 1
+			nrm_independent_cruiser_operation = 1
+			nrm_independent_destroyer_operation = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_in_being
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_in_being_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FIB_TREE y = @VERT_6h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = ITA
+					tag = FRA
+				}
+				factor = 50
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fib_power_projection = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_fib_sealane_defence }
+		} 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 6
+			surface_detection = 0.05
+		}
+		category_all_cruiser = {
+			max_organisation = 6
+			surface_detection = 0.05
+		}
+		
+		navy_capital_ship_attack_factor = 0.03
+		navy_screen_attack_factor = 0.02
+		naval_hit_chance = 0.02
+		naval_torpedo_screen_penetration_factor = 0.01
+		screening_efficiency = 0.02
+		positioning = 0.01
+		shore_bombardment_bonus = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_fib_sealane_defence }
+		
+		path = {
+			leads_to_tech = nrm_fib_forward_basing
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_in_being
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_in_being_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FIB_TREE_L1 y = @VERT_7h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+				}
+				factor = 60
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+				}
+				factor = 0.01
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fib_sealane_defence = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_fib_power_projection }
+		} 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 1
+		}
+		category_all_cruiser = {
+			max_organisation = 4
+			surface_detection = 0.05
+			sub_detection = 0.05
+			#default_morale = 0.01
+		}
+		category_all_destroyer = {
+			max_organisation = 4
+			surface_detection = 0.05
+			sub_detection = 0.05
+			sub_attack = 0.05
+			#default_morale = 0.01
+		}
+		
+		naval_hit_chance = 0.01
+		screening_efficiency = 0.01
+		convoy_escort_efficiency = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_fib_power_projection }
+		
+		path = {
+			leads_to_tech = nrm_fib_patrol_operation
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_in_being
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_in_being_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FIB_TREE_R1 y = @VERT_7h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = ITA
+				}
+				factor = 60
+			}
+			modifier = {
+				OR = {
+					tag = USA
+				}
+				factor = 0.01
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fib_forward_basing = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_surface_ship = {
+			max_organisation = 2
+			naval_range = 0.06
+			#default_morale = 0.01
+		}
+		
+		spotting_chance = 0.01
+		naval_coordination = 0.05
+		screening_efficiency = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_fib_fast_carrier_tf
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_in_being
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_in_being_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FIB_TREE_L1 y = @VERT_8h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+				}
+				factor = 60
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fib_patrol_operation = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			max_organisation = 4
+			surface_detection = 0.05
+		}
+		category_all_destroyer = {
+			max_organisation = 2
+			surface_detection = 0.05
+		}
+		
+		navy_screen_attack_factor = 0.02
+		navy_screen_defence_factor = 0.01
+		naval_hit_chance = 0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		positioning = 0.01
+		spotting_chance = 0.02
+		screening_efficiency = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_fib_floating_fortress
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_in_being
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_in_being_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FIB_TREE_R1 y = @VERT_8h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = ITA
+				}
+				factor = 60
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fib_fast_carrier_tf = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 3
+			anti_air_attack = 0.05
+			#default_morale = 0.01
+			surface_detection = 0.1
+			surface_visibility = -0.01
+		}
+		category_all_battleship = {
+			max_organisation = 2
+			anti_air_attack = 0.05
+		}
+		category_all_cruiser = {
+			max_organisation = 2
+			anti_air_attack = 0.05
+		}
+		category_all_destroyer = {
+			max_organisation = 3
+			anti_air_attack = 0.05
+		}
+		
+		navy_capital_ship_attack_factor = 0.01
+		sortie_efficiency = 0.05
+		navy_carrier_air_agility_factor = 0.05
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.05
+		port_strike = 0.05
+		positioning = 0.01
+		screening_efficiency = 0.01
+		navy_anti_air_attack_factor = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_fib_defensive_formation
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		dependencies = {
+			nrm_carrier_development = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_in_being
+			naval_doctrine_carrier
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_in_being_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FIB_TREE_L1 y = @VERT_9h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+				}
+				factor = 40
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fib_floating_fortress = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 10
+			#default_morale = 0.01
+		}
+		category_all_cruiser = {
+			max_organisation = 3
+		}
+		
+		navy_capital_ship_attack_factor = 0.02
+		navy_capital_ship_defence_factor = 0.04
+		naval_hit_chance = 0.02
+		positioning = 0.01
+		spotting_chance = 0.02
+		screening_efficiency = 0.05
+		navy_anti_air_attack_factor = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_fib_defensive_formation
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_in_being
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_in_being_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FIB_TREE_R1 y = @VERT_9h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = ITA
+				}
+				factor = 40
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fib_defensive_formation = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 5
+			#default_morale = 0.01
+			surface_detection = 0.05
+		}
+		category_all_cruiser = {
+			max_organisation = 5
+			surface_detection = 0.05
+		}
+		category_all_destroyer = {
+			max_organisation = 2
+			surface_detection = 0.05
+			sub_detection = 0.05
+		}
+		
+		navy_capital_ship_attack_factor = 0.01
+		navy_capital_ship_defence_factor = 0.02
+		navy_screen_attack_factor = 0.01
+		navy_screen_defence_factor = 0.02
+		naval_hit_chance = 0.02
+		positioning = 0.01
+		screening_efficiency = 0.05
+		convoy_escort_efficiency = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_fib_flexible_operations
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_fib_modern_battlefleet
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_in_being
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_in_being_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FIB_TREE y = @VERT_10h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 30
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fib_flexible_operations = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_surface_ship = {
+			naval_range = 0.04
+		}
+		category_all_cruiser = {
+			max_organisation = 3
+			surface_detection = 0.05
+			surface_visibility = -0.01
+			sub_detection = 0.05
+			sub_attack = 0.05
+			#default_morale = 0.01
+		}
+		category_all_destroyer = {
+			max_organisation = 3
+			surface_detection = 0.05
+			surface_visibility = -0.01
+			sub_detection = 0.05
+			sub_attack = 0.05
+			#default_morale = 0.01
+		}
+		
+		navy_screen_attack_factor = 0.02
+		navy_screen_defence_factor = 0.02
+		naval_torpedo_screen_penetration_factor = 0.01
+		screening_efficiency = 0.02
+		convoy_escort_efficiency = 0.05
+		spotting_chance = 0.01
+		naval_coordination = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_in_being
+			naval_doctrine_cruiser
+			naval_doctrine_destroyer
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_in_being_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_destroyer_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FIB_TREE_L1 y = @VERT_11h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_fib_modern_battlefleet = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 5
+			surface_detection = 0.05
+			surface_visibility = -0.01
+			#default_morale = 0.01
+		}
+		category_all_cruiser = {
+			max_organisation = 2
+		}
+		
+		navy_capital_ship_attack_factor = 0.02
+		navy_capital_ship_defence_factor = 0.02
+		naval_hit_chance = 0.02
+		screening_efficiency = 0.02
+		positioning = 0.01
+		navy_anti_air_attack_factor = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_in_being
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_in_being_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FIB_TREE_R1 y = @VERT_11h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#Trade Interdiction Branch
+	nrm_trade_interdiction = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_decisive_battle }
+			NOT = { has_tech = nrm_fleet_in_being }
+		} 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			max_organisation = 2
+			surface_detection = 0.05
+			surface_visibility = -0.01
+			convoy_raiding_coordination = 0.05
+		}
+		category_all_subs = {
+			max_organisation = 2
+			torpedo_attack = 0.05
+			surface_detection = 0.02
+			sub_visibility = -0.01
+		}
+		
+		convoy_raiding_efficiency_factor = 0.1
+		naval_hit_chance = 0.02
+		naval_torpedo_screen_penetration_factor = 0.01
+		naval_retreat_chance = 0.03
+		naval_retreat_speed = 0.03
+		naval_enemy_fleet_size_ratio_penalty_factor = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 75
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_fleet_in_being nrm_decisive_battle }
+		
+		path = {
+			leads_to_tech = nrm_ti_raider_patrols
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		dependencies = {
+			nrm_scouting_force = 1
+			nrm_independent_cruiser_operation = 1
+			nrm_destroyer_torpedo_tactics = 1
+			nrm_submarine_torpedo_tactics = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_trade_interdiction
+			naval_doctrine_cruiser
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_trade_interdiction_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @TI_TREE y = @VERT_6h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 40
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_ti_raider_patrols = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_cruiser = {
+			max_organisation = 3
+			surface_detection = 0.05
+			surface_visibility = -0.01
+			convoy_raiding_coordination = 0.1
+			torpedo_attack = 0.05
+			#default_morale = 0.01
+		}
+		
+		navy_screen_attack_factor = 0.02
+		navy_screen_defence_factor = 0.02
+		naval_torpedo_screen_penetration_factor = 0.01
+		naval_retreat_chance = 0.02
+		positioning = 0.01
+		screening_efficiency = 0.01
+		naval_enemy_fleet_size_ratio_penalty_factor = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_ti_capital_raiders
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_trade_interdiction
+			naval_doctrine_cruiser
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_trade_interdiction_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @TI_TREE y = @VERT_7h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 40
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_ti_capital_raiders = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 5
+			surface_detection = 0.05
+			surface_visibility = -0.01
+			convoy_raiding_coordination = 0.15
+			torpedo_attack = 0.05
+			#default_morale = 0.01
+		}
+		
+		navy_capital_ship_attack_factor = 0.02
+		navy_capital_ship_defence_factor = 0.02
+		naval_hit_chance = 0.02
+		positioning = 0.01
+		screening_efficiency = 0.01
+		naval_enemy_fleet_size_ratio_penalty_factor = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_ti_extended_range
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_trade_interdiction
+			naval_doctrine_capital
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_trade_interdiction_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @TI_TREE y = @VERT_8h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 30
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_ti_extended_range = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_surface_ship = {
+			max_organisation = 2
+			naval_range = 0.1
+			#default_morale = 0.01
+		}
+		category_all_subs = {
+			naval_range = 0.05
+			#default_morale = 0.01
+		}
+		
+		convoy_raiding_efficiency_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_ti_combined_raiding
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_trade_interdiction
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_trade_interdiction_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @TI_TREE y = @VERT_9h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 30
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_ti_combined_raiding = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_battleship = {
+			max_organisation = 5
+			surface_detection = 0.05
+			convoy_raiding_coordination = 0.15
+			surface_visibility = -0.01
+		}
+		category_all_cruiser = {
+			max_organisation = 5
+			surface_detection = 0.05
+			convoy_raiding_coordination = 0.15
+		}
+		category_all_subs = {
+			max_organisation = 3
+			torpedo_attack = 0.05
+			surface_detection = 0.05
+			sub_visibility = -0.01
+			convoy_raiding_coordination = 0.1
+		}
+		
+		convoy_raiding_efficiency_factor = 0.05
+		navy_screen_attack_factor = 0.01
+		navy_screen_defence_factor = 0.01
+		navy_capital_ship_attack_factor = 0.01
+		navy_capital_ship_defence_factor = 0.01
+		naval_torpedo_screen_penetration_factor = 0.01
+		naval_retreat_speed = 0.02
+		positioning = 0.01
+		screening_efficiency = 0.02
+		naval_enemy_fleet_size_ratio_penalty_factor = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_ti_carrier_raiding
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes
+		research_cost = 2.0
+		
+		dependencies = {
+			nrm_fleet_coordination = 1
+			nrm_submarine_tactics_improved = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_trade_interdiction
+			naval_doctrine_capital
+			naval_doctrine_cruiser
+			naval_doctrine_submarine
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_trade_interdiction_tt
+			custom_effect_tooltip = naval_doctrine_capital_tt
+			custom_effect_tooltip = naval_doctrine_cruiser_tt
+			custom_effect_tooltip = naval_doctrine_submarine_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @TI_TREE y = @VERT_10h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_ti_carrier_raiding = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			surface_detection = 0.1
+			convoy_raiding_coordination = 0.3
+			surface_visibility = -0.02
+		}
+		
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.05
+		port_strike = 0.05
+		screening_efficiency = 0.01
+		navy_anti_air_attack_factor = 0.02
+		convoy_raiding_efficiency_factor = 0.05
+		naval_retreat_speed = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		doctrine = yes
+		research_cost = 2.0
+		
+		dependencies = {
+			nrm_carrier_development = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_trade_interdiction
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_trade_interdiction_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @TI_TREE y = @VERT_11h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 2 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#Mine Warfare Branch
+	nrm_mine_warfare = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		mines_planting_by_fleets_factor = 0.2
+		mines_sweeping_by_fleets_factor = 0.2
+		naval_mines_effect_reduction = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 20
+		xp_research_bonus = 1.0
+		
+		path = {
+			leads_to_tech = nrm_mine_warfare_2
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_ww1
+			naval_doctrine_mine_warfare
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_ww1_tt
+			custom_effect_tooltip = naval_doctrine_mine_warfare_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @MINE_TREE y = @VERT_2 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_mine_warfare_2 = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		mines_planting_by_fleets_factor = 0.3
+		mines_sweeping_by_fleets_factor = 0.3
+		naval_mines_effect_reduction = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.5
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_mine_warfare
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_mine_warfare_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @MINE_TREE y = @VERT_5 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#Fleet Train Branch
+	nrm_fleet_train = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_surface_ship = {
+			naval_range = 0.05
+		}
+		
+		repair_speed_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_replenishment_sea
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		dependencies = {
+			nrm_fleet_coordination = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_train
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_train_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FLEETTRAIN_TREE y = @VERT_6h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+					tag = USA
+					tag = ENG
+					tag = JAP
+				}
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_replenishment_sea = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_surface_ship = {
+			naval_range = 0.05
+			#default_morale = 0.01
+		}
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_replenishment_underway
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_train
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_train_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FLEETTRAIN_TREE y = @VERT_9h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = ENG
+					tag = JAP
+				}
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_replenishment_underway = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_surface_ship = {
+			naval_range = 0.05
+			#default_morale = 0.02
+		}
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_fleet_train
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_fleet_train_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @FLEETTRAIN_TREE y = @VERT_11h }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships }
+				multiply_temp_variable = { ai_add = 1.5 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+				}
+				factor = 10
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 30 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 90 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#Carrier Branch
+	nrm_naval_aviation = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		navy_carrier_air_agility_factor = 0.05
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_carrier_experiments
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+			custom_effect_tooltip = unlock_research_carrier_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE y = @VERT_3 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+					tag = USA
+					tag = ENG
+					tag = JAP
+					tag = FRA
+					tag = ITA
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_experiments = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 2
+			carrier_size = 0.05
+		}
+		
+		sortie_efficiency = 0.05
+		navy_carrier_air_agility_factor = 0.05
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 75
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_carrier_independent
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_carrier_integrated
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE y = @VERT_4 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+					tag = FRA
+					tag = ITA
+				}
+				factor = 15
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = ENG
+					tag = JAP
+				}
+				factor = 30
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_independent = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_carrier_integrated }
+			has_navy_size = { type = carrier size > 0 }
+		} 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			surface_detection = 0.05
+			#default_morale = 0.01
+		}
+		
+		sortie_efficiency = 0.06
+		port_strike = 0.1
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_carrier_integrated }
+		
+		path = {
+			leads_to_tech = nrm_carrier_development
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_L1 y = @VERT_5 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = JAP
+				}
+				factor = 30
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_integrated = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_carrier_independent }
+			has_navy_size = { type = carrier size > 0 }
+		} 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 5
+		}
+		
+		sortie_efficiency = 0.03
+		fighter_sortie_efficiency = 0.02
+		navy_carrier_air_agility_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_carrier_independent }
+		
+		path = {
+			leads_to_tech = nrm_carrier_development
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 1.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_R1 y = @VERT_5 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = FRA
+					tag = ITA
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_development = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			has_navy_size = { type = carrier size > 0 }
+		} 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 3
+			#default_morale = 0.01
+			carrier_size = 0.05
+		}
+		
+		sortie_efficiency = 0.04
+		navy_carrier_air_agility_factor = 0.05
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_carrier_deck_operations
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE y = @VERT_6 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+					tag = FRA
+					tag = ITA
+				}
+				factor = 10
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = ENG
+					tag = JAP
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_offensive = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_carrier_scouting }
+			NOT = { has_tech = nrm_carrier_defensive }
+			has_navy_size = { type = carrier size > 0 }
+		} 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 5
+			surface_detection = 0.05
+			#default_morale = 0.01
+		}
+		
+		sortie_efficiency = 0.05
+		port_strike = 0.2
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.1
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_carrier_scouting nrm_carrier_defensive }
+		
+		path = {
+			leads_to_tech = nrm_carrier_operations
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		dependencies = {
+			nrm_carrier_independent = 1
+			nrm_carrier_development = 1
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_L2 y = @VERT_7 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 30
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_scouting = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_carrier_offensive }
+			NOT = { has_tech = nrm_carrier_defensive }
+			has_navy_size = { type = carrier size > 0 }
+		} 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 5
+			surface_detection = 0.1
+			sub_detection = 0.05
+			#default_morale = 0.01
+			surface_visibility = -0.02
+		}
+		
+		sortie_efficiency = 0.05
+		port_strike = 0.05
+		navy_carrier_air_agility_factor = 0.05
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.05
+		positioning = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_carrier_offensive nrm_carrier_defensive }
+		
+		path = {
+			leads_to_tech = nrm_carrier_operations
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		dependencies = {
+			nrm_carrier_development = 1
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE y = @VERT_7 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = GER
+				}
+				factor = 10
+			}
+			modifier = {
+				OR = {
+					tag = USA
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_defensive = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_carrier_offensive }
+			NOT = { has_tech = nrm_carrier_scouting }
+			has_navy_size = { type = carrier size > 0 }
+		} 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 5
+			surface_detection = 0.05
+			sub_detection = 0.10
+			#default_morale = 0.02
+		}
+		
+		sortie_efficiency = 0.03
+		fighter_sortie_efficiency = 0.03
+		navy_carrier_air_agility_factor = 0.1
+		navy_carrier_air_targetting_factor = 0.05
+		convoy_escort_efficiency = 0.04
+		navy_anti_air_attack_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_carrier_offensive nrm_carrier_scouting }
+		
+		path = {
+			leads_to_tech = nrm_carrier_operations
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		dependencies = {
+			nrm_carrier_integrated = 1
+			nrm_carrier_development = 1
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_R2 y = @VERT_7 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+				}
+				factor = 20
+			}
+			modifier = {
+				OR = {
+					tag = FRA
+					tag = ITA
+				}
+				factor = 10
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_operations = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			has_navy_size = { type = carrier size > 0 }
+		} 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 5
+			#default_morale = 0.01
+		}
+		
+		sortie_efficiency = 0.05
+		navy_carrier_air_agility_factor = 0.05
+		navy_carrier_air_targetting_factor = 0.025
+		navy_carrier_air_attack_factor = 0.025
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_carrier_taskforce
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_carrier_support
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE y = @VERT_8 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+					tag = USA
+				}
+				factor = 30
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = GER
+					tag = ITA
+					tag = FRA
+				}
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_taskforce = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_carrier_support }
+			has_navy_size = { type = carrier size > 0 }
+		}
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 10
+			surface_detection = 0.05
+			sub_detection = 0.05
+			#default_morale = 0.01
+		}
+		
+		sortie_efficiency = 0.1
+		port_strike = 0.2
+		navy_carrier_air_agility_factor = 0.025
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.05
+		navy_anti_air_attack_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_carrier_support }
+		
+		path = {
+			leads_to_tech = nrm_carrier_strike
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_carrier_defence
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		dependencies = {
+			nrm_carrier_independent = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_L1 y = @VERT_9 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = JAP
+				}
+				factor = 30
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_support = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			NOT = { has_tech = nrm_carrier_taskforce }
+			has_navy_size = { type = carrier size > 0 }
+		}
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 15
+			surface_detection = 0.05
+			sub_detection = 0.1
+			#default_morale = 0.01
+		}
+		
+		sortie_efficiency = 0.05
+		navy_carrier_air_agility_factor = 0.05
+		navy_carrier_air_targetting_factor = 0.025
+		navy_carrier_air_attack_factor = 0.025
+		navy_anti_air_attack_factor = 0.05
+		convoy_escort_efficiency = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		xor = { nrm_carrier_taskforce }
+		
+		path = {
+			leads_to_tech = nrm_carrier_strike
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nrm_carrier_defence
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		dependencies = {
+			nrm_carrier_integrated = 1
+		}
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_R1 y = @VERT_9 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+				}
+				factor = 15
+			}
+			modifier = {
+				OR = {
+					tag = GER
+					tag = ITA
+				}
+				factor = 10
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_strike = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			has_navy_size = { type = carrier size > 0 }
+		}
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 2
+			surface_detection = 0.05
+		}
+		
+		sortie_efficiency = 0.05
+		port_strike = 0.1
+		navy_carrier_air_targetting_factor = 0.1
+		navy_carrier_air_attack_factor = 0.1
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_carrier_operations_advanced
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_L1 y = @VERT_10 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 25
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_defence = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			has_navy_size = { type = carrier size > 0 }
+		}
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 8
+			#default_morale = 0.01
+			sub_detection = 0.05
+			surface_visibility = -0.02
+		}
+		
+		fighter_sortie_efficiency = 0.05
+		navy_carrier_air_agility_factor = 0.1
+		navy_anti_air_attack_factor = 0.05
+		convoy_escort_efficiency = 0.03
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_carrier_operations_advanced
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_R1 y = @VERT_10 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 15
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 25
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_operations_advanced = {
+		allow = {
+			can_research_naval_doctrine_folder = yes
+			has_navy_size = { type = carrier size > 0 }
+		}
+		
+		# EFFECT #############
+		category_all_carrier = {
+			max_organisation = 5
+			#default_morale = 0.01
+			surface_detection = 0.05
+			sub_detection = 0.05
+			surface_visibility = -0.01
+		}
+		
+		sortie_efficiency = 0.05
+		fighter_sortie_efficiency = 0.05
+		navy_carrier_air_agility_factor = 0.05
+		navy_carrier_air_targetting_factor = 0.05
+		navy_carrier_air_attack_factor = 0.05
+		#####
+		xp_research_type = navy
+		xp_research_cost = 100
+		xp_research_bonus = 0.5
+		
+		doctrine = yes	
+		research_cost = 2.5
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		dependencies = {
+			nrm_carrier_defence = 1
+			nrm_carrier_strike = 1
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_navy_size = { type = carrier size > 0 }
+					}
+				}
+				custom_effect_tooltip = research_require_carrier_tt
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE y = @VERT_11 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = USA
+					tag = JAP
+				}
+				factor = 20
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+				}
+				factor = 10
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	
+	#Carrier Handling/Deck Branch
+	nrm_carrier_deck_operations = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			carrier_size = 0.05
+		}
+		
+		sortie_efficiency = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_carrier_deck_park
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 2.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_L3 y = @VERT_6 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_deck_park = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			carrier_size = 0.1
+		}
+		
+		sortie_efficiency = 0.01
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_carrier_deck_advanced
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_L3 y = @VERT_8 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = JAP
+				}
+				factor = 15
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 20
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+	nrm_carrier_deck_advanced = {
+		allow = { can_research_naval_doctrine_folder = yes } 
+		
+		# EFFECT #############
+		category_all_carrier = {
+			carrier_size = 0.05
+		}
+		
+		sortie_efficiency = 0.02
+		#####
+		xp_research_type = navy
+		xp_research_cost = 50
+		xp_research_bonus = 0.5
+		
+		path = {
+			leads_to_tech = nrm_carrier_deck_advanced
+			research_cost_coeff = 1
+		}
+		
+		doctrine = yes	
+		research_cost = 3.0
+		
+		categories = {
+			naval_doctrine
+			naval_doctrine_carrier
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_doctrine_tt
+			custom_effect_tooltip = naval_doctrine_carrier_tt
+		}
+		
+		folder = {
+			name = naval_doctrine_folder
+			position = { x = @CV_TREE_L3 y = @VERT_10 }
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@armored_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_ships_with_type@light_carrier }
+				multiply_temp_variable = { ai_add = 4 }
+				add = ai_add
+			}
+			modifier = {
+				set_temp_variable = { ai_add = num_of_naval_factories }
+				multiply_temp_variable = { ai_add = 0.50 }
+				add = ai_add
+			}
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+				factor = 15
+				factor = 15
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 80 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 140 } 
+			}
+			modifier = { 
+				factor = 2
+				has_navy_size = { size > 200 } 
+			}
+		}
+	}
+}
+### EOF ###

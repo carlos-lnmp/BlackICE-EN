@@ -1,0 +1,89 @@
+﻿capital = 613 # Nanjing
+
+# Starting tech
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		#early_ship_hull_coastal_submarine = 1
+	}
+}
+set_technology = {
+	BICE_sub_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	mountain_equipment = 1
+	tech_mountaineers = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## artillery ###############
+	################## armor ##############
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### economy ############
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	ww1_artillery = 1
+	foot_runners = 1
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	ww1_battlefield_support = 1
+}
+
+set_party_name = { ideology = fascism long_name = KMT_wjw name = KMT_wjw }
+
+add_ideas = {
+	incompetent_industry_fake
+	incompetent_industry_fake_navy
+	KMT_weak_army
+}
+
+set_convoys = 20
+
+
+set_politics = {	
+	ruling_party = fascism
+	last_election = "1936.1.1"
+	election_frequency = 72
+	elections_allowed = no
+}
+set_popularities = {
+	conservatism = 0
+	fascism = 99
+	communism = 0
+	neutrality = 1
+}
+
+create_country_leader = {
+	name = "Wang Jingwei"
+	desc = "POLITICS_WANG_JINGWEI_DESC"
+	picture = "gfx/leaders/kmt_mod/Portrait_Wang_Jingwei.dds"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+		fascist
+	}
+}

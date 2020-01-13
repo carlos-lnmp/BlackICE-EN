@@ -1,0 +1,193 @@
+﻿##### TEMPLATES ######
+division_template = {
+	name = "militia Division"		
+	template_counter =  78
+	
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+	}
+	 support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		desert_support = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Eritrean Ascari"		
+	template_counter =  157
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		light_infantry = { x = 1 y = 0 }
+		light_infantry = { x = 1 y = 1 }
+		light_infantry = { x = 1 y = 2 }
+
+		artillery_brigade = { x = 2 y = 0 }
+		artillery_brigade = { x = 2 y = 1 }
+		artillery_brigade = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_mot = { x = 0 y = 1 }
+		desert_support = { x = 0 y = 2 }	
+	}
+}
+division_template = {
+	name = "Recul Bande"
+	template_counter = 221
+	
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		desert_support = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Dubat Bande"			
+	template_counter = 381
+	priority = 1
+	
+	regiments = {
+		light_infantry = {x = 0 y = 0}
+		light_infantry = {x = 0 y = 1}
+		light_infantry = {x = 0 y = 2}
+		
+		light_infantry = {x = 1 y = 0}
+		light_infantry = {x = 1 y = 1}		
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+		desert_support = { x = 0 y = 2 }	
+	}
+}
+##### OOB #####
+units = {
+	### Northern Front ###
+	## Gojjam Provincial Armed Forces #
+	division = {
+		name = "1° Gruppo Coloniale dell'Amhara"
+		location = 4954
+		division_template = "militia Division"		# Militia
+		start_experience_factor = 0.1
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "2° Gruppo Coloniale dell'Amhara"
+		location = 1984
+		division_template = "militia Division"		# Militia
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "3° Gruppo Coloniale dell'Amhara"
+		location = 5041
+		division_template = "militia Division"		# Militia
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "4° Gruppo Coloniale dell'Amhara"
+		location = 5041
+		division_template = "militia Division"		# Militia
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.75
+	}
+	### Southern Front ###
+	division = {
+		name = "Gruppo Coloniale dell'Harar"
+		location = 12812
+		division_template = "militia Division"		# Militia
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "1° Gruppo Coloniale del Galla e Sidama"
+		location = 8062
+		division_template = "militia Division"		# Militia
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.75
+	}
+	# Willubabor and Sidamo Provincial Armed Forces #
+	division = {
+		name = "2° Gruppo Coloniale del Galla e Sidama"
+		location = 8062
+		division_template = "militia Division"		# Militia
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "1° Dubat Regio Corpo di Truppe Coloniali"
+		location = 12991
+		division_template = "Dubat Bande"		# Somali Dubats
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.25
+	}
+	division = {
+		name = "2° Dubat Regio Corpo di Truppe Coloniali"
+		location = 12991
+		division_template = "Recul Bande"		# Somali Cammel Cav
+		start_experience_factor = 0.30
+		start_equipment_factor = 0.25
+	}
+	division = {
+		name = "Gruppo Bande Tigre"
+		location = 12766
+		division_template = "Recul Bande"		# Eritrean Cammel Cav
+		start_experience_factor = 0.60
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "Regio Corpo di Truppe Coloniali"
+		location = 12766
+		division_template = "Eritrean Ascari"		# Eritrean Ascari
+		start_experience_factor = 0.75
+		start_equipment_factor = 1
+	}
+}
+#########################
+## STARTING PRODUCTION ##
+#########################
+instant_effect = {
+### No air forces (small handful of various aircraft in 1935) ###
+	add_equipment_to_stockpile = {
+		type = cr_32_fighter_equipment_1
+		amount = 7
+		producer = ETH
+	}
+	add_equipment_to_stockpile = {
+		type = convoy
+		amount = 5
+		producer = ETH
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "ETH"
+		}
+		requested_factories = 2
+		progress = 0.1
+		efficiency = 50
+	}
+}
+### EOF ###

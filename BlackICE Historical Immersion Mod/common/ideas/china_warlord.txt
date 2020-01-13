@@ -1,0 +1,313 @@
+ideas = {
+	country = {
+		CHI_embrace_the_opium_trade = {
+			allowed = {
+				is_literally_china = yes
+			}
+			picture = prc_permit_opium_trade
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.15
+				opposition_party_drift = 0.01
+			}
+		}
+		CHI_ineffective_bureaucracy_warlord = {
+			allowed = {
+				is_literally_china = yes
+			}		
+			picture = generic_neutrality_drift_bonus
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = -0.25
+				opposition_party_drift = 0.03
+			}
+		}
+		CHI_tribal_army = {
+			allowed = {
+				is_literally_china = yes
+			}			
+			picture = chi_warlord_integration
+
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = -0.05
+				experience_gain_army_factor = -0.10
+				max_planning = -0.20				
+			}
+		}
+		CHI_national_army = {
+			allowed = {
+				is_literally_china = yes
+			}
+			
+			picture = chi_forced_conscription
+
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = -0.35
+				supply_consumption_factor = 0.05
+				max_planning = 0.05
+				army_morale_factor = 0.01
+				political_power_gain = 0.05
+			}
+		}
+		CHI_ideological_education = {
+			allowed = {
+				is_literally_china = yes
+			}
+			allowed_civil_war = { 
+				has_government = communism 
+			}
+			picture =  generic_army_war_college
+
+			removal_cost = -1
+
+			modifier = {
+				communism_drift = 0.05
+			}
+		}
+		CHI_land_value_tax = {
+			allowed = {
+				is_literally_china = yes
+			}
+			allowed_civil_war = { 
+				has_government = communism 
+			}
+			picture =  generic_goods_red_bonus
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+		CHI_public_works = {
+			allowed = {
+				is_literally_china = yes
+			}
+			allowed_civil_war = { 
+				has_government = communism 
+			}
+			picture =  generic_production_bonus
+
+			removal_cost = -1
+
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+			}
+		}
+		CHI_labor_reform = {
+			allowed = {
+				is_literally_china = yes
+			}
+			allowed_civil_war = { 
+				has_government = communism 
+			}
+			picture =  ast_all_in
+
+			removal_cost = -1
+
+			modifier = {
+				conscription = 0.005
+				industrial_capacity_factory = 0.05
+			}
+		}
+		CHI_rural_militias = {
+			allowed = {
+				is_literally_china = yes
+			}
+			allowed_civil_war = { 
+				has_government = communism 
+			}
+			picture =  generic_manpower_bonus
+
+			removal_cost = -1
+
+			modifier = {
+				conscription = 0.01
+			}
+		}
+		CHI_war_taxes = {
+			allowed = {
+				is_literally_china = yes
+			}
+
+			picture =  generic_foreign_capital
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.1
+			}
+		}
+		CHI_defensive_posture = {
+			allowed = {
+				is_literally_china = yes
+			}
+
+			picture =  YUG_federal_defense_council
+
+			removal_cost = -1
+
+			modifier = {
+				army_core_defence_factor = 0.1
+			}
+		}
+		CHI_rapid_mobilization = {
+			allowed = {
+				is_literally_china = yes
+			}
+
+			picture = ast_volunteer_defence_corps 
+
+			removal_cost = -1
+
+			modifier = {
+				training_time_factor = -0.1
+			}
+		}
+		CHI_long_term_economic_planning = {
+			allowed = {
+				is_literally_china = yes
+			}
+			picture =  generic_central_management
+
+			removal_cost = -1
+
+			modifier = {
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+			}
+		}
+		CHI_chinese_tribute = {
+			picture =  generic_foreign_capital
+
+			removal_cost = -1
+			#Targeted modifier to send stuff to China
+			targeted_modifier = {
+				tag = CHI
+				cic_to_target_factor = 0.25
+				mic_to_target_factor = 0.5
+			}
+		}
+ ##  ##  #   # ### ### ###     ### ###  ### ###  #  # ### ### 
+#   #  # #   #  #  #    #       #  #  #  #  #  # #  #  #  #   
+ #  #  #  # #   #  ##   #       #  ###   #  ###  #  #  #  ##  
+  # #  #  # #   #  #    #       #  #  #  #  #  # #  #  #  #   
+##   ##    #   ### ###  #       #  #  # ### ###   ##   #  ###
+		#integrated puppet levels for reference
+		#cic_to_overlord_factor = 0.25
+		#mic_to_overlord_factor = 0.75
+		#extra_trade_to_overlord_factor = 1.0
+		#overlord_trade_cost_factor = -0.9
+		PRC_soviet_tribute_1 = {
+			name = PRC_soviet_tribute
+			
+
+
+			picture =  generic_communism_drift_bonus
+
+			removal_cost = -1
+			#Targeted modifier to send stuff to SOV
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.1
+				mic_to_target_factor = 0
+				extra_trade_to_target_factor = 0.4
+				trade_cost_for_target_factor = -0.2
+			}
+		}
+		PRC_soviet_tribute_2 = {
+			name = PRC_soviet_tribute
+			
+
+
+			picture =  generic_communism_drift_bonus
+
+			removal_cost = -1
+			#Targeted modifier to send stuff to SOV
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.1
+				mic_to_target_factor = 0.1
+				extra_trade_to_target_factor = 0.5
+				trade_cost_for_target_factor = -0.35
+			}
+		}
+		PRC_soviet_tribute_3 = {
+			name = PRC_soviet_tribute
+			
+
+
+			picture =  generic_communism_drift_bonus
+
+			removal_cost = -1
+			#Targeted modifier to send stuff to SOV
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.15
+				mic_to_target_factor = 0.25
+				extra_trade_to_target_factor = 0.6
+				trade_cost_for_target_factor = -0.5
+			}
+		}
+		PRC_soviet_tribute_4 = {
+			name = PRC_soviet_tribute
+			
+
+
+			picture =  generic_communism_drift_bonus
+
+			removal_cost = -1
+			#Targeted modifier to send stuff to SOV
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.2
+				mic_to_target_factor = 0.35
+				extra_trade_to_target_factor = 0.7
+				trade_cost_for_target_factor = -0.6
+			}
+		}
+		PRC_soviet_tribute_5 = {
+			name = PRC_soviet_tribute
+			
+
+
+			picture =  generic_communism_drift_bonus
+
+			removal_cost = -1
+			#Targeted modifier to send stuff to SOV
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.2
+				mic_to_target_factor = 0.5
+				extra_trade_to_target_factor = 0.75
+				trade_cost_for_target_factor = -0.7
+			}
+		}
+		PRC_soviet_tribute_6 = {
+			name = PRC_soviet_tribute
+			
+
+
+			picture =  generic_communism_drift_bonus
+
+			removal_cost = -1
+			#Targeted modifier to send stuff to SOV
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.25
+				mic_to_target_factor = 0.6
+				extra_trade_to_target_factor = 0.8
+				trade_cost_for_target_factor = -0.8
+			}
+		}
+	}
+}
+### EOF ###

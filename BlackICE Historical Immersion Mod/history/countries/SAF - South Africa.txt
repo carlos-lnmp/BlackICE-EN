@@ -1,0 +1,297 @@
+﻿capital = 275
+
+oob = "SAF_1936"
+
+set_war_support = 0.25
+
+set_convoys = 25
+
+set_research_slots = 2
+set_country_flag = ENG_armor
+
+set_country_flag = ENG_air
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+		early_destroyer = 1
+		transport = 1
+	}
+	#set_naval_oob = "SAF_1936_naval_legacy"
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_submarine = 1
+		basic_depth_charges = 1
+		nrm_battery_basic = 1
+		nrm_battery_improved_4 = 1
+		nrm_battery_improved_5 = 1
+		early_engine = 1
+		improved_engine = 1
+		sonar = 1
+		improved_sonar = 1
+		improved_sonar_2 = 1
+		basic_torpedo = 1
+		airplane_launcher = 1
+		improved_ship_torpedo_launcher = 1
+		improved_sub_torpedo_launcher = 1
+		advanced_ship_torpedo_launcher = 1
+		advanced_sub_torpedo_launcher = 1
+		mtg_transport = 1
+		damage_control_1 = 1
+		fire_control_methods_1 = 1
+		basic_light_shell = 1
+		basic_heavy_shell = 1
+		improved_heavy_shell = 1
+		#early_ship_hull_coastal_submarine = 1
+		#basic_ship_hull_coastal_submarine = 1
+	}
+	add_ideas = MTG_naval_treaty_adherent
+	#set_naval_oob = "SAF_1936_naval"
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################ infantry ############
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	semi_motorised_infantry = 1
+	tech_infantry_uniforms = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	############## support################
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+	subtech_recon_mot_1 = 1
+	subtech_recon_cav_1 = 1
+	desert_equipment = 1
+	tech_maintenance_company = 1
+	tech_field_hospital = 1
+	tech_logistics_company = 1
+	############## artillery ##############
+	gw_artillery = 1
+	interwar_antiair = 1
+	interwar_antitank = 1
+	interwar_medartillery = 1
+	################# armor ##############
+	gwtank = 1
+	british_tech_1 = 1
+	################# aircraft #############
+	tech_raf = 1
+	tech_english_aircraft1 = 1
+	tech_hawker_demon_equipment_1 = 1 
+	tech_hawker_fury_equipment_1 = 1 
+	tech_gauntlet_fighter_equipment_1 = 1
+	tech_hawker_hind_equipment_1 = 1 
+	tech_vickers_valentia_equipment_1 = 1 
+	tech_hawker_osprey_fighter_equipment_1 = 1
+	tech_south_african_aircraft = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	
+	ww1_battlefield_support = 1
+	WW1_air_power = 1
+	WW1_air_survey = 1
+	WW1_air_control = 1
+	WW1_air_ground = 1
+	############### WW2 doctrines ############
+	trench_warfare = 1
+	############### naval doctrines ##################
+	nrm_pre_ww1_naval_doctrine = 1
+	nrm_mahanian_concepts = 1
+	nrm_jeune_ecole_concepts = 1
+	nrm_commerce_warfare = 1
+	nrm_battlefleet_concentration = 1
+	nrm_cruiser_warfare = 1
+	nrm_cruiser_battleline_support = 1
+	nrm_cruiser_flotilla_leader = 1
+	nrm_destroyer_support = 1
+	nrm_destroyer_screen = 1
+	nrm_destroyer_torpedo_tactics = 1
+	nrm_independent_destroyer_operation = 1
+	nrm_trade_protection = 1
+	nrm_submarine_tactics_early = 1
+	nrm_submarine_raiding = 1
+	nrm_submarine_torpedo_tactics = 1
+	nrm_mine_warfare = 1
+}
+
+add_ideas = { 
+	SAF_george_villiers
+	export_focus
+	tax_average
+	tariffs_average
+	
+	civilian_economy
+	press_regulated
+	private_control
+	labor_allowed
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_medium
+	age_19
+	security_minor_restrictions
+	edu_high
+	officer_train_low
+	foreign_neutral
+	neutrality_idea
+	mountainous_country
+}
+
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	
+	add_ideas = {
+		SAF_ossewabrandwag
+		SAF_history_of_segregation
+		ENG_commonwealth_officers
+	}
+
+	add_to_tech_sharing_group = commonwealth_research
+	add_opinion_modifier = { target = ENG modifier = SAF_anti_british_sentiment }
+}
+
+set_politics = {
+	ruling_party = conservatism
+	last_election = "1933.5.17"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservatism = 63
+	fascism = 20
+	socialism = 5
+	liberalism = 6
+	communism = 2
+	neutrality = 4
+	ruling_party = 0
+	opposition_party = 0
+}
+#######################################################
+create_country_leader = {
+	name = "J. B. M. Hertzog"
+	desc = "POLITICS_J_B_M_HERTZOG_DESC"
+	picture = "GFX_SAF_james_hertzog"
+	expire = "1965.1.1"
+	ideology = social_conservatism
+	traits = {
+		independent_guy
+	}
+}
+create_country_leader = {
+	name = "J. B. M. Hertzog"
+	desc = "POLITICS_J_B_M_HERTZOG_DESC"
+	picture = "GFX_SAF_james_hertzog"
+	expire = "1965.1.1"
+	ideology = social_conservatism
+	traits = {
+		independent_guy
+	}
+}
+create_country_leader = {
+	name = "D. F. Malan"
+	desc = "POLITICS_DF_MALAN_DESC"
+	picture = "GFX_SAF_daniel_malan"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Moses Kotane"
+	desc = "POLITICS_MOSES_KOTANE_DESC"
+	picture = "GFX_SAF_moses_kotane"
+	expire = "1965.1.1"
+	ideology = marxism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Pixley Ka Isaka Seme"
+	desc = "POLITICS_PIXLEY_SEME_DESC"
+	picture = "gfx/leaders/Afrika/Portrait_Africa_Generic_3.dds"
+	expire = "1965.1.1"
+	ideology = moderatism
+	traits = {
+		coalition_builder
+	}
+}
+create_country_leader = {
+	name = "Charles Stallard"
+	desc = ""
+	picture = ""
+	expire = "1965.1.1"
+	ideology = center_right
+	traits = {
+		British_Ally
+		liberal
+		conservative
+	}
+}
+create_country_leader = {
+	name = "Walter Madeley"
+	desc = ""
+	picture = ""
+	expire = "1965.1.1"
+	ideology = social_democracy
+	traits = {
+		British_Ally
+		socialist
+	}
+}
+##### CORPS COMMANDERS ############################################
+create_corps_commander = {
+	name = "George Edwin Brink"
+	gfx = "GFX_SAF_george_edwin_brink"
+	traits = { Terrible_General desert_fox  }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 4
+	logistics_skill = 1
+}
+##### NAVY COMMANDERS ##############################################
+create_navy_leader = {
+	name = "Guy Hallifax"
+	gfx = "GFX_SAF_guy_halifax"
+	traits = { battleship_adherent }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 2
+}
+### EOF ###

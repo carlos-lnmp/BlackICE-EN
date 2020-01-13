@@ -1,0 +1,352 @@
+
+
+########################################
+#Scripted Effects used by Partisan Code#
+########################################
+
+spawn_partisan_division = {
+	meta_effect = {	
+		text = {
+			create_unit = {
+				division = "name = \"Partisans\" division_template = \"[STRENGTH]\" start_experience_factor = [DIV_EXP] start_equipment_factor = [EQUIP]"
+				OWNER = PREV
+			}
+		}
+		DIV_EXP = Prev.modifier@production_speed_partisan_experience_factor
+		EQUIP = Prev.modifier@production_speed_partisan_strength_factor
+		STRENGTH = "[GetPartisanTemplate]"
+	}
+}
+
+
+spawn_state_partisan_division = {
+	ROOT = {
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {	has_tech = interwar_antitank }
+				}
+				set_technology = { interwar_antitank = 1 }
+			}
+			
+			if = {
+				limit = {
+					NOT = {	has_tech = partisans }
+				}
+				set_technology = { partisans = 1 }
+			}
+			
+			if = {
+				limit = {
+					NOT = {	has_template_majority_unit = partisan }
+				}
+				division_template = {
+					name = "Partisan"		
+					
+					regiments = {
+						partisan = { x = 0 y = 0 }
+						partisan = { x = 0 y = 1 }
+						
+						partisan = { x = 1 y = 0 }
+						partisan = { x = 1 y = 1 }
+						
+						partisan = { x = 2 y = 0 }
+						partisan = { x = 2 y = 1 }
+						
+						partisan = { x = 3 y = 0 }
+						partisan = { x = 3 y = 1 }
+						
+						partisan = { x = 4 y = 0 }
+						partisan = { x = 4 y = 1 }
+					}
+					
+					support = {
+						anti_tank = { x = 0 y = 0 }
+					}
+					priority = 0
+				}
+				set_division_template_lock = {
+					division_template = "Partisan"
+					is_locked = yes
+				}
+			}
+		}
+	}		
+	hidden_effect = {
+		create_unit = {
+			division = "name = \"Partisans\" division_template = \"Partisan\" start_experience_factor = 0.5"
+			OWNER = ROOT
+		}
+	}
+	custom_effect_tooltip = spawn_partisan_TT
+}
+
+calculate_partisan_states = {
+	every_state = {
+		limit = {
+			is_fully_controlled_by = ROOT
+			set_temp_variable = { resistance_trigger = 0.5 }
+			add_to_temp_variable = { resistance_trigger = Root.modifier@production_speed_partisan_trigger_factor }
+			check_variable = { resistance > resistance_trigger }
+			
+			NOT = {
+				is_owned_by = ROOT
+				has_state_flag = recent_uprising
+			}
+		}	
+		set_state_flag = {
+			flag = recent_uprising
+			value = 1
+			days = 90
+		}
+		save_event_target_as = partisan_state
+		ROOT = {
+			random_other_country = {
+				limit = { 
+					owns_state = PREV.PREV 
+					#is_ai = yes
+				}
+				set_state_controller = PREV.PREV 
+				
+				set_partisan_techs_and_templates = yes
+					
+				event_target:partisan_state = {
+					spawn_partisan_division = yes
+				}
+			}
+			set_state_controller = PREV
+		}
+	}
+}
+
+set_partisan_techs_and_templates = {
+	if = {
+		limit = {
+			NOT = {	has_tech = interwar_antitank }
+		}
+		set_technology = { interwar_antitank = 1 }
+	}
+	
+	if = {
+		limit = {
+			NOT = {	has_tech = partisans }
+		}
+		set_technology = { partisans = 1 }
+	}
+	
+	if = {
+		limit = {
+			NOT = {	has_template = "Tiny Partisan Formations" }
+		}
+		if = { limit = { NOT = { has_template = "Tiny Partisan Formations" } }
+		division_template = {
+			name = "Tiny Partisan Formations"		
+			
+			regiments = {
+				partisan = { x = 0 y = 0 }
+				partisan = { x = 0 y = 1 }
+				partisan = { x = 0 y = 2 }
+				partisan = { x = 0 y = 3 }
+				partisan = { x = 0 y = 4 }
+			}
+			
+			support = {
+				engineer = { x = 0 y = 0 }
+			}
+			priority = 0
+		}
+		set_division_template_lock = { division_template = "Tiny Partisan Formations" is_locked = yes } }
+		if = { limit = { NOT = { has_template = "Small Partisan Formations" } }
+		division_template = {
+			name = "Small Partisan Formations"		
+			
+			regiments = {
+				partisan = { x = 0 y = 0 }
+				partisan = { x = 0 y = 1 }
+				partisan = { x = 0 y = 2 }
+				partisan = { x = 0 y = 3 }
+				partisan = { x = 0 y = 4 }
+				
+				partisan = { x = 1 y = 0 }
+				partisan = { x = 1 y = 1 }
+				partisan = { x = 1 y = 2 }
+				partisan = { x = 1 y = 3 }
+				partisan = { x = 1 y = 4 }
+			}
+			
+			support = {
+				engineer = { x = 0 y = 0 }
+			}
+			priority = 0
+		}
+		set_division_template_lock = { division_template = "Small Partisan Formations" is_locked = yes } }
+		if = { limit = { NOT = { has_template = "Partisan Formations" } }
+		division_template = {
+			name = "Partisan Formations"		
+			
+			regiments = {
+				partisan = { x = 0 y = 0 }
+				partisan = { x = 0 y = 1 }
+				partisan = { x = 0 y = 2 }
+				partisan = { x = 0 y = 3 }
+				partisan = { x = 0 y = 4 }
+				
+				partisan = { x = 1 y = 0 }
+				partisan = { x = 1 y = 1 }
+				partisan = { x = 1 y = 2 }
+				partisan = { x = 1 y = 3 }
+				partisan = { x = 1 y = 4 }
+				
+				partisan = { x = 2 y = 0 }
+				partisan = { x = 2 y = 1 }
+				partisan = { x = 2 y = 2 }
+				partisan = { x = 2 y = 3 }
+				partisan = { x = 2 y = 4 }
+			}
+			
+			support = {
+				engineer = { x = 0 y = 0 }
+			}
+			priority = 0
+		}
+		set_division_template_lock = { division_template = "Partisan Formations" is_locked = yes } }
+		if = { limit = { NOT = { has_template = "Large Partisan Formations" } }
+		division_template = {
+			name = "Large Partisan Formations"		
+			
+			regiments = {
+				partisan = { x = 0 y = 0 }
+				partisan = { x = 0 y = 1 }
+				partisan = { x = 0 y = 2 }
+				partisan = { x = 0 y = 3 }
+				partisan = { x = 0 y = 4 }
+				
+				partisan = { x = 1 y = 0 }
+				partisan = { x = 1 y = 1 }
+				partisan = { x = 1 y = 2 }
+				partisan = { x = 1 y = 3 }
+				partisan = { x = 1 y = 4 }
+				
+				partisan = { x = 2 y = 0 }
+				partisan = { x = 2 y = 1 }
+				partisan = { x = 2 y = 2 }
+				partisan = { x = 2 y = 3 }
+				partisan = { x = 2 y = 4 }
+				
+				partisan = { x = 3 y = 0 }
+				partisan = { x = 3 y = 1 }
+				partisan = { x = 3 y = 2 }
+				partisan = { x = 3 y = 3 }
+				partisan = { x = 3 y = 4 }
+			}
+			
+			support = {
+				engineer = { x = 0 y = 0 }
+			}
+			priority = 0
+		}
+		set_division_template_lock = { division_template = "Large Partisan Formations" is_locked = yes } }
+		if = { limit = { NOT = { has_template = "Huge Partisan Formations" } }
+		division_template = {
+			name = "Huge Partisan Formations"		
+			
+			regiments = {
+				partisan = { x = 0 y = 0 }
+				partisan = { x = 0 y = 1 }
+				partisan = { x = 0 y = 2 }
+				partisan = { x = 0 y = 3 }
+				partisan = { x = 0 y = 4 }
+				
+				partisan = { x = 1 y = 0 }
+				partisan = { x = 1 y = 1 }
+				partisan = { x = 1 y = 2 }
+				partisan = { x = 1 y = 3 }
+				partisan = { x = 1 y = 4 }
+				
+				partisan = { x = 2 y = 0 }
+				partisan = { x = 2 y = 1 }
+				partisan = { x = 2 y = 2 }
+				partisan = { x = 2 y = 3 }
+				partisan = { x = 2 y = 4 }
+				
+				partisan = { x = 3 y = 0 }
+				partisan = { x = 3 y = 1 }
+				partisan = { x = 3 y = 2 }
+				partisan = { x = 3 y = 3 }
+				partisan = { x = 3 y = 4 }
+				
+				partisan = { x = 4 y = 0 }
+				partisan = { x = 4 y = 1 }
+				partisan = { x = 4 y = 2 }
+				partisan = { x = 4 y = 3 }
+				partisan = { x = 4 y = 4 }
+			}
+			
+			support = {
+				engineer = { x = 0 y = 0 }
+			}
+			priority = 0
+		}
+		set_division_template_lock = { division_template = "Huge Partisan Formations" is_locked = yes } }
+	}
+}
+
+calculate_communist_spanish_partisan_state = {
+	random_state = {
+		limit = {
+			is_fully_controlled_by = D01
+			is_owned_by = D01
+			is_on_continent = europe
+			NOT = { state = 876 state = 177 }
+		}
+		save_event_target_as = partisan_state
+		ROOT = {
+			set_state_controller = event_target:partisan_state
+				
+			set_partisan_techs_and_templates = yes
+			
+			event_target:partisan_state = {
+				spawn_partisan_division = yes
+			}
+			
+			random_other_country = {
+				limit = { 
+					original_tag = SPR 
+				}
+				set_state_controller = event_target:partisan_state	
+			}
+		}
+	}
+}
+
+calculate_fascist_spanish_partisan_state = {
+	random_state = {
+		limit = {
+			is_fully_controlled_by = SPR
+			is_owned_by = SPR
+			is_on_continent = europe
+			NOT = { state = 876 }
+		}
+		save_event_target_as = partisan_state
+		random_country = {
+			limit = {
+				original_tag = SPR
+				has_government = fascism
+			}
+			set_state_controller = event_target:partisan_state
+				
+			set_partisan_techs_and_templates = yes
+			
+			event_target:partisan_state = {
+				spawn_partisan_division = yes
+			}
+			
+			random_other_country = {
+				limit = { 
+					original_tag = SPR					
+				}
+				set_state_controller = event_target:partisan_state	
+			}
+		}
+	}
+}

@@ -1,0 +1,60 @@
+﻿###########################
+# German Events
+###########################
+
+add_namespace = promotion
+
+# 1939 German Promotions
+country_event = {
+	id = promotion.1
+	title = promotion.1.t
+	desc = promotion.1.d
+	picture = GFX_report_event
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+		name = promotion.1.a
+		ai_chance = { base = 100 }
+		every_unit_leader = { 
+			limit = { OR = { has_id = 9 has_id = 1 has_id = 13 } }
+			promote_leader = yes
+		}	
+		#promote_leader = 9
+		#promote_leader = 1
+		#promote_leader = 13
+	}
+	
+	option = {
+		name = promotion.1.b	#no need
+		ai_chance = { base = 0 }
+	}
+}
+country_event = {
+	id = promotion.2
+	title = promotion.2.t 
+	desc = promotion.2.desc
+	picture = GFX_news_event_rommel
+	
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = { base = 100 }
+		name = promotion.2.a 
+		
+		random_unit_leader = {
+			limit = {
+				has_id = 4
+			}
+			promote_leader = yes
+		}
+	}
+	option = {
+		name = promotion.2.b
+		ai_chance = { base = 0 }
+		
+	}
+}
+### EOF ###

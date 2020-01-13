@@ -1,0 +1,605 @@
+#	Example:
+# 
+#	example_trigger = {
+#		tag = GER
+#		is_ai = no
+#	}
+#
+#
+#	In a script file:
+#
+#	trigger = {
+#		example_trigger = yes
+#	}
+# 
+#	THIS FILE IS FOR TRIGGERS SPECIFICALLY FOR THE CHI TAG
+
+is_independent_china_or_warlord = { #Does not include sinkiang
+	OR = {
+		original_tag = CHI
+		original_tag = PRC
+		original_tag = GXC
+		original_tag = YUN
+		original_tag = SHX
+		original_tag = XSM
+		original_tag = YUT
+		original_tag = XIA
+		original_tag = SCC
+		original_tag = QIA
+		original_tag = ZXL
+		original_tag = SDC
+		original_tag = SKC
+		original_tag = PGR
+		original_tag = ECR
+	}
+	is_puppet = no
+}
+
+is_alone_or_in_faction_at_peace_with_CHI = {
+	OR = {
+		is_in_faction = no
+		is_in_faction_with = CHI
+		AND = {
+			is_in_faction = yes
+			NOT = {
+				is_in_faction_with = CHI
+			}
+		}
+	}
+	NOT = {
+		any_country = {
+			is_in_faction_with = PREV
+			has_war_with = CHI
+		}
+	}
+}
+
+full_control_by_root = {
+	is_owned_by = ROOT
+	is_controlled_by = ROOT
+}
+#State scope
+is_controlled_by_china_occupier_not_MEN = {
+	custom_trigger_tooltip = {
+		tooltip = is_controlled_by_china_occupier_not_MEN_tt
+		OR = {
+			
+			is_fully_controlled_by = JAP
+			
+			AND = {
+				is_fully_controlled_by = PRC
+				PRC = { is_subject_of = JAP }
+			}
+			
+			AND = {
+				is_fully_controlled_by = SHX
+				SHX = { is_subject_of = JAP }
+			}
+			
+			AND = {
+				is_fully_controlled_by = CHI
+				CHI = { is_subject_of = JAP }
+			}
+			
+			AND = {
+				is_fully_controlled_by = MAN
+				MAN = { is_subject_of = JAP }
+			}
+			
+			AND = {
+				is_fully_controlled_by = EHA
+				EHA = { is_subject_of = JAP }
+			}
+			
+			AND = {
+				is_fully_controlled_by = PGR
+				PGR = { is_subject_of = JAP }
+			}
+			
+			AND = {
+				is_fully_controlled_by = RGR
+				RGR = { is_subject_of = JAP }
+			}
+			
+			AND = {
+				is_fully_controlled_by = RGR
+				RGR = { is_subject_of = JAP }
+			}
+			
+			AND = {
+				is_fully_controlled_by = SDC
+				SDC = { is_subject_of = JAP }
+			}
+			
+		}
+	}
+}
+has_hyper_inflation = {
+	if = {
+		limit = { has_idea = CHI_hyper_inflation_1 }
+		has_idea = CHI_hyper_inflation_1
+	}
+	if = {
+		limit = { has_idea = CHI_hyper_inflation_2 }
+		has_idea = CHI_hyper_inflation_2
+	}
+	if = {
+		limit = { has_idea = CHI_hyper_inflation_3 }
+		has_idea = CHI_hyper_inflation_3
+	}
+	if = {
+		limit = { has_idea = CHI_hyper_inflation_4 }
+		has_idea = CHI_hyper_inflation_4
+	}
+	if = {
+		limit = { has_idea = CHI_hyper_inflation_5 }
+		has_idea = CHI_hyper_inflation_5
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_idea = CHI_hyper_inflation_1
+				has_idea = CHI_hyper_inflation_2
+				has_idea = CHI_hyper_inflation_3
+				has_idea = CHI_hyper_inflation_4
+				has_idea = CHI_hyper_inflation_5
+			}
+		}
+		has_idea = CHI_hyper_inflation_1
+	}
+}
+
+is_literally_china = {
+	OR = {
+		original_tag = CHI
+		original_tag = PRC
+		original_tag = GXC
+		original_tag = YUN
+		original_tag = SHX
+		original_tag = XSM
+		original_tag = YUT
+		original_tag = XIA
+		original_tag = SCC
+		original_tag = QIA
+		original_tag = ZXL
+		original_tag = SDC
+		original_tag = SIK
+		original_tag = SKC
+		original_tag = ECR
+		original_tag = PGR
+	}
+}
+
+is_chinese_warlord = {
+	OR = {
+		original_tag = GXC
+		original_tag = YUN
+		original_tag = SHX
+		original_tag = XSM
+		original_tag = YUT
+		original_tag = XIA
+		original_tag = SCC
+		original_tag = QIA
+		original_tag = ZXL
+		original_tag = SDC
+		original_tag = SIK
+		original_tag = SKC
+		original_tag = ECR
+		original_tag = PGR
+	}
+}
+
+GER_will_support = {
+	GER = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}
+
+SOV_will_support = {
+	SOV = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}
+ENG_will_support = {
+	ENG = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}
+FRA_will_support = {
+	FRA = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}
+USA_will_support = {
+	USA = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}
+JAP_will_support = {
+	JAP = {
+		exists = yes
+		has_capitulated = no
+		NOT = {
+			has_war_with = ROOT
+		}
+		OR = {
+			has_opinion = { target = ROOT value > 74 }
+			is_in_faction_with = ROOT
+		}
+	}
+}
+check_for_excavation_1 = {
+	OR = {
+		AND = {
+			has_tech = excavation1
+			NOT = {
+				has_tech = excavation2
+				has_tech = excavation3
+				has_tech = excavation4
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation2
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation3
+				has_tech = excavation4
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation3
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation2
+				has_tech = excavation4
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation4
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation2
+				has_tech = excavation3
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation2
+				has_tech = excavation3
+				has_tech = excavation4
+			}
+		}
+	}
+}
+
+check_for_excavation_2 = {
+	OR = {
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation2
+			NOT = {
+				has_tech = excavation3
+				has_tech = excavation4
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation3
+			NOT = {
+				has_tech = excavation2
+				has_tech = excavation4
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation4
+			NOT = {
+				has_tech = excavation2
+				has_tech = excavation3
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation2
+				has_tech = excavation3
+				has_tech = excavation4
+			}
+		}
+		AND = {
+			has_tech = excavation2
+			has_tech = excavation3
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation4
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation2
+			has_tech = excavation4
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation3
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation2
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation3
+				has_tech = excavation4
+			}
+		}
+		AND = {
+			has_tech = excavation3
+			has_tech = excavation4
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation2
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation3
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation2
+				has_tech = excavation4
+			}
+		}
+		AND = {
+			has_tech = excavation4
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation2
+				has_tech = excavation3
+			}
+		}
+	}
+}
+
+check_for_excavation_3 = {
+	OR = {
+		AND = {
+			has_tech = excavation3
+			has_tech = excavation4
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation2
+			}
+		}
+		AND = {
+			has_tech = excavation2
+			has_tech = excavation4
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation3
+			}
+		}
+		AND = {
+			has_tech = excavation2
+			has_tech = excavation3
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation4
+			}
+		}
+		AND = {
+			has_tech = excavation2
+			has_tech = excavation3
+			has_tech = excavation4
+			NOT = {
+				has_tech = excavation1
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation4
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation2
+				has_tech = excavation3
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation3
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation2
+				has_tech = excavation4
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation3
+			has_tech = excavation4
+			NOT = {
+				has_tech = excavation2
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation2
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation3
+				has_tech = excavation4
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation2
+			has_tech = excavation4
+			NOT = {
+				has_tech = excavation3
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation2
+			has_tech = excavation3
+			NOT = {
+				has_tech = excavation4
+				has_tech = excavation5
+			}
+		}
+	}
+}
+
+check_for_excavation_4 = {
+	OR = {
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation2
+			has_tech = excavation3
+			has_tech = excavation4
+			NOT = {
+				has_tech = excavation5
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation2
+			has_tech = excavation3
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation4
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation2
+			has_tech = excavation4
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation3
+			}
+		}
+		AND = {
+			has_tech = excavation1
+			has_tech = excavation3
+			has_tech = excavation4
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation2
+			}
+		}
+		AND = {
+			has_tech = excavation2
+			has_tech = excavation3
+			has_tech = excavation4
+			has_tech = excavation5
+			NOT = {
+				has_tech = excavation1
+			}
+		}
+	}
+}
+own_china_proper = {
+					717 = { is_owned_by = ROOT }
+					714 = { is_owned_by = ROOT }
+					328 = { is_owned_by = ROOT }
+					716 = { is_owned_by = ROOT }
+					750 = { is_owned_by = ROOT }
+					610 = { is_owned_by = ROOT }
+					715 = { is_owned_by = ROOT }
+					609 = { is_owned_by = ROOT }
+					612 = { is_owned_by = ROOT }
+					611 = { is_owned_by = ROOT }
+					608 = { is_owned_by = ROOT }
+					614 = { is_owned_by = ROOT }
+					597 = { is_owned_by = ROOT }
+					598 = { is_owned_by = ROOT }
+					613 = { is_owned_by = ROOT }
+					596 = { is_owned_by = ROOT }
+					595 = { is_owned_by = ROOT }
+					593 = { is_owned_by = ROOT }
+					592 = { is_owned_by = ROOT }
+					591 = { is_owned_by = ROOT }
+					594 = { is_owned_by = ROOT }
+					599 = { is_owned_by = ROOT }
+					600 = { is_owned_by = ROOT }
+					747 = { is_owned_by = ROOT }
+					606 = { is_owned_by = ROOT }
+					607 = { is_owned_by = ROOT }
+					615 = { is_owned_by = ROOT }
+					621 = { is_owned_by = ROOT }
+					622 = { is_owned_by = ROOT }
+					620 = { is_owned_by = ROOT }
+					746 = { is_owned_by = ROOT }
+					602 = { is_owned_by = ROOT }
+					745 = { is_owned_by = ROOT }
+					744 = { is_owned_by = ROOT }
+					603 = { is_owned_by = ROOT }
+					605 = { is_owned_by = ROOT }
+					325 = { is_owned_by = ROOT }
+					748 = { is_owned_by = ROOT }
+					283 = { is_owned_by = ROOT }
+					616 = { is_owned_by = ROOT }
+					751 = { is_owned_by = ROOT }
+					752 = { is_owned_by = ROOT }
+					753 = { is_owned_by = ROOT }
+					754 = { is_owned_by = ROOT }
+}

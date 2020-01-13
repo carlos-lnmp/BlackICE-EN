@@ -1,0 +1,131 @@
+scripted_gui = {
+	state_income = {
+		context_type = selected_state_context
+		
+		parent_window_token = selected_state_view
+		
+		window_name = "state_income_container"
+		
+		visible = {
+			
+		}
+		
+		effects = {
+			openbuttongarrison_click={
+				if ={
+					limit={
+						has_state_flag = stategarrisonview
+					}
+					close_state_garrison_container = yes
+				}
+				else={
+					open_state_garrison_container = yes
+				}
+				
+			}
+			openbuttondecision_click={
+				if ={
+					limit={
+						has_state_flag = statedecisionview
+					}
+					clear_array = state_decisions
+					clr_state_flag = statedecisionview
+				}
+				else={
+					1 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					2 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					3 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					4 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					5 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					6 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					7 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					8 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					9 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					10 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					11 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					12 = { 
+						add_to_array = { Prev.state_decisions = THIS } 
+						set_variable = { decision_status = 2 }
+					}
+					set_state_flag = statedecisionview
+				}
+				
+			}
+		}
+		
+		triggers = {
+			building_picture_special_click_enabled = {
+				is_controlled_by = ROOT
+			}
+			
+			air_base_limit_visible = {
+				OR = {
+					has_state_flag = small_airbase
+					has_state_flag = medium_airbase
+				}
+			}
+			air_base_background_visible = {
+				OR = {
+					has_state_flag = small_airbase
+					has_state_flag = medium_airbase
+				}
+			}
+			
+			radar_limit_visible = {
+				OR = {
+					has_state_flag = small_airbase
+					has_state_flag = medium_airbase
+				}
+			}
+			radar_background_visible = {
+				OR = {
+					has_state_flag = small_airbase
+					has_state_flag = medium_airbase
+				}
+			}
+			
+			openbuttondecision_visible = {
+				has_global_flag = wip 
+			}
+			openbuttongarrison_visible = {
+				has_global_flag = wip 
+			}
+			openbuttongarrison_click_enabled = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+	}
+}

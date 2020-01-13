@@ -1,0 +1,1434 @@
+technologies = {
+	civilian_equipment_tech = {
+		
+		enable_equipments = {
+			civilian_motorized_equipment
+			civilian_recon_mot_equipment
+		}
+	}
+	building_tech = {
+		enable_building = {
+			building = bunker
+			level = 2
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 2
+		}		
+		enable_building = {
+			building = infrastructure
+			level = 6
+		}		
+		enable_building = {
+			building = air_base
+			level = 3
+		}
+		enable_building = {
+			building = naval_base
+			level = 3
+		}
+		enable_building = {
+			building = industrial_complex
+			level = 5
+		}
+		enable_building = {
+			building = arms_factory
+			level = 5
+		}
+		enable_building = {
+			building = dockyard
+			level = 5
+		}
+		air_ace_generation_chance_factor = -0.25
+		air_mission_efficiency = -0.25	
+		recon_factor_while_entrenched = -0.2
+		recon_factor = -0.10	
+		air_superiority_detect_factor = -0.10
+		air_detection = -0.15
+		air_strategic_bomber_bombing_factor = -0.15
+		naval_strike_attack_factor = -0.1
+		air_cas_efficiency = -0.20
+		air_cas_present_factor = -0.10		
+	}
+	subunit_1 = {
+		category_all_infantry = {
+			need = {
+				infantry_equipment = 0
+			}
+		}
+	}
+	subunit_2 = {
+		category_all_infantry = {
+			need = {
+				infantry_equipment = 0
+			}
+		}
+	}
+	GER_Gestapo_Div_tech = {
+
+		research_cost = 1
+
+		# only from focus!!! #####
+		allow = {
+			always = no
+		}
+
+
+		#If you change these
+		#Change the custom tooltip too: GER_Gestapo_Div_effect
+		military_police = {
+			default_morale = 0.1
+			
+			urban = {
+				attack = 0.05
+				movement = 0.1
+			}
+		}
+	}
+	hiddentech_ita_art = {
+		research_cost = 1
+		# only from focus!!! #####
+		allow = {
+			always = no
+		}
+		
+		artillery_brigade = {
+			soft_attack = 0.05
+			reliability_factor = 0.05
+			default_morale = 0.1
+		}
+		artillery_brigade_med = {
+			soft_attack = 0.05
+			reliability_factor = 0.05
+			default_morale = 0.1
+		}
+		mountain_artillery_brigade = {
+			soft_attack = 0.05
+			reliability_factor = 0.05
+			default_morale = 0.1
+		}
+	}
+	achtung_minen = {
+		research_cost = 1 
+		
+		# only from focus!!! #####
+		allow = {
+			always = no
+		}
+
+		#If you change these
+		#Change the custom tooltip too: GER_achtung_minen_effect
+		desert_support = {
+			desert = {
+				defence = 0.1
+			}
+		}
+	}
+	amphibious_bonus = {
+		category_all_armor = {
+			amphibious = {
+				attack = 0.3
+			}
+		}
+	}
+	ss_garrison_tech = {
+
+		enable_subunits = {
+			ss_garrison
+		}
+	}
+	ss_cavalry_tech = {
+
+		enable_subunits = {
+			ss_cavalry
+		}
+	}
+	ss_mountaineers_tech = {
+		dependencies = {
+			tech_mountaineers = 1
+		}
+		enable_subunits = {
+			ss_mountaineers
+		}
+	}
+	fascist_militia_tech = {
+
+		enable_subunits = {
+			fascist_militia
+		}
+	}
+	ss_antitank_brig_tech = {
+		dependencies = {
+			interwar_antitank = 1
+		}
+		enable_subunits = {
+			ss_anti_tank_brigade
+		}
+	}
+	ss_infantry_tech = {
+		
+		enable_subunits = {
+			ss_infantry
+		}
+	}
+	ss_paratrooper_tech = {
+		dependencies = {
+			paratroopers = 1
+		}
+		enable_subunits = {
+			ss_paratrooper
+		}
+	}
+
+	ss_semi_motorized_tech = {
+		dependencies = {
+			semi_motorised_infantry = 1
+		}
+		enable_subunits = {
+			ss_semi_motorized
+		}
+	}
+	ss_motorized_tech = {
+		dependencies = {
+			motorised_infantry = 1
+		}
+		enable_subunits = {
+			ss_motorized
+		}
+	}
+	ss_mechinfantry_tech = {
+		
+		enable_subunits = {
+			ss_mechanized
+		}
+	}
+	ss_artillery_tech = {
+		dependencies = {
+			interwar_artillery = 1
+		}
+		enable_subunits = {
+			#ss_artillery
+			ss_artillery_brigade
+		}
+	}
+	ss_artillery_mot_tech = {
+		dependencies = {
+			interwar_medartillery = 1
+		}
+		enable_subunits = {
+			ss_artillery_brigade_mot
+		}
+	}
+	ss_artillery_mnt_tech = {
+		dependencies = {
+			interwar_artillery = 1
+		}
+		enable_subunits = {
+			ss_mountain_artillery_brigade
+			ss_mountain_artillery_brigade_mot
+		}
+	}
+	ss_artillery_med_tech = {
+		dependencies = {
+			interwar_medartillery = 1
+		}
+		enable_subunits = {
+			ss_artillery_medium
+		}
+	}
+	ss_artillery_med_mot_tech = {
+		dependencies = {
+			interwar_medartillery = 1
+		}
+		enable_subunits = {
+			ss_artillery_medium_mot
+		}
+	}
+	ss_artillery_airborne_tech = {
+		dependencies = {
+			paratroopers3 = 1
+		}
+		enable_subunits = {
+			ss_airborne_artillery_brigade
+		}
+	}
+	ss_rocketartillery_tech = {
+		dependencies = {
+			rocket_artillery = 1
+		}
+		enable_subunits = {
+			ss_rocket_artillery_brigade
+		}
+	}
+	ss_mot_rocketartillery_tech = {
+		dependencies = {
+			subtech_motorized_rocket_unit = 1
+		}
+		enable_subunits = {
+			ss_motorized_rocket_brigade
+		}
+	}
+	ss_infantry_uniforms_tech = {
+		
+		enable_equipments = {
+			ss_infantry_uniforms_0
+		}
+	}
+	ss_infantry_uniforms_tech1 = {
+		
+		enable_equipments = {
+			ss_infantry_uniforms_1
+		}
+	}
+	ss_infantry_uniforms_tech2 = {
+
+		enable_equipments = {
+			ss_infantry_uniforms_2
+		}
+	}
+	ss_infantry_uniforms_tech3 = {
+
+		enable_equipments = {
+			ss_infantry_uniforms_3
+		}
+	}
+	ss_panzer_i_tech = {
+		
+		enable_subunits = {
+			ss_panzer_i
+		}
+	}
+	ss_light_panzer_td_tech = {
+		dependencies = {
+			subtech_light_panzer_td_equipment_1 = 1
+		}
+		enable_subunits = {
+			ss_light_panzer_td
+		}
+	}
+	ss_light_assault_panzer_tech = {
+		dependencies = {
+			subtech_light_assault_panzer_equipment_1 = 1
+		}
+		enable_subunits = {
+			ss_light_assault_panzer
+		}
+	}
+	ss_panzer_spaa_tech = {
+		dependencies = {
+			subtech_panzer_spaa_equipment_1 = 1
+		}
+		enable_subunits = {
+			ss_panzer_spaa
+		}
+	}
+	ss_panzer_ii_tech = {
+		dependencies = {
+			tech_panzer_ii_equipment_1 = 1
+		}
+		enable_subunits = {
+			ss_panzer_ii
+		}
+	}
+	ss_panzer_iii_tech = {
+		dependencies = {
+			tech_panzer_iii_equipment_3 = 1
+		}
+		enable_subunits = {
+			ss_panzer_iii
+		}
+	}
+	ss_panzer_iii_td_tech = {
+		dependencies = {
+			subtech_panzer_iii_td_equipment_1 = 1
+		}
+		enable_subunits = {
+			ss_panzer_iii_td ## Stug IIIa
+		}
+	}
+	ss_assault_panzer_tech = {
+		dependencies = {
+			subtech_assault_panzer_equipment_1 = 1
+		}
+		enable_subunits = {
+			ss_assault_panzer
+		}
+	}
+	ss_panzer_iv_tech = {
+		dependencies = {
+			tech_panzer_iv_equipment_3 = 1
+		}
+		enable_subunits = {
+			ss_panzer_iv
+		}
+	}
+	ss_panzer_v_tech = {
+		dependencies = {
+			tech_panzer_v_equipment_1 = 1
+		}
+		enable_subunits = {
+			ss_panzer_v
+		}
+	}
+	hiddentech_ss_pzv_spaa = {
+		dependencies = {
+			subtech_panzer_v_spaa_equipment_1 = 1
+		}
+		enable_subunits = {
+			ss_panzer_v_spaa
+		}
+	}
+	ss_panzer_vi_tech = {
+		dependencies = {
+			tech_heavy_panzer_equipment_2 = 1
+		}
+		enable_subunits = {
+			ss_panzer_vi
+		}
+	}
+	ss_panzer_vii_tech = {
+		dependencies = {
+			tech_panzer_vii_equipment_1 = 1
+		}
+		enable_subunits = {
+			ss_panzer_vii
+		}
+	}
+	luftwaffe_troops = {
+
+		enable_subunits = {
+			luftwaffe_infantry
+		}
+	}
+	panzer_training_tech = {
+		
+		category_tanks = {
+			#max_organisation = 3
+			breakthrough = 0.10
+		}
+	}
+	remove_panzer_training_tech = {
+		
+		category_tanks = {
+			#max_organisation = -3
+			breakthrough = -0.10
+		}
+	}
+	goliah_tech = {
+		combat_engineer = {
+			urban = {
+				attack = 0.1
+			}
+			fort = {
+				attack = 0.15
+			}
+			supply_consumption = 0.04
+		}
+		combat_engineer = {
+			urban = {
+				attack = 0.1
+			}
+			fort = {
+				attack = 0.15
+			}
+			supply_consumption = 0.04
+		}
+	}
+	microwave_death_ray_tech = {
+		artillery_rail = {
+			urban = {
+				attack = 0.3
+			}
+		
+			supply_consumption = 0.5
+		}
+	}
+	V3_cannon_tech = {
+		artillery_rail = {
+			urban = {
+				attack = 0.2
+			}
+			supply_consumption = 0.5
+		}
+	}
+	vortex_cannon_tech = {
+		artillery_rail = {
+			air_attack = 0.1
+			supply_consumption = 0.5
+		}
+	}
+	Sonic_Cannon_tech = {
+		artillery_rail = {
+			soft_attack = 0.2
+			supply_consumption = 0.5
+		}
+	}
+	Landkreuzer_tech = {
+		enable_equipments = { 
+			Landkreuzer_equipment_1
+		}
+		enable_subunits = {
+			Landkreuzer
+		}
+	}
+	partisans = {
+		enable_equipments = { 
+			partisan_equipment_0
+		}
+		enable_subunits = {
+			partisan
+		}
+	}
+	hiddentech_conscripts = {
+		enable_subunits = {
+			conscripts
+		}
+	}
+	com_militia = {
+		enable_subunits = {
+			communist_militia
+		}
+	}
+	sov_artillery_division_battalion = {
+		enable_subunits = {
+			artillery_division
+		}
+	}
+	guards_sov_t_34_tank = {
+		enable_subunits = {
+			guards_sov_medium_tank
+		}
+	}
+	guards_sov_kv_tank = {
+		enable_subunits = {
+			guards_sov_heavy_tank
+		}
+	}
+	guards_sov_is_tank = {
+		enable_subunits = {
+			guards_sov_is_tank
+		}
+	}
+	guards_cavalry_tech = {
+		enable_subunits = {
+			guards_cavalry
+		}
+	}
+	guards_infantry_tech = {
+		enable_subunits = {
+			guards_infantry
+		}
+	}
+	guards_motorized_tech = {
+		dependencies = {
+			motorised_infantry = 1
+		}
+		enable_subunits = {
+			guards_motorized
+		}
+	}
+	guards_paratrooper_tech = {
+		enable_subunits = {
+			guards_paratrooper
+		}
+	}
+	guards_artillery_tech = {
+		dependencies = {
+			interwar_artillery = 1
+		}
+		enable_subunits = {
+			
+			guards_artillery_brigade
+		}
+	}
+	guards_artillery_mot_tech = {
+		dependencies = {
+			interwar_medartillery = 1
+		}
+		enable_subunits = {
+			guards_artillery_brigade_mot
+		}
+	}
+	guards_motorized_rocket_brigade_tech = {
+		dependencies = {
+			interwar_medartillery = 1
+		}
+		enable_subunits = {
+			guards_motorized_rocket_brigade
+		}
+	}
+	sov_better_guards = {
+		guards_infantry  = {
+			defense = 0.05
+			
+		}
+		guards_cavalry  = {
+			defense = 0.05
+			
+		}
+		guards_paratrooper  = {
+			defense = 0.05
+			
+		}
+		guards_motorized  = {
+			defense = 0.05
+			
+		}
+		guards_motorized_rocket_brigade = {
+			soft_attack = 0.05
+			
+		}
+		guards_artillery_brigade = {
+			soft_attack = 0.05
+			
+		}
+		guards_artillery_brigade_mot= {
+			soft_attack = 0.05
+			
+		}
+		guards_sov_heavy_tank = {
+			breakthrough = 0.05
+			
+		}
+		guards_sov_medium_tank = {
+			breakthrough = 0.05
+			
+		}
+	}
+	tech_czech_panzer_1 = {
+		enable_subunits = {
+			cze_light_tank
+		}
+		enable_equipments = {
+			czech_panzer_equipment_1
+		}
+		dependencies = {
+			improved_light_tank_axis = 1
+		}
+	}
+	tech_czech_panzer_2 = {
+		enable_subunits = {
+			cze_light_tank38
+		}
+		enable_equipments = {
+			czech_panzer_equipment38_1
+		}
+		dependencies = {
+			improved_light_tank_axis = 1
+		}
+	}
+
+	## SOV ##
+	hiddentech_po_2_bomber_equipment = {
+		dependencies = {
+			tech_po_2_bomber_equipment_1 = 1
+		}
+		enable_equipments = {
+			po_2_bomber_equipment_2
+		}
+	}
+	nkvd_tech = {
+	
+		enable_subunits = {
+			nkvd
+		}
+	}
+	##### KMT Techs
+	shitty_furnace = {
+
+		enable_building = {
+			building = immature_steelmaking_furnace
+			level = 5
+		}
+	}
+	
+	dare_to_die_corps = {
+		
+		enable_tactic = tactic_dtd_operation_defense
+		enable_tactic = tactic_dtd_operation_attack
+		
+		research_cost = 0
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		category_light_infantry = {
+			hard_attack = 0.15
+			ap_attack = 0.15
+			breakthrough = 0.05
+		}
+	}
+	motti_warfare = {
+
+		research_cost = 1
+
+		# only from focus!!! #####
+		allow = {
+			always = no
+		}
+
+
+		#If you change these
+		#Change the custom tooltip too: RAJ_jungle_training_effect
+		
+		infantry = {
+			forest = {
+				defence = 0.1
+				movement = 0.05
+			}
+		}	
+
+
+	}
+	HUN_light_infantry_tech = {
+
+		research_cost = 1
+		# only from focus!!! #####
+		allow = {
+			always = no
+		}
+		#If you change these
+		#Change the custom tooltip too: HUN_light_infantry_divisions_doctrine_effect
+		infantry = {
+			forest = {
+				attack = 0.02
+				movement = 0.05
+			}
+			urban = {
+				attack = 0.05 
+				movement = 0.05
+			}
+		}
+	}
+	USA_USMC_tech = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+
+		marine = {
+			breakthrough = 0.15
+			default_morale = 0.2
+		}
+	}
+	ANZAC_tech = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+
+		infantry = {
+			breakthrough = 0.15
+		}
+	}
+	lend_lease_1 = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+
+	}
+	lend_lease_2 = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+
+	}
+	lend_lease_3 = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+
+	}
+	BICE_sub_balance = {
+		#NO
+	}
+	BICE_airrange_balance = {
+		#AI only
+		fighter = {
+			air_range = 0.6
+		}
+		cv_fighter = {
+			air_range = 0.6
+		}
+		jet_fighter = {
+			air_range = 0.6
+		}
+		cas = {
+			air_range = 0.6
+		}
+		cv_cas = {
+			air_range = 0.6
+		}
+		cv_nav_bomber = {
+			air_range = 0.6
+		}
+		nav_bomber = {
+			air_range = 0.4
+		}
+		flying_boat = {
+			air_range = 0.4
+		}
+		rocket_interceptor  = {
+			air_range = 0.4
+		}
+		suicide_craft  = {
+			air_range = 0.4
+		}
+		tac_bomber = {
+			air_range = 0.4
+		}
+		jet_tac_bomber = {
+			air_range = 0.4
+		}
+		heavy_fighter = {
+			air_range = 0.6
+		}
+		strat_bomber = {
+			air_range = 0.4
+		}
+		jet_strat_bomber = {
+			air_range = 0.4
+		}
+		transport_plane = {
+			air_range = 0.4
+		}
+
+		allow = {
+			always = no
+		}
+	}
+	SOV_defence_I_start = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.25
+		}
+	}
+	SOV_defence_I_end = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = -10
+		category_army = {
+			entrenchment  = -0.25
+		}
+	}
+	SOV_defence_II_start = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.35
+		}
+	}
+	SOV_defence_II_end = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = -10
+		category_army = {
+			entrenchment  = -0.35
+		}
+	}
+	SOV_defence_III_start = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.45
+		}
+	}
+	SOV_defence_III_end = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = -10
+		category_army = {
+			entrenchment  = -0.45
+		}
+	}
+	SOV_defence_IV_start = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.5
+		}
+	}
+	SOV_defence_IV_end = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = -10
+		category_army = {
+			entrenchment  = -0.5
+		}
+	}
+	SOV_defence_winter = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.75
+		}
+	}
+	SOV_defence_winter_end = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = -10
+		category_army = {
+			entrenchment  = -0.75
+		}
+	}
+	SOV_defence_stalingrad = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.75
+		}
+	}
+	SOV_defence_stalingrad_end = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = -10
+		category_army = {
+			entrenchment  = -0.75
+		}
+	}
+	SOV_defence_guards = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		#dig_in_speed_factor = 1
+		guards_infantry = {
+			
+			entrenchment  = 1
+		}
+		guards_cavalry = {
+			
+			entrenchment  = 1
+		}
+		guards_paratrooper = {
+			
+			entrenchment  = 1
+		}
+		guards_motorized = {
+			
+			entrenchment  = 1
+		}
+		guards_sov_medium_tank = {
+			
+			entrenchment  = 2
+		}
+		guards_sov_heavy_tank = {
+			
+			entrenchment  = 2
+		}
+	}
+	GER_defence_ss = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		#dig_in_speed_factor = 1
+		ss_motorized = {
+			
+			entrenchment  = 1
+		}
+		ss_mechanized = {
+			
+			entrenchment  = 2
+		}
+		ss_panzer_iii= {
+			
+			entrenchment  = 1
+		}
+		ss_panzer_iv = {
+			
+			entrenchment  = 1
+		}
+		ss_panzer_v = {
+			
+			entrenchment  = 2
+		}
+		ss_panzer_vi = {
+			
+			entrenchment  = 2
+		}
+	}
+	CHI_defence_I = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 4
+		}
+	}
+	CHI_defence_II = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 6
+		}
+	}
+	JAP_defence_I = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 1
+		}
+	}
+	ETH_defence_I = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.5
+		}
+	}
+	ENG_defence_I = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.25
+		}
+	}
+	Gurkha_tech = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		enable_equipments = { 
+			mount_equipment_0
+		}
+		enable_subunits = {
+			gurkha
+		}
+	}
+	ENG_defence_II = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.35
+		}
+	}
+	ENG_defence_III = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.45
+		}
+	}
+	ENG_defence_I_end = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = -10
+		category_army = {
+			entrenchment  = -0.25
+		}
+	}
+	ENG_defence_II_end = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = -10
+		category_army = {
+			entrenchment  = -0.35
+		}
+	}
+	ENG_defence_III_end = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = -10
+		category_army = {
+			entrenchment  = -0.45
+		}
+	}
+	FRA_defence_I = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 0.5
+		}
+	}
+	FIN_defence_I = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = 10
+		category_army = {
+			entrenchment  = 1
+		}
+	}
+	FRA_defence_I_end = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		dig_in_speed_factor = -10
+		category_army = {
+			entrenchment  = -0.5
+		}
+	}
+	luftwaffe_penalty_I = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		air_intercept_efficiency = -0.025
+		air_superiority_efficiency = -0.025
+		army_bonus_air_superiority_factor = -0.025
+		air_strategic_bomber_bombing_factor = -0.025
+		air_strategic_bomber_night_penalty = 0.025
+		air_escort_efficiency = -0.025
+		air_cas_efficiency = -0.025
+		air_cas_present_factor = -0.025
+		air_nav_efficiency = -0.025
+	}
+	luftwaffe_penalty_II = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		air_intercept_efficiency = -0.05
+		air_superiority_efficiency = -0.05
+		army_bonus_air_superiority_factor = -0.05
+		air_strategic_bomber_bombing_factor = -0.05
+		air_strategic_bomber_night_penalty = 0.05
+		air_escort_efficiency = -0.05
+		air_cas_efficiency = -0.05
+		air_cas_present_factor = -0.05
+		air_nav_efficiency = -0.05
+	}
+	The_perfect_horse = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		ss_cavalry = {
+			defense = 0.05
+			maximum_speed = 0.05
+		}	
+		cavalry = {
+			defense = 0.05
+			maximum_speed = 0.05
+		}	
+	}
+	fritz_x_tech = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		nav_bomber = { #Unit (does that exist? lol)
+			naval_strike_attack = 0.1
+		}
+	}
+	rheinbote_tech = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		artillery_heavy = {
+			soft_attack = 1.0
+		}
+	}
+	r4m_tech = {
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		jet_fighter = {
+			air_attack = 0.25
+		}
+	}
+	molotov_cocktails_tech  = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		anti_tank_brigade  = {
+			hard_attack = 3
+		}
+		anti_tank_brigade_mot  = {
+			hard_attack = 3
+		}
+		anti_tank  = {
+			hard_attack = 3
+		}
+		anti_tank_mot  = {
+			hard_attack = 3
+		}
+		combat_engineer  = {
+			hard_attack = 3
+		}
+		airborne_engineer  = {
+			hard_attack = 3
+		}
+		infantry  = {
+			hard_attack = 2
+		}
+		light_infantry  = {
+			hard_attack = 2
+		}
+		ss_light_infantry  = {
+			hard_attack = 2
+		}
+		luftwaffe_infantry  = {
+			hard_attack = 1
+		}
+		cavalry = {
+			hard_attack = 1
+		}
+		militia  = {
+			hard_attack = 3
+		}
+		marine  = {
+			hard_attack = 1
+		}
+		gurkha  = {
+			hard_attack = 1
+		}
+		mountaineers  = {
+			hard_attack = 1
+		}
+		paratrooper  = {
+			hard_attack = 1
+		}
+		commando  = {
+			hard_attack = 4
+		}
+		semi_motorized  = {
+			hard_attack = 2
+		}
+		motorized  = {
+			hard_attack = 2
+		}
+		mechanized  = {
+			hard_attack = 2
+		}
+		amphibious_mechanized = {
+			hard_attack = 2
+		}
+		american_amph_lv = {
+			hard_attack = 2
+		}
+		ss_anti_tank_brigade  = {
+			hard_attack = 3
+		}
+		combat_engineer  = {
+			hard_attack = 3
+		}
+		ss_infantry  = {
+			hard_attack = 2
+		}
+		ss_cavalry  = {
+			hard_attack = 1
+		}
+		ss_mountaineers  = {
+			hard_attack = 1
+		}
+		fascist_militia  = {
+			hard_attack = 2
+		}
+		ss_semi_motorized  = {
+			hard_attack = 2
+		}
+		ss_motorized  = {
+			hard_attack = 2
+		}
+		ss_mechanized  = {
+			hard_attack = 2
+		}
+		recon  = {
+			hard_attack = 1
+		}
+		recon_cav  = {
+			hard_attack = 1
+		}
+		cavalry  = {
+			hard_attack = 2
+		}
+		conscripts  = {
+			hard_attack = 3
+		}
+		guards_infantry  = {
+			hard_attack = 2
+		}
+		guards_cavalry  = {
+			hard_attack = 2
+		}
+		guards_paratrooper  = {
+			hard_attack = 1
+		}
+		guards_motorized  = {
+			hard_attack = 2
+		}
+	}
+	ai_suppression_tech = {
+
+		research_cost = 1
+		# only from event
+		allow = {
+			always = no
+		}
+		category_all_infantry = {
+			suppression_factor = 1
+		}
+	}
+	the_waves_tech = {
+		research_cost = -1
+		allow = {
+			always = no
+		}
+
+		marine = {
+			soft_attack = 0.05 
+			breakthrough = 0.05	
+		}
+	}
+	the_soil_tech = {
+		research_cost = -1
+		allow = {
+			always = no
+		}
+
+		mountaineers = {
+			mountain = {
+				attack = 0.05
+			}
+			hills = {
+				attack = 0.05 
+			}
+		}
+	}
+	japan_bicycles_tech = {
+		research_cost = -1
+		allow = {
+			always = no
+		}
+
+		category_light_infantry = {
+			maximum_speed = 0.05
+		}
+	}
+}
+### EOF ###

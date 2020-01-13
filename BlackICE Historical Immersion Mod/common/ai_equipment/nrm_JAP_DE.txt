@@ -1,0 +1,170 @@
+# AI Ship Designs for Generic Nations
+
+JAP_escorts_new = {
+	category = naval
+	
+	blocked_for = {
+	}
+	
+	available_for = {
+		JAP
+	}
+	
+	roles = {
+		naval_escort
+	}
+	
+	priority = {
+		factor = 200
+		modifier = {
+			factor = 5
+			anti_submarine_strategy_required_trigger = yes
+		}
+	}
+	
+	escort_light = {
+	
+		priority = {
+			factor = 100
+			modifier = {
+				factor = 5
+				anti_submarine_strategy_required_trigger = yes
+			}
+			modifier = {
+				factor = 4
+				date < 1943.1.1
+			}
+		}
+		
+		role_icon_index = 8
+		
+		target_variant = {
+			match_value = 1000.0
+			
+			type = nrm_ship_hull_destroyer_2
+			modules = {
+				fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+				fixed_ship_engine_slot = nrm_destroyer_engine_015
+				fixed_ship_sonar_slot = nrm_sonar
+				fixed_ship_battery_slot = nrm_destroyer_battery_HA_3_x4
+				fixed_ship_damagecontrol_slot = nrm_damagecontrol
+				fixed_ship_range_slot = {
+					any_of = { nrm_range_destroyer_2 }
+				}
+				fixed_ship_radar_slot = nrm_radar
+				fixed_ship_fire_control_system_slot < nrm_fire_control_4
+				fixed_ship_fire_control_system_aa_slot = empty
+				custom_slot_1 = nrm_support_destroyer_ASW
+				custom_slot_2 = nrm_support_destroyer_ASW
+				custom_slot_3 = nrm_support_destroyer_ASW
+				custom_slot_4 = nrm_support_destroyer_AA
+				custom_slot_5 = {
+					any_of = { nrm_support_destroyer_HAA nrm_support_destroyer_AA }
+				}
+				custom_slot_6 = {
+					any_of = { nrm_support_destroyer_ASWP nrm_support_destroyer_AA }
+				}
+			}
+		}
+	}
+	
+	escort_matsu = {
+	
+		priority = {
+			factor = 100
+			modifier = {
+				factor = 5
+				anti_submarine_strategy_required_trigger = yes
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					has_war_with = USA
+					has_war_with = ENG
+				}
+			}
+		}
+		
+		role_icon_index = 8
+		
+		target_variant = {
+			match_value = 2000.0
+			
+			type = nrm_ship_hull_destroyer_2
+			modules = {
+				fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+				fixed_ship_engine_slot = nrm_destroyer_engine_020
+				fixed_ship_sonar_slot = nrm_sonar
+				fixed_ship_battery_slot = nrm_destroyer_battery_HA_5_x3
+				fixed_ship_damagecontrol_slot = nrm_damagecontrol
+				fixed_ship_range_slot = {
+					any_of = { nrm_range_destroyer_3 }
+				}
+				fixed_ship_radar_slot = nrm_radar
+				fixed_ship_fire_control_system_slot < nrm_fire_control_4
+				fixed_ship_fire_control_system_aa_slot = empty
+				custom_slot_1 = nrm_support_destroyer_ASW
+				custom_slot_2 = nrm_support_destroyer_ASW
+				custom_slot_3 = nrm_support_destroyer_ASW
+				custom_slot_4 = nrm_support_destroyer_AA
+				custom_slot_5 = {
+					any_of = { nrm_support_destroyer_HAA nrm_support_destroyer_AA }
+				}
+				custom_slot_6 = {
+					any_of = { nrm_support_destroyer_ASWP nrm_support_destroyer_AA }
+				}
+			}
+		}
+	}
+	
+	escort_matsu_improved = {
+	
+		priority = {
+			factor = 100
+			modifier = {
+				factor = 5
+				anti_submarine_strategy_required_trigger = yes
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					has_war_with = USA
+					has_war_with = ENG
+				}
+			}
+		}
+		
+		role_icon_index = 8
+		
+		target_variant = {
+			match_value = 3000.0
+			
+			type = nrm_ship_hull_destroyer_3
+			modules = {
+				fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_3
+				fixed_ship_engine_slot = nrm_destroyer_engine_020
+				fixed_ship_sonar_slot = nrm_sonar
+				fixed_ship_battery_slot = nrm_destroyer_battery_HA_5_x4
+				fixed_ship_damagecontrol_slot = nrm_damagecontrol
+				fixed_ship_range_slot = {
+					any_of = { nrm_range_destroyer_3 }
+				}
+				fixed_ship_radar_slot = nrm_radar
+				fixed_ship_fire_control_system_slot < nrm_fire_control_4
+				fixed_ship_fire_control_system_aa_slot = empty
+				custom_slot_1 = nrm_support_destroyer_ASW
+				custom_slot_2 = nrm_support_destroyer_ASW
+				custom_slot_3 = nrm_support_destroyer_ASW
+				custom_slot_4 = {
+					any_of = { nrm_support_destroyer_HAA nrm_support_destroyer_AA }
+				}
+				custom_slot_5 = {
+					any_of = { nrm_support_destroyer_HAA nrm_support_destroyer_AA }
+				}
+				custom_slot_6 = {
+					any_of = { nrm_support_destroyer_ASWP nrm_support_destroyer_AA }
+				}
+			}
+		}
+	}
+}

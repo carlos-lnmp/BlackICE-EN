@@ -1,0 +1,349 @@
+leader_traits = {
+##################################
+# GER Traits
+##################################
+	waffen_ss_officer = {
+		type = corps_commander
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		modifier = {
+			army_morale_factor = 0.03
+			army_speed_factor = 0.01
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	Iron_Cross = { #Done
+		type = all
+		trait_type = personality_trait
+		
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		cost = 1000 #2000
+		
+		modifier = {
+			offence = 0.02
+			defence = 0.02
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	German_Cross = { #Done
+		type = all
+		trait_type = personality_trait
+		
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		prerequisites = {
+			OR = {
+				has_trait = Iron_Cross
+				has_trait = War_Merit_Cross
+			}
+		}
+		
+		cost = 1500 #4000
+		
+		modifier = {
+			offence = 0.03
+			defence = 0.03
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	Grand_Cross = { #Done
+		type = all
+		trait_type = personality_trait
+		
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		prerequisites = {
+			OR = {
+				has_trait = Iron_Cross
+				has_trait = War_Merit_Cross
+			}
+		}
+		
+		cost = 2500  #8000
+		
+		modifier = {
+			offence = 0.04
+			defence = 0.04
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Knights_Cross = { #Done
+		type = all
+		trait_type = personality_trait
+		
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		prerequisites = {
+			has_trait = Iron_Cross
+			has_trait = Grand_Cross
+		}
+		
+		cost = 5000  #8000
+		
+		modifier = {
+			offence = 0.05
+			defence = 0.05
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}	
+##################################################
+# MEDALS GER - Service Medals - 3-Chain
+##################################################
+	Military_Merit_Order = { 
+		type = all
+		trait_type = personality_trait
+		
+		gain_xp = {
+			OR = {
+				is_attacker = yes
+				is_defender = yes
+			}
+		}
+		
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		cost = 1500
+		
+		non_shared_modifier = {
+			promote_cost_factor = -0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	War_Merit_Cross = {
+		type = all
+		trait_type = personality_trait
+		
+		gain_xp = {
+			has_trait = Military_Merit_Order
+		}
+		
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		cost = 4500
+		
+		modifier = {
+			supply_consumption_factor = -0.01
+			army_speed_factor = 0.01
+		}
+		ai_will_do = {
+			factor = 1		
+		}
+	}
+	Long_Service_Wehrmacht = { 
+		type = all
+		trait_type = personality_trait
+		
+		gain_xp = {
+			OR = {
+				has_trait = Military_Merit_Order
+				has_trait = War_Merit_Cross
+			}
+		}
+		
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		cost = 14000
+		
+		modifier = {
+			supply_consumption_factor = -0.02
+			army_speed_factor = 0.02
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+		}
+	}
+	Long_Service_SS = { 
+		type = corps_commander
+		trait_type = personality_trait
+		
+		gain_xp = {
+			has_trait = waffen_ss_officer
+			
+			OR = {
+				has_trait = Military_Merit_Order
+				has_trait = War_Merit_Cross
+			}
+		}
+		
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		cost = 14000
+		
+		modifier = {
+			supply_consumption_factor = -0.02
+			army_speed_factor = 0.02
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+		}
+	}
+##################################################
+# GER MEDALS - Defence Medals - 2
+##################################################
+	Pour_le_Merite = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_defender = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		cost = 4000
+		
+		modifier = {
+			defence = 0.03
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	Hindenburg_Cross = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+				OR = {
+					is_attacker = no
+					has_combat_modifier = lack_of_supply
+				}
+		}
+		
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		
+		cost = 4000
+		
+		modifier = {
+			max_dig_in_factor = 0.05
+			out_of_supply_factor = -0.03
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	blitzkrieg_master = { 
+		type = corps_commander
+		gain_xp = {
+			hardness > 0.4
+			is_attacker = yes
+		}
+		
+		prerequisites = {
+			has_trait = spearhead_specialist_III
+			has_trait = panzer_leader_III
+		}
+		allowed = {
+			FROM = {
+				tag = GER
+			}
+		}
+		cost = 2000
+		
+		modifier = {
+			combat_width_factor = -0.05
+			army_armor_speed_factor = 0.08
+			army_armor_attack_factor = 0.1
+			army_morale_factor = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		trait_type = assignable_trait
+		#parent = panzer_leader
+		
+		gui_row = 35
+	}
+}

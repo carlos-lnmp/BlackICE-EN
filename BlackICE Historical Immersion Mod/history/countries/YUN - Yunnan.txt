@@ -1,0 +1,230 @@
+﻿capital = 325
+
+oob = "YUN_1936"
+
+set_war_support = 0.35
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+	}
+}
+
+set_technology = {
+	BICE_sub_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	mountain_equipment = 1
+	tech_mountaineers = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	
+	ww1_battlefield_support = 1
+}
+
+add_ideas = { 	
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	officer_train_none
+	age_19
+	security_minor_restrictions
+	edu_minimal
+
+	foreign_isolationism
+	neutrality_idea
+	cu_is_warlord
+	cg_warlords
+	incompetent_industry_fake
+	incompetent_industry_fake_navy
+	KMT_weak_army	
+	CHI_nine_power_treaty
+}
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		PRC_government_corruption
+		CHI_ineffective_bureaucracy_warlord
+	}
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	conservatism = 0
+	fascism = 20
+	communism = 0
+	neutrality = 80
+}
+##### Country Leaders #####
+create_country_leader = {
+	name = "Long Yun"
+	desc = "POLITICS_LONG_YUN_DESC"
+	picture = "portrait_yun_long_yun.dds" #gfx/leaders/YUN/Portrait_Long_Yun.dds
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+	}
+}
+##### CORPS COMMANDERS ##############################################
+create_corps_commander = {
+	name = "Long Yun"
+	portrait_path = "portrait_yun_long_yun.dds" #gfx/leaders/YUN/Portrait_Long_Yun.dds
+	traits = { Terrible_General jungle_rat  trait_mountaineer }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+	id = 2600
+}
+create_corps_commander = {
+	name = "Belovsky"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+	traits = { Incompetent_General }
+	skill = 1
+}
+create_corps_commander = {
+	name = "Golpurchin"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
+	traits = { Incompetent_General }
+	skill = 1
+}
+create_corps_commander = {
+	name = "Krustin"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+	traits = { Incompetent_General panzer_leader }
+	skill = 1
+}
+create_corps_commander = {
+	name = "Kurukikov"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
+	traits = { Incompetent_General winter_specialist }
+	skill = 1
+}
+create_corps_commander = {
+	name = "Liu Wen-hui"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
+	traits = { Terrible_General defensive_doctrine_CC }
+	skill = 1
+}
+create_corps_commander = {
+	name = "Lu Han"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+	traits = { Decent_General defensive_doctrine_CC }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 3
+}
+create_corps_commander = {
+	name = "Mozh-Rüttel"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
+	traits = { Incompetent_General offensive_doctrine_CC }
+	skill = 1
+}
+create_corps_commander = {
+	name = "Putelkin"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+	traits = { Incompetent_General commando }
+	skill = 1
+}
+create_corps_commander = {
+	name = "Shaposchirtin"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
+	traits = { Incompetent_General logistics_wizard_CC }
+	skill = 1
+}
+create_corps_commander = {
+	name = "von Hesselkammer"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
+	traits = { Terrible_General defensive_doctrine_CC }
+	skill = 1
+}
+create_corps_commander = {
+	name = "Eberhard"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+	traits = { Bad_General defensive_doctrine_CC offensive_doctrine_CC old_guard }
+	skill = 1
+}
+create_corps_commander = {
+	name = "Kattner"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
+	traits = { Mindless_General defensive_doctrine_CC }
+	skill = 1
+}
+##### NAVY COMMANDERS #################################################
+create_navy_leader = {
+	name =  "Kurukikov"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
+	traits = { }
+	skill = 1
+}
+create_navy_leader = {
+	name =  "Long Yun"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
+	traits = { }
+	skill = 1
+}
+create_navy_leader = {
+	name =  "Putelkin"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
+	traits = { }
+	skill = 1
+}
+### EOF ###

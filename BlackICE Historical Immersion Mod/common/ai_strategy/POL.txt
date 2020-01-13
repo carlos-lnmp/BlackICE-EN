@@ -1,0 +1,117 @@
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+
+stay_in_polish_faction = {
+	enable = {
+		is_in_faction_with = POL
+		OR = {
+			tag = EST
+			tag = LIT
+			tag = LAT
+			tag = ROM
+			tag = CZE
+			tag = FIN
+			tag = YUG
+		}
+		democratic_govt = yes
+		
+	}
+	abort = {
+		NOT = { is_in_faction_with = POL }
+	}
+	
+	ai_strategy = {
+        type = alliance
+        id = "POL"     
+        value = 300000
+    }
+}
+
+british_help_against_germany = {
+	enable = {
+		tag = POL
+		GER = {
+			OR = { 
+				has_completed_focus = GER_second_vienna_award 
+				has_war_with = POL 
+			}
+		}
+		country_exists = ENG
+	}
+	abort = {
+		NOT = { country_exists = ENG }
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "ENG"			
+		value = 200
+	}
+	ai_strategy = {
+		type = alliance
+		id = "ENG"			
+		value = 200
+	}	
+}
+
+POL_concentrate_on_GER = {
+	enable = {
+		tag = POL
+		has_capitulated = no 
+		OR = {
+			date > 1939.6.1
+			has_war_with = GER 
+		}
+	}
+	abort = {
+		has_capitulated = yes 
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = "GER"			
+		value = 1000
+	}
+}
+
+i_SOV_case_white = {
+	enable = {
+		tag = POL
+		GER = {
+			OR = { 
+				has_wargoal_against = GER 
+				is_justifying_wargoal_against = GER 
+				has_war_with = POL 
+			}
+		}
+		country_exists = ENG
+	}
+	abort = {
+		NOT = { country_exists = ENG }
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "ENG"			
+		value = 200
+	}
+	ai_strategy = {
+		type = ignore
+		id = "SOV"			
+		value = 200
+	}
+	ai_strategy = {
+		type = alliance
+		id = "ENG"			
+		value = 200
+	}	
+}

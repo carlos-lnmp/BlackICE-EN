@@ -1,0 +1,249 @@
+﻿capital = 3
+
+oob = "SWI_1936"
+
+set_research_slots = 2
+
+set_war_support = 0.05
+
+set_stability = 0.85
+
+set_war_support = 0.05
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		#early_ship_hull_submarine = 1
+	}
+}
+
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	semi_motorised_infantry = 1
+	tech_mountaineers = 1
+	mountain_equipment = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	tech_mountaineers = 1
+	################## support ##################
+	subtech_recon_cav_1 = 1
+	subtech_recon_mot_1 = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+	tech_ac_recon = 1
+	tech_Tankettes = 1	
+	################## artillery ###############
+	gw_artillery = 1
+	interwar_artillery = 1
+	interwar_medartillery = 1
+	################## aircraft ##############
+	early_fighter = 1
+	early_CAS = 1
+	CAS1 = 1
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	############### economy ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	small_unit_raids = 1
+	night_patrols = 1
+	complex_trench_systems = 1
+	barbed_wire = 1
+	pillboxes = 1
+	basic_MG_defences = 1
+	fortress_trenches  = 1
+	
+	ww1_artillery = 1
+	artillery_concentration = 1
+	artillery_observers = 1
+	balloon_observers = 1
+	foot_runners = 1
+	carrier_pidgeons = 1
+
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+
+	ww1_battlefield_support = 1
+	weather_reporting = 1
+	terrain_mapping = 1
+	first_aid_stations = 1
+	
+	WW1_air_power = 1
+	WW1_air_survey = 1
+	WW1_air_control = 1
+	WW1_air_ground = 1
+}
+
+add_ideas = { 	
+	SWI_neutral
+	SWI_albert_meyer
+	mountainous_country
+
+	constitutional_republic
+	export_focus
+	tax_average
+	tariffs_average
+	
+	isolation
+	press_free
+	private_control
+	labor_allowed
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_medium
+	officer_train_low
+	age_19
+	security_liberty_first
+	edu_high
+	foreign_neutral
+}
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		CHI_incompetent_officers
+	}
+}
+
+set_politics = {
+	ruling_party = liberalism 
+	last_election = "1935.10.27"
+	election_frequency = 48
+	elections_allowed = yes
+}
+set_popularities = {
+	conservatism = 21
+	liberalism = 31.1
+	socialism = 29.2
+	fascism = 2
+	communism = 2.6
+	neutrality = 14.1
+}
+####################################################################################
+# Put in the leader of the party, have the president as HOS
+#create_country_leader = {
+#	name = "Federal Council"
+#	desc = "POLITICS_FEDERAL_COUNCIL_DESC"
+#	picture = "Portrait_Switzerland_Federal_council.dds" # does this exist?
+#	expire = "1965.1.1"
+#	ideology = libertarianism #swiss_federalism #social_conservatism
+#	traits = {		
+#	}
+#}
+create_country_leader = {
+	name = "Hans Oprecht"
+	desc = ""
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
+	expire = "1965.1.1"
+	ideology = social_democracy
+	traits = {
+		socialist
+	}
+}
+create_country_leader = {
+	name = "Ernest Béuin"
+	desc = "POLITICS_ERNST_BEGUIN_DESC"
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
+	expire = "1965.1.1"
+	ideology = libertarianism #swiss_federalism
+	traits = {
+		liberal
+	}
+}
+create_country_leader = {
+	name = "George Bovet"
+	picture = "gfx/leaders/SWI/Portrait_SWI_George_Bovet.tga"
+	expire = "1965.1.1"
+	ideology = libertarianism #swiss_federalism
+	traits = {
+		liberal
+	}
+}
+create_country_leader = {
+	name = "Rudolf Minger"
+	desc = ""
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_1.dds"
+	expire = "1965.1.1"
+	ideology = corporatism
+	traits = {
+		neutral
+	}
+}
+create_country_leader = {
+	name = "Dr. Max Leo Keller"
+	desc = "POLITICS_MAX_LEO_KELLER_DESC"
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds" 
+	expire = "1965.1.1"
+	ideology = nazism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Fritz Platten"
+	desc = "POLITICS_FRITZ_PLATTEN_DESC"
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
+	expire = "1965.1.1"
+	ideology = marxism
+	traits = {
+		#
+	}
+}
+##### CORPS COMMANDERS ##########################################################
+create_corps_commander = {
+	name = "Constam"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
+	traits = { Awesome_General }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+create_corps_commander = {
+	name = "Guisan"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
+	traits = { Masterful_General defensive_doctrine_CC offensive_doctrine_CC }
+	skill = 2
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 1
+	logistics_skill = 1
+}
+create_corps_commander = {
+	name = "Huber  J.I."
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
+	traits = { Competent_General logistics_wizard_CC defensive_doctrine_CC }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 3
+	planning_skill = 1
+	logistics_skill = 3
+}
+### EOF ###

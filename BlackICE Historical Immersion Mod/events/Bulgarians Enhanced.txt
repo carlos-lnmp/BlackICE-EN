@@ -1,0 +1,482 @@
+﻿###########################
+# Bulgarian Events
+###########################
+
+add_namespace = bulgariansenhanced
+
+# Bulgaria to get German arms?
+country_event = {
+	id = bulgariansenhanced.1
+	title = bulgariansenhanced.1.t
+	desc = bulgariansenhanced.1.d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.1.a
+		ai_chance = { factor = 80 }
+
+		BUL = {
+			add_equipment_to_stockpile = {
+                type = infantry_equipment_1
+                amount = 2000
+                producer = GER
+            }
+			add_opinion_modifier = { 
+					target = GER
+					modifier = offered_support
+			}
+		}
+		add_equipment_to_stockpile = {
+            type = infantry_equipment_1
+            amount = -2000
+        }
+		
+		BUL = {
+			country_event = bulgariansenhanced.2
+		}
+	}
+
+	option = {
+		name = bulgariansenhanced.1.b
+		ai_chance = { factor = 20 }
+		
+		BUL = {
+			country_event = bulgariansenhanced.3
+		}
+	}
+}
+
+# Germany agreed to arming Bulgaria
+country_event = {
+	id = bulgariansenhanced.2
+	title = bulgariansenhanced.2.t
+	desc = bulgariansenhanced.2.d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.2.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+# Germany hates us
+country_event = {
+	id = bulgariansenhanced.3
+	title = bulgariansenhanced.3.t
+	desc = bulgariansenhanced.3.d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.3.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+# Friendship with Yugoslavia?
+country_event = {
+	id = bulgariansenhanced.4
+	title = bulgariansenhanced.4.t
+	desc = bulgariansenhanced.4.d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.4.a
+		ai_chance = { factor = 80 }
+
+		diplomatic_relation = {
+			country = BUL
+			relation = non_aggression_pact
+			active = yes
+		}
+		YUG = {
+			add_opinion_modifier = { 
+				target = BUL 
+				modifier =  BUL_treaty_of_eternal_friendship
+			}
+		}
+		BUL = {
+			country_event = bulgariansenhanced.5
+			add_opinion_modifier = { 
+				target = YUG
+				modifier =  BUL_treaty_of_eternal_friendship
+			}
+		}
+	}
+
+	option = {
+		name = bulgariansenhanced.4.b
+		ai_chance = { factor = 20 }
+		
+		BUL = {
+			country_event = bulgariansenhanced.6
+		}
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.5
+	title = bulgariansenhanced.5.t
+	desc = bulgariansenhanced.5.d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.5.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.6
+	title = bulgariansenhanced.6.t
+	desc = bulgariansenhanced.6.d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.6.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+# Resignation of Georgi Kyoseivanov
+country_event = {
+	id = bulgariansenhanced.7
+	title = bulgariansenhanced.7.t
+	desc = bulgariansenhanced.7.d
+	picture = GFX_report_event_hitler_handshake
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		#date > 1939.1.1
+		#date < 1941.1.1
+		original_tag = BUL
+		NOT = {
+			BUL = {
+				OR = {
+					has_country_flag = bogdan_filov_leader
+					has_country_flag = boris_iii_leader
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = bulgariansenhanced.7.a
+		ai_chance = { factor = 20 }
+		
+		create_country_leader = {
+			name = "Bogdan Filov"
+			desc = "POLITICS_BOGDAN_FILOV_DESC"
+			picture = "Portrait_Bulgaria_Bogdan_Filov.dds"
+			expire = "1965.1.1"
+			ideology = centrism
+			traits = {
+				
+			}
+		}
+		set_country_flag = bogdan_filov_leader
+	}
+
+	option = {
+		name = bulgariansenhanced.7.b
+		ai_chance = { factor = 80 }
+		
+		create_country_leader = {
+			name = "Boris III"
+			desc = "POLITICS_BORIS_III_DESC"
+			picture = "Portrait_Bulgaria_Boris_III.dds"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = {
+				
+			}
+		}
+		remove_ideas = neutrality_idea
+		set_country_flag = boris_iii_leader
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.8
+	title = bulgariansenhanced.8.t
+	desc = bulgariansenhanced.8.d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = bulgariansenhanced.8.a
+		ai_chance = { factor = 20 }
+		
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		set_party_name = { ideology = communism long_name = BUL_fatherland_front_party_long name = BUL_fatherland_front_party }
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.9
+	title = bulgariansenhanced.9.t
+	desc = bulgariansenhanced.9.d
+	picture = GFX_report_event_hitler_handshake
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.9.a
+		ai_chance = { factor = 90 }
+		
+		ROM = {
+			diplomatic_relation = {
+				country = BUL
+				relation = guarantee
+				active = yes
+			}
+		}
+		BUL = {
+			country_event = bulgariansenhanced.20
+		}
+	}
+	
+	option = {
+		name = bulgariansenhanced.9.b
+		ai_chance = { factor = 10 }
+		
+		BUL = {
+			country_event = bulgariansenhanced.10
+		}
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.10
+	title = bulgariansenhanced.10.t
+	desc = bulgariansenhanced.10.d
+	picture = GFX_report_event_hitler_handshake
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = bulgariansenhanced.10.a
+		ai_chance = { factor = 60 }
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.11
+	title = bulgariansenhanced.11.t
+	desc = bulgariansenhanced.11.d
+	picture = GFX_report_event_hitler_handshake
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.11.a
+		ai_chance = { factor = 60 }
+		
+		add_to_faction = BUL
+		BUL = {
+			country_event = bulgariansenhanced.12
+		}
+	}
+	
+	option = {
+		name = bulgariansenhanced.11.b
+		ai_chance = { factor = 40 }
+		
+		BUL = {
+			country_event = bulgariansenhanced.13
+		}
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.12
+	title = bulgariansenhanced.12.t
+	desc = bulgariansenhanced.12.d
+	picture = GFX_report_event_hitler_handshake
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = bulgariansenhanced.12.a
+		ai_chance = { factor = 60 }
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.13
+	title = bulgariansenhanced.13.t
+	desc = bulgariansenhanced.13.d
+	picture = GFX_report_event_hitler_handshake
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.13.a
+		ai_chance = { factor = 60 }
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.14
+	title = bulgariansenhanced.14.t
+	desc = bulgariansenhanced.14.d
+	picture = GFX_report_event_hitler_handshake
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.14.a
+		ai_chance = { factor = 60 }
+		
+		create_faction = balkan_entente
+		add_to_faction = BUL
+		YUG = {
+			country_event = { id = generic.5 days = 1 }
+		}
+		GRE = {
+			country_event = { id = generic.5 days = 1 }
+		}
+		TUR = {
+			country_event = { id = generic.5 days = 1 }
+		}
+		BUL = {
+			country_event = { id = bulgariansenhanced.16 days = 1 }
+		}
+	}
+	
+	option = {
+		name = bulgariansenhanced.14.b
+		ai_chance = { factor = 40 }
+		
+		BUL = {
+			country_event = bulgariansenhanced.15
+		}
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.15
+	title = bulgariansenhanced.15.t
+	desc = bulgariansenhanced.15.d
+	picture = GFX_report_event_hitler_handshake
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.15.a
+		ai_chance = { factor = 60 }
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.16
+	title = bulgariansenhanced.16.t
+	desc = bulgariansenhanced.16.d
+	picture = GFX_report_event_hitler_handshake
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.16.a
+		ai_chance = { factor = 60 }
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.17
+	title = bulgariansenhanced.17.t
+	desc = bulgariansenhanced.17.d
+	picture = GFX_report_event_hitler_handshake
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = bulgariansenhanced.17.a
+		ai_chance = { factor = 95 }
+		
+		BUL = {
+			set_autonomy = { target = ALB autonomy_state = autonomy_satellite }
+		}
+		add_to_faction = ALB
+		BUL = {
+			country_event = bulgariansenhanced.18
+		}
+	}
+	
+	option = {
+		name = bulgariansenhanced.17.b
+		ai_chance = { factor = 5 }
+		
+		BUL = {
+			country_event = bulgariansenhanced.19
+		}
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.18
+	title = bulgariansenhanced.18.t
+	desc = bulgariansenhanced.18.d
+	picture = GFX_report_event_hitler_handshake
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = bulgariansenhanced.18.a
+		ai_chance = { factor = 60 }
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.19
+	title = bulgariansenhanced.19.t
+	desc = bulgariansenhanced.19.d
+	picture = GFX_report_event_hitler_handshake
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = bulgariansenhanced.19.a
+		ai_chance = { factor = 60 }
+
+		add_state_claim = 81
+	}
+}
+
+country_event = {
+	id = bulgariansenhanced.20
+	title = bulgariansenhanced.20.t
+	desc = bulgariansenhanced.20.d
+	picture = GFX_report_event_hitler_handshake
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = bulgariansenhanced.20.a
+		ai_chance = { factor = 60 }
+	}
+}

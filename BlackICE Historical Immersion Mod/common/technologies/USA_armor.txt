@@ -1,0 +1,1670 @@
+technologies = {
+	#Vertical position
+	@1935 = 0
+	@1936 = 2
+	@1937 = 4
+	@1938 = 6
+	@1939 = 8
+	@1940 = 10
+	@1941 = 12
+	@1942 = 14
+	@1943 = 16
+	@1944 = 18
+	@1945 = 20
+	@1946 = 22
+	@1947 = 24
+	@1949 = 26
+	@1950 = 28
+	@1951 = 30
+	@1952 = 32
+	@1953 = 34
+	@1954 = 36
+	@1959 = 38
+	#Horizontal position
+	@la = 0
+	@ma = 4
+	@ma_eq_1 = 5
+	@ma_eq_2 = 7
+	@ma_eq_3 = 9
+	@ma_eq_4 = 11
+	@ma_m4a1 = 12
+	@ma_m4a3 = 15
+	@ha = 18
+	@sha = 21
+	@mbt = 23
+	@para = 24
+	@amp_a = 27
+	@lvt_1 = 31
+	@lvt_2 = 35
+	@lvt_3 = 39
+	
+	
+	
+### ODD BITTS AND ENDS ##############################################################
+	### M4
+	tech_m4_105_equipment = {
+		enable_equipments = {
+			m4_105_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}
+	tech_m4_105_hvss_equipment = {
+		enable_equipments = {
+			m4_105_hvss_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}
+	### M4A1
+	tech_m4a1_w_equipment = {
+		enable_equipments = {
+			m4a1_w_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}
+	tech_m4a1_76_w_equipment = {
+		enable_equipments = {
+			m4a1_76_w_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}
+
+	tech_m4a1_76_w_hvss_equipment = {
+		enable_equipments = {
+			m4a1_76_w_hvss_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}
+	### M4A3
+	tech_m4a3_w_equipment = {
+		enable_equipments = {
+			m4a3_w_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}
+
+	tech_m4a3_76_w_equipment = {
+		enable_equipments = {
+			m4a3_76_w_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}
+
+	tech_m4a3_76_w_hvss_equipment = {
+		enable_equipments = {
+			m4a3_76_w_hvss_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}
+
+	tech_m4a3_jumbo_76_w_equipment = {
+		enable_equipments = {
+			m4a3_jumbo_76_w_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}
+
+	tech_m4a3_105_equipment = {
+		enable_equipments = {
+			m4a3_105_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}
+
+	tech_m4a3_105_hvss_equipment = {
+		enable_equipments = {
+			m4a3_105_hvss_equipment
+		}
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}	
+	}	
+	###  Square Techs ##############################################################
+	tech_105mm = {
+		allow = { can_research_armor_folder = yes }
+
+		on_research_complete = {
+			if = {
+				limit = {
+					has_tech = tech_m4_equipment
+				}
+				set_technology = { tech_m4_105_equipment = 1 }				
+			}
+			
+			if = {
+				limit = {
+					has_tech = tech_m4a3_equipment
+				}
+				set_technology = { tech_m4a3_105_hvss_equipment = 1 }						
+			}
+			if = {
+				limit = {
+					has_tech = tech_m4_equipment
+					has_tech = tech_hvss
+				}
+				set_technology = { tech_m4_105_hvss_equipment = 1 }				
+			}
+			if = {
+				limit = {
+					has_tech = tech_m4a3_equipment
+					has_tech = tech_hvss
+				}
+				set_technology = { tech_m4a3_105_hvss_equipment = 1 }				
+			}		
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = usa_folder
+			position = { x = @ma_eq_1 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+
+	tech_hvss = {
+		allow = { can_research_armor_folder = yes }
+
+		on_research_complete = {
+			if = {
+				limit = {
+					has_tech = tech_m4_105_equipment
+				}
+				set_technology = { tech_m4_105_hvss_equipment = 1 }			
+			}
+			if = {
+				limit = {
+					has_tech = tech_m4a3_105_equipment
+				}
+				set_technology = { tech_m4a3_105_hvss_equipment = 1 }				
+			}
+			if = {
+				limit = {
+					has_tech = tech_m4a3_equipment
+					has_tech = tech_76mm
+					has_tech = tech_wet_stowage
+				}
+				set_technology = { tech_m4a3_76_w_hvss_equipment = 1 }
+			}	
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = usa_folder
+			position = { x = @ma_eq_2 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+
+	tech_wet_stowage = {
+		allow = { can_research_armor_folder = yes }
+
+		path = {
+			leads_to_tech = tech_76mm
+			research_cost_coeff = 1
+		}	
+
+		on_research_complete = {
+			if = {
+				limit = {
+					has_tech = tech_m4a3_equipment
+				}
+				set_technology = { tech_m4a3_w_equipment = 1 }
+			}		
+		}
+
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = usa_folder
+			position = { x = @ma_eq_3 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### 76 mm gun
+	tech_76mm = {
+		allow = { can_research_armor_folder = yes }
+
+		on_research_complete = {
+			if = {
+				limit = {
+					has_tech = tech_m4a1_equipment
+					has_tech = tech_wet_stowage
+				}
+				set_technology = { tech_m4a1_76_w_equipment = 1 }
+			}
+			if = {
+				limit = {
+					has_tech = tech_m4a3_equipment
+					has_tech = tech_wet_stowage
+				}
+				set_technology = { tech_m4a3_76_w_equipment = 1 }
+			}
+			if = {
+				limit = {
+					has_tech = tech_m4a3_equipment
+					has_tech = tech_wet_stowage
+					has_tech = tech_hvss
+				}
+				set_technology = { tech_m4a3_76_w_hvss_equipment = 1 }
+			}
+			if = {
+				limit = {
+					has_tech = tech_m4a3_jumbo_equipment
+				}
+				set_technology = { tech_m4a3_jumbo_76_w_equipment = 1 }
+			}				
+		}
+		
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = usa_folder
+			position = { x = @ma_eq_4 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+
+##  Light tanks ##############################################################
+
+	# M2 Light Tank
+	tech_american_light_tank_equipment_1 = { 
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_light_tank_equipment_1 
+		}
+		
+		on_research_complete = {
+			
+			hidden_effect = {
+				if = {
+					limit = {
+						has_tech = motorised_infantry
+					}
+					load_oob = "USA_Armor_Division_I"
+				}
+			}
+
+			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+		}
+		
+		path = {
+			leads_to_tech = tech_american_light_tank_equipment_2 
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1
+		start_year = 1935
+
+		folder = {
+			name = usa_folder
+			position = { x = @la y = @1935 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+
+	# M1 Combat Car
+	tech_american_light_tank_equipment_2 = { 
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_light_tank_equipment_2 
+		}
+		
+		path = {
+			leads_to_tech = tech_american_light_tank_equipment_3 
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 1
+		start_year = 1937
+
+		folder = {
+			name = usa_folder
+			position = { x = @la y = @1937 }
+		}
+				
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+
+	# M2A4 Light Tank
+	tech_american_light_tank_equipment_3 = { 
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_light_tank_equipment_3
+		}
+		
+		path = {
+			leads_to_tech = tech_american_light_tank_equipment_4
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 1
+		start_year = 1938
+
+		folder = {
+			name = usa_folder
+			position = { x = @la y = @1938 }
+		}
+				
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}		
+
+	# M3 Stuart
+	tech_american_light_tank_equipment_4 = { 
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_light_tank_equipment_4
+		}
+		
+		path = {
+			leads_to_tech = tech_american_light_tank_equipment_5
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 1
+		start_year = 1940
+
+		folder = {
+			name = usa_folder
+			position = { x = @la y = @1940 }
+		}
+				
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+
+	# M5 Stuart
+	tech_american_light_tank_equipment_5 = { 
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_light_tank_equipment_5
+		}
+		
+		path = {
+			leads_to_tech = tech_american_light_tank_equipment_6
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1
+		start_year = 1942
+
+		folder = {
+			name = usa_folder
+			position = { x = @la y = @1942 }
+		}
+		
+		sub_technologies = {
+			subtech_american_light_tank_artillery_equipment_1
+		}
+				
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	  
+	    subtech_american_light_tank_artillery_equipment_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_light_tank_artillery_equipment_1
+		}
+	
+
+		research_cost = 0.5
+		start_year = 1942
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}		
+
+	# M24 Chaffee
+	tech_american_light_tank_equipment_6 = { 
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_light_tank_equipment_6
+		}
+		
+		path = {
+			leads_to_tech = tech_american_light_tank_equipment_7
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 1
+		start_year = 1944
+
+		folder = {
+			name = usa_folder
+			position = { x = @la y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+
+	# M41 Walker Bulldog
+	tech_american_light_tank_equipment_7 = { 
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_light_tank_equipment_7
+		}
+			
+		
+		research_cost = 1
+		start_year = 1952
+
+		folder = {
+			name = usa_folder
+			position = { x = @la y = @1952 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+
+##  Medium tanks ##############################################################
+	
+	# M2 Medium
+	tech_american_medium_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_medium_tank_equipment_1 
+		}
+		
+		on_research_complete = {
+			
+			hidden_effect = {
+				if = {
+					limit = {
+						has_tech = motorised_infantry
+					}
+
+					load_oob = "USA_Armor_Division_II"
+				}
+			}
+
+			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+		}
+		
+		path = {
+			leads_to_tech = tech_american_medium_tank_equipment_2 
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1939
+
+		folder = {
+			name = usa_folder
+			position = { x = @ma y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_USA_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+
+	# M3 Lee
+	tech_american_medium_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_medium_tank_equipment_2
+		}
+		
+		path = {
+			leads_to_tech = tech_m4_equipment
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1941
+
+		folder = {
+			name = usa_folder
+			position = { x = @ma y = @1941 }
+		}
+
+		sub_technologies = {
+			subtech_american_medium_tank_artillery_equipment_2
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_USA_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+
+	subtech_american_medium_tank_artillery_equipment_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_medium_tank_artillery_equipment_2
+		}
+	
+
+		research_cost = 0.5
+		start_year = 1941
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}	
+	
+	# M4 Sherman
+	tech_m4_equipment = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			m4_equipment
+		}
+
+		on_research_complete = {
+			if = {
+				limit = {
+					has_tech = tech_105mm
+				}
+				set_technology = { tech_m4_105_equipment = 1 }				
+			}	
+
+			if = {
+				limit = {
+					has_tech = tech_105mm
+					has_tech = tech_hvss
+				}
+				set_technology = { tech_m4_105_hvss_equipment = 1 }				
+			}				
+		}	
+		
+		path = {
+			leads_to_tech = tech_m4a1_equipment
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = tech_105mm
+			research_cost_coeff = 1
+		}
+		
+		path = {
+			leads_to_tech = tech_hvss
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = tech_wet_stowage
+			research_cost_coeff = 1
+		}
+
+		
+		research_cost = 2
+		start_year = 1942
+
+		folder = {
+			name = usa_folder
+			position = { x = @ma y = @1942 }
+		}
+		
+		sub_technologies = {
+			subtech_american_medium_tank_destroyer_equipment_1
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_USA_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	  
+	    subtech_american_medium_tank_destroyer_equipment_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_medium_tank_destroyer_equipment_1
+		}
+	
+
+		research_cost = 0.2
+		start_year = 1942
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}	
+
+	# M4A1 Sherman
+	tech_m4a1_equipment = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			m4a1_equipment
+		}
+
+		on_research_complete = {
+			if = {
+				limit = {
+					has_tech = tech_wet_stowage
+				}
+				set_technology = { tech_m4a1_w_equipment = 1 }				
+			}	
+
+			if = {
+				limit = {
+					has_tech = tech_wet_stowage
+					has_tech = tech_76mm
+				}
+				set_technology = { tech_m4a1_76_w_equipment = 1 }					
+			}	
+
+			if = {
+				limit = {
+					has_tech = tech_wet_stowage					
+					has_tech = tech_76mm
+					has_tech = tech_hvss
+				}
+				set_technology = { tech_m4a1_76_w_hvss_equipment = 1 }					
+			}
+		}	
+		
+		path = {
+			leads_to_tech = tech_m4a3_equipment
+			research_cost_coeff = 1
+		}
+
+		
+		research_cost = 2
+		start_year = 1942
+
+		folder = {
+			name = usa_folder
+			position = { x = @ma_m4a1 y = @1942 }
+		}
+
+		sub_technologies = {
+			subtech_american_medium_tank_destroyer_equipment_2
+			subtech_american_medium_tank_artillery_equipment_1
+		}		
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_USA_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+
+	subtech_american_medium_tank_destroyer_equipment_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_medium_tank_destroyer_equipment_2
+		}
+	
+
+		research_cost = 0.5
+		start_year = 1942
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_USA_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+
+	subtech_american_medium_tank_artillery_equipment_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_medium_tank_artillery_equipment_1
+		}
+	
+
+		research_cost = 0.5
+		start_year = 1944
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}	
+	
+	# M4A3 Sherman
+	tech_m4a3_equipment = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			m4a3_equipment
+		}
+
+		on_research_complete = {
+			if = {
+				limit = {
+					has_tech = tech_wet_stowage
+				}
+				set_technology = { tech_m4a3_w_equipment = 1 }				
+			}	
+
+			if = {
+				limit = {
+					has_tech = tech_wet_stowage
+					has_tech = tech_76mm
+				}
+				set_technology = { tech_m4a3_76_w_equipment = 1 }					
+			}	
+
+			if = {
+				limit = {
+					has_tech = tech_wet_stowage					
+					has_tech = tech_76mm
+					has_tech = tech_hvss
+				}
+				set_technology = { tech_m4a3_76_w_hvss_equipment = 1 }					
+			}
+
+			if = {
+				limit = {
+					has_tech = tech_105mm
+				}
+				set_technology = { tech_m4a3_105_equipment = 1 }					
+			}	
+
+			if = {
+				limit = {
+					has_tech = tech_105mm
+					has_tech = tech_hvss
+				}
+				set_technology = { tech_m4a3_105_hvss_equipment = 1 }					
+			}	
+
+		}	
+		
+		path = {
+			leads_to_tech = tech_m4a3_jumbo_equipment
+			research_cost_coeff = 1
+		}
+
+		
+		research_cost = 2
+		start_year = 1942
+
+		folder = {
+			name = usa_folder
+			position = { x = @ma_m4a3 y = @1942 }
+		}
+
+		sub_technologies = {
+			subtech_american_medium_tank_destroyer_equipment_4
+			subtech_american_medium_tank_flame_equipment_1
+		}				
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_USA_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+
+	subtech_american_medium_tank_destroyer_equipment_4 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_medium_tank_destroyer_equipment_4
+		}
+	
+
+		research_cost = 0.5
+		start_year = 1944
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_USA_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+
+	subtech_american_medium_tank_flame_equipment_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_medium_tank_flame_equipment_1
+		}
+	
+
+		research_cost = 0.5
+		start_year = 1943
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# M4A3E2 Jumbo Sherman
+	tech_m4a3_jumbo_equipment = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			m4a3_jumbo_equipment
+		}
+		
+		path = {
+			leads_to_tech = tech_american_m26_pershing_equipment
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					has_tech = tech_76mm
+				}
+				set_technology = { tech_m4a3_jumbo_76_w_equipment = 1 }				
+			}	
+		}	
+
+		
+		research_cost = 2
+		start_year = 1944
+
+		folder = {
+			name = usa_folder
+			position = { x = @ma_m4a3 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	# M26 Pershing
+	tech_american_m26_pershing_equipment = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			m26_pershing_equipment
+		}
+
+		path = {
+			leads_to_tech = tech_american_heavy_tank_equipment_3
+			research_cost_coeff = 1
+		}
+		
+		path = {
+			leads_to_tech = tech_american_heavy_tank_equipment_2
+			research_cost_coeff = 1
+		}		
+
+		path = {
+			leads_to_tech = tech_american_mbt_equipment_1
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1944
+
+		folder = {
+			name = usa_folder
+			position = { x = @ha y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_USA_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+#####  Heavy tanks ##############################################################
+	# M6 Heavy Tank
+	tech_american_heavy_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_heavy_tank_equipment_1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1941
+
+		folder = {
+			name = usa_folder
+			position = { x = @ha y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	# M26 Super Pershing
+	tech_american_heavy_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_heavy_tank_equipment_2
+		}
+		
+		
+		research_cost = 2
+		start_year = 1944
+
+		folder = {
+			name = usa_folder
+			position = { x = @sha y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	# M103
+	tech_american_heavy_tank_equipment_3 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_heavy_tank_equipment_3
+		}
+		
+		
+		research_cost = 2
+		start_year = 1951
+
+		folder = {
+			name = usa_folder
+			position = { x = @ha y = @1951 }
+		}
+				
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}	
+
+##  Main battle tanks ##############################################################
+	# M46 Patton
+	tech_american_mbt_equipment_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_mbt_equipment_1
+		}	
+
+		path = {
+			leads_to_tech = tech_american_mbt_equipment_2
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2.5
+		start_year = 1949
+		
+		folder = {
+			name = usa_folder
+			position = { x = @mbt y = @1949 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# M47 Patton
+	tech_american_mbt_equipment_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_mbt_equipment_2
+		}	
+
+		path = {
+			leads_to_tech = tech_american_mbt_equipment_3
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2.5
+		start_year = 1951
+		
+		folder = {
+			name = usa_folder
+			position = { x = @mbt y = @1951 }
+		}
+				
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# M48 Patton
+	tech_american_mbt_equipment_3 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_mbt_equipment_3
+		}	
+
+		path = {
+			leads_to_tech = tech_american_mbt_equipment_4
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2.5
+		start_year = 1954
+		
+		folder = {
+			name = usa_folder
+			position = { x = @mbt y = @1954 }
+		}
+				
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# M60 Patton
+	tech_american_mbt_equipment_4 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_mbt_equipment_4
+		}	
+		
+		
+		research_cost = 2.5
+		start_year = 1959
+		
+		folder = {
+			name = usa_folder
+			position = { x = @mbt y = @1959 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+
+##  Super heavy tanks ##############################################################
+	tech_t28_equipment = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			t28_equipment_1
+		}
+	
+		
+		research_cost = 2.5
+		start_year = 1945
+		folder = {
+			name = usa_folder
+			position = { x = @sha y = @1945 }
+		}
+		
+	
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+
+### Odd ones on the right ##########################
+
+	tech_hellcat_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+	
+		enable_equipments = {
+			hellcat_equipment_1
+		}
+	
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = usa_folder
+			position = { x = @sha y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+
+	}
+
+	tech_american_para_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			american_para_tank_equipment_1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = usa_folder
+			position = { x = @para y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+
+	}
+	# LVT-1 'Aligator' ##1225 build##
+	tech_amph_american_lv_equipment_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			amph_american_lv_equipment_1
+		}
+		
+		path = {
+			leads_to_tech = tech_amph_american_lv_equipment_2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = usa_folder
+			position = { x = @lvt_1 y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# LVT-2 Water Buffalo ##2962 build##
+	tech_amph_american_lv_equipment_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			amph_american_lv_equipment_2
+		}
+		
+		path = {
+			leads_to_tech = tech_amph_american_lv_equipment_3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_amph_american_lv_equipment_4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_amph_american_lv_equipment_5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_amph_american_tank_equipment_1
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = usa_folder
+			position = { x = @lvt_1 y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	#LVT-2(A) Water Buffalo II
+	tech_amph_american_lv_equipment_3 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			amph_american_lv_equipment_3
+		}
+		
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = usa_folder
+			position = { x = @lvt_1 y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	#LTV-3 Bushmaster
+	tech_amph_american_lv_equipment_4 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			amph_american_lv_equipment_4
+		}
+		path = {
+			leads_to_tech = tech_amph_american_lv_equipment_6
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = usa_folder
+			position = { x = @lvt_2 y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# LVT-4 Water Buffalo III more armor ##8348 build##
+	tech_amph_american_lv_equipment_5 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			amph_american_lv_equipment_5
+		}
+		
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = usa_folder
+			position = { x = @lvt_3 y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# LVT-3C Bushmaster with armored roof on cargo bay ##450 build##
+	tech_amph_american_lv_equipment_6 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			amph_american_lv_equipment_6
+		}
+		
+		
+		research_cost = 2
+		start_year = 1949
+		folder = {
+			name = usa_folder
+			position = { x = @lvt_2 y = @1949 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# LVT(A)-1 ##1225 build##
+	tech_amph_american_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			amph_american_tank_equipment_1
+		}
+		dependencies = {
+			tech_american_light_tank_equipment_4 = 1
+		}
+		
+		path = {
+			leads_to_tech = tech_amph_american_tank_equipment_2
+			research_cost_coeff = 0.75
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = usa_folder
+			position = { x = @amp_a y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# LVT(A)-4s ##1225 build##
+	tech_amph_american_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			amph_american_tank_equipment_2
+		}
+
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = usa_folder
+			position = { x = @amp_a y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+}
+### EOF ###

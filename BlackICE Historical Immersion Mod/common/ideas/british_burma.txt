@@ -1,0 +1,216 @@
+ideas = {
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+		BUR_ba_maw = {
+			picture = generic_political_advisor_asia_1
+			
+			allowed = { original_tag = BUR }
+			visible = {
+				not = {
+					has_country_flag = angry_burma
+				}
+			}			
+			traits = { 
+				fascist
+				careful_legalist
+head_of_state_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		BUR_ba_maw_angry = {
+			name = BUR_ba_maw
+			picture = generic_political_advisor_asia_1
+			
+			allowed = { original_tag = BUR }
+			
+			visible = {
+				has_country_flag = angry_burma
+				not = {
+					has_country_flag = settled_burma
+				}
+			}
+			traits = { 
+				fascist
+				independent_guy
+head_of_state_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		BUR_u_pu = {
+			picture = generic_political_advisor_asia_2
+			
+			allowed = { original_tag = BUR }
+			
+			visible = {
+				has_country_flag = settled_burma
+			}
+			traits = { 
+				compassionate_commoner
+head_of_state_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}		
+	}
+	#Foreign
+	foreign_minister = {
+		BUR_saw_pe_tha = {
+			picture = generic_political_advisor_asia_2
+			
+			allowed = { original_tag = BUR }
+
+			traits = { backroom_backstabber  foreign_minister_trait }
+			ai_will_do = {
+				factor = 20
+			}
+			
+		}
+		BUR_u_tharrawaddy_maung_maung = {
+			picture = generic_political_advisor_asia_3
+			
+			allowed = { original_tag = BUR }
+			
+			traits = { ideological_crusader  foreign_minister_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Propaganda/Security
+	interior_minister = {
+	}
+	#Intelligence
+	intel_minister = {
+	}
+	#Economic
+	economic_minister = {
+		BUR_thein_maung = {
+			picture = generic_political_advisor_asia_3
+			
+			allowed = { original_tag = BUR }
+			
+			traits = { captain_of_industry  economic_minister_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+		BUR_sir_paw_tun = {
+			picture = generic_political_advisor_asia_1
+			
+			allowed = { original_tag = BUR }
+			
+			traits = { armaments_organizer  economic_minister_trait }
+
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		BUR_U_thoon_aung_gyew = {
+			picture = generic_political_advisor_asia_2
+			
+			allowed = { original_tag = BUR }
+			
+			traits = { war_industrialist  economic_minister_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+	}
+	
+	political_advisor = {
+	}
+	#Domestic
+	domestic_minister = {
+	}
+	influence_minister = {
+		BUR_Aung_San = {
+			picture = generic_political_advisor_asia_1
+
+			allowed = { original_tag = BUR }
+			
+			traits = { communist_revolutionary  influence_minister_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		BUR_u_thant = {
+			picture = generic_political_advisor_asia_2
+
+			allowed = { original_tag = BUR }
+			
+			traits = { conservative_reformer  influence_minister_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Academy
+	military_academy = {
+	}	
+	theorist = {
+	}
+	# MILITARY
+	army_chief = {
+		BUR_donald_k_McLeod = {
+			picture = generic_army_europe_1
+			
+			allowed = { original_tag = BUR }
+			
+			traits = { army_chief_defensive_2  army_chief_trait }
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_defensive_buildup = yes 
+				}
+			}
+		}
+		BUR_Sir_Harold_Alexander = {
+			picture = harold_alexander
+			
+			allowed = { original_tag = BUR }
+			
+			traits = { army_chief_organizational_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+
+	high_command = {
+		BUR_thomas_j_hutton = {
+			picture = generic_army_europe_2
+			
+			allowed = { original_tag = BUR }
+			
+			traits = { army_regrouping_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+}
+### EOF ###

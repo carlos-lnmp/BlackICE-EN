@@ -1,0 +1,294 @@
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+
+WTT_all_warlords_support_china_in_war = {
+	enable = {
+		is_in_faction_with = CHI
+		has_war = yes
+		NOT = {
+			tag = PRC
+		}
+	}
+	abort = {
+		OR = {
+			NOT = { is_in_faction_with = CHI }
+			has_war = no
+		}		
+	}
+	
+	ai_strategy = {
+		type = spare_unit_factor
+		value = 500
+	}
+}
+
+south_secure_beach = {
+	enable = {
+		is_in_faction_with = CHI
+		has_war = yes
+		OR = {
+			tag = GXC 
+			tag = YUN
+		}
+	}
+	abort = {
+		OR = {
+			NOT = { is_in_faction_with = CHI }
+			has_war = no
+		}		
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = SHX
+		value = 1
+	}
+}
+	
+CHI_dont_mess_with_the_soviets = {
+
+	enable = {
+		original_tag = CHI
+		NOT = { has_war_with = SOV }
+	}
+	
+	abort = {
+		has_war_with = SOV
+	}
+
+	ai_strategy = {
+		type = contain
+		id = "SOV"			
+		value = -200
+	}
+}
+
+SOV_dont_waste_volunteers_to_chinese_minors = {
+	enable = {
+		tag = SOV
+		SIK = { is_in_faction_with = CHI }
+	}
+	abort = {
+		NOT = { SIK = { is_in_faction_with = CHI } }
+	}
+	
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SIK"
+		value = -100
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "YUN"
+		value = -100
+	}
+}
+
+
+fuck_comintern_mao_do_it_alone = {
+	enable = {
+		tag = PRC
+		has_war_with = CHI
+	}
+	abort = {
+		OR = {
+			NOT = { has_war_with = CHI }
+			
+			NOT = { country_exists = CHI }
+		}
+	}
+	ai_strategy = {
+		type = alliance
+		id = "SOV"
+		value = -500
+	}
+}
+
+chi_ignore_colonies = {
+	enable = {
+		tag = CHI
+	}
+	abort = {
+		OR = {
+			has_war_with = POR
+			has_war_with = ENG
+			has_war_with = FRA
+		}
+	}
+	ai_strategy = {
+		type = ignore
+		id = "POR"			
+		value = 400
+	}	
+	ai_strategy = {
+		type = ignore
+		id = "ENG"			
+		value = 400
+	}	
+	ai_strategy = {
+		type = ignore
+		id = "FRA"			
+		value = 400
+	}
+}
+
+CHI_like_each_other = {
+	enable = {
+		OR = {
+			tag = XSM
+			tag = YUN
+			tag = GXC
+			tag = SHX
+			tag = SDC
+		}
+	}
+	abort = {
+		is_in_faction_with = CHI	
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "CHI"
+		value = 50
+	}
+}
+CHI_faction_stay = {
+	enable = {
+		is_independent_china_or_warlord = yes
+		is_in_faction_with = CHI
+		NOT = { tag = SIK }
+	}
+	abort = {
+		is_puppet_of = JAP
+	}
+	
+	ai_strategy = {
+		type = alliance
+		id = "CHI"
+		value = 500
+	}
+    ai_strategy = {
+        type = force_defend_ally_borders
+        id = "CHI"
+        value = 1000
+    }
+    ai_strategy = {
+        type = send_volunteers_desire
+        id = "CHI"
+        value = 1000
+    }
+    ai_strategy = {
+        type = conquer
+        id = "JAP"
+        value = 1000
+    }
+}
+dont_join_JAP = {
+	enable = {
+		is_independent_warlords = yes
+	}
+	abort = {
+		OR = {
+			is_in_faction_with = JAP
+			is_puppet_of = JAP
+		}
+	}
+	
+	ai_strategy = {
+		type = alliance
+		id = "JAP"
+		value = -500
+	}
+}
+
+CHI_like_each_other = {
+	enable = {
+		tag = CHI
+	}
+	abort = {
+		is_puppet_of = JAP
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "SIK"
+		value = 50
+	}
+	ai_strategy = {
+		type = befriend
+		id = "SDC"
+		value = 50
+	}
+	ai_strategy = {
+		type = befriend
+		id = "XSM"
+		value = 50
+	}
+	ai_strategy = {
+		type = befriend
+		id = "YUN"
+		value = 50
+	}
+	ai_strategy = {
+		type = befriend
+		id = "GXC"
+		value = 50
+	}
+	ai_strategy = {
+		type = befriend
+		id = "SHX"
+		value = 50
+	}
+}
+SIK_help_china = {
+	enable = {
+		tag = SIK
+		has_completed_focus = SIK_aid_china
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = CHI
+		value = 200
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = PRC
+		value = 250
+	}
+	ai_strategy = {
+		type = befriend
+		id = CHI
+		value = 50
+	}
+	ai_strategy = {
+		type = befriend
+		id = PRC
+		value = 50
+	}
+}		
+CHI_war_with_jap = {
+	enable = {
+		tag = CHI
+		has_war_with = JAP
+	}
+	abort = {
+		NOT = { has_war_with = JAP }
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = "JAP"
+		value = -50
+	}
+	
+}
+### EOF ###

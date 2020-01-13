@@ -1,0 +1,137 @@
+operations = {
+	PER_train_planning = {
+		fire_only_once = yes
+		allowed = {
+			original_tag = PER 
+		}
+		available = {
+			command_power > 9.9
+			has_completed_focus = PER_war_school
+        }
+		custom_cost_trigger = {
+			command_power > 9.9
+		}
+		ai_will_do = {
+			factor = 200
+		}
+		custom_cost_text = cp_atleast_10
+		complete_effect = {
+			custom_effect_tooltip = PER_training_tt
+		    hidden_effect = {
+				add_command_power = -10
+				add_to_variable = {
+					var = Per_planning
+					value = 0.02
+				}
+			}
+		}
+	}
+	PER_train_command = {
+		fire_only_once = yes
+		allowed = {
+			original_tag = PER 
+		}
+		available = {
+			has_completed_focus = PER_war_school
+        }
+		cost = 25
+		ai_will_do = {
+			factor = 200
+		}
+		complete_effect = {
+			custom_effect_tooltip = PER_training_tt
+		    hidden_effect = {
+				add_to_variable = {
+					var = Per_command
+					value = 0.01
+				}
+			}
+		}
+	}
+	PER_train_command_max = {
+		fire_only_once = yes
+		allowed = {
+			original_tag = PER 
+		}
+		available = {
+			has_completed_focus = PER_war_school
+        }
+		cost = 25
+		ai_will_do = {
+			factor = 200
+		}
+		complete_effect = {
+			custom_effect_tooltip = PER_training_tt
+		    hidden_effect = {
+				add_to_variable = {
+					var = Per_command_max
+					value = 0.007
+				}
+			}
+		}
+	}
+	PER_train_training = {
+		fire_only_once = yes
+		allowed = {
+			original_tag = PER 
+		}
+		available = {
+			command_power > 9.9
+			has_completed_focus = PER_war_school
+        }
+		custom_cost_trigger = {
+			command_power > 9.9
+		}
+		custom_cost_text = cp_atleast_10
+		ai_will_do = {
+			factor = 200
+		}
+		complete_effect = {
+			custom_effect_tooltip = PER_training_tt
+		    hidden_effect = {
+				add_command_power = -10
+				add_to_variable = {
+					var = Per_training
+					value = -0.02
+				}
+			}
+		}
+	}
+	PER_seize_oil = {
+		fire_only_once = yes
+		allowed = {
+			original_tag = PER 
+		}
+		available = {
+			command_power > 4.9
+			divisions_in_state = {
+				size > 1
+				state = 413
+			}
+			has_war_with = ENG
+        }
+		visible = {
+			or = {
+				has_war_with = ENG
+				has_completed_focus = PER_aioc2
+			}
+		}
+		ai_will_do = {
+			factor = 200
+		}
+		custom_cost_trigger = {
+			command_power > 4.9
+		}
+		custom_cost_text = cp_atleast_5
+		complete_effect = {
+			ENG = {
+				remove_resource_rights = 413
+				remove_resource_rights = 412
+			}
+			remove_ideas = PER_aioc_idea
+		    hidden_effect = {
+				add_command_power = -5
+			}
+		}
+	}
+}

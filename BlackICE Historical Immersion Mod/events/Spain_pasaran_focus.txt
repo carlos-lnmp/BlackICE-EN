@@ -1,0 +1,1419 @@
+﻿###########################
+# Spanish Events
+###########################
+
+add_namespace = spainf
+
+# Spain wants to join axis
+country_event = {
+	id = spainf.1
+	title = spainf.1.t
+	desc = spainf.1.d
+	picture = GFX_report_event_fascist_speech
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.1.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = {
+			add_ai_strategy = {
+				type = alliance
+				id = "GER"
+				value = 200
+			}
+		}
+		SPR = { 
+		country_event = { id = spainf.2} 
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = {
+			add_ai_strategy = {
+				type = alliance
+				id = "GER"
+				value = 200
+			}
+		}
+		D01 = {
+		country_event = { id = spainf.2} 
+		}
+		}
+		#hidden_effect = {
+			#news_event = { id = news.175 }
+		#}
+	}
+	
+	option = {
+		name = spainf.1.b
+		ai_chance = { factor = 0 }
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = { 
+			add_opinion_modifier = {
+				target = GER
+				modifier = large_decrease
+			}
+		}
+		SPR = {
+		country_event = { id = spainf.3 }
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = { 
+			add_opinion_modifier = {
+				target = GER
+				modifier = large_decrease
+			}
+		}
+		D01 = {
+		country_event = { id = spainf.3 }
+		}
+		}
+		#hidden_effect = {
+			#news_event = { id = news.176 }
+		#}
+	}
+}
+
+# Spain - Germany denies Ally request
+country_event = {
+	id = spainf.3
+	title = spainf.3.t
+	desc = spainf.3.d
+	picture = GFX_report_event_finnish_letter
+
+	is_triggered_only	= yes
+
+	option = {
+		name = spainf.3.a
+	}
+}
+
+# Spain - Germany accepts Ally request
+country_event = {
+	id = spainf.2
+	title = spainf.2.t
+	desc = spainf.2.d
+	picture = GFX_report_event_sign_treaty2
+
+	is_triggered_only	= yes
+
+	option = {
+		name = spainf.2.a
+		GER = { add_to_faction = ROOT }
+	}
+}
+
+
+# Portugal-Spain fascist
+country_event = {
+	id = spainf.4
+	title = spainf.4.t
+	desc = spainf.4.d
+	picture = GFX_report_event_fascist_speech
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = spainf.4.a
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.15
+		}
+		add_ideas = fascist_influence
+	}
+}
+
+# Invitation to Spanish Faction - fascist
+country_event = {
+	id = spainf.5
+	title = spainf.5.t
+	desc = spainf.5.d
+	picture = report_event_fascists_posing
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.1.a
+		ai_chance = { factor = 90 }
+		add_ai_strategy = {
+			type = alliance
+			id = "SPR"
+			value = 200
+		}
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = {
+			country_event = spainf.6
+			add_to_faction = ROOT
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = {
+			country_event = spainf.6
+			add_to_faction = ROOT
+		}
+		}
+	}
+
+	option = {
+		name = spainf.1.b
+		ai_chance = { factor = 10 }
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = { country_event = spainf.7 }
+		}
+		if = {
+		    limit = {
+			    SPR = { exists = no }
+			}
+		D01 = { country_event = spainf.7 }
+		}
+	}
+}
+
+# [Country] Accepts f
+country_event = {
+	id = spainf.6
+	title = spainf.6.t
+	desc = spainf.6.d
+	picture = GFX_report_event_soldiers_in_france
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.6.a
+		effect_tooltip = {
+			add_to_faction = FROM
+		}
+	}
+}
+
+# [Country] Refuses f
+country_event = {
+	id = spainf.7
+	title = spainf.7.t
+	desc = spainf.7.d
+	picture = GFX_report_event_finnish_letter
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.7.a
+	}
+}
+
+# Request Gibraltar from UK f
+country_event = {
+	id = spainf.8
+	title = spainf.8.t
+	desc = spainf.8.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.8.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		effect_tooltip = {
+			SPR = { transfer_state = 118 }
+		}
+
+		hidden_effect = {
+			#news_event = { id = news.190 }#
+			SPR = { country_event = spainf.9 }
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		effect_tooltip = {
+			D01 = { transfer_state = 118 }
+		}
+
+		hidden_effect = {
+			#news_event = { id = news.190 }#
+			D01 = { country_event = spainf.9 }
+		}
+		}
+	}
+	option = {
+		name = spainf.8.b
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		effect_tooltip = {
+			SPR = { add_state_core = 118 }
+		}
+		hidden_effect = {
+			SPR = { country_event = spainf.10 }
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		effect_tooltip = {
+			D01 = { add_state_core = 118 }
+		}
+		hidden_effect = {
+			D01 = { country_event = spainf.10 }
+		}
+		}
+	}
+}
+
+# UK Gives Up Gibraltar f
+country_event = {
+	id = spainf.9
+	title = spainf.9.t
+	desc = spainf.9.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.9.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = { transfer_state = 118 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_increase
+			}
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = { transfer_state = 118 }
+		D01 = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_increase
+			}
+		}
+		}
+	}
+}
+
+# UK refuses to give up Gibraltar f
+country_event = {
+	id = spainf.10
+	title = spainf.10.t
+	desc = spainf.10.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.10.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = { add_state_core = 118 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_decrease
+			}
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = { add_state_core = 118 }
+		D01 = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_decrease
+			}
+		}
+		}
+	}
+}
+
+# Spain wants to join allies
+country_event = {
+	id = spainf.11
+	title = spainf.11.t
+	desc = spainf.11.d
+	picture = GFX_report_event_worried_french
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.1.a
+		add_to_faction = SPR
+		SPR = {
+			add_ai_strategy = {
+				type = alliance
+				id = "ENG"
+				value = 200
+			}
+		}
+		SPR = { country_event = { id = spainf.12} }
+		#hidden_effect = {
+			#news_event = { id = news.175 }
+		#}
+	}
+	
+	option = {
+		name = spainf.1.b
+		ai_chance = { factor = 0 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_decrease
+			}
+		}
+		SPR = {
+		country_event = { id = spainf.13 }
+		}
+		#hidden_effect = {
+			#news_event = { id = news.176 }
+		#}
+	}
+}
+
+# Spain - UK denies Ally request
+country_event = {
+	id = spainf.13
+	title = spainf.13.t
+	desc = spainf.13.d
+	picture = GFX_report_event_finnish_letter
+
+	is_triggered_only	= yes
+
+	option = {
+		name = spainf.13.a
+	}
+}
+
+# Spain - UK accepts Ally request
+country_event = {
+	id = spainf.12
+	title = spainf.12.t
+	desc = spainf.12.d
+	picture = GFX_report_event_sign_treaty2
+
+	is_triggered_only	= yes
+
+	option = {
+		name = spainf.12.a
+	}
+}
+
+# Portugal-Spain democratic
+country_event = {
+	id = spainf.14
+	title = spainf.4.t
+	desc = spainf.14.d
+	picture = GFX_report_event_french_british_officers
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = spainf.4.a
+		add_popularity = {
+			ideology = conservatism
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = socialism
+			popularity = 0.06
+		}
+		add_popularity = {
+			ideology = liberalism
+			popularity = 0.06
+		}
+		add_ideas = democratic_influence
+	}
+}
+
+# Invitation to Spanish Faction - democratic
+country_event = {
+	id = spainf.15
+	title = spainf.5.t
+	desc = spainf.15.d
+	picture = GFX_report_event_french_british_officers
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.1.a
+		ai_chance = { factor = 90 }
+		SPR = {
+			country_event = spainf.6
+			add_to_faction = ROOT
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = "FRA"
+			value = 200
+		}
+	}
+
+	option = {
+		name = spainf.1.b
+		ai_chance = { factor = 10 }
+		SPR = { country_event = spainf.7 }
+	}
+}
+
+# [Country] Accepts d
+country_event = {
+	id = spainf.16
+	title = spainf.6.t
+	desc = spainf.16.d
+	picture = GFX_report_event_soldiers_in_france
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.16.a
+		effect_tooltip = {
+			add_to_faction = FROM
+		}
+	}
+}
+
+# [Country] Refuses d
+country_event = {
+	id = spainf.17
+	title = spainf.7.t
+	desc = spainf.17.d
+	picture = GFX_report_event_finnish_letter
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.17.a
+	}
+}
+
+# Spain wants to join comintern
+country_event = {
+	id = spainf.18
+	title = spainf.18.t
+	desc = spainf.18.d
+	picture = GFX_report_event_soviet_soldiers
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.1.a
+		add_to_faction = SPR
+		SPR = {
+			add_ai_strategy = {
+				type = alliance
+				id = "SOV"
+				value = 200
+			}
+		}
+		SPR = { country_event = { id = spainf.19} }
+		#hidden_effect = {
+			#news_event = { id = news.175 }
+		#}
+	}
+	
+	option = {
+		name = spainf.1.b
+		ai_chance = { factor = 0 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = SOV
+				modifier = large_decrease
+			}
+		}
+		SPR = {
+		country_event = { id = spainf.20 }
+		}
+		#hidden_effect = {
+			#news_event = { id = news.176 }
+		#}
+	}
+}
+
+# Spain - Soviet denies Ally request
+country_event = {
+	id = spainf.20
+	title = spainf.20.t
+	desc = spainf.20.d
+	picture = GFX_report_event_soviet_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = spainf.20.a
+	}
+}
+
+# Spain - Soviet accepts Ally request
+country_event = {
+	id = spainf.19
+	title = spainf.19.t
+	desc = spainf.19.d
+	picture = GFX_report_event_sign_treaty2
+
+	is_triggered_only	= yes
+
+	option = {
+		name = spainf.19.a
+	}
+}
+
+# Request Gibraltar from UK c
+country_event = {
+	id = spainf.21
+	title = spainf.8.t
+	desc = spainf.21.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.8.a
+		effect_tooltip = {
+			SPR = { transfer_state = 118 }
+		}
+
+		hidden_effect = {
+			#news_event = { id = news.190 }#
+			SPR = { country_event = spainf.9 }
+		}
+	}
+	option = {
+		name = spainf.8.b
+		effect_tooltip = {
+			SPR = { add_state_core = 118 }
+		}
+		hidden_effect = {
+			SPR = { country_event = spainf.10 }
+		}
+	}
+}
+
+# UK Gives Up Gibraltar c
+country_event = {
+	id = spainf.22
+	title = spainf.9.t
+	desc = spainf.22.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.22.a
+		SPR = { transfer_state = 118 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_increase
+			}
+		}
+	}
+}
+
+# UK refuses to give up Gibraltar c
+country_event = {
+	id = spainf.23
+	title = spainf.10.t
+	desc = spainf.23.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.10.a
+		SPR = { add_state_core = 118 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_decrease
+			}
+		}
+	}
+}
+
+
+# SAx-Partition Greece
+country_event = {
+	id = spainf.24
+	title = spainf.24.t
+	desc = spainf.24.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.24.a
+		custom_effect_tooltip = partition1		
+
+		hidden_effect = {
+			#news_event = { id = news.190 }#
+			SPR = { country_event = spainf.25 }
+		}
+	}
+	option = {
+		name = spainf.24.b
+		SPR = { country_event = spainf.26 }
+		effect_tooltip = {
+			SPR = { create_wargoal = {
+				type = annex_everything
+				target = GRE
+			    }  
+			}
+		}
+	}
+}
+
+# Greece accepts partition
+country_event = {
+	id = spainf.25
+	title = spainf.25.t
+	desc = spainf.25.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.25.a
+		SPR = { 
+		transfer_state = 47
+        transfer_state = 187
+        transfer_state = 182 		
+		}
+		BUL = { 
+		transfer_state = 731
+        transfer_state = 184 		
+		}
+		ITA = { 
+			annex_country = { target = GRE } 		
+		}
+		ENG = { 
+			add_opinion_modifier = {
+				target = SPR
+				modifier = large_decrease
+			}
+		}
+		ENG = { 
+			add_opinion_modifier = {
+				target = BUL
+				modifier = large_decrease
+			}
+		}
+		ENG = { 
+			add_opinion_modifier = {
+				target = ITA
+				modifier = large_decrease
+			}
+		}
+	}
+}
+
+# Greece resists
+country_event = {
+	id = spainf.26
+	title = spainf.26.t
+	desc = spainf.26.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.26.a
+		SPR = { create_wargoal = {
+				type = annex_everything
+				target = GRE
+			    }  
+			}
+		SPR = { 
+			add_opinion_modifier = {
+				target = GRE
+				modifier = large_decrease
+			}
+		}
+		ITA = { 
+			add_opinion_modifier = {
+				target = GRE
+				modifier = large_decrease
+			}
+		}
+		BUL = { 
+			add_opinion_modifier = {
+				target = GRE
+				modifier = large_decrease
+			}
+		}
+	}
+}
+
+# Entente
+country_event = {
+	id = spainf.27
+	title = spainf.27.t
+	desc = spainf.27.d
+	picture = GFX_report_event_worried_french
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.27.a
+		SPR = {
+			add_ai_strategy = {
+				type = alliance
+				id = "FRA"
+				value = 200
+			}
+			create_faction = "south_allies"
+			add_to_faction = ROOT
+		}
+		SPR = { 
+		country_event = { id = spainf.28 days = 5 } 
+		}
+		BEL = { 
+		country_event = { id = spainf.15 days = 5 } 
+		}
+		HOL = { 
+		country_event = { id = spainf.15 days = 5 } 
+		}
+		LUX = { 
+		country_event = { id = spainf.15 days = 5 } 
+		}
+		#hidden_effect = {
+			#news_event = { id = news.175 }
+		#}
+	}
+	
+	option = {
+		name = spainf.27.b
+		ai_chance = { factor = 0 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = FRA
+				modifier = large_decrease
+			}
+		}
+		SPR = {
+		country_event = { id = spainf.29 }
+		}
+		#hidden_effect = {
+			#news_event = { id = news.176 }
+		#}
+	}
+}
+
+# Spain - Entente
+country_event = {
+	id = spainf.28
+	title = spainf.28.t
+	desc = spainf.28.d
+	picture = GFX_report_event_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = {
+		name = spainf.28.a
+	}
+}
+
+# Spain - No Entente
+country_event = {
+	id = spainf.29
+	title = spainf.29.t
+	desc = spainf.29.d
+	picture = GFX_report_event_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = {
+		name = spainf.29.a
+	}
+}
+
+# UN
+country_event = {
+	id = spainf.30
+	title = spainf.30.t
+	desc = spainf.30.d
+	picture = GFX_report_event_worried_french
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.30.a
+		USA = {
+			add_ai_strategy = {
+				type = alliance
+				id = "SPR"
+				value = 200
+			}
+			create_faction = "united_nations"
+			add_to_faction = SPR
+		}
+		SPR = { 
+		country_event = { id = spainf.31 } 
+		}
+		every_country = {
+		    limit = {
+			    democratic_govt = yes
+				is_in_faction = no
+				NOT = { has_idea = neutrality_idea }
+			}
+			country_event = { 
+			    id = spainf.15
+				days = 5
+			}
+		}
+		#hidden_effect = {
+			#news_event = { id = news.175 }
+		#}
+	}
+	
+	option = {
+		name = spainf.27.b
+		ai_chance = { factor = 0 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = USA
+				modifier = large_decrease
+			}
+		}
+		SPR = {
+		country_event = { id = spainf.32 }
+		}
+		#hidden_effect = {
+			#news_event = { id = news.176 }
+		#}
+	}
+}
+
+# Spain - UN
+country_event = {
+	id = spainf.31
+	title = spainf.31.t
+	desc = spainf.31.d
+	picture = GFX_report_event_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = {
+		name = spainf.31.a
+	}
+}
+
+# Spain - No UN
+country_event = {
+	id = spainf.32
+	title = spainf.32.t
+	desc = spainf.32.d
+	picture = GFX_report_event_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = {
+		name = spainf.32.a
+	}
+}
+
+# Request Malta
+country_event = {
+	id = spainf.33
+	title = spainf.33.t
+	desc = spainf.33.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.33.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		effect_tooltip = {
+			SPR = { transfer_state = 116 }
+		}
+
+		hidden_effect = {
+			#news_event = { id = news.190 }#
+			SPR = { country_event = spainf.34 }
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		effect_tooltip = {
+			D01 = { transfer_state = 116 }
+		}
+
+		hidden_effect = {
+			#news_event = { id = news.190 }#
+			D01 = { country_event = spainf.34 }
+		}
+		}
+	}
+	option = {
+		name = spainf.33.b
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		effect_tooltip = {
+			SPR = { add_state_claim = 116 }
+		}
+		hidden_effect = {
+			SPR = { country_event = spainf.35 }
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		effect_tooltip = {
+			D01 = { add_state_claim = 116 }
+		}
+		hidden_effect = {
+			D01 = { country_event = spainf.35 }
+		}
+		}
+	}
+}
+
+# UK Gives Up Malta
+country_event = {
+	id = spainf.34
+	title = spainf.34.t
+	desc = spainf.34.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.34.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = { transfer_state = 116 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_increase
+			}
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = { transfer_state = 116 }
+		D01 = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_increase
+			}
+		}
+		}
+	}
+}
+
+# UK refuses to give up Malta
+country_event = {
+	id = spainf.35
+	title = spainf.35.t
+	desc = spainf.35.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.35.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = { add_state_claim = 116 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_decrease
+			}
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = { add_state_claim = 116 }
+		D01 = { 
+			add_opinion_modifier = {
+				target = ENG
+				modifier = large_decrease
+			}
+		}
+		}
+	}
+}
+
+# Request Morroco
+country_event = {
+	id = spainf.36
+	title = spainf.36.t
+	desc = spainf.36.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.33.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		effect_tooltip = {
+			SPR = { transfer_state = 461 }
+			SPR = { transfer_state = 462 }
+		}
+
+		hidden_effect = {
+			#news_event = { id = news.190 }#
+			SPR = { country_event = spainf.37 }
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		effect_tooltip = {
+			D01 = { transfer_state = 461 }
+			D01 = { transfer_state = 462 }
+		}
+
+		hidden_effect = {
+			#news_event = { id = news.190 }#
+			D01 = { country_event = spainf.37 }
+		}
+		}
+	}
+	option = {
+		name = spainf.33.b
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		effect_tooltip = {
+			SPR = { add_state_claim = 461 }
+			SPR = { add_state_claim = 462 }
+		}
+		hidden_effect = {
+			SPR = { country_event = spainf.38 }
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		effect_tooltip = {
+			D01 = { add_state_claim = 461 }
+			D01 = { add_state_claim = 462 }
+		}
+		hidden_effect = {
+			D01 = { country_event = spainf.38 }
+		}
+		}
+	}
+}
+
+# France gives up Morroco
+country_event = {
+	id = spainf.37
+	title = spainf.37.t
+	desc = spainf.37.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.37.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = { transfer_state = 461 }
+		SPR = { transfer_state = 462 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = FRA
+				modifier = large_increase
+			}
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = { transfer_state = 461 }
+		D01 = { transfer_state = 462 }
+		D01 = { 
+			add_opinion_modifier = {
+				target = FRA
+				modifier = large_increase
+			}
+		}
+		}
+	}
+}
+
+# France refuses to give up Morroco
+country_event = {
+	id = spainf.38
+	title = spainf.38.t
+	desc = spainf.38.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.38.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = { add_state_claim = 461 }
+		SPR = { add_state_claim = 462 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = FRA
+				modifier = large_decrease
+			}
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = { add_state_claim = 461 }
+		D01 = { add_state_claim = 462 }
+		D01 = { 
+			add_opinion_modifier = {
+				target = FRA
+				modifier = large_decrease
+			}
+		}
+		}
+	}
+}
+
+# Request Rousillon
+country_event = {
+	id = spainf.39
+	title = spainf.39.t
+	desc = spainf.39.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.33.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		effect_tooltip = {
+			SPR = { transfer_state = 954 }
+		}
+
+		hidden_effect = {
+			#news_event = { id = news.190 }#
+			SPR = { country_event = spainf.40 }
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		effect_tooltip = {
+			D01 = { transfer_state = 954 }
+		}
+
+		hidden_effect = {
+			#news_event = { id = news.190 }#
+			D01 = { country_event = spainf.40 }
+		}
+		}
+	}
+	option = {
+		name = spainf.33.b
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		effect_tooltip = {
+			SPR = { add_state_claim = 954 }
+		}
+		hidden_effect = {
+			SPR = { country_event = spainf.41 }
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		effect_tooltip = {
+			D01 = { add_state_claim = 954 }
+		}
+		hidden_effect = {
+			D01 = { country_event = spainf.41 }
+		}
+		}
+	}
+}
+
+# France Gives Up Rousillon
+country_event = {
+	id = spainf.40
+	title = spainf.40.t
+	desc = spainf.40.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.34.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = { transfer_state = 954 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = FRA
+				modifier = large_increase
+			}
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = { transfer_state = 954 }
+		D01 = { 
+			add_opinion_modifier = {
+				target = FRA
+				modifier = large_increase
+			}
+		}
+		}
+	}
+}
+
+# France refuses to give up Rousillon
+country_event = {
+	id = spainf.41
+	title = spainf.41.t
+	desc = spainf.41.d
+	picture = GFX_report_event_merchant_ship_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = spainf.41.a
+		if = {
+		    limit = {
+			    SPR = { exists = yes }
+			}
+		SPR = { add_state_claim = 954 }
+		SPR = { 
+			add_opinion_modifier = {
+				target = FRA
+				modifier = large_decrease
+			}
+		}
+		}
+		if = {
+		    limit = {
+			    NOT = {
+			    SPR = { exists = yes }
+				}
+			}
+		D01 = { add_state_claim = 954 }
+		D01 = { 
+			add_opinion_modifier = {
+				target = FRA
+				modifier = large_decrease
+			}
+		}
+		}
+	}
+}

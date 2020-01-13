@@ -1,0 +1,214 @@
+scripted_gui = {
+	hq_sidebar = {
+		context_type = player_context
+		
+		parent_window_token = top_bar
+		window_name = "sidebar_container"
+		
+		visible = {
+			player_only_trigger = yes
+			has_country_flag = sidebar
+		} 
+		
+		properties = {
+			navy_size = { 
+				frame = navy_size_frame
+			}
+		}
+
+		effects = {
+			
+			tiny_army_click = {  
+				show_ideas_tooltip = tiny_army
+			}
+			small_army_click = {
+				show_ideas_tooltip = small_army
+			}
+			average_army_click = {
+				show_ideas_tooltip = average_army
+			}
+			large_army_click = {
+				show_ideas_tooltip = large_army
+			}
+			huge_army_click = { 
+				if = { 
+					limit = {
+						NOT = { has_country_flag = army_strength_toggle }
+					}
+					custom_effect_tooltip = ARMY_STRENGTH_TITLE 
+					custom_effect_tooltip = INFANTRY_WEIGHT 
+					custom_effect_tooltip = LIGHT_INFANTRY_WEIGHT 
+					custom_effect_tooltip = GARRISON_WEIGHT
+		 			custom_effect_tooltip = MILITIA_WEIGHT
+					custom_effect_tooltip = LIGHT_ARTILLERY_WEIGHT
+ 				 	custom_effect_tooltip = MEDIUM_ARTILLERY_WEIGHT   
+			 		custom_effect_tooltip = HEAVY_ARTILLERY_WEIGHT 
+			 		custom_effect_tooltip = ANTI_TANK_WEIGHT 
+			 		custom_effect_tooltip = HEAVY_ANTI_TANK_WEIGHT  
+			 		custom_effect_tooltip = ANTI_AIR_WEIGHT  
+			 		custom_effect_tooltip = HEAVY_ANTI_AIR_WEIGHT  
+					custom_effect_tooltip = MOUNTAINEER_WEIGHT
+					custom_effect_tooltip = MARINE_WEIGHT   
+		 			custom_effect_tooltip = PARATROOPER_WEIGHT     
+					custom_effect_tooltip = CAVALRY_WEIGHT    
+					custom_effect_tooltip = SEMI_MOTORIZED_WEIGHT      
+					custom_effect_tooltip = MOTORIZED_WEIGHT  
+					custom_effect_tooltip = MECHANIZED_WEIGHT  
+					custom_effect_tooltip = LIGHT_ARMOR_WEIGHT
+					custom_effect_tooltip = MEDIUM_ARMOR_WEIGHT 
+					custom_effect_tooltip = HEAVY_ARMOR_WEIGHT  
+			 		custom_effect_tooltip = SUPPORT_WEIGHT  
+			 		custom_effect_tooltip = DIV_HQ_WEIGHT 
+					custom_effect_tooltip = ARMY_STRENGTH_MULTIPLICATOR 
+					custom_effect_tooltip = ARMY_STRENGTH_IDEA
+					custom_effect_tooltip = ARMY_STRENGTH_TOGGLE_TT
+					set_country_flag = army_strength_toggle
+				} 
+				else = {  
+					custom_effect_tooltip = DOCTRINE_OFFENSIVE_TITLE
+					custom_effect_tooltip = DOCTRINE_OFFENSIVE_TYPES_REQUIRED 
+					custom_effect_tooltip = DOCTRINE_OFFENSIVE_TYPES_LIST 
+					custom_effect_tooltip = ARMY_STRENGTH_MULTIPLICATOR  
+					custom_effect_tooltip = OFFENSIVE_ARMY_STRENGTH_IDEA  
+					#custom_effect_tooltip = DOCTRINE_COMMAND_TREE_TITLE   
+					#custom_effect_tooltip = DOCTRINE_COMMAND_TREE_TYPES_REQUIRED
+					#custom_effect_tooltip = DOCTRINE_COMMAND_TREE_TYPES_LIST
+					#custom_effect_tooltip = ARMY_HQ_STRENGTH_MULTIPLICATOR  
+					#custom_effect_tooltip = HG_STRENGTH_IDEA  
+					custom_effect_tooltip = ARMY_STRENGTH_TOGGLE_TT 
+					clr_country_flag = army_strength_toggle
+				}
+			}
+			
+			tiny_air_force_click = {
+				show_ideas_tooltip = tiny_air_force
+			}
+			small_air_force_click = {
+				show_ideas_tooltip = small_air_force
+			}
+			average_air_force_click = {
+				show_ideas_tooltip = average_air_force
+			}
+			large_air_force_click = {
+				show_ideas_tooltip = large_air_force
+			} 
+			huge_air_force_click = { 
+				show_ideas_tooltip = huge_air_force 
+			} 
+			
+			navy_size_click = { 
+				custom_effect_tooltip = NAVAL_WEIGHT_TT    
+				custom_effect_tooltip = BATTLESHIP_WEIGHT  
+				custom_effect_tooltip = BATTLECRUISER_WEIGHT  
+				custom_effect_tooltip = CARRIER_WEIGHT     
+				custom_effect_tooltip = ARMORED_CARRIER_WEIGHT
+				custom_effect_tooltip = LIGHT_CARRIER_WEIGHT   
+				custom_effect_tooltip = POCKET_BATTLESHIP_WEIGHT
+				custom_effect_tooltip = HEAVY_CRUISER_WEIGHT
+				custom_effect_tooltip = LIGHT_CRUISER_WEIGHT
+				custom_effect_tooltip = DESTROYER_WEIGHT
+				custom_effect_tooltip = LONG_RANGE_SUBMARINE_WEIGHT
+				custom_effect_tooltip = SUBMARINE_WEIGHT 
+				custom_effect_tooltip = COASTAL_SUBMARINE_WEIGHT
+				
+				if = {
+					limit = {
+						has_idea = tiny_navy
+					}
+					show_ideas_tooltip = tiny_navy
+				}
+				else_if = {
+					limit = {
+						has_idea = small_navy
+					}
+					show_ideas_tooltip = small_navy
+				}
+				else_if = {
+					limit = {
+						has_idea = average_navy
+					}
+					show_ideas_tooltip = average_navy
+				}
+				else_if = {
+					limit = {
+						has_idea = large_navy
+					}
+					show_ideas_tooltip = large_navy
+				}
+				else_if = {
+					limit = {
+						has_idea = huge_navy
+					}
+					show_ideas_tooltip = huge_navy
+				}
+				
+			}
+			
+			hide_click = {
+				clr_country_flag = sidebar
+			}
+        }
+		triggers = {
+			small_HQ_visible = {
+				always = no
+			}
+			medium_HQ_visible = {
+				always = no
+			}
+			large_HQ_visible = {
+				always = no
+			}
+			huge_HQ_visible = {
+				always = no
+			}
+			
+			tiny_army_visible = {
+				always = yes
+			}
+			
+			tiny_air_force_visible = {
+				OR = {
+					has_idea = tiny_air_force
+					has_idea = tiny_air_force_war
+				}
+			}
+			small_air_force_visible = {
+				OR = {
+					has_idea = small_air_force
+					has_idea = small_air_force_war
+				}
+			}
+			average_air_force_visible = {
+				has_idea = average_air_force
+			}
+			large_air_force_visible = {
+				has_idea = large_air_force
+			}
+			huge_air_force_visible = {
+				has_idea = huge_air_force
+			}
+			
+		}
+	}
+	hq_sidebar_hidden = {
+		context_type = player_context
+		
+		parent_window_token = top_bar
+		window_name = "sidebar_hidden_container"
+		
+		visible = {
+			player_only_trigger = yes
+		}
+		
+		effects = {
+			visible_click = {
+				set_country_flag = sidebar
+			}
+		}
+		triggers = {
+			visible_visible = {
+				NOT = { has_country_flag = sidebar }
+			}
+		}
+	}
+}

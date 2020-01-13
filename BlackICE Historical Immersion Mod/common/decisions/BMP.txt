@@ -1,0 +1,1009 @@
+@BMP_HUNT_RIOTS_COST_T = 349							
+@BMP_HUNT_RIOTS_COST_E = -350
+@BMP_Irgun_time = 60
+@BMP_Riot_time = 75
+			
+crisis = {
+	BMP_Riots_raids = {
+		fixed_random_seed = no
+		icon = generic_civil_support
+
+		available = {
+			NOT = { has_idea = BMP_Riots }
+		}
+
+		days_mission_timeout = BMP_Riot_time
+
+		activation = {
+			has_idea = BMP_Riots
+		}
+		allowed = {
+			tag = BMP
+		}
+		visible = {
+			
+		}		
+
+		fixed_random_seed = no
+
+		fire_only_once = no
+
+		is_good = no
+
+		timeout_effect = {
+		hidden_effect = {
+				activate_mission = BMP_Riots_raids
+			}
+			random_list = {
+				30 = {
+					country_event = mandate.18 ## infra damage
+				}
+				15 = {
+					country_event = mandate.16 ## MIC damage
+				}
+				15 = {
+					country_event = mandate.17 ## CIV damage
+				}
+				20 = {
+					## no impact YAY!
+				}
+				20 = {
+					country_event = mandate.20 ## Stability hit
+				}
+			}
+		}
+	}
+	
+	BMP_Irgun_raids = {
+
+		icon = generic_civil_support
+		fixed_random_seed = no
+		available = {
+			Or = {
+				has_war_with = GER
+				has_war_with = ITA
+			}
+		}
+
+		days_mission_timeout = BMP_Irgun_time	
+
+			
+		allowed = {
+			tag = BMP
+		}		
+
+		activation = {
+			has_idea = BMP_limited_jewish_immigration
+		}
+
+		visible = {
+		always = no			
+		}		
+
+		fixed_random_seed = no
+
+		fire_only_once = no
+
+		is_good = no
+
+		timeout_effect = {
+			hidden_effect = {
+				activate_mission = BMP_Irgun_raids
+				subtract_from_variable = { BMP_Irgun_time = 1 }
+			}
+			
+			random_list = {
+				10 = {
+					country_event = mandate.18 ## infra damage
+				}
+				1 = {
+					country_event = mandate.16 ## MIC damage
+				}
+				2 = {
+					country_event = mandate.17 ## CIV damage
+				}
+				39 = {
+					## no impact YAY!
+				}
+				24 = {
+					country_event = mandate.20 ## Stability hit
+				}
+				24 = {
+					country_event = mandate.21 ## Manpower hit
+				}
+				
+			}
+		}
+	}
+	
+	BMP_Police_Patrol = {
+		icon = infiltrate_state
+		available = {
+			has_active_mission = BMP_Irgun_raids
+			has_tech = tech_military_police
+			command_power > 24
+		}
+		visible = {
+			has_active_mission = BMP_Irgun_raids
+			has_tech = tech_military_police			
+		}
+		allowed = {
+			tag = BMP
+		}
+		fire_only_once = no
+		is_good = yes
+		ai_will_do = {
+			factor = 0			
+		}
+		cost = 25
+		complete_effect = {
+			add_manpower = -15
+			hidden_effect = {
+				remove_mission = BMP_Irgun_raids
+				add_to_variable = { BMP_Irgun_time = 10 }
+				activate_mission = BMP_Irgun_raids
+			}
+			add_command_power = -25					
+		}		
+	}
+	
+######### westbank riots ########
+	BMP_pacify_Riots_West = {
+
+		icon = generic_oppression
+		
+		available = {
+			has_completed_focus = BMP_re-establish_the_mandate
+			has_country_flag = BMP_Riots_westbank
+			divisions_in_state = {
+				state = 838	
+				size > 1
+			}
+		}
+		allowed = {
+			tag = BMP
+		}
+		highlight_states = {
+			state = 838
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 200
+				divisions_in_state = {
+					state = 838	
+					size > 1
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_active_mission = BMP_maintain_westbank }
+			has_country_flag = BMP_Riots_westbank
+		}
+
+		is_good = yes
+
+		complete_effect = {
+			activate_mission = BMP_maintain_westbank
+			custom_effect_tooltip = BMP_maintain_explanation
+		}
+	}
+
+	BMP_hunt_Riots_West = {
+
+		icon = generic_scorched_earth
+		allowed = {
+			tag = BMP
+		}
+		available = {
+			has_completed_focus = BMP_re-establish_the_mandate
+			has_equipment = { infantry_equipment > @BMP_HUNT_RIOTS_COST_T }
+			has_country_flag = BMP_Riots_westbank
+			has_manpower > 500
+		}
+
+		cost = 0
+
+		highlight_states = {
+			state = 838
+		}
+		visible = {
+			has_country_flag = BMP_Riots_westbank
+		}
+		is_good = yes
+
+		fire_only_once = yes
+
+	##At this point its prob better to have the AI seek british aid
+		ai_will_do = {
+			factor = 0
+			##modifier = {
+			##	add = 100
+			##	divisions_in_state = {
+			##		state = 838	
+			##		size < 2
+			##	}
+			##}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = BMP_hunt_Riots_tt
+			add_manpower = -500
+			every_country = { 
+			limit = { is_Arab = yes }
+			add_opinion_modifier = {
+					target = ROOT
+					modifier = protest_action
+				}	
+				
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = @BMP_HUNT_RIOTS_COST_E
+			}
+
+			army_experience = 10
+			add_stability = -0.05
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.05
+				}
+
+			remove_mission = BMP_maintain_westbank
+			clr_country_flag = BMP_Riots_westbank
+			if = {
+				limit = {
+					NOT = { has_country_flag = BMP_Riots_gaza }
+					NOT = { has_country_flag = BMP_Riots_israel }
+				}
+				remove_ideas = BMP_Riots
+				clr_country_flag = crisis_in_progress
+			}
+		}
+	}
+	BMP_British_Aid_westbank = {
+
+		icon = infiltrate_state
+		allowed = {
+			tag = BMP
+		}
+		available = {
+			has_completed_focus = BMP_assist_great_britain
+			has_country_flag = BMP_Riots_westbank
+		}
+		
+		days_remove = 60
+		cost = 25
+		
+		highlight_states = {
+			state = 838
+		}
+		
+		fire_only_once = yes
+
+		##AI will do the job itself if able
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				add = -200
+				divisions_in_state = {
+					state = 838	
+					size > 1
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_active_mission = BMP_maintain_westbank }
+			NOT = { has_country_flag = BMP_brit_aid }
+			has_country_flag = BMP_Riots_westbank			
+		}
+
+		is_good = yes
+		
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = BMP_brit_aid
+			}
+		}
+
+		remove_effect = {  
+			custom_effect_tooltip = BMP_Riots_Remove_West
+			add_autonomy_ratio = {
+			value = -0.1
+			localization = BMP_Bristish_Needed
+			}
+			every_country = { 
+			limit = { is_Arab = yes }
+			add_opinion_modifier = {
+					target = ROOT
+					modifier = protest_action_light
+				}	
+				
+			}
+			clr_country_flag = BMP_Riots_westbank
+			clr_country_flag = BMP_brit_aid
+			if = {
+				limit = {
+					NOT = { has_country_flag = BMP_Riots_gaza }
+					NOT = { has_country_flag = BMP_Riots_israel }
+				}
+				remove_ideas = BMP_Riots
+				clr_country_flag = crisis_in_progress
+			}
+		}
+	}
+	BMP_maintain_westbank = {
+
+		icon = generic_civil_support
+		allowed = {
+			tag = BMP
+		}
+		available = {
+			always = no
+		}
+
+		days_mission_timeout = BMP_maintain_timer?180
+
+		activation = {
+			always = no #Triggered from effect
+		}
+
+		cancel_trigger = {
+			divisions_in_state = {
+				state = 838	
+				size < 2
+			}
+		}
+
+		highlight_states = {
+			state = 838
+		}
+
+
+		visible = {
+		}
+
+
+		is_good = yes
+
+		timeout_effect = {
+			custom_effect_tooltip = BMP_Riots_Remove_West
+			clr_country_flag = BMP_Riots_westbank
+			
+			if = {
+				limit = {
+					NOT = { has_country_flag = BMP_Riots_gaza }
+					NOT = { has_country_flag = BMP_Riots_israel }
+				}
+				clr_country_flag = crisis_in_progress
+				remove_ideas = BMP_Riots
+			}
+		}
+	}
+########## gaza Riots #############
+		BMP_pacify_Riots_gaza = {
+
+		icon = generic_oppression
+		
+		available = {
+			has_completed_focus = BMP_re-establish_the_mandate
+			has_country_flag = BMP_Riots_gaza
+			divisions_in_state = {
+				state = 943	
+				size > 1
+			}
+		}
+		allowed = {
+			tag = BMP
+		}
+		highlight_states = {
+			state = 943
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 200
+				divisions_in_state = {
+					state = 943	
+					size > 1
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_active_mission = BMP_maintain_gaza }
+			has_country_flag = BMP_Riots_gaza
+		}
+
+		is_good = yes
+
+		complete_effect = {
+			activate_mission = BMP_maintain_gaza
+			custom_effect_tooltip = BMP_maintain_explanation
+		}
+	}
+
+	BMP_hunt_Riots_gaza = {
+
+		icon = generic_scorched_earth
+
+		available = {
+			has_completed_focus = BMP_re-establish_the_mandate
+			has_equipment = { infantry_equipment > @BMP_HUNT_RIOTS_COST_T }
+			has_country_flag = BMP_Riots_gaza
+			has_manpower > 500
+		}
+		allowed = {
+			tag = BMP
+		}
+		cost = 0
+
+		highlight_states = {
+			state = 943
+		}
+		visible = {
+			has_country_flag = BMP_Riots_gaza
+		}
+		is_good = yes
+
+		fire_only_once = yes
+
+	##At this point its prob better to have the AI seek british aid
+		ai_will_do = {
+			factor = 0
+			##modifier = {
+			##	add = 100
+			##	divisions_in_state = {
+			##		state = 943	
+			##		size < 2
+			##	}
+			##}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = BMP_hunt_Riots_tt
+			add_manpower = -500
+			every_country = { 
+			limit = { is_Arab = yes }
+			add_opinion_modifier = {
+					target = ROOT
+					modifier = protest_action
+				}	
+				
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = @BMP_HUNT_RIOTS_COST_E
+			}
+
+			army_experience = 10
+			add_stability = -0.05
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.05
+				}
+
+			remove_mission = BMP_maintain_gaza
+			clr_country_flag = BMP_Riots_gaza
+			if = {
+				limit = {
+					NOT = { has_country_flag = BMP_Riots_westbank }
+					NOT = { has_country_flag = BMP_Riots_israel }
+				}
+				remove_ideas = BMP_Riots
+				clr_country_flag = crisis_in_progress
+			}
+		}
+	}
+	BMP_British_Aid_gaza = {
+
+		icon = infiltrate_state
+		allowed = {
+			tag = BMP
+		}
+		available = {
+			has_completed_focus = BMP_assist_great_britain
+			has_country_flag = BMP_Riots_gaza
+		}
+		
+		days_remove = 60
+		cost = 25
+		
+		highlight_states = {
+			state = 943
+		}
+		
+				fire_only_once = yes
+
+		##AI will do the job itself if able
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				add = -200
+				divisions_in_state = {
+					state = 943
+					size > 1
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_active_mission = BMP_maintain_gaza }
+			has_country_flag = BMP_Riots_gaza	
+			NOT = { has_country_flag = BMP_brit_aid }			
+		}
+
+		is_good = yes
+		
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = BMP_brit_aid
+			}
+		}
+		
+		remove_effect = {  
+			custom_effect_tooltip = BMP_Riots_Remove_gaza
+			add_autonomy_ratio = {
+			value = -0.1
+			localization = BMP_Bristish_Needed
+			}
+			every_country = { 
+			limit = { is_Arab = yes }
+			add_opinion_modifier = {
+					target = ROOT
+					modifier = protest_action_light
+				}	
+				
+			}
+			clr_country_flag = BMP_Riots_gaza
+			if = {
+				limit = {
+					NOT = { has_country_flag = BMP_Riots_westbank }
+					NOT = { has_country_flag = BMP_Riots_israel }
+				}
+				remove_ideas = BMP_Riots
+				clr_country_flag = crisis_in_progress
+			}
+		}
+	}
+	BMP_maintain_gaza = {
+
+		icon = generic_civil_support
+		allowed = {
+			tag = BMP
+		}
+		available = {
+			always = no
+		}
+
+		days_mission_timeout = 180
+
+		activation = {
+			always = no #Triggered from effect
+		}
+
+		cancel_trigger = {
+			divisions_in_state = {
+				state = 943	
+				size < 2
+			}
+		}
+
+		highlight_states = {
+			state = 943
+		}
+
+
+		visible = {
+		}
+
+
+		is_good = yes
+
+		timeout_effect = {
+			custom_effect_tooltip = BMP_Riots_Remove_gaza
+			clr_country_flag = BMP_Riots_gaza
+			
+			if = {
+				limit = {
+					NOT = { has_country_flag = BMP_Riots_westbank }
+					NOT = { has_country_flag = BMP_Riots_israel }
+				}
+				clr_country_flag = crisis_in_progress
+				remove_ideas = BMP_Riots
+			}
+		}
+	}
+###### Isreal Riots ###########
+		BMP_pacify_Riots_israel = {
+		allowed = {
+			tag = BMP
+		}
+		icon = generic_oppression
+		
+		available = {
+			has_completed_focus = BMP_re-establish_the_mandate
+			has_country_flag = BMP_Riots_israel
+			divisions_in_state = {
+				state = 454	
+				size > 1
+			}
+		}
+
+		highlight_states = {
+			state = 454
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 200
+				divisions_in_state = {
+					state = 454	
+					size > 1
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_active_mission = BMP_maintain_israel }
+			has_country_flag = BMP_Riots_israel
+		}
+
+		is_good = yes
+
+		complete_effect = {
+			activate_mission = BMP_maintain_israel
+			custom_effect_tooltip = BMP_maintain_explanation
+		}
+	}
+
+	BMP_hunt_Riots_israel = {
+
+		icon = generic_scorched_earth
+		allowed = {
+			tag = BMP
+		}
+		available = {
+			has_completed_focus = BMP_re-establish_the_mandate
+			has_equipment = { infantry_equipment > @BMP_HUNT_RIOTS_COST_T }
+			has_country_flag = BMP_Riots_israel
+			has_manpower > 500
+		}
+
+		cost = 0
+
+		highlight_states = {
+			state = 943
+		}
+		visible = {
+			has_country_flag = BMP_Riots_israel
+		}
+		is_good = yes
+
+		fire_only_once = yes
+
+	##At this point its prob better to have the AI seek british aid
+		ai_will_do = {
+			factor = 0
+			##modifier = {
+			##	add = 100
+			##	divisions_in_state = {
+			##		state = 943	
+			##		size < 2
+			##	}
+			##}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = BMP_hunt_Riots_tt
+			add_manpower = -500
+			every_country = { 
+			limit = { is_Arab = yes }
+			add_opinion_modifier = {
+					target = ROOT
+					modifier = protest_action
+				}	
+				
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = @BMP_HUNT_RIOTS_COST_E
+			}
+
+			army_experience = 10
+			add_stability = -0.05
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.05
+				}
+
+			remove_mission = BMP_maintain_israel
+			clr_country_flag = BMP_Riots_israel
+			if = {
+				limit = {
+					NOT = { has_country_flag = BMP_Riots_westbank }
+					NOT = { has_country_flag = BMP_Riots_gaza }
+				}
+				remove_ideas = BMP_Riots
+				clr_country_flag = crisis_in_progress
+			}
+		}
+	}
+	BMP_British_Aid_israel = {
+		allowed = {
+			tag = BMP
+		}
+		icon = infiltrate_state
+
+		available = {
+			has_completed_focus = BMP_assist_great_britain
+			has_country_flag = BMP_Riots_israel
+		}
+		
+		days_remove = 60
+		cost = 25
+		
+		highlight_states = {
+			state = 454
+		}
+		
+				fire_only_once = yes
+
+		##AI will do the job itself if able
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				add = -200
+				divisions_in_state = {
+					state = 454
+					size > 1
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_active_mission = BMP_maintain_israel }
+			has_country_flag = BMP_Riots_israel		
+			NOT = { has_country_flag = BMP_brit_aid }
+		}
+
+		is_good = yes
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = BMP_brit_aid
+			}
+		}
+		
+		remove_effect = {  
+			custom_effect_tooltip = BMP_Riots_Remove_israel
+			add_autonomy_ratio = {
+			value = -0.1
+			localization = BMP_Bristish_Needed
+			}
+			clr_country_flag = BMP_Riots_israel
+			every_country = { 
+			limit = { is_Arab = yes }
+			add_opinion_modifier = {
+					target = ROOT
+					modifier = protest_action_light
+				}	
+				
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = BMP_Riots_westbank }
+					NOT = { has_country_flag = BMP_Riots_gaza }
+				}
+				remove_ideas = BMP_Riots
+				clr_country_flag = crisis_in_progress
+			}
+		}
+	}
+	BMP_maintain_israel = {
+		allowed = {
+			tag = BMP
+		}
+		icon = generic_civil_support
+
+		available = {
+			always = no
+		}
+
+		days_mission_timeout = 180
+
+		activation = {
+			always = no #Triggered from effect
+		}
+
+		cancel_trigger = {
+			divisions_in_state = {
+				state = 454	
+				size < 2
+			}
+		}
+
+		highlight_states = {
+			state = 454
+		}
+
+
+		visible = {
+		}
+
+
+		is_good = yes
+
+		timeout_effect = {
+			custom_effect_tooltip = BMP_Riots_Remove_israel
+			clr_country_flag = BMP_Riots_israel
+			
+			if = {
+				limit = {
+					NOT = { has_country_flag = BMP_Riots_westbank }
+					NOT = { has_country_flag = BMP_Riots_gaza }
+				}
+				clr_country_flag = crisis_in_progress
+				remove_ideas = BMP_Riots
+			}
+		}
+	}
+}
+
+####### England ######
+puppet_management = {
+	Eng_Stable_Mandate = {
+		icon = generic_civil_support
+		available = {
+			tag = ENG
+			command_power > 24
+			has_completed_focus = uk_mediterranean_focus			
+			BMP = { 
+				is_subject_of = ENG
+				has_stability < 0.35
+				has_idea = BMP_arab_revolt
+			}
+		}
+		cost = 50
+        days_re_enable = 25
+		allowed = {
+			tag = ENG
+		}		
+		visible = {
+			tag = ENG
+			BMP = { 
+				has_idea = BMP_arab_revolt
+			}		
+		}
+		### Ai should help AI if in trouble, players can suffer
+		ai_will_do = { 
+			factor = 0
+			modifier = {
+				add = 25				
+				BMP = {
+					is_ai = yes				
+				}
+				
+			}
+			modifier = {
+				add = 5				
+				BMP = {
+					has_stability < 15				
+				}
+				
+			}
+		}
+
+		is_good = yes
+		complete_effect = {
+               add_command_power = -25
+				BMP = {
+					add_stability = 0.1
+					add_to_variable = { BMP_Riot_time = 5 }
+					add_autonomy_score = {
+						value = -25
+						localization = "British Aid"
+					}
+					add_popularity = {
+						ideology = neutrality
+						popularity = 0.1
+					}
+				}
+            }	
+	}
+}
+
+###### Other Nations ########
+foreign_politics = {
+	Arab_riot_aid = {
+
+		icon = generic_political_discourse
+		available = {
+			is_Arab = yes
+			Not = { has_completed_focus = Arab_Brit_sub }
+			Not = { has_completed_focus = merJOR_Recognize_Peel_Commission_Plan }		
+			BMP = { has_idea = BMP_arab_revolt }
+			command_power > 25
+		}
+		
+		visible = {	
+			BMP = { has_idea = BMP_arab_revolt }
+			is_Arab = yes
+		}
+		
+		#### If BMP is a player the AI will be a little mean to them, also not keen on ENG players
+		ai_will_do = { 
+			factor = 0
+			modifier = {
+				add = 10
+				NOT = { has_country_flag = Arab_meddled }
+				BMP = {
+					is_ai = no
+					NOT = { has_idea = BMP_respite }
+				}				
+			}
+			modifier = {
+				add = 5
+				NOT = { has_country_flag = Arab_meddled }
+				ENG = {
+					is_ai = no
+				}
+				BMP = {
+					NOT = { has_idea = BMP_respite }
+				}		
+			}
+		}
+		
+		allowed = {
+			is_Arab = yes
+		}
+		
+		custom_cost_trigger = {
+			command_power > 24.9			
+		}
+		custom_cost_text = cp_atleast_25
+        fire_only_once = yes
+			complete_effect = {
+				hidden_effect = {
+					add_command_power = -25 
+				}
+				reverse_add_opinion_modifier = {
+					target = BMP
+					modifier = unprovoked_aggression
+				}
+				reverse_add_opinion_modifier = {
+					target = ENG
+					modifier = protest_action
+				}				
+				BMP = {
+					add_timed_idea = {
+						idea = Arab_Meddle
+						days = 25
+					}
+				}				
+				
+				hidden_effect =  { 				
+					### For the AI
+					set_country_flag = Arab_meddled
+					BMP = {
+						subtract_from_variable = { BMP_Riot_time = 1 }
+						add_timed_idea = {
+							idea = BMP_respite
+							days = 30
+						}
+					}
+				} 
+            }
+    }
+}

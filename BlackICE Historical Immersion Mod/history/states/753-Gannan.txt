@@ -1,0 +1,34 @@
+
+state={
+	id=753
+	name="STATE_753"
+	history={
+		#owner = XSM
+		set_variable = { state_taxes = 300 }
+		owner = SCC
+		add_core_of = SCC
+		add_core_of = CHI
+		add_core_of = PRC
+		buildings = {
+			infrastructure = 1
+		}
+		1938.10.25 = {
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "Waking the Tiger" 
+					}
+				}
+				CHI = {
+					transfer_state = PREV
+				}
+			}
+		}
+	}
+	provinces={
+		1257 4403 9966 10787 
+	}
+	manpower=3000000
+	buildings_max_level_factor=1.000
+	state_category=town
+}	

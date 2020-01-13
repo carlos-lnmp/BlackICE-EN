@@ -1,0 +1,180 @@
+﻿capital = 107
+
+oob = "YUG_1936"
+
+set_research_slots = 2
+
+set_convoys = 0
+
+set_stability = 0.6
+
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	hmg = 1
+	mortars = 1
+	infantry_guns = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	tech_support = 1		
+	tech_engineers = 1
+	################## artillery ###############
+	gw_artillery = 1
+	interwar_artillery = 1
+	################## armor-techs ##############
+	tech_Tankettes = 1
+	################## armor ##############
+	generic_armor_axis = 1
+	gwtank_axis = 1
+	basic_light_tank_axis = 1
+	################## aircraft ##############
+	early_fighter = 1
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	################# ships ################
+	generic_naval_tech = 1
+	generic_naval = 1
+	early_destroyer = 1
+	early_light_cruiser = 1
+	early_submarine = 1
+	############### economy ############
+	basic_machine_tools = 1
+	formation_flying = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+
+	ww1_battlefield_support = 1
+}
+
+add_ideas = {
+	anti_german_military
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_censored
+	key_industries
+	labor_none
+	fdi_encouraged
+	
+	cons_two
+	foreign_volunteers
+	mob_standing
+	train_none
+	age_17
+	security_minor_restrictions
+	officer_train_none
+	edu_minimal
+	foreign_cooperative
+	neutrality_idea
+}
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		CHI_incompetent_officers
+	}
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 36
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservatism = 20
+	fascism = 30
+	communism = 20
+	neutrality = 30
+}
+##### Country Leaders #####################################
+create_country_leader = {
+	name = "Draza Mihailovic"
+	desc = ""
+	picture = "Portrait_Yugoslavia_Prince_Paul.dds"
+	expire = "1965.1.1"
+	ideology = social_conservatism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Nikola Kalabic"
+	desc = ""
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Peter Karadordevic"
+	desc = ""
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
+	expire = "1965.1.1"
+	ideology = Despotism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Zivorad Jovanovic"
+	desc = ""
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
+	expire = "1965.1.1"
+	ideology = leninism
+	traits = {
+		#
+	}
+}
+## Militairy Leaders
+## Land
+create_corps_commander = {
+	name = "von Biel"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
+	traits = { Decent_General trickster_CC old_guard }
+	skill = 1
+}
+create_corps_commander = {
+	name = "von Bülow"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
+	traits = { Terrible_General logistics_wizard_CC }
+	skill = 1
+}
+create_corps_commander = {
+	name = "von Freydag"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
+	traits = { Decent_General commando old_guard }
+	skill = 1
+}
+## Navy
+create_navy_leader = {
+	name = "Tomic"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
+	traits = { seawolf }
+	skill = 1
+}
+### EOF ###########################################################

@@ -1,0 +1,397 @@
+ideas = {
+	## De-Facto Monarchy/Republic; only supposed to be changed via focus/event/decision
+		##constitutional_monarchy2 and constitutional_republic2 were added so that you could make a country adopt the law set##
+		##without the modifiers and/or anything that could potentially change gameplay, thus being a temporary solution##
+		##until all countries have their events/focuses/decisions/ adapted to this new law set##
+		##so that we never see constitutional_monarchy being used in a communist country or constitutional_republic being used in an absolutist monarchist country##
+		##with their modifiers being used when they shouldn't##
+	monarchy_republic = {
+		law = yes
+		
+		constitutional_monarchy = {
+		
+			available = {
+				always = no
+			}
+			
+			modifier = {
+				communism_drift = -0.01
+			}
+		
+			on_add = {
+				set_country_flag = constitutional_monarchy
+				clr_country_flag = constitutional_monarchy2
+				clr_country_flag = constitutional_republic
+				clr_country_flag = constitutional_republic2
+				clr_country_flag = crowned_republic
+				clr_country_flag = monarchy_republic_feature_unused
+				#if = { #disabled because someone turned off the coup events
+					#limit = {
+						#has_government = communism
+					#}
+					#add_popularity = {
+						#popularity = -0.65
+						#ideology = communism
+					#}
+				#}
+			}
+			
+			cancel_if_invalid = no
+		}
+		constitutional_republic = {
+			
+			available = {
+				always = no
+			}
+			
+			modifier = {
+				monarchism_drift = -0.01
+			}
+		
+			on_add = {
+				set_country_flag = constitutional_republic
+				clr_country_flag = constitutional_republic2
+				clr_country_flag = constitutional_monarchy
+				clr_country_flag = constitutional_monarchy2
+				clr_country_flag = crowned_republic
+				clr_country_flag = monarchy_republic_feature_unused
+				#if = { #disabled because someone turned off the coup events
+					#limit = {
+						#has_government = monarchism
+					#}
+					#add_popularity = {
+						#popularity = -0.65
+						#ideology = monarchism
+					#}
+				#}
+			}
+			
+			cancel_if_invalid = no
+		}
+		constitutional_monarchy2 = {
+		##constitutional_monarchy2 and constitutional_republic2 were added so that you could make a country adopt the law set##
+		##without the modifiers and/or anything that could potentially change gameplay, thus being a temporary solution##
+		##until all countries have their events/focuses/decisions/ adapted to this new law set##
+		##so that we never see constitutional_monarchy being used in a communist country or constitutional_republic being used in an absolutist monarchist country##
+		##with their modifiers being used when they shouldn't##
+			available = {
+				always = no
+			}
+			
+			on_add = {
+				set_country_flag = constitutional_monarchy2
+				clr_country_flag = constitutional_monarchy
+				clr_country_flag = constitutional_republic
+				clr_country_flag = constitutional_republic2
+				clr_country_flag = crowned_republic
+				clr_country_flag = monarchy_republic_feature_unused
+			}
+			
+			cancel_if_invalid = no
+		}
+		constitutional_republic2 = {
+		##constitutional_monarchy2 and constitutional_republic2 were added so that you could make a country adopt the law set##
+		##without the modifiers and/or anything that could potentially change gameplay, thus being a temporary solution##
+		##until all countries have their events/focuses/decisions/ adapted to this new law set##
+		##so that we never see constitutional_monarchy being used in a communist country or constitutional_republic being used in an absolutist monarchist country##
+		##with their modifiers being used when they shouldn't##		
+			available = {
+				always = no
+			}
+			
+			on_add = {
+				set_country_flag = constitutional_republic2
+				clr_country_flag = constitutional_republic
+				clr_country_flag = constitutional_monarchy
+				clr_country_flag = constitutional_monarchy2
+				clr_country_flag = crowned_republic
+				clr_country_flag = monarchy_republic_feature_unused
+			}
+			
+			cancel_if_invalid = no
+		}
+		crowned_republic = {
+			
+			available = {
+				always = no
+			}
+			
+			on_add = {
+				set_country_flag = crowned_republic
+				clr_country_flag = constitutional_republic2
+				clr_country_flag = constitutional_republic
+				clr_country_flag = constitutional_monarchy
+				clr_country_flag = constitutional_monarchy2
+				clr_country_flag = monarchy_republic_feature_unused
+			}
+			
+			cancel_if_invalid = no
+		}
+		monarchy_republic_feature_unused = {
+			
+			available = {
+				always = no
+			}
+			
+			default = yes
+			
+			modifier = {
+			}
+		
+			on_add = {
+				set_country_flag = monarchy_republic_feature_unused
+				clr_country_flag = constitutional_monarchy
+				clr_country_flag = constitutional_monarchy2
+				clr_country_flag = constitutional_republic
+				clr_country_flag = constitutional_republic2
+				clr_country_flag = crowned_republic
+			}
+			
+			cancel_if_invalid = no
+		}
+		cg_false = {
+			removal_cost = -1
+		
+			picture = FRA_matignon_agreements
+			
+			allowed = {
+				always = yes
+			}
+			available = {
+				is_chinese_nations = no
+			}
+			
+			allowed_to_remove = {
+				is_chinese_nations = yes
+				custom_trigger_tooltip = {
+					tooltip = KMT_own_central_gov_capital_tt
+					any_state = {
+						has_state_flag = KMT_central_gov_capital
+						is_owned_by = ROOT
+					}
+				}
+			}
+			#default = yes
+		}	
+		cg_true = {
+			removal_cost = -1
+		
+			picture = generic_pp_unity_bonus
+			available = {
+				tag = event_target:KMT_central_gov_tag
+			}
+			
+			allowed = {
+				is_chinese_nations_w_HYQ = yes
+			}
+			
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.4
+			}
+			on_add = {
+				country_event = claim_central.2
+			}
+			
+			allowed_to_remove = {
+				always = no
+			}
+			
+			
+			ai_will_do = {
+				factor = 1000
+			}
+		}
+		
+		cg_true_low = {
+			removal_cost = -1
+		
+			picture = great_depression
+			available = {
+				always = yes
+			}
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_to_remove = {
+				always = no
+			}
+		}
+		
+		cg_warlords = {
+			removal_cost = -1
+		
+			picture = generic_volunteer_expedition_bonus
+			available = {
+				is_chinese_nations = yes
+				NOT = {
+					OR = {
+						has_idea = cg_true
+						has_idea = cg_true_low
+					}
+				}
+				any_state = {
+					is_core_of = ROOT
+					is_owned_by = ROOT
+				}
+				NOT = {
+					original_tag = SIK
+				}
+				NOT = { original_tag = PRC }
+			}
+			
+			allowed = {
+				is_chinese_nations = yes
+				NOT = {
+					original_tag = SIK
+				}
+			}
+			
+			modifier = {
+				conscription = 0.03
+				consumer_goods_factor = -0.05
+				ai_get_ally_desire_factor = -1000
+				war_support_factor = 0.10
+			}
+			
+			allowed_to_remove = {
+				always = yes
+			}
+			
+			rule = {
+				can_create_factions = no
+			}
+		}
+		
+		cg_warlords_ssc = {
+			removal_cost = -1
+		
+			picture = generic_volunteer_expedition_bonus
+			available = {
+				is_chinese_nations = yes
+				NOT = {
+					has_country_flag = KMT_central_government_flag
+				}
+				any_state = {
+					is_core_of = ROOT
+					is_owned_by = ROOT
+				}
+				original_tag = SIK
+			}
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			modifier = {
+				conscription = 0.03
+				consumer_goods_factor = -0.05
+			}
+			
+			allowed_to_remove = {
+				always = yes
+			}
+			
+			rule = {
+				can_create_factions = no
+			}
+		}
+		
+		cg_displaced_warlords = {
+			removal_cost = -1
+		
+			picture = generic_volunteer_expedition_bonus
+			available = {
+				is_chinese_nations = yes
+				NOT = {
+					has_country_flag = KMT_central_government_flag
+				}
+				NOT = {
+					any_state = {
+						is_core_of = ROOT
+						is_owned_by = ROOT
+					}
+				}
+				NOT = { original_tag = PRC }
+			}
+			
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				conscription = 0.015
+				consumer_goods_factor = -0.05
+				political_power_factor = -0.4
+				ai_get_ally_desire_factor = -10000
+			}
+			
+			allowed_to_remove = {
+				always = yes
+			}
+			
+			rule = {
+				can_create_factions = no
+			}
+		}
+		
+		cg_communist_resistence = {
+			removal_cost = -1
+		
+			picture = trotskyite_plot
+			available = {
+				tag = PRC
+			}
+			
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				ai_get_ally_desire_factor = -10000
+				generate_wargoal_tension = 1.1
+				join_faction_tension = 1.1
+				lend_lease_tension = 1.1
+				guarantee_tension = 1.1
+				surrender_limit = 0.33
+				stability_weekly = 0.005
+			}
+			
+			allowed_to_remove = {
+				always = no
+			}
+			
+			rule = {
+				can_create_factions = no
+				can_send_volunteers = no
+				can_puppet = no	
+				can_join_factions = no
+			}
+		}
+		
+		cg_PRC_new_china = {
+			removal_cost = -1
+		
+			picture = home_of_revolution
+			available = {
+				tag = PRC
+			}
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_to_remove = {
+				always = yes
+			}
+			
+			modifier = {
+				drift_defence_factor = 0.85
+				army_morale_factor = 0.1
+			}
+		}
+	}
+}
+### EOF ###

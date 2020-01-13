@@ -1,0 +1,1693 @@
+﻿add_namespace = targeted_decisions
+
+
+country_event = { #war_propaganda_against_warmonger
+	id = targeted_decisions.1
+	hidden = yes
+	
+	trigger = {
+		has_global_flag = any_war
+		any_other_country = {
+			NOT = { 
+				tag = OVERLORD
+				has_government = ROOT
+				is_in_faction_with = ROOT
+			}
+			if = {
+				limit = {
+					is_puppet = yes 
+				}
+				compare_autonomy_state > autonomy_puppet
+			}
+			OR = {
+				AND = {
+					NOT = { has_government = ROOT }
+					has_offensive_war = yes
+					has_added_tension_amount > 15
+				}
+				is_justifying_wargoal_against = ROOT
+				has_offensive_war_with = ROOT
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				NOT = { 
+					tag = ROOT
+					tag = OVERLORD
+					has_government = ROOT
+					is_in_faction_with = ROOT
+				}
+				if = {
+					limit = {
+						is_puppet = yes 
+					}
+					compare_autonomy_state > autonomy_puppet
+				}
+				OR = {
+					AND = {
+						NOT = { has_government = ROOT }
+						has_offensive_war = yes
+						has_added_tension_amount > 15
+					}
+					is_justifying_wargoal_against = ROOT
+					has_offensive_war_with = ROOT
+				}
+			}
+		
+			ROOT = {
+				set_country_flag = {
+					flag = recent_propaganda_target_@PREV
+					value = 1
+					days = 90 
+				}
+				activate_targeted_decision = {
+					target = PREV
+					decision = war_propaganda_against_warmonger
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { #object_to_attaches
+	id = targeted_decisions.3
+	hidden = yes
+	
+	trigger = {
+		#has_attache = yes
+		NOT = { has_country_flag = rejected_withdrawing_attache }
+        NOT = { has_country_flag = rejected_withdrawing_attache@ROOT }
+       	NOT = { has_country_flag = object_attache_going_on }
+		any_country = {
+			has_attache_from = ROOT 
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		every_other_country = {
+			limit = {
+				has_war = yes
+				has_capitulated = no
+				NOT = { has_war_with = ROOT }
+				any_enemy_country = {
+					has_attache_from = ROOT
+				}
+			}
+			activate_targeted_decision = {
+				target = ROOT
+				decision = object_to_attaches
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+
+country_event = { #targeted_race_for_the_bomb
+	id = targeted_decisions.4
+	hidden = yes
+	
+	trigger = {
+		has_tech = atomic_research
+		NOT = { 
+			has_global_flag = first_nuke_dropped 
+			has_idea = race_for_the_bomb
+		}
+		any_other_country = {
+			NOT = { is_in_faction_with = ROOT }
+			has_tech = nuclear_reactor
+			nuclear_reactor > 0
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		set_global_flag = targeted_race_for_the_bomb
+		random_other_country = {
+			limit = {
+				NOT = { is_in_faction_with = ROOT }
+				has_tech = nuclear_reactor
+				nuclear_reactor > 0
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = targeted_race_for_the_bomb
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { #demand_tribute_from_new_communist_china
+	id = targeted_decisions.5
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SOV
+		has_government = communism
+		PRC = { 
+			tag = event_target:WTT_communist_china
+			has_country_flag = WTT_support_from_soviet
+			NOT = { has_war_with = ROOT }
+			NOT = { is_subject_of = ROOT }
+			NOT = { has_idea = PRC_soviet_tribute_6 }
+		}
+	}
+	
+	immediate = {
+		activate_targeted_decision = {
+			target = PRC
+			decision = demand_tribute_from_new_communist_china
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { #demand_full_integration
+	id = targeted_decisions.6
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SOV
+		has_government = communism
+		PRC = { has_country_flag = WTT_support_from_soviet }
+	}
+	
+	immediate = {
+		activate_targeted_decision = {
+			target = PRC
+			decision = demand_full_integration
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { #refuse_the_tribute
+	id = targeted_decisions.7
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		is_potentially_communist_china = yes
+		has_country_flag = WTT_support_from_soviet
+		has_soviet_tribute = yes
+	}
+	
+	immediate = {
+		activate_targeted_decision = {
+			target = SOV
+			decision = refuse_the_tribute
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { #JAP_sue_for_peace_MAN
+	id = targeted_decisions.8
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = JAP
+		has_war_with = MAN
+	}
+	
+	immediate = {
+		activate_targeted_decision = {
+			target = MAN
+			decision = JAP_sue_for_peace_MAN
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { #JAP_sue_for_peace_CHI
+	id = targeted_decisions.9
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = JAP
+		has_war_with = event_target:WTT_current_china_leader
+		OR = {
+			has_war_with = CHI
+			has_war_with = PRC
+			has_war_with = GXC
+			has_war_with = YUN
+			has_war_with = SHX
+			has_war_with = XSM
+			has_war_with = SIK
+		}
+	}
+	
+	immediate = {
+		activate_targeted_decision = {
+			target = event_target:WTT_current_china_leader
+			decision = JAP_sue_for_peace_CHI
+		}
+	}
+		
+	option = {
+		
+	}
+}
+country_event = { #seek_closer_bonds_to_license_owner
+	id = targeted_decisions.13
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		is_ai = no
+		has_any_license = yes
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_licensing_any_to = ROOT
+				NOT = { has_country_flag = closer_license_@ROOT }
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = seek_closer_bonds_to_license_owner
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { #GER_integrate_RK_RP
+	id = targeted_decisions.14
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		tag = GER 
+		num_subjects > 0 
+	}
+	
+	mean_time_to_happen = { months = 1 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_subject_of = ROOT
+				OR = {
+					has_autonomy_state = autonomy_reichskommissariat
+					has_autonomy_state = autonomy_reichsprotectorate
+				}
+				OR = {
+					tag = RKU
+					tag = RKO 
+					tag = RKM
+					tag = CZE 
+					tag = RKN 
+					tag = RKH
+					tag = RKB 
+					tag = RKA 
+					tag = RSI
+					#tag = RKI
+					#tag = RKC #Caucasus #should be RKK imo
+				}
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = GER_integrate_RK_RP
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { #nine_exploit_TAG
+	id = targeted_decisions.15
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		has_dlc = "Waking the Tiger"
+		OR = {
+			tag = USA
+			tag = JAP
+			tag = ITA
+			tag = POR
+			tag = HOL
+			tag = BEL
+			tag = ENG
+			tag = FRA
+		}
+		CHI = { 
+			exists = yes
+			has_war = no 
+			is_subject = no
+		}
+	}
+	
+	mean_time_to_happen = { months = 1 }
+	
+	immediate = {
+		every_country = {
+			limit = {
+				OR = {
+					original_tag = CHI
+					original_tag = PRC
+					original_tag = GXC
+					original_tag = YUN
+					original_tag = SHX
+					original_tag = XSM
+					original_tag = YUT
+					original_tag = XIA
+					original_tag = SCC
+					original_tag = QIA
+					original_tag = ZXL
+					original_tag = SDC
+					original_tag = SKC
+					original_tag = SIK
+				}
+				has_idea = CHI_nine_power_treaty
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = nine_exploit_FROM
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.17 #MTG_invite_FROM_to_treaty
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		has_naval_treaty_trigger = yes
+		any_other_country = {
+			has_war = no
+			NOT = { has_naval_treaty_trigger = yes }
+			NOT = { has_country_flag = MTG_naval_treaty_abandoned }
+			NOT = { has_country_flag = MTG_refused_naval_treaty }
+			if = {
+				limit = { ENG = { has_naval_treaty_trigger = yes } }
+				naval_strength_comparison = {
+					other = ENG
+					ratio > 0.35
+					sub_unit_def_weights = {
+						carrier = 0.25
+						battleship = 1
+						battle_cruiser = 0.8
+						heavy_cruiser = 0.5
+					}
+				}
+			}
+			else_if = {
+				limit = { USA = { has_naval_treaty_trigger = yes } }
+				naval_strength_comparison = {
+					other = USA
+					ratio > 0.35
+					sub_unit_def_weights = {
+						carrier = 0.25
+						battleship = 1
+						battle_cruiser = 0.8
+						heavy_cruiser = 0.5
+					}
+				}
+			}
+			else = {
+				has_navy_size = {
+					type = capital_ship
+					size > 15
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				has_war = no
+				NOT = { has_naval_treaty_trigger = yes }
+				NOT = { has_country_flag = MTG_naval_treaty_abandoned }
+				NOT = { has_country_flag = MTG_refused_naval_treaty }
+				if = {
+					limit = { ENG = { has_naval_treaty_trigger = yes } }
+					naval_strength_comparison = {
+						other = ENG
+						ratio > 0.35
+						sub_unit_def_weights = {
+							carrier = 0.25
+							battleship = 1
+							battle_cruiser = 0.8
+							heavy_cruiser = 0.5
+						}
+					}
+				}
+				else_if = {
+					limit = { USA = { has_naval_treaty_trigger = yes } }
+					naval_strength_comparison = {
+						other = USA
+						ratio > 0.35
+						sub_unit_def_weights = {
+							carrier = 0.25
+							battleship = 1
+							battle_cruiser = 0.8
+							heavy_cruiser = 0.5
+						}
+					}
+				}
+				else = {
+					has_navy_size = {
+						type = capital_ship
+						size > 15
+					}
+				}
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = MTG_invite_FROM_to_treaty
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.18 #MTG_send_treaty_warning_to_FROM_previous_signatory
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		has_naval_treaty_trigger = yes
+		any_other_country = {
+			has_war = no
+			has_country_flag = MTG_naval_treaty_abandoned
+			if = {
+				limit = { ENG = { has_naval_treaty_trigger = yes } }
+				naval_strength_comparison = {
+					other = ENG
+					ratio > 0.8
+					sub_unit_def_weights = {
+						carrier = 0.25
+						battleship = 1
+						battle_cruiser = 0.8
+						heavy_cruiser = 0.5
+					}
+				}
+			}
+			else_if = {
+				limit = { USA = { has_naval_treaty_trigger = yes } }
+				naval_strength_comparison = {
+					other = USA
+					ratio > 0.8
+					sub_unit_def_weights = {
+						carrier = 0.25
+						battleship = 1
+						battle_cruiser = 0.8
+						heavy_cruiser = 0.5
+					}
+				}
+			}
+			else = {
+				has_navy_size = {
+					type = capital_ship
+					size > 20
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				has_war = no
+				has_country_flag = MTG_naval_treaty_abandoned
+				if = {
+					limit = { ENG = { has_naval_treaty_trigger = yes } }
+					naval_strength_comparison = {
+						other = ENG
+						ratio > 0.8
+						sub_unit_def_weights = {
+							carrier = 0.25
+							battleship = 1
+							battle_cruiser = 0.8
+							heavy_cruiser = 0.5
+						}
+					}
+				}
+				else_if = {
+					limit = { USA = { has_naval_treaty_trigger = yes } }
+					naval_strength_comparison = {
+						other = USA
+						ratio > 0.8
+						sub_unit_def_weights = {
+							carrier = 0.25
+							battleship = 1
+							battle_cruiser = 0.8
+							heavy_cruiser = 0.5
+						}
+					}
+				}
+				else = {
+					has_navy_size = {
+						type = capital_ship
+						size > 20
+					}
+				}
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = MTG_send_treaty_warning_to_FROM_previous_signatory
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.19 #MTG_send_treaty_warning_to_FROM
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		has_naval_treaty_trigger = yes
+		any_other_country = {
+			OR = {
+				AND = {
+					has_war = no
+					not = { has_country_flag = MTG_naval_treaty_abandoned }
+					NOT = { has_country_flag = MTG_refused_naval_treaty }
+					NOT = { has_naval_treaty_trigger = yes }
+					if = {
+						limit = { ENG = { has_naval_treaty_trigger = yes } }
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 1
+							sub_unit_def_weights = {
+								carrier = 0.5
+								battleship = 1
+								battle_cruiser = 0.8
+								heavy_cruiser = 0.5
+							}
+						}
+					}
+					else_if = {
+						limit = { USA = { has_naval_treaty_trigger = yes } }
+						naval_strength_comparison = {
+							other = USA
+							ratio > 1
+							sub_unit_def_weights = {
+								carrier = 0.5
+								battleship = 1
+								battle_cruiser = 0.8
+								heavy_cruiser = 0.5
+							}
+						}
+					}
+					else = {
+						has_navy_size = {
+							type = capital_ship
+							size > 50
+						}
+					}
+				}
+				AND = {
+					has_naval_treaty_trigger = yes
+					if = {
+						limit = { ENG = { has_naval_treaty_trigger = yes } }
+						naval_strength_comparison = {
+							other = ENG
+							ratio > 1.1
+							sub_unit_def_weights = {
+								carrier = 0.5
+								battleship = 1
+								battle_cruiser = 0.8
+								heavy_cruiser = 0.5
+							}
+						}
+					}
+					else_if = {
+						limit = { USA = { has_naval_treaty_trigger = yes } }
+						naval_strength_comparison = {
+							other = USA
+							ratio > 1.1
+							sub_unit_def_weights = {
+								carrier = 0.5
+								battleship = 1
+								battle_cruiser = 0.8
+								heavy_cruiser = 0.5
+							}
+						}
+					}
+					else = {
+						has_navy_size = {
+							type = capital_ship
+							size > 50
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				OR = {
+					AND = {
+						has_war = no
+						not = { has_country_flag = MTG_naval_treaty_abandoned }
+						NOT = { has_country_flag = MTG_refused_naval_treaty }
+						NOT = { has_naval_treaty_trigger = yes }
+						if = {
+							limit = { ENG = { has_naval_treaty_trigger = yes } }
+							naval_strength_comparison = {
+								other = ENG
+								ratio > 1
+								sub_unit_def_weights = {
+									carrier = 0.5
+									battleship = 1
+									battle_cruiser = 0.8
+									heavy_cruiser = 0.5
+								}
+							}
+						}
+						else_if = {
+							limit = { USA = { has_naval_treaty_trigger = yes } }
+							naval_strength_comparison = {
+								other = USA
+								ratio > 1
+								sub_unit_def_weights = {
+									carrier = 0.5
+									battleship = 1
+									battle_cruiser = 0.8
+									heavy_cruiser = 0.5
+								}
+							}
+						}
+						else = {
+							has_navy_size = {
+								type = capital_ship
+								size > 50
+							}
+						}
+					}
+					AND = {
+						has_naval_treaty_trigger = yes
+						if = {
+							limit = { ENG = { has_naval_treaty_trigger = yes } }
+							naval_strength_comparison = {
+								other = ENG
+								ratio > 1.1
+								sub_unit_def_weights = {
+									carrier = 0.5
+									battleship = 1
+									battle_cruiser = 0.8
+									heavy_cruiser = 0.5
+								}
+							}
+						}
+						else_if = {
+							limit = { USA = { has_naval_treaty_trigger = yes } }
+							naval_strength_comparison = {
+								other = USA
+								ratio > 1.1
+								sub_unit_def_weights = {
+									carrier = 0.5
+									battleship = 1
+									battle_cruiser = 0.8
+									heavy_cruiser = 0.5
+								}
+							}
+						}
+						else = {
+							has_navy_size = {
+								type = capital_ship
+								size > 50
+							}
+						}
+					}
+				}
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = MTG_send_treaty_warning_to_FROM
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.20 #request_reinstatement
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		has_war = yes
+		is_government_in_exile = yes
+		check_variable = { num_owned_controlled_states > 0 }
+		#any_other_country = {
+		#	is_hosting_exile = ROOT
+		#}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_hosting_exile = ROOT
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = request_reinstatement
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.21 #lobby_for_parliamentary_support
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		OR = {
+			political_power_daily > 0.25
+			has_political_power > 30
+		}
+		is_exile_host = yes
+		any_other_country = {
+			is_hosting_exile = ROOT
+			has_legitimacy < 100
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_hosting_exile = ROOT
+			has_legitimacy < 100
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = lobby_for_parliamentary_support
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.22 #expatriate_donations
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		is_exile_host = yes
+		#any_other_country = {
+		#	is_exiled_in = ROOT
+		#}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_exiled_in = ROOT
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = expatriate_donations
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.23 #exile_recruitment_campaign
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		OR = {
+			political_power_daily > 1.0
+			has_political_power > 120
+		}
+		is_government_in_exile = yes
+		any_other_country = {
+			is_hosting_exile = ROOT
+			has_legitimacy > 10
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				has_legitimacy > 10
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = exile_recruitment_campaign
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.24 #grant_parliamentary_audience
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		OR = {
+			political_power_daily > 0.25
+			has_political_power > 30
+		}
+		is_exile_host = yes
+		any_other_country = {
+			is_exiled_in = ROOT
+			has_legitimacy < 100
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_exiled_in = ROOT
+				has_legitimacy < 100
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = grant_parliamentary_audience
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.25 #exile_extraction_campaign
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		has_war = yes
+		is_exile_host = yes
+		any_other_country = {
+			is_exiled_in = ROOT
+			has_legitimacy > 30
+		    any_war_score > 2
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_exiled_in = ROOT
+				has_legitimacy > 30
+		    	any_war_score > 2
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = exile_extraction_campaign
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.26 #request_control_of_navy
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		has_war = yes
+		is_exile_host = yes
+		any_other_country = {
+			is_exiled_in = ROOT
+			has_navy_size = {
+				size > 0
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_exiled_in = ROOT
+				has_navy_size = {
+				    size > 0
+				}
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = request_control_of_navy
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.27 #joint_training_exercise
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		has_war = yes
+		is_exile_host = yes
+		any_other_country = {
+			is_exiled_in = ROOT
+			has_legitimacy > 25
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_exiled_in = ROOT
+				has_legitimacy > 25
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = joint_training_exercise
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.28 #unity_parade
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		has_war = yes
+		is_exile_host = yes
+		any_other_country = {
+			is_exiled_in = ROOT
+			has_legitimacy > 40
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_exiled_in = ROOT
+				has_legitimacy > 25
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = unity_parade
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.29 #weapons_for_the_resistance
+	hidden = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		has_war = yes
+		is_exile_host = yes
+		any_other_country = {
+			has_legitimacy > 15
+			is_exiled_in = ROOT
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_exiled_in = ROOT
+				has_legitimacy > 15
+			}
+			ROOT = {
+				activate_targeted_decision = {
+					target = PREV
+					decision = weapons_for_the_resistance
+				}
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.30 #nation_building
+	hidden = yes
+	
+	#this fires from a different scope than the other events
+	#ROOT = FROM in decision
+	
+	trigger = {
+		is_puppet = yes 
+		OR = {
+			conservatism < 0.99
+			socialism < 0.99
+			liberalism < 0.99
+		}
+		OVERLORD = { has_government = conservatism }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = nation_building
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.31 #nation_building_soc
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		OR = {
+			conservatism < 0.99
+			socialism < 0.99
+			liberalism < 0.99
+		}
+		OVERLORD = { has_government = socialism }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = nation_building_soc
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.32 #nation_building_lib
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		OR = {
+			conservatism < 0.99
+			socialism < 0.99
+			liberalism < 0.99
+		}
+		OVERLORD = { has_government = liberalism }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = nation_building_lib
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.33 #socialist_education
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		communism < 0.99
+		OVERLORD = { has_government = communism }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = socialist_education
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.34 #paramilitary_training
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		fascism < 0.99
+		OVERLORD = { has_government = fascism }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = paramilitary_training
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.35 #military_parade
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		neutrality < 0.99
+		OVERLORD = { has_government = neutrality }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = military_parade
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.36 #police_action_socialism
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		socialism > 0.25
+		NOT = { democratic_govt = yes }
+		OVERLORD = { democratic_govt = yes }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = police_action_socialism
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.37 #police_action_conservatism
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		conservatism > 0.25
+		NOT = { democratic_govt = yes }
+		OVERLORD = { democratic_govt = yes }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = police_action_socialism
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.38 #police_action_liberalism
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		liberalism > 0.25
+		NOT = { democratic_govt = yes }
+		OVERLORD = { democratic_govt = yes }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = police_action_liberalism
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.39 #fraternal_republic
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		communism > 0.6
+		NOT = { has_government = communism }
+		OVERLORD = { has_government = communism }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = fraternal_republic
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.40 #ultranationalist_coup
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		fascism > 0.6
+		NOT = { has_government = fascism }
+		OVERLORD = { has_government = fascism }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = ultranationalist_coup
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.41 #military_dictatorship_decision
+	hidden = yes
+	
+	trigger = {
+		is_puppet = yes 
+		neutrality > 0.6
+		NOT = { has_government = neutrality }
+		OVERLORD = { has_government = neutrality }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		OVERLORD = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = military_dictatorship_decision
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.42 #purge_infiltrators
+	hidden = yes
+	
+	trigger = {
+		is_government_in_exile = yes
+		has_legitimacy > 40
+		OR = {
+			fascism > 0.05
+			communism > 0.05
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				ROOT = { is_exiled_in = PREV }
+			}
+			activate_targeted_decision = {
+				target = ROOT
+				decision = purge_infiltrators
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.43 #public_support_for_from
+	hidden = yes
+	
+	trigger = {
+		has_war = yes
+		is_major = yes
+		num_faction_members > 1
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		random_other_country = {
+			limit = {
+				is_in_faction_with = ROOT
+				has_legitimacy < 100
+				ROOT = {
+					any_allied_country  = {
+						is_in_faction_with = ROOT
+						is_faction_leader = yes
+						is_hosting_exile = FROM
+					}
+				}
+			}
+			activate_targeted_decision = {
+				target = ROOT
+				decision = public_support_for_from
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}
+
+country_event = { 
+	id = targeted_decisions.44 #Military_Parade_targeted
+	hidden = yes
+	
+	trigger = {
+		has_war = yes
+		has_capitulated = yes
+		NOT = { has_country_flag = enemy_parade }
+		check_variable = { num_owned_states > 2 }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		clear_variable = pp_gain
+		random_state = {
+			limit = {
+				has_state_flag = capital_@ROOT
+			}
+			CONTROLLER = { 
+				set_variable = { capital_@ROOT = Prev.id }
+				ROOT = {
+					set_temp_variable = { country_id = Prev.id }
+					every_owned_state = {
+						limit = {
+							is_controlled_by = PREV.PREV
+						}
+						add_to_temp_variable = { Root.lost_states = 1 }
+					}
+				}
+			}
+			set_temp_variable = { Root.population = state_population_k }
+			if = { 	
+				limit = {
+					state = 896
+				}
+				add_to_temp_variable = { Root.population = 841.state_population_k }
+			}
+			divide_temp_variable = { Root.population = 100 }
+			
+			set_temp_variable = { Root.state_value = state_strategic_value }
+				if = { 	
+					limit = {
+						state = 896
+					}
+					add_to_temp_variable = { Root.state_value = 841.state_strategic_value }
+				}
+			multiply_temp_variable = { Root.state_value = 0.15 }
+		}
+		set_temp_variable = { Root.country_population = original_max_manpower_k }
+		divide_temp_variable = { Root.country_population = 2000 }
+		
+		if = { limit = { check_variable = { state_value > 30 } } set_temp_variable = { state_value = 30 } }
+		if = { limit = { check_variable = { state_value < 5 } } set_temp_variable = { state_value = 5 } }
+		add_to_variable = { pp_gain = state_value }
+		add_to_variable = { pp_gain = country_population }
+		if = { limit = { check_variable = { population > 30 } } set_temp_variable = { population = 30 } }
+		if = { limit = { check_variable = { population < 5 } } set_temp_variable = { population = 5 } }
+		add_to_variable = { pp_gain = population }
+		if = { limit = { check_variable = { population > 24 } } set_temp_variable = { population = 25 } } 
+		
+		multiply_temp_variable = { lost_states = 0.7 }
+		if = { limit = { check_variable = { lost_states < 5 } } set_temp_variable = { lost_states = 5 } } 
+		if = { limit = { check_variable = { lost_states > 24 } } set_temp_variable = { lost_states = 25 } } 
+		add_to_variable = { pp_gain = lost_states }
+		
+		set_temp_variable = { divisions = From.num_divisions }
+		multiply_temp_variable = { divisions = 1.2 }
+		if = { limit = { check_variable = { divisions > 14 } } set_temp_variable = { divisions = 15 } } 
+		add_to_variable = { pp_gain = divisions }
+		
+		var:country_id = {
+			activate_targeted_decision = {
+				target = ROOT
+				decision = Military_Parade_targeted
+			}
+		}
+	}
+		
+	option = {
+		
+	}
+}

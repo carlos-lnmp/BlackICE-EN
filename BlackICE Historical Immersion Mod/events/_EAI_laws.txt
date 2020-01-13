@@ -1,0 +1,862 @@
+﻿add_namespace = EAI_L
+
+####################################################
+# AI for Laws
+####################################################
+
+@AI_DAYS_MANPOWER_CHANGE = 90
+@AI_MIN_MANPOWER_TRIGGER_OVERWRITE = 100000 #if has less than this manpower ignore the interval trigger
+
+@AI_DAYS_BONDS_CHANGE = 60
+@AI_DAYS_TAXES_CHANGE = 60
+@AI_DAYS_TARIFFS_CHANGE = 60
+@AI_DAYS_NATIONALIZATION_CHANGE = 60
+@AI_DAYS_CADET_TRAINING_CHANGE = 30
+
+@AI_START_COUNTER_STABILITY = 0.8 #at what stability AI should start to change laws to counter it
+
+#MOBILIZATION
+country_event = {
+	id = EAI_L.1
+	hidden = yes
+
+	mean_time_to_happen = { days = 2 }
+
+	trigger = {
+		is_ai = yes
+		
+		NOT = { 
+			has_idea = Organizing
+			has_idea = mob_general
+		}
+		
+		can_level_up_mobilization = yes
+	}
+	
+	immediate = { 
+		if = {
+			limit = {
+				has_war = no
+				can_level_up_mobilization = yes
+			}
+			
+			if = {
+				limit = {
+					has_idea = mob_reserve
+					can_take_mob_standing = yes
+				}
+				add_ideas = mob_standing
+			}
+			else_if = {
+				limit = {
+					has_idea = mob_standing
+					can_take_mob_limited = yes
+				}
+				add_ideas = mob_limited
+			}
+		}
+		
+		else_if = {
+			limit = {
+				has_war = yes
+				NOT = { 
+					has_idea = mob_general 
+					has_idea = officers_purged 			
+					has_idea = officers_purged_2 		
+					has_idea = officers_purged_3 		
+					has_idea = officers_purged_4 			
+					has_idea = officers_purged_5 			
+					has_idea = officers_purged_6 			
+					has_idea = officers_purged_7 			
+					has_idea = officers_purged_8 			
+					has_idea = officers_purged_9 			
+					has_idea = officers_purged_10 
+				}	
+			}
+			add_ideas = mob_general
+		}
+	}
+	
+	option = { }
+}
+
+#ECONOMY
+country_event = { 
+	id = EAI_L.2
+	hidden = yes
+	
+	mean_time_to_happen = { days = 2 }
+	
+	trigger = {
+		is_ai = yes
+		
+		can_level_up_economy = yes 
+		
+		if = {
+			limit = {
+				has_idea = war_economy #trigger for total mobilization
+			} #
+			OR = {
+				original_tag = SOV 
+				original_tag = USA 
+				has_stability > 0.74
+			}
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = civilian_economy
+			}
+			add_ideas = low_economic_mobilisation
+		}
+		else_if = {
+			limit = {
+				has_idea = low_economic_mobilisation
+			}
+			add_ideas = partial_economic_mobilisation
+		}
+		else_if = {
+			limit = {
+				has_idea = partial_economic_mobilisation
+			}
+			add_ideas = war_economy
+		}
+		else_if = {
+			limit = {
+				has_idea = war_economy
+			}
+			add_ideas = tot_economic_mobilisation
+		}
+	}
+	
+	option = {}
+	
+}
+
+country_event = { 
+	id = EAI_L.3
+	hidden = yes
+	
+	mean_time_to_happen = { days = 2 }
+	
+	trigger = {
+		is_ai = yes
+		
+		has_stability < 0.80
+		
+		has_idea = tot_economic_mobilisation
+	}
+	
+	immediate = {
+		add_ideas = war_economy
+	}
+	
+}
+
+#MANPOWER LAWS
+country_event = {
+	id = EAI_L.4
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = manpower_change }
+		OR = {
+			AND = {
+				NOT = { major_country = yes } 
+				has_manpower < 500000
+				manpower_per_military_factory < 1000
+			}
+			AND = {
+				major_country = yes
+				OR = {
+					has_manpower < 600000
+					manpower_per_military_factory < 1500
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		set_country_flag = { flag = manpower_change days = @AI_DAYS_MANPOWER_CHANGE }
+		adjust_laws_for_manpower_shortage = yes
+	}
+	
+	option = { 
+		
+	}
+}
+
+#LOWERING MANPOWER LAWS
+country_event = {
+	id = EAI_L.5
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		
+		OR = {
+			has_manpower > 2000000
+			AND = {
+				has_war = no 
+				has_manpower > 1000000
+				NOT = { major_country = yes }
+			}
+			AND = {
+				has_war = no 
+				has_manpower > 500000
+				is_subject = yes 
+				NOT = { major_country = yes }
+			}
+		}
+		
+		
+		NOT = { has_country_flag = manpower_level_down }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		set_country_flag = { flag = manpower_level_down days = 90 }
+		level_down_manpower = yes
+		level_down_conscription = yes
+	}
+	
+	option = { 
+		
+	}
+}
+
+
+#TRADE LAWS
+country_event = {
+	id = EAI_L.6
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_idea = closed_economy }
+		OR = {
+			AND = {
+				tag = GER 
+				has_war = yes 
+				OR = {
+					has_equipment = {
+						convoy < 10
+					}
+					check_variable = { global.days_passed > 2039 } # 1941-08-01
+				}
+			}
+			AND = {
+				tag = SOV 
+				has_war = yes 
+				OR = {
+					has_equipment = {
+						convoy < 10
+					}
+					surrender_progress > 0.2
+					check_variable = { global.days_passed > 2039 } # 1941-08-01
+				}
+			}
+			AND = {
+				tag = JAP 
+				has_war = yes 
+				OR = {
+					has_equipment = {
+						convoy < 10 
+					}
+					check_variable = { global.days_passed > 2039 } # 1941-08-01
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		add_ideas = closed_economy
+	}
+	
+	option = { 
+		
+	}
+}
+
+
+#WAR BONDS
+country_event = {
+	id = EAI_L.7
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = bonds_change }
+		
+		can_level_up_bonds = yes
+		
+		check_variable = { modifier@stability_weekly > -0.003 }
+		has_stability > 0.8
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		level_up_bonds = yes
+		set_country_flag = { flag = bonds_change days = @AI_DAYS_BONDS_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+
+#LEVELING DOWN WAR BONDS
+country_event = {
+	id = EAI_L.8
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = bonds_change }
+		
+		OR = {
+			AND = {
+				has_stability < 0.67
+				has_idea = bonds_war_domestic
+			}
+			AND = {
+				has_stability < 0.70
+				has_idea = bonds_war_international
+			}
+			AND = {
+				has_stability < 0.72
+				has_idea = bonds_war_public
+			}
+			AND = {
+				has_stability < 0.735
+				has_idea = bonds_state_requisition
+			}
+			AND = {
+				has_stability < 0.75
+				has_idea = bonds_print
+			}
+		}	
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		level_down_bonds = yes
+		set_country_flag = { flag = bonds_change days = @AI_DAYS_BONDS_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+
+#CADET TRAINING
+country_event = {
+	id = EAI_L.9
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = cadet_training_change }
+		
+		can_level_up_cadet_training = yes
+		
+		OR = {
+			has_idea = train_none
+			threat > 0.5
+			has_war = yes
+			any_neighbor_country = { #maybe move to on monthly
+				OR = {
+					is_justifying_wargoal_against = ROOT
+					has_wargoal_against = ROOT
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		level_up_cadet_training = yes
+		set_country_flag = { flag = cadet_training_change days = @AI_DAYS_CADET_TRAINING_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+
+#LEVEL DOWN CADET TRAINING
+country_event = {
+	id = EAI_L.10
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = cadet_training_change }
+		
+		NOT = { 
+			has_idea = mob_general
+			has_idea = train_low 
+			has_idea = train_none 
+		}
+		
+		NOT = {
+			threat > 0.5
+			has_war = yes
+			any_neighbor_country = { #maybe move to on monthly
+				OR = {
+					is_justifying_wargoal_against = ROOT
+					has_wargoal_against = ROOT
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		level_down_cadet_training = yes
+		set_country_flag = { flag = cadet_training_change days = @AI_DAYS_CADET_TRAINING_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+
+#AI adapting laws to counter low Stability
+country_event = {
+	id = EAI_L.11
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		
+		has_stability < @AI_START_COUNTER_STABILITY
+	
+		OR = {
+			has_idea = bonds_print
+			has_idea = tot_economic_mobilisation
+			has_idea = tax_extreme
+			has_idea = bonds_state_requisition
+			has_idea = bonds_war_public
+			has_idea = tariffs_extreme
+			has_idea = tax_high
+			has_idea = labor_homefront
+			has_idea = planned_economy
+			has_idea = tax_high
+		}
+	}
+	#Order of laws which get leveled down if stability isnt under control
+	#Print Money
+	#Total Mobilization
+	#Extreme Taxes
+	#State Requisition
+	#Extreme Tariffs
+	#High Taxes
+	#Foreign Investors Encouraged
+	#Labor Homefront
+	#
+	#
+	#
+	#
+	#
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = bonds_print
+			}
+			if = {
+				limit = {
+					can_take_bonds_state_requisition = yes
+				}
+				add_ideas = bonds_state_requisition
+			}
+			else_if = {
+				limit = {
+					can_take_bonds_war_public = yes
+				}
+				add_ideas = bonds_war_public
+			}
+		}
+		
+		else_if = {
+			limit = {
+				has_idea = tot_economic_mobilisation
+			}
+			
+			add_ideas = war_economy
+		}
+		
+		else_if = {
+			limit = {
+				has_idea = tax_extreme
+			}
+			add_ideas = tax_high
+		}
+		
+		else_if = {
+			limit = {
+				OR = {
+					has_idea = bonds_state_requisition
+					has_idea = bonds_war_public
+				}
+			}
+			if = {
+				limit = {
+					can_take_bonds_war_international = yes
+				}
+				add_ideas = bonds_war_international
+			}
+			else_if = {
+				limit = {
+					can_take_bonds_war_domestic = yes
+				}
+				add_ideas = bonds_war_domestic
+			}
+		}
+		
+		else_if = {
+			limit = {
+				has_idea = tariffs_extreme
+			}
+			add_ideas = tariffs_high
+		}
+		
+		else_if = {
+			limit = {
+				has_idea = tax_high
+			}
+			add_ideas = tax_average
+		}
+		
+		else_if = {
+			limit = {
+				has_idea = labor_homefront
+			}
+			add_ideas = labor_encouraged
+		}
+		
+		else_if = {
+			limit = {
+				has_idea = planned_economy
+			}
+			add_ideas = major_industries
+		}
+		
+		else_if = {
+			limit = {
+				has_idea = tax_average
+			}
+			add_ideas = tax_low
+		}
+		
+		else_if = {
+			limit = {
+				has_idea = tax_low
+			}
+			add_ideas = tax_minimal
+		}
+	}
+	
+	option = { 
+		
+	}
+}
+
+country_event = {
+	id = EAI_L.12
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = tax_change }
+		
+		OR = {
+			AND = {
+				has_idea = tax_minimal
+				has_stability > 0.61
+			}
+			AND = {
+				has_idea = tax_low
+				has_stability > 0.72
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = tax_minimal 
+			}
+			add_ideas = tax_low
+		}
+		else_if = {
+			limit = {
+				has_idea = tax_low
+			}
+			add_ideas = tax_average
+		}
+		
+		set_country_flag = { flag = tax_change days = @AI_DAYS_TAXES_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+country_event = {
+	id = EAI_L.13
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = tax_change }
+		
+		has_stability > 0.85
+		
+		OR = {
+			has_idea = tax_minimal
+			has_idea = tax_low
+			has_idea = tax_average
+		}
+		NOT = { has_government = conservatism }
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		add_ideas = tax_high
+		
+		set_country_flag = { flag = tax_change days = @AI_DAYS_TAXES_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+
+country_event = {
+	id = EAI_L.14
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = tax_change }
+		
+		has_stability > 0.95
+		
+		OR = {
+			has_idea = tax_minimal
+			has_idea = tax_low
+			has_idea = tax_average
+			has_idea = tax_high
+		}
+		OR = { 
+			has_government = fascism
+			has_government = communism
+			has_government = monarchism
+			has_government = neutrality
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		add_ideas = tax_extreme
+		
+		set_country_flag = { flag = tax_change days = @AI_DAYS_TAXES_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+
+#TARIFFS LEVEL DOWN
+country_event = {
+	id = EAI_L.15
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = tarifs_change }
+		
+		OR = {
+			AND = {
+				has_idea = tariffs_high
+				has_stability < 0.75
+			}
+			AND = {
+				has_idea = tariffs_extreme
+				has_stability < 0.8
+			}
+			AND = {
+				has_idea = tariffs_average
+				check_variable = { modifier@production_factory_max_efficiency_factor < -0.05 }
+			}
+			AND = {
+				has_idea = tariffs_high
+				check_variable = { modifier@production_factory_max_efficiency_factor < 0 }
+			}
+			AND = {
+				has_idea = tariffs_extreme
+				check_variable = { modifier@production_factory_max_efficiency_factor < 0.05 }
+			}
+		}
+		
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = tariffs_extreme
+			}
+			add_ideas = tariffs_high
+		}
+		else_if = {
+			limit = {
+				has_idea = tariffs_high
+			}
+			add_ideas = tariffs_average
+		}
+		else_if = {
+			limit = { 	
+				has_idea = tariffs_average
+				NOT = {
+					has_government = fascism
+					has_government = communism
+				}
+			}
+		}
+		
+		set_country_flag = { flag = tariffs_change days = @AI_DAYS_TARIFFS_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+
+country_event = {
+	id = EAI_L.16
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = tarifs_change }
+		
+		OR = {
+			has_idea = tariffs_none
+			AND = {
+				has_idea = tariffs_average
+				check_variable = { modifier@production_factory_max_efficiency_factor > -0.08 }
+			}
+			AND = {
+				has_idea = tariffs_high
+				check_variable = { modifier@production_factory_max_efficiency_factor > -0.05 }
+				check_variable = { modifier@stability_weekly > -0.002 }
+			}
+		}
+		
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		if = {
+			limit = {
+				has_idea = tariffs_average
+			}
+			add_ideas = tariffs_high
+		}
+		else_if = {
+			limit = {
+				has_idea = tariffs_high
+			}
+			add_ideas = tariffs_extreme
+		}
+		
+		set_country_flag = { flag = tariffs_change days = @AI_DAYS_TARIFFS_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+
+country_event = {
+	id = EAI_L.17
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = tarifs_change }
+		
+		has_idea = tariffs_high
+		
+		check_variable = { modifier@production_factory_max_efficiency_factor > 0.1 }
+		has_stability > 0.85
+		
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		add_ideas = tariffs_extreme
+		
+		set_country_flag = { flag = tariffs_change days = @AI_DAYS_TARIFFS_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+
+#NATIONALIZATION
+country_event = {
+	id = EAI_L.18
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_country_flag = nationalization_change }
+		
+		has_idea = planned_economy
+		
+		has_stability < 0.65
+		
+		has_war = yes
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		add_ideas = major_industries
+	
+		set_country_flag = { flag = nationalization_change days = @AI_DAYS_NATIONALIZATION_CHANGE }
+	}
+	
+	option = { 
+		
+	}
+}
+
+

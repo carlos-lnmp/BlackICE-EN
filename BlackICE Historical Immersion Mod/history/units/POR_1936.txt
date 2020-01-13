@@ -1,0 +1,440 @@
+﻿instant_effect = {
+	set_country_flag = placed_research_centre
+
+	add_research_slot = 1
+	180 = { state_add_research_centre = yes }
+	SLOT:infantry_folder = yes
+	SLOT:support_folder = yes
+	SLOT:artillery_folder = yes
+}
+
+division_template = {
+	name = "Guarda Nacional Republicana"	
+	#division_names_group = 			# Infantry Division
+	# Note: each regiment could also mobilize a 3rd battalion if called up
+	template_counter = 114
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		
+		artillery_brigade = { x = 3 y = 0 }		 # Full howitzer regiment
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }   
+	}
+}
+division_template = {
+	name = "Divisão de Infantaria"		
+	division_names_group = POR_INF_01			# Infantry Division
+	# Note: also represents Guards, Fortress divisions
+	template_counter =  86
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		
+		garrison = { x = 2 y = 0 }
+		garrison = { x = 2 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }   
+	}
+}
+division_template = {
+	name = "Força de Caçadores"		
+	division_names_group = POR_CAC_01		# Elite light infantry, always fully mobilized w best equipment
+	template_counter = 368
+	priority = 2
+	
+	regiments = {
+		light_infantry = { x = 0 y = 0 }
+		light_infantry = { x = 0 y = 1 }
+		light_infantry = { x = 0 y = 2 }
+		light_infantry = { x = 0 y = 3 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Tropa de Montanha"		
+	division_names_group = POR_MNT_01			# Mountain Brigade
+	template_counter = 3007
+	
+	regiments = {
+		mountaineers = { x = 0 y = 0 }
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }
+		
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 } 
+	}
+}
+division_template = {
+	name = "Brigada de Cavalaria" 		
+	division_names_group = POR_CAV_01		# Cavalry Brigade
+	# Note: Cavalry regiments included about 5 squadrons/companies
+	template_counter = 209
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Brigada Motorizada de Infantaria" 		
+	division_names_group = POR_MOT_01		
+	# Note: regiments within the brigade were battalion-sized units
+	template_counter = 161
+	
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+		motorized = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_mot = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Brigada de Cavalaria Ligeira" 		
+	division_names_group = POR_ARM_01				# Armor Regiment
+	# Note: 2nd regiment created and merged with motorized inf to create Armor Division in 1940
+	template_counter = 241
+	
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		motorized = { x = 0 y = 3 }
+		
+		light_armor = { x = 1 y = 0 }
+		light_armor = { x = 1 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 } 
+		recon_mot = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Brigada de Guarda"  	
+	division_names_group = POR_GAR_01	
+	template_counter = 84
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+	}
+	 support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+##### OOB #####
+units = {
+	###### Exército Portugues #####
+	# Governo Militar Portugues #
+	division = {
+		name = "Governo Militar Portugues"
+		location = 11805
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.4
+	}
+	division = {
+		name = "Comando Norte da GNR"
+		location = 11805
+		division_template = "Guarda Nacional Republicana"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 11805
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.3
+	}
+	# 1a Distrito Militar #
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 9817
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.3
+	}
+	division = {
+		name = "Guarda Nacional Repuclicana do Porto"
+		location = 9817
+		division_template = "Guarda Nacional Republicana"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 9817
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.7
+	}
+	# 2a Distrito Militar #
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 3798
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 3798
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.6
+	}
+	# 3a Distrito Militar #
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 844
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.4
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 844
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.5
+	}
+	# 4a Distrito Militar #
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 9869
+		division_template = "Divisão de Infantaria"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.8
+	}
+	division = {
+		name = "Comando Sul da GNR"
+		location = 9869
+		division_template = "Guarda Nacional Republicana"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.8
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 9869
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.5
+	}
+	### Colonial Forces ###
+	division = {
+		name = "Caçadores de Azores"
+		location = 1751
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 22
+		}
+		location = 8248
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 23
+		}
+		location = 10966
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 24
+		}
+		location = 2123
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 25
+		}
+		location = 8245
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.3
+	}
+	division = {
+		name = "Força de Madeira"
+		location = 3118
+		division_template = "Brigada de Guarda"
+		start_experience_factor = 0.1
+	}
+	division = {
+		name = "Força de Guinea"
+		location = 12891
+		division_template = "Brigada de Guarda"
+		start_experience_factor = 0.1
+	}
+	division = {
+		name = "Força de Verde"
+		location = 13014
+		division_template = "Brigada de Guarda"
+		start_experience_factor = 0.1
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 28
+		}
+		location = 1273
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 30
+		}
+		location = 4189
+		division_template = "Força de Caçadores"
+		start_experience_factor = 0.3
+	}
+	division = {
+		name = "Força de Timor"
+		location = 12190
+		division_template = "Brigada de Guarda"
+		start_experience_factor = 0.1
+	}
+	division = {
+		name = "Força de Sao Tome"
+		location = 1886
+		division_template = "Brigada de Guarda"
+		start_experience_factor = 0.1
+	}			
+}
+### Aeronáutica Militar ###
+air_wings = {
+	112 = {
+		# Noite Esquadrão de Bombardeiro  -- Ju 52/3m bombers
+		tac_bomber_equipment_0 = {
+			owner = "POR" 
+			amount = 30
+		}
+		#hawker_fury_equipment_1 = {
+		#	owner = "POR"
+		#	creator = "ENG"
+		#	amount = 3
+		#}
+		#hawker_osprey_fighter_equipment_01 = { # Portugese Osprey
+		#	owner = "POR"
+		#	creator = "ENG"
+		#	amount = 2
+		#}
+		# Dia Esquadrão de Bombardeiro  -- Vickers Valparaiso light bombers
+		CAS_equipment_1 = {
+			owner = "POR" 
+			amount = 30
+		}
+	}
+}
+##### PRODUCTION #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "POR"
+		}
+		requested_factories = 1
+		progress = 0.47
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "POR"
+		}
+		requested_factories = 1
+		progress = 0.74
+		efficiency = 100
+	}
+##### ADDED TO STOCKPILE ##### 
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_1
+		amount = 500
+		producer = POR
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+		amount = 400
+		producer = POR
+	}
+	add_equipment_to_stockpile = {
+		type = garrison_equipment_0
+		amount = 400
+		producer = POR
+	}
+}
+### EOF ###

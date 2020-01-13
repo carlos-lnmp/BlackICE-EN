@@ -1,0 +1,2923 @@
+﻿add_namespace = EAI_V
+
+#TODO:
+#DONE:add more weight variables for specific upgrades, f.e. to encourage AI doing piercing variants with high armor in enemy countries
+#
+#
+#
+#
+#Variables
+#max_pierce
+#max_armor
+#enemy_max_pierce
+#enemy_max_armor
+#Variant Cost used by AI
+@LAND_VARIANT_COST = 10
+@AIR_VARIANT_COST = 25
+
+################################
+###### PRIORITIZE PIERCING #####
+################################
+#AT Techs (cat_anti_tank)
+#Variants:
+#AT_gun_sights (Anti Tank)
+#AT_ammunition (Artillery)
+#AT_ammo	   (Anti Air)
+#Trigger
+@ENTER_PEN_MODE_TRIGGER_AMOUNT = 2 #trigger value
+
+@PEN_MODE_MAX_ARMOR_TO_PEN_MULT = 0.5 #multiplies the difference between enemy max armor and our max piercing
+@PEN_MODE_ENEMY_ARMOR_DIV_MULT = 0.1 #multiplies enemy armor divisions
+
+#Equipment Designing
+@PEN_MODE_VARIANT_PRIORITY_FACTOR = 5.0 #factor to equipments with variants that add piercing 
+@PEN_MODE_VARIANT_SCORE_FACTOR = 4.0 #factor to variants that add piercing 
+
+#Techs
+@PEN_MODE_TECH_SCORE_FACTOR = 40.0 #factor to techs that add piercing 
+@PEN_MODE_MAX_ARMOR_TO_PEN_TECH_SCORE_FACTOR = 1.5 #multiplies the difference between enemy max armor and our max piercing 
+@PEN_MODE_ENEMY_ARMOR_DIV_TECH_SCORE_FACTOR = 0.5 #multiplies enemy armor divisions
+
+################################
+###### PRIORITIZE ANTI AIR #####
+################################
+@ENTER_AA_MODE_TRIGGER_AMOUNT = 3
+
+@AA_MODE_ENEMY_AIR_MIN_DIFF = 200 #is true if enemies have more than this many planes than us
+@AA_MODE_ENEMY_AIR_SIZE_RATIO_MULT = 10.0
+		   
+@AA_MODE_STATE_TO_ANTI_AIR_RATIO_BASE = 0.1 #ratio of states with Anti Air AI desires
+@AA_MODE_STATE_RATIO_PLANE_DIFFERENCE_MULT = 0.00 #multiplies the additional planes enemy has
+#TODO: before coding this think about how AI should prioritize building in 1 region at a time
+#State Score for building Anti Air
+@AA_MODE_STRATEGIC_VALUE_MULT = 0.5
+
+@AA_MODE_STATE_CAPITAL_SCORE_FACTOR = 5
+@AA_MODE_STATE_CORE_SCORE_FACTOR = 2
+@AA_MODE_STATE_OCCUPIED_SCORE_FACTOR = 0.75
+
+@AA_MODE_STATE_MIN_INFRA_FOR_MULT = 4
+@AA_MODE_STATE_INFRA_LVL_SCORE_FACTOR = 0.25
+
+@AA_MODE_STATE_MIN_AIRBASE_FOR_MULT = 4
+@AA_MODE_STATE_AIRBASE_LVL_SCORE_FACTOR = 0.25
+
+#################################
+##### AI Equipment Variants ##### 
+#################################
+
+@MAX_MONTHLY_INFANTRY_DESIGNS = 1 #how many different equipments AI designs max
+@MAX_MONTHLY_ARTY_DESIGNS = 1 #how many different equipments AI designs max
+@MAX_MONTHLY_TANK_DESIGNS = 1 #how many different equipments AI designs max
+@MAX_MONTHLY_AIR_DESIGNS = 1 #how many different equipments AI designs max
+
+@BASE_LAND_XP_TRIGGER = 50
+@BASE_AIR_XP_TRIGGER = 50
+
+@VARIANT_INFANTRY_EQ_PRIORITY = 200 
+@VARIANT_SUPPORT_EQ_PRIORITY = 100 
+@VARIANT_HMG_EQ_PRIORITY = 200 
+@VARIANT_MORTAR_EQ_PRIORITY = 200 
+@VARIANT_UNIFORM_EQ_PRIORITY = 100 
+@VARIANT_INF_AT_EQ_PRIORITY = 200  
+
+@VARIANT_LT_ARTY_PRIORITY = 300  
+@VARIANT_MED_ARTY_PRIORITY = 300  
+@VARIANT_ANTI_AIR_PRIORITY = 200 
+@VARIANT_HV_ANTI_AIR_PRIORITY = 200 
+@VARIANT_ANTI_TANK_PRIORITY = 200
+@VARIANT_HV_ANTI_TANK_PRIORITY = 200 
+
+@VARIANT_AT_PRIORITY_ARMOR_MULT = 0.2 #multiplies enemy armor divisions and uses as a factor, for all equipments that could add piercing
+
+@VARIANT_TANK_EQ_PRIORITY = 400 
+
+@VARIANT_FIGHTER_PRIORITY = 300 
+@VARIANT_HV_FIGHTER_PRIORITY = 0
+@VARIANT_CAS_PRIORITY = 250 
+@VARIANT_HV_CAS_PRIORITY = 0 
+@VARIANT_NV_BOMBER_PRIORITY = 200
+@VARIANT_STRAT_BOMBER_PRIORITY = 100
+@VARIANT_OTHER_BOMBER_PRIORITY = 0
+@VARIANT_JET_PRIORITY = 0
+
+@VARIANT_MISSING_AIRFRAME_FACTOR = 10.0 #factor to priority if airframe isnt maxed out
+
+country_event = { #Designing Variants
+	id = EAI_V.0
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		OR = { 
+			has_army_experience > @BASE_LAND_XP_TRIGGER
+			has_air_experience > @BASE_AIR_XP_TRIGGER
+		}
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		if = { #Prioritize Piercing
+			limit = {
+				set_temp_variable = { trigger = 0 }
+				
+				set_temp_variable = { armor_diff_trigger = enemy_max_armor }
+				subtract_from_temp_variable = { armor_diff_trigger = max_pierce }
+				multiply_temp_variable = { armor_diff_trigger = @PEN_MODE_MAX_ARMOR_TO_PEN_MULT }
+				add_to_temp_variable = { trigger = armor_diff_trigger }
+				
+				set_temp_variable = { armor_trigger = enemy_armor }
+				multiply_temp_variable = { armor_trigger = @PEN_MODE_ENEMY_ARMOR_DIV_MULT }
+				add_to_temp_variable = { trigger = armor_trigger }
+				
+				check_variable = { 
+					var = trigger
+					value = @ENTER_PEN_MODE_TRIGGER_AMOUNT
+					compare = greater_than_or_equals
+				}
+			}
+			set_country_flag = { flag = desires_piercing value = 1 days = 32 }
+			
+			set_variable = { tech_armor_score = @PEN_MODE_TECH_SCORE_FACTOR }
+			
+			set_temp_variable = { armor_factor = enemy_num_armor }
+			multiply_temp_variable = { armor_factor = @PEN_MODE_ENEMY_ARMOR_DIV_TECH_SCORE_FACTOR }
+			add_to_variable = { tech_armor_score = armor_factor }
+			
+			set_temp_variable = { armor_diff_factor = enemy_max_armor }
+			subtract_from_temp_variable = { armor_diff_factor = max_pierce }
+			multiply_temp_variable = { armor_diff_factor = @PEN_MODE_MAX_ARMOR_TO_PEN_TECH_SCORE_FACTOR }
+			add_to_variable = { tech_armor_score = armor_diff_factor }	
+		}
+		
+		
+		if = {
+			limit = {
+				NOT = { EAI_save_army_xp = yes }
+			}
+			
+			set_temp_variable = { max_inf_designs = @MAX_MONTHLY_INFANTRY_DESIGNS }
+			set_temp_variable = { enemy_armor = enemy_num_armor }
+			multiply_temp_variable = { enemy_armor = @VARIANT_AT_PRIORITY_ARMOR_MULT }
+			
+			while_loop_effect = {
+				limit = { 
+					check_variable = { max_inf_designs > 0 }
+				}
+				
+				subtract_from_temp_variable = { max_inf_designs = 1 }
+				
+				meta_effect = {
+					text = {
+						random_list = {
+							[VARIANT_INFANTRY_EQ_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_INFANTRY_EQ_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.100
+								modifier = { factor = 0 has_country_flag = infantry_eq_end }
+							}
+							[VARIANT_SUPPORT_EQ_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_SUPPORT_EQ_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.110
+								modifier = { factor = 0 has_country_flag = support_eq_end }
+							}
+							[VARIANT_HMG_EQ_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_HMG_EQ_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.102
+								modifier = { factor = 0 has_country_flag = hmg_eq_end }
+							}
+							[VARIANT_MORTAR_EQ_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_MORTAR_EQ_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.103
+								modifier = { factor = 0 has_country_flag = mortar_eq_end }
+							}
+							[VARIANT_UNIFORM_EQ_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_UNIFORM_EQ_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.101
+								modifier = { factor = 0 has_country_flag = uniform_eq_end }
+							}
+							[VARIANT_INF_AT_EQ_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_INF_AT_EQ_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.111
+								modifier = { factor = 0 has_country_flag = inf_at_eq_end }
+								modifier = { factor = [VARIANT_AT_PRIORITY_ARMOR_MULT] }
+								modifier = { factor = [PEN_MODE_VARIANT_PRIORITY_FACTOR] desires_piercing = yes }
+							}
+						}
+					}
+					VARIANT_INFANTRY_EQ_PRIORITY = @VARIANT_INFANTRY_EQ_PRIORITY
+					VARIANT_SUPPORT_EQ_PRIORITY = @VARIANT_SUPPORT_EQ_PRIORITY
+					VARIANT_HMG_EQ_PRIORITY = @VARIANT_HMG_EQ_PRIORITY
+					VARIANT_MORTAR_EQ_PRIORITY = @VARIANT_MORTAR_EQ_PRIORITY
+					VARIANT_UNIFORM_EQ_PRIORITY = @VARIANT_UNIFORM_EQ_PRIORITY
+					VARIANT_INF_AT_EQ_PRIORITY = @VARIANT_INF_AT_EQ_PRIORITY
+					VARIANT_INF_AT_EQ_PRIORITY = @VARIANT_INF_AT_EQ_PRIORITY
+					
+					VARIANT_AT_PRIORITY_ARMOR_MULT = enemy_armor
+					
+					PEN_MODE_VARIANT_PRIORITY_FACTOR = @PEN_MODE_VARIANT_PRIORITY_FACTOR
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				NOT = { EAI_save_army_xp = yes }
+			}
+			
+			set_temp_variable = { max_arty_designs = @MAX_MONTHLY_ARTY_DESIGNS }
+				
+			while_loop_effect = {
+				limit = { 
+					check_variable = { max_arty_designs > 0 }
+				}
+				
+				subtract_from_temp_variable = { max_arty_designs = 1 }
+				
+				meta_effect = {
+					text = {
+						random_list = {
+							[VARIANT_LT_ARTY_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_LT_ARTY_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.104
+								modifier = { factor = 0 has_country_flag = lt_arty_end }
+							}
+							[VARIANT_MED_ARTY_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_MED_ARTY_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.105
+								modifier = { factor = 0 has_country_flag = med_arty_end }
+							}
+							[VARIANT_ANTI_AIR_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_ANTI_AIR_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.108
+								modifier = { factor = 0 has_country_flag = aa_eq_end }
+								modifier = { factor = [VARIANT_AT_PRIORITY_ARMOR_MULT] }
+								modifier = { factor = [PEN_MODE_VARIANT_PRIORITY_FACTOR] desires_piercing = yes }
+							}
+							[VARIANT_HV_ANTI_AIR_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_HV_ANTI_AIR_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.109
+								modifier = { factor = 0 has_country_flag = hv_aa_eq_end }
+								modifier = { factor = [VARIANT_AT_PRIORITY_ARMOR_MULT] }
+								modifier = { factor = [PEN_MODE_VARIANT_PRIORITY_FACTOR] desires_piercing = yes }
+							}
+							[VARIANT_ANTI_TANK_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_ANTI_TANK_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.106
+								modifier = { factor = 0 has_country_flag = at_eq_end }
+								modifier = { factor = [VARIANT_AT_PRIORITY_ARMOR_MULT] }
+								modifier = { factor = [PEN_MODE_VARIANT_PRIORITY_FACTOR] desires_piercing = yes }
+							}
+							[VARIANT_HV_ANTI_TANK_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_HV_ANTI_TANK_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.107
+								modifier = { factor = 0 has_country_flag = hv_at_eq_end }
+								modifier = { factor = [VARIANT_AT_PRIORITY_ARMOR_MULT] }
+								modifier = { factor = [PEN_MODE_VARIANT_PRIORITY_FACTOR] desires_piercing = yes }
+							}
+						}
+					}
+					VARIANT_LT_ARTY_PRIORITY = @VARIANT_LT_ARTY_PRIORITY
+					VARIANT_MED_ARTY_PRIORITY = @VARIANT_MED_ARTY_PRIORITY
+					VARIANT_ANTI_AIR_PRIORITY = @VARIANT_ANTI_AIR_PRIORITY
+					VARIANT_HV_ANTI_AIR_PRIORITY = @VARIANT_HV_ANTI_AIR_PRIORITY
+					VARIANT_ANTI_TANK_PRIORITY = @VARIANT_ANTI_TANK_PRIORITY
+					VARIANT_HV_ANTI_TANK_PRIORITY = @VARIANT_HV_ANTI_TANK_PRIORITY
+					
+					PEN_MODE_VARIANT_PRIORITY_FACTOR = @PEN_MODE_VARIANT_PRIORITY_FACTOR
+					
+					VARIANT_AT_PRIORITY_ARMOR_MULT = enemy_armor
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				NOT = { EAI_save_army_xp = yes }
+			}
+		
+			set_temp_variable = { max_tank_designs = @MAX_MONTHLY_TANK_DESIGNS }
+			
+			while_loop_effect = {
+				limit = { 
+					check_variable = { max_tank_designs > 0 }
+				}
+				
+				subtract_from_temp_variable = { max_tank_designs = 1 }
+				
+				meta_effect = {
+					text = {
+						random_list = {
+							[VARIANT_TANK_EQ_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_TANK_EQ_PRIORITY days = 1 value = 1 }
+								modifier = { factor = 0 has_country_flag = tank_end }
+							}
+						}
+					}
+					VARIANT_TANK_EQ_PRIORITY = @VARIANT_TANK_EQ_PRIORITY
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				NOT = { EAI_save_air_xp = yes }
+			}
+		
+			set_temp_variable = { max_air_designs = @MAX_MONTHLY_AIR_DESIGNS }
+			
+			while_loop_effect = {
+				limit = { 
+					check_variable = { max_air_designs > 0 }
+				}
+				
+				subtract_from_temp_variable = { max_air_designs = 1 }
+				
+				meta_effect = {
+					text = {
+						random_list = {
+							[VARIANT_FIGHTER_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_FIGHTER_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.200
+								modifier = { factor = 0 has_country_flag = fighter_end }
+								modifier = { factor = [VARIANT_MISSING_AIRFRAME_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_8 compare = greater_than_or_equals
+										value = [FIGHTER_VARIANT_8_MAX] } } }
+							}
+							[VARIANT_HV_FIGHTER_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_HV_FIGHTER_PRIORITY days = 1 value = 1 }
+								modifier = { factor = 0 has_country_flag = hv_fighter_end }
+							}
+							[VARIANT_CAS_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_CAS_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.201
+								modifier = { factor = 0 has_country_flag = cas_end }
+								modifier = { factor = [VARIANT_MISSING_AIRFRAME_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+										value = [CAS_VARIANT_8_MAX] } } }
+							}
+							[VARIANT_HV_CAS_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_HV_CAS_PRIORITY days = 1 value = 1 }
+								modifier = { factor = 0 has_country_flag = hv_cas_end }
+							}
+							[VARIANT_NV_BOMBER_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_NV_BOMBER_PRIORITY days = 1 value = 1 }
+								modifier = { factor = 0 has_country_flag = hv_cas_end }
+								modifier = { factor = [VARIANT_MISSING_AIRFRAME_FACTOR] NOT = { check_variable = { var = NV_BOMB_equipment_lvl_4 compare = greater_than_or_equals
+										value = [NV_BOMB_VARIANT_4_MAX] } } }
+							}
+							[VARIANT_STRAT_BOMBER_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_STRAT_BOMBER_PRIORITY days = 1 value = 1 }
+								country_event = EAI_V.202
+								modifier = { factor = 0 has_country_flag = hv_cas_end }
+								modifier = { factor = [VARIANT_MISSING_AIRFRAME_FACTOR] NOT = { check_variable = { var = STRAT_equipment_lvl_1 compare = greater_than_or_equals
+										value = [STRAT_VARIANT_1_MAX] } } }
+							}
+							[VARIANT_OTHER_BOMBER_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_OTHER_BOMBER_PRIORITY days = 1 value = 1 }
+								modifier = { factor = 0 has_country_flag = hv_cas_end }
+							}
+							[VARIANT_JET_PRIORITY] = {
+								set_country_flag = { flag = VARIANT_JET_PRIORITY days = 1 value = 1 }
+								modifier = { factor = 0 has_country_flag = hv_cas_end }
+							}
+						}
+					}
+					VARIANT_FIGHTER_PRIORITY = @VARIANT_FIGHTER_PRIORITY
+					VARIANT_HV_FIGHTER_PRIORITY = @VARIANT_HV_FIGHTER_PRIORITY
+					VARIANT_CAS_PRIORITY = @VARIANT_CAS_PRIORITY
+					VARIANT_HV_CAS_PRIORITY = @VARIANT_HV_CAS_PRIORITY
+					VARIANT_NV_BOMBER_PRIORITY = @VARIANT_NV_BOMBER_PRIORITY
+					VARIANT_STRAT_BOMBER_PRIORITY = @VARIANT_STRAT_BOMBER_PRIORITY
+					VARIANT_OTHER_BOMBER_PRIORITY = @VARIANT_OTHER_BOMBER_PRIORITY
+					VARIANT_JET_PRIORITY = @VARIANT_JET_PRIORITY
+					
+					VARIANT_MISSING_AIRFRAME_FACTOR = @VARIANT_MISSING_AIRFRAME_FACTOR
+				}
+			}
+		}
+	}
+}
+
+##############################
+##### Infantry Equipment ##### 
+##############################
+
+@INFANTRY_EQUIPMENT_XP_TRIGGER = 50 #xp required to create an infantry equipment variant
+@INFANTRY_EQUIPMENT_MAX_VARIANT_AT_ONCE = 2 #if AI has enough XP this many levels will get added
+@INFANTRY_EQUIPMENT_COOLDOWN = 1 #cooldown in days
+
+@INFANTRY_EQUIPMENT_VARIANT_1_CHANCE = 20 #chance for picking weapons_quality_upgrade
+@INFANTRY_EQUIPMENT_VARIANT_2_CHANCE = 60 #chance for picking weapons_rifle_grenade_upgrade
+@INFANTRY_EQUIPMENT_VARIANT_3_CHANCE = 60 #chance for picking weapons_smoke_grenade_upgrade
+
+@INFANTRY_EQUIPMENT_VARIANT_1_MAX = 3 #weapons_quality_upgrade #5 is the true max 
+@INFANTRY_EQUIPMENT_VARIANT_2_MAX = 3 #weapons_rifle_grenade_upgrade
+@INFANTRY_EQUIPMENT_VARIANT_3_MAX = 3 #weapons_smoke_grenade_upgrade
+
+
+#############################
+##### Infantry Uniforms ##### 
+#############################
+
+@INFANTRY_UNIFORM_XP_TRIGGER = 50 #xp required to create an infantry uniform variant
+@INFANTRY_UNIFORM_MAX_VARIANT_AT_ONCE = 2 #if AI has enough XP this many levels will get added
+@INFANTRY_UNIFORM_COOLDOWN = 1 #cooldown in days
+
+@INFANTRY_UNIFORM_VARIANT_1_CHANCE = 10 #chance for picking uniform_quality_upgrade
+@INFANTRY_UNIFORM_VARIANT_2_CHANCE = 10 #chance for picking cheap_uniforms_upgrade
+@INFANTRY_UNIFORM_VARIANT_3_CHANCE = 90 #chance for picking camo_upgrade
+@INFANTRY_UNIFORM_VARIANT_4_CHANCE = 10 #chance for picking weather_upgrade
+
+@INFANTRY_UNIFORM_VARIANT_1_MAX = 5 #uniform_quality_upgrade
+@INFANTRY_UNIFORM_VARIANT_2_MAX = 5 #cheap_uniforms_upgrade
+@INFANTRY_UNIFORM_VARIANT_3_MAX = 5 #camo_upgrade
+@INFANTRY_UNIFORM_VARIANT_4_MAX = 5 #weather_upgrade
+
+
+#############################
+##### Support Equipment ##### 
+#############################
+
+@SUPPORT_EQUIPMENT_XP_TRIGGER = 50 #xp required to create an infantry uniform variant
+@SUPPORT_EQUIPMENT_MAX_VARIANT_AT_ONCE = 1 #if AI has enough XP this many levels will get added
+@SUPPORT_EQUIPMENT_COOLDOWN = 1 #cooldown in days
+
+@SUPPORT_EQUIPMENT_VARIANT_1_CHANCE = 30 #chance for picking support_medicine_upgrade
+@SUPPORT_EQUIPMENT_VARIANT_2_CHANCE = 70 #chance for picking support_tools_upgrade
+
+@SUPPORT_EQUIPMENT_VARIANT_1_MAX = 4 #support_medicine_upgrade
+@SUPPORT_EQUIPMENT_VARIANT_2_MAX = 2 #support_tools_upgrade
+
+#########################
+##### HMG Equipment ##### 
+#########################
+
+@HMG_EQUIPMENT_XP_TRIGGER = 50 #xp required to create a hmg equipment variant
+@HMG_EQUIPMENT_MAX_VARIANT_AT_ONCE = 2 #if AI has enough XP this many levels will get added
+@HMG_EQUIPMENT_COOLDOWN = 1 #cooldown in days
+
+@HMG_EQUIPMENT_VARIANT_1_CHANCE = 70 #chance for picking hmg_maintenance_upgrade
+@HMG_EQUIPMENT_VARIANT_2_CHANCE = 30 #chance for picking hmg_rof_upgrade
+
+@HMG_EQUIPMENT_VARIANT_1_MAX = 2 #hmg_maintenance_upgrade
+@HMG_EQUIPMENT_VARIANT_2_MAX = 2 #hmg_rof_upgrade
+
+############################
+##### Mortar Equipment ##### 
+############################
+
+@MORTAR_EQUIPMENT_XP_TRIGGER = 50 #xp required to create a mortar equipment variant
+@MORTAR_EQUIPMENT_MAX_VARIANT_AT_ONCE = 2 #if AI has enough XP this many levels will get added
+@MORTAR_EQUIPMENT_COOLDOWN = 90 #cooldown in days
+
+@MORTAR_EQUIPMENT_VARIANT_1_CHANCE = 70 #chance for picking mortar_smoke_upgrade
+@MORTAR_EQUIPMENT_VARIANT_2_CHANCE = 30 #chance for picking mortar_flare_upgrade
+
+@MORTAR_EQUIPMENT_VARIANT_1_MAX = 4 #mortar_smoke_upgrade
+@MORTAR_EQUIPMENT_VARIANT_2_MAX = 4 #mortar_flare_upgrade
+
+################################# 
+##### Infantry AT Equipment ##### 
+################################# 
+
+@INF_AT_EQUIPMENT_XP_TRIGGER = 50 #xp required to create a INF_AT equipment variant
+@INF_AT_EQUIPMENT_MAX_VARIANT_AT_ONCE = 2 #if AI has enough XP this many levels will get added
+@INF_AT_EQUIPMENT_COOLDOWN = 1 #cooldown in days
+
+@INF_AT_EQUIPMENT_VARIANT_1_CHANCE = 30 #chance for picking infantry_antitank_he_upgrade
+@INF_AT_EQUIPMENT_VARIANT_2_CHANCE = 70 #chance for picking infantry_antitank_sights_upgrade
+
+@INF_AT_EQUIPMENT_VARIANT_1_MAX = 1 #infantry_antitank_he_upgrade
+@INF_AT_EQUIPMENT_VARIANT_2_MAX = 2 #infantry_antitank_sights_upgrade
+
+###########################
+##### Light Artillery ##### 
+###########################
+
+@LIGHT_ARTY_XP_TRIGGER = 50 #xp required to create a light artillery variant
+@LIGHT_ARTY_MAX_VARIANT_AT_ONCE = 2 #if AI has enough XP this many levels will get added
+@LIGHT_ARTY_COOLDOWN = 1 #cooldown in days
+
+@LIGHT_ARTY_VARIANT_1_CHANCE = 20 #chance for picking propellant_charge
+@LIGHT_ARTY_VARIANT_2_CHANCE = 85 #chance for picking range_finder
+@LIGHT_ARTY_VARIANT_3_CHANCE = 0 #chance for picking AA_protection
+@LIGHT_ARTY_VARIANT_4_CHANCE = 5 #chance for picking carriage_upgrade
+@LIGHT_ARTY_VARIANT_5_CHANCE = 10 #chance for picking AT_ammunition
+
+@LIGHT_ARTY_VARIANT_1_MAX = 5 #propellant_charge #5
+@LIGHT_ARTY_VARIANT_2_MAX = 5 #range_finder #5
+@LIGHT_ARTY_VARIANT_3_MAX = 5 #AA_protection #5
+@LIGHT_ARTY_VARIANT_4_MAX = 5 #carriage_upgrade #5
+@LIGHT_ARTY_VARIANT_5_MAX = 5 #AT_ammunition #5
+
+############################
+##### Medium Artillery ##### 
+############################
+
+@MED_ARTY_XP_TRIGGER = 50 #xp required to create a medium artillery variant
+@MED_ARTY_MAX_VARIANT_AT_ONCE = 3 #if AI has enough XP this many levels will get added
+@MED_ARTY_COOLDOWN = 1 #cooldown in days
+
+@MED_ARTY_VARIANT_1_CHANCE = 20 #chance for picking propellant_charge
+@MED_ARTY_VARIANT_2_CHANCE = 85 #chance for picking range_finder
+@MED_ARTY_VARIANT_3_CHANCE = 0 #chance for picking AA_protection
+@MED_ARTY_VARIANT_4_CHANCE = 5 #chance for picking carriage_upgrade
+@MED_ARTY_VARIANT_5_CHANCE = 10 #chance for picking AT_ammunition
+
+@MED_ARTY_VARIANT_1_MAX = 5 #propellant_charge
+@MED_ARTY_VARIANT_2_MAX = 5 #range_finder
+@MED_ARTY_VARIANT_3_MAX = 5 #AA_protection
+@MED_ARTY_VARIANT_4_MAX = 5 #carriage_upgrade
+@MED_ARTY_VARIANT_5_MAX = 5 #AT_ammunition
+
+#####################
+##### Anti Tank ##### 
+#####################
+
+@ANTI_TANK_XP_TRIGGER = 50 #xp required to create a medium artillery variant
+@ANTI_TANK_MAX_VARIANT_AT_ONCE = 2 #if AI has enough XP this many levels will get added
+@ANTI_TANK_COOLDOWN = 1 #cooldown in days
+
+@ANTI_TANK_ARMOR_WEIGHT = 1.5 #multiplies max armor of enemies and adds it to the AT_gun_sights weight (piercing)
+
+@ANTI_TANK_VARIANT_1_CHANCE = 70 #chance for picking HE_ammo
+@ANTI_TANK_VARIANT_2_CHANCE = 70 #chance for picking AT_gun_sights
+@ANTI_TANK_VARIANT_3_CHANCE = 20 #chance for picking AT_shield_upgrade
+@ANTI_TANK_VARIANT_4_CHANCE = 20 #chance for picking carriage_upgrade
+
+@ANTI_TANK_VARIANT_1_MAX = 5 #HE_ammo
+@ANTI_TANK_VARIANT_2_MAX = 5 #AT_gun_sights
+@ANTI_TANK_VARIANT_3_MAX = 5 #AT_shield_upgrade
+@ANTI_TANK_VARIANT_4_MAX = 5 #carriage_upgrade
+
+###########################
+##### Heavy Anti Tank ##### 
+###########################
+
+@HV_ANTI_TANK_XP_TRIGGER = 50 #xp required to create a medium artillery variant
+@HV_ANTI_TANK_MAX_VARIANT_AT_ONCE = 3 #if AI has enough XP this many levels will get added
+@HV_ANTI_TANK_COOLDOWN = 1 #cooldown in days
+
+@HV_ANTI_TANK_ARMOR_WEIGHT = 2.0 #multiplies max armor of enemies and adds it to the AT_gun_sights weight (piercing)
+
+@HV_ANTI_TANK_VARIANT_1_CHANCE = 70 #chance for picking HE_ammo
+@HV_ANTI_TANK_VARIANT_2_CHANCE = 70 #chance for picking AT_gun_sights
+@HV_ANTI_TANK_VARIANT_3_CHANCE = 20 #chance for picking AT_shield_upgrade
+@HV_ANTI_TANK_VARIANT_4_CHANCE = 20 #chance for picking carriage_upgrade
+
+@HV_ANTI_TANK_VARIANT_1_MAX = 5 #HE_ammo
+@HV_ANTI_TANK_VARIANT_2_MAX = 5 #AT_gun_sights
+@HV_ANTI_TANK_VARIANT_3_MAX = 5 #AT_shield_upgrade
+@HV_ANTI_TANK_VARIANT_4_MAX = 5 #carriage_upgrade
+
+####################
+##### Anti Air ##### 
+####################
+
+@ANTI_AIR_XP_TRIGGER = 50 #xp required to create a medium artillery variant
+@ANTI_AIR_MAX_VARIANT_AT_ONCE = 2 #if AI has enough XP this many levels will get added
+@ANTI_AIR_COOLDOWN = 1 #cooldown in days
+
+@ANTI_AIR_ARMOR_WEIGHT = 0.5 #multiplies max armor of enemies and adds it to the AT_ammo weight (piercing)
+
+@ANTI_AIR_VARIANT_1_CHANCE = 10 #chance for picking AT_ammo
+@ANTI_AIR_VARIANT_2_CHANCE = 100 #chance for picking AA_gun_sights
+@ANTI_AIR_VARIANT_3_CHANCE = 100 #chance for picking AA_shell_fuse
+
+@ANTI_AIR_VARIANT_1_MAX = 5 #AT_ammo
+@ANTI_AIR_VARIANT_2_MAX = 5 #AA_gun_sights
+@ANTI_AIR_VARIANT_3_MAX = 1 #AA_shell_fuse
+
+########################## 
+##### Heavy Anti Air ##### 
+##########################
+
+@HV_ANTI_AIR_XP_TRIGGER = 50 #xp required to create a medium artillery variant
+@HV_ANTI_AIR_MAX_VARIANT_AT_ONCE = 2 #if AI has enough XP this many levels will get added
+@HV_ANTI_AIR_COOLDOWN = 1 #cooldown in days
+
+@HV_ANTI_AIR_ARMOR_WEIGHT = 2.0 #multiplies max armor of enemies and adds it to the AT_ammo weight (piercing)
+
+@HV_ANTI_AIR_VARIANT_1_CHANCE = 20 #chance for picking AT_ammo
+@HV_ANTI_AIR_VARIANT_2_CHANCE = 80 #chance for picking AA_gun_sights
+
+@HV_ANTI_AIR_VARIANT_1_MAX = 5 #AT_ammo
+@HV_ANTI_AIR_VARIANT_2_MAX = 5 #AA_gun_sights
+
+########################
+##### Medium Armor ##### 
+########################
+
+@MED_ARMOR_XP_TRIGGER = 50 #xp required to create a medium armor variant
+@MED_ARMOR_MAX_VARIANT_AT_ONCE = 4 #if AI has enough XP this many levels will get added
+@MED_ARMOR_COOLDOWN = 1 #cooldown in days
+
+@MED_ARMOR_ARMOR_WEIGHT = 2.0 #multiplies max enemy armor and adds it to the tank_at_upgrade & tank_gun_upgrade
+@MED_ARMOR_PIERCING_WEIGHT = 2.0 #multiplies max enemy piercing and adds it to the tank_armor_upgrade & tank_sloped_upgrade
+
+@MED_ARMOR_VARIANT_1_CHANCE = 20 #chance for picking tank_gun_upgrade
+@MED_ARMOR_VARIANT_2_CHANCE = 80 #chance for picking tank_armor_upgrade
+@MED_ARMOR_VARIANT_3_CHANCE = 5 #tank_engine_upgrade
+@MED_ARMOR_VARIANT_4_CHANCE = 5 #tank_reliability_upgrade
+@MED_ARMOR_VARIANT_5_CHANCE = 5 #tank_aa_upgrade
+@MED_ARMOR_VARIANT_6_CHANCE = 5 #tank_at_upgrade
+@MED_ARMOR_VARIANT_7_CHANCE = 5 #tank_art_upgrade
+@MED_ARMOR_VARIANT_8_CHANCE = 3 #tank_sloped_upgrade
+@MED_ARMOR_VARIANT_9_CHANCE = 5 #tank_sights_upgrade
+@MED_ARMOR_VARIANT_10_CHANCE = 5 #tank_radio_upgrade
+@MED_ARMOR_VARIANT_11_CHANCE = 5 #tank_anti_inf_upgrade
+@MED_ARMOR_VARIANT_12_CHANCE = 2 #tank_stabilizer_upgrade
+@MED_ARMOR_VARIANT_13_CHANCE = 2 #tank_smoke_upgrade
+
+@MED_ARMOR_VARIANT_1_MAX = 5 #tank_gun_upgrade
+@MED_ARMOR_VARIANT_2_MAX = 5 #tank_armor_upgrade
+@MED_ARMOR_VARIANT_3_MAX = 5 #tank_engine_upgrade
+@MED_ARMOR_VARIANT_4_MAX = 5 #tank_reliability_upgrade
+@MED_ARMOR_VARIANT_5_MAX = 5 #tank_aa_upgrade
+@MED_ARMOR_VARIANT_6_MAX = 5 #tank_at_upgrade
+@MED_ARMOR_VARIANT_7_MAX = 5 #tank_art_upgrade
+@MED_ARMOR_VARIANT_8_MAX = 3 #tank_sloped_upgrade
+@MED_ARMOR_VARIANT_9_MAX = 5 #tank_sights_upgrade
+@MED_ARMOR_VARIANT_10_MAX = 5 #tank_radio_upgrade
+@MED_ARMOR_VARIANT_11_MAX = 5 #tank_anti_inf_upgrade
+@MED_ARMOR_VARIANT_12_MAX = 2 #tank_stabilizer_upgrade
+@MED_ARMOR_VARIANT_13_MAX = 2 #tank_smoke_upgrade
+
+########################
+##### AIR: Fighter ##### 
+########################
+
+@FIGHTER_XP_TRIGGER = 50 #xp required to create a fighter equipment variant
+@FIGHTER_MAX_VARIANT_AT_ONCE = 3 #if AI has enough XP this many levels will get added
+@FIGHTER_COOLDOWN = 1 #cooldown in days
+
+@FIGHTER_AIRFRAME_FACTOR = 0.1 #factor to all other variants if airframe isnt maxed out
+@FIGHTER_ENGINE_FACTOR = 0.5 #factor to all other variants if engine isnt maxed out
+
+@FIGHTER_VARIANT_1_CHANCE = 10 #chance for picking plane_gun_upgrade
+@FIGHTER_VARIANT_2_CHANCE = 10 #chance for picking plane_range_upgrade
+@FIGHTER_VARIANT_3_CHANCE = 90 #chance for picking plane_engine_upgrade
+@FIGHTER_VARIANT_4_CHANCE = 70 #chance for picking plane_reliability_upgrade
+@FIGHTER_VARIANT_5_CHANCE = 50 #chance for picking plane_drop_tank_upgrade
+@FIGHTER_VARIANT_6_CHANCE = 60 #chance for picking plane_light_cannons_upgrade
+@FIGHTER_VARIANT_7_CHANCE = 100 #chance for picking plane_bubble_canopy_upgrade
+@FIGHTER_VARIANT_8_CHANCE = 80 #chance for picking plane_airframe_upgrade
+@FIGHTER_VARIANT_9_CHANCE = 50 #chance for picking plane_radar_upgrade
+
+@FIGHTER_VARIANT_1_MAX = 5 #plane_gun_upgrade
+@FIGHTER_VARIANT_2_MAX = 5 #plane_range_upgrade
+@FIGHTER_VARIANT_3_MAX = 5 #plane_engine_upgrade100
+@FIGHTER_VARIANT_4_MAX = 5 #plane_reliability_upgrade
+@FIGHTER_VARIANT_5_MAX = 1 #plane_drop_tank_upgrade
+@FIGHTER_VARIANT_6_MAX = 3 #plane_light_cannons_upgrade
+@FIGHTER_VARIANT_7_MAX = 1 #plane_bubble_canopy_upgrade
+@FIGHTER_VARIANT_8_MAX = 3 #plane_airframe_upgrade
+@FIGHTER_VARIANT_9_MAX = 3 #plane_radar_upgrade
+
+####################
+##### AIR: CAS ##### 
+####################
+
+@CAS_XP_TRIGGER = 50 #xp required to create a fighter equipment variant
+@CAS_MAX_VARIANT_AT_ONCE = 3 #if AI has enough XP this many levels will get added
+@CAS_COOLDOWN = 1 #cooldown in days
+
+@CAS_AIRFRAME_FACTOR = 0.1 #factor to all other variants if airframe isnt maxed out
+@CAS_ENGINE_FACTOR = 0.5 #factor to all other variants if engine isnt maxed out
+@CAS_RELIABILITY_FACTOR = 0.5 #factor to all other variants if reliability isnt maxed out
+@CAS_BOMB_FACTOR = 0.5 #factor to all other variants if fighter bomb isnt maxed out
+
+@CAS_VARIANT_1_CHANCE = 1 #chance for picking plane_cas_upgrade
+@CAS_VARIANT_2_CHANCE = 10 #chance for picking plane_range_upgrade
+@CAS_VARIANT_3_CHANCE = 100 #chance for picking plane_engine_upgrade
+@CAS_VARIANT_4_CHANCE = 70 #chance for picking plane_reliability_upgrade
+@CAS_VARIANT_5_CHANCE = 10 #chance for picking plane_drop_tank_upgrade
+@CAS_VARIANT_6_CHANCE = 1 #chance for picking plane_light_cannons_upgrade
+@CAS_VARIANT_7_CHANCE = 80 #chance for picking plane_bubble_canopy_upgrade
+@CAS_VARIANT_8_CHANCE = 100 #chance for picking plane_airframe_upgrade
+@CAS_VARIANT_9_CHANCE = 20 #chance for picking plane_radar_upgrade
+@CAS_VARIANT_10_CHANCE = 100 #chance for picking plane_fighter_bomb_upgrade
+
+@CAS_VARIANT_1_MAX = 5 #plane_cas_upgrade
+@CAS_VARIANT_2_MAX = 5 #plane_range_upgrade
+@CAS_VARIANT_3_MAX = 5 #plane_engine_upgrade
+@CAS_VARIANT_4_MAX = 5 #plane_reliability_upgrade
+@CAS_VARIANT_5_MAX = 1 #plane_drop_tank_upgrade
+@CAS_VARIANT_6_MAX = 3 #plane_light_cannons_upgrade
+@CAS_VARIANT_7_MAX = 1 #plane_bubble_canopy_upgrade
+@CAS_VARIANT_8_MAX = 3 #plane_airframe_upgrade
+@CAS_VARIANT_9_MAX = 3 #plane_radar_upgrade
+@CAS_VARIANT_10_MAX = 3 #plane_fighter_bomb_upgrade
+
+######################
+##### AIR: STRAT ##### 
+######################
+
+@STRAT_XP_TRIGGER = 50 #xp required to create a fighter equipment variant
+@STRAT_MAX_VARIANT_AT_ONCE = 3 #if AI has enough XP this many levels will get added
+@STRAT_COOLDOWN = 1 #cooldown in days
+
+@STRAT_AIRFRAME_FACTOR = 0.1 #factor to all other variants if airframe isnt maxed out
+@STRAT_BOMB_FACTOR = 0.5 #factor to all other variants if bombs arent maxed out
+
+@STRAT_VARIANT_1_CHANCE = 100 #chance for picking plane_airframe_upgrade
+@STRAT_VARIANT_2_CHANCE = 0 #chance for picking plane_radar_upgrade (not worth it due to IC)
+@STRAT_VARIANT_3_CHANCE = 20 #chance for picking plane_turret_defence_upgrade
+@STRAT_VARIANT_4_CHANCE = 80 #chance for picking plane_bomb_capacity_upgrade
+
+@STRAT_VARIANT_1_MAX = 3 #plane_airframe_upgrade
+@STRAT_VARIANT_2_MAX = 3 #plane_radar_upgrade
+@STRAT_VARIANT_3_MAX = 3 #plane_turret_defence_upgrade
+@STRAT_VARIANT_4_MAX = 3 #plane_bomb_capacity_upgrade
+
+########################
+##### AIR: NV BOMB ##### 
+########################
+
+@NV_BOMB_XP_TRIGGER = 50 #xp required to create a fighter equipment variant
+@NV_BOMB_MAX_VARIANT_AT_ONCE = 3 #if AI has enough XP this many levels will get added
+@NV_BOMB_COOLDOWN = 1 #cooldown in days
+
+@NV_BOMB_AIRFRAME_FACTOR = 0.1 #factor to all other variants if airframe isnt maxed out
+
+@NV_BOMB_VARIANT_1_CHANCE = 0 #chance for picking plane_range_upgrade
+@NV_BOMB_VARIANT_2_CHANCE = 80 #chance for picking plane_engine_upgrade 
+@NV_BOMB_VARIANT_3_CHANCE = 100 #chance for picking plane_reliability_upgrade
+@NV_BOMB_VARIANT_4_CHANCE = 100 #chance for picking plane_airframe_upgrade
+@NV_BOMB_VARIANT_5_CHANCE = 0 #chance for picking plane_radar_upgrade
+@NV_BOMB_VARIANT_6_CHANCE = 80 #chance for picking plane_naval_upgrade
+@NV_BOMB_VARIANT_7_CHANCE = 10 #chance for picking plane_turret_defence_upgrade
+
+@NV_BOMB_VARIANT_1_MAX = 5 #plane_range_upgrade
+@NV_BOMB_VARIANT_2_MAX = 5 #plane_engine_upgrade
+@NV_BOMB_VARIANT_3_MAX = 5 #plane_reliability_upgrade
+@NV_BOMB_VARIANT_4_MAX = 3 #plane_airframe_upgrade
+@NV_BOMB_VARIANT_5_MAX = 3 #plane_radar_upgrade
+@NV_BOMB_VARIANT_6_MAX = 5 #plane_naval_upgrade
+@NV_BOMB_VARIANT_7_MAX = 3 #plane_turret_defence_upgrade
+
+###########################
+##### AIR: CV FIGHTER ##### 
+###########################
+
+@CV_FIGHTER_XP_TRIGGER = 50 #xp required to create a CV fighter equipment variant
+@CV_FIGHTER_MAX_VARIANT_AT_ONCE = 3 #if AI has enough XP this many levels will get added
+@CV_FIGHTER_COOLDOWN = 1 #cooldown in days
+
+@CV_FIGHTER_AIRFRAME_FACTOR = 0.1 #factor to all other variants if airframe isnt maxed out
+
+@CV_FIGHTER_VARIANT_1_CHANCE = 0 #chance for picking cv_plane_gun_upgrade
+@CV_FIGHTER_VARIANT_2_CHANCE = 80 #chance for picking cv_plane_range_upgrade 
+@CV_FIGHTER_VARIANT_3_CHANCE = 100 #chance for picking plane_engine_upgrade
+@CV_FIGHTER_VARIANT_4_CHANCE = 100 #chance for picking plane_reliability_upgrade
+@CV_FIGHTER_VARIANT_5_CHANCE = 0 #chance for picking plane_drop_tank_upgrade
+@CV_FIGHTER_VARIANT_6_CHANCE = 80 #chance for picking plane_light_cannons_upgrade
+@CV_FIGHTER_VARIANT_7_CHANCE = 10 #chance for picking plane_bubble_canopy_upgrade
+@CV_FIGHTER_VARIANT_8_CHANCE = 10 #chance for picking plane_airframe_upgrade
+@CV_FIGHTER_VARIANT_9_CHANCE = 10 #chance for picking plane_radar_upgrade
+
+@CV_FIGHTER_VARIANT_1_MAX = 5 #cv_plane_gun_upgrade
+@CV_FIGHTER_VARIANT_2_MAX = 5 #cv_plane_range_upgrade
+@CV_FIGHTER_VARIANT_3_MAX = 5 #plane_engine_upgrade
+@CV_FIGHTER_VARIANT_4_MAX = 3 #plane_reliability_upgrade
+@CV_FIGHTER_VARIANT_5_MAX = 3 #plane_drop_tank_upgrade
+@CV_FIGHTER_VARIANT_6_MAX = 5 #plane_light_cannons_upgrade
+@CV_FIGHTER_VARIANT_7_MAX = 3 #plane_bubble_canopy_upgrade
+@CV_FIGHTER_VARIANT_8_MAX = 3 #plane_airframe_upgrade
+@CV_FIGHTER_VARIANT_9_MAX = 3 #plane_radar_upgrade
+
+##########################
+##### AIR: CV BOMBER ##### 
+##########################
+
+@CV_BOMBER_XP_TRIGGER = 50 #xp required to create a CV bomber equipment variant
+@CV_BOMBER_MAX_VARIANT_AT_ONCE = 3 #if AI has enough XP this many levels will get added
+@CV_BOMBER_COOLDOWN = 1 #cooldown in days
+
+@CV_BOMBER_AIRFRAME_FACTOR = 0.1 #factor to all other variants if airframe isnt maxed out
+
+@CV_BOMBER_VARIANT_1_CHANCE = 0 #chance for picking cv_plane_naval_upgrade
+@CV_BOMBER_VARIANT_2_CHANCE = 80 #chance for picking cv_plane_range_upgrade 
+@CV_BOMBER_VARIANT_3_CHANCE = 100 #chance for picking plane_engine_upgrade
+@CV_BOMBER_VARIANT_4_CHANCE = 100 #chance for picking plane_reliability_upgrade
+@CV_BOMBER_VARIANT_5_CHANCE = 0 #chance for picking plane_drop_tank_upgrade
+@CV_BOMBER_VARIANT_6_CHANCE = 10 #chance for picking plane_bubble_canopy_upgrade
+@CV_BOMBER_VARIANT_7_CHANCE = 10 #chance for picking plane_airframe_upgrade
+@CV_BOMBER_VARIANT_8_CHANCE = 10 #chance for picking plane_radar_upgrade
+
+@CV_BOMBER_VARIANT_1_MAX = 5 #cv_plane_naval_upgrade
+@CV_BOMBER_VARIANT_2_MAX = 5 #cv_plane_range_upgrade
+@CV_BOMBER_VARIANT_3_MAX = 5 #plane_engine_upgrade
+@CV_BOMBER_VARIANT_4_MAX = 3 #plane_reliability_upgrade
+@CV_BOMBER_VARIANT_5_MAX = 3 #plane_drop_tank_upgrade
+@CV_BOMBER_VARIANT_6_MAX = 3 #plane_bubble_canopy_upgrade
+@CV_BOMBER_VARIANT_7_MAX = 3 #plane_airframe_upgrade
+@CV_BOMBER_VARIANT_8_MAX = 3 #plane_radar_upgrade
+
+#######################
+##### AIR: CV CAS ##### 
+#######################
+
+@CV_CAS_XP_TRIGGER = 50 #xp required to create a CV CAS equipment variant
+@CV_CAS_MAX_VARIANT_AT_ONCE = 3 #if AI has enough XP this many levels will get added
+@CV_CAS_COOLDOWN = 1 #cooldown in days
+
+@CV_CAS_AIRFRAME_FACTOR = 0.1 #factor to all other variants if airframe isnt maxed out
+
+@CV_CAS_VARIANT_1_CHANCE = 0 #chance for picking plane_cas_upgrade
+@CV_CAS_VARIANT_2_CHANCE = 80 #chance for picking cv_plane_range_upgrade 
+@CV_CAS_VARIANT_3_CHANCE = 100 #chance for picking plane_engine_upgrade
+@CV_CAS_VARIANT_4_CHANCE = 100 #chance for picking plane_reliability_upgrade
+@CV_CAS_VARIANT_5_CHANCE = 0 #chance for picking plane_drop_tank_upgrade
+@CV_CAS_VARIANT_6_CHANCE = 10 #chance for picking plane_light_cannons_upgrade
+@CV_CAS_VARIANT_7_CHANCE = 10 #chance for picking plane_bubble_canopy_upgrade
+@CV_CAS_VARIANT_8_CHANCE = 10 #chance for picking plane_airframe_upgrade
+@CV_CAS_VARIANT_9_CHANCE = 10 #chance for picking plane_radar_upgrade
+
+@CV_CAS_VARIANT_1_MAX = 5 #plane_cas_upgrade
+@CV_CAS_VARIANT_2_MAX = 5 #cv_plane_range_upgrade
+@CV_CAS_VARIANT_3_MAX = 5 #plane_engine_upgrade
+@CV_CAS_VARIANT_4_MAX = 3 #plane_reliability_upgrade
+@CV_CAS_VARIANT_5_MAX = 3 #plane_drop_tank_upgrade
+@CV_CAS_VARIANT_6_MAX = 3 #plane_light_cannons_upgrade
+@CV_CAS_VARIANT_7_MAX = 3 #plane_bubble_canopy_upgrade
+@CV_CAS_VARIANT_8_MAX = 3 #plane_airframe_upgrade
+@CV_CAS_VARIANT_9_MAX = 3 #plane_radar_upgrade
+
+country_event = { #Fighter Equipment
+	id = EAI_V.200
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_air_experience > @FIGHTER_XP_TRIGGER
+		
+		NOT = { has_country_flag = fighter_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = fighter_cooldown
+			value = 1
+			days = @FIGHTER_COOLDOWN
+		}
+		
+		set_temp_variable = { xp_trigger = @FIGHTER_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @FIGHTER_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @AIR_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@air_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @FIGHTER_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @FIGHTER_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @FIGHTER_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @FIGHTER_VARIANT_4_CHANCE }
+		set_temp_variable = { equipment_chance_5 = @FIGHTER_VARIANT_5_CHANCE }
+		set_temp_variable = { equipment_chance_6 = @FIGHTER_VARIANT_6_CHANCE }
+		set_temp_variable = { equipment_chance_7 = @FIGHTER_VARIANT_7_CHANCE }
+		set_temp_variable = { equipment_chance_8 = @FIGHTER_VARIANT_8_CHANCE }
+		set_temp_variable = { equipment_chance_9 = @FIGHTER_VARIANT_9_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_air_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[FIGHTER_VARIANT_1_CHANCE] = {
+							add_to_variable = { fighter_equipment_lvl_1 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = fighter_equipment_lvl_1 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_1_MAX] } }
+							modifier = { factor = [FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_8 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_8_MAX] } } }
+							modifier = { factor = [FIGHTER_ENGINE_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_3 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_3_MAX] } } }
+						}
+						[FIGHTER_VARIANT_2_CHANCE] = {
+							add_to_variable = { fighter_equipment_lvl_2 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = fighter_equipment_lvl_2 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_2_MAX] } }
+							modifier = { factor = [FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_8 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_8_MAX] } } }
+							modifier = { factor = [FIGHTER_ENGINE_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_3 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_3_MAX] } } }
+						}
+						[FIGHTER_VARIANT_3_CHANCE]= {
+							add_to_variable = { fighter_equipment_lvl_3 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = fighter_equipment_lvl_3 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_3_MAX] } }
+							modifier = { factor = [FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_8 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_8_MAX] } } }
+						}
+						[FIGHTER_VARIANT_4_CHANCE]= {
+							add_to_variable = { fighter_equipment_lvl_4 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = fighter_equipment_lvl_4 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_4_MAX] } }
+							modifier = { factor = [FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_8 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_8_MAX] } } }
+							modifier = { factor = [FIGHTER_ENGINE_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_3 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_3_MAX] } } }
+						}
+						[FIGHTER_VARIANT_5_CHANCE]= {
+							add_to_variable = { fighter_equipment_lvl_5 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = fighter_equipment_lvl_5 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_5_MAX] } }
+							modifier = { factor = [FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_8 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_8_MAX] } } }
+							modifier = { factor = [FIGHTER_ENGINE_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_3 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_3_MAX] } } }
+						}
+						[FIGHTER_VARIANT_6_CHANCE]= {
+							add_to_variable = { fighter_equipment_lvl_6 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = fighter_equipment_lvl_6 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_6_MAX] } }
+							modifier = { factor = [FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_8 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_8_MAX] } } }
+							modifier = { factor = [FIGHTER_ENGINE_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_3 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_3_MAX] } } }
+						}
+						[FIGHTER_VARIANT_7_CHANCE]= {
+							add_to_variable = { fighter_equipment_lvl_7 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = fighter_equipment_lvl_7 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_7_MAX] } }
+							modifier = { factor = [FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_8 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_8_MAX] } } }
+							modifier = { factor = [FIGHTER_ENGINE_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_3 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_3_MAX] } } }
+						}
+						[FIGHTER_VARIANT_8_CHANCE]= {
+							add_to_variable = { fighter_equipment_lvl_8 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = fighter_equipment_lvl_8 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_8_MAX] } }
+						}
+						[FIGHTER_VARIANT_9_CHANCE]= {
+							add_to_variable = { fighter_equipment_lvl_9 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = fighter_equipment_lvl_9 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_9_MAX] } }
+							modifier = { factor = [FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_8 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_8_MAX] } } }
+							modifier = { factor = [FIGHTER_ENGINE_FACTOR] NOT = { check_variable = { var = fighter_equipment_lvl_3 compare = greater_than_or_equals
+									value = [FIGHTER_VARIANT_3_MAX] } } }
+						}
+					}
+				}
+				FIGHTER_VARIANT_1_CHANCE = equipment_chance_1
+				FIGHTER_VARIANT_2_CHANCE = equipment_chance_2
+				FIGHTER_VARIANT_3_CHANCE = equipment_chance_3
+				FIGHTER_VARIANT_4_CHANCE = equipment_chance_4
+				FIGHTER_VARIANT_5_CHANCE = equipment_chance_5
+				FIGHTER_VARIANT_6_CHANCE = equipment_chance_6
+				FIGHTER_VARIANT_7_CHANCE = equipment_chance_7
+				FIGHTER_VARIANT_8_CHANCE = equipment_chance_8
+				FIGHTER_VARIANT_9_CHANCE = equipment_chance_9
+				
+				FIGHTER_AIRFRAME_FACTOR = @FIGHTER_AIRFRAME_FACTOR
+				FIGHTER_ENGINE_FACTOR = @FIGHTER_ENGINE_FACTOR
+				
+				FIGHTER_VARIANT_1_MAX = @FIGHTER_VARIANT_1_MAX
+				FIGHTER_VARIANT_2_MAX = @FIGHTER_VARIANT_2_MAX
+				FIGHTER_VARIANT_3_MAX = @FIGHTER_VARIANT_3_MAX
+				FIGHTER_VARIANT_4_MAX = @FIGHTER_VARIANT_4_MAX
+				FIGHTER_VARIANT_5_MAX = @FIGHTER_VARIANT_5_MAX
+				FIGHTER_VARIANT_6_MAX = @FIGHTER_VARIANT_6_MAX
+				FIGHTER_VARIANT_7_MAX = @FIGHTER_VARIANT_7_MAX
+				FIGHTER_VARIANT_8_MAX = @FIGHTER_VARIANT_8_MAX
+				FIGHTER_VARIANT_9_MAX = @FIGHTER_VARIANT_9_MAX
+			}
+			
+		}
+			
+		create_fighter_equipment_variant = yes
+	}
+}
+
+country_event = { #CAS Equipment
+	id = EAI_V.201
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_air_experience > @CAS_XP_TRIGGER
+		
+		NOT = { has_country_flag = CAS_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = CAS_cooldown
+			value = 1
+			days = @CAS_COOLDOWN
+		}
+		
+		set_temp_variable = { xp_trigger = @CAS_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @CAS_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @AIR_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@air_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @CAS_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @CAS_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @CAS_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @CAS_VARIANT_4_CHANCE }
+		set_temp_variable = { equipment_chance_5 = @CAS_VARIANT_5_CHANCE }
+		set_temp_variable = { equipment_chance_6 = @CAS_VARIANT_6_CHANCE }
+		set_temp_variable = { equipment_chance_7 = @CAS_VARIANT_7_CHANCE }
+		set_temp_variable = { equipment_chance_8 = @CAS_VARIANT_8_CHANCE }
+		set_temp_variable = { equipment_chance_9 = @CAS_VARIANT_9_CHANCE }
+		set_temp_variable = { equipment_chance_10 = @CAS_VARIANT_10_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_air_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[CAS_VARIANT_1_CHANCE] = {
+							add_to_variable = { fighter_equipment_lvl_1 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CAS_equipment_lvl_1 compare = greater_than_or_equals
+									value = [CAS_VARIANT_1_MAX] } }
+							modifier = { factor = [CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CAS_VARIANT_8_MAX] } } }
+							modifier = { factor = [CAS_ENGINE_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CAS_VARIANT_3_MAX] } } }
+							modifier = { factor = [CAS_RELIABILITY_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CAS_VARIANT_4_MAX] } } }
+							modifier = { factor = [CAS_BOMB_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_10 compare = greater_than_or_equals
+									value = [CAS_VARIANT_10_MAX] } } }
+						}
+						[CAS_VARIANT_2_CHANCE] = {
+							add_to_variable = { CAS_equipment_lvl_2 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CAS_equipment_lvl_2 compare = greater_than_or_equals
+									value = [CAS_VARIANT_2_MAX] } }
+							modifier = { factor = [CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CAS_VARIANT_8_MAX] } } }
+							modifier = { factor = [CAS_ENGINE_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CAS_VARIANT_3_MAX] } } }
+							modifier = { factor = [CAS_RELIABILITY_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CAS_VARIANT_4_MAX] } } }
+							modifier = { factor = [CAS_BOMB_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_10 compare = greater_than_or_equals
+									value = [CAS_VARIANT_10_MAX] } } }
+						}
+						[CAS_VARIANT_3_CHANCE]= {
+							add_to_variable = { CAS_equipment_lvl_3 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CAS_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CAS_VARIANT_3_MAX] } }
+							modifier = { factor = [CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CAS_VARIANT_8_MAX] } } }
+						}
+						[CAS_VARIANT_4_CHANCE]= {
+							add_to_variable = { CAS_equipment_lvl_4 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CAS_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CAS_VARIANT_4_MAX] } }
+							modifier = { factor = [CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CAS_VARIANT_8_MAX] } } }
+							modifier = { factor = [CAS_ENGINE_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CAS_VARIANT_3_MAX] } } }
+						}
+						[CAS_VARIANT_5_CHANCE]= {
+							add_to_variable = { CAS_equipment_lvl_5 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CAS_equipment_lvl_5 compare = greater_than_or_equals
+									value = [CAS_VARIANT_5_MAX] } }
+							modifier = { factor = [CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CAS_VARIANT_8_MAX] } } }
+							modifier = { factor = [CAS_ENGINE_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CAS_VARIANT_3_MAX] } } }
+							modifier = { factor = [CAS_RELIABILITY_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CAS_VARIANT_4_MAX] } } }
+							modifier = { factor = [CAS_BOMB_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_10 compare = greater_than_or_equals
+									value = [CAS_VARIANT_10_MAX] } } }
+						}
+						[CAS_VARIANT_6_CHANCE]= {
+							add_to_variable = { CAS_equipment_lvl_6 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CAS_equipment_lvl_6 compare = greater_than_or_equals
+									value = [CAS_VARIANT_6_MAX] } }
+							modifier = { factor = [CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CAS_VARIANT_8_MAX] } } }
+							modifier = { factor = [CAS_ENGINE_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CAS_VARIANT_3_MAX] } } }
+							modifier = { factor = [CAS_RELIABILITY_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CAS_VARIANT_4_MAX] } } }
+							modifier = { factor = [CAS_BOMB_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_10 compare = greater_than_or_equals
+									value = [CAS_VARIANT_10_MAX] } } }
+						}
+						[CAS_VARIANT_7_CHANCE]= {
+							add_to_variable = { CAS_equipment_lvl_7 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CAS_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CAS_VARIANT_7_MAX] } }
+							modifier = { factor = [CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CAS_VARIANT_8_MAX] } } }
+							modifier = { factor = [CAS_ENGINE_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CAS_VARIANT_3_MAX] } } }
+							modifier = { factor = [CAS_RELIABILITY_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CAS_VARIANT_4_MAX] } } }
+							modifier = { factor = [CAS_BOMB_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_10 compare = greater_than_or_equals
+									value = [CAS_VARIANT_10_MAX] } } }
+						}
+						[CAS_VARIANT_8_CHANCE]= {
+							add_to_variable = { CAS_equipment_lvl_8 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CAS_VARIANT_8_MAX] } }
+						}
+						[CAS_VARIANT_9_CHANCE]= {
+							add_to_variable = { CAS_equipment_lvl_9 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CAS_equipment_lvl_9 compare = greater_than_or_equals
+									value = [CAS_VARIANT_9_MAX] } }
+							modifier = { factor = [CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CAS_VARIANT_8_MAX] } } }
+							modifier = { factor = [CAS_ENGINE_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CAS_VARIANT_3_MAX] } } }
+							modifier = { factor = [CAS_RELIABILITY_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CAS_VARIANT_4_MAX] } } }
+							modifier = { factor = [CAS_BOMB_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_10 compare = greater_than_or_equals
+									value = [CAS_VARIANT_10_MAX] } } }
+						}
+						[CAS_VARIANT_10_CHANCE]= {
+							add_to_variable = { CAS_equipment_lvl_10 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CAS_equipment_lvl_10 compare = greater_than_or_equals
+									value = [CAS_VARIANT_10_MAX] } }
+							modifier = { factor = [CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CAS_VARIANT_8_MAX] } } }
+							modifier = { factor = [CAS_ENGINE_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CAS_VARIANT_3_MAX] } } }
+							modifier = { factor = [CAS_RELIABILITY_FACTOR] NOT = { check_variable = { var = CAS_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CAS_VARIANT_4_MAX] } } }
+						}
+					}
+				}
+				CAS_VARIANT_1_CHANCE = equipment_chance_1
+				CAS_VARIANT_2_CHANCE = equipment_chance_2
+				CAS_VARIANT_3_CHANCE = equipment_chance_3
+				CAS_VARIANT_4_CHANCE = equipment_chance_4
+				CAS_VARIANT_5_CHANCE = equipment_chance_5
+				CAS_VARIANT_6_CHANCE = equipment_chance_6
+				CAS_VARIANT_7_CHANCE = equipment_chance_7
+				CAS_VARIANT_8_CHANCE = equipment_chance_8
+				CAS_VARIANT_9_CHANCE = equipment_chance_9
+				CAS_VARIANT_10_CHANCE = equipment_chance_10
+				
+				CAS_AIRFRAME_FACTOR = @CAS_AIRFRAME_FACTOR
+				CAS_ENGINE_FACTOR = @CAS_ENGINE_FACTOR
+				CAS_RELIABILITY_FACTOR = @CAS_RELIABILITY_FACTOR
+				CAS_BOMB_FACTOR = @CAS_BOMB_FACTOR
+				
+				CAS_VARIANT_1_MAX = @CAS_VARIANT_1_MAX
+				CAS_VARIANT_2_MAX = @CAS_VARIANT_2_MAX
+				CAS_VARIANT_3_MAX = @CAS_VARIANT_3_MAX
+				CAS_VARIANT_4_MAX = @CAS_VARIANT_4_MAX
+				CAS_VARIANT_5_MAX = @CAS_VARIANT_5_MAX
+				CAS_VARIANT_6_MAX = @CAS_VARIANT_6_MAX
+				CAS_VARIANT_7_MAX = @CAS_VARIANT_7_MAX
+				CAS_VARIANT_8_MAX = @CAS_VARIANT_8_MAX
+				CAS_VARIANT_9_MAX = @CAS_VARIANT_9_MAX
+				CAS_VARIANT_10_MAX = @CAS_VARIANT_10_MAX
+			}
+			
+		}
+			
+		create_CAS_equipment_variant = yes
+	}
+}
+
+country_event = { #STRAT Equipment
+	id = EAI_V.202
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_air_experience > @STRAT_XP_TRIGGER
+		
+		NOT = { has_country_flag = STRAT_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = STRAT_cooldown
+			value = 1
+			days = @STRAT_COOLDOWN
+		}
+		
+		set_temp_variable = { xp_trigger = @STRAT_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @STRAT_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @AIR_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@air_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @STRAT_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @STRAT_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @STRAT_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @STRAT_VARIANT_4_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_air_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[STRAT_VARIANT_1_CHANCE] = {
+							add_to_variable = { fighter_equipment_lvl_1 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = STRAT_equipment_lvl_1 compare = greater_than_or_equals
+									value = [STRAT_VARIANT_1_MAX] } }
+						}
+						[STRAT_VARIANT_2_CHANCE] = {
+							add_to_variable = { STRAT_equipment_lvl_2 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = STRAT_equipment_lvl_2 compare = greater_than_or_equals
+									value = [STRAT_VARIANT_2_MAX] } }
+							modifier = { factor = [STRAT_AIRFRAME_FACTOR] NOT = { check_variable = { var = STRAT_equipment_lvl_1 compare = greater_than_or_equals
+									value = [STRAT_VARIANT_1_MAX] } } }
+							modifier = { factor = [STRAT_BOMB_FACTOR] NOT = { check_variable = { var = STRAT_equipment_lvl_4 compare = greater_than_or_equals
+									value = [STRAT_VARIANT_4_MAX] } } }
+						}
+						[STRAT_VARIANT_3_CHANCE]= {
+							add_to_variable = { STRAT_equipment_lvl_3 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = STRAT_equipment_lvl_3 compare = greater_than_or_equals
+									value = [STRAT_VARIANT_3_MAX] } }
+							modifier = { factor = [STRAT_AIRFRAME_FACTOR] NOT = { check_variable = { var = STRAT_equipment_lvl_1 compare = greater_than_or_equals
+									value = [STRAT_VARIANT_1_MAX] } } }
+							modifier = { factor = [STRAT_BOMB_FACTOR] NOT = { check_variable = { var = STRAT_equipment_lvl_4 compare = greater_than_or_equals
+									value = [STRAT_VARIANT_4_MAX] } } }
+						}
+						[STRAT_VARIANT_4_CHANCE]= {
+							add_to_variable = { STRAT_equipment_lvl_4 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = STRAT_equipment_lvl_4 compare = greater_than_or_equals
+									value = [STRAT_VARIANT_4_MAX] } }
+							modifier = { factor = [STRAT_AIRFRAME_FACTOR] NOT = { check_variable = { var = STRAT_equipment_lvl_1 compare = greater_than_or_equals
+									value = [STRAT_VARIANT_1_MAX] } } }
+						}
+						
+					}
+				}
+				STRAT_VARIANT_1_CHANCE = equipment_chance_1
+				STRAT_VARIANT_2_CHANCE = equipment_chance_2
+				STRAT_VARIANT_3_CHANCE = equipment_chance_3
+				STRAT_VARIANT_4_CHANCE = equipment_chance_4
+				
+				STRAT_AIRFRAME_FACTOR = @STRAT_AIRFRAME_FACTOR
+				STRAT_BOMB_FACTOR = @STRAT_BOMB_FACTOR
+				
+				STRAT_VARIANT_1_MAX = @STRAT_VARIANT_1_MAX
+				STRAT_VARIANT_2_MAX = @STRAT_VARIANT_2_MAX
+				STRAT_VARIANT_3_MAX = @STRAT_VARIANT_3_MAX
+				STRAT_VARIANT_4_MAX = @STRAT_VARIANT_4_MAX
+			}
+			
+		}
+			
+		create_STRAT_equipment_variant = yes
+	}
+}
+
+country_event = { #NV_BOMB Equipment
+	id = EAI_V.203
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_air_experience > @NV_BOMB_XP_TRIGGER
+		
+		NOT = { has_country_flag = NV_BOMB_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = NV_BOMB_cooldown
+			value = 1
+			days = @NV_BOMB_COOLDOWN
+		}
+		
+		set_temp_variable = { xp_trigger = @NV_BOMB_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @NV_BOMB_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @AIR_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@air_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @NV_BOMB_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @NV_BOMB_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @NV_BOMB_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @NV_BOMB_VARIANT_4_CHANCE }
+		set_temp_variable = { equipment_chance_5 = @NV_BOMB_VARIANT_5_CHANCE }
+		set_temp_variable = { equipment_chance_6 = @NV_BOMB_VARIANT_6_CHANCE }
+		set_temp_variable = { equipment_chance_7 = @NV_BOMB_VARIANT_7_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_air_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[NV_BOMB_VARIANT_1_CHANCE] = {
+							add_to_variable = { fighter_equipment_lvl_1 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = NV_BOMB_equipment_lvl_1 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_1_MAX] } }
+							modifier = { factor = [NV_BOMB_AIRFRAME_FACTOR] NOT = { check_variable = { var = NV_BOMB_equipment_lvl_4 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_4_MAX] } } }
+						}
+						[NV_BOMB_VARIANT_2_CHANCE] = {
+							add_to_variable = { NV_BOMB_equipment_lvl_2 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = NV_BOMB_equipment_lvl_2 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_2_MAX] } }
+							modifier = { factor = [NV_BOMB_AIRFRAME_FACTOR] NOT = { check_variable = { var = NV_BOMB_equipment_lvl_4 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_4_MAX] } } }
+						}
+						[NV_BOMB_VARIANT_3_CHANCE]= {
+							add_to_variable = { NV_BOMB_equipment_lvl_3 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = NV_BOMB_equipment_lvl_3 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_3_MAX] } }
+							modifier = { factor = [NV_BOMB_AIRFRAME_FACTOR] NOT = { check_variable = { var = NV_BOMB_equipment_lvl_4 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_4_MAX] } } }
+						}
+						[NV_BOMB_VARIANT_4_CHANCE]= {
+							add_to_variable = { NV_BOMB_equipment_lvl_4 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = NV_BOMB_equipment_lvl_4 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_4_MAX] } }
+						}
+						[NV_BOMB_VARIANT_5_CHANCE]= {
+							add_to_variable = { NV_BOMB_equipment_lvl_5 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = NV_BOMB_equipment_lvl_5 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_5_MAX] } }
+							modifier = { factor = [NV_BOMB_AIRFRAME_FACTOR] NOT = { check_variable = { var = NV_BOMB_equipment_lvl_4 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_4_MAX] } } }
+						}
+						[NV_BOMB_VARIANT_6_CHANCE]= {
+							add_to_variable = { NV_BOMB_equipment_lvl_6 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = NV_BOMB_equipment_lvl_6 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_6_MAX] } }
+							modifier = { factor = [NV_BOMB_AIRFRAME_FACTOR] NOT = { check_variable = { var = NV_BOMB_equipment_lvl_4 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_4_MAX] } } }
+						}
+						[NV_BOMB_VARIANT_7_CHANCE]= {
+							add_to_variable = { NV_BOMB_equipment_lvl_7 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = NV_BOMB_equipment_lvl_7 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_7_MAX] } }
+							modifier = { factor = [NV_BOMB_AIRFRAME_FACTOR] NOT = { check_variable = { var = NV_BOMB_equipment_lvl_4 compare = greater_than_or_equals
+									value = [NV_BOMB_VARIANT_4_MAX] } } }
+						}
+						
+					}
+				}
+				NV_BOMB_VARIANT_1_CHANCE = equipment_chance_1
+				NV_BOMB_VARIANT_2_CHANCE = equipment_chance_2
+				NV_BOMB_VARIANT_3_CHANCE = equipment_chance_3
+				NV_BOMB_VARIANT_4_CHANCE = equipment_chance_4
+				NV_BOMB_VARIANT_5_CHANCE = equipment_chance_5
+				NV_BOMB_VARIANT_6_CHANCE = equipment_chance_6
+				NV_BOMB_VARIANT_7_CHANCE = equipment_chance_7
+				
+				NV_BOMB_AIRFRAME_FACTOR = @NV_BOMB_AIRFRAME_FACTOR
+				
+				NV_BOMB_VARIANT_1_MAX = @NV_BOMB_VARIANT_1_MAX
+				NV_BOMB_VARIANT_2_MAX = @NV_BOMB_VARIANT_2_MAX
+				NV_BOMB_VARIANT_3_MAX = @NV_BOMB_VARIANT_3_MAX
+				NV_BOMB_VARIANT_4_MAX = @NV_BOMB_VARIANT_4_MAX
+				NV_BOMB_VARIANT_5_MAX = @NV_BOMB_VARIANT_5_MAX
+				NV_BOMB_VARIANT_6_MAX = @NV_BOMB_VARIANT_6_MAX
+				NV_BOMB_VARIANT_7_MAX = @NV_BOMB_VARIANT_7_MAX
+			}
+			
+		}
+			
+		create_NV_BOMB_equipment_variant = yes
+	}
+}
+
+country_event = { #CV fighter Equipment
+	id = EAI_V.204
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_air_experience > @CV_FIGHTER_XP_TRIGGER
+		
+		NOT = { has_country_flag = CV_FIGHTER_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = CV_FIGHTER_cooldown
+			value = 1
+			days = @CV_FIGHTER_COOLDOWN
+		}
+		
+		set_temp_variable = { xp_trigger = @CV_FIGHTER_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @CV_FIGHTER_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @AIR_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@air_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @CV_FIGHTER_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @CV_FIGHTER_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @CV_FIGHTER_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @CV_FIGHTER_VARIANT_4_CHANCE }
+		set_temp_variable = { equipment_chance_5 = @CV_FIGHTER_VARIANT_5_CHANCE }
+		set_temp_variable = { equipment_chance_6 = @CV_FIGHTER_VARIANT_6_CHANCE }
+		set_temp_variable = { equipment_chance_7 = @CV_FIGHTER_VARIANT_7_CHANCE }
+		set_temp_variable = { equipment_chance_8 = @CV_FIGHTER_VARIANT_8_CHANCE }
+		set_temp_variable = { equipment_chance_9 = @CV_FIGHTER_VARIANT_9_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_air_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[CV_FIGHTER_VARIANT_1_CHANCE] = {
+							add_to_variable = { fighter_equipment_lvl_1 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_FIGHTER_equipment_lvl_1 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_1_MAX] } }
+							modifier = { factor = [CV_FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_FIGHTER_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_8_MAX] } } }
+						}
+						[CV_FIGHTER_VARIANT_2_CHANCE] = {
+							add_to_variable = { CV_FIGHTER_equipment_lvl_2 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_FIGHTER_equipment_lvl_2 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_2_MAX] } }
+							modifier = { factor = [CV_FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_FIGHTER_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_8_MAX] } } }
+						}
+						[CV_FIGHTER_VARIANT_3_CHANCE]= {
+							add_to_variable = { CV_FIGHTER_equipment_lvl_3 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_FIGHTER_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_3_MAX] } }
+							modifier = { factor = [CV_FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_FIGHTER_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_8_MAX] } } }
+						}
+						[CV_FIGHTER_VARIANT_4_CHANCE]= {
+							add_to_variable = { CV_FIGHTER_equipment_lvl_4 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_FIGHTER_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_4_MAX] } }
+							modifier = { factor = [CV_FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_FIGHTER_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_8_MAX] } } }
+						}
+						[CV_FIGHTER_VARIANT_5_CHANCE]= {
+							add_to_variable = { CV_FIGHTER_equipment_lvl_5 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_FIGHTER_equipment_lvl_5 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_5_MAX] } }
+							modifier = { factor = [CV_FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_FIGHTER_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_8_MAX] } } }
+						}
+						[CV_FIGHTER_VARIANT_6_CHANCE]= {
+							add_to_variable = { CV_FIGHTER_equipment_lvl_6 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_FIGHTER_equipment_lvl_6 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_6_MAX] } }
+							modifier = { factor = [CV_FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_FIGHTER_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_8_MAX] } } }
+						}
+						[CV_FIGHTER_VARIANT_7_CHANCE]= {
+							add_to_variable = { CV_FIGHTER_equipment_lvl_7 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_FIGHTER_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_7_MAX] } }
+							modifier = { factor = [CV_FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_FIGHTER_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_8_MAX] } } }
+						}
+						[CV_FIGHTER_VARIANT_8_CHANCE]= {
+							add_to_variable = { CV_FIGHTER_equipment_lvl_8 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_FIGHTER_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_8_MAX] } }
+						}
+						[CV_FIGHTER_VARIANT_9_CHANCE]= {
+							add_to_variable = { CV_FIGHTER_equipment_lvl_9 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_FIGHTER_equipment_lvl_9 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_9_MAX] } }
+							modifier = { factor = [CV_FIGHTER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_FIGHTER_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_FIGHTER_VARIANT_8_MAX] } } }
+						}
+						
+					}
+				}
+				CV_FIGHTER_VARIANT_1_CHANCE = equipment_chance_1
+				CV_FIGHTER_VARIANT_2_CHANCE = equipment_chance_2
+				CV_FIGHTER_VARIANT_3_CHANCE = equipment_chance_3
+				CV_FIGHTER_VARIANT_4_CHANCE = equipment_chance_4
+				CV_FIGHTER_VARIANT_5_CHANCE = equipment_chance_5
+				CV_FIGHTER_VARIANT_6_CHANCE = equipment_chance_6
+				CV_FIGHTER_VARIANT_7_CHANCE = equipment_chance_7
+				CV_FIGHTER_VARIANT_8_CHANCE = equipment_chance_8
+				CV_FIGHTER_VARIANT_9_CHANCE = equipment_chance_9
+				
+				CV_FIGHTER_AIRFRAME_FACTOR = @CV_FIGHTER_AIRFRAME_FACTOR
+				
+				CV_FIGHTER_VARIANT_1_MAX = @CV_FIGHTER_VARIANT_1_MAX
+				CV_FIGHTER_VARIANT_2_MAX = @CV_FIGHTER_VARIANT_2_MAX
+				CV_FIGHTER_VARIANT_3_MAX = @CV_FIGHTER_VARIANT_3_MAX
+				CV_FIGHTER_VARIANT_4_MAX = @CV_FIGHTER_VARIANT_4_MAX
+				CV_FIGHTER_VARIANT_5_MAX = @CV_FIGHTER_VARIANT_5_MAX
+				CV_FIGHTER_VARIANT_6_MAX = @CV_FIGHTER_VARIANT_6_MAX
+				CV_FIGHTER_VARIANT_7_MAX = @CV_FIGHTER_VARIANT_7_MAX
+				CV_FIGHTER_VARIANT_8_MAX = @CV_FIGHTER_VARIANT_8_MAX
+				CV_FIGHTER_VARIANT_9_MAX = @CV_FIGHTER_VARIANT_9_MAX
+			}
+			
+		}
+			
+		create_CV_FIGHTER_equipment_variant = yes
+	}
+}
+
+country_event = { #CV bomber Equipment
+	id = EAI_V.205
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_air_experience > @CV_BOMBER_XP_TRIGGER
+		
+		NOT = { has_country_flag = CV_BOMBER_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = CV_BOMBER_cooldown
+			value = 1
+			days = @CV_BOMBER_COOLDOWN
+		}
+		
+		set_temp_variable = { xp_trigger = @CV_BOMBER_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @CV_BOMBER_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @AIR_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@air_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @CV_BOMBER_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @CV_BOMBER_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @CV_BOMBER_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @CV_BOMBER_VARIANT_4_CHANCE }
+		set_temp_variable = { equipment_chance_5 = @CV_BOMBER_VARIANT_5_CHANCE }
+		set_temp_variable = { equipment_chance_6 = @CV_BOMBER_VARIANT_6_CHANCE }
+		set_temp_variable = { equipment_chance_7 = @CV_BOMBER_VARIANT_7_CHANCE }
+		set_temp_variable = { equipment_chance_8 = @CV_BOMBER_VARIANT_8_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_air_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[CV_BOMBER_VARIANT_1_CHANCE] = {
+							add_to_variable = { fighter_equipment_lvl_1 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_BOMBER_equipment_lvl_1 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_1_MAX] } }
+							modifier = { factor = [CV_BOMBER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_BOMBER_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_7_MAX] } } }
+						}
+						[CV_BOMBER_VARIANT_2_CHANCE] = {
+							add_to_variable = { CV_BOMBER_equipment_lvl_2 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_BOMBER_equipment_lvl_2 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_2_MAX] } }
+							modifier = { factor = [CV_BOMBER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_BOMBER_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_7_MAX] } } }
+						}
+						[CV_BOMBER_VARIANT_3_CHANCE]= {
+							add_to_variable = { CV_BOMBER_equipment_lvl_3 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_BOMBER_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_3_MAX] } }
+							modifier = { factor = [CV_BOMBER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_BOMBER_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_7_MAX] } } }
+						}
+						[CV_BOMBER_VARIANT_4_CHANCE]= {
+							add_to_variable = { CV_BOMBER_equipment_lvl_4 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_BOMBER_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_4_MAX] } }
+							modifier = { factor = [CV_BOMBER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_BOMBER_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_7_MAX] } } }
+						}
+						[CV_BOMBER_VARIANT_5_CHANCE]= {
+							add_to_variable = { CV_BOMBER_equipment_lvl_5 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_BOMBER_equipment_lvl_5 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_5_MAX] } }
+							modifier = { factor = [CV_BOMBER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_BOMBER_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_7_MAX] } } }
+						}
+						[CV_BOMBER_VARIANT_6_CHANCE]= {
+							add_to_variable = { CV_BOMBER_equipment_lvl_6 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_BOMBER_equipment_lvl_6 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_6_MAX] } }
+							modifier = { factor = [CV_BOMBER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_BOMBER_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_7_MAX] } } }
+						}
+						[CV_BOMBER_VARIANT_7_CHANCE]= {
+							add_to_variable = { CV_BOMBER_equipment_lvl_7 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_BOMBER_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_7_MAX] } }
+						}
+						[CV_BOMBER_VARIANT_8_CHANCE]= {
+							add_to_variable = { CV_BOMBER_equipment_lvl_8 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_BOMBER_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_8_MAX] } }
+							modifier = { factor = [CV_BOMBER_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_BOMBER_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CV_BOMBER_VARIANT_7_MAX] } } }
+						}
+						
+					}
+				}
+				CV_BOMBER_VARIANT_1_CHANCE = equipment_chance_1
+				CV_BOMBER_VARIANT_2_CHANCE = equipment_chance_2
+				CV_BOMBER_VARIANT_3_CHANCE = equipment_chance_3
+				CV_BOMBER_VARIANT_4_CHANCE = equipment_chance_4
+				CV_BOMBER_VARIANT_5_CHANCE = equipment_chance_5
+				CV_BOMBER_VARIANT_6_CHANCE = equipment_chance_6
+				CV_BOMBER_VARIANT_7_CHANCE = equipment_chance_7
+				CV_BOMBER_VARIANT_8_CHANCE = equipment_chance_8
+				
+				CV_BOMBER_AIRFRAME_FACTOR = @CV_BOMBER_AIRFRAME_FACTOR
+				
+				CV_BOMBER_VARIANT_1_MAX = @CV_BOMBER_VARIANT_1_MAX
+				CV_BOMBER_VARIANT_2_MAX = @CV_BOMBER_VARIANT_2_MAX
+				CV_BOMBER_VARIANT_3_MAX = @CV_BOMBER_VARIANT_3_MAX
+				CV_BOMBER_VARIANT_4_MAX = @CV_BOMBER_VARIANT_4_MAX
+				CV_BOMBER_VARIANT_5_MAX = @CV_BOMBER_VARIANT_5_MAX
+				CV_BOMBER_VARIANT_6_MAX = @CV_BOMBER_VARIANT_6_MAX
+				CV_BOMBER_VARIANT_7_MAX = @CV_BOMBER_VARIANT_7_MAX
+				CV_BOMBER_VARIANT_8_MAX = @CV_BOMBER_VARIANT_8_MAX
+			}
+			
+		}
+			
+		create_CV_BOMBER_equipment_variant = yes
+	}
+}
+
+country_event = { #CV CAS Equipment
+	id = EAI_V.206
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_air_experience > @CV_CAS_XP_TRIGGER
+		
+		NOT = { has_country_flag = CV_CAS_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = CV_CAS_cooldown
+			value = 1
+			days = @CV_CAS_COOLDOWN
+		}
+		
+		set_temp_variable = { xp_trigger = @CV_CAS_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @CV_CAS_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @AIR_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@air_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @CV_CAS_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @CV_CAS_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @CV_CAS_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @CV_CAS_VARIANT_4_CHANCE }
+		set_temp_variable = { equipment_chance_5 = @CV_CAS_VARIANT_5_CHANCE }
+		set_temp_variable = { equipment_chance_6 = @CV_CAS_VARIANT_6_CHANCE }
+		set_temp_variable = { equipment_chance_7 = @CV_CAS_VARIANT_7_CHANCE }
+		set_temp_variable = { equipment_chance_8 = @CV_CAS_VARIANT_8_CHANCE }
+		set_temp_variable = { equipment_chance_9 = @CV_CAS_VARIANT_9_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_air_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[CV_CAS_VARIANT_1_CHANCE] = {
+							add_to_variable = { fighter_equipment_lvl_1 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_CAS_equipment_lvl_1 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_1_MAX] } }
+							modifier = { factor = [CV_CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_8_MAX] } } }
+						}
+						[CV_CAS_VARIANT_2_CHANCE] = {
+							add_to_variable = { CV_CAS_equipment_lvl_2 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_CAS_equipment_lvl_2 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_2_MAX] } }
+							modifier = { factor = [CV_CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_8_MAX] } } }
+						}
+						[CV_CAS_VARIANT_3_CHANCE]= {
+							add_to_variable = { CV_CAS_equipment_lvl_3 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_CAS_equipment_lvl_3 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_3_MAX] } }
+							modifier = { factor = [CV_CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_8_MAX] } } }
+						}
+						[CV_CAS_VARIANT_4_CHANCE]= {
+							add_to_variable = { CV_CAS_equipment_lvl_4 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_CAS_equipment_lvl_4 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_4_MAX] } }
+							modifier = { factor = [CV_CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_8_MAX] } } }
+						}
+						[CV_CAS_VARIANT_5_CHANCE]= {
+							add_to_variable = { CV_CAS_equipment_lvl_5 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_CAS_equipment_lvl_5 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_5_MAX] } }
+							modifier = { factor = [CV_CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_8_MAX] } } }
+						}
+						[CV_CAS_VARIANT_6_CHANCE]= {
+							add_to_variable = { CV_CAS_equipment_lvl_6 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_CAS_equipment_lvl_6 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_6_MAX] } }
+							modifier = { factor = [CV_CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_8_MAX] } } }
+						}
+						[CV_CAS_VARIANT_7_CHANCE]= {
+							add_to_variable = { CV_CAS_equipment_lvl_7 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_CAS_equipment_lvl_7 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_7_MAX] } }
+							modifier = { factor = [CV_CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_8_MAX] } } }
+						}
+						[CV_CAS_VARIANT_8_CHANCE]= {
+							add_to_variable = { CV_CAS_equipment_lvl_8 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_8_MAX] } }
+						}
+						[CV_CAS_VARIANT_9_CHANCE]= {
+							add_to_variable = { CV_CAS_equipment_lvl_9 = 1 }
+							air_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = CV_CAS_equipment_lvl_9 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_9_MAX] } }
+							modifier = { factor = [CV_CAS_AIRFRAME_FACTOR] NOT = { check_variable = { var = CV_CAS_equipment_lvl_8 compare = greater_than_or_equals
+									value = [CV_CAS_VARIANT_8_MAX] } } }
+						}
+						
+					}
+				}
+				CV_CAS_VARIANT_1_CHANCE = equipment_chance_1
+				CV_CAS_VARIANT_2_CHANCE = equipment_chance_2
+				CV_CAS_VARIANT_3_CHANCE = equipment_chance_3
+				CV_CAS_VARIANT_4_CHANCE = equipment_chance_4
+				CV_CAS_VARIANT_5_CHANCE = equipment_chance_5
+				CV_CAS_VARIANT_6_CHANCE = equipment_chance_6
+				CV_CAS_VARIANT_7_CHANCE = equipment_chance_7
+				CV_CAS_VARIANT_8_CHANCE = equipment_chance_8
+				CV_CAS_VARIANT_9_CHANCE = equipment_chance_9
+				
+				CV_CAS_AIRFRAME_FACTOR = @CV_CAS_AIRFRAME_FACTOR
+				
+				CV_CAS_VARIANT_1_MAX = @CV_CAS_VARIANT_1_MAX
+				CV_CAS_VARIANT_2_MAX = @CV_CAS_VARIANT_2_MAX
+				CV_CAS_VARIANT_3_MAX = @CV_CAS_VARIANT_3_MAX
+				CV_CAS_VARIANT_4_MAX = @CV_CAS_VARIANT_4_MAX
+				CV_CAS_VARIANT_5_MAX = @CV_CAS_VARIANT_5_MAX
+				CV_CAS_VARIANT_6_MAX = @CV_CAS_VARIANT_6_MAX
+				CV_CAS_VARIANT_7_MAX = @CV_CAS_VARIANT_7_MAX
+				CV_CAS_VARIANT_8_MAX = @CV_CAS_VARIANT_8_MAX
+				CV_CAS_VARIANT_9_MAX = @CV_CAS_VARIANT_9_MAX
+			}
+			
+		}
+			
+		create_CV_CAS_equipment_variant = yes
+	}
+}
+
+country_event = { #Infantry Equipment
+	id = EAI_V.100
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @INFANTRY_EQUIPMENT_XP_TRIGGER
+		
+		NOT = { has_country_flag = Infantry_Equipment_cooldown }
+		
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Infantry_Equipment_cooldown
+			value = 1
+			days = @INFANTRY_EQUIPMENT_COOLDOWN
+		}
+		
+		set_temp_variable = { xp_trigger = @INFANTRY_EQUIPMENT_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @INFANTRY_EQUIPMENT_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @INFANTRY_EQUIPMENT_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @INFANTRY_EQUIPMENT_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @INFANTRY_EQUIPMENT_VARIANT_3_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[INFANTRY_EQUIPMENT_VARIANT_1_CHANCE] = {
+							add_to_variable = { infantry_equipment_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = infantry_equipment_lvl_1 compare = greater_than_or_equals
+									value = [INFANTRY_EQUIPMENT_VARIANT_1_MAX] } }
+						}
+						[INFANTRY_EQUIPMENT_VARIANT_2_CHANCE] = {
+							add_to_variable = { infantry_equipment_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = infantry_equipment_lvl_2 compare = greater_than_or_equals
+									value = [INFANTRY_EQUIPMENT_VARIANT_2_MAX] } }
+						}
+						[INFANTRY_EQUIPMENT_VARIANT_3_CHANCE]= {
+							add_to_variable = { infantry_equipment_lvl_3 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = infantry_equipment_lvl_3 compare = greater_than_or_equals
+									value = [INFANTRY_EQUIPMENT_VARIANT_3_MAX] } }
+						}
+					}
+				}
+				INFANTRY_EQUIPMENT_VARIANT_1_CHANCE = equipment_chance_1
+				INFANTRY_EQUIPMENT_VARIANT_2_CHANCE = equipment_chance_2
+				INFANTRY_EQUIPMENT_VARIANT_3_CHANCE = equipment_chance_3
+				
+				INFANTRY_EQUIPMENT_VARIANT_1_MAX = @INFANTRY_EQUIPMENT_VARIANT_1_MAX
+				INFANTRY_EQUIPMENT_VARIANT_2_MAX = @INFANTRY_EQUIPMENT_VARIANT_2_MAX
+				INFANTRY_EQUIPMENT_VARIANT_3_MAX = @INFANTRY_EQUIPMENT_VARIANT_3_MAX
+			}
+			
+		}
+			
+		create_infantry_equipment_variant = yes
+	}
+}
+
+country_event = { #Infantry Uniforms
+	id = EAI_V.101
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @INFANTRY_UNIFORM_XP_TRIGGER
+		NOT = { has_country_flag = Infantry_Uniform_cooldown }
+		NOT = { has_country_flag = uniform_eq_end }
+		
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Infantry_Uniform_cooldown
+			value = 1
+			days = @INFANTRY_UNIFORM_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @INFANTRY_UNIFORM_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @INFANTRY_UNIFORM_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @INFANTRY_UNIFORM_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @INFANTRY_UNIFORM_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @INFANTRY_UNIFORM_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @INFANTRY_UNIFORM_VARIANT_4_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[INFANTRY_UNIFORM_VARIANT_1_CHANCE] = {
+							add_to_variable = { infantry_uniform_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = infantry_uniform_lvl_1 compare = greater_than_or_equals
+									value = [INFANTRY_UNIFORM_VARIANT_1_MAX] } }
+						}
+						[INFANTRY_UNIFORM_VARIANT_2_CHANCE] = {
+							add_to_variable = { infantry_uniform_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = infantry_uniform_lvl_2 compare = greater_than_or_equals
+									value = [INFANTRY_UNIFORM_VARIANT_2_MAX] } }
+						}
+						[INFANTRY_UNIFORM_VARIANT_3_CHANCE]= {
+							add_to_variable = { infantry_uniform_lvl_3 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = infantry_uniform_lvl_3 compare = greater_than_or_equals
+									value = [INFANTRY_UNIFORM_VARIANT_3_MAX] } }
+						}
+						[INFANTRY_UNIFORM_VARIANT_4_CHANCE]= {
+							add_to_variable = { infantry_uniform_lvl_4 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = infantry_uniform_lvl_4 compare = greater_than_or_equals
+									value = [INFANTRY_UNIFORM_VARIANT_4_MAX] } }
+						}
+					}
+				}
+				INFANTRY_UNIFORM_VARIANT_1_CHANCE = equipment_chance_1
+				INFANTRY_UNIFORM_VARIANT_2_CHANCE = equipment_chance_2
+				INFANTRY_UNIFORM_VARIANT_3_CHANCE = equipment_chance_3
+				INFANTRY_UNIFORM_VARIANT_4_CHANCE = equipment_chance_4
+				
+				INFANTRY_UNIFORM_VARIANT_1_MAX = @INFANTRY_UNIFORM_VARIANT_1_MAX
+				INFANTRY_UNIFORM_VARIANT_2_MAX = @INFANTRY_UNIFORM_VARIANT_2_MAX
+				INFANTRY_UNIFORM_VARIANT_3_MAX = @INFANTRY_UNIFORM_VARIANT_3_MAX
+				INFANTRY_UNIFORM_VARIANT_4_MAX = @INFANTRY_UNIFORM_VARIANT_4_MAX
+			}
+			
+		}
+		
+		create_infantry_uniform_variant = yes
+	}
+}
+
+country_event = { #HMG Equipment
+	id = EAI_V.102
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @HMG_EQUIPMENT_XP_TRIGGER
+		NOT = { has_country_flag = HMG_Equipment_cooldown }
+		NOT = { has_country_flag = hmg_eq_end }
+		
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = HMG_Equipment_cooldown
+			value = 1
+			days = @HMG_EQUIPMENT_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @HMG_EQUIPMENT_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @HMG_EQUIPMENT_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @HMG_EQUIPMENT_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @HMG_EQUIPMENT_VARIANT_2_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[HMG_EQUIPMENT_VARIANT_1_CHANCE] = {
+							add_to_variable = { hmg_equipment_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = hmg_equipment_lvl_1 compare = greater_than_or_equals
+									value = [HMG_EQUIPMENT_VARIANT_1_MAX] } }
+						}
+						[HMG_EQUIPMENT_VARIANT_2_CHANCE] = {
+							add_to_variable = { hmg_equipment_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = hmg_equipment_lvl_2 compare = greater_than_or_equals
+									value = [HMG_EQUIPMENT_VARIANT_2_MAX] } }
+						}
+					}
+				}
+				HMG_EQUIPMENT_VARIANT_1_CHANCE = equipment_chance_1
+				HMG_EQUIPMENT_VARIANT_2_CHANCE = equipment_chance_2
+				
+				HMG_EQUIPMENT_VARIANT_1_MAX = @HMG_EQUIPMENT_VARIANT_1_MAX
+				HMG_EQUIPMENT_VARIANT_2_MAX = @HMG_EQUIPMENT_VARIANT_2_MAX
+			}
+			
+		}
+		
+		create_HMG_equipment_variant = yes
+	}
+}
+
+
+country_event = { #Mortar Equipment
+	id = EAI_V.103
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @MORTAR_EQUIPMENT_XP_TRIGGER
+		NOT = { has_country_flag = Mortar_Equipment_cooldown }
+		NOT = { has_country_flag = mortar_eq_end }
+		
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Mortar_Equipment_cooldown
+			value = 1
+			days = @MORTAR_EQUIPMENT_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @MORTAR_EQUIPMENT_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @MORTAR_EQUIPMENT_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @MORTAR_EQUIPMENT_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @MORTAR_EQUIPMENT_VARIANT_2_CHANCE }
+			
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[MORTAR_EQUIPMENT_VARIANT_1_CHANCE] = {
+							add_to_variable = { mortar_equipment_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = mortar_equipment_lvl_1 compare = greater_than_or_equals
+									value = [MORTAR_EQUIPMENT_VARIANT_1_MAX] } }
+						}
+						[MORTAR_EQUIPMENT_VARIANT_2_CHANCE] = {
+							add_to_variable = { mortar_equipment_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = mortar_equipment_lvl_2 compare = greater_than_or_equals
+									value = [MORTAR_EQUIPMENT_VARIANT_2_MAX] } }
+						}
+					}
+				}
+				MORTAR_EQUIPMENT_VARIANT_1_CHANCE = equipment_chance_1
+				MORTAR_EQUIPMENT_VARIANT_2_CHANCE = equipment_chance_2
+				
+				MORTAR_EQUIPMENT_VARIANT_1_MAX = @MORTAR_EQUIPMENT_VARIANT_1_MAX
+				MORTAR_EQUIPMENT_VARIANT_2_MAX = @MORTAR_EQUIPMENT_VARIANT_2_MAX
+			}
+			
+		}
+		
+		create_mortar_equipment_variant = yes
+	}
+}
+
+
+country_event = { #Light Artillery
+	id = EAI_V.104
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @LIGHT_ARTY_XP_TRIGGER
+		NOT = { has_country_flag = Light_Artillery_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Light_Artillery_cooldown
+			value = 1
+			days = @LIGHT_ARTY_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @LIGHT_ARTY_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @LIGHT_ARTY_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @LIGHT_ARTY_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @LIGHT_ARTY_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @LIGHT_ARTY_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @LIGHT_ARTY_VARIANT_4_CHANCE }
+		set_temp_variable = { equipment_chance_5 = @LIGHT_ARTY_VARIANT_5_CHANCE }
+		
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[LIGHT_ARTY_VARIANT_1_CHANCE] = {
+							add_to_variable = { light_arty_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = light_arty_lvl_1 compare = greater_than_or_equals
+									value = [LIGHT_ARTY_VARIANT_1_MAX] } }
+						}
+						[LIGHT_ARTY_VARIANT_2_CHANCE] = {
+							add_to_variable = { light_arty_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = light_arty_lvl_2 compare = greater_than_or_equals
+									value = [LIGHT_ARTY_VARIANT_2_MAX] } }
+						}
+						[LIGHT_ARTY_VARIANT_3_CHANCE] = {
+							add_to_variable = { light_arty_lvl_3 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = light_arty_lvl_3 compare = greater_than_or_equals
+									value = [LIGHT_ARTY_VARIANT_3_MAX] } }
+						}
+						[LIGHT_ARTY_VARIANT_4_CHANCE] = {
+							add_to_variable = { light_arty_lvl_4 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = light_arty_lvl_4 compare = greater_than_or_equals
+									value = [LIGHT_ARTY_VARIANT_4_MAX] } }
+						}
+						[LIGHT_ARTY_VARIANT_5_CHANCE] = {
+							add_to_variable = { light_arty_lvl_5 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = light_arty_lvl_5 compare = greater_than_or_equals
+									value = [LIGHT_ARTY_VARIANT_5_MAX] } }
+							modifier = { factor = [PEN_MODE_VARIANT_SCORE_FACTOR] desires_piercing = yes }
+						}
+					}
+				}
+				LIGHT_ARTY_VARIANT_1_CHANCE = equipment_chance_1
+				LIGHT_ARTY_VARIANT_2_CHANCE = equipment_chance_2
+				LIGHT_ARTY_VARIANT_3_CHANCE = equipment_chance_3
+				LIGHT_ARTY_VARIANT_4_CHANCE = equipment_chance_4
+				LIGHT_ARTY_VARIANT_5_CHANCE = equipment_chance_5
+				
+				PEN_MODE_VARIANT_SCORE_FACTOR = @PEN_MODE_VARIANT_SCORE_FACTOR
+				
+				LIGHT_ARTY_VARIANT_1_MAX = @LIGHT_ARTY_VARIANT_1_MAX
+				LIGHT_ARTY_VARIANT_2_MAX = @LIGHT_ARTY_VARIANT_2_MAX
+				LIGHT_ARTY_VARIANT_3_MAX = @LIGHT_ARTY_VARIANT_3_MAX
+				LIGHT_ARTY_VARIANT_4_MAX = @LIGHT_ARTY_VARIANT_4_MAX
+				LIGHT_ARTY_VARIANT_5_MAX = @LIGHT_ARTY_VARIANT_5_MAX
+			}
+			
+		}
+		
+		create_light_artillery_variant = yes
+	}
+}
+
+
+country_event = { #Medium Artillery
+	id = EAI_V.105
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @MED_ARTY_XP_TRIGGER
+		NOT = { has_country_flag = Medium_Artillery_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Medium_Artillery_cooldown
+			value = 1
+			days = @MED_ARTY_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @MED_ARTY_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @MED_ARTY_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @MED_ARTY_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @MED_ARTY_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @MED_ARTY_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @MED_ARTY_VARIANT_4_CHANCE }
+		set_temp_variable = { equipment_chance_5 = @MED_ARTY_VARIANT_5_CHANCE }
+		
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[MED_ARTY_VARIANT_1_CHANCE] = {
+							add_to_variable = { medium_arty_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = medium_arty_lvl_1 compare = greater_than_or_equals
+									value = [MED_ARTY_VARIANT_1_MAX] } }
+						}
+						[MED_ARTY_VARIANT_2_CHANCE] = {
+							add_to_variable = { medium_arty_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = medium_arty_lvl_2 compare = greater_than_or_equals
+									value = [MED_ARTY_VARIANT_2_MAX] } }
+						}
+						[MED_ARTY_VARIANT_3_CHANCE] = {
+							add_to_variable = { medium_arty_lvl_3 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = medium_arty_lvl_3 compare = greater_than_or_equals
+									value = [MED_ARTY_VARIANT_3_MAX] } }
+						}
+						[MED_ARTY_VARIANT_4_CHANCE] = {
+							add_to_variable = { medium_arty_lvl_4 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = medium_arty_lvl_4 compare = greater_than_or_equals
+									value = [MED_ARTY_VARIANT_4_MAX] } }
+						}
+						[MED_ARTY_VARIANT_5_CHANCE] = {
+							add_to_variable = { medium_arty_lvl_5 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = medium_arty_lvl_5 compare = greater_than_or_equals
+									value = [MED_ARTY_VARIANT_5_MAX] } }
+							modifier = { factor = [PEN_MODE_VARIANT_SCORE_FACTOR] desires_piercing = yes }
+						}
+					}
+				}
+				MED_ARTY_VARIANT_1_CHANCE = equipment_chance_1
+				MED_ARTY_VARIANT_2_CHANCE = equipment_chance_2
+				MED_ARTY_VARIANT_3_CHANCE = equipment_chance_3
+				MED_ARTY_VARIANT_4_CHANCE = equipment_chance_4
+				MED_ARTY_VARIANT_5_CHANCE = equipment_chance_5
+				
+				PEN_MODE_VARIANT_SCORE_FACTOR = @PEN_MODE_VARIANT_SCORE_FACTOR
+				
+				MED_ARTY_VARIANT_1_MAX = @MED_ARTY_VARIANT_1_MAX
+				MED_ARTY_VARIANT_2_MAX = @MED_ARTY_VARIANT_2_MAX
+				MED_ARTY_VARIANT_3_MAX = @MED_ARTY_VARIANT_3_MAX
+				MED_ARTY_VARIANT_4_MAX = @MED_ARTY_VARIANT_4_MAX
+				MED_ARTY_VARIANT_5_MAX = @MED_ARTY_VARIANT_5_MAX
+			}
+			
+		}
+		
+		create_medium_artillery_variant = yes
+	}
+}
+
+country_event = { #Anti Tank
+	id = EAI_V.106
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @ANTI_TANK_XP_TRIGGER
+		NOT = { has_country_flag = Anti_Tank_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Anti_Tank_cooldown
+			value = 1
+			days = @ANTI_TANK_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @ANTI_TANK_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @ANTI_TANK_MAX_VARIANT_AT_ONCE }
+		
+		if = {
+			limit = {
+				desires_piercing = yes 
+			}
+			add_to_temp_variable = { variant_count = @PEN_MODE_ANTI_TANK_MAX_VARIANT }
+		}
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @ANTI_TANK_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @ANTI_TANK_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @ANTI_TANK_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @ANTI_TANK_VARIANT_4_CHANCE }
+		
+		set_temp_variable = { armor_weight = enemy_max_armor }
+		multiply_temp_variable = { armor_weight = @ANTI_TANK_ARMOR_WEIGHT }
+		
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[ANTI_TANK_VARIANT_1_CHANCE] = {
+							add_to_variable = { anti_tank_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = anti_tank_lvl_1 compare = greater_than_or_equals
+									value = [ANTI_TANK_VARIANT_1_MAX] } }
+						}
+						[ANTI_TANK_VARIANT_2_CHANCE] = {
+							add_to_variable = { anti_tank_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = anti_tank_lvl_2 compare = greater_than_or_equals
+									value = [ANTI_TANK_VARIANT_2_MAX] } }
+							modifier = { add = [ARMOR_WEIGHT] }
+							modifier = { factor = [PEN_MODE_VARIANT_SCORE_FACTOR] desires_piercing = yes }
+						}
+						[ANTI_TANK_VARIANT_3_CHANCE] = {
+							add_to_variable = { anti_tank_lvl_3 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = anti_tank_lvl_3 compare = greater_than_or_equals
+									value = [ANTI_TANK_VARIANT_3_MAX] } }
+						}
+						[ANTI_TANK_VARIANT_4_CHANCE] = {
+							add_to_variable = { anti_tank_lvl_4 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = anti_tank_lvl_4 compare = greater_than_or_equals
+									value = [ANTI_TANK_VARIANT_4_MAX] } }
+						}
+					}
+				}
+				ARMOR_WEIGHT = armor_weight
+				
+				ANTI_TANK_VARIANT_1_CHANCE = equipment_chance_1
+				ANTI_TANK_VARIANT_2_CHANCE = equipment_chance_2
+				ANTI_TANK_VARIANT_3_CHANCE = equipment_chance_3
+				ANTI_TANK_VARIANT_4_CHANCE = equipment_chance_4
+				
+				PEN_MODE_VARIANT_SCORE_FACTOR = @PEN_MODE_VARIANT_SCORE_FACTOR
+				
+				ANTI_TANK_VARIANT_1_MAX = @ANTI_TANK_VARIANT_1_MAX
+				ANTI_TANK_VARIANT_2_MAX = @ANTI_TANK_VARIANT_2_MAX
+				ANTI_TANK_VARIANT_3_MAX = @ANTI_TANK_VARIANT_3_MAX
+				ANTI_TANK_VARIANT_4_MAX = @ANTI_TANK_VARIANT_4_MAX
+			}
+			
+		}
+		
+		create_anti_tank_equipment_variant = yes
+	}
+}
+
+
+country_event = { #Heavy Anti Tank
+	id = EAI_V.107
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @HV_ANTI_TANK_XP_TRIGGER
+		NOT = { has_country_flag = Hv_Anti_Tank_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Hv_Anti_Tank_cooldown
+			value = 1
+			days = @HV_ANTI_TANK_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @HV_ANTI_TANK_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @HV_ANTI_TANK_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @HV_ANTI_TANK_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @HV_ANTI_TANK_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @HV_ANTI_TANK_VARIANT_3_CHANCE }
+		set_temp_variable = { equipment_chance_4 = @HV_ANTI_TANK_VARIANT_4_CHANCE }
+		
+		set_temp_variable = { armor_weight = enemy_max_armor }
+		multiply_temp_variable = { armor_weight = @HV_ANTI_TANK_ARMOR_WEIGHT }
+		
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[HV_ANTI_TANK_VARIANT_1_CHANCE] = {
+							add_to_variable = { hv_anti_tank_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = hv_anti_tank_lvl_1 compare = greater_than_or_equals
+									value = [HV_ANTI_TANK_VARIANT_1_MAX] } }
+						}
+						[HV_ANTI_TANK_VARIANT_2_CHANCE] = {
+							add_to_variable = { hv_anti_tank_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = hv_anti_tank_lvl_2 compare = greater_than_or_equals
+									value = [HV_ANTI_TANK_VARIANT_2_MAX] } }
+							modifier = { add = [ARMOR_WEIGHT] }
+							modifier = { factor = [PEN_MODE_VARIANT_SCORE_FACTOR] desires_piercing = yes }
+						}
+						[HV_ANTI_TANK_VARIANT_3_CHANCE] = {
+							add_to_variable = { hv_anti_tank_lvl_3 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = hv_anti_tank_lvl_3 compare = greater_than_or_equals
+									value = [HV_ANTI_TANK_VARIANT_3_MAX] } }
+						}
+						[HV_ANTI_TANK_VARIANT_4_CHANCE] = {
+							add_to_variable = { hv_anti_tank_lvl_4 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = hv_anti_tank_lvl_4 compare = greater_than_or_equals
+									value = [HV_ANTI_TANK_VARIANT_4_MAX] } }
+						}
+					}
+				}
+				ARMOR_WEIGHT = armor_weight
+				
+				HV_ANTI_TANK_VARIANT_1_CHANCE = equipment_chance_1
+				HV_ANTI_TANK_VARIANT_2_CHANCE = equipment_chance_2
+				HV_ANTI_TANK_VARIANT_3_CHANCE = equipment_chance_3
+				HV_ANTI_TANK_VARIANT_4_CHANCE = equipment_chance_4
+				
+				HV_ANTI_TANK_VARIANT_1_MAX = @HV_ANTI_TANK_VARIANT_1_MAX
+				HV_ANTI_TANK_VARIANT_2_MAX = @HV_ANTI_TANK_VARIANT_2_MAX
+				HV_ANTI_TANK_VARIANT_3_MAX = @HV_ANTI_TANK_VARIANT_3_MAX
+				HV_ANTI_TANK_VARIANT_4_MAX = @HV_ANTI_TANK_VARIANT_4_MAX
+			}
+			
+		}
+		
+		create_heavy_anti_tank_equipment_variant = yes
+	}
+}
+
+
+country_event = { #Anti Air
+	id = EAI_V.108
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @ANTI_AIR_XP_TRIGGER
+		NOT = { has_country_flag = Anti_Air_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Anti_Air_cooldown
+			value = 1
+			days = @ANTI_AIR_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @ANTI_AIR_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @ANTI_AIR_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @ANTI_AIR_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @ANTI_AIR_VARIANT_2_CHANCE }
+		set_temp_variable = { equipment_chance_3 = @ANTI_AIR_VARIANT_3_CHANCE }
+		
+		set_temp_variable = { armor_weight = enemy_max_armor }
+		multiply_temp_variable = { armor_weight = @ANTI_AIR_ARMOR_WEIGHT }
+		
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[ANTI_AIR_VARIANT_1_CHANCE] = {
+							add_to_variable = { anti_air_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = anti_air_lvl_1 compare = greater_than_or_equals
+									value = [ANTI_AIR_VARIANT_1_MAX] } }
+							modifier = { add = [ARMOR_WEIGHT] }
+							modifier = { factor = [PEN_MODE_VARIANT_SCORE_FACTOR] desires_piercing = yes }
+						}
+						[ANTI_AIR_VARIANT_2_CHANCE] = {
+							add_to_variable = { anti_air_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = anti_air_lvl_2 compare = greater_than_or_equals
+									value = [ANTI_AIR_VARIANT_2_MAX] } }
+						}
+						[ANTI_AIR_VARIANT_3_CHANCE] = {
+							add_to_variable = { anti_air_lvl_3 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = anti_air_lvl_3 compare = greater_than_or_equals
+									value = [ANTI_AIR_VARIANT_3_MAX] } }
+						}
+					}
+				}
+				ARMOR_WEIGHT = armor_weight
+				
+				ANTI_AIR_VARIANT_1_CHANCE = equipment_chance_1
+				ANTI_AIR_VARIANT_2_CHANCE = equipment_chance_2
+				ANTI_AIR_VARIANT_3_CHANCE = equipment_chance_3
+				
+				ANTI_AIR_VARIANT_1_MAX = @ANTI_AIR_VARIANT_1_MAX
+				ANTI_AIR_VARIANT_2_MAX = @ANTI_AIR_VARIANT_2_MAX
+				ANTI_AIR_VARIANT_3_MAX = @ANTI_AIR_VARIANT_3_MAX
+			}
+			
+		}
+		
+		create_anti_air_equipment_variant = yes
+	}
+}
+
+country_event = { #Heavy Anti Air
+	id = EAI_V.109
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @HV_ANTI_AIR_XP_TRIGGER
+		NOT = { has_country_flag = Hv_Anti_Air_cooldown }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Hv_Anti_Air_cooldown
+			value = 1
+			days = @HV_ANTI_AIR_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @HV_ANTI_AIR_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @HV_ANTI_AIR_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @HV_ANTI_AIR_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @HV_ANTI_AIR_VARIANT_2_CHANCE }
+		
+		set_temp_variable = { armor_weight = enemy_max_armor }
+		multiply_temp_variable = { armor_weight = @HV_ANTI_AIR_ARMOR_WEIGHT }
+		
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[HV_ANTI_AIR_VARIANT_1_CHANCE] = {
+							add_to_variable = { hv_anti_air_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = hv_anti_air_lvl_1 compare = greater_than_or_equals
+									value = [HV_ANTI_AIR_VARIANT_1_MAX] } }
+							modifier = { add = [ARMOR_WEIGHT] }
+							modifier = { factor = [PEN_MODE_VARIANT_SCORE_FACTOR] desires_piercing = yes }
+						}
+						[HV_ANTI_AIR_VARIANT_2_CHANCE] = {
+							add_to_variable = { hv_anti_air_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = hv_anti_air_lvl_2 compare = greater_than_or_equals
+									value = [HV_ANTI_AIR_VARIANT_2_MAX] } }
+						}
+					}
+				}
+				ARMOR_WEIGHT = armor_weight
+				
+				HV_ANTI_AIR_VARIANT_1_CHANCE = equipment_chance_1
+				HV_ANTI_AIR_VARIANT_2_CHANCE = equipment_chance_2
+				
+				HV_ANTI_AIR_VARIANT_1_MAX = @HV_ANTI_AIR_VARIANT_1_MAX
+				HV_ANTI_AIR_VARIANT_2_MAX = @HV_ANTI_AIR_VARIANT_2_MAX
+			}
+			
+		}
+		
+		create_hv_anti_air_equipment_variant = yes
+	}
+}
+
+country_event = { #Support Equipment
+	id = EAI_V.110
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @SUPPORT_EQUIPMENT_XP_TRIGGER
+		NOT = { has_country_flag = Support_Equipment_cooldown }
+		NOT = { has_country_flag = support_eq_end }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Support_Equipment_cooldown
+			value = 1
+			days = @SUPPORT_EQUIPMENT_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @SUPPORT_EQUIPMENT_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @SUPPORT_EQUIPMENT_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @SUPPORT_EQUIPMENT_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @SUPPORT_EQUIPMENT_VARIANT_2_CHANCE }
+		
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[SUPPORT_EQUIPMENT_VARIANT_1_CHANCE] = {
+							add_to_variable = { support_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = support_lvl_1 compare = greater_than_or_equals
+									value = [SUPPORT_EQUIPMENT_VARIANT_1_MAX] } }
+						}
+						[SUPPORT_EQUIPMENT_VARIANT_2_CHANCE] = {
+							add_to_variable = { support_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = support_lvl_2 compare = greater_than_or_equals
+									value = [SUPPORT_EQUIPMENT_VARIANT_2_MAX] } }
+						}
+					}
+				}
+				
+				SUPPORT_EQUIPMENT_VARIANT_1_CHANCE = equipment_chance_1
+				SUPPORT_EQUIPMENT_VARIANT_2_CHANCE = equipment_chance_2
+				
+				SUPPORT_EQUIPMENT_VARIANT_1_MAX = @SUPPORT_EQUIPMENT_VARIANT_1_MAX
+				SUPPORT_EQUIPMENT_VARIANT_2_MAX = @SUPPORT_EQUIPMENT_VARIANT_2_MAX
+			}
+			
+		}
+		
+		create_support_equipment_variant = yes
+	}
+}
+
+country_event = { #Infantry AT
+	id = EAI_V.111
+	hidden = yes
+
+	trigger = {
+		is_ai = yes 
+		has_army_experience > @INF_AT_EQUIPMENT_XP_TRIGGER
+		NOT = { has_country_flag = Inf_AT_Equipment_cooldown }
+		NOT = { has_country_flag = inf_at_eq_end }
+	}
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_country_flag = {
+			flag = Inf_AT_Equipment_cooldown
+			value = 1
+			days = @INF_AT_EQUIPMENT_COOLDOWN
+		}
+		set_temp_variable = { xp_trigger = @INF_AT_EQUIPMENT_XP_TRIGGER }
+		
+		set_temp_variable = { variant_count = @INF_AT_EQUIPMENT_MAX_VARIANT_AT_ONCE }
+		
+		set_temp_variable = { variant_cost = @LAND_VARIANT_COST }
+		set_temp_variable = { variant_cost_mod = 1 }
+		add_to_temp_variable = { variant_cost_mod = modifier@land_equipment_upgrade_xp_cost }
+		multiply_temp_variable = { variant_cost = variant_cost_mod }
+		multiply_temp_variable = { variant_cost = -1 }
+		
+		set_temp_variable = { equipment_chance_1 = @INF_AT_EQUIPMENT_VARIANT_1_CHANCE }
+		set_temp_variable = { equipment_chance_2 = @INF_AT_EQUIPMENT_VARIANT_2_CHANCE }
+		
+		while_loop_effect = {
+			limit = { 
+				check_variable = { variant_count > 0 } 
+				has_army_experience > variant_cost
+			}
+			
+			subtract_from_temp_variable = { variant_count = 1 }
+			
+			meta_effect = {
+				text = {
+					random_list = {
+						[INF_AT_EQUIPMENT_VARIANT_1_CHANCE] = {
+							add_to_variable = { inf_at_lvl_1 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = inf_at_lvl_1 compare = greater_than_or_equals
+									value = [INF_AT_EQUIPMENT_VARIANT_1_MAX] } }
+						}
+						[INF_AT_EQUIPMENT_VARIANT_2_CHANCE] = {
+							add_to_variable = { inf_at_lvl_2 = 1 }
+							army_experience = variant_cost
+							modifier = { factor = 0 check_variable = { var = inf_at_lvl_2 compare = greater_than_or_equals
+									value = [INF_AT_EQUIPMENT_VARIANT_2_MAX] } }
+						}
+					}
+				}
+				
+				INF_AT_EQUIPMENT_VARIANT_1_CHANCE = equipment_chance_1
+				INF_AT_EQUIPMENT_VARIANT_2_CHANCE = equipment_chance_2
+				
+				INF_AT_EQUIPMENT_VARIANT_1_MAX = @INF_AT_EQUIPMENT_VARIANT_1_MAX
+				INF_AT_EQUIPMENT_VARIANT_2_MAX = @INF_AT_EQUIPMENT_VARIANT_2_MAX
+			}
+			
+		}
+		
+		create_infantry_AT_equipment_variant = yes
+	}
+}
+
+
+
+
+
+
+		

@@ -1,0 +1,1333 @@
+ITA_speeches_category = {
+
+	sp_ITA_ethiopia = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		cost = 30
+
+		allowed = {
+			tag = ITA
+		}
+
+		available = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+		}
+
+		activation = {
+			
+			OR = {
+			owns_state = 271
+			ETH = { is_puppet_of = ITA }
+			}
+		}
+
+		days_mission_timeout = 180
+
+		complete_effect = {
+
+			add_popularity = { ideology = fascism popularity = 0.05 } 
+			add_stability = 0.5
+
+			hidden_effect = { sound_effect = sp_ITA_ethiopia }
+
+		}
+		
+	}
+
+	sp_ITA_partyrally = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			has_war = no
+
+		}
+
+		complete_effect = {
+
+			add_popularity = { ideology = fascism popularity = 0.05 } 
+
+			hidden_effect = { sound_effect = sp_ITA_partyrally }
+	
+		}
+
+		cost = 15
+				
+		fire_only_once = yes	
+		
+	}
+
+		sp_ITA_albania = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		cost = 30
+
+		allowed = {
+			tag = ITA
+		}
+
+		available = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+		}
+
+		activation = {
+			
+			OR = {
+				owns_state = 44
+				ALB = { is_puppet_of = ITA }
+			}
+
+		}
+
+		days_mission_timeout = 180
+
+		complete_effect = {
+
+			add_popularity = { ideology = fascism popularity = 0.05 } 
+			add_stability = 0.5
+
+			hidden_effect = { sound_effect = sp_ITA_albania }
+	
+		}
+		
+	}
+
+	sp_ITA_statevisit_GER_Berlin = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = GER }
+			country_exists = GER
+			GER = { has_government = fascism } 
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			has_war = no
+			GER = { has_government = fascism } 	
+			GER = { has_opinion = { target = ITA value > 14 } }
+
+		}
+
+		complete_effect = {
+
+			GER = {	add_opinion_modifier = { target = ITA modifier = small_increase } } 
+
+			hidden_effect = { sound_effect = sp_ITA_statevisit_GER_Berlin }
+	
+		}
+
+		cost = 10
+				
+		fire_only_once = yes	
+
+	}
+
+	sp_ITA_statevisit_GER_Rome = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			GER = { has_country_leader = { ruling_only = yes name = "Adolf Hitler" } }
+			NOT = { has_war_with = GER }
+			country_exists = GER
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			GER = { has_country_leader = { ruling_only = yes name = "Adolf Hitler" } }
+			GER = { has_opinion = { target = ITA value > 59 } }
+			GER = { has_war = no }
+
+		}
+
+		complete_effect = {
+
+			ITA = { add_opinion_modifier = { target = GER modifier = small_increase } } 
+
+			hidden_effect = { sound_effect = sp_ITA_statevisit_GER_Rome }
+
+		}
+
+		cost = 10
+				
+		fire_only_once = yes	
+
+	}
+
+	sp_ITA_anschluss = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		cost = 10
+
+		allowed = {
+			tag = ITA
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			country_exists = GER
+			GER = { has_government = fascism }
+		}
+
+		activation = {
+			
+			GER = { owns_state = 4 }
+
+		}
+
+		days_mission_timeout = 180
+
+		complete_effect = {
+
+			ITA = { add_opinion_modifier = { target = GER modifier = small_decrease } } 
+			
+			hidden_effect = { sound_effect = sp_ITA_anschluss }
+
+		}
+
+	}
+
+	sp_ITA_navy = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+		}
+
+		available = {
+
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+
+			OR = { 
+			 	has_tech = nrm_fleet_coordination
+			 	has_tech = nrm_destroyer_screen_improved
+			 	has_tech = nrm_submarine_tactics_improved
+			 	has_tech = nrm_carrier_independent
+			 	has_tech = nrm_carrier_integrated
+			 	has_tech = nrm_escort_patrols
+			 	has_tech = nrm_decisive_battle
+			 	has_tech = nrm_fleet_in_being
+				has_tech = nrm_trade_interdiction
+			 }
+			
+		}
+
+		modifier = {
+			naval_coordination = 0.05
+		}
+
+		complete_effect = {
+
+			hidden_effect = { sound_effect = sp_ITA_navy }
+	
+		}
+
+		cost = 50
+		
+		days_remove = 100
+
+		fire_only_once = yes
+		
+	}
+
+	sp_ITA_medi_ocean = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			country_exists = FRA
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			num_of_naval_factories > 14
+			
+		}
+
+		complete_effect = {
+
+			ITA = { add_opinion_modifier = { target = FRA modifier = small_decrease } } 
+			FRA = { add_opinion_modifier = { target = ITA modifier = small_decrease } } 
+			ENG = { add_opinion_modifier = { target = ITA modifier = small_decrease } } 
+
+			hidden_effect = { sound_effect = sp_ITA_medi_ocean }
+	
+		}
+
+		cost = 10
+				
+		fire_only_once = yes	
+
+	}
+
+	sp_ITA_denounce_SPR = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			SPR = { has_civil_war = yes }
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			D01 = { has_volunteers_amount_from = { tag = ITA count > 1 } }
+
+		}
+
+		complete_effect = {
+
+			ITA = { add_opinion_modifier = { target = SPR modifier = medium_decrease } }
+
+			hidden_effect = { sound_effect = sp_ITA_denounce_SPR }
+	
+		}
+
+		cost = 10
+				
+		fire_only_once = yes					
+
+	}
+
+	sp_ITA_spanishcivilwar_victory = {
+
+		icon = ger_reichskommissariats
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		cost = 30
+
+		allowed = {
+			tag = ITA
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			SPR = { has_country_leader = { ruling_only = yes name = "Francisco Franco" } }
+			SPR = { has_government = fascism }
+			SPR = { has_civil_war = no }
+
+		}
+
+		activation = {
+			
+			SPR = { has_government = fascism }
+			SPR = { has_civil_war = no }
+
+		}
+
+		days_mission_timeout = 180
+
+		complete_effect = {
+
+			ITA = { add_opinion_modifier = { target = SPR modifier = medium_increase } }
+			add_stability = 0.5
+
+			hidden_effect = { sound_effect = sp_ITA_spanishcivilwar_victory }
+	
+		}			
+
+	}
+
+
+	sp_ITA_warwith_ENGFRA1 = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = FRA }
+			country_exists = FRA
+			NOT = { has_war_with = ENG }
+			country_exists = ENG
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			is_in_faction_with = GER
+ 			GER = { has_war_with = FRA }
+ 			GER = { has_war_with = ENG }
+ 			FRA = { surrender_progress > 0.1 }
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = ENG type = take_state_focus }
+			declare_war_on = { target = FRA type = take_state_focus }
+			set_country_flag = ITA_warwith_ENGFRA
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_ENGFRA }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_ENGFRA2 = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			
+			has_war_with = FRA
+			country_exists = FRA
+			has_war_with = ENG
+			country_exists = ENG
+			
+			is_in_faction_with = GER
+ 			GER = { has_war_with = FRA }
+ 			GER = { has_war_with = ENG }
+
+ 			NOT = { has_country_flag = ITA_warwith_ENGFRA }
+ 			NOT = { FRA = { has_capitulated = yes } }
+
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_war_with = FRA
+ 			has_war_with = ENG
+ 			NOT = { FRA = { has_capitulated = yes } }
+
+		}
+
+		complete_effect = {
+
+			add_war_support = 0.05
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_ENGFRA }
+	
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+		
+	}
+
+	sp_ITA_warwith_USA1 = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			country_exists = USA
+ 			is_in_faction_with = GER
+ 			GER = { has_war_with = USA }
+ 			JAP = { has_war_with = USA }
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			is_in_faction_with = GER
+ 			GER = { has_war_with = USA }
+ 			JAP = { has_war_with = USA }
+ 			ITA = { has_war_with = USA }
+
+		}
+
+		complete_effect = {
+
+			add_war_support = 0.05
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_USA }
+	
+		}
+
+		cost = 25
+				
+		fire_only_once = yes	
+		
+	}
+
+	#######################################
+	############ A-HISTORICIAL ############
+	#######################################
+
+	sp_ITA_warwith_ENG = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = ENG }
+			country_exists = ENG
+			has_wargoal_against = ENG
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = ENG
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = ENG type = take_state_focus }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_ENG }
+	
+		}
+		
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_FRA = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = FRA }
+			country_exists = FRA
+			has_wargoal_against = FRA
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = FRA
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = FRA type = take_state_focus }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_FRA }
+	
+		}
+				
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_YUG = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = YUG }
+			country_exists = YUG
+			has_wargoal_against = YUG
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = YUG
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = YUG type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+		
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_GRE = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = GRE }
+			country_exists = GRE
+			has_wargoal_against = GRE
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = GRE
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = GRE type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+		
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_TUR = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = TUR }
+			country_exists = TUR
+			has_wargoal_against = TUR
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = TUR
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = TUR type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+		
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_BUL = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = BUL }
+			country_exists = BUL
+			has_wargoal_against = BUL
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = BUL
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = BUL type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+		
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_HOL = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = HOL }
+			country_exists = HOL
+			has_wargoal_against = HOL
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = HOL
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = HOL type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+
+		cost = 50
+				
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_SPR = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = SPR }
+			country_exists = SPR
+			has_wargoal_against = SPR
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = SPR
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = SPR type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_BEL = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = BEL }
+			country_exists = BEL
+			has_wargoal_against = BEL
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = BEL
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = BEL type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_AUS = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = AUS }
+			country_exists = AUS
+			has_wargoal_against = AUS
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = AUS
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = AUS type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_LUX = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = LUX }
+			country_exists = LUX
+			has_wargoal_against = LUX
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = LUX
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = LUX type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+		
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_HUN = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = HUN }
+			country_exists = HUN
+			has_wargoal_against = HUN
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = HUN
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = HUN type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_ROM = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = ROM }
+			country_exists = ROM
+			has_wargoal_against = ROM
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = ROM
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = ROM type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_SWI = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = SWI }
+			country_exists = SWI
+			has_wargoal_against = SWI
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = SWI
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = SWI type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_POR = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = POR }
+			country_exists = POR
+			has_wargoal_against = POR
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = POR
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = POR type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_IRQ = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = IRQ }
+			country_exists = IRQ
+			has_wargoal_against = IRQ
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = IRQ
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = IRQ type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_SAU = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = SAU }
+			country_exists = SAU
+			has_wargoal_against = SAU
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = SAU
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = SAU type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_YEM = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = YEM }
+			country_exists = YEM
+			has_wargoal_against = YEM
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = YEM
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = YEM type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_OMA = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = OMA }
+			country_exists = OMA
+			has_wargoal_against = OMA
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = OMA
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = OMA type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+		
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_GER = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = GER }
+			country_exists = GER
+			has_wargoal_against = GER
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = GER
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = GER type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_USA2 = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = USA }
+			country_exists = USA
+			has_wargoal_against = USA
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = USA
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = USA type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+		
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_SOV = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = SOV }
+			country_exists = SOV
+			has_wargoal_against = SOV
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = SOV
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = SOV type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+		
+		fire_only_once = yes	
+		
+	}
+
+	sp_ITA_warwith_JAP = {
+
+		icon = ger_reichskommissariats
+
+		allowed = {
+			tag = ITA
+		}
+
+		visible = {
+			has_government = fascism
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+			NOT = { has_war_with = JAP }
+			country_exists = JAP
+			has_wargoal_against = JAP
+		}
+
+		available = {
+			
+			has_country_leader = { ruling_only = yes name = "Benito Mussolini" }
+ 			has_wargoal_against = JAP
+
+		}
+
+		complete_effect = {
+
+			declare_war_on = { target = JAP type = annex_everything }
+
+			hidden_effect = { sound_effect = sp_ITA_warwith_GEN }
+	
+		}
+			
+		fire_only_once = yes	
+		
+	}
+	
+}

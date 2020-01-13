@@ -1,0 +1,4012 @@
+technologies = {
+	#############################
+	### Vertical position
+	@1930 = 0
+	@1933 = 2
+	@1934 = 4
+	@1935 = 6
+	@1936 = 8
+	@1937 = 10
+	@1938 = 12
+	@1939 = 14
+	@1940 = 16
+	@1941 = 18
+	@1942 = 20
+	@1943 = 22
+	@1944 = 24
+	@1945 = 26
+	@1946 = 28
+	
+	@JET_1942 = 34
+	@JET_1943 = 36
+	@JET_1944 = 38
+	@JET_1945 = 40
+	@JET_1946 = 42
+	@JET_1947 = 44
+	#############################
+	### Horizontal position X
+	@FTR = 0
+	@MK = 2
+	@INT = 6
+	@MR = 9
+	@HVY_FTR_1 = 13
+	@HVY_FTR = 16
+	@HVY_FTR_2 = 19
+	@NIGHT_FTR = 23
+	@LW = 21
+	@CAS = 27
+	@CAS_1 = 30
+	@L_BOMBER = 34
+	@L_BOMBER_1 = 37
+	@TACT_BOMBER = 41
+	@TACT_BOMBER_1 = 44
+	@STRAT_BOMBERS = 48
+	@TRPT = 52
+	@CV_FTR = 57
+	@CV_CAS = 60
+	@CV_TORP_BMB = 63
+	@NVL_BMB = 67
+	@FLY_BTS = 71
+	
+	@RCT_INT = 1
+	@RCT_INT_1 = 4
+	@JET_FTR = 9
+	@JET_VLKJGR = 14
+	@JET_HVY_FTR = 19
+	@JET_BMBR = 24
+	@JET_STRAT_BMBR = 29
+	
+	tech_testing_1 = { #for testing purposes, this tech should be kept updated with a list of all GERMAN aircraft to allow ease of testing. MAKE SURE IT IS NOT IN 1936 START ON RELEASE!
+		enable_equipments = { 
+			me_109_fighter_equipment_1
+			me_109_early_fighter_equipment_1
+			me_109_early_fighter_equipment_2
+			me_109_mid_fighter_equipment_1
+			me_109_t_fighter_equipment_1
+			me_155_fighter_equipment_1
+			me_109_late_fighter_equipment_1
+			me_109_late_fighter_equipment_2
+			me_109_late_fighter_equipment_3
+			he_112_equipment_1
+			fw_190_fighter_equipment_1
+			fw_190_fighter_equipment_2
+			ta_152_fighter_equipment_1
+			bf_110_fighter_equipment_1
+			bf_110_fighter_equipment_2
+			bf_110_fighter_equipment_3
+			bf_110_fighter_equipment_4
+			me_410_fighter_equipment_1
+			me_262_fighter_equipment_1
+			do_17_bomber_equipment_1
+			ju_88_bomber_equipment_1
+			ju_88_bomber_equipment_2
+			hs_123_equipment_1
+			ju_87_equipment_1
+			ju_87_equipment_2
+			ju_87_cv_equipment_1
+			fi_167_bomber_equipment_1
+			ju_87_cv_equipment_2
+			he_111_bomber_equipment_1
+			he_111_bomber_equipment_2
+			do_217_bomber_equipment_1
+			do_217_bomber_equipment_2
+			do_217_bomber_equipment_3
+			ar_234_bomber_equipment_1
+			ar_234_bomber_equipment_2
+			he_177_bomber_equipment_2
+			he_177_bomber_equipment_1
+			fw_200_bomber_equipment_1
+			fw_200_c8_bomber_equipment_1
+			hs_129_equipment_1
+		}
+		allow = {
+			always = no
+		}
+	
+		research_cost = 2
+		start_year = 1934
+
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_german_aircraft0 = {
+		
+		enable_equipments = {
+			ju_52_bomber_equipment_1
+			he_46_equipment_1
+			he_50_equipment_1
+			he_66_equipment_1
+			he_45_equipment_1
+			he_59_bomber_equipment_1
+			ar_76_equipment_1
+			ar_66_equipment_1
+			hs_126_equipment_1
+			hs_123_equipment_1
+			bu_181_equipment_1
+			ju_86_bomber_equipment_1
+			do_wal_equipment_1
+		}
+		
+		dependencies = {
+			german_tech = 1
+		}
+		
+		allow = {
+			always = no
+		}
+		
+		research_cost = 2
+		start_year = 1930
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @LW y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### HE51 FTR
+	tech_he_51_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = { 
+			he_51_equipment_1
+			he_51_equipment_2
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 1.5
+		start_year = 1934
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FTR y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	### AR-65 FTR
+	tech_ar_65_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = { 
+			ar_65_equipment_1
+			ar_65_fighter_equipment_1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 1.5
+		start_year = 1933
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FTR y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### AR-68 INT
+	tech_ar_68_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ar_68_equipment_1 }
+	
+		research_cost = 1
+		start_year = 1933
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @INT y = @1933 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### Bf109A FTR
+	tech_me_109_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_109_fighter_equipment_1 }
+		
+		on_research_complete = {
+			country_event = germany.600
+		}
+	
+		path = {
+			leads_to_tech = tech_me_109_fighter_equipment_2
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		
+		
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FTR y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000 
+				AND = {
+					EAI_timegate_1937/1 = yes
+					EAI_FTR_tech_focus = yes
+				}				
+			}
+		}
+	}
+	### Bf109B FTR
+	tech_me_109_fighter_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_109_fighter_equipment_2 }
+		
+		path = {
+			leads_to_tech = tech_me_109_early_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 0.5 #Cheap
+		start_year = 1937
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FTR y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1937/1 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	### BF109D FTR
+	tech_me_109_early_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_109_early_fighter_equipment_1 }
+	
+		path = {
+			leads_to_tech = tech_me_109_mid_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 0.6
+		start_year = 1938
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FTR y = @1938 }
+		}
+		
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	### BF109E FTR
+	tech_me_109_mid_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_109_mid_fighter_equipment_1 }
+	
+		path = {
+			leads_to_tech = tech_me_109_late_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = fighter_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 0.75
+		start_year = 1939
+		folder = {
+			name = luftwaffe_folder
+			position = { x =@FTR y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	### MOTOR KANNONE
+	tech_motorkannon = { #allows research of aircraft with motorcannons
+		allow = { can_research_air_techs_folder = yes } 
+		
+		research_cost = 0.5
+		start_year = 1940
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @MK y = @1940 }
+		}
+
+		ai_will_do = {
+			factor = 500 
+			
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/1 = no
+			}
+		}
+	}
+	### BF109F FTR
+	tech_me_109_late_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_109_late_fighter_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_me_109_late_fighter_equipment_2
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_bf_109_h_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		dependencies = {
+			tech_motorkannon = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FTR y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	### BF109G FTR
+	tech_me_109_late_fighter_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_109_late_fighter_equipment_2 }
+	
+		path = {
+			leads_to_tech = tech_me_109_late_fighter_equipment_3
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FTR y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	### BF109K FTR
+	tech_me_109_late_fighter_equipment_3 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_109_late_fighter_equipment_3 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FTR y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_FTR_tech_focus = yes 
+				}
+			}	
+		}
+	}
+	### HE112 MR
+	tech_he_112_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_112_equipment_1 }
+	
+		path = {
+			leads_to_tech = tech_he_100_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @MR y = @1937 } #was -5
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/7 = yes
+					EAI_MTR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	### FW190 MR
+	tech_fw_190_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { fw_190_fighter_equipment_1 }
+		
+	
+		path = {
+			leads_to_tech = tech_fw_190_fighter_equipment_2
+			research_cost_coeff = 1 
+		}
+
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = multirole_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}	
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @MR y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				EAI_MTR_tech_focus = yes 
+			}
+			modifier = {
+				factor = 500 
+				
+				EAI_timegate_1940/7 = yes
+				
+				if = {
+					limit = {
+						EAI_FTR_tech_focus = yes 
+					}
+					OR = { is_researching_technology = tech_me_109_late_fighter_equipment_1 has_tech = tech_me_109_late_fighter_equipment_1 }
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+	}
+	### TA152 MR
+	tech_ta_152_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ta_152_fighter_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 0.75
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @MR y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_MTR_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+			modifier = {
+				factor = 300 
+				
+					EAI_timegate_1943/7 = yes
+				
+				if = {
+					limit = {
+						EAI_FTR_tech_focus = yes 
+					}
+					OR = { is_researching_technology = tech_me_109_late_fighter_equipment_3 has_tech = tech_me_109_late_fighter_equipment_3 }
+				}
+			}
+		}
+	}
+	### HE100 INT
+	tech_he_100_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_100_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @INT y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				EAI_ITC_tech_focus = yes 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+			modifier = {
+				factor = 300 
+				
+		
+				EAI_timegate_1938/7 = yes
+				
+				if = {
+					limit = {
+						EAI_FTR_tech_focus = yes 
+					}
+					OR = { is_researching_technology = tech_me_109_mid_fighter_equipment_1 has_tech = tech_me_109_mid_fighter_equipment_1 }
+				}
+			}
+		}
+	}
+	### BF109H INT
+	tech_bf_109_h_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bf_109_h_equipment_1 }
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = interceptor_1_researched
+			}
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 0.75
+		start_year = 1941
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @INT y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				EAI_ITC_tech_focus = yes 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+			modifier = {
+				factor = 300 
+				
+				
+				EAI_timegate_1940/7 = yes
+				
+				if = {
+					limit = {
+						EAI_FTR_tech_focus = yes 
+					}
+					OR = { is_researching_technology = tech_me_109_late_fighter_equipment_1 has_tech = tech_me_109_late_fighter_equipment_1 }
+				}
+			}
+		}
+	}
+	### FW190D INT
+	tech_fw_190_fighter_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { fw_190_fighter_equipment_2 }
+	
+		path = {
+			leads_to_tech = tech_ta_152_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_ta_152_fighter_equipment_2
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 0.75
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @INT y = @1943 }
+		}
+		
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					OR = {
+						EAI_ITC_tech_focus = yes 
+						EAI_MTR_tech_focus = yes
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+		}
+	}
+	### BV155 INT
+	tech_bv_155_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bv_155_fighter_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1945
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @INT y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				AND = {
+					EAI_ITC_tech_focus = yes
+					EAI_timegate_1944/7 = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1944/7 = no
+			}
+			modifier = {
+				factor = 300 
+				EAI_timegate_1944/7 = yes
+				if = {
+					limit = {
+						EAI_FTR_tech_focus = yes 
+					}
+					OR = { is_researching_technology = tech_me_109_late_fighter_equipment_3 has_tech = tech_me_109_late_fighter_equipment_3 }
+				}
+			}
+		}
+	}
+	### TA152H INT
+	tech_ta_152_fighter_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ta_152_fighter_equipment_2 }
+	
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 0.75
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @INT y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_ITC_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+			modifier = {
+				factor = 300 
+				
+				EAI_timegate_1943/7 = yes
+				
+				if = {
+					limit = {
+						EAI_FTR_tech_focus = yes 
+					}
+					OR = { is_researching_technology = tech_me_109_late_fighter_equipment_3 has_tech = tech_me_109_late_fighter_equipment_3 }
+				}
+			}
+		}
+	}
+	### BF110A HVY_FTR
+	tech_bf_110_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bf_110_fighter_equipment_1 }
+	
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		path = {
+			leads_to_tech = tech_bf_110_fighter_equipment_2
+			research_cost_coeff = 1 
+		}
+		
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR y = @1936 }
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				EAI_HFTR_tech_focus = yes 
+			}
+			modifier = {
+				factor = 300 
+				
+				EAI_timegate_1936/2 = yes
+			}
+		}
+	}
+	### BF110B HVY_FTR
+	tech_bf_110_fighter_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bf_110_fighter_equipment_2 }
+	
+		path = {
+			leads_to_tech = tech_bf_110_fighter_equipment_3
+			research_cost_coeff = 1 
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 0.5
+		start_year = 1937
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/7 = yes
+					EAI_HFTR_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+	}
+	### BF110C HVY_FTR
+	tech_bf_110_fighter_equipment_3 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bf_110_c_fighter_equipment_1 }
+	
+		path = {
+			leads_to_tech = tech_bf_110_fighter_equipment_4
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = heavy_fighter_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 0.5
+		start_year = 1938
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_HFTR_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+	}
+	### BF110E HVY_FTR
+	tech_bf_110_fighter_equipment_4 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bf_110_e_fighter_equipment_1 }
+	
+		path = {
+			leads_to_tech = tech_bf_110_g_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 0.5 
+		start_year = 1941
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1940/7 = yes				
+					EAI_HFTR_tech_focus = yes
+				}				
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+	}
+	### BF110G HVY_FTR
+	tech_bf_110_g_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bf_110_g_fighter_equipment_1 }
+	
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 0.5 
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000 
+				AND = {
+					EAI_timegate_1941/7 = yes	
+					EAI_HFTR_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+	}
+	### FW187 HVY_FTR
+	tech_fw_187_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { fw_187_fighter_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR_2 y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### ME210 HVY_FTR
+	tech_me_210_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_210_fighter_equipment_1 }
+	
+		path = {
+			leads_to_tech = tech_me_410_fighter_equipment_1
+			research_cost_coeff = 1 
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR_2 y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### ME410 HVY_FTR
+	tech_me_410_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_410_fighter_equipment_1 }
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		
+		research_cost = 0.75
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR_2 y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### NIGHT FIGHTERS #####
+	### DO17 NIGHT FTR
+	tech_do_17_night_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_17_night_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_do_17_z_bomber_equipment_1 = 1 
+			radio_detection = 1
+
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		
+		research_cost = 0.5
+		start_year = 1940
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NIGHT_FTR y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### JU88 C6B NIGHT_FTR
+	tech_ju_88_c6b_night_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_88_c6b_night_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_ju_88_a5_bomber_equipment_1 = 1 
+			centimetric_radar = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		
+		research_cost = 0.5
+		start_year = 1941
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NIGHT_FTR y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### DO217 NIGHT_FTR
+	tech_do_217_night_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_217_night_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_do_217_bomber_equipment_1 = 1 
+			centimetric_radar = 1
+			
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NIGHT_FTR y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### HE219 NIGHT_FTR
+	tech_he_219_night_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_219_night_fighter_equipment_1 }
+		
+		dependencies = {
+			improved_centimetric_radar = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		
+		research_cost = 1.5
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NIGHT_FTR y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### TA154 NIGHT_FTR
+	tech_ta_154_night_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ta_154_night_fighter_equipment_1 }
+		
+		dependencies = {
+			improved_centimetric_radar = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NIGHT_FTR y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	####################################
+	### AR440 HVY_FTR
+	tech_ar_440_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ar_440_fighter_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		
+		research_cost = 1.5
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR_1 y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### BF109Z HVY_FTR
+	tech_bf_109_z_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bf_109_z_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_me_109_late_fighter_equipment_2 = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_HFTR_tech_focus = yes
+				}				
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+	}
+	### DO335
+	tech_do_335_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_335_fighter_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @HVY_FTR_1 y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ar_234_c_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ar_234_c_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_ar_234_bomber_equipment_2 = 1 
+			jet_engines = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cat_heavy_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		
+		research_cost = 0.5
+		start_year = 1945
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @JET_HVY_FTR y = @JET_1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	####################################
+	### ROCKET-INTERCEPTORS
+	### ME163 RCT_INT
+	tech_me_163_interceptor_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_163_interceptor_equipment_1 }
+		
+		
+		path = {
+			leads_to_tech = tech_me_163_c_interceptor_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = rocketry_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		dependencies = {
+			rocket_engines = 1 
+		}
+		categories = {
+			light_air
+			air_equipment
+			rocketry
+		}
+		
+		research_cost = 1.5
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @RCT_INT y = @JET_1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### BA349 RCT_INT
+	tech_ba_349_interceptor_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ba_349_interceptor_equipment_1 }
+		
+		dependencies = {
+			improved_rocket_engines = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = rocketry_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			air_equipment
+			rocketry
+		}
+		
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @RCT_INT_1 y = @JET_1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### ME163C RCT_INT
+	tech_me_163_c_interceptor_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_163_c_interceptor_equipment_1 }
+		
+		dependencies = {
+			rocket_engines = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = rocketry_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			air_equipment
+			rocketry
+		}
+		
+		research_cost = 0.5
+		start_year = 1945
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @RCT_INT y = @JET_1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### HE162 RCT_INT
+	tech_he_162_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_162_fighter_equipment_1 }
+		
+		dependencies = {
+			jet_engines = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			air_equipment
+			jet_technology
+		}
+		
+		research_cost = 1.5
+		start_year = 1945
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @JET_VLKJGR y = @JET_1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_me_262_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_262_fighter_equipment_1 }
+		
+		dependencies = {
+			jet_engines = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			jet_technology
+			air_equipment
+		}
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @JET_FTR y = @JET_1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_go_229_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { go_229_fighter_equipment_1 }
+		
+		dependencies = {
+			jet_engines = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			air_equipment
+			jet_technology
+		}
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @JET_FTR y = @JET_1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### CAS #####
+	### AR81 CAS
+	tech_ar_81_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ar_81_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CAS_1 y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### HE118 CAS
+	tech_he_118_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_118_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+		}
+
+		research_cost = 1
+		start_year = 1935
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CAS_1 y = @1935 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### CLOSE AIR SUPPORT #####
+	### Ju-87A
+	tech_ju_87_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_87_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_ju_87_equipment_2
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+		}
+
+		research_cost = 1.5 
+		start_year = 1935
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CAS y = @1935 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/2 = yes
+					EAI_CAS_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_ju_87_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_87_equipment_2 }
+		
+		path = {
+			leads_to_tech = tech_ju_87_equipment_3
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = CAS_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+
+		research_cost = 0.5 
+		start_year = 1938
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CAS y = @1938 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_CAS_tech_focus = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+	}
+	tech_hs_129_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { hs_129_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CAS_1 y = @1941 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ju_87_equipment_3 = { 
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_87_equipment_3 }
+		
+		path = {
+			leads_to_tech = tech_ju_87_equipment_4
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CAS y = @1942 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 10 
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_CAS_tech_focus = yes 
+				}
+				
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+			modifier = {
+				factor = 500 
+				
+				
+				EAI_timegate_1941/7 = yes
+				
+				if = {
+					limit = {
+						EAI_FTR_tech_focus = yes 
+					}
+					OR = { is_researching_technology = tech_me_109_late_fighter_equipment_1 has_tech = tech_me_109_late_fighter_equipment_1 }
+				}
+			}
+		}
+	}
+	### FW190F CAS
+	tech_fw_190_f_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { fw_190_f_equipment_1 }
+		
+		dependencies = {
+			tech_fw_190_fighter_equipment_1 = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = light_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CAS_1 y = @1942 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### JU87 D5
+	tech_ju_87_equipment_4 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_87_equipment_4 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+		}
+
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CAS y = @1943 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_CAS_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+		}
+	}
+	### JU88 P CAS
+	tech_ju_88_p_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_88_p_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			cas_bomber
+			air_equipment
+		}
+		dependencies = {
+			tech_ju_88_a5_bomber_equipment_1 = 1 
+		}
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CAS_1 y = @1944 } 
+		}
+		
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### HS132 CAS
+	tech_hs_132_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { hs_132_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			jet_technology
+			medium_air
+			air_equipment
+		}
+		dependencies = {
+			jet_aircraft_prototype = 1
+		}
+		research_cost = 1.5
+		start_year = 1945
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CAS_1 y = @1945 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	#########################################
+	### BOMBERS
+	tech_do_17_z_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_17_z_bomber_equipment_1 }
+	
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = light_bomber_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 0.5
+		start_year = 1939
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER_1 y = @1939 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_LTBOMB_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+	}
+	tech_ju_88_a5_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_88_a5_bomber_equipment_1 }
+	
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 0.5
+		start_year = 1940
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER_1 y = @1940 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_LTBOMB_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+	}
+	tech_ju_86_r_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_86_r_bomber_equipment_1 }
+	
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1941
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER_1 y = @1941 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_LTBOMB_tech_focus = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+	}
+	tech_ju_188_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_188_bomber_equipment_1 }
+	
+		path = {
+			leads_to_tech = tech_ju_388_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		dependencies = {
+			tech_ju_88_a5_bomber_equipment_1 = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 0.75
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER_1 y = @1942 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_LTBOMB_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_ju_388_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_388_bomber_equipment_1 }
+
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER_1 y = @1944 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### Fast bombers
+	tech_he_70_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_70_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		research_cost = 1.5
+		start_year = 1933
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER y = @1933 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_do_17_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_17_bomber_equipment_1 }
+	
+		path = {
+			leads_to_tech = tech_do_17_z_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER y = @1936 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/2 = yes
+					EAI_LTBOMB_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_he_70_bomber_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_70_bomber_equipment_2 }
+	
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+
+		research_cost = 0.5
+		start_year = 1938
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER y = @1938 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ju_88_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_88_bomber_equipment_1 }
+	
+		path = {
+			leads_to_tech = tech_ju_88_a5_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_ju_88_s_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER y = @1939 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ju_88_s_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_88_s_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER y = @1943 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ju_288_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_288_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_ju_88_bomber_equipment_1 = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @L_BOMBER y = @1944 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	tech_ar_234_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ar_234_bomber_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_ar_234_bomber_equipment_2
+			research_cost_coeff = 1 
+		}
+		
+		dependencies = {
+			jet_engines = 1 
+			radio = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			jet_technology
+			tactical_bomber
+		}
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @JET_BMBR  y = @JET_1942 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ar_234_bomber_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ar_234_bomber_equipment_2 }
+		
+		dependencies = {
+			jet_engines = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			jet_technology
+			tactical_bomber
+		}
+		research_cost = 1 
+		start_year = 1945
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @JET_BMBR y = @JET_1945 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### TACTICAL BOMBERS #####
+	### DO11
+	tech_do_11_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_11_bomber_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_do_23_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1.5 
+		start_year = 1933
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TACT_BOMBER y = 0 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/2 = yes
+					EAI_TAC_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_do_23_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_23_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+
+		research_cost = 1.5 
+		start_year = 1933
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TACT_BOMBER y = @1933 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/2 = yes
+					EAI_TAC_tech_focus = yes 
+				}
+			}
+		}
+	}
+	### HE111A
+	tech_he_111_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_111_bomber_equipment_1 }
+	
+		path = {
+			leads_to_tech = tech_he_111_bomber_equipment_4
+			research_cost_coeff = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+
+		research_cost = 1.5 
+		start_year = 1936
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TACT_BOMBER y = @1936 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000 
+				AND = {
+					EAI_timegate_1936/2 = yes
+					OR = {
+						EAI_TAC_tech_focus = yes 
+						EAI_NAV_tech_focus = yes 
+					} 
+				}
+			}
+		}
+	}
+	### HE111E
+	tech_he_111_bomber_equipment_4 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { 
+			he_111_bomber_equipment_2a
+		}
+		
+		path = {
+			leads_to_tech = tech_he_111_bomber_equipment_2
+			research_cost_coeff = 1 
+		}
+		
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TACT_BOMBER y = @1937 } 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1936/7 = yes
+					OR = {
+						EAI_TAC_tech_focus = yes 
+					EAI_NAV_tech_focus = yes 
+					} 
+				}
+			}
+		}
+	}
+	### HE111F
+	tech_he_111_bomber_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_111_bomber_equipment_2 }
+		
+		path = {
+			leads_to_tech = tech_he_111_bomber_equipment_3
+			research_cost_coeff = 1 
+		}
+		
+		research_cost = 1 
+		start_year = 1938
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TACT_BOMBER y = @1938 }
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = tactical_bomber_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1937/7 = yes
+					OR = {
+						EAI_TAC_tech_focus = yes
+						EAI_NAV_tech_focus = yes
+					}
+				}
+			}
+		}
+	}
+	### HE111
+	tech_he_111_bomber_equipment_3 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_111_bomber_equipment_3 }
+		
+		path = {
+			leads_to_tech = tech_he_111_h_16_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1 
+		start_year = 1939
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TACT_BOMBER y = @1939 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_TAC_tech_focus = yes 
+				}
+			}
+		}
+	}
+	
+	tech_he_111_h_16_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_111_h_16_bomber_equipment_1 }
+		
+		#path = {
+		#	leads_to_tech = tech_he_111_z_bomber_equipment_1
+		#	research_cost_coeff = 1 
+		#}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		research_cost = 1 
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TACT_BOMBER y = @1942 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_TAC_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_do_217_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_217_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		path = {
+			leads_to_tech = tech_do_217_bomber_equipment_2
+			research_cost_coeff = 1 
+		}
+		
+		dependencies = {
+			tech_do_17_bomber_equipment_1 = 1 
+		}
+		research_cost = 1.25
+		start_year = 1940
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TACT_BOMBER_1 y = @1940 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_do_217_bomber_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_217_bomber_equipment_2 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		dependencies = {
+			radio = 1  
+		}
+	
+		path = {
+			leads_to_tech = tech_do_317_bomber_equipment_1
+			research_cost_coeff = 1 
+		}
+		
+		
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TACT_BOMBER_1 y = @1942 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_do_317_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_317_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		research_cost = 0.75 
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TACT_BOMBER_1 y = @1944 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### STRATEGIC BOMBERS #####
+	### JU89
+	tech_ju_89_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_89_bomber_equipment_1 }
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		research_cost = 1.5 
+		start_year = 1937
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @STRAT_BOMBERS y = @1937 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_he_177_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_177_bomber_equipment_1 }
+		
+		path = {
+			leads_to_tech = tech_he_177_bomber_equipment_2
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = strat_bomber_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		research_cost = 1.5 
+		start_year = 1941
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @STRAT_BOMBERS y = @1941 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_STR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_he_177_bomber_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_177_bomber_equipment_2 }
+		
+		path = {
+			leads_to_tech = tech_he_177_bomber_equipment_3
+			research_cost_coeff = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		research_cost = 1 
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @STRAT_BOMBERS y = @1942 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_STR_tech_focus = yes
+				}					
+			}
+		}
+	}
+	tech_he_177_bomber_equipment_3 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_177_bomber_equipment_3 }
+				
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @STRAT_BOMBERS y = @1943 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_STR_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_me_264_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_264_bomber_equipment_1 }
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @STRAT_BOMBERS y = @1944 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ju_488_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_488_bomber_equipment_1 }
+				
+		dependencies = { 
+			tech_ju_188_bomber_equipment_1 = 1 
+			tech_ju_288_bomber_equipment_1 = 1 
+			tech_ju_388_bomber_equipment_1 = 1 
+			tech_ju_88_a5_bomber_equipment_1 = 1 
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = cat_strategic_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		research_cost = 0.5
+		start_year = 1945
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @STRAT_BOMBERS y = @1945 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ju_287_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_287_bomber_equipment_1 }
+				
+		path = {
+			leads_to_tech = tech_ju_287_bomber_equipment_2
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			jet_engines = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			heavy_air
+			jet_technology
+			air_equipment
+		}
+		
+		research_cost = 1.5
+		start_year = 1945
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @JET_STRAT_BMBR y = @JET_1945 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ju_287_bomber_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_287_bomber_equipment_2 }
+			
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = heavy_air_tt
+			custom_effect_tooltip = jet_technology_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			heavy_air
+			air_equipment
+			jet_technology
+		}
+		
+		research_cost = 0.5
+		start_year = 1946
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @JET_STRAT_BMBR y = @JET_1946 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### Transport planes ###
+	tech_transport_ju_52_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = { transport_ju_52_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			air_equipment
+		}
+		
+		research_cost = 1.5
+		start_year = 1936 
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TRPT y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_he_111_z_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_111_z_bomber_equipment_1 }
+		
+		dependencies = {
+			tech_he_111_bomber_equipment_2 = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			tactical_bomber
+		}
+		
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TRPT y = @1943 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_transport_he_111_h20r2_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+		
+		enable_equipments = { transport_he_111_h20_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = medium_air_tt
+			custom_effect_tooltip = tactical_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			medium_air
+			air_equipment
+			tactical_bomber
+		}
+		
+		dependencies = {
+			tech_he_111_bomber_equipment_2 = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @TRPT y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### Naval Aircraft ####
+	tech_ar_95_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ar_95_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1936 
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NVL_BMB y = @1936 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_do_22_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_22_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NVL_BMB y = @1937 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_he_111_j_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_111_j_bomber_equipment_1 }
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				set_country_flag = naval_bomber_1_researched
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		dependencies = {
+			tech_he_111_bomber_equipment_2 = 1 
+		}
+		research_cost = 0.5
+		start_year = 1938 
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NVL_BMB y = @1938 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 3000
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_NAV_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_he_115_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { he_115_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NVL_BMB y = @1939 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_fw_200_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { fw_200_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1940 
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NVL_BMB y = @1940 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ju_88_a17_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_88_a17_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		dependencies = {
+			tech_ju_88_a5_bomber_equipment_1 = 1 
+		}
+		research_cost = 0.5
+		start_year = 1942 
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NVL_BMB y = @1942 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_fw_200_bomber_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { fw_200_c8_bomber_equipment_1 }
+		
+		dependencies = {
+			radio = 1
+			tech_fw_200_bomber_equipment_1 = 1 
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1943 
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NVL_BMB y = @1943 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_ju_290_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_290_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1944 
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @NVL_BMB y = @1944 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### Carrier based aircraft #####
+	### AR197 CV-FTR
+	tech_ar_197_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ar_197_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_ar_68_equipment_1 = 1 
+		}
+		
+		research_cost = 1 
+		start_year = 1937
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CV_FTR y = @1937 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500
+				AND = {
+					EAI_timegate_1936/7 = yes
+					EAI_CV_fighter_production = yes
+				}
+			}
+		}
+	}
+	### ME109T CV-FTR
+	tech_me_109_t_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { 
+			me_109_t_fighter_equipment_1 #Needs to be checked
+		}
+		dependencies = {
+			tech_me_109_mid_fighter_equipment_1 = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1 
+		start_year = 1941 #?
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CV_FTR y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 1000
+				AND = {
+					EAI_timegate_1940/7 = yes
+					EAI_CV_fighter_production = yes
+				}
+			}
+		}
+	}
+	### ME155 CV-FTR
+	tech_me_155_fighter_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { me_155_fighter_equipment_1 }
+		
+		dependencies = {
+			tech_me_109_late_fighter_equipment_2 = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = light_fighter_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			light_fighter
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1943 
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CV_FTR y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_CV_fighter_production = yes
+				}
+			}
+		}
+	}
+	### JU87C CV-CAS DIVE BOMBER
+	tech_ju_87_cv_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_87_cv_equipment_1 }
+		dependencies = {
+			tech_ju_87_equipment_2 = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			cas_bomber
+			air_equipment
+		}
+		research_cost = 1 
+		start_year = 1938
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CV_CAS y = @1938 } 
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	###JU87E CV-CAS DIVE BOMBER
+	tech_ju_87_cv_equipment_3 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_87_cv_equipment_3 }
+		dependencies = {
+			tech_ju_87_equipment_4 = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = cas_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			cas_bomber
+			air_equipment
+		}
+		
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CV_CAS y = @1943 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### FI167 CV-TORPEDO BOMBER
+	tech_fi_167_bomber_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { fi_167_bomber_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1938 
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CV_TORP_BMB y = @1938 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_CV_aircraft_production = yes
+				}
+			}
+		}
+	}
+	
+	tech_ju_87_cv_equipment_2 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_87_cv_equipment_2 }
+		
+		dependencies = {
+			tech_ju_87_equipment_3 = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1 
+		start_year = 1942
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CV_TORP_BMB y = @1942 } 
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 1000
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_CV_aircraft_production = yes
+				}
+			}
+		}
+	}
+	tech_ju_87_cv_equipment_4 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { ju_87_cv_equipment_4 }
+		
+		dependencies = {
+			tech_ju_87_equipment_4 = 1 
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1 
+		start_year = 1943
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @CV_TORP_BMB y = @1943 } 
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 1000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_CV_aircraft_production = yes
+				}
+			}
+		}
+	}
+
+	### Flying Boats ###
+	tech_do_18_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_18_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1
+		start_year = 1937
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FLY_BTS y = @1937 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_do_24_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { do_24_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FLY_BTS y = @1938 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_bv_138_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bv_138_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FLY_BTS y = @1939 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_bv_238_equipment_1 = {
+		allow = { can_research_air_techs_folder = yes } 
+	
+		enable_equipments = { bv_238_equipment_1 }
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = naval_air_tt
+			custom_effect_tooltip = naval_bomber_tt
+			custom_effect_tooltip = air_equipment_tt
+		}
+		categories = {
+			naval_air
+			naval_bomber
+			air_equipment
+		}
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = luftwaffe_folder
+			position = { x = @FLY_BTS y = @1944 } 
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

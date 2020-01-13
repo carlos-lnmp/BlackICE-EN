@@ -1,0 +1,108 @@
+CHI_warlord_historical_plan_nationalist = {
+	name = "Chinese Warlord historical plan supporting Nationalists"
+	desc = "Historical behavior for Chinese Warlord"
+
+	enable = {
+		OR = {
+			has_idea = cg_warlords
+			has_idea = cg_displaced_warlords
+		}
+		is_historical_focus_on = yes
+	}
+	abort = {
+		NOT = {
+			has_focus_tree = china_warlord_focus
+		}
+	}
+
+	ai_national_focuses = {
+	}
+
+	focus_factors = {
+		industrial_effort = 0
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+CHI_warlord_historical_plan_communist = {
+	name = "Chinese Warlord historical plan supporting Communists"
+	desc = "Historical behavior for Chinese Warlord"
+
+	enable = {
+		tag = SIK
+		has_country_leader = {
+			name = "Sheng Shicai"
+			ruling_only = yes
+		}
+		is_historical_focus_on = yes
+		country_exists = SOV
+		SOV = {
+			surrender_progress < 0.3
+			is_puppet = no
+		}
+	}
+	abort = {
+		OR = {
+			NOT = {
+				has_country_leader = {
+					name = "Sheng Shicai"
+					ruling_only = yes
+				}
+			}
+			SOV = {
+				OR = {
+					exists = no
+					is_puppet = yes
+					surrender_progress > 0.3
+				}
+			}
+		}
+	}
+
+	ai_national_focuses = {
+	}
+
+	focus_factors = {
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	ai_strategy = {
+		type = befriend
+		id = "SOV"			
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

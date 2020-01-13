@@ -1,0 +1,579 @@
+ideas = {
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+	}
+	#Foreign Ministers
+	foreign_minister = {
+		TUN_stc = {
+			picture = generic_political_advisor_arab_3
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { smooth_talking_charmer  foreign_minister_trait }
+		}
+	}
+	#Propaganda/Security
+	interior_minister = {
+		TUN_pot = {
+
+			picture = generic_political_advisor_arab_2
+
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { prince_of_terror  interior_minister_trait }
+		}
+	}
+	#Intelligence
+	intel_minister = {
+	}
+	#Economic Ministers
+	economic_minister = {
+		TUN_coi = {
+
+			picture = generic_political_advisor_arab_1
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { captain_of_industry  economic_minister_trait }
+		}
+		TUN_captain_of_industry = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { captain_of_industry  economic_minister_trait }
+		}
+		TUN_fortification_engineer = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { fortification_engineer  economic_minister_trait }
+		}
+		TUN_war_industrialist = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { war_industrialist  economic_minister_trait }
+		}
+	}
+	#Political Advisors
+	political_advisor = {
+	}
+	#Domestic
+	domestic_minister = {
+	}
+	influence_minister = {
+		TUN_communist_revolutionary = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { communist_revolutionary  influence_minister_trait }
+			
+			on_add = {
+				country_event = political.1
+			}
+			
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		TUN_fascist_demagogue = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { fascist_demagogue  influence_minister_trait }
+			
+			on_add = {
+				country_event = political.7
+			}
+			
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Academy
+	military_academy = {
+	}
+	#Theorist
+	theorist = {
+		TUN_military_theorist = {
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { military_theorist  theorist_trait }
+		}
+		TUN_naval_theorist = {
+			picture = generic_navy_arab_3
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			research_bonus = {
+				naval_doctrine = 0.07
+			}
+			
+			traits = { naval_theorist  theorist_trait }
+		}
+		TUN_air_warfare_theorist = {
+			picture = generic_air_arab_2
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			research_bonus = {
+				air_warfare_doctrine = 0.07
+			}
+			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+	}
+	#MILITARY
+	#Supreme Commanders
+	supreme_commander = {
+	}
+	#Army
+	army_chief = {
+		TUN_army_chief_off = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { army_chief_offensive_1  army_chief_trait }
+		}
+		TUN_army_chief_def = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { army_chief_defensive_1  army_chief_trait }
+		}
+		TUN_aco2 = {
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = TUN
+			}		
+			
+			traits = { army_chief_organizational_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		TUN_acd2 = {
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { army_chief_defensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	#Air
+	air_chief = {
+		TUN_air_close_air_sup = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { air_close_air_support_2  air_chief_trait }
+		}
+		TUN_air_chief_all_weather = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { air_chief_all_weather_2  air_chief_trait }			
+		}
+		TUN_acr = {
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { air_chief_reform_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		TUN_acgs = {
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { air_chief_ground_support_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	#Navy
+	navy_chief = {
+		TUN_navy_chief_decisive_bat = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { navy_chief_decisive_battle_2  navy_chief_trait }
+		}
+		TUN_navy_anti_submarine = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { navy_anti_submarine_2  navy_chief_trait }
+		}
+		TUN_nccr = {
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				original_tag = TUN
+			}
+					
+			traits = { navy_chief_commerce_raiding_2  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		TUN_ncm = {
+			picture = generic_navy_arab_3
+			
+			allowed = {
+				original_tag = TUN
+			}
+					
+			traits = { navy_chief_maneuver_2  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	#High Command
+	high_command = {
+		TUN_army_art = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { army_artillery_1  high_command_trait }			
+		}
+		TUN_army_log = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { army_logistics_2  high_command_trait }			
+		}
+		TUN_navy_fleet_log = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { navy_fleet_logistics_1  high_command_trait }			
+		}
+		TUN_air_air_combat_trainer = {
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { air_air_combat_training_2  high_command_trait }			
+		}
+		TUN_ar = {
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { army_regrouping_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		TUN_ai2 = {
+			picture = generic_army_arab_3
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { army_infantry_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		TUN_aa2 = {
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { army_armored_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		TUN_acas = {
+			picture = generic_air_arab_2
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { air_close_air_support_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		TUN_ncs = {
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			traits = { navy_capital_ship_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	#Designers
+	#Armor
+	tank_manufacturer = { 
+		# Done by zzz_generic
+	}
+	#Naval
+	naval_manufacturer = {
+		designer = yes
+	
+		TUN_naval_manufacturer = {
+			picture = generic_naval_manufacturer_1
+
+			allowed = {
+				original_tag = TUN
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				naval_equipment = 0.10
+			}
+			
+			traits = { ships_manufacturer  naval_manufacturer_trait }
+		}
+	}
+	##Aircraft
+	aircraft_manufacturer = {
+		designer = yes
+	
+		TUN_light_aircraft_manufacturer = {
+			picture = generic_air_manufacturer_1
+
+			allowed = {
+				original_tag = TUN
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				air_equipment = 0.10
+			}
+			
+			traits = { light_aircraft_manufacturer  aircraft_manufacturer_trait }
+		}
+		TUN_medium_aircraft_manufacturer = {
+			
+			picture = generic_air_manufacturer_3
+
+			allowed = {
+				original_tag = TUN
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				air_equipment = 0.10
+			}
+			
+			traits = { medium_aircraft_manufacturer  aircraft_manufacturer_trait }
+		}
+		TUN_heavy_aircraft_manufacturer = {
+			picture = generic_air_manufacturer_2
+			
+			allowed = {
+				original_tag = TUN
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				air_equipment = 0.10
+			}
+			
+			traits = { heavy_aircraft_manufacturer  aircraft_manufacturer_trait }
+		}
+		TUN_naval_aircraft_manufacturer = {
+			picture = generic_naval_manufacturer_2
+
+			allowed = {
+				original_tag = TUN
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				air_equipment = 0.10
+			}
+			
+			traits = { naval_aircraft_manufacturer  aircraft_manufacturer_trait }
+		}
+	}
+	#Industrial
+	industrial_concern = {
+		TUN_industrial_concern = {
+			picture = generic_industrial_concern_1
+
+			allowed = {
+				original_tag = TUN
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				industry = 0.10
+			}
+			
+			traits = { industrial_concern  industrial_concern_trait }
+		}
+		TUN_electronics_concern = {
+			picture = generic_electronics_concern_1
+
+			allowed = {
+				original_tag = TUN
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				electronics = 0.10
+			}
+			
+			traits = { electronics_concern  industrial_concern_trait }
+		}
+	}
+	#Materials
+	materiel_manufacturer = {
+		designer = yes
+	
+		TUN_motorized_equipment_manufacturer = {
+			picture = generic_motorized_equipment_manufacturer_3
+
+			allowed = {
+				original_tag = TUN
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				motorized_equipment = 0.10
+			}
+			
+			traits = { motorized_equipment_manufacturer  materiel_manufacturer_trait }
+		}
+		TUN_infantry_equipment_manufacturer = {
+			picture = generic_infantry_equipment_manufacturer_2
+
+			allowed = {
+				original_tag = TUN
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				infantry_weapons = 0.10
+			}
+			
+			traits = { infantry_equipment_manufacturer  materiel_manufacturer_trait }
+		}
+		TUN_artillery_manufacturer = {
+			picture = generic_artillery_manufacturer_2
+
+			allowed = {
+				original_tag = TUN
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				artillery = 0.10
+			}
+			
+			traits = { artillery_manufacturer  materiel_manufacturer_trait }
+		}
+	}
+}
+### EOF ###

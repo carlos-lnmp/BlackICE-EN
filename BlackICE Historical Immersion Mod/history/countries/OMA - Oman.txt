@@ -1,0 +1,149 @@
+﻿capital = 294
+
+oob = "OMA_1936"
+
+set_war_support = 0.15
+
+set_convoys = 10
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		#early_ship_hull_submarine = 1
+	}
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	#tech_infantry_uniforms = 1
+	#infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	desert_equipment = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+
+	ww1_battlefield_support = 1
+	
+	WW1_air_power = 1
+}
+
+add_ideas = { 	
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	age_19
+	officer_train_none
+	security_minor_restrictions
+	edu_minimal
+	
+	#unity_united_nation		
+	foreign_isolationism
+	neutrality_idea
+}
+
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	add_ideas = {
+		ENG_commonwealth_officers
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		Arab_Minor
+		CHI_incompetent_officers
+		Arab_hyper_inflation_1
+		Arab_Tribes
+	}
+}
+
+set_politics = {
+	ruling_party = monarchism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	monarchism = 98
+	conservatism = 0
+	fascism = 0
+	communism = 0
+	neutrality = 2
+	ruling_party = 0
+	opposition_party = 0
+}
+####################################################################
+create_country_leader = {
+	name = "Said bin Taimur"
+	desc = "POLITICS_SAID_BIN_TAIMUR_DESC"
+	picture = "GFX_portrait_oman_said_bin_taimur"
+	expire = "1965.1.1"
+	ideology = emiratism
+	traits = {
+		#
+	}
+}
+##### CORPS COMMANDERS ################################################
+create_corps_commander = {
+	name = "Jones"
+	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
+	traits = { Bad_General commando }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 2
+}
+### EOF ###

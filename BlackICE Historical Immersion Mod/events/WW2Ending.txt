@@ -1,0 +1,44 @@
+﻿	##### End of WW2 #####
+add_namespace = ww2ending
+
+#news event for all of continental europe being taken over by communism/the soviet union. this might not include UK, ireland, the iberian peninsula nor iceland. questionable if DEN, NOR, SWE, FIN, TUR should be included
+#'A Spectre is haunting Europe'
+#In 1848, Karl Marx wrote: 'A spectre is haunting Europe - The spectre of communism' in the beginning of his Communist Manifesto. A century later, these words have come to fruition. Europe has finally fallen under the banner of socialism.
+#if you're communist: 'Long live the workers' Revolution!' #or maybe 'Working men/Proletarians of all countries, unite!'
+#if you aren't communist: 'We must prevent the spread of communism'
+#maybe alternative version if you're part of NATO: 'The free world stands united!'
+
+#event for all of europe being taken over by fascism/national socialism. this would include the soviet union, UK and ireland, the iberian peninsula, but not iceland. questionable if DEN, NOR, SWE, FIN, TUR should be included
+#Neuordnung Europas
+#version where SOV is defeated first, then ENG: #As the sun finally sets on the British Empire, a new dawn rises over Europe. Hitler's Germany has emerged victorious over the whole continent including Britain, bringing about the age of fascist dictatorships.
+#version where ENG is defeated first, then SOV: #With the Soviet forces finally defeated, a new dawn rises over Europe. Hitler's Germany has emerged victorious over the whole continent including Britain, bringing about the age of fascist dictatorships.
+#if you're democratic: 'Is this the end of democracy?'
+#if you're fascist: 'Europe has awoken'
+#if you're communist: 'Tyranny cannot win'
+#if you're authoritarian or monarchist: 'We must adapt to the new geo-political situation'
+country_event = {
+	id = ww2ending.1700
+	title = "The End of Fascism"
+	desc = ww2ending.1700.desc #The End of WW2 in an Axis defeat has made Fascism into a taboo subject. It is time for non-Fascist countries to abandon the ideas of Fascism and National Socialism.
+	picture = GFX_report_event_hitlers_command_train
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	
+	}
+	option = {
+		name = ww2ending.1700.a
+		#every_country = { #this line is a bad idea, instead every country should get this event individually. otherwise every country would run this code for every country, resulting in the code being run as many times as the number of countries on the map squared
+			if = {
+				limit = {
+					NOT = { has_government = fascism }
+					fascism < 0.3
+				}
+				#add_ideas = postwar_politics_antifascism
+				#find in files for all of common/ideas and remove all ideas that give a fascism boost
+			}
+		#}
+	}
+}
+### EOF ###

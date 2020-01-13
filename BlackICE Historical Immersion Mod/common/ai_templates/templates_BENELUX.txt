@@ -1,0 +1,127 @@
+
+BENELUX_infantry_role = {
+	
+	available_for = {
+		HOL
+		BEL
+	}
+	
+	roles = {
+		infantry
+	}
+	
+	match_to_count = 0.1
+	
+	BENELUX_starting_infantry_1 = {
+        production_prio = {
+			base = 0.1
+		}
+		upgrade_prio = {
+			base = 0.1
+		}
+		target_width = 18
+		width_weight = 1
+		column_swap_factor = 1
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				recon = 1
+				engineer = 1
+			}
+		
+			regiments = {
+				infantry = 9
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			engineer
+			recon
+			
+			infantry
+		}	
+	}
+	BENELUX_starting_infantry_2 = {
+        production_prio = {
+			base = 0.09
+		}
+		upgrade_prio = {
+			base = 0.09
+		}
+		target_width = 13.5
+		width_weight = 1
+		column_swap_factor = 1
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				recon = 1
+			}
+		
+			regiments = {
+				militia = 12
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			recon
+			
+			militia
+		}	
+	}
+	
+	BENELUX_infantry_role_1 = {
+        production_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 1 }
+			}
+		}
+		upgrade_prio = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				has_country_flag = { flag = EAI_infantry_template value = 1 }
+			}
+		}
+		target_width = 24
+		width_weight = 1
+		column_swap_factor = 1
+		
+		reinforce_prio = 1
+		
+		target_template = {
+			weight = 0.9
+			match_value = 1000
+		
+			support = {
+				DIV_HQ = 1
+				engineer = 1
+				recon = 1
+			}
+		
+			regiments = {
+				infantry = 12
+			}
+		}
+		allowed_types = {
+			DIV_HQ
+			engineer
+			recon
+			
+			infantry
+		}	
+	}
+}

@@ -1,0 +1,146 @@
+﻿###########################
+# Baltic Events
+###########################
+
+add_namespace = brazil
+
+# BRA joins Allies
+country_event = {
+	id = brazil.1
+	title = brazil.1.t	# Brazil asks ENG to join Allies.
+	desc = brazil.1.d	#
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = brazil.1.a
+		
+		ai_chance = {
+			base = 100
+		}
+		
+		effect_tooltip = {
+			add_to_faction = BRA
+		}
+		hidden_effect = {
+			BRA = {
+				country_event = { id = brazil.2 }
+			}
+		}
+	}
+	
+	option = {
+		name = brazil.1.b
+		ai_chance = {
+			base = 0
+		}
+		
+		hidden_effect = {
+			BRA = {
+				country_event = { id = brazil.3 }
+			}
+		}
+	}
+}
+country_event = {
+	id = brazil.2
+	title = brazil.2.t	# ENG accepts Allies membership.
+	desc = brazil.2.d	#
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = brazil.2.a
+		
+		ENG = {
+			add_to_faction = BRA
+		}
+		BRA = { set_country_flag = in_allies }
+	}
+}
+
+country_event = {
+	id = brazil.3
+	title = brazil.3.t	# ENG denies Allies membership.
+	desc = brazil.3.d	#
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = brazil.3.a
+	}
+}
+
+# BRA joins Axis
+country_event = {
+	id = brazil.4
+	title = brazil.4.t	# Brazil asks GER to join Axis.
+	desc = brazil.4.d	#
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = brazil.4.a
+		
+		ai_chance = {
+			base = 80
+		}
+		
+		effect_tooltip = {
+			add_to_faction = BRA
+		}
+		hidden_effect = {
+			BRA = {
+				country_event = { id = brazil.5 }
+			}
+		}
+	}
+	
+	option = {
+		name = brazil.4.b
+		ai_chance = {
+			base = 20
+		}
+		
+		hidden_effect = {
+			BRA = {
+				country_event = { id = brazil.6 }
+			}
+		}
+	}
+}
+country_event = {
+	id = brazil.5
+	title = brazil.5.t	# GER accepts Axis membership.
+	desc = brazil.5.d	#
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = brazil.5.a
+		
+		GER = {
+			add_to_faction = BRA
+		}
+		BRA = { set_country_flag = in_axis }
+	}
+}
+
+country_event = {
+	id = brazil.6
+	title = brazil.6.t	# GER denies Axis membership.
+	desc = brazil.6.d	#
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = brazil.6.a
+	}
+}
+### EOF ###

@@ -1,0 +1,759 @@
+leader_traits = {
+#Based on HoI3 BICE traits by Riever 
+#Adapted for HOI4 1.5 by maverick87
+##################################
+# Table of Contents
+# - Corps Commander (CC) Terrain traits
+##################################
+	##left column##
+	desert_fox = { 
+ 		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = desert
+		}
+		
+		cost = 700
+		
+		modifier = {
+			desert = {
+				movement = 0.05
+				attack = 0.1
+				defence = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = basic_terrain_trait
+		
+		gui_row = 0
+	}
+	swamp_fox = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = marsh
+		}
+		cost = 700
+		modifier = {
+			marsh = {
+				movement = 0.05
+				attack = 0.1
+				defence = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		trait_type = basic_terrain_trait
+		gui_row = 3
+	}
+	hill_fighter = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = hills
+		}
+		cost = 700
+		modifier = {
+			hills = {
+				movement = 0.05
+				attack = 0.1
+				defence = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		trait_type = basic_terrain_trait
+		gui_row = 6
+	}
+	trait_mountaineer = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = mountain
+		}
+		
+		cost = 700
+		
+		modifier = {
+			mountain = {
+				movement = 0.05
+				attack = 0.1
+				defence = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = basic_terrain_trait
+		
+		gui_row = 9
+	}
+	urban_assault_specialist = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = urban
+		}
+		cost = 500
+		modifier = {
+			urban = {
+				movement = 0.05
+				attack = 0.1
+				defence = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		trait_type = basic_terrain_trait
+		gui_row = 12
+	}
+	ranger = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = forest
+		}
+		cost = 700
+		modifier = {
+			forest = {
+				movement = 0.05
+				attack = 0.1
+				defence = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		trait_type = basic_terrain_trait
+		gui_row = 15
+	}
+	jungle_rat = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = jungle
+		}
+		cost = 700
+		modifier = {
+			jungle = {
+				movement = 0.05
+				attack = 0.1
+				defence = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		trait_type = basic_terrain_trait
+		gui_row = 18
+	}
+	winter_specialist = { 
+		type = corps_commander
+		gain_xp = {
+			temperature < -10
+		}
+		
+		cost = 500
+		
+		modifier = {
+			winter_attrition_factor = -0.1
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = basic_terrain_trait
+		gui_row = 21
+	}
+	##right column assignable terrain traits ##
+	desert_fox_CC_II = { 
+ 		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = desert
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			desert = {
+				movement = 0.035
+				attack = 0.06
+				defence = 0.06
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = desert_fox
+		
+		gui_row = 0
+	}
+	desert_fox_CC_III = { 
+ 		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = desert
+		}
+		
+		prerequisites = {
+			has_trait = desert_fox_CC_II
+		}
+		
+		cost = 1300
+		modifier = {
+			desert = {
+				movement = 0.025
+				attack = 0.04
+				defence = 0.04
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = desert_fox
+		
+		gui_row = 1
+	}
+	swamp_fox_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = marsh
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			marsh = {
+				movement = 0.035
+				attack = 0.06
+				defence = 0.06
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = swamp_fox
+		
+		gui_row = 3
+	}
+	swamp_fox_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = marsh
+		}
+		
+		prerequisites = {
+			has_trait = swamp_fox_CC_II
+		}
+		
+		cost = 1300
+		
+		modifier = {
+			marsh = {
+				movement = 0.025
+				attack = 0.04
+				defence = 0.04
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = swamp_fox
+		
+		gui_row = 4
+	}
+	hill_fighter_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = hills
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			hills = {
+				movement = 0.035
+				attack = 0.06
+				defence = 0.06
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = hill_fighter
+		
+		gui_row = 6
+	}
+
+	hill_fighter_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = hills
+		}
+		
+		prerequisites = {
+			has_trait = hill_fighter_CC_II
+		}
+		
+		cost = 1300
+		
+		modifier = {
+			hills = {
+				movement = 0.025
+				attack = 0.04
+				defence = 0.04
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = hill_fighter
+		
+		gui_row = 7
+	}
+	mountaineer_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = mountain
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			mountain = {
+				movement = 0.035
+				attack = 0.06
+				defence = 0.06
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = trait_mountaineer
+		
+		gui_row = 9
+	}
+	mountaineer_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = mountain
+		}
+		
+		prerequisites = {
+			has_trait = mountaineer_CC_II
+		}
+		
+		cost = 1300
+		
+		modifier = {
+			mountain = {
+				movement = 0.025
+				attack = 0.04
+				defence = 0.04
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = trait_mountaineer
+		
+		gui_row = 10
+	}
+	urban_assault_specialist_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = urban
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			urban = {
+				movement = 0.035
+				attack = 0.06
+				defence = 0.06
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000 
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = urban_assault_specialist
+		
+		gui_row = 12
+	}
+	urban_assault_specialist_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = urban
+		}
+		
+		prerequisites = {
+			has_trait = urban_assault_specialist_CC_II
+		}
+		
+		cost = 1300
+		
+		modifier = {
+			urban = {
+				movement = 0.025
+				attack = 0.04
+				defence = 0.04
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = urban_assault_specialist
+		
+		gui_row = 13
+	}
+	ranger_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = forest
+		}
+		
+		cost = 1250
+		
+		modifier = {
+			forest = {
+				movement = 0.035
+				attack = 0.06
+				defence = 0.06
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = ranger
+		
+		gui_row = 15
+	}
+	ranger_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = forest
+		}
+		
+		prerequisites = {
+			has_trait = ranger_CC_II
+		}
+		
+		cost = 1250
+		
+		modifier = {
+			forest = {
+				movement = 0.025
+				attack = 0.04
+				defence = 0.04
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = ranger
+		
+		gui_row = 16
+	}
+	jungle_rat_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = jungle
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			jungle = {
+				movement = 0.035
+				attack = 0.06
+				defence = 0.06
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = jungle_rat
+		
+		gui_row = 18
+	}
+	jungle_rat_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = jungle
+		}
+		
+		prerequisites = {
+			has_trait = jungle_rat_CC_II
+		}
+		
+		cost = 1300
+		
+		modifier = {
+			jungle = {
+				movement = 0.025
+				attack = 0.06
+				defence = 0.06
+			}
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = jungle_rat
+		
+		gui_row = 19
+	}
+	winter_specialist_CC_II = { 
+		type = corps_commander
+		gain_xp = {
+			temperature < -10
+		}
+		
+		cost = 750
+		
+		modifier = {
+			winter_attrition_factor = -0.15
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = winter_specialist
+		
+		gui_row = 21
+	}
+	winter_specialist_CC_III = { 
+		type = corps_commander
+		gain_xp = {
+			temperature < -10	
+		}
+		
+		prerequisites = {
+			has_trait = winter_specialist_CC_II
+		}
+
+		modifier = {
+			winter_attrition_factor = -0.2
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = winter_specialist
+		
+		gui_row = 22
+	}
+	winter_expert = { 
+		type = corps_commander
+
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		prerequisites = {
+			has_trait = winter_specialist_CC_II
+		}
+		
+		modifier = {
+			acclimatization_cold_climate_gain_factor = 0.2
+		}
+		
+		ai_will_do = {
+			base = -1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = winter_specialist
+		
+		gui_row = 23
+	}
+	adaptable = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		cost = 1000
+		
+		modifier = {
+			terrain_penalty_reduction = 0.25
+			acclimatization_cold_climate_gain_factor = 0.08
+			acclimatization_hot_climate_gain_factor = 0.08
+		}
+		
+		ai_will_do = {
+			base = 1000  
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		trait_type = assignable_terrain_trait
+		parent = desert_fox
+		parent = swamp_fox
+		parent = trait_mountaineer
+		parent = hill_fighter
+		parent = jungle_rat
+		parent = ranger
+		parent = urban_assault_specialist
+		parent = winter_specialist
+		
+		num_parents_needed = 2
+		
+		gui_row = 26
+	}
+}

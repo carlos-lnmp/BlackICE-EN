@@ -1,0 +1,615 @@
+﻿capital = 278
+
+oob = "ARG_1936"
+
+set_convoys = 45
+
+set_war_support = 0.15
+
+set_research_slots = 2
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		early_submarine = 1
+		generic_naval = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		#transport = 1
+	}
+	set_naval_oob = "ARG_1936_naval_legacy"
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		basic_cruiser_armor_scheme = 1
+		airplane_launcher = 1
+		early_ship_hull_heavy = 1
+		early_fire_control_system = 1
+		nrm_battery_basic = 1
+		nrm_battery_early_6 = 1
+		nrm_battery_early_8 = 1
+		nrm_battery_early_12 = 1
+		nrm_early_antiair = 1
+		basic_cruiser_armor_scheme = 1
+		basic_torpedo = 1
+		improved_ship_torpedo_launcher = 1
+		improved_sub_torpedo_launcher = 1
+		sonar = 1
+		basic_depth_charges = 1
+		early_engine = 1
+		#mtg_transport = 1
+		old_cruiser = 1
+	}
+	set_naval_oob = "ARG_1936_naval"
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_support = 1
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## artillery ###############
+	gw_artillery = 1
+	################## aircraft ##############
+	early_CAS = 1
+	CAS1 = 1
+	early_bomber = 1
+	early_fighter = 1
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	############ ww1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	ww1_artillery = 1
+	foot_runners = 1
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	ww1_battlefield_support = 1
+	############### naval doctrines ##################
+	nrm_pre_ww1_naval_doctrine = 1
+	nrm_mahanian_concepts = 1
+	nrm_jeune_ecole_concepts = 1
+	nrm_commerce_warfare = 1
+	nrm_battlefleet_concentration = 1
+	nrm_cruiser_warfare = 1
+	nrm_cruiser_battleline_support = 1
+	nrm_cruiser_flotilla_leader = 1
+	nrm_independent_cruiser_operation = 1
+	nrm_destroyer_support = 1
+	nrm_destroyer_screen = 1
+	nrm_destroyer_torpedo_tactics = 1
+	nrm_independent_destroyer_operation = 1
+	nrm_submarine_tactics_early = 1
+	nrm_submarine_raiding = 1
+	nrm_submarine_torpedo_tactics = 1
+}
+
+add_ideas = { 	
+	constitutional_republic
+	export_focus
+	tax_low
+	tariffs_average
+	
+	isolation
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	security_minor_restrictions
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	officer_train_none
+	age_19
+	
+	edu_minimal
+
+	foreign_isolationism
+	neutrality_idea
+}
+
+set_country_flag = constitutional_republic
+
+set_country_flag = monroe_doctrine
+
+set_country_flag = neutrality_idea
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		CHI_incompetent_officers
+	}
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1931.11.8"
+	election_frequency = 72
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservatism = 13
+	fascism = 5
+	communism = 12
+	neutrality = 70
+}
+##### Country Leaders #####
+create_country_leader = {
+	name = "Agustín Pedro Justo"
+	desc = "POLITICS_AGUSTIN_PEDRO_JUSTO_DESC"
+	picture = "Portrait_Argentina_Agustin_Pedro_Justo.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Nimo de Anquín"
+	desc = "POLITICS_NIMO_DE_ANQUIN_DESC"
+	picture = "gfx/leaders/South America/Portrait_South_America_Generic_3.dds"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Marcelo T. de Alvear"
+	desc = "POLITICS_MARCELO_ALVEAR_DESC"
+	picture = "gfx/leaders/South America/Portrait_South_America_Generic_land_3.dds"
+	expire = "1965.1.1"
+	ideology = social_democracy
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Fanny Jabcovsky"
+	desc = "POLITICS_FANNY_JABCOVSKY_DESC"
+	picture = "Portrait_Argentina_Fanny_Jabcovsky.dds"
+	expire = "1965.1.1"
+	ideology = marxism
+	traits = {
+		#
+	}
+}
+##### Field Marshals #####
+create_field_marshal = {
+	name = "Rawson, Arturo"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_1.dds"
+	traits = { defensive_doctrine_FM }
+	skill = 3
+	attack_skill = 4
+    defense_skill = 3
+    planning_skill = 1
+    logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Pistarini, Juan"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_2.dds"
+	traits = { urban_assault_specialist fortress_buster }
+	skill = 3
+	attack_skill = 1
+    defense_skill = 2
+    planning_skill = 4
+    logistics_skill = 3
+}
+create_corps_commander = {
+	name = "Florit, "
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_4.dds"
+	traits = { Competent_General commando }
+	skill = 2
+	attack_skill = 2
+    defense_skill = 1
+    planning_skill = 3
+    logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Marquez, "
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_2.dds"
+	traits = { Decent_General infantry_officer defensive_doctrine_CC }
+	skill = 2
+	attack_skill = 2
+    defense_skill = 2
+    planning_skill = 3
+    logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Mosconi, "
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_1.dds"
+	traits = { Competent_General infantry_officer defensive_doctrine_CC }
+	skill = 1
+	attack_skill = 2
+    defense_skill = 2
+    planning_skill = 4
+    logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Peron, "
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_2.dds"
+	traits = { Competent_General infantry_officer offensive_doctrine_CC }
+	skill = 2
+	attack_skill = 2
+    defense_skill = 2
+    planning_skill = 4
+    logistics_skill = 2
+}
+
+##### Navy Leaders
+create_navy_leader = {
+	name = "Renaldo, Aguirre"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_navy_1.dds"
+	traits = { seawolf }
+	skill = 1
+	attack_skill = 2
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 1
+}
+create_navy_leader = {
+	name = "Galíne, La"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_navy_2.dds"
+	traits = { spotter }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	maneuvering_skill = 2
+	coordination_skill = 2
+}
+create_navy_leader = {
+	name = "Videla, "
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_navy_3.dds"
+	traits = { superior_tactician }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 2
+}
+create_navy_leader = {
+	name = "Teisaire, Alberto"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_navy_1.dds"
+	traits = { blockade_runner }
+	skill = 3
+	attack_skill = 2
+	defense_skill = 2
+	maneuvering_skill = 3
+	coordination_skill = 2
+}
+create_navy_leader = {
+	name = "Sueyro, Benito"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_navy_2.dds"
+	traits = { ironside }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 2
+	maneuvering_skill = 1
+	coordination_skill = 1
+}
+
+### Ship Variants ###
+#####################################################################################
+## DNM Variants - remember to delete from vanilla: Cervantes, Veinticinco de Mayo,
+#####################################################################################
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	create_equipment_variant = {
+		name = "Libertad Class"
+		type = heavy_cruiser_1
+		upgrades = {
+			#ship_quality_upgrade = 1
+			#ship_engine_upgrade = 0
+			#ship_armor_upgrade = 2
+			#ship_barrels_upgrade = 2
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Veinticinco de Mayo Class"
+		type = heavy_cruiser_1
+		upgrades = {
+			#ship_quality_upgrade = 1
+			#ship_engine_upgrade = 1
+			#ship_armor_upgrade = 1
+			#ship_barrels_upgrade = 1
+		}
+	}
+	create_equipment_variant = {
+		name = "La Plata Class"
+		type = destroyer_1
+		upgrades = {
+			#ship_torpedo_upgrade = 1
+			#destroyer_engine_upgrade = 2
+			#ship_ASW_upgrade = 1
+			#ship_anti_air_upgrade = 1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Cervantes Class"
+		type = destroyer_1
+		upgrades = {
+			#ship_torpedo_upgrade = 1
+			#destroyer_engine_upgrade = 3
+			#ship_ASW_upgrade = 1
+			#ship_anti_air_upgrade = 1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Mendoza Class"
+		type = destroyer_1
+		upgrades = {
+			#ship_torpedo_upgrade = 1
+			#destroyer_engine_upgrade = 3
+			#ship_ASW_upgrade = 1
+			#ship_anti_air_upgrade = 1
+		}
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	# Submarines #
+	create_equipment_variant = {
+		name = "Santa Fe Class"				
+		type = nrm_ship_hull_submarine_2
+		name_group = ARG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 15
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_030
+			fixed_ship_sonar_slot = nrm_submarine_sonar_1
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_4
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_1_x4
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_21_1_x4
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+	}
+	# Destroyers #
+	create_equipment_variant = {
+		name = "Catamarca Class"				# represents Catamarca, La Plata Class		
+		type = nrm_ship_hull_destroyer_1
+		name_group = ARG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 6
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_1
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_025
+			fixed_ship_sonar_slot = nrm_sonar_1
+			fixed_ship_battery_slot = nrm_destroyer_battery_4_1_x3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_1
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ASW_1
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x4
+			custom_slot_4 = empty
+			custom_slot_5 = nrm_support_destroyer_AA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "La Plata Class"				# represents Catamarca, La Plata Class		
+		type = nrm_ship_hull_destroyer_1
+		name_group = ARG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 6
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_1
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_030
+			fixed_ship_sonar_slot = nrm_sonar_1
+			fixed_ship_battery_slot = nrm_destroyer_battery_4_1_x3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_1
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ASW_1
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x4
+			custom_slot_4 = empty
+			custom_slot_5 = nrm_support_destroyer_AA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Cervantes Class"	
+		type = nrm_ship_hull_destroyer_2
+		name_group = ARG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_040
+			fixed_ship_sonar_slot = nrm_sonar_1
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_1_x5
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ASW_1
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_5 = nrm_support_destroyer_AA_1
+			custom_slot_6 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Mendoza Class"				
+		type = nrm_ship_hull_destroyer_2
+		name_group = ARG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_040
+			fixed_ship_sonar_slot = nrm_sonar_1
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_1_x5
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_5 = nrm_support_destroyer_AA_1
+			custom_slot_6 = empty
+		}
+	}
+	# Heavy Cruisers #
+	create_equipment_variant = {
+		name = "Libertad Class"				
+		type = nrm_ship_hull_cruiser_0
+		name_group = ARG_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_0
+			fixed_ship_engine_slot = nrm_cruiser_engine_S0_005
+			fixed_ship_armor_layout_slot = nrm_armour_layout_0
+			fixed_ship_armor_slot = nrm_cruiser_armour_06_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_1_x02
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Garibaldi Class"				
+		type = nrm_ship_hull_cruiser_0
+		name_group = ARG_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_0
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_015
+			fixed_ship_armor_layout_slot = nrm_armour_layout_0
+			fixed_ship_armor_slot = nrm_cruiser_armour_06_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_1_x02
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_SB_6_2_x08
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Veinticinco de Mayo Class"				
+		type = nrm_ship_hull_cruiser_2
+		name_group = ARG_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_2
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_080
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_03_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_3
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_1_x06
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x08
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = nrm_support_cruiser_AA_1
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	# Battleships #
+	create_equipment_variant = {
+		name = "Rivadavia Class"	
+		type = nrm_ship_hull_capital_1
+		name_group = ARG_BB_HISTORICAL
+		parent_version = 0
+		role_icon_index = 11
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S1_040
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BB_1
+			fixed_ship_armor_slot = nrm_capital_armour_11_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_capital_3
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_12_1_2x6
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_6_1_x12
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_3_2_x04
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = empty
+			custom_slot_4 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+}

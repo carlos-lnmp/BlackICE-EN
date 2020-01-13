@@ -1,0 +1,2184 @@
+#Category only allowed for SOV
+SOV_great_patriotic_war = {
+
+	SOV_baltic_partisans = {
+
+		icon = generic_army_support
+
+		available = {
+			has_war = yes
+			surrender_progress > 0.2
+			hidden_trigger = { command_power > 24.9 }
+			has_equipment = {
+				support_equipment > 49
+			}
+		}
+
+		custom_cost_trigger = {
+			command_power > 24.9
+		}
+		custom_cost_text = cp_atleast_25
+		
+		visible = {
+			always = no
+			#has_war = yes
+			#has_civil_war = no
+		}
+
+		days_re_enable = 180 
+
+		remove_effect = {
+			add_equipment_to_stockpile = { type = support_equipment amount = 50 }
+			random_state = {
+				limit = { 
+					region = 221
+					CONTROLLER = { has_war_with = SOV }
+				}
+				spawn_state_partisan_division = yes 
+			}
+			random_state = {
+				limit = {
+					region = 222
+					CONTROLLER = { has_war_with = SOV }
+				}
+				spawn_state_partisan_division = yes 
+			}
+			random_state = {
+				limit = {
+					region = 37 
+					CONTROLLER = { has_war_with = SOV }
+				}
+				spawn_state_partisan_division = yes 
+			}
+		}
+				
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				surrender_progress > 0.25
+				factor = 10
+			}
+		}
+	}
+
+	SOV_order_227 = {
+
+		icon = generic_army_support
+
+		available = {
+			has_war = yes
+			#any_enemy_country = {
+			#	is_major = yes
+			#}
+			surrender_progress > 0.2
+			hidden_trigger = { command_power > 49.9 }
+		}
+
+		custom_cost_trigger = {
+			command_power > 49.9
+		}
+		custom_cost_text = cp_atleast_50
+		
+		fire_only_once = yes
+		
+		visible = {
+			#has_war = yes
+			has_civil_war = no
+		}
+
+		days_remove = 720 
+
+		modifier = {
+			army_core_defence_factor = 0.1
+		}
+		
+		cancel_trigger = { 
+			NOT = { has_country_flag = SOV_order_227 }
+		}
+		
+		complete_effect = {
+			hidden_effect = {
+				every_army_leader = {
+					add_temporary_buff_to_units = {
+						cannot_retreat_while_defending = 1.0
+						days = 14
+						tooltip = "SOV_order_227"
+					}
+				}
+			}
+			effect_tooltip = {
+				every_army_leader = {
+					add_temporary_buff_to_units = {
+						cannot_retreat_while_defending = 1.0
+						days = 720
+						tooltip = "SOV_order_227"
+					}
+				}
+			}
+			activate_mission = SOV_remove_order_227
+			set_country_flag = SOV_order_227
+		}
+		
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = SOV_order_227
+				}
+				effect_tooltip = {
+					every_army_leader = {
+						add_temporary_buff_to_units = {
+							cannot_retreat_while_defending = 1.0
+							days = 1
+							tooltip = "SOV_order_227"
+						}
+					}
+				}
+			}
+		}
+				
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				surrender_progress > 0.25
+				factor = 10
+			}
+		}
+	}
+	
+	SOV_remove_order_227  = {
+	
+		icon = generic_army_support
+		
+		allowed = {
+			always = no 
+		}
+
+		available = {
+			has_country_flag = SOV_order_227
+			hidden_trigger = { command_power > 49.9 }
+		}
+		
+		selectable_mission = yes
+
+		custom_cost_trigger = {
+			command_power > 49.9
+		}
+		custom_cost_text = cp_atleast_50
+		
+		fire_only_once = yes
+		
+		visible = {
+			has_war = yes
+		}
+
+		days_mission_timeout = 720
+		
+		complete_effect = {
+			clr_country_flag = SOV_order_227
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				surrender_progress > 0.25
+				factor = 10
+			}
+		}
+	}
+	
+	SOV_scorched_earth = {
+
+		icon = generic_scorched_earth
+
+		available = {
+			has_war = yes
+			surrender_progress > 0
+		}
+
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			has_war = yes
+			any_enemy_country = {
+				is_major = yes
+			}
+			surrender_progress > 0
+		}
+
+		complete_effect = {
+			set_country_flag = SOV_scorched_earth
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	SOV_scorched_earth_baltics = {
+
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_baltics_TT
+				OR = {
+					controls_state = 189
+					controls_state = 11
+					controls_state = 190
+					controls_state = 12
+					controls_state = 191
+					controls_state = 13
+				}
+			}
+			
+			has_equipment = {
+				support_equipment > 99
+			}
+		}
+
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 13
+						}
+					}
+				}
+				13 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 191
+						}
+					}
+				}
+				191 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 12
+						}
+					}
+				}
+				12 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 190
+						}
+					}
+				}
+				190 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 11
+						}
+					}
+				}
+				11 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 189
+						}
+					}
+				}
+				189 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 12
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+	SOV_scorched_earth_byelorussia = {
+
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_byelorussia_TT
+				OR = {
+					controls_state = 207
+					controls_state = 206
+					controls_state = 204
+					controls_state = 194
+					controls_state = 241
+				}
+			}
+			has_equipment = {
+				support_equipment > 99
+			}
+		}
+
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 241
+						}
+					}
+				}
+				241 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 194
+						}
+					}
+				}
+				194 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 204
+						}
+					}
+				}
+				204 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 207
+						}
+					}
+				}
+				207 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 206
+						}
+					}
+				}
+				206 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 131
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+	SOV_scorched_earth_western_ukraine = {
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_western_ukraine_TT
+				OR = {
+					controls_state = 199
+					controls_state = 201
+					controls_state = 198
+					controls_state = 192
+				}
+			}
+			has_equipment = {
+				support_equipment > 79
+			}
+		}
+
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 201
+						}
+					}
+				}
+				201 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 192
+						}
+					}
+				}
+				192 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 198
+						}
+					}
+				}
+				198 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 199
+						}
+					}
+				}
+				199 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 130
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+	SOV_scorched_earth_central_ukraine = {
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_central_ukraine_TT
+				OR = {
+					controls_state = 197
+					controls_state = 203
+					controls_state = 202
+					controls_state = 877
+					controls_state = 225
+					controls_state = 193
+					controls_state = 259
+				}
+			}
+			has_equipment = {
+				support_equipment > 139
+			}
+		}
+
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 197
+						}
+					}
+				}
+				197 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 203
+						}
+					}
+				}
+				203 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 202
+						}
+					}
+				}
+				202 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 877
+						}
+					}
+				}
+				877 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 225
+						}
+					}
+				}
+				225 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 193
+						}
+					}
+				}
+				193 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 259
+						}
+					}
+				}
+				259 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 263
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+	SOV_scorched_earth_eastern_ukraine = {
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_eastern_ukraine_TT
+				OR = {
+					controls_state = 196
+					controls_state = 226
+					controls_state = 200
+					controls_state = 227
+					controls_state = 221
+					controls_state = 228
+					controls_state = 137
+					controls_state = 218
+				}
+			}
+			has_equipment = {
+				support_equipment > 159
+			}
+		}
+
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 218
+						}
+					}
+				}
+				218 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 137
+						}
+					}
+				}
+				137 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 228
+						}
+					}
+				}
+				228 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 221
+						}
+					}
+				}
+				221 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 227
+						}
+					}
+				}
+				227 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 200
+						}
+					}
+				}
+				200 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 226
+						}
+					}
+				}
+				226 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 196
+						}
+					}
+				}
+				196 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 264
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+	
+	SOV_scorched_earth_caucasus_region = {
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_caucasus_TT
+				OR = {
+					controls_state = 233
+					controls_state = 231
+					controls_state = 230
+					controls_state = 229
+					controls_state = 232
+				}
+			}
+			has_equipment = {
+				support_equipment > 99
+			}
+		}
+
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 232
+						}
+					}
+				}
+				232 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 229
+						}
+					}
+				}
+				229 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 230
+						}
+					}
+				}
+				230 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 231
+						}
+					}
+				}
+				231 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 233
+						}
+					}
+				}
+				233 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 134
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+	
+	SOV_scorched_earth_kuban_region = {
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_kuban_region_TT
+				OR = {
+					controls_state = 234
+					controls_state = 238
+					controls_state = 235
+					controls_state = 237
+				}
+			}
+			has_equipment = {
+				support_equipment > 79
+			}
+		}
+
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 237
+						}
+					}
+				}
+				237 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 235
+						}
+					}
+				}
+				235 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 238
+						}
+					}
+				}
+				238 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 234
+						}
+					}
+				}
+				234 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 135
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+	
+	SOV_scorched_earth_stalingrad = {
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_stalingrad_TT
+				OR = {
+					controls_state = 217
+					controls_state = 265
+					controls_state = 245
+				}
+			}
+			has_equipment = {
+				support_equipment > 59
+			}
+		}
+
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 245
+						}
+					}
+				}
+				245 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 265
+						}
+					}
+				}
+				265 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 217
+						}
+					}
+				}
+				217 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 268
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+	SOV_scorched_earth_kursk_area = {
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_kursk_area_TT
+				OR = {
+					controls_state = 223
+					controls_state = 222
+					controls_state = 220
+					controls_state = 258
+					controls_state = 260
+					controls_state = 240
+				}
+			}
+			has_equipment = {
+				support_equipment > 119
+			}
+		}
+
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 240
+						}
+					}
+				}
+				240 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 260
+						}
+					}
+				}
+				260 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 258
+						}
+					}
+				}
+				258 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 220
+						}
+					}
+				}
+				220 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 222
+						}
+					}
+				}
+				222 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 223
+						}
+					}
+				}
+				223 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 271
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+	
+	SOV_scorched_earth_smolensk = {
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_smolensk_TT
+				OR = {
+					controls_state = 242
+					controls_state = 243
+					controls_state = 224
+					controls_state = 205
+				}
+			}
+			has_equipment = {
+				support_equipment > 79
+			}
+		}
+
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 205
+						}
+					}
+				}
+				205 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 224
+						}
+					}
+				}
+				224 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 243
+						}
+					}
+				}
+				243 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 242
+						}
+					}
+				}
+				242 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 265
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+
+	SOV_scorched_earth_moscow = {
+		icon = generic_scorched_earth
+
+		available = {
+			has_country_flag = SOV_scorched_earth
+			custom_trigger_tooltip = {
+				tooltip = SOV_scorched_earth_moscow_TT
+				OR = {
+					controls_state = 845
+					controls_state = 830
+					controls_state = 829
+					controls_state = 219
+					controls_state = 828
+				}
+			}
+			has_equipment = {
+				support_equipment > 79   
+			}
+		}
+
+		cost = 15
+		fire_only_once = yes
+		visible = {
+			#has_war = yes
+			#has_country_flag = SOV_scorched_earth
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 828
+						}
+					}
+				}
+				828 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 219
+						}
+					}
+				}
+				219 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 829
+						}
+					}
+				}
+				829 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 830
+						}
+					}
+				}
+				830 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						divisions_in_state = {
+							size > 0
+							state = 845
+						}
+					}
+				}
+				845 = {
+					damage_building = {
+						type = infrastructure
+						damage = 3
+					}
+					SOV = { add_equipment_to_stockpile = { type = support_equipment amount = -20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000 
+				any_state = { #fire_only_once = yes
+					region = 251
+					ROOT = { 
+						any_enemy_country = {
+							divisions_in_state = {
+								state = PREV.PREV
+								size > 1
+							}
+						}
+					}
+				}
+			}		
+		}
+	}
+
+	#217 "Stalingrad"
+	SOV_hold_stalingrad = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		#Fail trigger
+		available = {
+			NOT = { controls_state = 217 }
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			217 = {
+				is_controlled_by = ROOT
+				OR = {
+					NOT = { is_fully_controlled_by = ROOT }
+					any_neighbor_state = {
+						is_owned_by = SOV
+						NOT = { is_fully_controlled_by = ROOT }
+					}
+				}
+			}
+		}
+
+		#Success
+		timeout_effect = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			217 = { save_event_target_as = state }			
+			country_event = wtt_soviet_hold_city.1
+			set_country_flag = SOV_operation_uranus
+			unlock_decision_tooltip = SOV_operation_uranus
+		}
+		#Fail
+		complete_effect = {
+			217 = { save_event_target_as = state }			
+			country_event = wtt_soviet_hold_city.2
+		}
+	}
+	
+	
+	
+	#195 "Leningrad"
+	SOV_hold_leningrad = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		#Fail trigger
+		available = {
+			NOT = { controls_state = 195 }
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			195 = {
+				is_controlled_by = SOV
+				any_neighbor_state = {
+					is_owned_by = SOV
+					GER = {
+						divisions_in_state = {
+							size > 0
+							state = PREV
+						}
+					}
+				}
+			}
+		}
+
+		#Success
+		timeout_effect = {
+			add_stability = 0.15
+			add_war_support = 0.15
+			195 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.3
+			set_country_flag = SOV_operation_leningrad_nowgorod
+			unlock_decision_tooltip = SOV_operation_leningrad_nowgorod
+		}
+		#Fail
+		complete_effect = {
+			195 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.4
+		}
+	}
+	
+	
+
+	#845 "Moscow"
+	SOV_hold_moscow = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		#Fail trigger
+		available = {
+			NOT = { controls_state = 845 }
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			845 = {
+				is_controlled_by = SOV
+				any_neighbor_state = {
+					is_owned_by = SOV
+					GER = {
+						divisions_in_state = {
+							size > 0
+							state = PREV
+						}
+					}
+				}
+			}
+		}
+
+		#Success
+		timeout_effect = {
+			add_stability = 0.2
+			add_war_support = 0.2
+			845 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.5
+			set_country_flag = SOV_rschew_wjasma_operation
+			unlock_decision_tooltip = SOV_rschew_wjasma_operation
+		}
+		#Fail
+		complete_effect = {
+			845 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.6
+		}
+	}
+	
+	SOV_operation_uranus = { #Following Stalingrad defence
+
+		icon = generic_army_support
+
+		allowed = {
+			#always = no 
+		}
+
+		available = {
+			has_war_with = GER
+			217 = {
+				any_neighbor_state = {
+					GER = {
+						custom_trigger_tooltip = {
+							tooltip = ROOT_div_in_state_TT
+							divisions_in_state = {
+								state = PREV 
+								size > 0 
+							}
+						}
+					}
+				}
+			}
+		}
+
+		visible = {
+			has_country_flag = SOV_operation_uranus_1
+			has_dlc = "Waking the Tiger"
+		}
+		
+		days_remove = 0
+
+		cost = 0
+
+		complete_effect = {
+			custom_effect_tooltip = unlock_ability_TT
+			custom_effect_tooltip = SOV_operation_uranus
+			set_country_flag = SOV_operation_uranus_2
+		}
+		
+		ai_will_do = {
+			factor = 50	
+		}
+	}
+	
+	SOV_operation_leningrad_nowgorod  = { #Following Leningrad defence
+
+		icon = generic_army_support
+
+		allowed = {
+			#always = no 
+		}
+
+		available = {
+			has_war_with = GER
+			195 = {
+				any_neighbor_state = {
+					GER = {
+						custom_trigger_tooltip = {
+							tooltip = ROOT_div_in_state_TT
+							divisions_in_state = {
+								state = PREV 
+								size > 0 
+							}
+						}
+					}
+				}
+			}
+		}
+
+		visible = {
+			has_country_flag = SOV_operation_leningrad_nowgorod
+			has_dlc = "Waking the Tiger"
+		}
+		
+		days_remove = 0
+
+		cost = 0
+
+		complete_effect = {
+			custom_effect_tooltip = unlock_ability_TT
+			custom_effect_tooltip = SOV_operation_leningrad_nowgorod
+			set_country_flag = SOV_operation_leningrad_nowgorod_2
+		}
+		
+		ai_will_do = {
+			factor = 50	
+		}
+	}
+	
+	SOV_rschew_wjasma_operation  = { #Battle for Rschev
+
+		icon = generic_army_support
+
+		allowed = {
+			always = no #Not needed actually
+		}
+
+		available = {
+			has_war_with = GER
+			845 = {
+				any_neighbor_state = {
+					GER = {
+						custom_trigger_tooltip = {
+							tooltip = ROOT_div_in_state_TT
+							divisions_in_state = {
+								state = PREV 
+								size > 0 
+							}
+						}
+					}
+				}
+			}
+		}
+
+		visible = {
+			has_country_flag = SOV_rschew_wjasma_operation
+		}
+		
+		days_remove = 0
+
+		cost = 0
+
+		complete_effect = {
+			custom_effect_tooltip = unlock_ability_TT
+			custom_effect_tooltip = SOV_rschew_wjasma_operation
+			set_country_flag = SOV_rschew_wjasma_operation_2
+		}
+		
+		ai_will_do = {
+			factor = 50	
+		}
+	}
+	
+	
+	SOV_kutuzov_offensive = { #1943
+
+		icon = generic_army_support
+
+		available = {
+			has_war_with = GER
+			845 = { is_controlled_by = SOV }
+			195 = { is_controlled_by = SOV }
+			217 = { is_controlled_by = SOV }
+			date > 1943.7.1
+		}
+
+		visible = {
+			surrender_progress > 0 
+			has_war_with = GER
+			date > 1943.5.1
+		}
+
+		fire_only_once = yes
+		
+		days_remove = 0
+
+		cost = 0
+
+		complete_effect = {
+			custom_effect_tooltip = unlock_ability_TT
+			custom_effect_tooltip = SOV_kutuzov_offensive
+			set_country_flag = SOV_kutuzov_offensive
+		}
+	
+		ai_will_do = {
+			factor = 50
+			
+		}
+	}
+	
+	SOV_suvorov_offensive = { #Smolensk Operation
+
+		icon = generic_army_support
+
+		available = {
+			has_war_with = GER
+			date > 1943.8.1
+			845 = { is_controlled_by = SOV }
+			195 = { is_controlled_by = SOV }
+			217 = { is_controlled_by = SOV }
+		}
+
+		visible = {
+			surrender_progress > 0
+			has_war_with = GER
+			date > 1943.6.1
+		}
+
+		fire_only_once = yes
+		
+		days_remove = 0
+
+		cost = 0
+		
+
+		complete_effect = {
+			custom_effect_tooltip = unlock_ability_TT
+			custom_effect_tooltip = SOV_suvorov_offensive
+			set_country_flag = SOV_suvorov_offensive
+		}
+		
+		ai_will_do = {
+			factor = 50
+		}
+	}
+	
+	SOV_operation_bagragation = {
+
+		icon = generic_army_support
+
+		available = {
+			has_war_with = GER
+			845 = { is_controlled_by = SOV }
+			195 = { is_controlled_by = SOV }
+			217 = { is_controlled_by = SOV }
+		}
+
+		visible = {
+			surrender_progress > 0
+			has_war_with = GER
+			date > 1944.4.1
+		}
+
+		fire_only_once = yes
+		
+		days_remove = 1
+
+		cost = 0
+		
+		complete_effect = {
+			custom_effect_tooltip = unlock_ability_TT
+			custom_effect_tooltip = SOV_operation_bagragation
+			set_country_flag = SOV_operation_bagragation
+		}
+		
+		ai_will_do = {
+			factor = 500	
+		}
+	}
+	
+	SOV_winter_offensive = {
+
+		icon = generic_army_support
+
+		available = {
+			has_war_with = GER
+			
+			custom_trigger_tooltip = {
+				tooltip = winter_tt
+				OR = {
+					AND = { #41 to 42 march
+						date > 1941.12.1
+						date < 1942.3.1
+					}
+					AND = { #42 to 43 march
+						date > 1942.12.1
+						date < 1943.3.1
+					}
+					AND = { #43 to 44 march
+						date > 1943.12.1
+						date < 1944.3.1
+					}
+					AND = { #44 to 45 march
+						date > 1944.12.1
+						date < 1945.3.1
+					}
+				}
+			}
+		}
+		
+		modifier = {
+			army_core_attack_factor = 0.1
+			acclimatization_cold_climate_gain_factor = 1
+		}
+		
+		visible = {
+			#surrender_progress > 0.2
+			#has_war_with = GER
+		}
+
+		fire_only_once = no
+		
+		days_remove = 30
+		
+		days_re_enable = 90 #One Offensive per winter
+
+		cost = 0
+		
+		complete_effect = {
+			hidden_effect = { news_event = news.3206 }
+		}
+		
+		ai_will_do = {
+			factor = 500	
+		}
+	}
+}

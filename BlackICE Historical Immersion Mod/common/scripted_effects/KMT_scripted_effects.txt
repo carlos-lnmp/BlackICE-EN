@@ -1,0 +1,5554 @@
+PRC_create_wargoal_for_dongbei = {
+	custom_effect_tooltip = PRC_create_wargoal_for_db_tt
+	hidden_effect = {
+		every_country = {
+			limit = {
+				any_owned_state = {
+					OR = {
+						region = 155
+						region = 143
+					}
+				}
+				NOT = { tag = ROOT }
+			}
+			ROOT = {
+				create_wargoal = {
+					target = PREV
+					type = take_state_focus
+				}
+			}
+		}
+	}
+}
+
+
+### anchor_1 ###
+gain_central_plain_wargoal = {
+	custom_effect_tooltip = MCK_reclaim_central_plain_tt
+	hidden_effect = {
+		every_country = {
+			limit = {
+				any_owned_state = {
+					OR = {
+						region = 143
+						region = 164
+						region = 165
+						region = 144
+						region = 200
+					}
+					NOT = { state = 601 }
+				}
+				NOT = { tag = ROOT }
+			}
+			ROOT = {
+				create_wargoal = {
+					target = PREV
+					type = take_state_focus
+				}
+			}
+		}
+	}
+}
+### anchor_2 ###
+
+old_frontier_get_wargoal = {
+	custom_effect_tooltip = MCK_restore_frontier_tt
+	hidden_effect = {
+		every_country = {
+			limit = {
+				any_owned_state = {
+					OR = {
+						region = 146
+						region = 145
+						region = 152
+						state = 601
+					}
+					NOT = {
+						state = 323
+						state = 441
+					}
+				}
+				NOT = { tag = ROOT }
+			}
+			ROOT = {
+				create_wargoal = {
+					target = PREV
+					type = take_state_focus
+				}
+			}
+		}
+	}
+}
+### anchor_3 ###
+
+gain_fareast_wargoal = {
+	custom_effect_tooltip = PRC_get_wargoal_for_fareast_tt
+	hidden_effect = {
+		every_country = {
+			limit = {
+				any_owned_state = {
+					region = 148
+				}
+				NOT = { tag = ROOT }
+			}
+			ROOT = {
+				create_wargoal = {
+					target = PREV
+					type = take_state_focus
+				}
+			}
+		}
+	}
+}
+### anchor_4 ###
+
+KMT_north_plan_wargoal = {
+	custom_effect_tooltip = KMT_north_plan_effect_tt
+	hidden_effect = {
+		every_country = {
+			limit = {
+				any_owned_state = {
+					OR = {
+						region = 143
+						region = 155
+					}
+				}
+				NOT = { 
+					tag = ROOT 
+					is_chinese_nations = yes
+				}
+			}
+			ROOT = {
+				create_wargoal = {
+					target = PREV
+					type = take_state_focus
+				}
+			}
+		}
+	}
+}
+### anchor_5 ###
+
+add_xian_rejected_num = {
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = KMT_xian_rejected_num
+				value < 2
+			}
+		}
+		set_country_flag = {
+			flag = KMT_xian_rejected_num
+			value = 1
+		}
+		else = {
+			modify_country_flag = {
+				flag = KMT_xian_rejected_num
+				value = 1
+			}
+		}
+	}
+}
+
+
+withdraw_from_all_wars_with_puppet = {
+	if = {
+		limit = {
+			has_government = neutrality
+		}
+		random_other_country = {
+			limit = {
+				has_government = neutrality
+				has_war = no
+				exists = yes
+			}
+			puppet = ROOT
+			end_puppet = ROOT
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_country = {
+						NOT = { tag = ROOT }
+						has_government = neutrality
+						has_war = no
+						exists = yes
+					}
+				}
+			}
+			random_other_country = {
+				limit = {
+					has_war = no
+				}
+				puppet = ROOT
+				end_puppet = ROOT
+			}
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.95
+		}
+	}
+	if = {
+		limit = {
+			has_government = fascism
+		}
+		random_other_country = {
+			limit = {
+				has_government = fascism
+				has_war = no
+				exists = yes
+			}
+			puppet = ROOT
+			end_puppet = ROOT
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_country = {
+						NOT = { tag = ROOT }
+						has_government = fascism
+						has_war = no
+						exists = yes
+					}
+				}
+			}
+			random_other_country = {
+				limit = {
+					has_war = no
+				}
+				puppet = ROOT
+				end_puppet = ROOT
+			}
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.95
+		}
+	}
+	if = {
+		limit = {
+			has_government = communism
+		}
+		random_other_country = {
+			limit = {
+				has_government = communism
+				has_war = no
+				exists = yes
+			}
+			puppet = ROOT
+			end_puppet = ROOT
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_country = {
+						NOT = { tag = ROOT }
+						has_government = communism
+						has_war = no
+						exists = yes
+					}
+				}
+			}
+			random_other_country = {
+				limit = {
+					has_war = no
+				}
+				puppet = ROOT
+				end_puppet = ROOT
+			}
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.95
+		}
+	}
+	if = {
+		limit = {
+			democratic_govt = yes
+		}
+		random_other_country = {
+			limit = {
+				democratic_govt = yes
+				has_war = no
+				exists = yes
+			}
+			puppet = ROOT
+			end_puppet = ROOT
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_country = {
+						NOT = { tag = ROOT }
+						democratic_govt = yes
+						has_war = no
+						exists = yes
+					}
+				}
+			}
+			random_other_country = {
+				limit = {
+					has_war = no
+				}
+				puppet = ROOT
+				end_puppet = ROOT
+			}
+		}
+		add_popularity = {
+			ideology = conservatism
+			popularity = 0.95
+		}
+	}
+	if = {
+		limit = {
+			is_in_faction = yes
+		}
+		random_country = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = ROOT
+			}
+			remove_from_faction = ROOT
+		}
+	}
+}
+
+increase_jap_awareness = {
+	custom_effect_tooltip = increase_jap_awareness_tt
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 3
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 5
+			}
+			has_idea = jap_aware_0
+			NOT = {
+				has_idea = jap_aware_1
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_0
+			add_idea = jap_aware_1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 8
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 10
+			}
+			has_idea = jap_aware_1
+			NOT = {
+				has_idea = jap_aware_2
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_1
+			add_idea = jap_aware_2
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 13
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 15
+			}
+			has_idea = jap_aware_2
+			NOT = {
+				has_idea = jap_aware_3
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_2
+			add_idea = jap_aware_3
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 18
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 20
+			}
+			has_idea = jap_aware_3
+		}
+		remove_ideas = jap_aware_3
+		add_ideas = aware_unavailable_idea
+		add_ideas = aware_unavailable_idea
+		custom_effect_tooltip = MCK_jap_will_demand_submission_tt
+		JAP = { country_event = jap.79 }
+	}
+	modify_country_flag = {
+		flag = MCK_jap_awareness_flag
+		value = 1
+	}
+}
+
+increase_jap_awareness2 = {
+	custom_effect_tooltip = increase_jap_awareness2_tt
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 2
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 5
+			}
+			has_idea = jap_aware_0
+			NOT = {
+				has_idea = jap_aware_1
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_0
+			add_idea = jap_aware_1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 7
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 10
+			}
+			has_idea = jap_aware_1
+			NOT = {
+				has_idea = jap_aware_2
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_1
+			add_idea = jap_aware_2
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 12
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 15
+			}
+			has_idea = jap_aware_2
+			NOT = {
+				has_idea = jap_aware_3
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_2
+			add_idea = jap_aware_3
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 17
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 20
+			}
+			has_idea = jap_aware_3
+		}
+		remove_ideas = jap_aware_3
+		add_ideas = aware_unavailable_idea
+		custom_effect_tooltip = MCK_jap_will_demand_submission_tt
+		JAP = { country_event = jap.79 }
+	}
+	modify_country_flag = {
+		flag = MCK_jap_awareness_flag
+		value = 2
+	}
+}
+
+increase_jap_awareness3 = {
+	custom_effect_tooltip = increase_jap_awareness3_tt
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 1
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 5
+			}
+			has_idea = jap_aware_0
+			NOT = {
+				has_idea = jap_aware_1
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_0
+			add_idea = jap_aware_1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 6
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 10
+			}
+			has_idea = jap_aware_1
+			NOT = {
+				has_idea = jap_aware_2
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_1
+			add_idea = jap_aware_2
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 11
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 15
+			}
+			has_idea = jap_aware_2
+			NOT = {
+				has_idea = jap_aware_3
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_2
+			add_idea = jap_aware_3
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 16
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 20
+			}
+			has_idea = jap_aware_3
+		}
+		remove_ideas = jap_aware_3
+		add_ideas = aware_unavailable_idea
+		custom_effect_tooltip = MCK_jap_will_demand_submission_tt
+		JAP = { country_event = jap.79 }
+	}
+	modify_country_flag = {
+		flag = MCK_jap_awareness_flag
+		value = 3
+	}
+}
+
+increase_jap_awareness4 = {
+	custom_effect_tooltip = increase_jap_awareness4_tt
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 0
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 5
+			}
+			has_idea = jap_aware_0
+			NOT = {
+				has_idea = jap_aware_1
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_0
+			add_idea = jap_aware_1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 5
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 10
+			}
+			has_idea = jap_aware_1
+			NOT = {
+				has_idea = jap_aware_2
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_1
+			add_idea = jap_aware_2
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 10
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 15
+			}
+			has_idea = jap_aware_2
+			NOT = {
+				has_idea = jap_aware_3
+			}
+		}
+		swap_ideas = {
+			remove_idea = jap_aware_2
+			add_idea = jap_aware_3
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value > 15
+			}
+			has_country_flag = {
+				flag = MCK_jap_awareness_flag
+				value < 20
+			}
+			has_idea = jap_aware_3
+		}
+		remove_ideas = jap_aware_3
+		add_ideas = aware_unavailable_idea
+		custom_effect_tooltip = MCK_jap_will_demand_submission_tt
+		JAP = { country_event = jap.79 }
+	}
+	modify_country_flag = {
+		flag = MCK_jap_awareness_flag
+		value = 4
+	}
+}
+
+
+KMT_take_pacific_wargoal = {
+	custom_effect_tooltip = KMT_take_pacific_tt
+	hidden_effect = {
+		if = {
+			limit = {
+				526 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					526 = {
+						owner = { is_puppet = no }
+					}
+				}
+				526 = {
+					owner = {
+						save_event_target_as = KMTtakepac_526_owner
+					}
+				}
+				else = {
+					526 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_526_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				524 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					524 = {
+						owner = { is_puppet = no }
+					}
+				}
+				524 = {
+					owner = {
+						save_event_target_as = KMTtakepac_524_owner
+					}
+				}
+				else = {
+					524 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_524_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				528 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					528 = {
+						owner = { is_puppet = no }
+					}
+				}
+				528 = {
+					owner = {
+						save_event_target_as = KMTtakepac_528_owner
+					}
+				}
+				else = {
+					528 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_528_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				529 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					529 = {
+						owner = { is_puppet = no }
+					}
+				}
+				529 = {
+					owner = {
+						save_event_target_as = KMTtakepac_529_owner
+					}
+				}
+				else = {
+					529 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_529_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				530 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					530 = {
+						owner = { is_puppet = no }
+					}
+				}
+				530 = {
+					owner = {
+						save_event_target_as = KMTtakepac_530_owner
+					}
+				}
+				else = {
+					530 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_530_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				531 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					531 = {
+						owner = { is_puppet = no }
+					}
+				}
+				531 = {
+					owner = {
+						save_event_target_as = KMTtakepac_531_owner
+					}
+				}
+				else = {
+					531 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_531_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				532 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					532 = {
+						owner = { is_puppet = no }
+					}
+				}
+				532 = {
+					owner = {
+						save_event_target_as = KMTtakepac_532_owner
+					}
+				}
+				else = {
+					532 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_532_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				282 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					282 = {
+						owner = { is_puppet = no }
+					}
+				}
+				282 = {
+					owner = {
+						save_event_target_as = KMTtakepac_282_owner
+					}
+				}
+				else = {
+					282 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_282_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				535 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					535 = {
+						owner = { is_puppet = no }
+					}
+				}
+				535 = {
+					owner = {
+						save_event_target_as = KMTtakepac_535_owner
+					}
+				}
+				else = {
+					535 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_535_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				534 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					534 = {
+						owner = { is_puppet = no }
+					}
+				}
+				534 = {
+					owner = {
+						save_event_target_as = KMTtakepac_534_owner
+					}
+				}
+				else = {
+					534 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_534_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				533 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					533 = {
+						owner = { is_puppet = no }
+					}
+				}
+				533 = {
+					owner = {
+						save_event_target_as = KMTtakepac_533_owner
+					}
+				}
+				else = {
+					533 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_533_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				536 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					536 = {
+						owner = { is_puppet = no }
+					}
+				}
+				536 = {
+					owner = {
+						save_event_target_as = KMTtakepac_536_owner
+					}
+				}
+				else = {
+					536 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_536_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				555 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					555 = {
+						owner = { is_puppet = no }
+					}
+				}
+				555 = {
+					owner = {
+						save_event_target_as = KMTtakepac_555_owner
+					}
+				}
+				else = {
+					555 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_555_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				645 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					645 = {
+						owner = { is_puppet = no }
+					}
+				}
+				645 = {
+					owner = {
+						save_event_target_as = KMTtakepac_645_owner
+					}
+				}
+				else = {
+					645 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_645_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				525 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					525 = {
+						owner = { is_puppet = no }
+					}
+				}
+				525 = {
+					owner = {
+						save_event_target_as = KMTtakepac_525_owner
+					}
+				}
+				else = {
+					525 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_525_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				527 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					527 = {
+						owner = { is_puppet = no }
+					}
+				}
+				527 = {
+					owner = {
+						save_event_target_as = KMTtakepac_527_owner
+					}
+				}
+				else = {
+					527 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_527_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				648 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					648 = {
+						owner = { is_puppet = no }
+					}
+				}
+				648 = {
+					owner = {
+						save_event_target_as = KMTtakepac_648_owner
+					}
+				}
+				else = {
+					648 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_648_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				646 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					646 = {
+						owner = { is_puppet = no }
+					}
+				}
+				646 = {
+					owner = {
+						save_event_target_as = KMTtakepac_646_owner
+					}
+				}
+				else = {
+					646 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_646_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				638 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					638 = {
+						owner = { is_puppet = no }
+					}
+				}
+				638 = {
+					owner = {
+						save_event_target_as = KMTtakepac_638_owner
+					}
+				}
+				else = {
+					638 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_638_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				647 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					647 = {
+						owner = { is_puppet = no }
+					}
+				}
+				647 = {
+					owner = {
+						save_event_target_as = KMTtakepac_647_owner
+					}
+				}
+				else = {
+					647 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_647_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				684 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					684 = {
+						owner = { is_puppet = no }
+					}
+				}
+				684 = {
+					owner = {
+						save_event_target_as = KMTtakepac_684_owner
+					}
+				}
+				else = {
+					684 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_684_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				633 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					633 = {
+						owner = { is_puppet = no }
+					}
+				}
+				633 = {
+					owner = {
+						save_event_target_as = KMTtakepac_633_owner
+					}
+				}
+				else = {
+					633 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_633_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				632 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					632 = {
+						owner = { is_puppet = no }
+					}
+				}
+				632 = {
+					owner = {
+						save_event_target_as = KMTtakepac_632_owner
+					}
+				}
+				else = {
+					632 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_632_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				725 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					725 = {
+						owner = { is_puppet = no }
+					}
+				}
+				725 = {
+					owner = {
+						save_event_target_as = KMTtakepac_725_owner
+					}
+				}
+				else = {
+					725 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_725_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				639 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					639 = {
+						owner = { is_puppet = no }
+					}
+				}
+				639 = {
+					owner = {
+						save_event_target_as = KMTtakepac_639_owner
+					}
+				}
+				else = {
+					639 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_639_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				631 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					631 = {
+						owner = { is_puppet = no }
+					}
+				}
+				631 = {
+					owner = {
+						save_event_target_as = KMTtakepac_631_owner
+					}
+				}
+				else = {
+					631 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_631_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				642 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					642 = {
+						owner = { is_puppet = no }
+					}
+				}
+				642 = {
+					owner = {
+						save_event_target_as = KMTtakepac_642_owner
+					}
+				}
+				else = {
+					642 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_642_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				727 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					727 = {
+						owner = { is_puppet = no }
+					}
+				}
+				727 = {
+					owner = {
+						save_event_target_as = KMTtakepac_727_owner
+					}
+				}
+				else = {
+					727 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_727_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				630 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					630 = {
+						owner = { is_puppet = no }
+					}
+				}
+				630 = {
+					owner = {
+						save_event_target_as = KMTtakepac_630_owner
+					}
+				}
+				else = {
+					630 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_630_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				629 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					629 = {
+						owner = { is_puppet = no }
+					}
+				}
+				629 = {
+					owner = {
+						save_event_target_as = KMTtakepac_629_owner
+					}
+				}
+				else = {
+					629 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_629_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				643 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					643 = {
+						owner = { is_puppet = no }
+					}
+				}
+				643 = {
+					owner = {
+						save_event_target_as = KMTtakepac_643_owner
+					}
+				}
+				else = {
+					643 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_643_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				726 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					726 = {
+						owner = { is_puppet = no }
+					}
+				}
+				726 = {
+					owner = {
+						save_event_target_as = KMTtakepac_726_owner
+					}
+				}
+				else = {
+					726 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_726_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				641 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					641 = {
+						owner = { is_puppet = no }
+					}
+				}
+				641 = {
+					owner = {
+						save_event_target_as = KMTtakepac_641_owner
+					}
+				}
+				else = {
+					641 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_641_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				636 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					636 = {
+						owner = { is_puppet = no }
+					}
+				}
+				636 = {
+					owner = {
+						save_event_target_as = KMTtakepac_636_owner
+					}
+				}
+				else = {
+					636 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_636_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				635 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					635 = {
+						owner = { is_puppet = no }
+					}
+				}
+				635 = {
+					owner = {
+						save_event_target_as = KMTtakepac_635_owner
+					}
+				}
+				else = {
+					635 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_635_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				737 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					737 = {
+						owner = { is_puppet = no }
+					}
+				}
+				737 = {
+					owner = {
+						save_event_target_as = KMTtakepac_737_owner
+					}
+				}
+				else = {
+					737 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_737_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				634 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					634 = {
+						owner = { is_puppet = no }
+					}
+				}
+				634 = {
+					owner = {
+						save_event_target_as = KMTtakepac_634_owner
+					}
+				}
+				else = {
+					634 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_634_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				523 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					523 = {
+						owner = { is_puppet = no }
+					}
+				}
+				523 = {
+					owner = {
+						save_event_target_as = KMTtakepac_523_owner
+					}
+				}
+				else = {
+					523 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_523_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				517 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					517 = {
+						owner = { is_puppet = no }
+					}
+				}
+				517 = {
+					owner = {
+						save_event_target_as = KMTtakepac_517_owner
+					}
+				}
+				else = {
+					517 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_517_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				285 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					285 = {
+						owner = { is_puppet = no }
+					}
+				}
+				285 = {
+					owner = {
+						save_event_target_as = KMTtakepac_285_owner
+					}
+				}
+				else = {
+					285 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_285_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				521 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					521 = {
+						owner = { is_puppet = no }
+					}
+				}
+				521 = {
+					owner = {
+						save_event_target_as = KMTtakepac_521_owner
+					}
+				}
+				else = {
+					521 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_521_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				674 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					674 = {
+						owner = { is_puppet = no }
+					}
+				}
+				674 = {
+					owner = {
+						save_event_target_as = KMTtakepac_674_owner
+					}
+				}
+				else = {
+					674 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_674_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				519 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					519 = {
+						owner = { is_puppet = no }
+					}
+				}
+				519 = {
+					owner = {
+						save_event_target_as = KMTtakepac_519_owner
+					}
+				}
+				else = {
+					519 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_519_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				522 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					522 = {
+						owner = { is_puppet = no }
+					}
+				}
+				522 = {
+					owner = {
+						save_event_target_as = KMTtakepac_522_owner
+					}
+				}
+				else = {
+					522 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_522_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				520 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					520 = {
+						owner = { is_puppet = no }
+					}
+				}
+				520 = {
+					owner = {
+						save_event_target_as = KMTtakepac_520_owner
+					}
+				}
+				else = {
+					520 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_520_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				518 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					518 = {
+						owner = { is_puppet = no }
+					}
+				}
+				518 = {
+					owner = {
+						save_event_target_as = KMTtakepac_518_owner
+					}
+				}
+				else = {
+					518 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_518_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				284 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					284 = {
+						owner = { is_puppet = no }
+					}
+				}
+				284 = {
+					owner = {
+						save_event_target_as = KMTtakepac_284_owner
+					}
+				}
+				else = {
+					284 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_284_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				723 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					723 = {
+						owner = { is_puppet = no }
+					}
+				}
+				723 = {
+					owner = {
+						save_event_target_as = KMTtakepac_723_owner
+					}
+				}
+				else = {
+					723 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_723_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				669 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					669 = {
+						owner = { is_puppet = no }
+					}
+				}
+				669 = {
+					owner = {
+						save_event_target_as = KMTtakepac_669_owner
+					}
+				}
+				else = {
+					669 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakepac_669_owner
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+KMT_take_SEA_wargoal = {
+	custom_effect_tooltip = KMT_take_SEA_tt
+	hidden_effect = {
+		if = {
+			limit = {
+				524 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					524 = {
+						owner = { is_puppet = no }
+					}
+				}
+				524 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_524_owner
+					}
+				}
+				else = {
+					524 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_524_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				593 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					593 = {
+						owner = { is_puppet = no }
+					}
+				}
+				593 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_593_owner
+					}
+				}
+				else = {
+					593 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_593_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				592 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					592 = {
+						owner = { is_puppet = no }
+					}
+				}
+				592 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_592_owner
+					}
+				}
+				else = {
+					592 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_592_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				591 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					591 = {
+						owner = { is_puppet = no }
+					}
+				}
+				591 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_591_owner
+					}
+				}
+				else = {
+					591 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_591_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				594 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					594 = {
+						owner = { is_puppet = no }
+					}
+				}
+				594 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_594_owner
+					}
+				}
+				else = {
+					594 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_594_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				599 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					599 = {
+						owner = { is_puppet = no }
+					}
+				}
+				599 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_599_owner
+					}
+				}
+				else = {
+					599 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_599_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				671 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					671 = {
+						owner = { is_puppet = no }
+					}
+				}
+				671 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_671_owner
+					}
+				}
+				else = {
+					671 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_671_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				286 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					286 = {
+						owner = { is_puppet = no }
+					}
+				}
+				286 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_286_owner
+					}
+				}
+				else = {
+					286 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_286_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				286 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					286 = {
+						owner = { is_puppet = no }
+					}
+				}
+				286 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_286_owner
+					}
+				}
+				else = {
+					286 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_286_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				670 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					670 = {
+						owner = { is_puppet = no }
+					}
+				}
+				670 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_670_owner
+					}
+				}
+				else = {
+					670 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_670_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				741 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					741 = {
+						owner = { is_puppet = no }
+					}
+				}
+				741 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_741_owner
+					}
+				}
+				else = {
+					741 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_741_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				289 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					289 = {
+						owner = { is_puppet = no }
+					}
+				}
+				289 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_289_owner
+					}
+				}
+				else = {
+					289 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_289_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				724 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					724 = {
+						owner = { is_puppet = no }
+					}
+				}
+				724 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_724_owner
+					}
+				}
+				else = {
+					724 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_724_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				336 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					336 = {
+						owner = { is_puppet = no }
+					}
+				}
+				336 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_336_owner
+					}
+				}
+				else = {
+					336 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_336_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				672 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					672 = {
+						owner = { is_puppet = no }
+					}
+				}
+				672 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_672_owner
+					}
+				}
+				else = {
+					672 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_672_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				333 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					333 = {
+						owner = { is_puppet = no }
+					}
+				}
+				333 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_333_owner
+					}
+				}
+				else = {
+					333 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_333_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				334 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					334 = {
+						owner = { is_puppet = no }
+					}
+				}
+				334 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_334_owner
+					}
+				}
+				else = {
+					334 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_334_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				335 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					335 = {
+						owner = { is_puppet = no }
+					}
+				}
+				335 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_335_owner
+					}
+				}
+				else = {
+					335 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_335_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				626 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					626 = {
+						owner = { is_puppet = no }
+					}
+				}
+				626 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_626_owner
+					}
+				}
+				else = {
+					626 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_626_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				623 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					623 = {
+						owner = { is_puppet = no }
+					}
+				}
+				623 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_623_owner
+					}
+				}
+				else = {
+					623 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_623_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				327 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					327 = {
+						owner = { is_puppet = no }
+					}
+				}
+				327 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_327_owner
+					}
+				}
+				else = {
+					327 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_327_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				624 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					624 = {
+						owner = { is_puppet = no }
+					}
+				}
+				624 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_624_owner
+					}
+				}
+				else = {
+					624 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_624_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				628 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					628 = {
+						owner = { is_puppet = no }
+					}
+				}
+				628 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_628_owner
+					}
+				}
+				else = {
+					628 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_628_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				625 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					625 = {
+						owner = { is_puppet = no }
+					}
+				}
+				625 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_625_owner
+					}
+				}
+				else = {
+					625 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_625_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				627 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					627 = {
+						owner = { is_puppet = no }
+					}
+				}
+				627 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_627_owner
+					}
+				}
+				else = {
+					627 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_627_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				673 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					673 = {
+						owner = { is_puppet = no }
+					}
+				}
+				673 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_673_owner
+					}
+				}
+				else = {
+					673 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_673_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				668 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					668 = {
+						owner = { is_puppet = no }
+					}
+				}
+				668 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_668_owner
+					}
+				}
+				else = {
+					668 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_668_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				669 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					669 = {
+						owner = { is_puppet = no }
+					}
+				}
+				669 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_669_owner
+					}
+				}
+				else = {
+					669 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_669_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				667 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					667 = {
+						owner = { is_puppet = no }
+					}
+				}
+				667 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_667_owner
+					}
+				}
+				else = {
+					667 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_667_owner
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				721 = {
+					owner = {
+						NOT = { 
+							tag = ROOT									
+							is_puppet_of = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					721 = {
+						owner = { is_puppet = no }
+					}
+				}
+				721 = {
+					owner = {
+						save_event_target_as = KMTtakeSEA_721_owner
+					}
+				}
+				else = {
+					721 = {
+						owner = { 
+							overlord = { 
+								save_event_target_as = KMTtakeSEA_721_owner
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+get_usa_supplies = {
+					if = {
+						limit = {
+							USA = {
+								has_tech = infantry_weapons
+								NOT = {
+									has_tech = infantry_weapons1
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 10000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = infantry_weapons1
+								NOT = {
+									has_tech = improved_infantry_weapons
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 10000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = improved_infantry_weapons
+								NOT = {
+									has_tech = advanced_infantry_weapons
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 10000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = advanced_infantry_weapons
+							}
+						}
+						add_equipment_to_stockpile = { type = infantry_equipment_3 amount = 10000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = tech_support
+							}
+						}
+						add_equipment_to_stockpile = { type = support_equipment_1 amount = 7500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = gwtank
+								NOT = {
+									has_tech = basic_light_tank
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = gw_tank_equipment amount = 3500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = basic_light_tank
+								NOT = {
+									has_tech = improved_light_tank
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 3500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = improved_light_tank
+								NOT = {
+									has_tech = advanced_light_tank
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = light_tank_equipment_2 amount = 3500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = improved_light_tank
+							}
+						}
+						add_equipment_to_stockpile = { type = light_tank_equipment_3 amount = 3500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = basic_medium_tank
+								NOT = {
+									has_tech = improved_medium_tank
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 2000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = improved_medium_tank
+								NOT = {
+									has_tech = advanced_medium_tank
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = medium_tank_equipment_2 amount = 2000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = advanced_medium_tank
+							}
+						}
+						add_equipment_to_stockpile = { type = medium_tank_equipment_3 amount = 2000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = basic_heavy_tank
+								NOT = {
+									has_tech = improved_heavy_tank
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = heavy_tank_equipment_1 amount = 500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = improved_heavy_tank
+								NOT = {
+									has_tech = advanced_heavy_tank
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = heavy_tank_equipment_2 amount = 500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = advanced_heavy_tank
+							}
+						}
+						add_equipment_to_stockpile = { type = heavy_tank_equipment_3 amount = 500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = main_battle_tank
+							}
+						}
+						add_equipment_to_stockpile = { type = modern_tank_equipment_1 amount = 100 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = super_heavy_tank
+							}
+						}
+						add_equipment_to_stockpile = { type = super_heavy_tank_equipment_1 amount = 200 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = early_fighter
+								NOT = {
+									has_tech = fighter1
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 1000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = fighter1
+								NOT = {
+									has_tech = fighter2
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 1000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = fighter2
+								NOT = {
+									has_tech = fighter3
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = fighter_equipment_2 amount = 1000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = fighter3
+							}
+						}
+						add_equipment_to_stockpile = { type = fighter_equipment_3 amount = 1000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = jet_fighter1
+								NOT = {
+									has_tech = jet_fighter2
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = jet_fighter_equipment_1 amount = 300 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = jet_fighter2
+							}
+						}
+						add_equipment_to_stockpile = { type = jet_fighter_equipment_2 amount = 300 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = CAS1
+								NOT = {
+									has_tech = CAS2
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 1000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = CAS2
+								NOT = {
+									has_tech = CAS3
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = CAS_equipment_2 amount = 1000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = CAS3
+							}
+						}
+						add_equipment_to_stockpile = { type = CAS_equipment_3 amount = 1000 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = naval_bomber1
+								NOT = {
+									has_tech = naval_bomber2
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = nav_bomber_equipment_1 amount = 100 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = naval_bomber2
+								NOT = {
+									has_tech = naval_bomber3
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = nav_bomber_equipment_2 amount = 100 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = naval_bomber3
+							}
+						}
+						add_equipment_to_stockpile = { type = nav_bomber_equipment_3 amount = 100 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = naval_bomber1
+								NOT = {
+									has_tech = naval_bomber2
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = nav_bomber_equipment_1 amount = 100 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = naval_bomber2
+								NOT = {
+									has_tech = naval_bomber3
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = nav_bomber_equipment_2 amount = 100 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = naval_bomber3
+							}
+						}
+						add_equipment_to_stockpile = { type = nav_bomber_equipment_3 amount = 100 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = heavy_fighter1
+								NOT = {
+									has_tech = heavy_fighter2
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = heavy_fighter_equipment_1 amount = 500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = heavy_fighter2
+								NOT = {
+									has_tech = heavy_fighter2
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = heavy_fighter_equipment_2 amount = 500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = heavy_fighter3
+							}
+						}
+						add_equipment_to_stockpile = { type = heavy_fighter_equipment_3 amount = 500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = tactical_bomber1
+								NOT = {
+									has_tech = tactical_bomber2
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = tac_bomber_equipment_1 amount = 500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = tactical_bomber2
+								NOT = {
+									has_tech = tactical_bomber3
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = tac_bomber_equipment_2 amount = 500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = tactical_bomber3
+							}
+						}
+						add_equipment_to_stockpile = { type = tac_bomber_equipment_3 amount = 500 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = jet_tactical_bomber1
+								NOT = {
+									has_tech = jet_tactical_bomber2
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = jet_tac_bomber_equipment_1 amount = 50 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = jet_tactical_bomber2
+							}
+						}
+						add_equipment_to_stockpile = { type = jet_tac_bomber_equipment_2 amount = 50 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = strategic_bomber1
+								NOT = {
+									has_tech = strategic_bomber2
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = strat_bomber_equipment_1 amount = 100 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = strategic_bomber2
+								NOT = {
+									has_tech = strategic_bomber3
+								}
+							}
+						}
+						add_equipment_to_stockpile = { type = strat_bomber_equipment_1 amount = 100 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = strategic_bomber3
+							}
+						}
+						add_equipment_to_stockpile = { type = strat_bomber_equipment_1 amount = 100 producer = USA }
+					}
+					if = {
+						limit = {
+							USA = {
+								has_tech = jet_strategic_bomber1
+							}
+						}
+						add_equipment_to_stockpile = { type = jet_strat_bomber_equipment_1 amount = 10 producer = USA }
+					}
+}
+oust_the_coloniser_effect = {
+	create_wargoal = {
+		target = HOL
+		type = take_state_focus
+		generator = { 334 }
+	}
+	every_country = {
+		limit = {
+			any_owned_state = {
+				is_on_continent = asia
+			}
+			capital_scope = {
+				NOT = {
+					is_on_continent = asia
+				}
+			}
+			NOT = {
+				tag = SOV
+			}
+		}
+		ROOT = {
+			create_wargoal = {
+				target = PREV
+				type = topple_government
+			}
+		}
+	}
+	every_country = {
+		limit = {
+			capital_scope = {
+				is_on_continent = asia
+			}
+			is_puppet = yes
+			overlord = {
+				capital_scope = {
+					NOT = {
+						is_on_continent = asia
+					}
+				}
+			}
+		}
+		overlord = {
+			ROOT = {
+				create_wargoal = {
+					target = PREV
+					type = topple_government
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			any_state = {
+				is_on_continent = asia
+				is_owned_by = POR
+			}
+		}
+		POR = { country_event = { id = kmt.251 }}
+	}
+}
+
+KMT_own_fighter_assembly = {
+	if = {
+		limit = {
+			has_completed_focus = KMT_setup_camco_assembly_plants
+			OR = {
+				burma_road_ok = yes
+				yunnan_bahn_ok = yes
+			}
+		}
+		
+	}
+}
+
+foreign_supply_effect = {
+	if = {
+		limit = {
+			ENG = {
+				is_puppet = no
+				has_capitulated = no
+			}
+			has_global_flag = KMT_ENG_agreed_to_assist
+		}
+		if = {
+			limit = {
+				ENG = {
+					has_tech = advanced_infantry_weapons
+					has_opinion = {
+						target = ROOT
+						value > 84
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = infantry_equipment_3 amount = 200 producer = ENG }
+			else = {
+				if = {
+					limit = {
+						ENG = {
+							has_tech = improved_infantry_weapons
+							has_opinion = {
+								target = ROOT
+								value > 64
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 200 producer = ENG }
+					else = {
+						if = {
+							limit = {
+								ENG = {
+									has_opinion = {
+										target = ROOT
+										value > 44
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 200 producer = ENG }
+							else = {
+								add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 200 producer = ENG }
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				USA = {
+					has_tech = tech_support
+					has_opinion = {
+						target = ROOT
+						value > 14
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 100 producer = ENG }
+		}
+		if = {
+			limit = {
+				ENG = {
+					has_tech = fighter3
+					has_opinion = {
+						target = ROOT
+						value > 84
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = fighter_equipment_3 amount = 8 producer = ENG }
+			else = {
+				if = {
+					limit = {
+						ENG = {
+							has_tech = fighter2
+							has_opinion = {
+								target = ROOT
+								value > 64
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = fighter_equipment_2 amount = 8 producer = ENG }
+					else = {
+						if = {
+							limit = {
+								ENG = {
+									has_tech = fighter1
+									has_opinion = {
+										target = ROOT
+										value > 44
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 8 producer = ENG }
+							else = {
+								if = {
+									limit = {
+										ENG = {
+											has_tech = early_fighter
+											has_opinion = {
+												target = ROOT
+												value > 24
+											}
+										}
+									}
+									add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 8 producer = ENG }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				ENG = {
+					has_tech = advanced_light_tank
+					has_opinion = {
+						target = ROOT
+						value > 94
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = light_tank_equipment_3 amount = 8 producer = ENG }
+			else = {
+				if = {
+					limit = {
+						ENG = {
+							has_tech = improved_light_tank
+							has_opinion = {
+								target = ROOT
+								value > 84
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = light_tank_equipment_2 amount = 8 producer = ENG }
+					else = {
+						if = {
+							limit = {
+								ENG = {
+									has_tech = basic_light_tank
+									has_opinion = {
+										target = ROOT
+										value > 74
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 8 producer = ENG }
+							else = {
+								if = {
+									limit = {
+										ENG = {
+											has_tech = gwtank
+											has_opinion = {
+												target = ROOT
+												value > 64
+											}
+										}
+									}
+									add_equipment_to_stockpile = { type = gw_tank_equipment amount = 8 producer = ENG }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			USA = {
+				is_puppet = no
+				has_capitulated = no
+			}
+			has_global_flag = KMT_USA_agreed_to_assist
+		}
+		if = {
+			limit = {
+				USA = {
+					has_tech = advanced_infantry_weapons
+					has_opinion = {
+						target = ROOT
+						value > 84
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = infantry_equipment_3 amount = 200 producer = USA }
+			else = {
+				if = {
+					limit = {
+						USA = {
+							has_tech = improved_infantry_weapons
+							has_opinion = {
+								target = ROOT
+								value > 64
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 200 producer = USA }
+					else = {
+						if = {
+							limit = {
+								USA = {
+									has_tech = infantry_weapons1
+									has_opinion = {
+										target = ROOT
+										value > 64
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 200 producer = USA }
+							else = {
+								add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 200 producer = USA }
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				USA = {
+					has_tech = tech_support
+					has_opinion = {
+						target = ROOT
+						value > 14
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 100 producer = USA }
+		}
+		if = {
+			limit = {
+				USA = {
+					has_tech = fighter3
+					has_opinion = {
+						target = ROOT
+						value > 84
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = fighter_equipment_3 amount = 8 producer = USA }
+			else = {
+				if = {
+					limit = {
+						USA = {
+							has_tech = fighter2
+							has_opinion = {
+								target = ROOT
+								value > 64
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = fighter_equipment_2 amount = 8 producer = USA }
+					else = {
+						if = {
+							limit = {
+								USA = {
+									has_tech = fighter1
+									has_opinion = {
+										target = ROOT
+										value > 44
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 8 producer = USA }
+							else = {
+								if = {
+									limit = {
+										USA = {
+											has_tech = early_fighter
+											has_opinion = {
+												target = ROOT
+												value > 24
+											}
+										}
+									}
+									add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 8 producer = USA }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				USA = {
+					has_tech = advanced_light_tank
+					has_opinion = {
+						target = ROOT
+						value > 94
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = light_tank_equipment_3 amount = 8 producer = USA }
+			else = {
+				if = {
+					limit = {
+						USA = {
+							has_tech = improved_light_tank
+							has_opinion = {
+								target = ROOT
+								value > 84
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = light_tank_equipment_2 amount = 8 producer = USA }
+					else = {
+						if = {
+							limit = {
+								USA = {
+									has_tech = basic_light_tank
+									has_opinion = {
+										target = ROOT
+										value > 74
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 8 producer = USA }
+							else = {
+								if = {
+									limit = {
+										USA = {
+											has_tech = gwtank
+											has_opinion = {
+												target = ROOT
+												value > 64
+											}
+										}
+									}
+									add_equipment_to_stockpile = { type = gw_tank_equipment amount = 8 producer = USA }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			FRA = {
+				is_puppet = no
+				has_capitulated = no
+			}
+			has_global_flag = KMT_FRA_agreed_to_assist
+		}
+		if = {
+			limit = {
+				FRA = {
+					has_tech = advanced_infantry_weapons
+					has_opinion = {
+						target = ROOT
+						value > 84
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = infantry_equipment_3 amount = 200 producer = FRA }
+			else = {
+				if = {
+					limit = {
+						FRA = {
+							has_tech = improved_infantry_weapons
+							has_opinion = {
+								target = ROOT
+								value > 64
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 200 producer = FRA }
+					else = {
+						if = {
+							limit = {
+								FRA = {
+									has_tech = infantry_weapons1
+									has_opinion = {
+										target = ROOT
+										value > 64
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 200 producer = FRA }
+							else = {
+								add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 200 producer = FRA }
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				FRA = {
+					has_tech = tech_support
+					has_opinion = {
+						target = ROOT
+						value > 14
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 100 producer = FRA }
+		}
+		if = {
+			limit = {
+				FRA = {
+					has_tech = fighter3
+					has_opinion = {
+						target = ROOT
+						value > 84
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = fighter_equipment_3 amount = 8 producer = FRA }
+			else = {
+				if = {
+					limit = {
+						FRA = {
+							has_tech = fighter2
+							has_opinion = {
+								target = ROOT
+								value > 64
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = fighter_equipment_2 amount = 8 producer = FRA }
+					else = {
+						if = {
+							limit = {
+								FRA = {
+									has_tech = fighter1
+									has_opinion = {
+										target = ROOT
+										value > 44
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 8 producer = FRA }
+							else = {
+								if = {
+									limit = {
+										FRA = {
+											has_tech = early_fighter
+											has_opinion = {
+												target = ROOT
+												value > 24
+											}
+										}
+									}
+									add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 8 producer = FRA }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				FRA = {
+					has_tech = advanced_light_tank
+					has_opinion = {
+						target = ROOT
+						value > 94
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = light_tank_equipment_3 amount = 8 producer = FRA }
+			else = {
+				if = {
+					limit = {
+						FRA = {
+							has_tech = improved_light_tank
+							has_opinion = {
+								target = ROOT
+								value > 84
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = light_tank_equipment_2 amount = 8 producer = FRA }
+					else = {
+						if = {
+							limit = {
+								FRA = {
+									has_tech = basic_light_tank
+									has_opinion = {
+										target = ROOT
+										value > 74
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 8 producer = FRA }
+							else = {
+								if = {
+									limit = {
+										FRA = {
+											has_tech = gwtank
+											has_opinion = {
+												target = ROOT
+												value > 64
+											}
+										}
+									}
+									add_equipment_to_stockpile = { type = gw_tank_equipment amount = 8 producer = FRA }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			GER = {
+				is_puppet = no
+				has_capitulated = no
+			}
+			has_global_flag = KMT_german_approved_global
+		}
+		if = {
+			limit = {
+				GER = {
+					has_tech = advanced_infantry_weapons
+					has_opinion = {
+						target = ROOT
+						value > 84
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = infantry_equipment_3 amount = 200 producer = GER }
+			else = {
+				if = {
+					limit = {
+						GER = {
+							has_tech = improved_infantry_weapons
+							has_opinion = {
+								target = ROOT
+								value > 64
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 200 producer = GER }
+					else = {
+						if = {
+							limit = {
+								GER = {
+									has_tech = infantry_weapons1
+									has_opinion = {
+										target = ROOT
+										value > 64
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 200 producer = GER }
+							else = {
+								add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 200 producer = GER }
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				GER = {
+					has_tech = tech_support
+					has_opinion = {
+						target = ROOT
+						value > 14
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 100 producer = GER }
+		}
+		if = {
+			limit = {
+				GER = {
+					has_tech = fighter3
+					has_opinion = {
+						target = ROOT
+						value > 84
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = fighter_equipment_3 amount = 8 producer = GER }
+			else = {
+				if = {
+					limit = {
+						GER = {
+							has_tech = fighter2
+							has_opinion = {
+								target = ROOT
+								value > 64
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = fighter_equipment_2 amount = 8 producer = GER }
+					else = {
+						if = {
+							limit = {
+								GER = {
+									has_tech = fighter1
+									has_opinion = {
+										target = ROOT
+										value > 44
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 8 producer = GER }
+							else = {
+								if = {
+									limit = {
+										GER = {
+											has_tech = early_fighter
+											has_opinion = {
+												target = ROOT
+												value > 24
+											}
+										}
+									}
+									add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 8 producer = GER }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				GER = {
+					has_tech = advanced_light_tank
+					has_opinion = {
+						target = ROOT
+						value > 94
+					}
+				}
+			}
+			add_equipment_to_stockpile = { type = light_tank_equipment_3 amount = 8 producer = GER }
+			else = {
+				if = {
+					limit = {
+						GER = {
+							has_tech = improved_light_tank
+							has_opinion = {
+								target = ROOT
+								value > 84
+							}
+						}
+					}
+					add_equipment_to_stockpile = { type = light_tank_equipment_2 amount = 8 producer = GER }
+					else = {
+						if = {
+							limit = {
+								GER = {
+									has_tech = basic_light_tank
+									has_opinion = {
+										target = ROOT
+										value > 74
+									}
+								}
+							}
+							add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 8 producer = GER }
+							else = {
+								if = {
+									limit = {
+										GER = {
+											has_tech = gwtank
+											has_opinion = {
+												target = ROOT
+												value > 64
+											}
+										}
+									}
+									add_equipment_to_stockpile = { type = gw_tank_equipment amount = 8 producer = GER }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+KMT_evacuate_industry_to_the_rear = { 
+	set_temp_variable = {
+		var = af_to_move
+		value = arms_factory_level
+	}
+	if = {
+		limit = {
+			check_variable = { af_to_move > 5 }
+		}
+		multiply_variable = {
+			var = af_to_move
+			value = global.CHI_industrial_evacuations_amount_factor3
+		}
+		else = {
+			if = {
+				limit = {
+					check_variable = { af_to_move > 4 }
+				}
+				multiply_variable = {
+					var = af_to_move
+					value = global.CHI_industrial_evacuations_amount_factor2
+				}
+				else = {
+					if = {
+						limit = {
+							check_variable = { af_to_move > 3 }
+						}
+						multiply_variable = {
+							var = af_to_move
+							value = global.CHI_industrial_evacuations_amount_factor
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	set_temp_variable = {
+		var = ic_to_move
+		value = industrial_complex_level
+	}
+	if = {
+		limit = {
+			check_variable = { ic_to_move > 5 }
+		}
+		multiply_variable = {
+			var = ic_to_move
+			value = global.CHI_industrial_evacuations_amount_factor3
+		}
+		else = {
+			if = {
+				limit = {
+					check_variable = { ic_to_move > 4 }
+				}
+				multiply_variable = {
+					var = ic_to_move
+					value = global.CHI_industrial_evacuations_amount_factor2
+				}
+				else = {
+					if = {
+						limit = {
+							check_variable = { ic_to_move > 3 }
+						}
+						multiply_variable = {
+							var = ic_to_move
+							value = global.CHI_industrial_evacuations_amount_factor
+						}
+					}
+				}
+			}
+		}
+	}
+	remove_building = {
+		type = arms_factory
+		level = af_to_move
+	}
+	remove_building = {
+		type = industrial_complex
+		level = ic_to_move
+	}
+
+	#Move AF
+	ROOT = {
+		if = {
+			limit = {
+				605 = {
+					OR = {
+						AND = {
+							is_fully_controlled_by = ROOT
+							is_owned_by = ROOT
+							any_neighbor_state = {
+								is_controlled_by = ROOT
+							}
+						}
+						AND = {
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								is_subject_of = ROOT
+								has_full_control_of_state = PREV
+								owns_state = PREV
+							}
+							any_neighbor_state = {
+								CONTROLLER = {
+									NOT = { has_war_with = ROOT }
+									NOT = { has_war_with = PREV }
+								}
+							}
+						}
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 2
+						include_locked = yes
+					}
+				}
+			}
+			605 = {
+				add_extra_state_shared_building_slots = af_to_move
+				add_building_construction = {
+					type = arms_factory
+					level = af_to_move
+					instant_build = yes
+				}
+				CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_AF }
+			}
+			else = {
+				if = {
+					limit = {
+						748 = {
+							OR = {
+								AND = {
+									is_fully_controlled_by = ROOT
+									is_owned_by = ROOT
+									any_neighbor_state = {
+										is_controlled_by = ROOT
+									}
+								}
+								AND = {
+									CONTROLLER = {
+										has_idea = cu_is_warlord
+										has_war_together_with = ROOT
+										is_subject_of = ROOT
+										has_full_control_of_state = PREV
+										owns_state = PREV
+									}
+									any_neighbor_state = {
+										CONTROLLER = {
+											NOT = { has_war_with = ROOT }
+											NOT = { has_war_with = PREV }
+										}
+									}
+								}
+							}
+							free_building_slots = {
+								building = arms_factory
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+					748 = {
+						add_extra_state_shared_building_slots = af_to_move
+						add_building_construction = {
+							type = arms_factory
+							level = af_to_move
+							instant_build = yes
+						}
+						CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_AF }
+					}
+					else = {
+						if = {
+							limit = {
+								603 = {
+									OR = {
+										AND = {
+											is_fully_controlled_by = ROOT
+											is_owned_by = ROOT
+											any_neighbor_state = {
+												is_controlled_by = ROOT
+											}
+										}
+										AND = {
+											CONTROLLER = {
+												has_idea = cu_is_warlord
+												has_war_together_with = ROOT
+												is_subject_of = ROOT
+												has_full_control_of_state = PREV
+												owns_state = PREV
+											}
+											any_neighbor_state = {
+												CONTROLLER = {
+													NOT = { has_war_with = ROOT }
+													NOT = { has_war_with = PREV }
+												}
+											}
+										}
+									}
+									free_building_slots = {
+										building = arms_factory
+										size > 2
+										include_locked = yes
+									}
+								}
+							}
+							603 = {
+								add_extra_state_shared_building_slots = af_to_move
+								add_building_construction = {
+									type = arms_factory
+									level = af_to_move
+									instant_build = yes
+								}
+								CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_AF }
+							}
+							else = {
+								random_owned_controlled_state = {
+									prioritize = { 605 748 603 }
+									limit = {
+										OR = {
+											is_fully_controlled_by = ROOT
+											CONTROLLER = {
+												has_idea = cu_is_warlord
+												has_war_together_with = ROOT
+												is_subject_of = ROOT
+												has_full_control_of_state = PREV
+											}
+										}
+										any_neighbor_state = {
+											OR = {
+												is_controlled_by = ROOT
+												CONTROLLER = {
+													has_idea = cu_is_warlord
+													has_war_together_with = ROOT
+													has_full_control_of_state = PREV
+												}
+											}
+										}
+										free_building_slots = {
+											building = arms_factory
+											size > 2
+											include_locked = yes
+										}
+									}
+									add_extra_state_shared_building_slots = af_to_move
+									add_building_construction = {
+										type = arms_factory
+										level = af_to_move
+										instant_build = yes
+									}
+									CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_AF }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		#If no states are really safe or all safe are filled
+		#Move to random controlled state
+		if = {
+			limit = {
+				NOT = { has_country_flag = CHI_industrial_evacuations_moved_AF }
+				NOT = {
+					any_state = {
+						OR = {
+							AND = {
+								is_fully_controlled_by = ROOT
+								is_owned_by = ROOT
+							}
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								is_subject_of = ROOT
+								has_full_control_of_state = PREV
+								owns_state = PREV
+							}
+						}
+						any_neighbor_state = {
+							OR = {
+								is_controlled_by = ROOT
+								CONTROLLER = {
+									NOT = { has_war_with = ROOT }
+									NOT = { has_war_with = PREV }
+								}
+							}
+						}
+						free_building_slots = {
+							building = arms_factory
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 605 748 603 }
+				limit = {
+					OR = {
+						AND = {
+							is_controlled_by = ROOT
+							is_owned_by = ROOT
+						}
+						CONTROLLER = {
+							has_idea = cu_is_warlord
+							has_war_together_with = ROOT
+							is_subject_of = ROOT
+							owns_state = PREV
+						}
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = af_to_move
+				add_building_construction = {
+					type = arms_factory
+					level = af_to_move
+					instant_build = yes
+				}
+			}
+		}
+		clr_country_flag = CHI_industrial_evacuations_moved_AF
+
+
+		#Move IC
+		if = {
+			limit = {
+				605 = {
+					OR = {
+						AND = {
+							is_fully_controlled_by = ROOT
+							is_owned_by = ROOT
+							any_neighbor_state = {
+								is_controlled_by = ROOT
+							}
+						}
+						AND = {
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								is_subject_of = ROOT
+								has_full_control_of_state = PREV
+								owns_state = PREV
+							}
+							any_neighbor_state = {
+								CONTROLLER = {
+									NOT = { has_war_with = ROOT }
+									NOT = { has_war_with = PREV }
+								}
+							}
+						}
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+				}
+			}
+			605 = {
+				add_extra_state_shared_building_slots = ic_to_move
+				add_building_construction = {
+					type = industrial_complex
+					level = ic_to_move
+					instant_build = yes
+				}
+				CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
+			}
+			else = {
+				if = {
+					limit = {
+						748 = {
+							OR = {
+								AND = {
+									is_fully_controlled_by = ROOT
+									is_owned_by = ROOT
+									any_neighbor_state = {
+										is_controlled_by = ROOT
+									}
+								}
+								AND = {
+									CONTROLLER = {
+										has_idea = cu_is_warlord
+										has_war_together_with = ROOT
+										is_subject_of = ROOT
+										has_full_control_of_state = PREV
+										owns_state = PREV
+									}
+									any_neighbor_state = {
+										CONTROLLER = {
+											NOT = { has_war_with = ROOT }
+											NOT = { has_war_with = PREV }
+										}
+									}
+								}
+							}
+							free_building_slots = {
+								building = industrial_complex
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+					748 = {
+						add_extra_state_shared_building_slots = ic_to_move
+						add_building_construction = {
+							type = industrial_complex
+							level = ic_to_move
+							instant_build = yes
+						}
+						CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
+					}
+					else = {
+						if = {
+							limit = {
+								603 = {
+									OR = {
+										AND = {
+											is_fully_controlled_by = ROOT
+											is_owned_by = ROOT
+											any_neighbor_state = {
+												is_controlled_by = ROOT
+											}
+										}
+										AND = {
+											CONTROLLER = {
+												has_idea = cu_is_warlord
+												has_war_together_with = ROOT
+												is_subject_of = ROOT
+												has_full_control_of_state = PREV
+												owns_state = PREV
+											}
+											any_neighbor_state = {
+												CONTROLLER = {
+													NOT = { has_war_with = ROOT }
+													NOT = { has_war_with = PREV }
+												}
+											}
+										}
+									}
+									free_building_slots = {
+										building = industrial_complex
+										size > 2
+										include_locked = yes
+									}
+								}
+							}
+							603 = {
+								add_extra_state_shared_building_slots = ic_to_move
+								add_building_construction = {
+									type = industrial_complex
+									level = ic_to_move
+									instant_build = yes
+								}
+								CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
+							}
+							else = {
+								random_owned_controlled_state = {
+									prioritize = { 605 748 603 }
+									limit = {
+										OR = {
+											is_fully_controlled_by = ROOT
+											CONTROLLER = {
+												has_idea = cu_is_warlord
+												has_war_together_with = ROOT
+												is_subject_of = ROOT
+												has_full_control_of_state = PREV
+											}
+										}
+										any_neighbor_state = {
+											OR = {
+												is_controlled_by = ROOT
+												CONTROLLER = {
+													has_idea = cu_is_warlord
+													has_war_together_with = ROOT
+													has_full_control_of_state = PREV
+												}
+											}
+										}
+										free_building_slots = {
+											building = industrial_complex
+											size > 2
+											include_locked = yes
+										}
+									}
+									add_extra_state_shared_building_slots = ic_to_move
+									add_building_construction = {
+										type = industrial_complex
+										level = ic_to_move
+										instant_build = yes
+									}
+									CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		#If no states are really safe or all safe are filled
+		#Move to random controlled state
+		if = {
+			limit = {
+				NOT = { has_country_flag = CHI_industrial_evacuations_moved_IC }
+				NOT = {
+					any_state = {
+						OR = {
+							AND = {
+								is_fully_controlled_by = ROOT
+								is_owned_by = ROOT
+							}
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								is_subject_of = ROOT
+								has_full_control_of_state = PREV
+								owns_state = PREV
+							}
+						}
+						any_neighbor_state = {
+							OR = {
+								is_controlled_by = ROOT
+								CONTROLLER = {
+									NOT = { has_war_with = ROOT }
+									NOT = { has_war_with = PREV }
+								}
+							}
+						}
+						free_building_slots = {
+							building = industrial_complex
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 605 748 603 }
+				limit = {
+					OR = {
+						AND = {
+							is_controlled_by = ROOT
+							is_owned_by = ROOT
+						}
+						CONTROLLER = {
+							has_idea = cu_is_warlord
+							has_war_together_with = ROOT
+							is_subject_of = ROOT
+							owns_state = PREV
+						}
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = ic_to_move
+				add_building_construction = {
+					type = industrial_complex
+					level = ic_to_move
+					instant_build = yes
+				}
+			}
+		}
+		clr_country_flag = CHI_industrial_evacuations_moved_IC
+	}		
+}
+
+PRC_guerrilla_cell_sabotage_effect = {
+	set_temp_variable = { var = PRC_target_state_cell_strength_temp value = PRC_state_guerrilla_cell_strength }
+	set_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = 0 }
+	if = {
+		limit = {
+			check_variable = { PRC_target_state_infra_level_temp < PRC_target_state_cell_strength_temp }
+		}
+		add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = infrastructure_level }
+		damage_building = {
+			type = infrastructure
+			damage = 10
+		}
+		subtract_from_temp_variable = { var = PRC_target_state_cell_strength_temp value = PRC_target_state_infra_level_temp }
+		if = {
+			limit = {
+				arms_factory > 0
+				check_variable = { PRC_target_state_cell_strength_temp > 1 }
+			}
+			damage_building = {
+				type = arms_factory
+				damage = 1
+			}
+			add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = 2 }
+			subtract_from_temp_variable = { var = PRC_target_state_cell_strength_temp value = 2 }
+			if = {
+				limit = {
+					industrial_complex > 0
+					check_variable = { PRC_target_state_cell_strength_temp > 1 }
+				}
+				damage_building = {
+					type = industrial_complex
+					damage = 1
+				}
+				add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = 2 }
+				subtract_from_temp_variable = { var = PRC_target_state_cell_strength_temp value = 2 }
+				if = {
+					limit = {
+						dockyard > 0
+						check_variable = { PRC_target_state_cell_strength_temp > 1 }
+					}
+					damage_building = {
+						type = dockyard
+						damage = 1
+					}
+					add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = 2 }
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					check_variable = { PRC_target_state_cell_strength_temp < 3 }
+				}
+				add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = PRC_target_state_cell_strength_temp }
+				damage_building = {
+					type = infrastructure
+					damage = 2
+				}
+				else = {
+					if = {
+						limit = {
+							check_variable = { PRC_target_state_cell_strength_temp < 4 }
+						}
+						add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = PRC_target_state_cell_strength_temp }
+						damage_building = {
+							type = infrastructure
+							damage = 3
+						}
+						else = {
+							if = {
+								limit = {
+									check_variable = { PRC_target_state_cell_strength_temp < 5 }
+								}
+								add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = PRC_target_state_cell_strength_temp }
+								damage_building = {
+									type = infrastructure
+									damage = 4
+								}
+								else = {
+									if = {
+										limit = {
+											check_variable = { PRC_target_state_cell_strength_temp < 6 }
+										}
+										add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = PRC_target_state_cell_strength_temp }
+										damage_building = {
+											type = infrastructure
+											damage = 5
+										}
+										else = {
+											if = {
+												limit = {
+													check_variable = { PRC_target_state_cell_strength_temp < 7 }
+												}
+												add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = PRC_target_state_cell_strength_temp }
+												damage_building = {
+													type = infrastructure
+													damage = 6
+												}
+												else = {
+													if = {
+														limit = {
+															check_variable = { PRC_target_state_cell_strength_temp < 8 }
+														}
+														add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = PRC_target_state_cell_strength_temp }
+														damage_building = {
+															type = infrastructure
+															damage = 7
+														}
+														else = {
+															if = {
+																limit = {
+																	check_variable = { PRC_target_state_cell_strength_temp < 9 }
+																}
+																add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = PRC_target_state_cell_strength_temp }
+																damage_building = {
+																	type = infrastructure
+																	damage = 8
+																}
+																else = {
+																	if = {
+																		limit = {
+																			check_variable = { PRC_target_state_cell_strength_temp < 10 }
+																		}
+																		add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = PRC_target_state_cell_strength_temp }
+																		damage_building = {
+																			type = infrastructure
+																			damage = 9
+																		}
+																		add_to_temp_variable = { var = PRC_target_state_cell_strength_cost_temp value = PRC_target_state_cell_strength_temp }
+																		else = {
+																			damage_building = {
+																				type = infrastructure
+																				damage = 10
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			air_base > 0
+		}
+		damage_building = {
+			type = air_base
+			damage = 1
+		}
+	}
+	set_temp_variable = { var = PRC_target_minus_cell_strength_amount value = PRC_target_state_cell_strength_cost_temp }
+	subtract_from_variable = { var = PRC_state_guerrilla_cell_strength value = PRC_target_minus_cell_strength_amount }
+	custom_effect_tooltip = PRC_target_state_minus_cell_strength_tt
+}
+
+PRC_uprise_in_state_effect = {
+	if = {
+		limit = {
+			check_variable = { PRC_state_guerrilla_cell_strength > 39 }
+		}
+		if = { limit = { state = 283 } ROOT = { load_oob = "PRC_guerrilla_283_40" }}
+		if = { limit = { state = 325 } ROOT = { load_oob = "PRC_guerrilla_325_40" }}
+		if = { limit = { state = 326 } ROOT = { load_oob = "PRC_guerrilla_326_40" }}
+		if = { limit = { state = 328 } ROOT = { load_oob = "PRC_guerrilla_328_40" }}
+		if = { limit = { state = 591 } ROOT = { load_oob = "PRC_guerrilla_591_40" }}
+		if = { limit = { state = 592 } ROOT = { load_oob = "PRC_guerrilla_592_40" }}
+		if = { limit = { state = 593 } ROOT = { load_oob = "PRC_guerrilla_593_40" }}
+		if = { limit = { state = 594 } ROOT = { load_oob = "PRC_guerrilla_594_40" }}
+		if = { limit = { state = 595 } ROOT = { load_oob = "PRC_guerrilla_595_40" }}
+		if = { limit = { state = 596 } ROOT = { load_oob = "PRC_guerrilla_596_40" }}
+		if = { limit = { state = 597 } ROOT = { load_oob = "PRC_guerrilla_597_40" }}
+		if = { limit = { state = 598 } ROOT = { load_oob = "PRC_guerrilla_598_40" }}
+		if = { limit = { state = 599 } ROOT = { load_oob = "PRC_guerrilla_599_40" }}
+		if = { limit = { state = 600 } ROOT = { load_oob = "PRC_guerrilla_600_40" }}
+		if = { limit = { state = 601 } ROOT = { load_oob = "PRC_guerrilla_601_40" }}
+		if = { limit = { state = 602 } ROOT = { load_oob = "PRC_guerrilla_602_40" }}
+		if = { limit = { state = 603 } ROOT = { load_oob = "PRC_guerrilla_603_40" }}
+		if = { limit = { state = 604 } ROOT = { load_oob = "PRC_guerrilla_604_40" }}
+		if = { limit = { state = 605 } ROOT = { load_oob = "PRC_guerrilla_605_40" }}
+		if = { limit = { state = 606 } ROOT = { load_oob = "PRC_guerrilla_606_40" }}
+		if = { limit = { state = 607 } ROOT = { load_oob = "PRC_guerrilla_607_40" }}
+		if = { limit = { state = 608 } ROOT = { load_oob = "PRC_guerrilla_608_40" }}
+		if = { limit = { state = 609 } ROOT = { load_oob = "PRC_guerrilla_609_40" }}
+		if = { limit = { state = 610 } ROOT = { load_oob = "PRC_guerrilla_610_40" }}
+		if = { limit = { state = 611 } ROOT = { load_oob = "PRC_guerrilla_611_40" }}
+		if = { limit = { state = 612 } ROOT = { load_oob = "PRC_guerrilla_612_40" }}
+		if = { limit = { state = 613 } ROOT = { load_oob = "PRC_guerrilla_613_40" }}
+		if = { limit = { state = 614 } ROOT = { load_oob = "PRC_guerrilla_614_40" }}
+		if = { limit = { state = 615 } ROOT = { load_oob = "PRC_guerrilla_615_40" }}
+		if = { limit = { state = 616 } ROOT = { load_oob = "PRC_guerrilla_616_40" }}
+		if = { limit = { state = 620 } ROOT = { load_oob = "PRC_guerrilla_620_40" }}
+		if = { limit = { state = 621 } ROOT = { load_oob = "PRC_guerrilla_621_40" }}
+		if = { limit = { state = 622 } ROOT = { load_oob = "PRC_guerrilla_622_40" }}
+		if = { limit = { state = 714 } ROOT = { load_oob = "PRC_guerrilla_714_40" }}
+		if = { limit = { state = 715 } ROOT = { load_oob = "PRC_guerrilla_715_40" }}
+		if = { limit = { state = 716 } ROOT = { load_oob = "PRC_guerrilla_716_40" }}
+		if = { limit = { state = 717 } ROOT = { load_oob = "PRC_guerrilla_717_40" }}
+		if = { limit = { state = 728 } ROOT = { load_oob = "PRC_guerrilla_728_40" }}
+		if = { limit = { state = 729 } ROOT = { load_oob = "PRC_guerrilla_729_40" }}
+		if = { limit = { state = 743 } ROOT = { load_oob = "PRC_guerrilla_743_40" }}
+		if = { limit = { state = 744 } ROOT = { load_oob = "PRC_guerrilla_744_40" }}
+		if = { limit = { state = 745 } ROOT = { load_oob = "PRC_guerrilla_745_40" }}
+		if = { limit = { state = 746 } ROOT = { load_oob = "PRC_guerrilla_746_40" }}
+		if = { limit = { state = 747 } ROOT = { load_oob = "PRC_guerrilla_747_40" }}
+		if = { limit = { state = 748 } ROOT = { load_oob = "PRC_guerrilla_748_40" }}
+		if = { limit = { state = 749 } ROOT = { load_oob = "PRC_guerrilla_749_40" }}
+		if = { limit = { state = 750 } ROOT = { load_oob = "PRC_guerrilla_750_40" }}
+		if = { limit = { state = 751 } ROOT = { load_oob = "PRC_guerrilla_751_40" }}
+		if = { limit = { state = 752 } ROOT = { load_oob = "PRC_guerrilla_752_40" }}
+		if = { limit = { state = 753 } ROOT = { load_oob = "PRC_guerrilla_753_40" }}
+		if = { limit = { state = 754 } ROOT = { load_oob = "PRC_guerrilla_754_40" }}
+		if = { limit = { state = 755 } ROOT = { load_oob = "PRC_guerrilla_755_40" }}
+		if = { limit = { state = 756 } ROOT = { load_oob = "PRC_guerrilla_756_40" }}
+		if = { limit = { state = 761 } ROOT = { load_oob = "PRC_guerrilla_761_40" }}
+		if = { limit = { state = 762 } ROOT = { load_oob = "PRC_guerrilla_762_40" }}
+		if = { limit = { state = 763 } ROOT = { load_oob = "PRC_guerrilla_763_40" }}
+		if = { limit = { state = 764 } ROOT = { load_oob = "PRC_guerrilla_764_40" }}
+		if = { limit = { state = 765 } ROOT = { load_oob = "PRC_guerrilla_765_40" }}
+		if = { limit = { state = 767 } ROOT = { load_oob = "PRC_guerrilla_767_40" }}
+		if = { limit = { state = 768 } ROOT = { load_oob = "PRC_guerrilla_768_40" }}
+		if = { limit = { state = 769 } ROOT = { load_oob = "PRC_guerrilla_769_40" }}
+		if = { limit = { state = 770 } ROOT = { load_oob = "PRC_guerrilla_770_40" }}
+		if = { limit = { state = 771 } ROOT = { load_oob = "PRC_guerrilla_771_40" }}
+		if = { limit = { state = 773 } ROOT = { load_oob = "PRC_guerrilla_773_40" }}
+		if = { limit = { state = 774 } ROOT = { load_oob = "PRC_guerrilla_774_40" }}
+		if = { limit = { state = 287 } ROOT = { load_oob = "PRC_guerrilla_287_40" }}
+		if = { limit = { state = 322 } ROOT = { load_oob = "PRC_guerrilla_322_40" }}
+		if = { limit = { state = 329 } ROOT = { load_oob = "PRC_guerrilla_329_40" }}
+		if = { limit = { state = 330 } ROOT = { load_oob = "PRC_guerrilla_330_40" }}
+		if = { limit = { state = 434 } ROOT = { load_oob = "PRC_guerrilla_434_40" }}
+		if = { limit = { state = 441 } ROOT = { load_oob = "PRC_guerrilla_441_40" }}
+		if = { limit = { state = 617 } ROOT = { load_oob = "PRC_guerrilla_617_40" }}
+		if = { limit = { state = 618 } ROOT = { load_oob = "PRC_guerrilla_618_40" }}
+		if = { limit = { state = 619 } ROOT = { load_oob = "PRC_guerrilla_619_40" }}
+		if = { limit = { state = 757 } ROOT = { load_oob = "PRC_guerrilla_757_40" }}
+		if = { limit = { state = 758 } ROOT = { load_oob = "PRC_guerrilla_758_40" }}
+		if = { limit = { state = 759 } ROOT = { load_oob = "PRC_guerrilla_759_40" }}
+		if = { limit = { state = 760 } ROOT = { load_oob = "PRC_guerrilla_760_40" }}
+		set_temp_variable = { var = PRC_state_cell_uprise_cost value = 40 }
+		else = {
+			if = {
+				limit = {
+					check_variable = { PRC_state_guerrilla_cell_strength > 29 }
+				}
+				if = { limit = { state = 283 } ROOT = { load_oob = "PRC_guerrilla_283_30" }}
+				if = { limit = { state = 325 } ROOT = { load_oob = "PRC_guerrilla_325_30" }}
+				if = { limit = { state = 326 } ROOT = { load_oob = "PRC_guerrilla_326_30" }}
+				if = { limit = { state = 328 } ROOT = { load_oob = "PRC_guerrilla_328_30" }}
+				if = { limit = { state = 591 } ROOT = { load_oob = "PRC_guerrilla_591_30" }}
+				if = { limit = { state = 592 } ROOT = { load_oob = "PRC_guerrilla_592_30" }}
+				if = { limit = { state = 593 } ROOT = { load_oob = "PRC_guerrilla_593_30" }}
+				if = { limit = { state = 594 } ROOT = { load_oob = "PRC_guerrilla_594_30" }}
+				if = { limit = { state = 595 } ROOT = { load_oob = "PRC_guerrilla_595_30" }}
+				if = { limit = { state = 596 } ROOT = { load_oob = "PRC_guerrilla_596_30" }}
+				if = { limit = { state = 597 } ROOT = { load_oob = "PRC_guerrilla_597_30" }}
+				if = { limit = { state = 598 } ROOT = { load_oob = "PRC_guerrilla_598_30" }}
+				if = { limit = { state = 599 } ROOT = { load_oob = "PRC_guerrilla_599_30" }}
+				if = { limit = { state = 600 } ROOT = { load_oob = "PRC_guerrilla_600_30" }}
+				if = { limit = { state = 601 } ROOT = { load_oob = "PRC_guerrilla_601_30" }}
+				if = { limit = { state = 602 } ROOT = { load_oob = "PRC_guerrilla_602_30" }}
+				if = { limit = { state = 603 } ROOT = { load_oob = "PRC_guerrilla_603_30" }}
+				if = { limit = { state = 604 } ROOT = { load_oob = "PRC_guerrilla_604_30" }}
+				if = { limit = { state = 605 } ROOT = { load_oob = "PRC_guerrilla_605_30" }}
+				if = { limit = { state = 606 } ROOT = { load_oob = "PRC_guerrilla_606_30" }}
+				if = { limit = { state = 607 } ROOT = { load_oob = "PRC_guerrilla_607_30" }}
+				if = { limit = { state = 608 } ROOT = { load_oob = "PRC_guerrilla_608_30" }}
+				if = { limit = { state = 609 } ROOT = { load_oob = "PRC_guerrilla_609_30" }}
+				if = { limit = { state = 610 } ROOT = { load_oob = "PRC_guerrilla_610_30" }}
+				if = { limit = { state = 611 } ROOT = { load_oob = "PRC_guerrilla_611_30" }}
+				if = { limit = { state = 612 } ROOT = { load_oob = "PRC_guerrilla_612_30" }}
+				if = { limit = { state = 613 } ROOT = { load_oob = "PRC_guerrilla_613_30" }}
+				if = { limit = { state = 614 } ROOT = { load_oob = "PRC_guerrilla_614_30" }}
+				if = { limit = { state = 615 } ROOT = { load_oob = "PRC_guerrilla_615_30" }}
+				if = { limit = { state = 616 } ROOT = { load_oob = "PRC_guerrilla_616_30" }}
+				if = { limit = { state = 620 } ROOT = { load_oob = "PRC_guerrilla_620_30" }}
+				if = { limit = { state = 621 } ROOT = { load_oob = "PRC_guerrilla_621_30" }}
+				if = { limit = { state = 622 } ROOT = { load_oob = "PRC_guerrilla_622_30" }}
+				if = { limit = { state = 714 } ROOT = { load_oob = "PRC_guerrilla_714_30" }}
+				if = { limit = { state = 715 } ROOT = { load_oob = "PRC_guerrilla_715_30" }}
+				if = { limit = { state = 716 } ROOT = { load_oob = "PRC_guerrilla_716_30" }}
+				if = { limit = { state = 717 } ROOT = { load_oob = "PRC_guerrilla_717_30" }}
+				if = { limit = { state = 728 } ROOT = { load_oob = "PRC_guerrilla_728_30" }}
+				if = { limit = { state = 729 } ROOT = { load_oob = "PRC_guerrilla_729_30" }}
+				if = { limit = { state = 743 } ROOT = { load_oob = "PRC_guerrilla_743_30" }}
+				if = { limit = { state = 744 } ROOT = { load_oob = "PRC_guerrilla_744_30" }}
+				if = { limit = { state = 745 } ROOT = { load_oob = "PRC_guerrilla_745_30" }}
+				if = { limit = { state = 746 } ROOT = { load_oob = "PRC_guerrilla_746_30" }}
+				if = { limit = { state = 747 } ROOT = { load_oob = "PRC_guerrilla_747_30" }}
+				if = { limit = { state = 748 } ROOT = { load_oob = "PRC_guerrilla_748_30" }}
+				if = { limit = { state = 749 } ROOT = { load_oob = "PRC_guerrilla_749_30" }}
+				if = { limit = { state = 750 } ROOT = { load_oob = "PRC_guerrilla_750_30" }}
+				if = { limit = { state = 751 } ROOT = { load_oob = "PRC_guerrilla_751_30" }}
+				if = { limit = { state = 752 } ROOT = { load_oob = "PRC_guerrilla_752_30" }}
+				if = { limit = { state = 753 } ROOT = { load_oob = "PRC_guerrilla_753_30" }}
+				if = { limit = { state = 754 } ROOT = { load_oob = "PRC_guerrilla_754_30" }}
+				if = { limit = { state = 755 } ROOT = { load_oob = "PRC_guerrilla_755_30" }}
+				if = { limit = { state = 756 } ROOT = { load_oob = "PRC_guerrilla_756_30" }}
+				if = { limit = { state = 761 } ROOT = { load_oob = "PRC_guerrilla_761_30" }}
+				if = { limit = { state = 762 } ROOT = { load_oob = "PRC_guerrilla_762_30" }}
+				if = { limit = { state = 763 } ROOT = { load_oob = "PRC_guerrilla_763_30" }}
+				if = { limit = { state = 764 } ROOT = { load_oob = "PRC_guerrilla_764_30" }}
+				if = { limit = { state = 765 } ROOT = { load_oob = "PRC_guerrilla_765_30" }}
+				if = { limit = { state = 767 } ROOT = { load_oob = "PRC_guerrilla_767_30" }}
+				if = { limit = { state = 768 } ROOT = { load_oob = "PRC_guerrilla_768_30" }}
+				if = { limit = { state = 769 } ROOT = { load_oob = "PRC_guerrilla_769_30" }}
+				if = { limit = { state = 770 } ROOT = { load_oob = "PRC_guerrilla_770_30" }}
+				if = { limit = { state = 771 } ROOT = { load_oob = "PRC_guerrilla_771_30" }}
+				if = { limit = { state = 773 } ROOT = { load_oob = "PRC_guerrilla_773_30" }}
+				if = { limit = { state = 774 } ROOT = { load_oob = "PRC_guerrilla_774_30" }}
+				if = { limit = { state = 287 } ROOT = { load_oob = "PRC_guerrilla_287_30" }}
+				if = { limit = { state = 322 } ROOT = { load_oob = "PRC_guerrilla_322_30" }}
+				if = { limit = { state = 329 } ROOT = { load_oob = "PRC_guerrilla_329_30" }}
+				if = { limit = { state = 330 } ROOT = { load_oob = "PRC_guerrilla_330_30" }}
+				if = { limit = { state = 434 } ROOT = { load_oob = "PRC_guerrilla_434_30" }}
+				if = { limit = { state = 441 } ROOT = { load_oob = "PRC_guerrilla_441_30" }}
+				if = { limit = { state = 617 } ROOT = { load_oob = "PRC_guerrilla_617_30" }}
+				if = { limit = { state = 618 } ROOT = { load_oob = "PRC_guerrilla_618_30" }}
+				if = { limit = { state = 619 } ROOT = { load_oob = "PRC_guerrilla_619_30" }}
+				if = { limit = { state = 757 } ROOT = { load_oob = "PRC_guerrilla_757_30" }}
+				if = { limit = { state = 758 } ROOT = { load_oob = "PRC_guerrilla_758_30" }}
+				if = { limit = { state = 759 } ROOT = { load_oob = "PRC_guerrilla_759_30" }}
+				if = { limit = { state = 760 } ROOT = { load_oob = "PRC_guerrilla_760_30" }}
+				set_temp_variable = { var = PRC_state_cell_uprise_cost value = 30 }
+				else = {
+					if = {
+						limit = {
+							check_variable = { PRC_state_guerrilla_cell_strength > 19 }
+						}
+						if = { limit = { state = 283 } ROOT = { load_oob = "PRC_guerrilla_283_20" }}
+						if = { limit = { state = 325 } ROOT = { load_oob = "PRC_guerrilla_325_20" }}
+						if = { limit = { state = 326 } ROOT = { load_oob = "PRC_guerrilla_326_20" }}
+						if = { limit = { state = 328 } ROOT = { load_oob = "PRC_guerrilla_328_20" }}
+						if = { limit = { state = 591 } ROOT = { load_oob = "PRC_guerrilla_591_20" }}
+						if = { limit = { state = 592 } ROOT = { load_oob = "PRC_guerrilla_592_20" }}
+						if = { limit = { state = 593 } ROOT = { load_oob = "PRC_guerrilla_593_20" }}
+						if = { limit = { state = 594 } ROOT = { load_oob = "PRC_guerrilla_594_20" }}
+						if = { limit = { state = 595 } ROOT = { load_oob = "PRC_guerrilla_595_20" }}
+						if = { limit = { state = 596 } ROOT = { load_oob = "PRC_guerrilla_596_20" }}
+						if = { limit = { state = 597 } ROOT = { load_oob = "PRC_guerrilla_597_20" }}
+						if = { limit = { state = 598 } ROOT = { load_oob = "PRC_guerrilla_598_20" }}
+						if = { limit = { state = 599 } ROOT = { load_oob = "PRC_guerrilla_599_20" }}
+						if = { limit = { state = 600 } ROOT = { load_oob = "PRC_guerrilla_600_20" }}
+						if = { limit = { state = 601 } ROOT = { load_oob = "PRC_guerrilla_601_20" }}
+						if = { limit = { state = 602 } ROOT = { load_oob = "PRC_guerrilla_602_20" }}
+						if = { limit = { state = 603 } ROOT = { load_oob = "PRC_guerrilla_603_20" }}
+						if = { limit = { state = 604 } ROOT = { load_oob = "PRC_guerrilla_604_20" }}
+						if = { limit = { state = 605 } ROOT = { load_oob = "PRC_guerrilla_605_20" }}
+						if = { limit = { state = 606 } ROOT = { load_oob = "PRC_guerrilla_606_20" }}
+						if = { limit = { state = 607 } ROOT = { load_oob = "PRC_guerrilla_607_20" }}
+						if = { limit = { state = 608 } ROOT = { load_oob = "PRC_guerrilla_608_20" }}
+						if = { limit = { state = 609 } ROOT = { load_oob = "PRC_guerrilla_609_20" }}
+						if = { limit = { state = 610 } ROOT = { load_oob = "PRC_guerrilla_610_20" }}
+						if = { limit = { state = 611 } ROOT = { load_oob = "PRC_guerrilla_611_20" }}
+						if = { limit = { state = 612 } ROOT = { load_oob = "PRC_guerrilla_612_20" }}
+						if = { limit = { state = 613 } ROOT = { load_oob = "PRC_guerrilla_613_20" }}
+						if = { limit = { state = 614 } ROOT = { load_oob = "PRC_guerrilla_614_20" }}
+						if = { limit = { state = 615 } ROOT = { load_oob = "PRC_guerrilla_615_20" }}
+						if = { limit = { state = 616 } ROOT = { load_oob = "PRC_guerrilla_616_20" }}
+						if = { limit = { state = 620 } ROOT = { load_oob = "PRC_guerrilla_620_20" }}
+						if = { limit = { state = 621 } ROOT = { load_oob = "PRC_guerrilla_621_20" }}
+						if = { limit = { state = 622 } ROOT = { load_oob = "PRC_guerrilla_622_20" }}
+						if = { limit = { state = 714 } ROOT = { load_oob = "PRC_guerrilla_714_20" }}
+						if = { limit = { state = 715 } ROOT = { load_oob = "PRC_guerrilla_715_20" }}
+						if = { limit = { state = 716 } ROOT = { load_oob = "PRC_guerrilla_716_20" }}
+						if = { limit = { state = 717 } ROOT = { load_oob = "PRC_guerrilla_717_20" }}
+						if = { limit = { state = 728 } ROOT = { load_oob = "PRC_guerrilla_728_20" }}
+						if = { limit = { state = 729 } ROOT = { load_oob = "PRC_guerrilla_729_20" }}
+						if = { limit = { state = 743 } ROOT = { load_oob = "PRC_guerrilla_743_20" }}
+						if = { limit = { state = 744 } ROOT = { load_oob = "PRC_guerrilla_744_20" }}
+						if = { limit = { state = 745 } ROOT = { load_oob = "PRC_guerrilla_745_20" }}
+						if = { limit = { state = 746 } ROOT = { load_oob = "PRC_guerrilla_746_20" }}
+						if = { limit = { state = 747 } ROOT = { load_oob = "PRC_guerrilla_747_20" }}
+						if = { limit = { state = 748 } ROOT = { load_oob = "PRC_guerrilla_748_20" }}
+						if = { limit = { state = 749 } ROOT = { load_oob = "PRC_guerrilla_749_20" }}
+						if = { limit = { state = 750 } ROOT = { load_oob = "PRC_guerrilla_750_20" }}
+						if = { limit = { state = 751 } ROOT = { load_oob = "PRC_guerrilla_751_20" }}
+						if = { limit = { state = 752 } ROOT = { load_oob = "PRC_guerrilla_752_20" }}
+						if = { limit = { state = 753 } ROOT = { load_oob = "PRC_guerrilla_753_20" }}
+						if = { limit = { state = 754 } ROOT = { load_oob = "PRC_guerrilla_754_20" }}
+						if = { limit = { state = 755 } ROOT = { load_oob = "PRC_guerrilla_755_20" }}
+						if = { limit = { state = 756 } ROOT = { load_oob = "PRC_guerrilla_756_20" }}
+						if = { limit = { state = 761 } ROOT = { load_oob = "PRC_guerrilla_761_20" }}
+						if = { limit = { state = 762 } ROOT = { load_oob = "PRC_guerrilla_762_20" }}
+						if = { limit = { state = 763 } ROOT = { load_oob = "PRC_guerrilla_763_20" }}
+						if = { limit = { state = 764 } ROOT = { load_oob = "PRC_guerrilla_764_20" }}
+						if = { limit = { state = 765 } ROOT = { load_oob = "PRC_guerrilla_765_20" }}
+						if = { limit = { state = 767 } ROOT = { load_oob = "PRC_guerrilla_767_20" }}
+						if = { limit = { state = 768 } ROOT = { load_oob = "PRC_guerrilla_768_20" }}
+						if = { limit = { state = 769 } ROOT = { load_oob = "PRC_guerrilla_769_20" }}
+						if = { limit = { state = 770 } ROOT = { load_oob = "PRC_guerrilla_770_20" }}
+						if = { limit = { state = 771 } ROOT = { load_oob = "PRC_guerrilla_771_20" }}
+						if = { limit = { state = 773 } ROOT = { load_oob = "PRC_guerrilla_773_20" }}
+						if = { limit = { state = 774 } ROOT = { load_oob = "PRC_guerrilla_774_20" }}
+						if = { limit = { state = 287 } ROOT = { load_oob = "PRC_guerrilla_287_20" }}
+						if = { limit = { state = 322 } ROOT = { load_oob = "PRC_guerrilla_322_20" }}
+						if = { limit = { state = 329 } ROOT = { load_oob = "PRC_guerrilla_329_20" }}
+						if = { limit = { state = 330 } ROOT = { load_oob = "PRC_guerrilla_330_20" }}
+						if = { limit = { state = 434 } ROOT = { load_oob = "PRC_guerrilla_434_20" }}
+						if = { limit = { state = 441 } ROOT = { load_oob = "PRC_guerrilla_441_20" }}
+						if = { limit = { state = 617 } ROOT = { load_oob = "PRC_guerrilla_617_20" }}
+						if = { limit = { state = 618 } ROOT = { load_oob = "PRC_guerrilla_618_20" }}
+						if = { limit = { state = 619 } ROOT = { load_oob = "PRC_guerrilla_619_20" }}
+						if = { limit = { state = 757 } ROOT = { load_oob = "PRC_guerrilla_757_20" }}
+						if = { limit = { state = 758 } ROOT = { load_oob = "PRC_guerrilla_758_20" }}
+						if = { limit = { state = 759 } ROOT = { load_oob = "PRC_guerrilla_759_20" }}
+						if = { limit = { state = 760 } ROOT = { load_oob = "PRC_guerrilla_760_20" }}
+						set_temp_variable = { var = PRC_state_cell_uprise_cost value = 20 }
+						else = {
+							if = { limit = { state = 283 } ROOT = { load_oob = "PRC_guerrilla_283_10" }}
+							if = { limit = { state = 325 } ROOT = { load_oob = "PRC_guerrilla_325_10" }}
+							if = { limit = { state = 326 } ROOT = { load_oob = "PRC_guerrilla_326_10" }}
+							if = { limit = { state = 328 } ROOT = { load_oob = "PRC_guerrilla_328_10" }}
+							if = { limit = { state = 591 } ROOT = { load_oob = "PRC_guerrilla_591_10" }}
+							if = { limit = { state = 592 } ROOT = { load_oob = "PRC_guerrilla_592_10" }}
+							if = { limit = { state = 593 } ROOT = { load_oob = "PRC_guerrilla_593_10" }}
+							if = { limit = { state = 594 } ROOT = { load_oob = "PRC_guerrilla_594_10" }}
+							if = { limit = { state = 595 } ROOT = { load_oob = "PRC_guerrilla_595_10" }}
+							if = { limit = { state = 596 } ROOT = { load_oob = "PRC_guerrilla_596_10" }}
+							if = { limit = { state = 597 } ROOT = { load_oob = "PRC_guerrilla_597_10" }}
+							if = { limit = { state = 598 } ROOT = { load_oob = "PRC_guerrilla_598_10" }}
+							if = { limit = { state = 599 } ROOT = { load_oob = "PRC_guerrilla_599_10" }}
+							if = { limit = { state = 600 } ROOT = { load_oob = "PRC_guerrilla_600_10" }}
+							if = { limit = { state = 601 } ROOT = { load_oob = "PRC_guerrilla_601_10" }}
+							if = { limit = { state = 602 } ROOT = { load_oob = "PRC_guerrilla_602_10" }}
+							if = { limit = { state = 603 } ROOT = { load_oob = "PRC_guerrilla_603_10" }}
+							if = { limit = { state = 604 } ROOT = { load_oob = "PRC_guerrilla_604_10" }}
+							if = { limit = { state = 605 } ROOT = { load_oob = "PRC_guerrilla_605_10" }}
+							if = { limit = { state = 606 } ROOT = { load_oob = "PRC_guerrilla_606_10" }}
+							if = { limit = { state = 607 } ROOT = { load_oob = "PRC_guerrilla_607_10" }}
+							if = { limit = { state = 608 } ROOT = { load_oob = "PRC_guerrilla_608_10" }}
+							if = { limit = { state = 609 } ROOT = { load_oob = "PRC_guerrilla_609_10" }}
+							if = { limit = { state = 610 } ROOT = { load_oob = "PRC_guerrilla_610_10" }}
+							if = { limit = { state = 611 } ROOT = { load_oob = "PRC_guerrilla_611_10" }}
+							if = { limit = { state = 612 } ROOT = { load_oob = "PRC_guerrilla_612_10" }}
+							if = { limit = { state = 613 } ROOT = { load_oob = "PRC_guerrilla_613_10" }}
+							if = { limit = { state = 614 } ROOT = { load_oob = "PRC_guerrilla_614_10" }}
+							if = { limit = { state = 615 } ROOT = { load_oob = "PRC_guerrilla_615_10" }}
+							if = { limit = { state = 616 } ROOT = { load_oob = "PRC_guerrilla_616_10" }}
+							if = { limit = { state = 620 } ROOT = { load_oob = "PRC_guerrilla_620_10" }}
+							if = { limit = { state = 621 } ROOT = { load_oob = "PRC_guerrilla_621_10" }}
+							if = { limit = { state = 622 } ROOT = { load_oob = "PRC_guerrilla_622_10" }}
+							if = { limit = { state = 714 } ROOT = { load_oob = "PRC_guerrilla_714_10" }}
+							if = { limit = { state = 715 } ROOT = { load_oob = "PRC_guerrilla_715_10" }}
+							if = { limit = { state = 716 } ROOT = { load_oob = "PRC_guerrilla_716_10" }}
+							if = { limit = { state = 717 } ROOT = { load_oob = "PRC_guerrilla_717_10" }}
+							if = { limit = { state = 728 } ROOT = { load_oob = "PRC_guerrilla_728_10" }}
+							if = { limit = { state = 729 } ROOT = { load_oob = "PRC_guerrilla_729_10" }}
+							if = { limit = { state = 743 } ROOT = { load_oob = "PRC_guerrilla_743_10" }}
+							if = { limit = { state = 744 } ROOT = { load_oob = "PRC_guerrilla_744_10" }}
+							if = { limit = { state = 745 } ROOT = { load_oob = "PRC_guerrilla_745_10" }}
+							if = { limit = { state = 746 } ROOT = { load_oob = "PRC_guerrilla_746_10" }}
+							if = { limit = { state = 747 } ROOT = { load_oob = "PRC_guerrilla_747_10" }}
+							if = { limit = { state = 748 } ROOT = { load_oob = "PRC_guerrilla_748_10" }}
+							if = { limit = { state = 749 } ROOT = { load_oob = "PRC_guerrilla_749_10" }}
+							if = { limit = { state = 750 } ROOT = { load_oob = "PRC_guerrilla_750_10" }}
+							if = { limit = { state = 751 } ROOT = { load_oob = "PRC_guerrilla_751_10" }}
+							if = { limit = { state = 752 } ROOT = { load_oob = "PRC_guerrilla_752_10" }}
+							if = { limit = { state = 753 } ROOT = { load_oob = "PRC_guerrilla_753_10" }}
+							if = { limit = { state = 754 } ROOT = { load_oob = "PRC_guerrilla_754_10" }}
+							if = { limit = { state = 755 } ROOT = { load_oob = "PRC_guerrilla_755_10" }}
+							if = { limit = { state = 756 } ROOT = { load_oob = "PRC_guerrilla_756_10" }}
+							if = { limit = { state = 761 } ROOT = { load_oob = "PRC_guerrilla_761_10" }}
+							if = { limit = { state = 762 } ROOT = { load_oob = "PRC_guerrilla_762_10" }}
+							if = { limit = { state = 763 } ROOT = { load_oob = "PRC_guerrilla_763_10" }}
+							if = { limit = { state = 764 } ROOT = { load_oob = "PRC_guerrilla_764_10" }}
+							if = { limit = { state = 765 } ROOT = { load_oob = "PRC_guerrilla_765_10" }}
+							if = { limit = { state = 767 } ROOT = { load_oob = "PRC_guerrilla_767_10" }}
+							if = { limit = { state = 768 } ROOT = { load_oob = "PRC_guerrilla_768_10" }}
+							if = { limit = { state = 769 } ROOT = { load_oob = "PRC_guerrilla_769_10" }}
+							if = { limit = { state = 770 } ROOT = { load_oob = "PRC_guerrilla_770_10" }}
+							if = { limit = { state = 771 } ROOT = { load_oob = "PRC_guerrilla_771_10" }}
+							if = { limit = { state = 773 } ROOT = { load_oob = "PRC_guerrilla_773_10" }}
+							if = { limit = { state = 774 } ROOT = { load_oob = "PRC_guerrilla_774_10" }}
+							if = { limit = { state = 287 } ROOT = { load_oob = "PRC_guerrilla_287_10" }}
+							if = { limit = { state = 322 } ROOT = { load_oob = "PRC_guerrilla_322_10" }}
+							if = { limit = { state = 329 } ROOT = { load_oob = "PRC_guerrilla_329_10" }}
+							if = { limit = { state = 330 } ROOT = { load_oob = "PRC_guerrilla_330_10" }}
+							if = { limit = { state = 434 } ROOT = { load_oob = "PRC_guerrilla_434_10" }}
+							if = { limit = { state = 441 } ROOT = { load_oob = "PRC_guerrilla_441_10" }}
+							if = { limit = { state = 617 } ROOT = { load_oob = "PRC_guerrilla_617_10" }}
+							if = { limit = { state = 618 } ROOT = { load_oob = "PRC_guerrilla_618_10" }}
+							if = { limit = { state = 619 } ROOT = { load_oob = "PRC_guerrilla_619_10" }}
+							if = { limit = { state = 757 } ROOT = { load_oob = "PRC_guerrilla_757_10" }}
+							if = { limit = { state = 758 } ROOT = { load_oob = "PRC_guerrilla_758_10" }}
+							if = { limit = { state = 759 } ROOT = { load_oob = "PRC_guerrilla_759_10" }}
+							if = { limit = { state = 760 } ROOT = { load_oob = "PRC_guerrilla_760_10" }}
+							set_temp_variable = { var = PRC_state_cell_uprise_cost value = 10 }
+						}
+					}
+				}
+			}
+		}
+	}
+}

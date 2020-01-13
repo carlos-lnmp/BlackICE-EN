@@ -1,0 +1,3991 @@
+ 
+guiTypes = {
+	#Player takeover check
+	containerWindowType = {      
+		name = "player_takeover_check"
+		position = { x = 0 y = 0 } 
+		 
+		iconType ={
+			name ="player_check"
+			spriteType = "GFX_player_check" 
+			position = { x = 0 y = 0 } 
+			orientation = "UPPER_LEFT"  
+			pdx_tooltip = "PLAYER_TAKEOVER_TT"
+			#allwaystransparent = yes 
+		}
+	}
+	### Factories
+	containerWindowType = {      
+		name = "partisan_popup_container"
+		position = { x = 1020 y = 4 } #990
+		
+		containerWindowType = { #copied to topbar.gui
+			name = "partisan_popup_window"
+			position = { x = 525 y = 301 } 
+			size = { width = 548 height = 280 }	
+
+			background = {
+				name = "main"
+				spriteType = "GFX_tiled_bg" 
+			}
+			background = {
+				name = "bottom"
+				spriteType = "GFX_diplo_popup_bottom_large" 
+				position = { x = -17 y = 230 } 
+			}
+			background = {
+				name = "top"
+				spriteType = "GFX_diplo_popup_header_bg_large" 
+				position = { x = -17 y = 30 } 
+			}
+		}
+	}
+		
+	containerWindowType = {      
+		name = "money_container"
+		position = { x = 1020 y = 4 } #990
+		instantTextBoxType = {     
+			name = "max_army_xp"
+			position = { x = -228 y = 3 }
+			font = "hoi_18mbs" 
+			text = "/ [?max_army_xp]"       
+			maxWidth = 50  
+			maxHeight = 23
+			format = right 
+			allwaystransparent = yes
+		}
+		instantTextBoxType = {     
+			name = "max_air_xp"
+			position = { x = -126 y = 3 }
+			font = "hoi_18mbs" 
+			text = "/ [?max_air_xp]"       
+			maxWidth = 50  
+			maxHeight = 23
+			format = right 
+			allwaystransparent = yes
+		}
+		instantTextBoxType = {     
+			name = "max_naval_xp"
+			position = { x = -24 y = 3 }
+			font = "hoi_18mbs" 
+			text = "/ [?max_navy_xp]"       
+			maxWidth = 50  
+			maxHeight = 23
+			format = right 
+			allwaystransparent = yes
+		}
+		
+		containerWindowType = { #copied to topbar.gui
+			name = "moved_nuke_counter"
+			position = { x = -525 y = 1 } #{ x = -65 y = 1 }
+			size = { width = 50 height = 40 }		
+			
+			#iconType ={ #nuke counter
+			#	name ="nuke_icon"
+			#	spriteType = "GFX_topbar_nuke"
+			#	position = { x = 1 y = 2 } #{ x = 1 y = 2 }
+			#	orientation = "UPPER_LEFT"
+			#	scale = 0.8
+			#	allwaystransparent = yes
+			#}
+			#instantTextBoxType = { #nuke counter
+			#	name ="nuke_count"
+			#	position = { x = 7 y = 3 }
+			#	text = "[?num_of_nukes]"
+			#	font = "hoi_18mbs"
+			#	format = left
+			#	maxWidth = 69
+			#	maxHeight = 24
+			#	fixedsize = yes
+			#	allwaystransparent = yes
+			#}
+		}
+		
+		containerWindowType = { #casualty count
+			name = "casualties"
+			position = { x = -322 y = 26 } #{ x = -35 y = 1 }
+			size = { width = 50 height = 40 }			
+			
+			iconType ={
+				name ="casualties_box" #casualties_box
+				spriteType = "GFX_NV_btn_add" #GFX_generic_box_smallest
+				#scale = 0.8
+				position = { x = -137 y = 0 }
+				orientation = "UPPER_LEFT" 
+				pdx_tooltip = "TOPBAR_ADD_TOOLTIP"
+				#allwaystransparent = yes 
+			}
+		}
+		
+		containerWindowType = { #Officer count
+			name = "officers"
+			position = { x = -390 y = 0 } #{ x = -35 y = 1 }
+			size = { width = 50 height = 40 }	
+
+			buttonType ={
+				name ="officer_box_btn" 
+				spriteType = "GFX_generic_box_smallest_100" 
+				#scale = 0.8
+				position = { x = -137 y = 0 }
+				orientation = "UPPER_LEFT" 
+				#pdx_tooltip = TOTAL_OFFICERS_TT
+				#allwaystransparent = yes
+			}			
+			buttonType ={
+				name ="officer_box" #casualties_box
+				spriteType = "GFX_generic_box_smallest_100" #GFX_generic_box_smallest
+				#scale = 0.8
+				position = { x = -137 y = 0 }
+				orientation = "UPPER_LEFT" 
+				pdx_tooltip = TOTAL_OFFICERS_TT
+				#allwaystransparent = yes
+			}
+			instantTextBoxType = {     
+				name = "total_officer"
+				position = { x = -134 y = 3 }
+				font = "hoi_18mbs" 
+				text = "TOTAL_OFFICERS_TT_1"     
+				maxWidth = 50  
+				maxHeight = 23
+				format = right 
+				allwaystransparent = yes
+			}
+		}
+		
+		containerWindowType = {
+			name = "tot_fact"
+			position = { x = -464 y = 1 }
+			size = { width = 50 height = 40 }			
+			
+			iconType ={
+				name ="tot_fac"
+				spriteType = "GFX_generic_box_smallest" 
+				#scale = 0.8
+				position = { x = -137 y = -1 }
+				orientation = "UPPER_LEFT" 
+				pdx_tooltip = TOTAL_FAC_TT
+				#allwaystransparent = yes
+			}    
+			iconType ={  
+			 	name ="tot_fac_icon"
+				spriteType = "GFX_industrial_capacity_icon"
+				#scale = 0.8
+				position = { x = -143 y = -2 }
+				orientation = "UPPER_LEFT"
+				pdx_tooltip = TOTAL_FAC_TT
+			}
+			instantTextBoxType = {     
+				name = "total_factories"
+				position = { x = -124 y = 2 }
+				font = "hoi_18mbs" 
+				text = "[?Total_Buildings]"
+				maxWidth = 50  
+				maxHeight = 23
+				format = right             
+				pdx_tooltip = TOTAL_FAC_TT
+			}
+			
+			instantTextBoxType = {     
+				name = "stability"
+				position = { x = -456 y = 2 }  
+				font = "hoi_18mbs" 
+				text = "[Root.GetStability]" 
+				maxWidth = 50  
+				maxHeight = 23
+				format = right    
+				allwaystransparent = yes
+			}
+			instantTextBoxType = {     
+				name = "war_support"
+				position = { x = -380 y = 2 }  
+				font = "hoi_18mbs" 
+				text = "[Root.GetWarSupport]" 
+				maxWidth = 50  
+				maxHeight = 23
+				format = right     
+				allwaystransparent = yes    
+			}  
+		} 
+		containerWindowType = {  
+			name = "topbar_list_container"
+			position = {x = 27 y = 1 }    
+			size = {width = 380 height = 410 }   
+            #margin = { top = 10 bottom = 10 }
+			Orientation = upper_left
+  
+			#verticalScrollbar = "right_vertical_slider"
+			#background = {
+			#	name = "Background" 
+			#	position = {x = 0 y = 20 }   
+			#	quadTextureSprite = "GFX_tiled_window_1b_thin_border" 
+			#}
+			#iconType ={  
+			# 	name ="header"
+			#	spriteType = "GFX_topbar_list_header"
+			#	scale = 0.96
+			#	position = { x = 9 y = 29 }
+			#	orientation = "UPPER_LEFT"
+			#	pdx_tooltip = TOTAL_FAC_TT
+			#}
+			# this grid will be dynamically populated
+			gridboxtype = {
+				name = "topbar_list"  
+				position = { x = 0 y = 0 }
+				size = { width = 100 height = 26 }
+				slotsize = { width = 104 height = 26 } #if width or height is 1, it will use slot element's dimension
+				  
+				max_slots_vertical = 1
+				add_horizontal = no   
+			}  
+		}
+	}
+	containerWindowType = { 
+		name = "topbar_list_container"
+		position = { x = 0 y = 0}	
+		size = { width = 100 height = 26 }
+		
+        buttonType ={
+			name ="background_button"
+			spriteType = "GFX_generic_box_smallest_100" 
+			#scale = 0.8
+			position = { x = 10 y = -1 }
+			orientation = "UPPER_LEFT" 
+			pdx_tooltip = "TOPBAR_INFO_TOOLTIP"  
+			#allwaystransparent = yes 
+		} 
+		instantTextBoxType = { 
+			name ="topbar_info_text" 
+			position = { x=5 y = 1 } 
+			font = "hoi_20bs"
+			text = "TOPBAR_INFO_TEXT"  
+			format = right
+			maxWidth = 100 
+			maxHeight = 24
+			fixedsize = yes 
+			allwaystransparent = yes
+		}	   
+		iconType ={  
+			name ="topbar_icon"
+			spriteType = "GFX_topbar_icons"
+			position = { x = 12 y = 0 } 
+			scale = 1
+			pdx_tooltip = "TOPBAR_INFO_TEXT"
+		}
+		containerWindowType = {
+			name = "topbar_menu_container"
+			position = {x = 0 y = 0 }
+			size = {width = 210 height = 800 } 
+            margin = { top = 10 left = 10 bottom = 10 }
+			Orientation = upper_left
+			#background = {
+			#		name = "background"
+			#		quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			#	}
+			#verticalScrollbar = "right_vertical_slider"
+			
+			#background = {
+			#	name = "background_box"
+			#	quadTextureSprite = "GFX_tiled_window_small"
+			#}
+			# this grid will be dynamically populated
+			gridboxtype = {
+				name = "topbar_menu"
+				position = { x = 0 y = 0}
+				size = { width = 173 height = 23 }
+				slotsize = { width = 173 height = 23 } #if width or height is 1, it will use slot element's dimension
+				
+				max_slots_vertical = 18
+				max_slots_horizontal = 2	 
+			}
+		}
+	}	 
+	containerWindowType = {  
+		name = "topbar_menu_container"  
+		position = { x = 0 y = 30}	  
+		size = { width = 173 height = 23 }  
+		
+		buttonType ={ 
+			name ="list"
+			spriteType = "GFX_mapmode_configure_bg"   
+			#scale = 0.75
+			position = { x = 0 y = 30 } 
+			pdx_tooltip = "TOPBAR_INFO_LIST_TOOLTIP"
+			#allwaystransparent = yes
+		}
+		instantTextBoxType = { 
+			name ="list_text"   
+			position = { x=25 y = 30 }  
+			font = "hoi_18mbs" 
+			text = "TOPBAR_INFO_LIST"  
+			format = left
+			maxWidth = 151 
+			maxHeight = 24
+			fixedsize = yes 
+			allwaystransparent = yes
+		}	
+		
+	}
+	### TENSION
+	containerWindowType = {      
+		name = "tension_view_menu_container"
+		position = { x = 0 y = 0 }
+		orientation = UPPER_RIGHT
+		
+		instantTextBoxType = {
+			name ="threat_country_value" 
+			position = { x=-118 y = 73 } 
+			font = "hoi_20bs"
+			text = "COUNTRY_TENSION_BI"  
+			format = center
+			maxWidth = 100
+			maxHeight = 24
+			fixedsize = yes 
+			allwaystransparent = yes
+		}	  
+		
+		instantTextBoxType = {        
+			name ="threat_global_value"
+			position = { x=-118 y= 26 }
+			font = "hoi_36header"
+			text = "GLOBAL_TENSION_TT"       
+			format = center
+			maxWidth = 100
+			maxHeight = 24
+			fixedsize = yes
+			allwaystransparent = yes
+		}	
+	} 
+	### Storage
+	containerWindowType = {
+		name = "storage_container"
+		position = { x = 100 y = 32 }
+		
+		containerWindowType = {
+			name = "top_bar_resources"
+			position = { x = 20 y = 3 }
+			
+			buttonType ={
+				name ="consumer_bg"  
+				position = { x = -90 y = 0 }
+				spriteType = "GFX_generic_box_smallest"
+				orientation = "UPPER_LEFT"   
+				pdx_tooltip = "BASIC_NECESSITY_TOOLTIP"  
+			}
+			iconType = { #buttonType = {
+				name = "consumer_icon"
+				position = { x = -90 y = 1 }
+				spriteType = "GFX_consumer_goods_icon"
+				scale = 0.67
+				pdx_tooltip = "BASIC_NECESSITY_TOOLTIP"
+				alwaystransparent = yes
+			}
+			instantTextBoxType = {
+				name = "consumer_storage_value"
+				position = { x = -78 y = 5 }
+				font = "hoi_16mbs"
+				text = "[?num_equipment@basic_necessities]"
+				maxWidth = 50
+				maxHeight = 23
+				format = right
+				alwaystransparent = yes
+			}
+			buttonType ={
+				name ="aluminum_bg"
+				spriteType = "GFX_generic_box_smallest"
+				position = { x = 60 y = 0 }
+				orientation = "UPPER_LEFT"
+				pdx_tooltip = "ALUMINIUM_TOP_TT" 
+			}
+			iconType = { #buttonType = {
+				name = "aluminum_icon"
+				position = { x = 60 y = 0 }
+				spriteType = "GFX_resources_strip"
+				frame = 2
+				pdx_tooltip = "ALUMINIUM_STORAGE_SWITCH"
+				alwaystransparent = yes
+			}
+			instantTextBoxType = {
+				name = "aluminum_storage_value"
+				position = { x = 72 y = 5 }
+				font = "hoi_16mbs"
+				text = "[?aluminium_storage]"
+				maxWidth = 50
+				maxHeight = 23
+				format = right
+				alwaystransparent = yes     
+			}
+			buttonType ={
+				name ="rubber_bg"
+				position = { x = -15 y = 0 }
+				spriteType = "GFX_generic_box_smallest"
+				orientation = "UPPER_LEFT" 
+				pdx_tooltip = "RUBBER_TOP_TT" 
+			}
+			iconType = { #buttonType = {
+				name = "rubber_icon"
+				position = { x = -15 y = 0 }
+				spriteType = "GFX_resources_strip"
+				frame = 3
+				pdx_tooltip = "RUBBER_STORAGE_SWITCH"
+				alwaystransparent = yes
+			}
+			instantTextBoxType = {
+				name = "rubber_storage_value"
+				position = { x = -3 y = 5 }
+				font = "hoi_16mbs"
+				text = "[?rubber_storage]"
+				maxWidth = 50
+				maxHeight = 23
+				format = right
+				alwaystransparent = yes
+			}
+			buttonType ={
+				name ="tungsten_bg"
+				spriteType = "GFX_generic_box_smallest"
+				position = { x = 135 y = 0 }
+				orientation = "UPPER_LEFT"
+				pdx_tooltip = "TUNGSTEN_TOP_TT" 
+			}
+			iconType = { #buttonType = {
+				name = "tungsten_icon"
+				position = { x = 135 y = 0 }
+				spriteType = "GFX_resources_strip"
+				frame = 4
+				pdx_tooltip = "TUNGSTEN_STORAGE_SWITCH"
+				alwaystransparent = yes
+			}
+			instantTextBoxType = {
+				name = "tungsten_storage_value"
+				position = { x = 147 y = 5 }
+				font = "hoi_16mbs"
+				text = "[?tungsten_storage]"
+				maxWidth = 50
+				maxHeight = 23
+				format = right
+				alwaystransparent = yes
+			}
+			buttonType ={
+				name ="steel_bg"
+				spriteType = "GFX_generic_box_smallest"
+				position = { x = 210 y = 0 }
+				orientation = "UPPER_LEFT"
+				pdx_tooltip = "STEEL_TOP_TT" 
+			}
+			iconType = { #buttonType = {
+				name = "steel_icon"
+				position = { x = 210 y = 0 }
+				spriteType = "GFX_resources_strip"
+				frame = 5
+				pdx_tooltip = "STEEL_STORAGE_SWITCH"
+				alwaystransparent = yes
+			}
+			instantTextBoxType = {
+				name = "steel_storage_value"
+				position = { x = 222 y = 5 }
+				font = "hoi_16mbs"
+				text = "[?steel_storage]"
+				maxWidth = 50
+				maxHeight = 23
+				format = right
+				alwaystransparent = yes
+			}
+			buttonType ={
+				name ="chromium_bg"
+				spriteType = "GFX_generic_box_smallest"
+				position = { x = 285 y = 0 }
+				orientation = "UPPER_LEFT"
+				pdx_tooltip = "CHROMIUM_TOP_TT" 
+			}
+			iconType = { #buttonType = {
+				name = "chromium_icon"
+				position = { x = 285 y = 0 }
+				spriteType = "GFX_resources_strip"
+				frame = 6
+				pdx_tooltip = "CHROMIUM_STORAGE_SWITCH"
+				alwaystransparent = yes
+			}
+			instantTextBoxType = {
+				name = "chromium_storage_value"
+				position = { x = 297 y = 5 }
+				font = "hoi_16mbs"
+				text = "[?chromium_storage]"
+				maxWidth = 50
+				maxHeight = 23
+				format = right
+				alwaystransparent = yes
+			}
+		}
+	}
+	### DECISIONS OPTIONS
+	containerWindowType = {
+		name = "decisions_options_menu"
+		position = { x = 584 y = 500 }
+		size = { width = 250 height = 400 }	
+		moveable = yes
+		
+		background = {
+			name = "Background"
+			spriteType = "GFX_tiled_decisions_bg_small" 
+		}
+		
+		instantTextBoxType = { # 0 nukes
+			name = "OPTIONS"
+			position = { x = -18 y = 5 }
+			text = "OPTIONS"
+			font = "hoi_36header"
+			format = right
+			alwaystransparent = yes
+		}
+		buttonType = {
+			name = "checkbox1"
+			position = { x = 20 y = 50 }
+			quadTextureSprite = "GFX_generic_checkbox3"
+			clicksound = decisions_ui_button
+		}
+		instantTextBoxType = { # 0 nukes
+			name = "test"
+			position = { x = 68 y = 50 }
+			text = "Operations "
+			font = "hoi_18mbs"
+			format = left
+			alwaystransparent = yes
+		}
+	}
+	### ZERO NUKE
+	containerWindowType = {
+		name = "nukezero_container"
+		position = { x = 573 y = 8 }
+		
+		instantTextBoxType = { # 0 nukes
+			name = "nukes"
+			position = { x = 0 y = 0 }
+			text = "zeronukes"
+			font = "hoi_18mbs"
+			format = left
+			alwaystransparent = yes
+		}
+	}
+	### SPECIAL FORCES
+	containerWindowType = {
+		name = "special_forces_container"
+		position = { x = 682 y = 5 }
+		
+		iconType = { 
+			name = "special_forces_background"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x= 0 y = 0 }
+			
+			pdx_tooltip = "SPECIAL_FORCES_TT" 
+		} 
+		iconType = { 
+			name = "special_forces_icon"      
+			spriteType = "GFX_special_forces_icon"
+			position = { x= 0 y = 0 }
+			frame = 3
+			scale = 1.2   
+			pdx_tooltip = "SPECIAL_FORCES_TT"
+		}  
+		instantTextBoxType = { 
+			name = "special_forces_text" 
+			position = { x = 0 y = 3 }
+			text = "[Root.GetSpecialTopbar]" 
+			font = "hoi_18mbs"
+			maxWidth = 62 
+			maxHeight = 18
+			format = right
+			alwaystransparent = yes
+		}
+	}
+	containerWindowType = {
+		name = "topbarextender_container"
+		position = { x = 587 y = 6 }
+		
+		buttonType = {
+			name ="topbar_eba"
+			spriteType = "GFX_mapmode_button_all_down_thin1"
+			position = { x= 0 y = 0 }
+			
+			pdx_tooltip = "EXTEND_TOP_BAR"
+		}
+	}
+	containerWindowType = {
+		name = "topbarunextender_container"
+		position = { x = 587 y = 6 }
+		
+		buttonType = {
+			name ="topbar_ueba"
+			spriteType = "GFX_mapmode_button_all_up_thin1"
+			position = { x= 0 y = 0 }
+			
+			pdx_tooltip = "UNEXTEND_TOP_BAR"
+		}
+	}
+	### BICE panel
+	containerWindowType = {
+		name = "bicepanel_container"
+		position = { x = 87 y = 67 }
+		
+		buttonType = {
+			name ="bice_icon"
+			spriteType = "GFX_bice_button_36"
+			position = { x= 466 y = 3 }
+			
+			pdx_tooltip = "BICE_CONTROL_PANEL"
+		}
+	}
+	### BICE panel container
+	containerWindowType = {
+		name = "bicepanel_menu_container"
+		position = { x = 400 y = 150 }
+		size = { width = 745 height = 590 }
+
+		fade_time = 300
+		fade_type = linear
+		moveable = yes
+		
+		background = {
+			name = "Background"
+			spriteType = "GFX_tiled_bg" #GFX_tiled_window_thin_border
+		}
+		
+		background = {
+			name = "header"
+			spriteType = "GFX_header_prod_bg"
+		}
+		instantTextBoxType = {
+			name = "steel_header"
+			position = { x = 0 y = 0 }
+			font = "hoi_36header"
+			text = "BICE_version"
+			maxWidth = 400
+			maxHeight = 23
+			format = centre
+		}
+		instantTextBoxType = {
+			name = "steel_header2"
+			position = { x = 400 y = 0 } 
+			font = "hoi_36header"
+			text = "Control Panel"
+			maxWidth = 300
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "exitbuttonmbice" 
+			position = { x = 703 y = 2 }	
+			spriteType = "GFX_closebutton"
+			pdx_tooltip = CLOSE
+			shortcut = "ESCAPE"
+			#scale = 1.1
+		}
+		containerWindowType = {
+			name = "events"
+			position = { x = 12 y = 38 }
+			size = { width = 370 height = 542 }
+			
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_paper_bg" #GFX_tiled_bg #GFX_tiled_window_thin_border
+				alwaystransparent = yes
+			}
+			
+			instantTextBoxType = {
+				name = "steel_header"
+				position = { x = 35 y = 5 }
+				font = "hoi_36header"
+				text = "Events"
+				maxWidth = 300
+				maxHeight = 23
+				format = centre
+			}
+			
+			containerWindowType  =  {
+				name = "eventfaq.1"
+				position = { x = 50 y = 50}
+				size = { width = 268 height = 45 } #native size of GFX_air_unit_stats_equip_entry				
+				buttonType = {
+					name = "scripted_faq.1"
+					position = { x = 0 y = 0}
+					spriteType = "GFX_air_unit_stats_equip_entry_green"
+					frame = 1
+					#alwaystransparent = yes
+				}				
+				iconType = {
+					name = "event_type_icon"
+					position = { x = 10 y = 10}
+					spriteType = "GFX_event_type_strip2"
+					frame = 1
+					alwaystransparent = yes
+				}
+				instantTextBoxType = {
+					name = "faq1"
+					position = { x = 45 y = 12 }
+					font = "hoi_18mbs"
+					text = "faq.1.t"
+					maxWidth = 300
+					maxHeight = 23
+					format = left
+					alwaystransparent = yes
+				}
+			}
+			
+			containerWindowType  =  {
+				name = "eventperformance.1"
+				position = { x = 50 y = 100}
+				size = { width = 268 height = 45 } #native size of GFX_air_unit_stats_equip_entry				
+				buttonType = {
+					name = "scripted_performance.1"
+					position = { x = 0 y = 0}
+					spriteType = "GFX_air_unit_stats_equip_entry"
+					frame = 1
+					#alwaystransparent = yes
+				}				
+				iconType = {
+					name = "event_type_icon"
+					position = { x = 10 y = 10}
+					spriteType = "GFX_event_type_strip2"
+					frame = 1
+					alwaystransparent = yes
+				}
+				instantTextBoxType = {
+					name = "performance1"
+					position = { x = 45 y = 12 }
+					font = "hoi_18mbs"
+					text = "performance.1.t"
+					maxWidth = 300
+					maxHeight = 23
+					format = left
+					alwaystransparent = yes
+				}
+			}
+			
+			containerWindowType  =  {
+				name = "eventdebug.1"
+				position = { x = 50 y = 150}
+				size = { width = 268 height = 45 } #native size of GFX_air_unit_stats_equip_entry				
+				buttonType = {
+					name = "scripted_debug.1"
+					position = { x = 0 y = 0}
+					spriteType = "GFX_air_unit_stats_equip_entry"
+					frame = 1
+					#alwaystransparent = yes
+				}				
+				iconType = {
+					name = "event_type_icon"
+					position = { x = 10 y = 10}
+					spriteType = "GFX_event_type_strip2"
+					frame = 1
+					alwaystransparent = yes
+				}
+				instantTextBoxType = {
+					name = "debug1"
+					position = { x = 45 y = 12 }
+					font = "hoi_18mbs"
+					text = "debug.1.t"
+					maxWidth = 300
+					maxHeight = 23
+					format = left
+					alwaystransparent = yes
+				}
+			}
+			
+			#containerWindowType  =  {
+			#	name = "eventdebug.102"
+			#	position = { x = 50 y = 200}
+			#	size = { width = 268 height = 45 } #native size of GFX_air_unit_stats_equip_entry				
+			#	buttonType = {
+			#		name = "scripted_debug.102"
+			#		position = { x = 0 y = 0}
+			#		spriteType = "GFX_air_unit_stats_equip_entry"
+			#		frame = 1
+			#		#alwaystransparent = yes
+			#	}				
+			#	iconType = {
+			#		name = "event_type_icon"
+			#		position = { x = 10 y = 10}
+			#		spriteType = "GFX_event_type_strip2"
+			#		frame = 1
+			#		alwaystransparent = yes
+			#	}
+			#	instantTextBoxType = {
+			#		name = "debug102"
+			#		position = { x = 45 y = 12 }
+			#		font = "hoi_18mbs"
+			#		text = "debug.102.t"
+			#		maxWidth = 300
+			#		maxHeight = 23
+			#		format = left
+			#		alwaystransparent = yes
+			#	}
+			#}
+			
+			containerWindowType  =  {
+				name = "eventdebug.103"
+				position = { x = 50 y = 200}
+				size = { width = 268 height = 45 } #native size of GFX_air_unit_stats_equip_entry				
+				buttonType = {
+					name = "scripted_debug.103"
+					position = { x = 0 y = 0}
+					spriteType = "GFX_air_unit_stats_equip_entry"
+					frame = 1
+					#alwaystransparent = yes
+				}				
+				iconType = {
+					name = "event_type_icon"
+					position = { x = 10 y = 10}
+					spriteType = "GFX_event_type_strip2"
+					frame = 1
+					alwaystransparent = yes
+				}
+				instantTextBoxType = {
+					name = "debug103"
+					position = { x = 45 y = 12 }
+					font = "hoi_18mbs"
+					text = "debug.103.t"
+					maxWidth = 300
+					maxHeight = 23
+					format = left
+					alwaystransparent = yes
+				}
+			}
+			
+			containerWindowType  =  {
+				name = "eventdebug.104"
+				position = { x = 50 y = 250}
+				size = { width = 268 height = 45 } #native size of GFX_air_unit_stats_equip_entry				
+				buttonType = {
+					name = "scripted_debug.104"
+					position = { x = 0 y = 0}
+					spriteType = "GFX_air_unit_stats_equip_entry"
+					frame = 1
+					#pdx_tooltip = "MY_TOOLTIP"
+					#alwaystransparent = yes
+				}				
+				iconType = {
+					name = "event_type_icon"
+					position = { x = 10 y = 10}
+					spriteType = "GFX_event_type_strip2"
+					frame = 1
+					alwaystransparent = yes
+				}
+				instantTextBoxType = {
+					name = "debug104"
+					position = { x = 45 y = 12 }
+					font = "hoi_18mbs"
+					text = "debug.104.t"
+					maxWidth = 300
+					maxHeight = 23
+					format = left
+					alwaystransparent = yes
+				}
+			}
+			
+			containerWindowType  =  {
+				name = "eventdebug.105"
+				position = { x = 50 y = 300}
+				size = { width = 268 height = 45 } #native size of GFX_air_unit_stats_equip_entry				
+				buttonType = {
+					name = "scripted_debug.105"
+					position = { x = 0 y = 0}
+					pdx_tooltip = "MAP_MODE_TOGGLE_TT"
+					spriteType = "GFX_air_unit_stats_equip_entry"
+					frame = 1
+					#alwaystransparent = yes
+				}				
+				iconType = {
+					name = "event_type_icon"
+					position = { x = 10 y = 10}
+					pdx_tooltip = "MAP_MODE_TOGGLE_TT"
+					spriteType = "GFX_event_type_strip2"
+					frame = 1
+					alwaystransparent = yes
+				}
+				instantTextBoxType = {
+					name = "debug105"
+					position = { x = 45 y = 12 }
+					font = "hoi_18mbs"
+					text = "debug.105.t" 
+					maxWidth = 300
+					maxHeight = 23
+					format = left
+					alwaystransparent = yes
+				}
+			}
+			
+		}
+		
+		containerWindowType = {
+			name = "links"
+			position = { x = 380 y = 38 }
+			size = { width = 358 height = 542 }
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_paper_bg2" #GFX_tiled_bg #GFX_tiled_window_thin_border
+				alwaystransparent = yes
+			}
+			instantTextBoxType = {
+				name = "steel_header"
+				position = { x = 35 y = 5 }
+				font = "hoi_36header"
+				text = "Links"
+				maxWidth = 300
+				maxHeight = 23
+				format = centre
+			}
+			containerWindowType = {
+				name = "links2"
+				position = { x = 25 y = 482 }
+				ButtonType = {
+					name = "archive_button"
+					position = { x = 19 y = 0 }
+					quadTextureSprite ="forum"
+					clicksound = click_default
+					pdx_tooltip = "MENU_BICE_ARCHIVE" #MENU_FORUM
+					web_link = "https://forum.paradoxplaza.com/forum/index.php?threads/version-archive-blackice.1062386/#post-24376573"
+				}
+				ButtonType = {
+					name = "wiki_button"
+					position = { x = 59 y = 0 }
+					quadTextureSprite ="GFX_trait_wiki"	
+					clicksound = click_default
+					pdx_tooltip = "MENU_BICE_WIKI"
+					web_link = "https://black-ice-hearts-of-iron-iv.wikia.com/"
+				}
+				ButtonType = {
+					name = "forum_button"
+					position = { x = 99 y = 0 }
+					quadTextureSprite ="forum"
+					clicksound = click_default
+					pdx_tooltip = "MENU_BICE_FORUM" #MENU_FORUM
+					web_link = "https://forum.paradoxplaza.com/forum/index.php?forums/blackice-user-mod.966/"
+				}
+				ButtonType = {
+					name = "facebook_button"
+					position = { x = 139 y = 0 }
+					quadTextureSprite ="facebook"
+					clicksound = click_default
+					pdx_tooltip = "MENU_BICE_FACEBOOK" #MENU_FACEBOOK
+					web_link = "https://www.facebook.com/Black-ICE-Mod-for-Hearts-Of-Iron-3-and-IV-362588367155410/"
+				}
+				ButtonType = {
+					name = "twitter_button"
+					position = { x = 179 y = 0 }
+					quadTextureSprite ="twitter"
+					clicksound = click_default
+					pdx_tooltip = "MENU_BICE_TWITTER" #MENU_TWITTER
+					web_link = "https://twitter.com/BlackICEMod" #https://twitter.com/hoi_game
+				}
+				ButtonType = {
+					name = "discord_button"
+					position = { x = 219 y = 0 }
+					spriteType ="GFX_discord_logo"
+					clicksound = click_default
+					pdx_tooltip = "MENU_BICE_DISCORD"
+					web_link = "https://discord.gg/kYYbrAA"
+				}
+				ButtonType = {
+					name = "youtube_button"
+					position = { x = 259 y = 0 }
+					quadTextureSprite ="forum"
+					clicksound = click_default
+					pdx_tooltip = "MENU_BICE_YOUTUBE" #MENU_FORUM
+					web_link = "https://www.youtube.com/channel/UCeAzGKQU11mH-AcyND3wLIw"
+				}
+			}
+		}
+		
+	}
+	### Storage menu container
+	containerWindowType = {
+		name = "storage_menu_container"
+		position = { x = 10 y = 115 }
+		size = { width = 1255 height = 290 }
+		moveable = yes
+
+		fade_time = 300
+		fade_type = linear
+		moveable = yes
+		
+		background = {
+			name = "Background"
+			spriteType = "GFX_tiled_window"
+		}
+		
+		iconType = {
+			name = "header"
+			spriteType = "GFX_storage_header_bg"
+			position = { x = 15 y = 15 }
+		}
+		instantTextBoxType = {
+			name = "strg_header"
+			position = { x = 5 y = 15 }
+			font = "hoi_36header"
+			text = "Storage"
+			maxWidth = 150
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "exitbutton" 
+			position = { x = 1200 y = 18 }	
+			spriteType = "GFX_closebutton"
+			pdx_tooltip = CLOSE
+			shortcut = "ESCAPE"
+			#scale = 1.1
+		}  
+		
+		containerWindowType = {
+			name = "rubber_menus"
+			position = { x = 30 y = 25 }
+			
+			iconType = {
+				name ="rubber_resource_menu"
+				position = { x = -17 y = 29 }
+				spriteType = "GFX_storage_menu_resource_bg"
+			}
+			iconType = {
+				name ="box"
+				position = { x = 78 y = 183 }
+				spriteType = "GFX_generic_box_small"
+				scale = 1.5
+			}
+			
+			buttonType = { 
+				name = "output_rubber" 
+				position = {x=5 y=183}	
+				spriteType = "GFX_output_resource_button"
+				#FRAME = "5" 
+				pdx_tooltip = "number_rubber_TT"  
+			}
+			iconType = {
+				name ="rubber_txt_icon"
+				position = { x = -10 y = 34 }
+				spriteType = "GFX_resources_strip"  
+				frame = 3
+				scale = 1.3
+			}
+			
+			instantTextBoxType = {
+				name = "rubber_capacity"
+				position = { x = -4 y = 81 }
+				font = "hoi_20bs"
+				text = "Rubber Capacity"
+				maxWidth = 120
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "rubber_capacity_value"
+				position = { x = 110 y = 81 }
+				font = "hoi_20bs"
+				text = "[?rubber_storage_cap]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "rubber_capacity_value_2"
+				position = { x = 100 y = 183 }
+				font = "hoi_36header"
+				text = "[?rubber_storage]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "rubber_surplus"
+				position = { x = -4 y = 104 }
+				font = "hoi_20bs"
+				text = "Current Fillrate"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "rubber_surplus_value"
+				position = { x = 110 y = 104 }
+				font = "hoi_20bs"
+				text = "RUBBER_TT_1"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "rubber_output"
+				position = { x = -4 y = 127 }
+				font = "hoi_20bs"
+				text = "Current Output"
+				maxWidth = 125
+				maxHeight = 23
+				format = left  
+			} 
+			instantTextBoxType = {
+				name = "rubber_output_value"
+				position = { x = 110 y = 127 }
+				font = "hoi_20bs" 
+				text = "RUBBER_TT_2"  
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "rubber_output_per_factory"
+				position = { x = -4 y = 150 }
+				font = "hoi_20bs"
+				text = "Storage Output"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "rubber_output_per_factory_value"
+				position = { x = 110 y = 150 }
+				font = "hoi_20bs"
+				text = "[?rubber_storage_output]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "rubber_header"
+				position = { x = 60 y = 43 }
+				font = "hoi_20bs"
+				text = "Rubber Storage"
+				maxWidth = 150
+				maxHeight = 23
+				format = centre
+			}
+		}
+		containerWindowType = {
+			name = "aluminium_menus"
+			position = { x = 275 y = 25 }
+			
+			iconType = {
+				name ="aluminium_resource_menu"
+				position = { x = -17 y = 29 }
+				spriteType = "GFX_storage_menu_resource_bg"
+			}
+			iconType = {
+				name ="box"
+				position = { x = 78 y = 183 }
+				spriteType = "GFX_generic_box_small"
+				scale = 1.5
+			}
+			
+			buttonType = {
+				name = "output_aluminium" 
+				position = {x=5 y=183}	
+				spriteType = "GFX_output_resource_button"
+				#FRAME = "5"
+				pdx_tooltip = "number_aluminium_TT"
+			}
+			iconType = {
+				name ="aluminium_txt_icon"
+				position = { x = -10 y = 34 }
+				spriteType = "GFX_resources_strip"
+				frame = 2
+				scale = 1.3
+			}
+			
+			instantTextBoxType = {
+				name = "aluminium_capacity"
+				position = { x = -4 y = 81 }
+				font = "hoi_20bs"
+				text = "Aluminium Capacity"
+				maxWidth = 150
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "aluminium_capacity_value"
+				position = { x = 110 y = 81 }
+				font = "hoi_20bs"
+				text = "[?aluminium_storage_cap]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "aluminium_capacity_value_2"
+				position = { x = 100 y = 183 }
+				font = "hoi_36header"
+				text = "[?aluminium_storage]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "aluminium_surplus"
+				position = { x = -4 y = 104 }
+				font = "hoi_20bs"
+				text = "Current Fillrate"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "aluminium_surplus_value"
+				position = { x = 110 y = 104 }
+				font = "hoi_20bs"
+				text = "ALUMINIUM_TT_1"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "aluminium_output"
+				position = { x = -4 y = 127 }
+				font = "hoi_20bs"
+				text = "Current Output"
+				maxWidth = 125
+				maxHeight = 23
+				format = left  
+			} 
+			instantTextBoxType = {
+				name = "aluminium_output_value"
+				position = { x = 110 y = 127 }
+				font = "hoi_20bs" 
+				text = "ALUMINIUM_TT_2"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "aluminium_output_per_factory"
+				position = { x = -4 y = 150 }
+				font = "hoi_20bs"
+				text = "Storage Output"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "aluminium_output_per_factory_value"
+				position = { x = 110 y = 150 }
+				font = "hoi_20bs"
+				text = "[?aluminium_storage_output]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "aluminium_header"
+				position = { x = 60 y = 43 }
+				font = "hoi_20bs"
+				text = "Aluminium Storage"
+				maxWidth = 150
+				maxHeight = 23
+				format = centre
+			}
+		}
+		containerWindowType = {
+			name = "tungsten_menus"
+			position = { x = 520 y = 25 }
+			
+			iconType = {
+				name ="tungsten_resource_menu"
+				position = { x = -17 y = 29 }
+				spriteType = "GFX_storage_menu_resource_bg"
+			}
+			iconType = {
+				name ="box"
+				position = { x = 78 y = 183 }
+				spriteType = "GFX_generic_box_small"
+				scale = 1.5
+			}
+			
+			buttonType = {
+				name = "output_tungsten" 
+				position = {x=5 y=183}	
+				spriteType = "GFX_output_resource_button"
+				#FRAME = "5"
+				pdx_tooltip = "number_tungsten_TT"
+			}
+			iconType = {
+				name ="tungsten_txt_icon"
+				position = { x = -10 y = 34 }
+				spriteType = "GFX_resources_strip"
+				frame = 4
+				scale = 1.3
+			}
+			
+			instantTextBoxType = {
+				name = "tungsten_capacity"
+				position = { x = -4 y = 81 }
+				font = "hoi_20bs"
+				text = "Tungsten Capacity"
+				maxWidth = 150
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "tungsten_capacity_value"
+				position = { x = 110 y = 81 }
+				font = "hoi_20bs"
+				text = "[?tungsten_storage_cap]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "tungsten_capacity_value_2"
+				position = { x = 100 y = 183 }
+				font = "hoi_36header"
+				text = "[?tungsten_storage]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "tungsten_surplus"
+				position = { x = -4 y = 104 }
+				font = "hoi_20bs"
+				text = "Current Fillrate"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "tungsten_surplus_value"
+				position = { x = 110 y = 104 }
+				font = "hoi_20bs"
+				text = "TUNGSTEN_TT_1"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "tungsten_output"
+				position = { x = -4 y = 127 }
+				font = "hoi_20bs"
+				text = "Current Output"
+				maxWidth = 125
+				maxHeight = 23
+				format = left  
+			} 
+			instantTextBoxType = {
+				name = "tungsten_output_value"
+				position = { x = 110 y = 127 }
+				font = "hoi_20bs" 
+				text = "TUNGSTEN_TT_2"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "tungsten_output_per_factory"
+				position = { x = -4 y = 150 }
+				font = "hoi_20bs"
+				text = "Storage Output"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "tungsten_output_per_factory_value"
+				position = { x = 110 y = 150 }
+				font = "hoi_20bs"
+				text = "[?tungsten_storage_output]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "tungsten_header"
+				position = { x = 60 y = 43 }
+				font = "hoi_20bs"
+				text = "Tungsten Storage"
+				maxWidth = 150
+				maxHeight = 23
+				format = centre
+			}
+		}
+		containerWindowType = {
+			name = "steel_menus"
+			position = { x = 765 y = 25 }
+			
+			iconType = {
+				name ="steel_resource_menu"
+				position = { x = -17 y = 29 }
+				spriteType = "GFX_storage_menu_resource_bg"
+			}
+			iconType = {
+				name ="box"
+				position = { x = 78 y = 183 }
+				spriteType = "GFX_generic_box_small"
+				scale = 1.5
+			}
+			buttonType = {
+				name = "output_steel" 
+				position = {x=5 y=183}	
+				spriteType = "GFX_output_resource_button"
+				#FRAME = "5"
+				pdx_tooltip = "number_steel_TT"
+			}
+			iconType = {
+				name ="steel_txt_icon"
+				position = { x = -10 y = 34 }
+				spriteType = "GFX_resources_strip"
+				frame = 5
+				scale = 1.3
+			}
+			instantTextBoxType = {
+				name = "steel_capacity"
+				position = { x = -4 y = 81 }
+				font = "hoi_20bs"
+				text = "Steel Capacity"
+				maxWidth = 150
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "steel_capacity_value"
+				position = { x = 110 y = 81 }
+				font = "hoi_20bs"
+				text = "[?steel_storage_cap]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "steel_capacity_value_2"
+				position = { x = 100 y = 183 }
+				font = "hoi_36header"
+				text = "[?steel_storage]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "steel_surplus"
+				position = { x = -4 y = 104 }
+				font = "hoi_20bs"
+				text = "Current Fillrate"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "steel_surplus_value"
+				position = { x = 110 y = 104 }
+				font = "hoi_20bs"
+				text = "STEEL_TT_1"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "steel_output"
+				position = { x = -4 y = 127 }
+				font = "hoi_20bs"
+				text = "Current Output"
+				maxWidth = 125
+				maxHeight = 23
+				format = left  
+			} 
+			instantTextBoxType = {
+				name = "steel_output_value"
+				position = { x = 110 y = 127 }
+				font = "hoi_20bs" 
+				text = "STEEL_TT_2"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "steel_output_per_factory"
+				position = { x = -4 y = 150 }
+				font = "hoi_20bs"
+				text = "Storage Output"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "steel_output_per_factory_value"
+				position = { x = 110 y = 150 }
+				font = "hoi_20bs"
+				text = "[?steel_storage_output]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "steel_header"
+				position = { x = 60 y = 43 }
+				font = "hoi_20bs"
+				text = "Steel Storage"
+				maxWidth = 150
+				maxHeight = 23
+				format = centre
+			}
+		}
+		containerWindowType = {
+			name = "chromium_menus"
+			position = { x = 1010 y = 25 }
+			
+			iconType = {
+				name ="chromium_resource_menu"
+				position = { x = -17 y = 29 }
+				spriteType = "GFX_storage_menu_resource_bg"
+			}
+			iconType = {
+				name ="box"
+				position = { x = 78 y = 183 }
+				spriteType = "GFX_generic_box_small"
+				scale = 1.5
+			}
+			
+			buttonType = {
+				name = "output_chromium" 
+				position = {x=5 y=183}	
+				spriteType = "GFX_output_resource_button"
+				#FRAME = "5"
+				pdx_tooltip = "number_chromium_TT"  
+			}
+			iconType = {
+				name ="chromium_txt_icon"
+				position = { x = -10 y = 34 }
+				spriteType = "GFX_resources_strip"
+				frame = 6
+				scale = 1.3
+			}
+			
+			instantTextBoxType = {
+				name = "chromium_capacity"
+				position = { x = -4 y = 81 }
+				font = "hoi_20bs"
+				text = "Chromium Capacity"
+				maxWidth = 150
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "chromium_capacity_value"
+				position = { x = 110 y = 81 }
+				font = "hoi_20bs"
+				text = "[?chromium_storage_cap]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "chromium_capacity_value_2"
+				position = { x = 100 y = 183 }
+				font = "hoi_36header"
+				text = "[?chromium_storage]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "chromium_surplus"
+				position = { x = -4 y = 104 }
+				font = "hoi_20bs"
+				text = "Current Fillrate"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "chromium_surplus_value"
+				position = { x = 110 y = 104 }
+				font = "hoi_20bs"
+				text = "CHROMIUM_TT_1"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "chromium_output"
+				position = { x = -4 y = 127 }
+				font = "hoi_20bs"
+				text = "Current Output"
+				maxWidth = 125
+				maxHeight = 23
+				format = left  
+			} 
+			instantTextBoxType = {
+				name = "chromium_output_value"
+				position = { x = 110 y = 127 }
+				font = "hoi_20bs" 
+				text = "CHROMIUM_TT_2"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "chromium_output_per_factory"
+				position = { x = -4 y = 150 }
+				font = "hoi_20bs"
+				text = "Storage Output"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "chromium_output_per_factory_value"
+				position = { x = 110 y = 150 }
+				font = "hoi_20bs"
+				text = "[?chromium_storage_output]"
+				maxWidth = 100
+				maxHeight = 23
+				format = right
+			}
+			
+			instantTextBoxType = {
+				name = "chromium_header"
+				position = { x = 60 y = 43 }
+				font = "hoi_20bs"
+				text = "Chromium Storage"
+				maxWidth = 150
+				maxHeight = 23
+				format = centre
+			} 
+		}
+	} 
+	#Production-tab  
+	containerWindowType = { 
+		name = "spec_factories_view_container" 
+		position = { x = 0 y = 80 }
+		 
+		buttonType = {
+			name = "switch_equipment_display"
+			position = { x = 660 y = -70 } 
+			spriteType = "GFX_equipment_factories_icons"
+			scale = 0.75
+			pdx_tooltip = "LOCAL_RESOURCES_ICON_TOOLTIP"
+		} 
+		
+		iconType = {
+			name = "local_resources_icon"
+			position = { x = 78 y = -22 }
+			spriteType = "GFX_excavation1_medium"  
+			scale = 0.4
+			pdx_tooltip = "LOCAL_RESOURCES_ICON_TOOLTIP"
+		}
+		instantTextBoxType = {
+			name = "local_resources_effiency"  
+			position = { x = 110 y = -17 }
+			font = "hoi_18mbs"
+			text = "LOCAL_RESOURCES"
+			maxWidth = 50
+			maxHeight = 20 
+			format = left
+			pdx_tooltip = "LOCAL_RESOURCES_ICON_TT"
+		}
+		
+		iconType = {
+			name = "production_start_efficiency_icon"
+			position = { x=240 y=18 }
+			spriteType = "GFX_base_eff"
+			scale = 1.2
+			pdx_tooltip = "STARTING_EFFICIENCY_ICON_TT"
+		}
+		instantTextBoxType = {
+			name = "production_start_effiency"
+			position = { x = 265 y = 21 }
+			font = "hoi_18mbs"     
+			text = "STARTING_EFFICIENCY"
+			maxWidth = 50
+			maxHeight = 20
+			format = left
+			#pdx_tooltip = "STARTING_EFFICIENCY_ICON_TT"
+		} 
+		 
+		containerWindowType = {
+			name = "allforces_factories"
+			position = { x = 30 y = 55 }
+			
+			#Uniform-factory
+			containerWindowType = {
+				name = "uniform_factory"
+				position = { x = 0 y = 0 } 
+				
+				iconType = {
+					name = "uniform_factory_gfx"
+					position = { x = 18 y = 3 }
+					spriteType = "GFX_uniform_factory_transparent"
+					scale = 0.7
+				}
+				instantTextBoxType = {
+					name = "uniform_factory_text"
+					position = { x = 47 y = 9 }
+			 		font = "hoi_18mbs"
+					text = "UNIFORM_FACTORY_NR"
+					maxWidth = 50
+					maxHeight = 23
+					format = left 
+				}
+			}
+			#Tankfactory
+			containerWindowType = {
+				name = "tank_factory"
+				position = { x = 82 y = 0 }   
+				
+				iconType = {
+					name = "tank_gfx"
+					position = { x = 17 y = 3 }
+					spriteType = "GFX_tank_factory_transparent"
+					scale = 0.74
+				}
+				instantTextBoxType = {
+					name = "tank_factory_nr"
+					position = { x = 55 y = 9 }
+					font = "hoi_18mbs"
+					text = "TANK_FACTORY_NR"
+					maxWidth = 50
+					maxHeight = 23
+					format = left
+				}
+			}
+			#Truck-factory
+			containerWindowType = {
+				name = "truck_factory"
+				position = { x = 164 y = 0 }
+				
+				
+				iconType = {
+					name = "truck_gfx"
+					position = { x = 20 y = -4 }
+					spriteType = "GFX_truck_factory_transparent"
+					scale = 1
+				}
+				instantTextBoxType = {
+					name = "uniform_factory_nr"
+					position = { x = 67 y = 9 }
+					font = "hoi_18mbs"
+					text = "TRUCK_FACTORY_NR"
+					maxWidth = 50
+					maxHeight = 23
+					format = left
+				}
+			}
+			#Artillery-factory
+			containerWindowType = {
+				name = "artillery_factory"
+				position = { x = 246 y = 0 }
+				
+				iconType = {
+					name = "artillery_factory_gfx"
+					position = { x = 18 y = 0 }
+					spriteType = "GFX_artillery_factory_transparent"
+					scale = 0.9
+					#pdx_tooltip = "OIL_STORAGE_SWITCH"
+				}
+				instantTextBoxType = {
+					name = "artillery_factory_nr"
+					position = { x = 57 y = 9 }
+					font = "hoi_18mbs"
+					text = "ARTILLERY_FACTORY_NR"
+					maxWidth = 50
+					maxHeight = 23
+					format = left
+				}
+			}
+			#Smallarms-factory
+			containerWindowType = {
+				name = "smallarms_factory"
+				position = { x = 328 y = 0 }
+				
+				iconType = {
+					name = "smallarms_factory_gfx"
+					position = { x = 20 y = 3 }
+					spriteType = "GFX_small_arms_factory_transparent"
+					scale = 0.70
+				}
+				instantTextBoxType = {
+					name = "smallarms_factory_nr"
+					position = { x = 55 y = 9 }
+					font = "hoi_18mbs"
+					text = "SMALLARMS_FACTORY_NR"
+					maxWidth = 50 
+					maxHeight = 23   
+					format = left
+				}
+			}
+			#Light aircraft-factory
+			containerWindowType = { 
+				name = "Ltaircraft_factory"
+				position = { x = 410 y = 0 }   
+				 
+				iconType = {
+					name = "Ltaircraft_factory_gfx"
+					position = { x = 20 y = 0 }
+					spriteType = "GFX_small_aircraft_factory_transparent"
+					scale = 0.85 
+					#pdx_tooltip = "OIL_STORAGE_SWITCH"
+				}
+				instantTextBoxType = {
+		  			name = "Ltaircraft_factory_nr" 
+					position = { x = 62 y = 9 }
+					font = "hoi_18mbs"
+					text = "UNIFORM_FACTORY_NR"
+					maxWidth = 50
+					maxHeight = 23
+					format = left
+				}
+			}
+			#Heavy aircraft-factory
+			containerWindowType = {
+				name = "Hvaircraft_factory"
+				position = { x = 492 y = 0 }
+				
+				iconType = {
+					name = "Hvaircraft_factory_gfx"
+					position = { x = 20 y = 0 }
+					spriteType = "GFX_heavy_aircraft_factory_transparent"
+					scale = 0.85
+					#pdx_tooltip = "OIL_STORAGE_SWITCH"
+				}
+				instantTextBoxType = {
+					name = "Hvaircraft_factory_nr"
+					position = { x = 60 y = 9 }
+					font = "hoi_18mbs"
+					text = "UNIFORM_FACTORY_NR"
+					maxWidth = 50
+					maxHeight = 23
+					format = left
+				}
+			}
+			#Jet-factory
+			containerWindowType = {
+				name = "Jetaircraft_factory"
+				position = { x = 574 y = 0 }
+				
+				iconType = {
+					name = "ammo_factory_gfx"
+					position = { x = 20 y = 2 }
+					spriteType = "GFX_jet_aircraft_factory_transparent"
+					scale = 0.75
+					#pdx_tooltip = "AMMOFACTORY"
+				}
+				instantTextBoxType = {
+					name = "Jetaircraft_factory_nr"
+					position = { x = 62 y = 9 }
+					font = "hoi_18mbs"
+					text = "JETAIR_FACTORY_NR"
+					maxWidth = 50
+					maxHeight = 23
+					format = left
+				}
+			}
+			#Ship-yard
+			containerWindowType = {
+				name = "shipyard"
+				position = { x = 565 y = 84 }
+				
+				iconType = {
+					name = "shipyard_gfx"
+					position = { x = 20 y = 0 }
+					spriteType = "GFX_shipyard_transparent"
+					scale = 0.9
+					#pdx_tooltip = "OIL_STORAGE_SWITCH"
+				}
+				instantTextBoxType = {
+					name = "uniform_factory_nr"
+					position = { x = 65 y = 9 }
+					font = "hoi_18mbs"
+					text = "SHIPYARD_NR"
+					maxWidth = 50
+					maxHeight = 23
+					format = left
+				}
+			}
+			#Submarine-yard
+			containerWindowType = {
+				name = "subyard"
+				position = { x = 565 y = 107 } 
+				
+				iconType = {
+					name = "subyard_gfx"
+					position = { x = 20 y = 0 }
+					spriteType = "GFX_submarine_dockyard_transparent"
+					scale = 0.90
+					#pdx_tooltip = "OIL_STORAGE_SWITCH"
+				}
+				instantTextBoxType = {
+					name = "subyard_nr"
+					position = { x = 65 y = 9 }
+					font = "hoi_18mbs"
+					text = "SUBYARD_NR" 
+					maxWidth = 74
+					maxHeight = 23
+					format = left
+				}	
+			}
+		}
+	}
+	containerWindowType = {
+		name = "construction_view_state_container"
+		position = { x = 800 y = 255 }
+		size = { width = 350 height = 1000 }
+		
+		buttonType = {
+			name = "filter_infra"
+			position = { x = 20 y = -40 }
+			spriteType = "GFX_sort_button_171x35"
+			scale = 100
+		}
+				
+		containerWindowType = {
+			name = "state_construction_grid_container"
+			position = {x = 1 y = 0}
+			size = {width = 460 height = 32 } 
+            #margin = { top = 10 bottom = 10 }
+			Orientation = upper_left
+
+			#verticalScrollbar = "right_vertical_slider"
+			#background = {
+			#	name = "Background"
+			#	quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			#}
+			# this grid will be dynamically populated
+			gridboxtype = {
+				name = "construction_state_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 402 height = 32 }
+				slotsize = { width = 402 height = 32 } #if width or height is 1, it will use slot element's dimension
+				max_slots_horizontal = 1
+				add_horizontal = no
+			}
+		}
+	}	
+	containerWindowType = {
+		name = "state_construction_grid_container"
+		position = { x = 0 y = 0}	
+		size = { width = 402 height = 32 }
+		
+        iconType = { 
+			name = "state"
+			position = {x=0 y=0}	
+			spriteType = "GFX_state_tile"
+		}
+		instantTextBoxType = {
+			name = "name"
+			position = { x = 10 y = 4 }
+			font = "hoi_18mbs"
+			text = "[This.GetName]"
+			format = left
+			maxWidth = 165
+			maxHeight = 24
+			fixedsize = yes
+			tooltip = "SCOPE_TEXT"
+		}
+		iconType = { 
+			name = "building_slots_icon"
+			position = {x=190 y=4}	
+			spriteType = "GFX_the_crane"
+		}
+		instantTextBoxType = {
+			name = "building_slots"
+			position = { x = 210 y = 5 }
+			font = "hoi_18mbs"
+			text = "[GetFreeBuildingSlots]"
+			format = left
+			maxWidth = 20
+			maxHeight = 24
+			fixedsize = yes
+			tooltip = "SCOPE_TEXT"
+		}
+		
+		
+		iconType = { 
+			name = "infrastructure_icon"
+			position = {x=235 y=4}	
+			spriteType = "GFX_infrastructure_texticon"
+		}
+		instantTextBoxType = {
+			name = "infrastructure_lvl"
+			position = { x = 255 y = 5 }
+			font = "hoi_18mbs"
+			text = "[?building_level@infrastructure]"
+			format = left
+			maxWidth = 20
+			maxHeight = 24
+			fixedsize = yes
+			tooltip = "SCOPE_TEXT"
+		}
+		
+	}
+	#Construction-tab
+	containerWindowType = {
+		name = "construction_view_menu_container"
+		position = { x = 12 y = 255 }
+		size = { width = 1000 height = 1000 }
+	 
+		buttonType = {
+			name = "civilian_industry_button" 
+			position = {x=434 y=-11}	 
+			spriteType = "GFX_buildings_strip"
+			FRAME = "8"
+			#pdx_tooltip = "CC_DELETE_TT"
+		} 
+		buttonType = {
+			name = "infrastructure_button" 
+			position = {x=434 y=-156}	 
+			spriteType = "GFX_buildings_strip"
+			FRAME = "1"
+			#pdx_tooltip = "CC_DELETE_TT"
+		}
+		
+		buttonType = {
+			name = "military_industry_button" 
+			position = {x=481 y=-11}	 
+			spriteType = "GFX_buildings_strip"
+			FRAME = "9"
+			#pdx_tooltip = "CC_DELETE_TT"
+		}
+		#background = {
+		#		name = "Background"
+		#		quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+		#	}
+		
+		containerWindowType = {
+			name = "country_construction_grid_container"
+			position = {x = 1 y = 0}
+			size = {width = 460 height = 320 } 
+            #margin = { top = 10 bottom = 10 }
+			Orientation = upper_left
+
+			#verticalScrollbar = "right_vertical_slider"
+			#background = {
+			#	name = "Background"
+			#	quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			#}
+			# this grid will be dynamically populated
+			gridboxtype = {
+				name = "construction_line_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 402 height = 108 }
+				slotsize = { width = 402 height = 108 } #if width or height is 1, it will use slot element's dimension
+				max_slots_horizontal = 1
+				add_horizontal = no
+			}
+		}
+	}
+	
+	containerWindowType = {
+		name = "country_construction_grid_container"
+		position = { x = 0 y = 0}	
+		size = { width = 402 height = 108 }
+		
+        iconType = { 
+			name = "construction_line"
+			position = {x=0 y=0}	
+			spriteType = "GFX_construction_line_selected"
+		}    
+		buttonType = {
+			name = "delete_line" 
+			position = {x=365 y=2}	
+			spriteType = "GFX_NV_btn_delete"
+			scale = 0.9
+			pdx_tooltip = "CC_DELETE_TT"
+		}     
+		buttonType = {
+			name = "move_up" 
+			position = {x=380 y=32}	 
+			spriteType = "GFX_arrow_up_small"
+			#pdx_tooltip = "CC_DELETE_TT"
+		}      
+		buttonType = {
+			name = "move_down" 
+			position = {x=380 y=62}	 
+			spriteType = "GFX_arrow_down_small"
+			#pdx_tooltip = "CC_DELETE_TT"
+		} 
+		
+		buttonType = {
+			name = "state_button" 
+			position = {x=13 y=3}	 
+			spriteType = "GFX_naval_name_list_button"
+			#pdx_tooltip = "CC_DELETE_TT"
+		} 
+		instantTextBoxType = {
+			name = "state_name"
+			position = { x = -10 y = 4 }
+			font = "hoi_18mbs"
+			text = "[?position@ROOT]		[?this.GetName]"
+			format = center
+			maxWidth = 200
+			maxHeight = 24
+			fixedsize = yes
+			tooltip = "SCOPE_TEXT"
+		}
+		iconType = {
+			name = "building_icon" 
+			position = {x=10 y=53}	
+			spriteType = "GFX_buildings_strip"
+			scale = 0.8 
+			#pdx_tooltip = "test tooltip"
+		} 
+		
+		instantTextBoxType = {
+			name = "building_name"
+			position = { x = -6 y = 29 }
+			font = "hoi_18mbs"
+			text = "[GetConstructionLineBuilding]"
+			format = center
+			maxWidth = 200
+			maxHeight = 24
+			fixedsize = yes
+		}
+		instantTextBoxType = {
+			name = "building_amount"
+			position = { x = 5 y = 27 }
+			font = "hoi_18mbs"
+			text = "[GetConstructionLineBuildingAmount]"
+			format = center
+			maxWidth = 200
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "build_speed_icon" 
+			position = {x=183 y=5}	 
+			spriteType = "GFX_build_speed_box"
+			pdx_tooltip = "CONSTRUCTION_SPEED_2" 
+		} 
+		instantTextBoxType = {
+			name = "building_speed"
+			position = { x = 136 y = 5 }
+			font = "hoi_18mbs"
+			text = "[?construction_speed|0%G]"
+			format = center
+			maxWidth = 150
+			maxHeight = 24
+			fixedsize = yes
+			allwaystransparent = yes
+		}
+		
+		iconType = {
+			name = "days_icon" 
+			position = {x=262 y=6}	
+			spriteType = "GFX_days_box"
+			pdx_tooltip = "CONSTRUCTION_DAYS"
+		} 
+		instantTextBoxType = {
+			name = "building_days_left"
+			position = { x = 204 y = 6 }
+			font = "hoi_18mbs"
+			text = "[?days_left|0] days"
+			format = center
+			maxWidth = 200
+			maxHeight = 24
+			fixedsize = yes
+			allwaystransparent = yes
+		}
+		
+		buttonType = {
+			name = "cic_slot_1" 
+			spriteType = "GFX_cic_slot"
+			position = {x=184 y=33}
+			pdx_tooltip = "CC_SLOT_TT_1"
+		} 
+		buttonType = {
+			name = "cic_slot_2" 
+			spriteType = "GFX_cic_slot"
+			position = {x=213 y=33}
+			pdx_tooltip = "CC_SLOT_TT_2"
+		} 
+		buttonType = {
+			name = "cic_slot_3" 
+			spriteType = "GFX_cic_slot"
+			position = {x=242 y=33}
+			pdx_tooltip = "CC_SLOT_TT_3"
+		} 
+		buttonType = {
+			name = "cic_slot_4" 
+			spriteType = "GFX_cic_slot"
+			position = {x=272 y=33}
+			pdx_tooltip = "CC_SLOT_TT_4"
+		}  
+		buttonType = {
+			name = "cic_slot_5" 
+			spriteType = "GFX_cic_slot"
+			position = {x=301 y=33}
+			pdx_tooltip = "CC_SLOT_TT_5"
+		}
+
+		buttonType = {
+			name = "cic_slot_6" 
+			spriteType = "GFX_cic_slot"
+			position = {x=184 y=55}
+			pdx_tooltip = "CC_SLOT_TT_6"
+		} 
+		buttonType = {
+			name = "cic_slot_7" 
+			spriteType = "GFX_cic_slot"
+			position = {x=213 y=55}
+			pdx_tooltip = "CC_SLOT_TT_7"
+		} 
+		buttonType = {
+			name = "cic_slot_8" 
+			spriteType = "GFX_cic_slot"
+			position = {x=242 y=55}
+			pdx_tooltip = "CC_SLOT_TT_8"
+		} 
+		buttonType = {
+			name = "cic_slot_9" 
+			spriteType = "GFX_cic_slot"
+			position = {x=272 y=55}
+			pdx_tooltip = "CC_SLOT_TT_9"
+		}  
+		buttonType = {
+			name = "cic_slot_10" 
+			spriteType = "GFX_cic_slot"
+			position = {x=301 y=55}
+			pdx_tooltip = "CC_SLOT_TT_10"
+		}
+
+		buttonType = {
+			name = "cic_slot_11" 
+			spriteType = "GFX_cic_slot"
+			position = {x=184 y=78}
+			pdx_tooltip = "CC_SLOT_TT_11"
+		} 
+		buttonType = {
+			name = "cic_slot_12" 
+			spriteType = "GFX_cic_slot"
+			position = {x=213 y=78}
+			pdx_tooltip = "CC_SLOT_TT_12"
+		} 
+		buttonType = {
+			name = "cic_slot_13" 
+			spriteType = "GFX_cic_slot"
+			position = {x=242 y=78}
+			pdx_tooltip = "CC_SLOT_TT_13"
+		} 
+		buttonType = {
+			name = "cic_slot_14" 
+			spriteType = "GFX_cic_slot"
+			position = {x=272 y=78}
+			pdx_tooltip = "CC_SLOT_TT_14"
+		}  
+		buttonType = {
+			name = "cic_slot_15" 
+			spriteType = "GFX_cic_slot"
+			position = {x=301 y=78}
+			pdx_tooltip = "CC_SLOT_TT_15"
+		}	
+		
+		buttonType = {
+			name = "cic_icon_1" 
+			spriteType = "GFX_cic_icon"
+			position = {x=186 y=33}
+			pdx_tooltip = "CC_SLOT_TT_1"
+		} 
+		buttonType = {
+			name = "cic_icon_2" 
+			spriteType = "GFX_cic_icon"
+			position = {x=215 y=33}
+			pdx_tooltip = "CC_SLOT_TT_2"
+		} 
+		buttonType = {
+			name = "cic_icon_3" 
+			spriteType = "GFX_cic_icon"
+			position = {x=244 y=33}
+			pdx_tooltip = "CC_SLOT_TT_3"
+		} 
+		buttonType = {
+			name = "cic_icon_4" 
+			spriteType = "GFX_cic_icon"
+			position = {x=274 y=33}
+			pdx_tooltip = "CC_SLOT_TT_4"
+		}  
+		buttonType = {
+			name = "cic_icon_5" 
+			spriteType = "GFX_cic_icon"
+			position = {x=303 y=33}
+			pdx_tooltip = "CC_SLOT_TT_5"
+		}
+
+		buttonType = {
+			name = "cic_icon_6" 
+			spriteType = "GFX_cic_icon"
+			position = {x=186 y=55}
+			pdx_tooltip = "CC_SLOT_TT_6"
+		} 
+		buttonType = {
+			name = "cic_icon_7" 
+			spriteType = "GFX_cic_icon"
+			position = {x=215 y=55}
+			pdx_tooltip = "CC_SLOT_TT_7"
+		} 
+		buttonType = {
+			name = "cic_icon_8" 
+			spriteType = "GFX_cic_icon"
+			position = {x=244 y=55}
+			pdx_tooltip = "CC_SLOT_TT_8"
+		} 
+		buttonType = {
+			name = "cic_icon_9" 
+			spriteType = "GFX_cic_icon"
+			position = {x=274 y=55}
+			pdx_tooltip = "CC_SLOT_TT_9"
+		}  
+		buttonType = {
+			name = "cic_icon_10" 
+			spriteType = "GFX_cic_icon"
+			position = {x=303 y=55}
+			pdx_tooltip = "CC_SLOT_TT_10"
+		}
+
+		buttonType = {
+			name = "cic_icon_11" 
+			spriteType = "GFX_cic_icon"
+			position = {x=186 y=78}
+			pdx_tooltip = "CC_SLOT_TT_11"
+		} 
+		buttonType = {
+			name = "cic_icon_12" 
+			spriteType = "GFX_cic_icon"
+			position = {x=215 y=78}
+			pdx_tooltip = "CC_SLOT_TT_12"
+		} 
+		buttonType = {
+			name = "cic_icon_13" 
+			spriteType = "GFX_cic_icon"
+			position = {x=244 y=78}
+			pdx_tooltip = "CC_SLOT_TT_13"
+		} 
+		buttonType = {
+			name = "cic_icon_14" 
+			spriteType = "GFX_cic_icon"
+			position = {x=274 y=78}
+			pdx_tooltip = "CC_SLOT_TT_14"
+		}  
+		buttonType = {
+			name = "cic_icon_15" 
+			spriteType = "GFX_cic_icon"
+			position = {x=303 y=78}
+			pdx_tooltip = "CC_SLOT_TT_15"
+		}	
+		
+	}
+	
+	containerWindowType = {
+		name = "research_slot_info_container"
+		position = { x = 0 y = -20 }
+		buttonType = {    
+			name = "research_slot_1_research_all"
+			position = {x=415 y=130}	 
+			spriteType = "GFX_research_all"
+			scale = 0.9
+		}
+		buttonType = {    
+			name = "research_slot_2_research_all"
+			position = {x=415 y=282}	
+			spriteType = "GFX_research_all" 
+			scale = 0.9
+		} 
+		buttonType = {   
+			name = "research_slot_overlay_1"
+			position = {x=15 y=20}	
+			spriteType = "GFX_research_slot_overlay"
+		}
+		buttonType = {    
+			name = "research_slot_overlay_2"
+			position = {x=15 y=172}	
+			spriteType = "GFX_research_slot_overlay"
+		}
+		containerWindowType = {
+			name = "research_slot_container"
+			position = {x = 15 y = 324 }
+			size = {width = 460 height = 320 } 
+            #margin = { top = 10 bottom = 10 }
+			Orientation = upper_left
+
+			#verticalScrollbar = "right_vertical_slider"
+			#background = {
+			#	name = "Background"
+			#	quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			#}
+			# this grid will be dynamically populated
+			gridboxtype = {
+				name = "research_slot_list"
+				position = { x = 0 y = 0 }
+				size = { width = 508 height = 152 }
+				slotsize = { width = 508 height = 152 } #if width or height is 1, it will use slot element's dimension
+				max_slots_horizontal = 1
+				add_horizontal = no
+			}
+		}
+	}
+	containerWindowType = {
+		name = "research_slot_container"
+		position = { x = 0 y = 0}	
+		size = { width = 508 height = 152 }
+		
+		instantTextBoxType = { 
+			name = "research_rights_icon_list"  
+			position = { x = -2 y = 117 } 
+			font = "hoi_20bs"    
+			text = "allowed_research_TT"    
+			maxWidth = 508      
+			maxHeight = 23
+			format = right
+			allwaystransparent = yes
+		} 
+		instantTextBoxType = { 
+			name = "state_title"   
+			position = { x = 248 y = 3 }
+			font = "hoi_24header"    
+			text = "[This.GetName]"    
+			maxWidth = 250          
+			maxHeight = 36
+			fixedsize = yes
+			format = right
+			allwaystransparent = yes
+		} 
+        buttonType = {  
+			name = "research_slot_overlay"
+			position = {x=0 y=0}	
+			spriteType = "GFX_research_slot_overlay" 
+		}
+	} 
+	#Technology-tab
+	containerWindowType = {
+		name = "research_view_menu_container"
+		position = { x = 0 y = -3 }
+		
+		instantTextBoxType = {
+			name = "research_value"
+			position = { x = 20 y = 157 }
+			font = "hoi_20bs"
+			text = "research_value_tt"   
+			maxWidth = 400 
+			maxHeight = 23
+			format = left
+		}	
+		#buttonType = {
+		#	name = "research_centre_button" 
+		#	position = {x=460 y=12}	
+		#	spriteType = "GFX_buildings_strip"
+		#	FRAME = "31"
+		#	scale = 0.8
+		#	pdx_tooltip = "test tooltip"
+		#}
+	}
+	
+	containerWindowType = {
+		name = "research_centre_container"
+		position = { x = 0 y = -200 }
+		
+		buttonType = {
+			name = "research_centre_1" 
+			position = {x=560 y=120}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "2"
+			#scale = 0.8
+		}
+		buttonType = {
+			name = "research_centre_1_lost" 
+			position = {x=560 y=120}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "1"
+			#scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "research_centre_1_name"
+			position = { x = 525 y = 127 }
+			font = "hoi_20bs"
+			text = "[Root.GetResearchCentre1]"
+			maxWidth = 260   
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "research_centre_2" 
+			position = {x=560 y=170}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "2"
+			#scale = 0.8
+		}
+		buttonType = {
+			name = "research_centre_2_lost" 
+			position = {x=560 y=170}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "1"
+			#scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "research_centre_2_name"
+			position = { x = 525 y = 177 }
+			font = "hoi_20bs"
+			text = "[Root.GetResearchCentre2]"
+			maxWidth = 260   
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "research_centre_3" 
+			position = {x=560 y=220}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "2"
+			#scale = 0.8
+		}
+		buttonType = {
+			name = "research_centre_3_lost" 
+			position = {x=560 y=220}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "1"
+			#scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "research_centre_3_name"
+			position = { x = 525 y = 227 }
+			font = "hoi_20bs"
+			text = "[Root.GetResearchCentre3]"
+			maxWidth = 260   
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "research_centre_4" 
+			position = {x=560 y=270}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "2"
+			#scale = 0.8
+		}
+		buttonType = {
+			name = "research_centre_4_lost" 
+			position = {x=560 y=270}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "1"
+			#scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "research_centre_4_name"
+			position = { x = 525 y = 277 }
+			font = "hoi_20bs"
+			text = "[Root.GetResearchCentre4]"
+			maxWidth = 260   
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "research_centre_5" 
+			position = {x=560 y=320}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "2"
+			#scale = 0.8
+		}
+		buttonType = {
+			name = "research_centre_5_lost" 
+			position = {x=560 y=320}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "1"
+			#scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "research_centre_5_name"
+			position = { x = 525 y = 327 }
+			font = "hoi_20bs"
+			text = "[Root.GetResearchCentre5]"
+			maxWidth = 260   
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "research_centre_6" 
+			position = {x=560 y=370}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "2"
+			#scale = 0.8
+		}
+		buttonType = {
+			name = "research_centre_6_lost" 
+			position = {x=560 y=370}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "1"
+			#scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "research_centre_6_name"
+			position = { x = 525 y = 377 }
+			font = "hoi_20bs"
+			text = "[Root.GetResearchCentre6]"
+			maxWidth = 260   
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "research_centre_7" 
+			position = {x=560 y=420}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "2"
+			#scale = 0.8
+		}
+		buttonType = {
+			name = "research_centre_7_lost" 
+			position = {x=560 y=420}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "1"
+			#scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "research_centre_7_name"
+			position = { x = 525 y = 427 }
+			font = "hoi_20bs"
+			text = "[Root.GetResearchCentre7]"
+			maxWidth = 260   
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "research_centre_8" 
+			position = {x=560 y=470}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "2"
+			#scale = 0.8
+		}
+		buttonType = {
+			name = "research_centre_8_lost" 
+			position = {x=560 y=470}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "1"
+			#scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "research_centre_8_name"
+			position = { x = 525 y = 477 }
+			font = "hoi_20bs"
+			text = "[Root.GetResearchCentre8]"
+			maxWidth = 260   
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "research_centre_9" 
+			position = {x=560 y=520}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "2"
+			#scale = 0.8
+		}
+		buttonType = {
+			name = "research_centre_9_lost" 
+			position = {x=560 y=520}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "1"
+			#scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "research_centre_9_name"
+			position = { x = 525 y = 527 }
+			font = "hoi_20bs"
+			text = "[Root.GetResearchCentre9]"
+			maxWidth = 260   
+			maxHeight = 23
+			format = centre
+		}
+		buttonType = {
+			name = "research_centre_10" 
+			position = {x=560 y=570}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "2"
+			#scale = 0.8
+		}
+		buttonType = {
+			name = "research_centre_10_lost" 
+			position = {x=560 y=570}	
+			spriteType = "GFX_theatre_selection_background"
+			FRAME = "1"
+			#scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "research_centre_10_name"
+			position = { x = 525 y = 577 }
+			font = "hoi_20bs"
+			text = "[Root.GetResearchCentre10]"
+			maxWidth = 260   
+			maxHeight = 23
+			format = centre
+		}
+	}
+	#Deployment-tab
+	containerWindowType = {
+		name = "deployment_view_menu_container"
+		position = { x = 0 y = 45 }
+		orientation = UPPER_LEFT
+		size = { width=550 height=131 }
+		
+		background = {
+			name = "Background"		
+			quadTextureSprite ="GFX_tiled_window2_1b_border"
+		}
+		
+		containerWindowType = {
+			name = "deployment_view_menu_container_info"
+			position = { x = 20 y = 20 } 
+			
+			instantTextBoxType = {
+				name = "training_cost_monthly"
+				position = { x = 365 y = 0 } 
+				font = "hoi_20bs" 
+				text = "ROOT_MANPOWER_QUEUE"
+				maxWidth = 130 
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "laws"
+				position = { x = 5 y = 0 } 
+				font = "hoi_20bs"
+				text = "Training Time :							 [?Root.modifier@training_time_army_factor|=-%1]"
+				maxWidth = 300
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "laws_modifiers"
+				position = { x = 5 y = 20 }
+				font = "hoi_20bs"
+				text = "LAWS_MODIFIERS"
+				maxWidth = 290
+				maxHeight = 23
+				format = left
+			}
+		}
+	}
+	#Trade-tab
+	containerWindowType = {
+		name = "trade_view_menu_container"
+		position = { x = 555 y = 644 }
+		
+		containerWindowType = {
+			name = "storage_upkeep_new"
+			position = { x = 0 y = -474 }
+			
+			instantTextBoxType = {
+				name = "storage"
+				position = { x = 7 y = 0 }
+				font = "hoi_16mbs"
+				text = "Storage: "
+				maxWidth = 120
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "storage_oil_value"
+				position = { x = 105 y = 0 }
+				font = "hoi_16mbs"
+				text = "[?fuel_ratio|%1]"
+				maxWidth = 50 
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "storage_aluminium_value"
+				position = { x = 174 y = 0 }
+				font = "hoi_16mbs"
+				text = "[Root.GetAluminiumStorage]"
+				maxWidth = 50
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "storage_rubber_value"
+				position = { x = 241 y = 0 }
+				font = "hoi_16mbs"
+				text = "[Root.GetRubberStorage]"
+				maxWidth = 50
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "storage_tungsten_value"
+				position = { x = 310 y = 0 }
+				font = "hoi_16mbs"
+				text = "[Root.GetTungstenStorage]"
+				maxWidth = 50 
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "storage_steel_value"
+				position = { x = 378 y = 0 }
+				font = "hoi_16mbs"
+				text = "[Root.GetSteelStorage]"
+				maxWidth = 50
+				maxHeight = 23
+				format = right
+			}
+			instantTextBoxType = {
+				name = "storage_chromium_value"
+				position = { x = 446 y = 0 }
+				font = "hoi_16mbs"
+				text = "[Root.GetChromiumStorage]"
+				maxWidth = 50
+				maxHeight = 23
+				format = right
+			}
+		}
+		
+	}
+	#Army-view
+	containerWindowType = {
+		name = "army_view_menu_container"
+		position = { x = 50 y = 0 }
+		orientation = UPPER_LEFT 
+  		
+		containerWindowType = {
+			name = "army_view_menu_container"
+			position = { x = 36 y = 15 }
+			
+			#Unit Leader Trait Average
+			instantTextBoxType = {
+				name = "unit_leader_trait_average"
+				position = { x = 210 y = -3 }
+				font = "hoi_18mbs"
+				text = "UNIT_LEADER_TRAIT_AVERAGE_TT"
+				maxWidth = 270
+				maxHeight = 23
+				format = left 
+			}  
+			#Assigned-divisions
+			instantTextBoxType = {
+				name = "divisions_assigned_value"
+				position = { x = 58 y = 42 }
+				font = "hoi_18mbs"
+				text = "[?assigned_divisions] Assigned"
+				maxWidth = 125
+				maxHeight = 23
+				format = left 
+			}
+			#Armies
+			instantTextBoxType = {
+				name = "army_value"
+				position = { x = 210 y = 64 }
+				font = "hoi_18mbs"
+				text = "[?army_count] Armies"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			#Army-groups
+			instantTextBoxType = {
+				name = "army_group_value"
+				position = { x = 360 y = 64 }
+				font = "hoi_18mbs"
+				text = "[?army_group_count] Army Groups"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			#Field Marshals
+			instantTextBoxType = {
+				name = "field_marshal_value"
+				position = { x = 210 y = 20 }
+				font = "hoi_18mbs"
+				text = "[?field_marshal_count] Field Marshalls"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "field_marshal_assigned_value"
+				position = { x = 360 y = 20	}
+				font = "hoi_18mbs"
+				text = "[?assigned_field_marshal_count] Assigned"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			#Army generals
+			instantTextBoxType = {
+				name = "army_generals_value"
+				position = { x = 210 y = 42 }
+				font = "hoi_18mbs"
+				text = "[?general_count] Generals"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "army_generals_assigned_value"
+				position = { x = 360 y = 42 }
+				font = "hoi_18mbs"
+				text = "[?assigned_general_count] Assigned"
+				maxWidth = 125
+				maxHeight = 23
+				format = left
+			}
+
+		}
+	}
+	### View?
+	containerWindowType = {
+		name = "fuhrer_mana_self_state_powers_container"
+		position = { x = 1000 y = 500 }
+		size = { width = 270 height = 280 }
+
+		fade_time = 300
+		fade_type = linear
+		moveable = yes
+		
+		background = {
+			name = "Background"
+			position = {x=26 y=30}	
+			spriteType = "GFX_production_resources_bg"
+		}
+		
+		iconType = {
+			name = "test" 
+			position = {x=0 y=0}	
+			spriteType = "GFX_button_221x34"
+		}
+		
+		instantTextboxType = {
+			name = "title_1"
+			position = {x=16 y=7}
+			font = "hoi_18mbs"
+			text = "Resources  from  Storage:" 
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+			pdx_tooltip = RESOURCE_HEAD
+		}
+
+		instantTextboxType = {
+			name = "oil_deploy"
+			position = {x=42 y=42}
+			font = "hoi_18mbs"
+			text = "OIL_TT"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+			pdx_tooltip = "OIL_AMOUNT_TT"
+		}
+		
+		instantTextboxType = {
+			name = "rubber_deploy"
+			position = {x=42 y=72}
+			font = "hoi_18mbs"
+			text = "RUBBER_TT"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+			pdx_tooltip = "RUBBER_AMOUNT_TT"
+		}
+		
+		instantTextboxType = {
+			name = "tungsten_deploy"
+			position = {x=140 y=42}
+			font = "hoi_18mbs"
+			text = "TUNGSTEN_TT"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+			pdx_tooltip = "TUNGSTEN_AMOUNT_TT"
+		}
+		
+		instantTextboxType = {
+			name = "aluminium_deploy"
+			position = {x=90 y=72}
+			font = "hoi_18mbs"
+			text = "ALUMINIUM_TT"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+			pdx_tooltip = "ALUMINIUM_AMOUNT_TT"
+		}
+		
+		instantTextboxType = {
+			name = "steel_deploy"
+			position = {x=90 y=42}
+			font = "hoi_18mbs"
+			text = "STEEL_TT"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+			pdx_tooltip = "STEEL_AMOUNT_TT"
+		}
+		
+		instantTextboxType = {
+			name = "chromium_deploy"
+			position = {x=140 y=72}
+			font = "hoi_18mbs"
+			text = "CHROMIUM_TT"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+			pdx_tooltip = "CHROMIUM_AMOUNT_TT"
+		}
+	}
+	containerWindowType = {
+		name = "fuhrer_mana_self_state_powers_container_4"
+		position = {x=200 y=200}
+		size = { width=560	height=290 }
+
+		fade_time = 300
+		fade_type = linear
+		moveable = yes
+		
+		background = {
+			name = "Background2"
+			position = {x=-2 y=0}		
+			spriteType = "GFX_tiled_window_1b_thin_border"
+		}
+		
+		iconType = {
+			name = "header" 
+			position = {x=0 y=0}	
+			spriteType = "GFX_template_header_bg"
+		}
+		
+		buttonType = {
+			name = "exitbutton" 
+			position = {x=520 y=3}	
+			spriteType = "GFX_closebutton"
+			pdx_tooltip = CLOSE
+		}
+		
+		instantTextboxType = {
+			name = "state_low_tax"
+			position = {x=17 y=00}
+			font = "hoi_36header"
+			text = "Country States Overview:"
+			maxWidth = 500
+			maxHeight = 23
+			format = centre
+		}
+		
+		instantTextboxType = {
+			name = "state name small"
+			position = {x=30 y=41}
+			font = "hoi_36header"
+			text = "[Root.GetName]"
+			maxWidth = 500
+			maxHeight = 23
+			format = centre
+		}
+		instantTextboxType = {
+			name = "minimal tax state"
+			position = {x=30 y=91}
+			font = "hoi_18mbs"
+			text = "Minimal Taxes"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "low tax state"
+			position = {x=30 y=121}
+			font = "hoi_18mbs"
+			text = "Low Taxes"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "average tax state"
+			position = {x=30 y=151}
+			font = "hoi_18mbs"
+			text = "Average Taxes"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "high tax state"
+			position = {x=30 y=181}
+			font = "hoi_18mbs"
+			text = "High Taxes"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "extreme tax state"
+			position = {x=30 y=211}
+			font = "hoi_18mbs"
+			text = "Extreme Taxes:"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+		
+		instantTextboxType = {
+			name = "minimal tax state nr"
+			position = {x=10 y=91}
+			font = "hoi_18mbs"
+			text = "[?Root.amount_minimal_tax]"
+			maxWidth = 500
+			maxHeight = 23
+			format = right
+		}
+		instantTextboxType = {
+			name = "low tax state nr"
+			position = {x=10 y=121}
+			font = "hoi_18mbs"
+			text = "[?Root.amount_low_tax]"
+			maxWidth = 500
+			maxHeight = 23
+			format = right
+		}
+		instantTextboxType = {
+			name = "average tax state nr"
+			position = {x=10 y=151}
+			font = "hoi_18mbs"
+			text = "[?Root.amount_average_tax]"
+			maxWidth = 500
+			maxHeight = 23
+			format = right
+		}
+		instantTextboxType = {
+			name = "high name small nr"
+			position = {x=10 y=181}
+			font = "hoi_18mbs"
+			text = "[?Root.amount_high_tax]"
+			maxWidth = 500
+			maxHeight = 23
+			format = right
+		}
+		instantTextboxType = {
+			name = "extreme name small nr"
+			position = {x=10 y=211}
+			font = "hoi_18mbs"
+			text = "[?Root.amount_extreme_tax]"
+			maxWidth = 500
+			maxHeight = 23
+			format = right
+		}
+		
+		instantTextboxType = {
+			name = "reset taxes"
+			position = {x=30 y=246}
+			font = "hoi_18mbs"
+			text = "Reset all States"
+			maxWidth = 500
+			maxHeight = 23
+			format = left
+		}
+	}
+	#RESEARCH FUNDING
+	containerWindowType = {
+		name = "money_tech_tab"
+		position = { x = 0 y = 0 }
+		size = { width = 270 height = 100 }
+        
+		buttonType = {
+			name = "open_research_money_tab" 
+			position = { x= 460 y = 6 }	
+			spriteType = "GFX_money_button"
+			pdx_tooltip = "RESEARCH_FUNDING"
+			scale = 1.3
+		}
+	}
+	#RESEARCH FUNDING WINDOW
+	containerWindowType = {
+		name = "money_tech_tab_research"
+		position = {x = 0 y = 110 }
+		size = { width = 580 height = 940 }
+		moveable = yes
+		
+      	background = {
+			name = "Background"		
+			quadTextureSprite = "GFX_tiled_research_funding_bg"
+		}
+		
+		#TECH CATEGORIES
+		containerWindowType = {
+			name = "headlines"
+			position = {x = 0 y = 0 }
+			
+			iconType = {
+				name = "header" 
+				position = { x = 10 y = 10 }	
+				quadTextureSprite = "GFX_template_header_bg" 
+			}
+			
+			instantTextBoxType = {
+				name = "headline"
+				position = { x = 50 y = 12 }
+				font = "hoi_36header"
+				text = "Research Funding"
+				maxWidth = 265
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "headline2"
+				position = { x = 300 y = 59 }
+				font = "hoi_18mbs"
+				text = "BASE_RESEARCH_TT"
+				maxWidth = 200
+				maxHeight = 23
+				format = right
+			}
+			buttonType = {
+				name = "exitbutton"
+				position = { x = 520 y = 15 }
+				spriteType = "GFX_closebutton"
+				pdx_tooltip = CLOSE
+			}
+		}
+		
+		containerWindowType = {
+			name = "infantry_cat"
+			position = {x = 30 y = 100 }
+			
+			instantTextBoxType = {
+				name = "land_research"
+				position = { x = 30 y = 0 }
+				font = "hoi_36header"
+				text = "Land Research Funding"
+				maxWidth = 350
+				maxHeight = 23
+				format = left
+			}
+			instantTextBoxType = {
+				name = "Infantry Category"
+				position = { x = 40 y = 50 }
+				font = "hoi_18mbs"
+				text = "Infantry Research"
+				maxWidth = 200
+				maxHeight = 23
+				format = left
+			}
+			### MINUS / PLUS Selection
+			buttonType = {
+				name = "infantry_minus"
+				quadTextureSprite ="GFX_arrow_left_rf"
+				position = { x = 240 y = 52 }
+				#scale = 1.5
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "infantry_button_speedstep1"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 260 y = 57 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "infantry_button_speedstep2"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 285 y = 57 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "infantry_button_speedstep3"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 310 y = 57 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "infantry_button_speedstep4"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 335 y = 57 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "infantry_button_speedstep5"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 360 y = 57 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "infantry_plus"
+				quadTextureSprite ="GFX_arrow_right_rf"
+				#scale = 1.5
+				position = { x = 386 y = 52 }
+				clicksound = click_default
+			}
+			### SAVE
+			buttonType = {
+				name = "infantry_save"
+				spriteType ="GFX_accept_decline_icon"
+				FRAME = 2
+				position = { x = 420 y = 52 }
+				clicksound = click_default
+			}
+			#STATUS
+			instantTextBoxType = {
+				name = "Infantry status"
+				position = {x = 445 y = 52 }
+				font = "hoi_18mbs"
+				text = "INFANTRY_STATUS_TT"
+				maxWidth = 40
+				maxHeight = 23
+				format = right
+			}
+		}
+		#SUPPORT
+		containerWindowType = {
+			name = "support_cat"
+			position = { x = 30 y = 190 }
+			
+			instantTextBoxType = {
+				name = "Support Category"
+				position = { x= 40 y = 0 }
+				font = "hoi_18mbs"
+				text = "Support Research"
+				maxWidth = 200
+				maxHeight = 23
+				format = left
+			}
+			#MINUS/PLUS
+			buttonType = {
+				name = "support_minus"
+				quadTextureSprite ="GFX_arrow_left_rf"
+				position = { x = 240 y = 2 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "support_button_speedstep1"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 260 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "support_button_speedstep2"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 285 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "support_button_speedstep3"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 310 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "support_button_speedstep4"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 335 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "support_button_speedstep5"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 360 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "support_plus"
+				quadTextureSprite ="GFX_arrow_right_rf"
+				position = { x = 386 y = 2 }
+				clicksound = click_default
+			}
+			#SAVE
+			buttonType = {
+				name = "support_save"
+				spriteType ="GFX_accept_decline_icon"
+				FRAME = 2 
+				position = { x = 420 y = 2 }
+				clicksound = click_default
+			}
+			#STATUS
+			instantTextBoxType = {
+				name = "support status"
+				position = {x = 445 y = 2 }
+				font = "hoi_18mbs"
+				text = "SUPPORT_STATUS_TT"
+				maxWidth = 40 
+				maxHeight = 23
+				format = right
+			}
+		}
+		#ARTILLERY
+		containerWindowType = {
+			name = "artillery_cat"
+			position = { x = 30 y = 230 }
+			
+			instantTextBoxType = {
+				name = "artillery Category"
+				position = { x = 40 y = 0 }
+				font = "hoi_18mbs"
+				text = "Artillery Research"
+				maxWidth = 200
+				maxHeight = 23
+				format = left
+			}
+			#MINUS/PLUS
+			buttonType = {
+				name = "artillery_minus"
+				quadTextureSprite ="GFX_arrow_left_rf"
+				position = { x = 240 y = 2 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "artillery_button_speedstep1"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 260 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "artillery_button_speedstep2"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 285 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "artillery_button_speedstep3"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 310 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "artillery_button_speedstep4"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 335 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "artillery_button_speedstep5"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 360 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "artillery_plus"
+				quadTextureSprite ="GFX_arrow_right_rf"
+				position = { x = 386 y = 2 }
+				clicksound = click_default
+			}
+			#SAVE
+			buttonType = {
+				name = "artillery_save"
+				spriteType ="GFX_accept_decline_icon"
+				FRAME = 2
+				position = { x = 420 y = 0 }
+				clicksound = click_default
+			}	
+			#STATUS
+			instantTextBoxType = {
+				name = "artillery status"
+				position = {x = 445 y = 2 }
+				font = "hoi_18mbs"
+				text = "ARTILLERY_STATUS_TT"
+				maxWidth = 40 
+				maxHeight = 23
+				format = right
+			}
+		}
+		#ARMOR
+		containerWindowType = {
+			name = "armor_cat"
+			position = {x = 30 y = 270 }
+			
+			instantTextBoxType = {
+				name = "Armor Category"
+				position = { x = 40 y = 0 }
+				font = "hoi_18mbs"
+				text = "Armor Research"
+				maxWidth = 200
+				maxHeight = 23
+				format = left
+			}
+			#MINUS/PLUS
+			buttonType = {
+				name = "armor_minus"
+				quadTextureSprite ="GFX_arrow_left_rf"
+				position = { x = 240 y = 2 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "Armor_button_speedstep1"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 260 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "Armor_button_speedstep2"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 285 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "Armor_button_speedstep3"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 310 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "Armor_button_speedstep4"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 335 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "armor_button_speedstep5"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 360 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "armor_plus"
+				quadTextureSprite ="GFX_arrow_right_rf"
+				position = { x = 386 y = 2 }
+				clicksound = click_default
+			}
+			#SAVE
+			buttonType = {
+				name = "armor_save"
+				spriteType ="GFX_accept_decline_icon"
+				FRAME = 2
+				position = { x = 420 y = 0 }
+				clicksound = click_default
+			}	
+			#STATUS
+			instantTextBoxType = {
+				name = "armor status"
+				position = {x = 445 y = 2 }
+				font = "hoi_18mbs"
+				text = "ARMOR_STATUS_TT"
+				maxWidth = 40 
+				maxHeight = 23
+				format = right
+			}
+		}
+		#AIRCRAFT
+		containerWindowType = {
+			name = "plane_cat"
+			position = {x = 30 y = 310 }
+			
+			instantTextBoxType = {
+				name = "plane Category"
+				position = { x = 40 y = 0 }
+				font = "hoi_18mbs"
+				text = "Aircraft Research"
+				maxWidth = 200
+				maxHeight = 23
+				format = left
+			}
+			#MINUS/PLUS
+			buttonType = {
+				name = "plane_minus"
+				quadTextureSprite ="GFX_arrow_left_rf"
+				position = { x = 240 y = 2 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "plane_button_speedstep1"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 260 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "plane_button_speedstep2"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 285 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "plane_button_speedstep3"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 310 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "plane_button_speedstep4"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 335 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "plane_button_speedstep5"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 360 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "plane_plus"
+				quadTextureSprite ="GFX_arrow_right_rf"
+				position = { x = 386 y = 2 }
+				clicksound = click_default
+			}
+			#SAVE
+			buttonType = {
+				name = "plane_save"
+				spriteType ="GFX_accept_decline_icon"
+				FRAME = 2
+				position = { x = 420 y = 0 }
+				clicksound = click_default
+			}	
+			#STATUS
+			instantTextBoxType = {
+				name = "plane status"
+				position = {x = 445 y = 2 }
+				font = "hoi_18mbs"
+				text = "PLANE_STATUS_TT"
+				maxWidth = 40 
+				maxHeight = 23
+				format = right
+			}
+		}
+		#INDUSTRY
+		containerWindowType = {
+			name = "industry_cat"
+			position = {x = 30 y = 350 }
+			
+			instantTextboxType = {
+				name = "industry Category"
+				position = {x = 40 y = 0 }
+				font = "hoi_18mbs"
+				text = "Industry Research"
+				maxWidth = 200
+				maxHeight = 23
+				format = left
+			}
+			#minus/plus
+			buttonType = {
+				name = "industry_minus"
+				quadTextureSprite ="GFX_arrow_left_rf"
+				position = { x = 240 y = 2 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "industry_button_speedstep1"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x= 260 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "industry_button_speedstep2"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 285 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "industry_button_speedstep3"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 310 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "industry_button_speedstep4"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 335 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "industry_button_speedstep5"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 360 y = 7 }
+				clicksound = click_default 
+			}
+			buttonType = {
+				name = "industry_plus"
+				quadTextureSprite ="GFX_arrow_right_rf"
+				position = { x = 386 y = 2 }
+				clicksound = click_default
+			}
+			#save
+			buttonType = {
+				name = "industry_save"
+				spriteType ="GFX_accept_decline_icon"
+				FRAME = 2
+				position = { x = 420 y = 0 }
+				clicksound = click_default
+			}	
+			#STATUS
+			instantTextBoxType = {
+				name = "industry status"
+				position = {x = 445 y = 2 }
+				font = "hoi_18mbs"
+				text = "INDUSTRY_STATUS_TT"
+				maxWidth = 40 
+				maxHeight = 23
+				format = right
+			}
+		}
+		#ENIGEERING And ADVANCED TECH
+		containerWindowType = {
+			name = "electronics_cat"
+			position = {x = 30 y = 390 }
+			
+			instantTextBoxType = {
+				name = "Electronics Category"
+				position = { x = 40 y = 0 }
+				font = "hoi_18mbs"
+				text = "Electronics Research"
+				maxWidth = 200
+				maxHeight = 23
+				format = left
+			}
+			#MINUS/PLUS
+			buttonType = {
+				name = "electronics_minus"
+				quadTextureSprite ="GFX_arrow_left_rf"
+				position = { x = 240 y = 2 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "electronics_button_speedstep1"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 260 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "electronics_button_speedstep2"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 285 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "electronics_button_speedstep3"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 310 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "electronics_button_speedstep4"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 335 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "electronics_button_speedstep5"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 360 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "electronics_plus"
+				quadTextureSprite ="GFX_arrow_right_rf"
+				position = { x = 386 y = 2 }
+				clicksound = click_default
+			}
+			#SAVE
+			buttonType = {
+				name = "electronics_save"
+				spriteType ="GFX_accept_decline_icon"
+				FRAME = 2
+				position = { x = 420 y = 0 }
+				clicksound = click_default
+			}	
+			#STATUS
+			instantTextBoxType = {
+				name = "electronics status"
+				position = {x = 445 y = 2 }
+				font = "hoi_18mbs"
+				text = "ELECTRONICS_STATUS_TT"
+				maxWidth = 40 
+				maxHeight = 23
+				format = right
+			}
+		}
+		### -- DOCTRINES
+		containerWindowType = {
+			name = "doctrines_cat"
+			position = {x = 70 y = 495 }
+			
+			instantTextBoxType = {
+				name = "armydoctrineheader"
+				position = { x = -10 y = 0 }
+				font = "hoi_36header"
+				text = "Doctrines Research Funding"
+				maxWidth = 450
+				maxHeight = 23
+				format = left
+			}	
+		}
+		#LAND Doctrines
+		containerWindowType = {
+			name = "land_doctrines_cat"
+			position = {x = 70 y = 550 }
+			
+			instantTextBoxType = {
+				name = "land doctrine Category"
+				position = { x = 0 y = 0 }
+				font = "hoi_18mbs"
+				text = "Land Doctrine Research"
+				maxWidth = 200
+				maxHeight = 23
+				format = left
+			}
+			#MINUS/PLUS
+			buttonType = {
+				name = "land_doctrine_minus"
+				quadTextureSprite ="GFX_arrow_left_rf"
+				position = { x = 240 y = 2 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "land_doctrine_button_speedstep1"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 260 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "land_doctrine_button_speedstep2"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 285 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "land_doctrine_button_speedstep3"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 310 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "land_doctrine_button_speedstep4"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 335 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = { 
+				name = "land_doctrine_button_speedstep5"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 360 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "land_doctrine_plus"
+				quadTextureSprite ="GFX_arrow_right_rf"
+				position = { x = 386 y = 2 }
+				clicksound = click_default
+			}
+			### SAVE
+			buttonType = {
+				name = "land_doctrine_save"
+				spriteType ="GFX_accept_decline_icon"
+				FRAME = 2
+				position = { x = 420 y = 0 }
+				clicksound = click_default
+			}
+			instantTextBoxType = {
+				name = "missing_land_xp"
+				position = { x = 170 y = 0 }
+				font = "hoi_18mbs"
+				text = "-[?missing_army_xp]"
+				maxWidth = 45
+				maxHeight =50
+				format = right
+				
+				pdx_tooltip = "MISSING_LAND_XP_TT"
+			}
+		}
+		#AIR Doctrines
+		containerWindowType = {
+			name = "air_doctrines_cat"
+			position = {x = 70 y = 600 }
+			
+			instantTextBoxType = {
+				name = "air doctrine Category"
+				position = { x= 0 y= 0 }
+				font = "hoi_18mbs"
+				text = "Air Doctrine Research"
+				maxWidth = 200
+				maxHeight = 23
+				format = left
+			}
+			#MINUS/PLUS
+			buttonType = {
+				name = "air_doctrine_minus"
+				quadTextureSprite ="GFX_arrow_left_rf"
+				position = { x = 240 y = 2 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "air_doctrine_button_speedstep1"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 260 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "air_doctrine_button_speedstep2"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 285 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "air_doctrine_button_speedstep3"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 310 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "air_doctrine_button_speedstep4"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 335 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "air_doctrine_button_speedstep5"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 360 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "air_doctrine_plus"
+				quadTextureSprite ="GFX_arrow_right_rf"
+				position = { x = 386 y = 2 }
+				clicksound = click_default
+			}	
+		}
+		#NAVAL Doctrines
+		containerWindowType = {
+			name = "naval_doctrines_cat"
+			position = {x = 70 y = 650 }
+			
+			instantTextboxType = {
+				name = "naval doctrine Category"
+				position = { x = 0 y = 0 }
+				font = "hoi_18mbs"
+				text = "Naval Doctrine Research"
+				maxWidth = 200
+				maxHeight = 23
+				format = left
+			}
+			#MINUS/PLUS
+			buttonType = {
+				name = "naval_doctrine_minus"
+				quadTextureSprite ="GFX_arrow_left_rf"
+				position = { x = 240 y = 2 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "naval_doctrine_button_speedstep1"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 260 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "naval_doctrine_button_speedstep2"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 285 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "naval_doctrine_button_speedstep3"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 310 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "naval_doctrine_button_speedstep4"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 335 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "naval_doctrine_button_speedstep5"
+				quadTextureSprite ="GFX_chalk_bar"
+				position = { x = 360 y = 7 }
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "naval_doctrine_plus"
+				quadTextureSprite ="GFX_arrow_right_rf"
+				position = { x = 386 y = 2 }
+				clicksound = click_default
+			}
+		}
+	}
+}
+### EOF ###

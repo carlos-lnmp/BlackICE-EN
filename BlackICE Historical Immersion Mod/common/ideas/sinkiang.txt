@@ -1,0 +1,529 @@
+ideas = {
+	country = {
+		SIK_education_idea = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			picture = generic_research_bonus
+
+			modifier = {
+				research_speed_factor = 0.03
+			}
+			removal_cost = -1
+		}
+		SIK_soviet_tribute = {
+			name = PRC_soviet_tribute
+			allowed = {
+				original_tag = SIK
+			}			
+			allowed_civil_war = { 
+				has_government = communism 
+			}
+			picture = ger_the_great_red_menace
+
+			removal_cost = -1
+			#Targeted modifier to send stuff to SOV
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.05
+				mic_to_target_factor = 0.05
+				extra_trade_to_target_factor = 0.25
+				trade_cost_for_target_factor = -0.1
+			}
+		}
+		SIK_divided_nation = {
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			cancel = { 
+				has_civil_war = yes 
+			}
+
+			picture =  raj_marginalized_muslim_community_angry
+
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.20
+				enemy_partisan_effect = 0.50 
+				local_resources_factor = -0.25
+				political_power_factor = -0.25
+				monarchism_drift = 0.01
+				fascism_drift = 0.01
+				neutrality_drift = 0.02
+			}			
+		}
+		SIK_resent = {
+			allowed = {
+				original_tag = SIK
+			}			
+
+			picture =  raj_marginalized_muslim_community
+
+			removal_cost = -1
+			modifier = {
+				monarchism_drift = 0.01
+				fascism_drift = 0.01
+				neutrality_drift = 0.01
+				communism_drift = 0.01
+			}			
+		}
+		SIK_volunteers = {
+			allowed = {
+				original_tag = SIK
+			}			
+			allowed_civil_war = { 
+				has_government = communism 
+			}			
+
+			picture =  chi_chinese_support
+
+			removal_cost = -1
+			modifier = {
+				send_volunteers_tension = -0.60
+				send_volunteer_divisions_required = -0.95
+				send_volunteer_size = 1
+			}			
+		}
+		SIK_electrical = {
+			allowed = {
+				original_tag = SIK
+			}			
+			allowed_civil_war = { 
+				has_government = communism 
+			}			
+
+			picture =  man_five_year_plan_industry
+
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.2
+				production_factory_start_efficiency_factor = 0.05
+				production_speed_buildings_factor = -0.05 
+			}
+		}
+		SIK_communists = {
+			allowed = {
+				original_tag = SIK
+			}			
+			allowed_civil_war = { 
+				has_government = communism 
+			}			
+
+			picture =  home_of_revolution
+
+			removal_cost = -1
+			modifier = {
+				communism_drift = 0.03 
+				stability_weekly = 0.001
+				drift_defence_factor = 0.45
+				autonomy_gain = 0.5
+				production_speed_buildings_factor = 0.15
+				training_time_army_factor = -0.1
+				
+			}
+		}
+		SIK_purged_idea = {
+			removal_cost = -1
+			allowed = {
+				original_tag = SIK
+			}			
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			modifier = {
+				land_reinforce_rate = -0.03
+				army_morale_factor = -0.03
+				army_speed_factor = -0.025
+				army_org_factor = -0.02
+				army_attack_factor = -0.05
+				army_defence_factor = -0.05
+				experience_gain_air_factor = -0.2
+				enemy_army_bonus_air_superiority_factor = 0.2
+				air_superiority_efficiency = -0.2
+				air_cas_efficiency = -0.2
+				air_strategic_bomber_bombing_factor = -0.2
+				air_escort_efficiency = -0.2
+				air_intercept_efficiency = -0.2
+				air_nav_efficiency = -0.2
+				air_ace_generation_chance_factor = -0.2
+				political_power_factor = -0.35
+				opposition_party_drift = 0.03
+				
+			}
+			
+			cancel = {
+				
+			}
+		}
+	}
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+	}
+	#Foreign Ministers
+	foreign_minister = {
+		SIK_indi_guy = {
+			picture = generic_political_advisor_asia_2
+			
+			allowed = {
+				original_tag = SIK
+			}
+			available = {
+				has_completed_focus = SIK_self_manage
+			}
+			
+			traits = {
+				communist
+				independent_guy 
+foreign_minister_trait
+			}
+		}	
+	}
+	#Propaganda/Security
+	interior_minister = {
+		SIK_ma_shaowu = {
+			picture = generic_army_asia_2
+			
+			allowed = {
+				original_tag = SIK
+			}
+			available = {
+				not = { has_country_flag = SIK_purged }
+			}
+			
+			traits = {
+				crime_fighter
+				good_soldier
+interior_minister_trait
+			}
+		}			
+	}
+	#Intelligence
+	intel_minister = {
+	}
+	#Economic Ministers
+	economic_minister = {
+		SIK_isa_yusuf_alptekin = {
+			picture = generic_political_advisor_asia_2
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { captain_of_industry  economic_minister_trait }
+		}
+		SIK_garegin_apresov = {
+			picture = generic_political_advisor_europe_2
+			
+			allowed = {
+				original_tag = SIK
+			}
+			available = {
+				not = { has_country_flag = SIK_purged }
+			}			
+			traits = { 
+				frugal
+				com_industrial_planner 
+economic_minister_trait
+			}
+		}		
+		SIK_habibullah_huseinov = {
+			picture = generic_political_advisor_asia_3
+				
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { armaments_organizer  economic_minister_trait }
+		}
+		SIK_zhang_xiliang = {
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { war_industrialist  economic_minister_trait }
+		}
+	}
+	#Political Advisors
+	political_advisor = {
+		SIK_mao_zemin = {
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = SIK
+			}
+			available = {
+				 has_completed_focus = SIK_PRC_ministers			
+			}
+			
+			traits = {
+				frugal
+				communist
+				righthand_man
+political_advisor_trait
+			}
+		}
+		SIK_mahmud_sijan = {
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = SIK
+			}
+			available = {
+				not = { has_country_flag = SIK_purged }
+			}
+			
+			traits = {
+				black_marketeer
+				trader
+political_advisor_trait
+			}
+		}		
+	}
+	#Domestic
+	domestic_minister = {
+	}
+	influence_minister = {
+		SIK_chen_tanqiu = {
+			picture = generic_political_advisor_asia_2
+			
+			allowed = {
+				original_tag = SIK
+			}
+			available = {
+				 has_completed_focus = SIK_PRC_ministers			
+			}
+			
+			traits = {
+				communist
+				central_planner
+influence_minister_trait
+			}
+		}
+	}
+	#Academy
+	military_academy = {
+	}
+	#Theorist
+	theorist = {
+		SIK_tan_ma = {
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { military_theorist  theorist_trait }
+		}
+		SIK_xie_peng = { 
+			picture = generic_air_asia_2
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			research_bonus = {
+				air_doctrine = 0.07
+			}
+			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+		SIK_gao_jiang = {
+			picture = generic_navy_asia_1
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			research_bonus = {
+				naval_doctrine = 0.07
+			}
+			
+			traits = { naval_theorist  theorist_trait }
+		}
+	}
+	#MILITARY
+	#Supreme Commanders
+	supreme_commander = {
+	}
+	#Army
+	army_chief = {
+		SIK_yol_bars = {
+			picture = generic_army_asia_2
+
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { army_chief_defensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		SIK_ma_wei = {
+			picture = generic_army_asia_4
+
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { army_chief_offensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	#Air
+	air_chief = {
+		SIK_piotr_orlov = {
+			picture = generic_air_asia_3
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { air_chief_night_operations_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		SIK_yang_tian = {
+			picture = generic_air_asia_1
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { air_chief_all_weather_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	#Navy
+#	navy_chief = {
+#		SIK_sa_zhenbing = {
+#			picture = generic_navy_asia_1
+#
+#			allowed = {
+#				original_tag = SIK
+#			}
+#			
+#			traits = { navy_chief_commerce_raiding_2  air_chief_trait }
+#			
+#			ai_will_do = {
+#				factor = 1
+#			}
+#		}
+#		SIK_deng_tian = {
+#			picture = generic_navy_asia_2
+#
+#			allowed = {
+#				original_tag = SIK
+#			}
+#			
+#			traits = { navy_chief_decisive_battle_2  air_chief_trait }
+#			
+#			ai_will_do = {
+#				factor = 1
+#			}
+#		}
+#	}
+	#High Command
+	high_command = {
+		SIK_cheng_fang = {
+			picture = generic_air_asia_2
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { air_air_superiority_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		SIK_mao_wu = {
+			picture = generic_army_asia_5
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { army_infantry_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		SIK_yu_wei = {
+			picture = generic_army_asia_3
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { army_regrouping_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		SIK_kwong_tian = {
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = SIK
+			}
+			
+			traits = { army_concealment_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		SIK_hoja_niyaz = {
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = SIK
+			}
+			available = {
+				not = { has_country_flag = SIK_purged }
+			}			
+			traits = { 
+				good_trainer
+				army_logistics_2 
+high_command_trait
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+	}
+}
+### EOF ###

@@ -1,0 +1,333 @@
+﻿capital = 802
+
+oob = "PRC_1936"
+
+set_war_support = 0.45
+
+set_research_slots = 2
+
+add_timed_idea = {
+	days = 300
+	idea = PRC_devastating_long_march
+}
+add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 600 producer = SOV }
+add_equipment_to_stockpile = { type = infantry_uniforms_0 amount = 200 producer = SOV }
+add_equipment_to_stockpile = { type = HQ_equipment_0 amount = 50 producer = SOV }
+add_equipment_to_stockpile = { type = artillery_equipment_0 amount = 100 producer = SOV }
+set_cosmetic_tag = GCDguerrilla
+set_country_flag = SOV_armor
+
+save_global_event_target_as = WTT_communist_china
+
+add_opinion_modifier = { target = CHI modifier = hostile_status }
+
+set_country_flag = constitutional_republic
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+	}
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	hmg = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	mountain_equipment = 1
+	tech_mountaineers = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	tech_engineers = 1
+	tech_support = 1
+	################## artillery ###############
+	gw_artillery = 1
+	interwar_artillery = 1
+	################## armor ##############
+	soviet_armor_tech = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	small_unit_raids = 1
+	night_patrols = 1
+	dispersed_infantry_attacks = 1
+	complex_trench_systems = 1
+	offensive_trenches = 1
+	defensive_trenches = 1
+	basic_MG_defences = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	
+	ww1_battlefield_support = 1
+	############### WW2 doctrines ############
+	guerilla_warfare = 1
+}
+
+add_ideas = {
+	#laws
+	#constitutional_republic
+	PRC_mao_zedong
+	war_economy
+	#cons_three
+	closed_economy
+	fdi_banned
+	tax_high
+	edu_low
+	foreign_warmonger
+	press_state
+	mob_limited
+	age_18
+	planned_economy
+	tariffs_high
+	labor_encouraged
+	train_low
+	officer_train_none	
+	security_major_restrictions
+	
+	CHI_nine_power_treaty
+	propaganda_recruits
+	PRC_defeatism_1
+	PRC_underestimation
+	PRC_guerrilla_warfare
+	PRC_lack_skilled_personnel
+	incompetent_industry_fake
+	incompetent_industry_fake_navy
+	cg_communist_resistence
+}
+
+set_politics = {
+	ruling_party = communism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+add_manpower = 100000
+set_popularities = {
+	conservatism = 0
+	fascism = 0
+	communism = 100
+}
+##### Country Leaders #####
+create_country_leader = {
+	name = "Mao Zedong"
+	desc = "POLITICS_MAO_ZEDONG_DESC"
+	picture = "GFX_portrait_prc_mao_zedong"
+	expire = "1976.9.9"
+	ideology = early_maoism
+	traits = { 
+		cornered_fox 
+		communist
+	}
+}
+## The 10 Marshals of the PRC
+##### FIeld Marshals #####
+create_field_marshal = {
+	name = "Zhu De"
+	picture = "Portrait_PRC_zhu_de.dds"
+	traits = { defensive_doctrine_FM offensive_doctrine_FM Awesome_General } 
+	skill = 4
+	id = 990101
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 3
+	logistics_skill = 4
+}
+create_field_marshal = {
+	name = "He Long"
+	picture = "Portrait_PRC_he_long.dds"
+	traits = { trait_mountaineer winter_specialist ranger Competent_General }
+	skill = 3
+	id = 990105
+	attack_skill = 1
+	defense_skill = 4
+	planning_skill = 2
+	logistics_skill = 4
+}
+create_field_marshal = {
+	name = "Xu XiangQian"
+	picture = "Portrait_PRC_xu_xiangqian.dds"
+	traits = { logistics_wizard_FM offensive_doctrine_FM }
+	skill = 2
+	id = 990108
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 2
+	logistics_skill = 2
+}
+##### Corps COmmanders #####
+create_corps_commander = {
+	name = "Peng DeHuai"
+	picture = "Portrait_PRC_peng_dehuai.dds"
+	traits = { commando logistics_wizard_CC ranger Competent_General }
+	skill = 4
+	id = 990102
+	attack_skill = 1
+	defense_skill = 4
+	planning_skill = 1
+	logistics_skill = 4
+}
+create_corps_commander = {
+	name = "Lin Biao"
+	picture = "Portrait_PRC_lin_biao.dds"
+	traits = { logistics_wizard_CC offensive_doctrine_CC trait_mountaineer Awesome_General }
+	skill = 4
+	id = 990103
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 4
+	logistics_skill = 3
+}
+create_corps_commander = {
+	name = "Liu BoCheng"
+	picture = "Portrait_PRC_liu_bocheng.dds"
+	traits = {  defensive_doctrine_CC logistics_wizard_CC trait_engineer Competent_General }
+	skill = 3
+	id = 990104
+	attack_skill = 1
+	defense_skill = 4
+	planning_skill = 3
+	logistics_skill = 3
+}
+create_corps_commander = {
+	name = "Chen Yi"
+	picture = "Portrait_PRC_chen_yi.dds"
+	traits = { panzer_leader trickster_CC logistics_wizard_CC Competent_General }
+	skill = 3
+	id = 990106
+	attack_skill = 3
+	defense_skill = 4
+	planning_skill = 2
+	logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Luo RongHuan"
+	picture = "Portrait_PRC_luo_ronghuan.dds"
+	traits = { trait_mountaineer  defensive_doctrine_CC Competent_General }
+	skill = 3
+	id = 990107
+	attack_skill = 1
+	defense_skill = 4
+	planning_skill = 2
+	logistics_skill = 4
+}
+create_corps_commander = {
+	name = "Nie RongZhen"
+	picture = "Portrait_PRC_nie_rongzhen.dds"
+	traits = { logistics_wizard_CC commando }
+	skill = 2
+	id = 990109
+	attack_skill = 1
+	defense_skill = 4
+	planning_skill = 1
+	logistics_skill = 4
+}
+create_corps_commander = {
+	name = "Ye JianYing"
+	picture = "Portrait_PRC_ye_jianying.dds"
+	traits = { offensive_doctrine_CC}
+	skill = 2
+	id = 990110
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 1
+}
+## Other generals
+create_corps_commander = {
+	name = "Zuo Quan"
+	picture = "Portrait_PRC_zuo_quan.dds"
+	traits = { winter_specialist defensive_doctrine_CC logistics_wizard_CC }
+	skill = 2
+	id = 990111
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Ye Ting"
+	picture = "Portrait_PRC_ye_ting.dds"
+	traits = { logistics_wizard_CC trait_engineer fortress_buster Competent_General }
+	skill = 3
+	id = 990112
+	attack_skill = 2
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 4
+}
+create_corps_commander = {
+	name = "Xiang Yin"
+	picture = "Portrait_PRC_xiang_yin.dds"
+	traits = { urban_assault_specialist }
+	skill = 2
+	id = 990113
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 4
+}
+create_corps_commander = {
+	name = "Peng XueFen"
+	picture = "Portrait_PRC_peng_xuefen.dds"
+	traits = { commando }
+	skill = 2
+	id = 990114
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 3
+	logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Luo BinHui"
+	picture = "Portrait_PRC_luo_binhui.dds"
+	traits = { trait_mountaineer trickster_CC commando Competent_General }
+	skill = 3
+	id = 990115
+	attack_skill = 2
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 4
+}
+create_corps_commander = {
+	name = "Yuan Guoping"
+	picture = "Portrait_PRC_yuan_guoping.dds"
+	traits = { logistics_wizard_CC }
+	skill = 1
+	id = 990116
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 2
+}
+### EOF ###

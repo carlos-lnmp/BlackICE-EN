@@ -1,0 +1,394 @@
+﻿###########################
+# Morocco Events
+# French and Spainish
+###########################
+
+add_namespace = morocco
+
+# 1 - 6 High Commissioners for Spainish Morocco
+## Avelló to Ormella
+country_event = {
+	id = morocco.1
+	title = morocco.1.t
+	desc = morocco.1.d
+	picture = GFX_report_event_journalists_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+			check_variable = { global.days_passed > 62 } # 1936-03-03
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}	
+	option = { 
+		name = morocco.a
+		kill_country_leader = yes
+		ai_chance = {
+			factor = 5
+		}
+	}
+	option = { # Refuse
+		name = morocco.b
+		ai_chance = {
+			factor = 0
+		}
+		add_stability = -0.30
+		add_political_power = -200
+		OVERLORD = {
+			add_opinion_modifier = {
+				target = MOR
+				modifier = protest_action_strong
+			}
+		}
+		add_to_variable = { mor_refused_leader = 1 }
+	}
+}
+## Ormella to Godino
+country_event = {
+	id = morocco.2
+	title = morocco.2.t
+	desc = morocco.2.d
+	picture = GFX_report_event_journalists_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+			check_variable = { global.days_passed > 133 } # 1936-05-13
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}	
+	option = { 
+		name = morocco.a
+		kill_country_leader = yes
+		if = {
+			limit = {
+				check_variable = { mor_refused_leader = 1 }
+			}
+			kill_country_leader = yes
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+	option = { # Refuse
+		name = morocco.b
+		ai_chance = {	
+			factor = 0
+		}
+		add_stability = -0.30
+		add_political_power = -200
+		OVERLORD = {
+			add_opinion_modifier = {
+				target = MOR
+				modifier = protest_action_strong
+			}
+		}
+	}
+}
+## Buruaga to Yoldi
+country_event = {
+	id = morocco.3
+	title = morocco.3.t
+	desc = morocco.3.d
+	picture = GFX_report_event_journalists_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+			check_variable = { global.days_passed > 245 } # 1936-09-02
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}	
+	option = { 
+		name = morocco.a
+		kill_country_leader = yes
+		set_variable = { mor_refused_leader = 0 }
+		ai_chance = {
+			factor = 5
+		}
+	}
+	option = { # Refuse
+		name = morocco.b
+		ai_chance = {	
+			factor = 0
+		}
+		add_stability = -0.30
+		add_political_power = -200
+		OVERLORD = {
+			add_opinion_modifier = {
+				target = MOR
+				modifier = protest_action_strong
+			}
+		}
+		set_variable = { mor_refused_leader = 1 }
+	}
+}
+## Yoldi to Atienza
+country_event = {
+	id = morocco.4
+	title = morocco.4.t
+	desc = morocco.4.d
+	picture = GFX_report_event_journalists_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+			check_variable = { global.days_passed > 440 } # 1937-03-16
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}	
+	option = { 
+		name = morocco.a
+		kill_country_leader = yes
+		if = {
+			limit = {
+				check_variable = { mor_refused_leader = 1 }
+			}
+			kill_country_leader = yes
+			set_variable = { mor_refused_leader = 0 }
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+	option = { # Refuse
+		name = morocco.b
+		ai_chance = {	
+			factor = 0
+		}
+		add_stability = -0.30
+		add_political_power = -200
+		OVERLORD = {
+			add_opinion_modifier = {
+				target = MOR
+				modifier = protest_action_strong
+			}
+		}
+		add_to_variable = { mor_refused_leader = 1 }
+	}
+}
+## Atienza to Cabanillas
+country_event = {
+	id = morocco.5
+	title = morocco.5.t
+	desc = morocco.5.d
+	picture = GFX_report_event_journalists_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+			check_variable = { global.days_passed > 1720 } # 1940-09-16
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}	
+	option = { 
+		name = morocco.a
+		kill_country_leader = yes
+		if = {
+			limit = {
+				check_variable = { mor_refused_leader = 1 }
+			}
+			kill_country_leader = yes
+			set_variable = { mor_refused_leader = 0 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { mor_refused_leader = 2 }
+			}
+			kill_country_leader = yes
+			kill_country_leader = yes
+			set_variable = { mor_refused_leader = 0 }				
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+	option = { # Refuse
+		name = morocco.b
+		ai_chance = {	
+			factor = 0
+		}
+		add_stability = -0.30
+		add_political_power = -200
+		OVERLORD = {
+			add_opinion_modifier = {
+				target = MOR
+				modifier = protest_action_strong
+			}
+		}
+		add_to_variable = { mor_refused_leader = 1 }
+	}
+}
+## Cabanillas to Yoldi
+country_event = {
+	id = morocco.6
+	title = morocco.6.t
+	desc = morocco.6.d
+	picture = GFX_report_event_journalists_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+			check_variable = { global.days_passed > 1958 } # 1941-05-12
+	}
+
+	mean_time_to_happen = {
+		days = 0
+	}	
+	option = { 
+		name = morocco.a
+		kill_country_leader = yes
+		if = {
+			limit = {
+				check_variable = { mor_refused_leader = 1 }
+			}
+			kill_country_leader = yes
+			set_variable = { mor_refused_leader = 0 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { mor_refused_leader = 2 }
+			}
+			kill_country_leader = yes
+			kill_country_leader = yes
+			set_variable = { mor_refused_leader = 0 }				
+		}
+		else_if = {
+			limit = {
+				check_variable = { mor_refused_leader = 3 }
+			}
+			kill_country_leader = yes
+			kill_country_leader = yes
+			kill_country_leader = yes
+			set_variable = { mor_refused_leader = 0 }				
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+	option = { # Refuse
+		name = morocco.b
+		ai_chance = {	
+			factor = 0
+		}
+		add_stability = -0.30
+		add_political_power = -200
+		OVERLORD = {
+			add_opinion_modifier = {
+				target = MOR
+				modifier = protest_action_strong
+			}
+		}
+		add_to_variable = { mor_refused_leader = 1 }
+	}
+}
+### 1st Rose Festival
+country_event = {
+	id = morocco.7
+	title = morocco.7.t
+	desc = morocco.7.d
+	picture = GFX_news_event_paris_exhibition_1937
+	
+	fire_only_once = yes
+	
+	trigger = {
+		OR = {
+			tag = MOR
+			tag = MAR
+		}
+			check_variable = { global.days_passed > 853 } # 1938-05-03
+	}
+
+	mean_time_to_happen = {
+		days = 10
+	}	
+	option = { 
+		name = morocco.7.a
+		trigger = { TAG = MAR }
+		add_stability = 0.02
+		add_political_power = 20
+	}
+	option = { 
+		name = morocco.7.a
+		trigger = { TAG = MOR }
+		add_stability = 0.01
+		add_opinion_modifier = {
+			target = FRA
+			modifier = temp_boost
+		}
+	}
+}
+#Franco didn't rebel so Morocco aids the republicans
+country_event = {
+	id = morocco.8
+	title = morocco.8.t
+	desc = morocco.8.d	
+	picture = GFX_report_event_fascists_posing
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+    trigger = {
+        tag = MOR
+	}
+	option = { 
+		name = morocco.8.a 
+		custom_effect_tooltip = morocco.8.tt
+		load_oob = "SPA_Moroccan_Army_Corps"
+		add_equipment_to_stockpile = {
+			type = convoy
+			amount = 20
+			producer = MOR #aka spanish morocco, french morocco would be MAR
+		}
+	}
+}
+## French Morocco lends a hand
+country_event = {
+	id = morocco.9
+	title = morocco.9.t
+	desc = morocco.9.d	
+	picture = GFX_report_event_fascists_posing
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+    trigger = {
+        tag = MAR
+	}
+	option = { 
+		name = morocco.9.a
+		ai_chance = { factor = 75 }
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 100
+			target = MOR
+		}
+		send_equipment = {
+			equipment = infantry_uniforms
+			amount = 100
+			target = MOR
+		}
+		add_opinion_modifier = {
+			target = MOR
+			modifier = medium_increase
+		}
+	}
+		option = { 
+			name = morocco.9.b
+			ai_chance = { factor = 25 }
+		}
+}

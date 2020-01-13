@@ -1,0 +1,190 @@
+MAN_default_plan = {
+	name = "Manchukuo default plan"
+	desc = "Behavior for Manchukuo until they decide on one of the branches"
+
+	enable = {
+		original_tag = MAN
+		
+	}
+	abort = {
+
+	}
+
+	ai_national_focuses = {
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+		infantry_weapons = 15.0
+		industry = 10.0
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+MAN_alternate_plan_assertive = {
+	name = "Manchukuo plan for Assertiveness"
+	desc = "Behavior for Manchukuo when they decide to go assertive"
+
+	enable = {
+		original_tag = MAN
+		
+	}
+	abort = {
+		always = no
+	}
+
+	ai_national_focuses = {
+		
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+		infantry_weapons = 15.0
+		artillery = 15.0
+		armor = 0.0
+		air_equipment = 0.0
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+MAN_alternate_plan_independent = {
+	name = "Manchukuo plan for Independence"
+	desc = "Behavior for Manchukuo when they have achieved independence after going assertive"
+
+	enable = {
+		original_tag = MAN
+		is_subject = no # actually won
+		has_country_flag = maybe_later
+	}
+	abort = {
+		always = no
+	}
+
+	ai_national_focuses = {
+		
+	}
+
+	focus_factors = {
+	}
+
+	research = {
+		infantry_weapons = 15.0
+		artillery = 15.0
+	}
+
+	ideas = {
+
+	}
+	ai_strategy = {
+		type = antagonize 
+		id = "JAP"			
+		value = 500
+	}
+	ai_strategy = {
+		type = conquer 
+		id = "CHI"			
+		value = 200
+	}
+	ai_strategy = {
+		type = conquer 
+		id = "PRC"			
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+MAN_alternate_plan_obedient = {
+	name = "Manchukuo plan for Independence"
+	desc = "Behavior for Manchukuo when they have decided to be obedient"
+
+	enable = {
+		original_tag = MAN
+		is_subject_of = JAP
+	}
+	abort = {
+		always = no
+	}
+
+	ai_national_focuses = {
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+		infantry_weapons = 15.0
+		artillery = 15.0
+		air_equipment = 5.0
+	}
+
+	ideas = {
+
+	}
+	ai_strategy = {
+		type = befriend 
+		id = "JAP"			
+		value = 500
+	}
+	ai_strategy = {
+		type = conquer 
+		id = "CHI"			
+		value = 200
+	}
+	ai_strategy = {
+		type = conquer 
+		id = "PRC"			
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

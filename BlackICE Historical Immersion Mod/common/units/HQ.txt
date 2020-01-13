@@ -1,0 +1,105 @@
+sub_units = {
+	
+	#HQ = {
+	#	sprite = infantry
+	#	map_icon_category = infantry
+	#	
+	#	priority = 2512
+	#	active = no
+	#
+	#	type = {
+	#		infantry
+	#	}
+	#	
+	#	group = infantry
+	#	
+	#	categories = {
+	#		category_front_line
+	#		category_light_infantry
+	#		category_all_infantry
+	#		category_army
+	#	}
+	#	
+	#	combat_width = 2
+	#	
+	#	need = {
+	#		garrison_equipment = 30
+	#		HQ_equipment = 500
+	#		infantry_uniforms = 15
+	#		motorized_lia_equipment = 15
+	#	}
+	#	
+	#	#Size Definitions
+	#	max_strength = 10
+	#	max_organisation = 40
+	#	default_morale = 0.3
+	#	manpower = 1000
+	#
+	#	#Misc Abilities
+	#	training_time = 150
+	#	weight = 0.25
+	#
+	#	breakthrough = -0.6
+	#	soft_attack = -0.6
+	#	hard_attack = -0.6
+	#
+	#	#Defensive Abilities
+	#	defense = 0.1
+	#	air_attack = 0.5	
+	#	supply_consumption = 0.1
+	#
+	#}
+	DIV_HQ = {
+		sprite = infantry
+		map_icon_category = infantry
+		
+		priority = 100
+		active = no
+
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_light_infantry
+			category_all_infantry
+			category_army
+		}
+		
+		combat_width = 0.0
+		##BASE stats
+		#Size Definitions
+		max_strength = 2
+		max_organisation = 20
+		default_morale = 0.1
+		supply_consumption = 0.05
+		weight = 0.25
+		#fuel_capacity = 5.0
+		##COMBAT stats
+		soft_attack = -0.5
+		defense = -0.5
+		initiative = 0.03
+		
+		#Misc Abilities
+		training_time = 125
+		manpower = 200 	#500
+		
+		own_equipment_fuel_consumption_mult = 0.1 # no fuel use
+		
+		can_be_parachuted = yes
+		
+		transport = motorized_lia_equipment
+	
+		need = {
+			HQ_equipment = 75 	#100
+			motorized_lia_equipment = 5
+			infantry_uniforms = 12
+		}
+		
+	}
+}
+#EOF#

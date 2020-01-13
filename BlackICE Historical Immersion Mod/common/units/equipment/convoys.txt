@@ -1,0 +1,65 @@
+equipments = {
+
+	convoy = {
+		year = 1910
+
+		is_archetype = yes
+		type = convoy
+		picture = archetype_convoy
+		group_by = archetype
+		sprite = convoy
+		
+		interface_category = interface_category_other_ships
+		
+		#upgrades = {
+		#	ship_armor_upgrade
+		#	ship_engine_upgrade
+		#	ship_reliability_upgrade
+		#	ship_anti_air_upgrade
+		#	#ship_range_upgrade #causes an error for some reason
+		#	ship_quality_upgrade
+		#}
+		
+		# Unused by convoys
+		surface_detection = 10
+		sub_detection = 1
+
+		fuel_consumption = 0
+		
+		# Combat abilities
+		lg_armor_piercing = 1
+		armor_value = 0
+		reliability = 0.7
+		surface_visibility = 10
+
+		torpedo_attack = 0
+		lg_attack = 0.25
+		naval_speed = 12
+		max_strength = 40
+		max_organisation = 30
+		anti_air_attack = 0.05
+
+        #Space taken in convoy
+        lend_lease_cost = 0
+		
+		# (Describes combat behaviour - hidden stat)
+		offensive_weapons = no
+		
+		build_cost_ic = 100
+		resources = {
+			steel = 2
+		}
+	}
+
+	convoy_1 = {
+		year = 1910
+
+		archetype = convoy
+		active = yes
+		type = { 
+			convoy #test out if we can seperate convoys with new 1.6 type naval_transport
+		}
+		
+		priority = 10
+	}
+}

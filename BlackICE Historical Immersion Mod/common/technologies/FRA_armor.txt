@@ -1,0 +1,1459 @@
+technologies = {
+	### Vertical position Y
+	@1917 = 0
+	@1918 = 2
+	@1930 = 4
+	@1932 = 6
+	@1933 = 8
+	@1934 = 10
+	@1935 = 12
+	@1936 = 14
+	@1937 = 16
+	@1938 = 18
+	@1939 = 20
+	@1940 = 22
+	@1941 = 24
+	@1942 = 26
+	@1943 = 28
+	@1944 = 30
+	@1945 = 32
+	@1948 = 34
+	@1949 = 36
+	### Horizontal position X
+	@INF_TNK = 0
+	@RCV_TNK = 2
+	@CAV_TNK_L = 4
+	@COM_TNK = 6
+	@CAV_TNK = 8
+	@FRA_TECH = 10
+	@L_MBT = 8
+	@MBT = 10
+	@MED_TNK = 12
+	@HVY_TNK = 16
+	@SH_TNK = 20
+	
+	
+	
+	french_tech = {
+		allow = { can_research_armor_folder = yes } 
+
+		path = {
+			leads_to_tech = tech_fra_infantry_tank_equipment_1
+			research_cost_coeff = 1
+		}
+		
+		allow_branch = {
+			original_tag = FRA
+		}
+	
+		research_cost = 2
+		start_year = 1917
+		folder = {
+			name = frencharmor_folder
+			position = { x = @FRA_TECH y = @1917 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+################### French infantry tanks ##
+	# Renault FT 									# WW1 tank
+	tech_fra_infantry_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_infantry_tank_equipment_1
+		}
+		enable_subunits = {
+			french_infantry_tank
+		}
+		
+		path = {
+			leads_to_tech = tech_fra_infantry_tank_equipment_2
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_fra_light_cavalry_tank_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_fra_cavalry_tank_equipment_1
+			research_cost_coeff = 1 
+		}			
+		path = {
+			leads_to_tech = tech_fra_medium_tank_equipment_1
+			research_cost_coeff = 1 
+		}
+		path = {
+			leads_to_tech = tech_fra_heavy_tank_equipment_1
+			research_cost_coeff = 1 
+		}	
+		path = {
+			leads_to_tech = tech_fra_superheavy_tank_equipment_1
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1917
+		folder = {
+			name = frencharmor_folder
+			position = { x = @FRA_TECH y = @1917 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	### Renault R35
+	tech_fra_infantry_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_infantry_tank_equipment_2
+		}
+		path = {
+			leads_to_tech = tech_fra_infantry_tank_equipment_3
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = frencharmor_folder
+			position = { x = @INF_TNK y = @1935 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_FRA_armor_tech_focus = yes 
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}		
+
+	# Renault R40 									# 
+	tech_fra_infantry_tank_equipment_3 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_infantry_tank_equipment_3
+		}
+		path = {
+			leads_to_tech = tech_fra_infantry_tank_equipment_4
+			research_cost_coeff = 1 
+		}		
+
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = frencharmor_folder
+			position = { x = @INF_TNK y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_FRA_armor_tech_focus = yes 
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Renault R43 									# not real, just to fill the blanks after 1940
+	tech_fra_infantry_tank_equipment_4 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_infantry_tank_equipment_4
+		}
+
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = frencharmor_folder
+			position = { x = @INF_TNK y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000 
+				EAI_FRA_armor_tech_focus = yes 
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+######### Light cavalry tanks, technically not a real class, but I can't think of anything better
+	# AMR 33 									# more a tankette
+	tech_fra_light_cavalry_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_light_cavalry_tank_equipment_1
+		}
+		enable_subunits = {
+			french_light_cavalry_tank
+		}
+		path = {
+			leads_to_tech = tech_fra_light_cavalry_tank_equipment_2
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK_L y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# AMR 35 									# 
+	tech_fra_light_cavalry_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_light_cavalry_tank_equipment_2
+		}
+		path = {
+			leads_to_tech = tech_fra_light_cavalry_tank_equipment_3
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK_L y = @1935 }
+		}
+		
+		sub_technologies = {
+			subtech_fra_tank_destroyer_equipment_1
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# ZT 3 										# tank destroyer
+	subtech_fra_tank_destroyer_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+
+		enable_equipments = {
+			fra_tank_destroyer_equipment_1
+		}
+		enable_subunits = {
+			fra_td
+		}
+		
+		research_cost = 0.5
+		start_year = 1935
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Hotchkiss H35 									# 
+	tech_fra_light_cavalry_tank_equipment_3 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_light_cavalry_tank_equipment_3
+		}
+		path = {
+			leads_to_tech = tech_fra_light_cavalry_tank_equipment_4
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK_L y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Hotchkiss H39 									# 
+	tech_fra_light_cavalry_tank_equipment_4 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_light_cavalry_tank_equipment_4
+		}
+		path = {
+			leads_to_tech = tech_fra_light_cavalry_tank_equipment_5
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK_L y = @1939 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Hotchkiss H41 									# not real, filling the blanks
+	tech_fra_light_cavalry_tank_equipment_5 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_light_cavalry_tank_equipment_5
+		}
+
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK_L y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Stuart M3A3
+	tech_fra_stuart_light_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes is_in_faction_with = USA USA = { has_tech = tech_american_light_tank_equipment_4 } } 
+		
+		enable_equipments = {
+			fra_stuart_light_tank_equipment_1
+		}
+		path = {
+			leads_to_tech = tech_fra_stuart_light_tank_equipment_2
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK_L y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+			if = {
+				limit = {
+					NOT = {
+						USA = { has_tech = tech_american_light_tank_equipment_4 }
+						is_in_faction_with = USA
+					}
+				}
+				custom_effect_tooltip = tech_fra_usa_tank_research_limit_tt
+			}
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Stuart M5A1
+	tech_fra_stuart_light_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes is_in_faction_with = USA USA = { has_tech = tech_american_light_tank_equipment_5 } } 
+		
+		enable_equipments = {
+			fra_stuart_light_tank_equipment_2
+		}
+
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK_L y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+			if = {
+				limit = {
+					NOT = {
+						USA = { has_tech = tech_american_light_tank_equipment_5 }
+						is_in_faction_with = USA
+					}
+				}
+				custom_effect_tooltip = tech_fra_usa_tank_research_limit_tt
+			}
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# French M24 Chaffee
+	tech_fra_m_24_light_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes is_in_faction_with = USA USA = { has_tech = tech_american_light_tank_equipment_6 } } 
+		
+		enable_equipments = {
+			fra_m_24_light_tank_equipment_1
+		}
+
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK_L y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+			if = {
+				limit = {
+					NOT = {
+						USA = { has_tech = tech_american_light_tank_equipment_6 }
+						is_in_faction_with = USA
+					}
+				}
+				custom_effect_tooltip = tech_fra_usa_tank_research_limit_tt
+			}
+		}		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+######### Cavalry tanks	#########
+	# AMC 34 									# hardly used
+	tech_fra_cavalry_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_cavalry_tank_equipment_1
+		}
+		enable_subunits = {
+			french_cavalry_tank
+		}
+		path = {
+			leads_to_tech = tech_fra_cavalry_tank_equipment_2
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1934
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# AMC 35									# 
+	tech_fra_cavalry_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_cavalry_tank_equipment_2
+		}
+		path = {
+			leads_to_tech = tech_fra_cavalry_tank_equipment_3
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK y = @1935 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}			
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# Somua S35									# 
+	tech_fra_cavalry_tank_equipment_3 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_cavalry_tank_equipment_3
+		}
+		path = {
+			leads_to_tech = tech_fra_cavalry_tank_equipment_4
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK y = @1936 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}			
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# Somua S40							# developed in 1939, but production wouldn't have starteed until summer 1940, so I'll put it as 1940 instead to prevent it from appearing to early
+	tech_fra_cavalry_tank_equipment_4 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_cavalry_tank_equipment_4
+		}
+		path = {
+			leads_to_tech = tech_fra_cavalry_tank_equipment_5
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK y = @1940 }
+		}
+		
+		sub_technologies = {
+			subtech_fra_tank_destroyer_equipment_2
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}			
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	#subtech SAu 40 								# first planned as SpArt/AG, then changed to TD and only produced as such
+	subtech_fra_tank_destroyer_equipment_2 = {
+		allow = { can_research_armor_folder = yes } 
+
+		enable_equipments = {
+			fra_tank_destroyer_equipment_2
+		}
+
+		research_cost = 1
+		start_year = 1940
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}			
+		categories = {
+			armor
+		}
+	}
+	# Somua SARL 42									# secret project
+	tech_fra_cavalry_tank_equipment_5 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_cavalry_tank_equipment_5
+		}
+		path = {
+			leads_to_tech = tech_fra_main_tank_equipment_1
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK y = @1942 }
+		}
+		
+		sub_technologies = {
+			subtech_fra_spart_equipment_1
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}			
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	#subtech SpArt 42 								# SpArt, not real, just to give them such a vehicle
+	subtech_fra_spart_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+
+		enable_equipments = {
+			fra_spart_equipment_1
+		}
+		enable_subunits = {
+			fra_spart
+		}
+		research_cost = 1
+		start_year = 1942
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}			
+		categories = {
+			armor
+		}
+	}
+	
+	# Crusader
+	tech_fra_crusader_cavalry_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes is_in_faction_with = ENG ENG = { has_tech = tech_cruiser_tank_equipment_3 } } 
+		
+		enable_equipments = {
+			fra_crusader_cavalry_tank_equipment_1
+		}
+
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = frencharmor_folder
+			position = { x = @CAV_TNK y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+			if = {
+				limit = {
+					NOT = {
+						ENG = { has_tech = tech_cruiser_tank_equipment_3 }
+						is_in_faction_with = ENG
+					}
+				}
+				custom_effect_tooltip = tech_fra_eng_tank_research_limit_tt
+			}
+		}			
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	
+################## medium / heavy tank mix
+	# ARL 44									# secret project
+	tech_fra_main_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_main_tank_equipment_1
+		}
+		enable_subunits = {
+			french_main_tank
+		}
+		path = {
+			leads_to_tech = tech_fra_light_main_tank_equipment_1
+			research_cost_coeff = 1 
+		}		
+		path = {
+			leads_to_tech = tech_fra_main_tank_equipment_2
+			research_cost_coeff = 1 
+		}	
+
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = frencharmor_folder
+			position = { x = @MBT y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}			
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# AMX-50									# post war tank, leaving it out for now
+	tech_fra_main_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_main_tank_equipment_2
+		}
+
+		research_cost = 2
+		start_year = 1949
+		folder = {
+			name = frencharmor_folder
+			position = { x = @MBT y = @1949 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}			
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# AMX-13 1948								# post war tank, leaving it out for now
+	tech_fra_light_main_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_light_main_tank_equipment_1
+		}
+		enable_subunits = {
+			french_light_main_tank
+		}
+
+		research_cost = 2
+		start_year = 1948
+		folder = {
+			name = frencharmor_folder
+			position = { x = @L_MBT y = @1948 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_light_armor_tt
+		}			
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+############## medium tanks, alternate project to the heavy B1
+	# Renault D1									# 
+	tech_fra_medium_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_medium_tank_equipment_1
+		}
+		enable_subunits = {
+			french_medium_tank
+		}
+		path = {
+			leads_to_tech = tech_fra_medium_tank_equipment_2
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1930
+		folder = {
+			name = frencharmor_folder
+			position = { x = @MED_TNK y = @1930 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# Renault D2									# 
+	tech_fra_medium_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_medium_tank_equipment_2
+		}
+		path = {
+			leads_to_tech = tech_fra_medium_tank_equipment_3
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1934
+		folder = {
+			name = frencharmor_folder
+			position = { x = @MED_TNK y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# Renault D2 bis									# 
+	tech_fra_medium_tank_equipment_3 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_medium_tank_equipment_3
+		}
+		path = {
+			leads_to_tech = tech_fra_medium_tank_equipment_4
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1938
+		folder = {
+			name = frencharmor_folder
+			position = { x = @MED_TNK y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# AMX 38									# 
+	tech_fra_medium_tank_equipment_4 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_medium_tank_equipment_4
+		}
+		path = {
+			leads_to_tech = tech_fra_medium_tank_equipment_5
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = frencharmor_folder
+			position = { x = @MED_TNK y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# G1R								# 
+	tech_fra_medium_tank_equipment_5 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_medium_tank_equipment_5
+		}
+		path = {
+			leads_to_tech = tech_fra_main_tank_equipment_1
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = frencharmor_folder
+			position = { x = @MED_TNK y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+		}		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# Sherman M4A1								# 
+	tech_fra_sherman_m4_medium_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes is_in_faction_with = USA USA = { has_tech = tech_m4a1_equipment } } 
+		
+		enable_equipments = {
+			fra_sherman_m4_medium_tank_equipment_1
+		}
+		path = {
+			leads_to_tech = tech_fra_sherman_m4_medium_tank_equipment_2
+			research_cost_coeff = 1 
+		}
+		sub_technologies = {
+			subtech_fra_m_10_tank_destroyer_equipment_1
+			subtech_fra_m_7_spart_equipment_1
+		}
+
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = frencharmor_folder
+			position = { x = @MED_TNK y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+			if = {
+				limit = {
+					NOT = {
+						USA = { has_tech = tech_m4a1_equipment }
+						is_in_faction_with = USA
+					}
+				}
+				custom_effect_tooltip = tech_fra_usa_tank_research_limit_tt
+			}
+		}		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	#subtech M10 Wolverine								#
+	subtech_fra_m_10_tank_destroyer_equipment_1 = {
+		allow = { can_research_armor_folder = yes is_in_faction_with = USA USA = { has_tech = subtech_american_medium_tank_destroyer_equipment_2 } } 
+
+		enable_equipments = {
+			fra_m_10_tank_destroyer_equipment_1
+		}
+
+		research_cost = 1
+		start_year = 1943
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			if = {
+				limit = {
+					NOT = {
+						USA = { has_tech = subtech_american_medium_tank_destroyer_equipment_2 }
+						is_in_faction_with = USA
+					}
+				}
+				custom_effect_tooltip = tech_fra_usa_tank_research_limit_tt
+			}
+		}			
+		categories = {
+			armor
+		}
+	}
+	#subtech M7 Priest								#
+	subtech_fra_m_7_spart_equipment_1 = {
+		allow = { can_research_armor_folder = yes is_in_faction_with = USA USA = { has_tech = subtech_american_medium_tank_artillery_equipment_2 } } 
+
+		enable_equipments = {
+			fra_m_7_spart_equipment_1
+		}
+
+		research_cost = 1
+		start_year = 1943
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			if = {
+				limit = {
+					NOT = {
+						USA = { has_tech = subtech_american_medium_tank_artillery_equipment_2 }
+						is_in_faction_with = USA
+					}
+				}
+				custom_effect_tooltip = tech_fra_usa_tank_research_limit_tt
+			}
+		}			
+		categories = {
+			armor
+		}
+	}
+	# Sherman M4A3 76 W								# 
+	tech_fra_sherman_m4_medium_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes is_in_faction_with = USA USA = { has_tech = tech_m4a3_equipment has_tech = tech_76mm has_tech = tech_wet_stowage } } 
+		
+		enable_equipments = {
+			fra_sherman_m4_medium_tank_equipment_2
+		}
+		sub_technologies = {
+			subtech_fra_m_4_105_spart_equipment_1
+		}
+
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = frencharmor_folder
+			position = { x = @MED_TNK y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_medium_armor_tt
+			if = {
+				limit = {
+					NOT = {
+						USA = { has_tech = subtech_american_medium_tank_artillery_equipment_2 has_tech = tech_76mm has_tech = tech_wet_stowage }
+						is_in_faction_with = USA
+					}
+				}
+				custom_effect_tooltip = tech_fra_usa_tank_research_limit_tt
+			}
+		}		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	#subtech M4A3 105mm							#
+	subtech_fra_m_4_105_spart_equipment_1 = {
+		allow = { can_research_armor_folder = yes is_in_faction_with = USA USA = { has_tech = tech_m4a3_equipment has_tech = tech_105mm } } 
+
+		enable_equipments = {
+			fra_m_4_105_spart_equipment_1
+		}
+
+		research_cost = 1
+		start_year = 1944
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			if = {
+				limit = {
+					NOT = {
+						USA = { has_tech = subtech_american_medium_tank_artillery_equipment_2 has_tech = tech_105mm }
+						is_in_faction_with = USA
+					}
+				}
+				custom_effect_tooltip = tech_fra_usa_tank_research_limit_tt
+			}
+		}			
+		categories = {
+			armor
+		}
+	}
+################# heavy tanks
+	# B1									# 
+	tech_fra_heavy_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_heavy_tank_equipment_1
+		}
+		enable_subunits = {
+			french_heavy_tank
+		}
+		path = {
+			leads_to_tech = tech_fra_heavy_tank_equipment_2
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1934
+		folder = {
+			name = frencharmor_folder
+			position = { x = @HVY_TNK y = @1934 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_heavy_armor_tt
+		}		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	# B1 bis								# 
+	tech_fra_heavy_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_heavy_tank_equipment_2
+		}
+		path = {
+			leads_to_tech = tech_fra_heavy_tank_equipment_3
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1937
+		folder = {
+			name = frencharmor_folder
+			position = { x = @HVY_TNK y = @1937 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_heavy_armor_tt
+		}		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	# B1 ter								# 
+	tech_fra_heavy_tank_equipment_3 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_heavy_tank_equipment_3
+		}
+		path = {
+			leads_to_tech = tech_fra_medium_tank_equipment_5
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = frencharmor_folder
+			position = { x = @HVY_TNK y = @1940 }
+		}
+		
+		sub_technologies = {
+			subtech_fra_ag_equipment_1
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_heavy_armor_tt
+		}		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	#subtech ARL V 39 								
+	subtech_fra_ag_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+
+		enable_equipments = {
+			fra_ag_equipment_1
+		}
+		enable_subunits = {
+			fra_ag
+		}	
+
+		research_cost = 1
+		start_year = 1940
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+		}		
+		categories = {
+			armor
+		}
+	}
+################# super-heavy tanks
+	# Char 2C									# 
+	tech_fra_superheavy_tank_equipment_1 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_superheavy_tank_equipment_1
+		}
+		enable_subunits = {
+			french_superheavy_tank
+		}
+		path = {
+			leads_to_tech = tech_fra_superheavy_tank_equipment_2
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 2
+		start_year = 1917
+		folder = {
+			name = frencharmor_folder
+			position = { x = @SH_TNK y = @1917 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_heavy_armor_tt
+		}		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	# Char 2C bis									# 
+	tech_fra_superheavy_tank_equipment_2 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_superheavy_tank_equipment_2
+		}
+		enable_subunits = {
+			french_superheavy_tank
+		}
+		path = {
+			leads_to_tech = tech_fra_superheavy_tank_equipment_3
+			research_cost_coeff = 1 
+		}
+
+		research_cost = 3
+		start_year = 1930
+		folder = {
+			name = frencharmor_folder
+			position = { x = @SH_TNK y = @1930 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_heavy_armor_tt
+		}		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	# FCM F1									# 
+	tech_fra_superheavy_tank_equipment_3 = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			fra_superheavy_tank_equipment_3
+		}
+		enable_subunits = {
+			french_superheavy_tank
+		}
+
+		research_cost = 3
+		start_year = 1940
+		folder = {
+			name = frencharmor_folder
+			position = { x = @SH_TNK y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = armor_tt
+			custom_effect_tooltip = cat_heavy_armor_tt
+		}		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+}
+### EOF ###

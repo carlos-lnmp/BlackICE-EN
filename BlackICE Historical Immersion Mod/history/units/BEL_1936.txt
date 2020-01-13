@@ -1,0 +1,540 @@
+﻿instant_effect = {
+	set_country_flag = placed_research_centre
+	
+	add_research_slot = 1
+	6 = { state_add_research_centre = yes }
+	SLOT:infantry_folder = yes
+	SLOT:industry_folder = yes
+}
+
+division_template = {
+	name = "Division Infanterie"		# Same for "Active" and "Reserve" Infantry Divisions
+	division_names_group = BEL_INF_01
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+
+		artillery_brigade = { x = 3 y = 0 }
+		artillery_brigade = { x = 3 y = 1 }
+		artillery_brigade = { x = 3 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		recon_mot = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Division de Cavalerie"  	# Cavalry Division
+	division_names_group = BEL_CAV_01
+
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 1 y = 2 }
+
+		cavalry = { x = 2 y = 0 }
+		cavalry = { x = 2 y = 1 }
+		cavalry = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }      	# Actually, 2x bicycle cav bns
+		engineer = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Cavalerie Motorisée"
+	#division_names_group = BEL_SMOT_01 -thats a division name list, this is a brigade unit tho? (in name)
+	# Motorized Cavalry Brigade
+	# Note: motorized cavalry. Most sources have them truck-equipped.
+	regiments = {
+		semi_motorized = { x = 0 y = 0 }
+		semi_motorized = { x = 0 y = 1 }
+		semi_motorized = { x = 0 y = 2 }
+
+		semi_motorized = { x = 1 y = 0 }
+		semi_motorized = { x = 1 y = 1 }
+		semi_motorized = { x = 1 y = 2 }
+
+		artillery_brigade_mot = { x = 2 y = 0 }
+		artillery_brigade_mot = { x = 2 y = 1 }
+		artillery_brigade_mot = { x = 2 y = 2 }
+
+		light_armor = { x = 3 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }      	# Actually, 2x bicycle cav bns
+		engineer = { x = 0 y = 2 }
+		Tankettes = { x = 0 y = 3 }
+	}
+}
+division_template = {
+	name = "Division Coloniale"			# Colonial militia, lower experience, equipment
+	division_names_group = BEL_COL_01
+
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		military_police = { x = 0 y = 1 }
+		recon_cav = { x = 0 y = 2 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Garrison"
+	division_names_group = BEL_GAR_01
+
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+
+		garrison = { x = 2 y = 0 }
+		garrison = { x = 2 y = 1 }
+		garrison = { x = 2 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+
+	}
+}
+
+####################
+######## AI ########
+####################
+instant_effect = {
+	if = {
+		limit = {
+			is_ai = yes 
+		}
+		division_template = {
+			name = "Division Infanterie"		
+
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				recon = { x = 0 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Division de Cavalerie"  
+
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }      	# Actually, 2x bicycle cav bns
+				engineer = { x = 0 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Cavalerie Motorisée"
+			
+			regiments = {
+				semi_motorized = { x = 0 y = 0 }
+				semi_motorized = { x = 0 y = 1 }
+				semi_motorized = { x = 0 y = 2 }
+
+				semi_motorized = { x = 1 y = 0 }
+				semi_motorized = { x = 1 y = 1 }
+				semi_motorized = { x = 1 y = 2 }
+
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }      	
+				engineer = { x = 0 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Division Coloniale"			# Colonial militia, lower experience, equipment
+			division_names_group = BEL_COL_01
+
+			regiments = {
+				militia = { x = 0 y = 0 }
+				militia = { x = 0 y = 1 }
+				militia = { x = 0 y = 2 }
+
+				militia = { x = 1 y = 0 }
+				militia = { x = 1 y = 1 }
+				militia = { x = 1 y = 2 }
+
+				militia = { x = 2 y = 0 }
+				militia = { x = 2 y = 1 }
+				militia = { x = 2 y = 2 }
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+			}
+			priority = 1
+		}
+	}
+}
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+### OOB ###
+units = {
+	##### L'Armée Belge #####
+	#division= {
+	#	name = "L'Armée Belge"
+	#	location = 516
+	#	division_template = "HQ Command"
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.1
+	#}
+	# I Corps d'Armée
+	#division= {
+	#	name = "I Corps d'Armée"
+	#	location = 9574
+	#	division_template = "HQ Command"
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 9574  # Hoeselt
+		division_template = "Division Infanterie"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+	}
+	# II Corps d'Armée
+	#division= {
+	#	name = "II Corps d'Armée"
+	#	location = 13068
+	#	division_template = "HQ Command"
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 13068  # Leuven
+		division_template = "Division Infanterie"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+	}
+	# III Corps d'Armée
+	#division= {
+	#	name = "III Corps d'Armée"
+	#	location = 11519
+	#	division_template = "HQ Command"
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 11519  # Liege
+		division_template = "Division Infanterie"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+	}
+	division= {
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 11519  # Liege
+		division_template = "Division Infanterie"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+	}
+	# IV Corps d'Armée
+	#division= {
+	#	name = "IV Corps d'Armée"
+	#	location = 516
+	#	division_template = "HQ Command"
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 516  #Brussels
+		division_template = "Division Infanterie"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+	}
+	# Corps d'Cavalerie
+	#division= {
+	#	name = "Corps d'Cavalerie"
+	#	location = 13068
+	#	division_template = "HQ Command"
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 11519  # Liege
+		division_template = "Division Infanterie"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+	}
+	division= {
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 13068  # Leuven
+		division_template = "Division de Cavalerie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	division= {
+		name = "Brigade de Cavalerie Motorisée"
+		location = 13068  # Leuven
+		division_template = "Cavalerie Motorisée"
+		#force_equipment_variants = { light_tank_destroyer_equipment_1 = { owner = "BEL" } }
+		force_equipment_variants = { infantry_equipment_0 = { owner = "BEL" } }
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+	}
+	# Groupement K
+	#division= {
+		#name = "Groupement K"
+	#	location = 11407
+	#	division_template = "HQ Command"
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 101
+		}
+		location = 11407  # St Hubert
+		division_template = "Division Infanterie"		# elite bicycle infantry
+		start_experience_factor = 0.3
+	}
+	division= {
+		division_name = {   
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 11407  # St Hubert
+		division_template = "Division de Cavalerie"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+	}
+	### Belgian Congo ###
+	#division= {
+	#	name = "Belgian Congo"
+	#	location = 10968
+	#	division_template = "HQ Command"
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {
+		name = "Force Publique du Congo Belge"
+		location = 10968  # Leopoldville
+		division_template = "Division Coloniale"
+		force_equipment_variants = { infantry_equipment_0 = { owner = "BEL" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+	}
+}
+
+air_wings = {
+	### Aéronautique Militaire Belge -- Brussels (Nivelle)
+	774 = {
+		# 2e Régiment d'Aéronautique
+		# Consisted of 50 operational Gladiator Is, Hurricanes, CR.42s in 1940
+		# Only had Fairey Fox recon/l bombers that were also used as fighters in 1936, along with trainers
+		fighter_equipment_0 =  {
+			owner = "BEL"
+			amount = 20
+		}
+	}
+}
+
+### Starting Production ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = hq_equipment_0
+			creator = "BEL"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = recon_equipment_0
+			creator = "BEL"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = recon_mot_equipment_0
+			creator = "BEL"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "BEL"
+		}
+		requested_factories = 2
+		progress = 0.52
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "BEL"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_uniforms_0
+			creator = "BEL"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artyhorse_equipment_1
+			creator = "BEL"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_0
+			creator = "BEL"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = motorized_lia_equipment_01
+			creator = "BEL"
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = fighter_equipment_0
+			creator = "BEL"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 100
+	}
+	############## stockpile
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_0
+			amount = 1990
+			producer = BEL
+		}
+
+	add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+			amount = 1400
+			producer = BEL
+		}
+
+	add_equipment_to_stockpile = {
+		type = horse_equipment_0
+			amount = 900
+			producer = BEL
+		}
+}

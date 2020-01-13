@@ -1,0 +1,815 @@
+ideas = {
+	hidden_ideas = {
+		ai_monarch = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			removal_cost = -1
+	
+			modifier = {
+				monarchism_drift = 0.05
+				fascism_drift = -0.02
+			}
+		}
+	}
+	# Country
+	country = {
+		
+		IRQ_iraqi_navy = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = escort_effort_focus
+	
+			modifier = {
+				production_speed_dockyard_factor = -0.6
+			}
+		}
+	
+		IRQ_nationalism = {
+
+			picture = irq_nationalism
+
+			modifier = {
+				fascism_drift = 0.07
+			}
+		}
+		
+		IRQ_treaty = {
+			picture = HUN_treaty_of_triannon
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = { has_government = monarchism }
+			
+			removal_cost = -1
+			cancel = {
+				has_war_with = ENG
+			}
+			
+			modifier = {
+				fascism_drift = 0.05
+				min_export = 0.1
+				opposition_party_drift = 0.01
+			}
+			research_bonus = {
+				land_doctrine = 0.05
+				air_doctrine = 0.02
+				infantry_weapons = 0.02
+			}
+		}
+	
+		IRQ_internal_conflict = { 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_purge
+
+			modifier = {
+				conscription_factor = -0.20
+				opposition_party_drift = 0.01
+			}
+		}
+		
+		IRQ_internal_conflict2 = { 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ast_classify_aliens
+
+			modifier = {
+				conscription_factor = -0.10
+			}
+		}
+	
+		IRQ_revolt = { 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				conscription_factor = -0.05
+				stability_weekly = -0.0025
+				opposition_party_drift = 0.01
+			}
+		}
+		
+		IRQ_ambushed_1 = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				original_tag = IRQ
+			}
+			
+			removal_cost = -1
+
+			picture = generic_army_problems
+			
+			targeted_modifier = {
+				tag = IRQ
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+			}
+		}
+		IRQ_ambushed_2 = {
+
+			allowed = {
+				always = no
+			}
+			name = IRQ_ambushed_1
+			allowed_civil_war = {
+				original_tag = IRQ
+			}
+			
+			removal_cost = -1
+
+			picture = generic_army_problems
+			
+			targeted_modifier = {
+				tag = IRQ
+				attack_bonus_against = -0.25
+				defense_bonus_against = -0.25
+			}
+		}
+		IRQ_ambushed_3 = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				original_tag = IRQ
+			}
+			
+			removal_cost = -1
+			name = IRQ_ambushed_1
+			picture = generic_army_problems
+			
+			targeted_modifier = {
+				tag = IRQ
+				attack_bonus_against = -0.4
+				defense_bonus_against = -0.4
+			}
+		}
+	}
+
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+		IRQ_ghazi_faisal = {
+			picture = generic_political_advisor_arab_1
+
+			allowed = {
+				original_tag = IRQ
+				not = { has_country_flag = ghazi_dead }				
+			}
+			
+			traits = { 
+				fascist
+				monarchist
+				demagogue
+head_of_state_trait
+			}
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRQ_abd_al-ilah = {
+			picture = generic_political_advisor_arab_2
+
+			allowed = {
+				original_tag = IRQ
+				has_country_flag = ghazi_dead
+				not = { has_government = fascism }
+			}
+			
+			traits = { 
+				monarchist
+				naive_appeaser
+head_of_state_trait
+			}
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRQ_sherif_sharaf = {
+			picture = generic_political_advisor_arab_3
+
+			allowed = {
+				original_tag = IRQ
+				has_country_flag = ghazi_dead
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				elder_statesman
+head_of_state_trait
+			}
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+	}
+	#Foreign Ministers
+	foreign_minister = {
+		IRQ_ali_abn_hussein = {
+			picture = generic_political_advisor_arab_2
+
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = {
+				backroom_backstabber
+				monarchist
+foreign_minister_trait
+			}
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Security Ministers
+	interior_minister = {
+		IRQ_yasin_al-hashimi = {
+			picture = generic_army_arab_3
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = {
+				fascist
+				good_soldier
+				prince_of_terror 
+interior_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+## Intel Ministers
+	intel_minister = {		
+	}
+## Economic Ministers	
+	economic_minister = {
+		IRQ_nuri_as_said = {
+			picture = generic_political_advisor_arab_1			
+			allowed = {
+				original_tag = IRQ
+			}			
+			traits = { 
+				monarchist
+				armaments_organizer 
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+			
+		}
+		IRQ_jafar_timman = {
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = {
+				fascist
+				neutral
+				fortification_engineer
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+			}
+		}
+		IRQ_al-aiyubi = {
+			picture = generic_political_advisor_arab_2
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = {
+				monarchist
+				resource_industrialist
+				military_yesman
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+		IRQ_ismail_tohalla = {
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = {
+				fascist
+				military_entrepreneur
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		IRQ_abd_al-latif = {
+			picture = generic_army_arab_3
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = {
+				fascist
+				guns_over_butter_advocate
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		
+	}
+	#Domestic
+	domestic_minister = {
+		IRQ_hikmat_sulayman = {
+			picture = generic_political_advisor_arab_1
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = {
+				fascist
+				domestminster_industry
+domestic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		IRQ_yusuf_ibrahim = {
+			picture = generic_political_advisor_arab_2
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = {
+				fascist
+				domestminster_education
+domestic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+	}
+	#Academy
+	military_academy = {
+	}
+## Political Advisors	
+	political_advisor = {	
+	}
+	influence_minister = {
+		IRQ_rashid_ali_al_gaylani = {
+
+			picture = generic_political_advisor_arab_2
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = { fascist_demagogue  influence_minister_trait }
+	
+			on_add = {
+				country_event = political.7
+			}
+			ai_will_do = { 
+				factor = 0 
+			}	
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+		}
+		IRQ_guy2 = {
+			allowed = {
+				original_tag = "IRQ"
+			}
+			picture = generic_political_advisor_arab_1
+			available = {
+
+			}
+
+			traits = { 
+				angry_warrior
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		IRQ_guy3 = {
+			allowed = {
+				original_tag = "IRQ"
+			}
+			picture = generic_political_advisor_arab_3
+			available = {
+
+			}
+
+			traits = { 
+				political_fearmonger
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRQ_guy5 = {
+			allowed = {
+				original_tag = "IRQ"
+			}
+			picture = generic_political_advisor_arab_1
+			available = {
+
+			}
+
+			traits = { 
+				unyeilding_defender
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+#MILITARY
+#Supreme Commanders
+	supreme_commander = {
+	}
+#Army
+	army_chief = {
+###		IRQ_fawsi_al_kaukji = {		## alternate name
+		IRQ_fawzi_alq_awuqji = {
+
+			picture = generic_army_arab_3
+			
+			allowed = {
+				original_tag = IRQ
+			}		
+			
+			traits = { army_chief_offensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		IRQ_abd_al_karim_qasim = {
+
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = { army_chief_maneuver_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		IRQ_amin_al_husseini = {
+
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = { army_entrenchment_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRQ_abdullah = {
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = { army_chief_defensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	air_chief = {
+
+		IRQ_khaled_al_dalabeeh = {
+
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = { air_chief_ground_support_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		IRQ_abdullah_al-tell = {
+
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = { air_chief_reform_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	
+		IRQ_mahmud_salman = {
+
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = { air_chief_night_operations_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	navy_chief = {
+
+		IRQ_jamil_al_midfai = {
+
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				original_tag = IRQ
+				has_completed_focus = IRQ_Shipbuilder
+			}
+					
+			traits = { navy_chief_reform_2  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		IRQ_hamdi_al_pachachi = {
+
+			picture = generic_navy_arab_1
+			
+			allowed = {
+				original_tag = IRQ
+				has_completed_focus = IRQ_Shipbuilder
+			}
+					
+			traits = { navy_chief_commerce_raiding_2  navy_chief_trait }
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_sub_bonus = yes 
+				}
+			}
+		}
+	}
+
+	high_command = {
+
+		IRQ_ali_mahmud_al_shaykh = {
+			
+			picture = generic_navy_arab_1
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = { army_regrouping_2  high_command_trait }
+###			traits = { navy_amphibious_assault_2  high_command_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+		IRQ_fahmi_said = {
+
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			traits = { air_close_air_support_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		IRQ_bakr_sidqi = {
+
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = IRQ
+			}
+###			traits = { army_entrenchment_2  high_command_trait }
+			traits = { 
+				fascist
+				army_infantry_2			
+high_command_trait
+			}
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		IRQ_taha_al_ahmani = {
+
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				original_tag = IRQ
+				OR = {
+					has_completed_focus = IRQ_Shipbuilder
+					has_completed_focus = IRQ_air2
+				}
+			}
+			
+			traits = { navy_naval_air_defense_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}	
+
+	theorist = {
+		IRQ_mustafa_al_quidsi = {
+			
+			picture = generic_army_arab_2
+
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { military_theorist  theorist_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}	
+
+		IRQ_ali_ben_jawad = {
+
+			picture = generic_air_arab_1
+			
+			allowed = {
+				original_tag = IRQ
+			}
+			
+			research_bonus = {
+				air_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+		IRQ_iskandar_al-shami = {
+			picture = generic_navy_arab_1
+			
+			allowed = {
+				original_tag = IRQ 
+				has_completed_focus = IRQ_Shipbuilder
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			research_bonus = {
+				naval_doctrine = 0.07
+			}
+			
+			traits = { naval_theorist  theorist_trait }
+		}
+
+	}
+}

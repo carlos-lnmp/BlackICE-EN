@@ -1,0 +1,272 @@
+sub_units = {
+	#Anti-tank	
+	anti_tank = {
+		sprite = anti_tank
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = yes
+		
+		group = support
+		
+		type = {
+			infantry
+			support
+		}
+		
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_army
+			category_all_light_anti_tank
+		}
+		
+		##BASE stats
+		max_strength = 2
+		max_organisation = -5
+		default_morale = 0.1
+		weight = 0.1
+		supply_consumption = 0.06
+		
+		##COMBAT stats
+		soft_attack = -0.5
+		hard_attack = -0.5
+		defense = -0.5
+		breakthrough = -0.5
+		ap_attack = -0.5
+		combat_width = 0.0
+		
+		##OTHER
+		training_time = 120
+		manpower = 400 	#500
+		
+		can_be_parachuted = yes
+		
+		transport = artyhorse_equipment
+		
+		need = {
+			infantry_uniforms = 40
+			anti_tank_equipment = 12
+			artyhorse_equipment = 12
+			#officer_equipment = 8
+		}
+		
+		desert = {
+			movement = -0.05
+		}
+		forest = {
+			attack = -0.05
+			movement = -0.05
+		}
+		hills = {
+			attack = -0.1
+			movement = -0.1
+		}
+		mountain = 	{
+			attack = -0.2
+			movement = -0.2
+		}
+		jungle = {
+			attack = -0.2
+			movement = -0.2
+		}
+		marsh = {
+			movement = -0.1
+		}
+		urban = {
+			attack = -0.05
+			defence = 0.05
+		}
+		capital = {
+			attack = -0.05
+			defence = 0.05
+		}
+		river = { 
+			movement = -0.1
+		}
+		amphibious = { 
+			attack = -0.10
+			movement = -0.10
+		}
+	}
+	anti_tank_mot = {
+		sprite = anti_tank
+		map_icon_category = infantry
+		priority = 1
+		ai_priority = 0
+		active = yes
+		
+		type = {
+			motorized
+			anti_tank
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_front_line
+			category_army
+			#category_line_artillery #What? 
+			category_all_light_anti_tank
+		}		
+		
+		##BASE stats
+		max_strength = 2
+		max_organisation = -5
+		default_morale = 0.1
+		weight = 0.5
+		supply_consumption = 0.15
+		
+		own_equipment_fuel_consumption_mult = 0.5
+		
+		##COMBAT stats
+		soft_attack = -0.5
+		hard_attack = -0.5
+		defense = -0.5
+		breakthrough = -0.5
+		ap_attack = -0.5
+		combat_width = 0.0
+		
+		##OTHER
+		training_time = 120
+		manpower = 600
+		
+		need = {
+			infantry_uniforms = 60
+			anti_tank_equipment = 12
+			artytruck_equipment = 12 # truck pulled
+			#officer_equipment = 12
+		}
+		
+		desert = {
+			movement = -0.05
+		}
+		forest = {
+			attack = -0.05
+			movement = -0.1
+		}
+		hills = {
+			attack = -0.1
+			movement = -0.15
+		}
+		mountain = 	{
+			attack = -0.2
+			movement = -0.3
+		}
+		jungle = {
+			attack = -0.2
+			movement = -0.3
+		}
+		marsh = {
+			movement = -0.1
+		}
+		urban = {
+			attack = -0.05
+			defence = 0.05
+		}
+		capital = {
+			attack = -0.05
+			defence = 0.05
+		}
+		river = { 
+			movement = -0.2
+		}
+		amphibious = { 
+			attack = -0.10
+			movement = -0.2
+		}
+	}
+	# Heavy anti-tank
+	anti_tank_heavy = {
+		sprite = anti_tank
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = yes
+		
+		group = support
+		
+		type = {
+			infantry
+			support
+		}
+		
+		categories = {
+			category_front_line
+			category_support_battalions
+			category_army
+			category_all_heavy_anti_tank
+		}
+		
+		##BASE stats
+		max_strength = 2
+		max_organisation = -5
+		default_morale = 0.1
+		weight = 0.1
+		supply_consumption = 0.1
+		
+		own_equipment_fuel_consumption_mult = 0.5
+		
+		##COMBAT stats #A hashing out is not necessary, as this is the only unit with heavy AT. so an adjustment compared to regiment is not needed
+		#soft_attack = -0.5
+		#hard_attack = -0.5
+		#defense = -0.5
+		#breakthrough = -0.5
+		#ap_attack = -0.5
+		combat_width = 0.0
+		
+		##OTHER
+		training_time = 120
+		manpower = 500 	#800
+		
+		can_be_parachuted = no
+		
+		transport = artytruck_equipment
+		
+		need = {
+			infantry_uniforms = 50
+			HVanti_tank_equipment = 6
+			artytruck_equipment = 12 # truck pulled
+			#officer_equipment = 10
+		}
+		
+		desert = {
+			movement = -0.1
+		}
+		forest = {
+			attack = -0.05
+			movement = -0.15
+		}
+		hills = {
+			attack = -0.1
+			movement = -0.2
+		}
+		mountain = 	{
+			attack = -0.2
+			movement = -0.25
+		}
+		jungle = {
+			attack = -0.2
+			movement = -0.25
+		}
+		marsh = {
+			movement = -0.15
+		}
+		urban = {
+			attack = -0.05
+			defence = 0.05
+		}
+		capital = {
+			attack = -0.05
+			defence = 0.05
+		}
+		river = { 
+			movement = -0.25
+		}
+		amphibious = { 
+			attack = -0.10
+			movement = -0.25
+		}
+	}
+}

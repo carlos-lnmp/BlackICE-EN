@@ -1,0 +1,261 @@
+leader_traits = {
+##################################
+# Personal Traits
+##################################
+	NKVD = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		modifier = {
+			army_speed_factor = 0.03
+			army_morale_factor = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	For_Combat_Merits = {
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		modifier = {
+			experience_gain_factor = 0.02
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+##################################
+# Field Marshal traits.
+##################################
+	
+##################################
+# Corps Commander gainable medal-traits.
+##################################
+	Golden_Star = { 
+		type = all
+		gain_xp = {
+			is_attacker = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		cost = 3000
+		
+		modifier = {
+			offence = 0.05
+			defence = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Order_of_Red_Banner = { 
+		type = all
+		gain_xp = {
+			is_attacker = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		cost = 4500
+		
+		modifier = {
+			offence = 0.05
+			defence = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Order_of_the_Patriotic_War = {
+		type = all
+		gain_xp = {
+			is_defender = yes
+			is_attacker = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		prerequisites = {
+			has_trait = Order_of_Red_Banner	
+		}
+		
+		cost = 8000
+		
+		modifier = {
+			experience_gain_factor = 0.1
+			army_speed_factor = 0.03
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Order_of_Lenin = {
+		type = all
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		cost = 8000
+		
+		modifier = {
+			supply_consumption_factor = -0.04
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	For_Valor = {
+		type = all
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		prerequisites = {
+			has_trait = Golden_Star
+		}
+		
+		#add_planning = 1
+		
+		cost = 4000
+		
+		modifier = {
+			offence = 0.06
+			defence = 0.06
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Badge_of_Honor = {
+		type = all
+		gain_xp = {
+			is_attacker = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		cost = 8000
+		
+		modifier = {
+			experience_gain_factor = 0.1
+			army_speed_factor = 0.03
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Red_Star_Order = {
+		type = all
+		gain_xp = {
+			is_winning = yes
+			is_attacker = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		cost = 4500
+		
+		modifier = {
+			offence = 0.03
+			army_speed_factor = 0.01
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Order_of_Victory = {
+		type = all
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+
+        prerequisites = {
+			has_trait = Order_of_the_Patriotic_War	
+		}
+		
+		cost = 5500
+		
+		modifier = {
+			offence = 0.04
+			army_speed_factor = 0.02
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+##################################
+# Corps Commander assignable traits.
+##################################
+	
+##################################
+# Naval traits.
+##################################
+}

@@ -1,0 +1,258 @@
+ideas = {
+	political_advisor = {
+		
+		QIA_silen_workhorse = {
+		
+			picture = generic_political_advisor_asia_2
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			available = {
+			}
+			
+			traits = { 
+				silent_workhorse 
+political_advisor_trait
+			}
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		QIA_captain_of_industry = {
+
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			traits = { captain_of_industry  political_advisor_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+
+		QIA_quartermaster_general = {
+
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			traits = { quartermaster_general  political_advisor_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+	}
+
+	theorist = {
+		QIA_army_theorist = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			available = {
+				NOT = {
+					has_war_with = YHM
+				}
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { military_theorist  theorist_trait }
+		}
+		
+		QIA_navy_theorist = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = QIA
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			research_bonus = {
+				naval_doctrine = 0.07
+			}
+			
+			traits = { naval_theorist  theorist_trait }
+		}
+		
+		QIA_air_theorist = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			available = {
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			research_bonus = {
+				air_doctrine = 0.07
+			}
+			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+	}
+
+	high_command = {
+
+		QIA_he_zhizhong = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			traits = { army_regrouping_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		QIA_bo_huizhang = {
+
+			picture = generic_army_asia_2
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			traits = { army_chief_maneuver_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		QIA_hou_zhidan = {
+
+			picture = generic_army_asia_2
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			traits = { army_chief_reform_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		QIA_you_guocai = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			traits = { army_infantry_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		QIA_jiang_zaizhen = {
+
+			picture = generic_army_asia_3
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			traits = { army_entrenchment_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+
+	army_chief = {
+		
+		QIA_wang_jialie = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			traits = { army_chief_offensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+
+	air_chief = {
+		
+		QIA_air_chief = {
+			
+			picture = generic_air_asia_1
+			
+			allowed = {
+				original_tag = QIA
+			}
+			
+			available = {
+			}
+			
+			traits = { air_chief_safety_1  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	
+	navy_chief = {
+
+		QIA_navy_chief = {
+			
+			picture = generic_navy_asia_1
+
+			allowed = {
+				original_tag = QIA
+			}
+					
+			traits = { navy_chief_reform_1  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+}

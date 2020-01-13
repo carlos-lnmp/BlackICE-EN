@@ -1,0 +1,2916 @@
+﻿capital = 126
+
+oob = "ENG_1936"
+
+set_research_slots = 2
+
+set_stability = 0.60
+
+set_war_support = 0.1
+
+set_country_flag = ENG_armor
+
+set_country_flag = ENG_navy
+
+set_country_flag = ENG_navy_sub
+
+set_country_flag = ENG_air
+
+set_convoys = 1790
+
+set_variable = { var = eng_gateway_to_europe_influence value = 0 }
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval = 1
+		early_submarine = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		early_carrier = 1
+		generic_naval_tech = 1
+		transport = 1
+		transport_improved = 1
+	}
+	set_naval_oob = "ENG_1936_naval_legacy"
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		improved_ship_hull_cruiser = 1
+		basic_cruiser_armor_scheme = 1
+		improved_cruiser_armor_scheme = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		improved_ship_hull_heavy = 1
+		basic_heavy_armor_scheme = 1
+		improved_heavy_armor_scheme = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		improved_ship_hull_carrier = 1
+		basic_carrier_armor_scheme = 1
+		improved_carrier_armor_scheme = 1
+		armoured_hangar = 1
+		nrm_battery_basic = 1
+		nrm_battery_early_5h = 1
+		nrm_battery_early_6 = 1
+		nrm_battery_early_8 = 1
+		nrm_battery_early_11 = 1
+		nrm_battery_early_12 = 1
+		nrm_battery_early_13 = 1
+		nrm_battery_early_14 = 1
+		nrm_battery_early_15 = 1
+		nrm_battery_early_16 = 1
+		nrm_battery_improved_4 = 1
+		nrm_battery_improved_dp_4 = 1
+		nrm_battery_improved_5 = 1
+		nrm_battery_improved_5h = 1
+		nrm_battery_improved_dp_5h = 1
+		nrm_battery_improved_6 = 1
+		nrm_battery_improved_8 = 1
+		nrm_battery_improved_12 = 1
+		nrm_battery_improved_13 = 1
+		nrm_battery_improved_14 = 1
+		nrm_battery_advanced_6 = 1
+		nrm_early_antiair = 1
+		nrm_basic_antiair = 1
+		nrm_basic_heavy_antiair = 1
+		nrm_improved_heavy_antiair = 1
+		basic_torpedo = 1
+		airplane_launcher = 1
+		improved_ship_torpedo_launcher = 1
+		improved_sub_torpedo_launcher = 1
+		advanced_ship_torpedo_launcher = 1
+		advanced_sub_torpedo_launcher = 1
+		sonar = 1
+		improved_sonar = 1
+		improved_sonar_2 = 1
+		early_engine = 1
+		improved_engine = 1
+		early_diesel = 1
+		early_sub_diesel = 1
+		smoke_generator = 1
+		basic_depth_charges = 1
+		improved_depth_charges = 1
+		mtg_transport = 1
+		mtg_transport_improved = 1
+		early_fire_control_system = 1
+		basic_fire_control_system = 1
+		improved_fire_control_system = 1
+		damage_control_1 = 1
+		damage_control_2 = 1
+		fire_control_methods_1 = 1
+		fire_control_methods_2 = 1
+		basic_light_shell = 1
+		basic_heavy_shell = 1
+		improved_heavy_shell = 1
+		#early_ship_hull_coastal_submarine = 1
+		#basic_ship_hull_coastal_submarine = 1
+		#basic_ship_hull_lr_submarine = 1
+	}
+	set_naval_oob = "ENG_1936_Naval"
+	add_ideas = MTG_naval_treaty_adherent
+	set_global_flag = MTG_second_london_conference
+	set_global_flag = { flag = MTG_naval_treaty_signatories value = 5 }
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	building_tech = 1
+	################# infantry #############
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	semi_motorised_infantry = 1
+	motorised_infantry = 1
+	mechanised_infantry = 1
+	SMG_team = 1
+	hmg = 1
+	mortars = 1
+	marines = 1
+	tech_infantry_uniforms = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	##################### support #################
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	subtech_recon_mot_1 = 1
+	tech_military_police = 1
+	tech_maintenance_company = 1
+	tech_field_hospital = 1
+	tech_logistics_company = 1
+	desert_equipment = 1
+	################ artillery ################
+	gw_artillery = 1
+	interwar_artillery = 1
+	interwar_medartillery = 1
+	interwar_Hvartillery = 1
+	interwar_antiair = 1
+	interwar_antitank = 1
+	medartillery1 = 1
+	superartillery1 = 1
+	################ armor-techs ##############
+	tech_Tankettes = 1
+	tech_Gun_Carriers = 1
+	tech_ac_recon = 1
+	################ armor ##############
+	gwtank = 1
+	basic_heavy_tank = 1
+	british_tech_1 = 1
+	tech_british_light_tank_equipment_1 = 1
+	tech_infantry_tank_equipment_1 = 1
+	############### economy ##################
+	basic_machine_tools = 1
+	smallarms_industry = 1
+	uniform_industry = 1
+	ship_industry = 1
+	ship_industry2 = 1
+	infra_works = 1
+	rail_infra = 1
+	rail_infra2 = 1
+	road_infra = 1
+	air_infra = 1
+	port_infra = 1
+	port_infra2 = 1
+	civ_works = 1
+	housing_work = 1
+	hospital_work = 1
+	schools_work = 1
+	fuel_silos = 1
+	############### WW1 doctrines ##################
+	ww1_infantry = 1
+	infantry_charge = 1
+	small_unit_raids = 1
+	night_patrols = 1
+	dispersed_infantry_attacks = 1
+	infiltration_attacks = 1
+	complex_trench_systems = 1
+	offensive_trenches = 1
+	defensive_trenches = 1
+	reserve_trenches = 1
+	communication_trenches = 1
+	logistics_trenches = 1
+	barbed_wire = 1
+	pillboxes = 1
+	sniper_pits = 1
+	nomans_land_saps = 1
+	tunnel_mines = 1
+	basic_MG_defences = 1
+	multiple_MG_nests = 1
+	enfilade_MG_fire_fields = 1
+	infantry_MG_coordination = 1
+	MG_support_infantry_doctrine = 1
+
+	ww1_artillery = 1
+	artillery_concentration = 1
+	offensive_prep_fire = 1
+	continuous_fire = 1
+	harassment_fire = 1
+	rear_area_bombardment = 1
+	dummy_barrage = 1
+	standing_barrage = 1
+	box_barrage = 1
+	block_barrage = 1
+	creeping_barrage = 1
+	rolling_barrage = 1
+	artillery_observers = 1
+	balloon_observers = 1
+	aircraft_observers = 1
+	foot_runners = 1
+	carrier_pidgeons = 1
+	telephone_communications = 1
+
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	cavalry_exploitation = 1
+	armor_support = 1
+	infantry_tank_coordination = 1
+	armored_car_recon = 1
+	motorcycle_liaison = 1
+	staff_officer_vehicles = 1
+
+	ww1_battlefield_support = 1
+	battlefield_commissions = 1
+	weather_reporting = 1
+	terrain_mapping = 1
+	AA_positions = 1
+	camouflage_positions = 1
+	first_aid_stations = 1
+
+	WW1_air_power = 1
+	WW1_air_survey = 1
+	WW1_air_control = 1
+	WW1_air_bomb = 1
+	WW1_air_ground = 1
+	WW1_air_naval = 1
+	############### doctrines ##################
+	defence_in_depth = 1
+	############### naval doctrines ##################
+	nrm_pre_ww1_naval_doctrine = 1
+	nrm_mahanian_concepts = 1
+	nrm_jeune_ecole_concepts = 1
+	nrm_commerce_warfare = 1
+	nrm_battlefleet_concentration = 1
+	nrm_scouting_force = 1
+	nrm_fleet_formation = 1
+	nrm_fleet_coordination = 1
+	nrm_cruiser_warfare = 1
+	nrm_cruiser_battleline_support = 1
+	nrm_cruiser_flotilla_leader = 1
+	nrm_independent_cruiser_operation = 1
+	nrm_cruiser_patrols = 1
+	nrm_destroyer_support = 1
+	nrm_destroyer_screen = 1
+	nrm_destroyer_torpedo_tactics = 1
+	nrm_independent_destroyer_operation = 1
+	nrm_destroyer_patrol_operations = 1
+	nrm_destroyer_screen_improved = 1
+	nrm_trade_protection = 1
+	nrm_escort_patrols = 1
+	nrm_submarine_tactics_early = 1
+	nrm_submarine_raiding = 1
+	nrm_submarine_torpedo_tactics = 1
+	nrm_submarine_fleet_operations = 1
+	nrm_submarine_scouting = 1
+	nrm_fleet_in_being = 1
+	nrm_mine_warfare = 1
+	nrm_fleet_train = 1
+	nrm_naval_aviation = 1
+	nrm_carrier_experiments = 1
+	nrm_carrier_integrated = 1
+	nrm_carrier_development = 1
+	############### Electronic mechanical engineering ##################
+	electronic_mechanical_engineering = 1
+	HQ_communications = 1
+	radio = 1
+	radio_detection = 1
+}
+
+add_ideas = {
+	stiff_upper_lip
+	ENG_the_war_to_end_all_wars
+	IRE_trade_war_eng
+	#politicians
+	George_v
+	anthony_eden
+	sir_samuel_hoare
+	stewart_menzies
+	neville_chamberlain
+	cyril_deverell
+	ernle_chatfield
+	edward_ellington
+
+	#laws
+	constitutional_monarchy
+	export_focus
+	tax_average
+	tariffs_average
+
+	civilian_economy
+	press_free
+	key_industries
+	labor_allowed
+	fdi_allowed
+
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_medium
+	officer_train_low
+	age_19
+	security_liberty_first
+	edu_high
+	foreign_interventionism
+}
+
+set_country_flag = const_monarchy
+
+# DIPLOMACY
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	add_ideas = {
+		ENG_commonwealth_wealth
+	}
+	set_autonomy = {
+		target = MAL
+		autonomous_state = autonomy_integrated_puppet
+	}
+	set_autonomy = {
+		target = RAJ
+		autonomous_state = autonomy_colony
+		freedom_level = 0.35
+	}
+	set_autonomy = {
+		target = BUR
+		autonomous_state = autonomy_colony
+		freedom_level = 0.1
+	}
+	set_autonomy = {
+		target = CAN
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.4
+	}
+	set_autonomy = {
+		target = SAF
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.4
+	}
+	set_autonomy = {
+		target = AST
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.2
+	}
+	set_autonomy = {
+		target = EGY
+		autonomous_state = autonomy_colony
+		freedom_level = 0.1
+	}
+	set_autonomy = {
+		target = OMA
+		autonomous_state = autonomy_colony
+		freedom_level = 0.05
+	}
+	set_autonomy = {
+		target = BHU
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.15
+	}
+	set_autonomy = {
+		target = BMP
+		autonomous_state = autonomy_puppet
+		freedom_level = 0.25
+	}
+	set_autonomy = {
+		target = JOR
+		autonomous_state = autonomy_puppet
+		freedom_level = 0.35
+	}
+	set_autonomy = {
+		target = NZL
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.2
+	}
+	set_autonomy = {
+		## do not puppet if no TFV it would not make sense
+		target = IRE
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.77
+	}
+	else = {
+		puppet = MAL
+		puppet = RAJ
+		puppet = BUR
+		puppet = CAN
+		puppet = SAF
+		puppet = AST
+		puppet = EGY
+		puppet = BMP
+		puppet = JOR
+		puppet = NZL
+		puppet = BHU
+		puppet = OMA
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+
+	add_to_tech_sharing_group = commonwealth_research
+}
+
+set_politics = {
+	ruling_party = conservatism
+	last_election = "1935.11.14"
+	election_frequency = 48
+	elections_allowed = yes ##suspended through duration of war, which is handled via event
+}
+
+set_popularities = {
+	conservatism = 48
+	liberalism = 10
+	socialism = 30
+	fascism = 5
+	communism = 7
+}
+
+create_faction = Allies
+
+add_to_faction = ENG
+add_to_faction = CAN
+add_to_faction = AST
+add_to_faction = NZL
+add_to_faction = SAF
+add_to_faction = RAJ
+add_to_faction = MAL
+add_to_faction = BUR
+add_to_faction = EGY
+add_to_faction = JOR
+add_to_faction = BMP
+add_to_faction = OMA
+add_to_faction = BHU
+
+give_military_access = RAJ
+give_military_access = IRQ
+give_military_access = BUR
+give_military_access = EGY
+give_military_access = JOR
+give_military_access = BMP
+give_military_access = OMA
+give_military_access = BHU
+
+#give_guarantee = CZE
+
+###Order matters - here Chamberlain becomes starting leader
+##### Country Leaders #####
+create_country_leader = {
+	name = "Winston Churchill"
+	desc = "POLITICS_WINSTON_CHURCHILL_DESC"
+	picture = "Portrait_Britain_Winston_Churchill.dds"
+	expire = "1965.1.1"
+	ideology = social_conservatism
+	traits = {
+		conservative
+		great_leader
+	}
+}
+create_country_leader = {
+	name = "Stanley Baldwin"
+	desc = "POLITICS_STANLEY_BALDWIN_DESC"
+	picture = "Portrait_Britain_Stanley_Baldwin.dds"
+	expire = "1938.1.1"
+	ideology = classical_liberalism
+	traits = { conservative effective_leader }
+}
+create_country_leader = {
+	name = "Oswald Mosley"
+	desc = "POLITICS_OSWALD_MOSLEY_DESC"
+	picture = "Portrait_Britain_Oswald_Mosley.dds"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = { fascist inexperienced_amateur }
+}
+create_country_leader = {
+	name = "Rajani Palme Dutt"
+	desc = "POLITICS_PALME_DUTT_DESC"
+	picture = "Portrait_Britain_Palme_Dutt.dds"
+	expire = "1965.1.1"
+	ideology = leninism
+	traits = { communist tough_guy }
+}
+create_country_leader = {
+	name = "Clement Attlee"
+	desc = "POLITICS_CLEMENT_ATTLEE_DESC"
+	picture = "Portrait_Clement_Attlee.dds"
+	expire = "1965.1.1"
+	ideology = social_democracy
+	traits = { socialist silent_workhorse }
+}
+create_country_leader = {
+	name = "George V"
+	desc = ""
+	picture = "Portrait_George_V.dds"
+	expire = "1965.1.1"
+	ideology = absolutism
+	traits = { monarchist effective_leader }
+}
+##### Field Marshals #####
+create_field_marshal = {
+	name = "Brooke, Alan"
+	picture = "Portrait_Britain_Alan_Brooke.dds"
+	traits = {  Masterful_General trait_cautious career_officer Victory_Medal offensive_doctrine_FM defensive_doctrine_FM }
+	skill = 5
+	#Paradox values#
+	attack_skill = 3
+	defense_skill = 5
+	planning_skill = 5
+	logistics_skill = 3
+	id = 300
+}
+create_field_marshal = {
+	name = "Auchinleck, Claude"
+	picture = "Portrait_Britain_Claude_Auchinleck.dds"
+	traits = {  Masterful_General inflexible_strategist career_officer Distinguished_Service_Order logistics_wizard_FM offensive_doctrine_FM defensive_doctrine_FM thorough_planner}
+	skill = 5
+	#Paradox values#
+	attack_skill = 3
+	defense_skill = 5
+	planning_skill = 3
+	logistics_skill = 5
+	id = 301
+}
+#### Corps Commanders
+create_corps_commander = {
+	name = "Montgomery, Bernard"
+	picture = "Portrait_Britain_Bernard_Montgomery.dds"
+	traits = {  Masterful_General media_personality trait_cautious Victory_Medal logistics_wizard_CC logistics_wizard_CC_II offensive_doctrine_CC offensive_doctrine_CC_II inspirational_leader }
+	skill = 4
+	#Paradox values#
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 3
+	logistics_skill = 4
+	id = 302
+}
+create_corps_commander = {
+	name = "Ritchie, Neil"
+	picture = "Portrait_Britain_Neil_Ritchie.dds"
+	traits = {  Awesome_General armor_officer Silver_War_Badge logistics_wizard_CC panzer_leader  }
+	skill = 4
+	#Paradox values#
+	attack_skill = 3
+	defense_skill = 4
+	planning_skill = 3
+	logistics_skill = 3
+	id = 303
+}
+create_corps_commander = {
+	name = "Cunningham, Alan"
+	picture = "Portrait_Britain_Alan_Cunningham.dds"
+	traits = {  Competent_General infantry_officer Victoria_Cross offensive_doctrine_CC }
+	skill = 4
+	#Paradox values#
+	attack_skill = 4
+	defense_skill = 1
+	planning_skill = 4
+	logistics_skill = 4
+	id = 304
+}
+create_corps_commander = {
+	name = "Slim, William"
+	picture = "Portrait_Britain_William_Slim.dds"
+	traits = {  Masterful_General war_hero Distinguished_Service_Order logistics_wizard_CC trickster_CC jungle_rat }
+	skill = 5
+	#Paradox values#
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 5
+	logistics_skill = 5
+	id = 305
+}
+create_corps_commander = {
+	name = "O'Connor, Richard"
+	picture = "Portrait_Britain_Richard_OConnor.dds"
+	traits = {  Masterful_General armor_officer Distinguished_Service_Order offensive_doctrine_CC panzer_leader logistics_wizard_CC }
+	skill = 4
+	#Paradox values#
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 4
+	logistics_skill = 3
+	id = 306
+}
+create_corps_commander = {
+	name = "Platt, William"
+	picture = "Portrait_Britain_William_Platt.dds"
+	traits = {  Competent_General infantry_officer Victoria_Cross logistics_wizard_CC offensive_doctrine_CC }
+	skill = 3
+	#Paradox values#
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 4
+	logistics_skill = 3
+	id = 307
+}
+create_corps_commander = {
+	name = "Giffard, George"
+	picture = "Portrait_Britain_George_Giffard.dds"
+	traits = {  Competent_General career_officer Victoria_Cross offensive_doctrine_CC }
+	skill = 3
+	#Paradox values#
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 3
+	id = 308
+}
+create_corps_commander = {
+	name = "Alexander, Harold"
+	picture = "Portrait_Britain_Harold_Alexander.dds"
+	traits = {  Masterful_General politically_connected Victory_Medal logistics_wizard_CC logistics_wizard_CC_II defensive_doctrine_CC offensive_doctrine_CC  }
+	skill = 5
+	#Paradox values#
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 3
+	logistics_skill = 5
+	id = 309
+}
+create_corps_commander = {
+	name = "Smyth, Jackie"
+	picture = "Portrait_Britain_John_Jackie_Smyth.dds"
+	traits = {  old_guard Decent_General Most_Excellent_Order logistics_wizard_CC }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 2
+	id = 310
+}
+create_corps_commander = {
+	name = "Hutton, Thomas Jacomb"
+	picture = "Portrait_Britain_Thomas_Jacomb_Hutton.dds"
+	traits = {  old_guard Competent_General Victoria_Cross offensive_doctrine_CC }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 3
+	id = 311
+}
+create_corps_commander = {
+	name = "Percival, Arthur"
+	picture = "Portrait_Britain_Arthur_Percival.dds"
+	traits = {  Decent_General Most_Excellent_Order logistics_wizard_CC }
+	skill = 2
+	#Paradox values#
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 1
+	id = 312
+}
+create_corps_commander = {
+	name = "Beckwith-Smith, Merton"
+	picture = "Portrait_Britain_Merton_Beckwith_Smith.dds"
+	traits = {  Decent_General infantry_officer Most_Excellent_Order commando }
+	skill = 1
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 1
+	id = 313
+}
+create_corps_commander = {
+	name = "Pownall, Henry"
+	picture = "Portrait_Britain_Henry_Pownall.dds"
+	traits = {  Competent_General Victoria_Cross trickster_CC logistics_wizard_CC }
+	skill = 2
+	#Paradox values#
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+	id = 314
+}
+create_corps_commander = {
+	name = "Lord Gort, John Vereker"
+	picture = "Portrait_Britain_John_Vereker.dds"
+	traits = {  Competent_General politically_connected trait_cautious Distinguished_Service_Order offensive_doctrine_CC }
+	skill = 4
+	#Paradox values#
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 315
+}
+create_corps_commander = {
+	name = "Wilson, Henry"
+	picture = "Portrait_Britain_Henry_Maitland_Wilson.dds"
+	traits = {  old_guard Competent_General politically_connected }
+	skill = 4
+	#Paradox values#
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 4
+	logistics_skill = 3
+	id = 316
+}
+create_corps_commander = {
+	name = "Gott, William"
+	picture = "Portrait_Britain_William_Gott.dds"
+	traits = {  Decent_General armor_officer war_hero inflexible_strategist }
+	skill = 3
+	#Paradox values#
+	attack_skill = 2
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 3
+	id = 317
+}
+create_corps_commander = {
+	name = "Campbell, Jock"
+	picture = "Portrait_Britain_Jock_Campbell.dds"
+	traits = {  Awesome_General armor_officer Most_Excellent_Order  }
+	skill = 4
+	#Paradox values#
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 4
+	id = 318
+}
+create_corps_commander = {
+	name = "Leese, Oliver"
+	picture = "Portrait_Britain_Oliver_Leese.dds"
+	traits = {  Masterful_General armor_officer harsh_leader politically_connected Distinguished_Service_Order logistics_wizard_CC }
+	skill = 4
+	#Paradox values#
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 4
+	id = 319
+}
+create_corps_commander = {
+	name = "Dempsey, Miles"
+	picture = "Portrait_Britain_Miles_Dempsey.dds"
+	traits = {  Awesome_General infantry_officer career_officer Silver_War_Badge logistics_wizard_CC offensive_doctrine_CC }
+	skill = 4
+	#Paradox values#
+	attack_skill = 3
+	defense_skill = 4
+	planning_skill = 4
+	logistics_skill = 2
+	id = 320
+}
+create_corps_commander = {
+	name = "Horrocks, Brian"
+	picture = "Portrait_Britain_Brian_Horrocks.dds"
+	traits = {  Awesome_General armor_officer career_officer war_hero Silver_War_Badge logistics_wizard_CC }
+	skill = 3
+	#Paradox values#
+	attack_skill = 1
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 3
+	id = 321
+}
+create_corps_commander = {
+	name = "Wavell, Archibald"
+	picture = "Portrait_Britain_Archibald_Wavell.dds"
+	traits = {  Masterful_General career_officer Victory_Medal logistics_wizard_CC logistics_wizard_CC_II defensive_doctrine_CC defensive_doctrine_CC_II }
+	skill = 4
+	#Paradox values#
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 4
+	id = 322
+}
+create_corps_commander = {
+	name = "Amyatt-Hull, Richard"
+	picture = "Portrait_Britain_Generic_land_3.dds"
+	traits = {  Awesome_General armor_officer Silver_War_Badge panzer_leader }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 385
+}
+create_corps_commander = {
+	name = "Anderson  K.A.N."
+	picture = "Portrait_Britain_Generic_land_5.dds"
+	traits = {  Awesome_General Silver_War_Badge logistics_wizard_CC defensive_doctrine_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 387
+}
+create_corps_commander = {
+	name = "Cooke, Ronald"
+	picture = "Portrait_Britain_Generic_land_3.dds"
+	traits = {  Awesome_General armor_officer Silver_War_Badge fortress_buster panzer_leader }
+	skill = 2
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 395
+}
+create_corps_commander = {
+	name = "Barker, Evelyn"
+	picture = "Portrait_Britain_Generic_land_5.dds"
+	traits = {  Awesome_General Silver_War_Badge }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 656
+}
+create_corps_commander = {
+	name = "Browning, Frederick"
+	picture = "Portrait_Britain_Generic_land_5.dds"
+	traits = {  Awesome_General career_officer Silver_War_Badge commando logistics_wizard_CC defensive_doctrine_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 5
+	logistics_skill = 3
+	id = 426
+}
+create_corps_commander = {
+	name = "Calvert, Michael"
+	picture = "Portrait_Britain_Generic_land_2.dds"
+	traits = {  Awesome_General Silver_War_Badge fortress_buster commando }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 433
+}
+create_corps_commander = {
+	name = "Carver, Michael"
+	picture = "Portrait_Britain_Generic_land_5.dds"
+	traits = {  Awesome_General armor_officer Victory_Medal panzer_leader logistics_wizard_CC offensive_doctrine_CC }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 442
+}
+create_corps_commander = {
+	name = "Cassels, Jim"
+	picture = "Portrait_Britain_Generic_land_1.dds"
+	traits = {  Awesome_General infantry_officer Distinguished_Service_Order logistics_wizard_CC offensive_doctrine_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 443
+}
+create_corps_commander = {
+	name = "Combe, John"
+	picture = "Portrait_Britain_Generic_land_2.dds"
+	traits = {  Decent_General armor_officer Most_Excellent_Order panzer_leader }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 2
+	id = 453
+}
+create_corps_commander = {
+	name = "D'Arcy, John"
+	picture = "Portrait_Britain_Generic_land_1.dds"
+	traits = {  Awesome_General armor_officer Silver_War_Badge panzer_leader }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 462
+}
+create_corps_commander = {
+	name = "Dill, John"
+	picture = "Portrait_Britain_Generic_land_4.dds"
+	traits = {  Awesome_General Silver_War_Badge logistics_wizard_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 475
+}
+create_corps_commander = {
+	name = "Erskine, Bobby"
+	picture = "Portrait_Britain_Generic_land_4.dds"
+	traits = {  Awesome_General Silver_War_Badge logistics_wizard_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 485
+}
+create_corps_commander = {
+	name = "Evans, Geoffrey"
+	picture = "Portrait_Britain_Generic_land_5.dds"
+	traits = {  Awesome_General Silver_War_Badge logistics_wizard_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 486
+}
+create_corps_commander = {
+	name = "Evelegh, Vyvyan"
+	picture = "Portrait_Britain_Generic_land_1.dds"
+	traits = {  Competent_General armor_officer Victoria_Cross panzer_leader }
+	skill = 2
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 487
+}
+create_corps_commander = {
+	name = "Festing, Francis"
+	picture = "Portrait_Britain_Generic_land_3.dds"
+	traits = {  Awesome_General Silver_War_Badge logistics_wizard_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 489
+}
+create_corps_commander = {
+	name = "Frost, Johnny"
+	picture = "Portrait_Britain_Generic_land_2.dds"
+	traits = {  Competent_General infantry_officer Victoria_Cross commando commando_CC_II offensive_doctrine_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 5
+	logistics_skill = 2
+	id = 498
+}
+create_corps_commander = {
+	name = "Gairdner, Charles"
+	picture = "Portrait_Britain_Generic_land_3.dds"
+	traits = {  Competent_General armor_officer Victoria_Cross panzer_leader }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 5
+	logistics_skill = 2
+	id = 499
+}
+create_corps_commander = {
+	name = "Gott, Strafer"
+	picture = "Portrait_Britain_Generic_land_5.dds"
+	traits = {  Awesome_General armor_officer Silver_War_Badge panzer_leader }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 506
+}
+create_corps_commander = {
+	name = "Stockwell, Hugh"
+	picture = "Portrait_Britain_Generic_land_1.dds"
+	traits = {  Awesome_General infantry_officer Silver_War_Badge commando logistics_wizard_CC offensive_doctrine_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 507
+}
+create_corps_commander = {
+	name = "Hackett, John"
+	picture = "Portrait_Britain_Generic_land_1.dds"
+	traits = {  Masterful_General armor_officer Distinguished_Service_Order commando panzer_leader offensive_doctrine_CC logistics_wizard_CC }
+	skill = 3
+	attack_skill = 5
+	defense_skill = 5
+	planning_skill = 5
+	logistics_skill = 4
+	id = 517
+}
+create_corps_commander = {
+	name = "Harding, John"
+	picture = "Portrait_Britain_Generic_land_4.dds"
+	traits = {  Masterful_General infantry_officer Distinguished_Service_Order defensive_doctrine_CC offensive_doctrine_CC logistics_wizard_CC }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 5
+	planning_skill = 4
+	logistics_skill = 4
+	id = 520
+}
+create_corps_commander = {
+	name = "Ismay, Lionel"
+	picture = "Portrait_Britain_Generic_land_5.dds"
+	traits = { Masterful_General career_officer Distinguished_Service_Order defensive_doctrine_CC }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 4
+	id = 541
+}
+create_corps_commander = {
+	name = "Johnson, Dudley"
+	picture = "Portrait_Britain_Generic_land_1.dds"
+	traits = { Competent_General infantry_officer Victoria_Cross defensive_doctrine_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 5
+	logistics_skill = 2
+	id = 542
+}
+create_corps_commander = {
+	name = "Keightley, Charles"
+	picture = "Portrait_Britain_Generic_land_3.dds"
+	traits = {  Competent_General armor_officer Victoria_Cross panzer_leader }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 5
+	logistics_skill = 2
+	id = 544
+}
+create_corps_commander = {
+	name = "Laycock, Edward"
+	picture = "Portrait_Britain_Generic_land_5.dds"
+	traits = { Awesome_General Silver_War_Badge commando }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 551
+}
+create_corps_commander = {
+	name = "Loewen, Charles"
+	picture = "Portrait_Britain_Generic_land_2.dds"
+	traits = { Competent_General armor_officer Victoria_Cross panzer_leader }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 5
+	logistics_skill = 2
+	id = 558
+}
+create_corps_commander = {
+	name = "Loyd, Henry"
+	picture = "Portrait_Britain_Generic_land_1.dds"
+	traits = { Competent_General infantry_officer Victoria_Cross defensive_doctrine_CC offensive_doctrine_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 5
+	logistics_skill = 2
+	id = 562
+}
+create_corps_commander = {
+	name = "Mansergh, Eric"
+	picture = "Portrait_Britain_Generic_land_1.dds"
+	traits = { Awesome_General armor_officer Silver_War_Badge panzer_leader offensive_doctrine_CC }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 572
+}
+create_corps_commander = {
+	name = "McCreery, Richard"
+	picture = "Portrait_Britain_Generic_land_1.dds"
+	traits = { Awesome_General armor_officer Silver_War_Badge offensive_doctrine_CC panzer_leader trait_engineer }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 577
+}
+create_corps_commander = {
+	name = "Messervy, Frank"
+	picture = "Portrait_Britain_Generic_land_5.dds"
+	traits = { Awesome_General armor_officer Silver_War_Badge logistics_wizard_CC panzer_leader offensive_doctrine_CC }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 581
+}
+create_corps_commander = {
+	name = "Norrie, Charles"
+	picture = "Portrait_Britain_Generic_land_3.dds"
+	traits = { Awesome_General armor_officer Silver_War_Badge panzer_leader }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 584
+}
+create_corps_commander = {
+	name = "Lord Mountbatten"
+	picture = "Portrait_Britain_Generic_land_3.dds"
+	traits = { Awesome_General infantry_officer Silver_War_Badge commando commando_CC_II }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 589
+}
+create_corps_commander = {
+	name = "Pyman, Harold"
+	picture = "Portrait_Britain_Generic_land_3.dds"
+	traits = { Awesome_General armor_officer logistics_wizard_CC panzer_leader }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 5
+	logistics_skill = 3
+	id = 609
+}
+create_corps_commander = {
+	name = "Robertson, Brian"
+	picture = "Portrait_Britain_Generic_land_3.dds"
+	traits = { Awesome_General Silver_War_Badge commando offensive_doctrine_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 619
+}
+create_corps_commander = {
+	name = "Scoones, Goeffrey"
+	picture = "Portrait_Britain_Generic_land_4.dds"
+	traits = { Awesome_General Silver_War_Badge logistics_wizard_CC }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 4
+	logistics_skill = 3
+	id = 625
+}
+create_corps_commander = {
+	name = "Templer, Gerald"
+	picture = "Portrait_Britain_Generic_land_1.dds"
+	traits = { Masterful_General Distinguished_Service_Order defensive_doctrine_CC fortress_buster logistics_wizard_CC commando }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 4
+	logistics_skill = 4
+	id = 637
+}
+########## Navy ###########
+create_navy_leader = {
+	name = "Somerville, James Fownes"
+	picture = "Portrait_Britain_James_Fownes_Somerville.dds"
+	traits = { superior_tactician aviation_enthusiast navy_career_officer }
+	skill = 5
+	skill = 5
+	attack_skill = 4
+	defense_skill = 3
+	maneuvering_skill = 4
+	coordination_skill = 5
+	id = 820
+}
+create_navy_leader = {
+	name = "Harwood, Henry"
+	picture = "Portrait_Britain_Henry_Harwood.dds"
+	traits = { old_guard_navy bold blockade_runner }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 3
+	coordination_skill = 2
+	id = 821
+}
+create_navy_leader = {
+	name = "Cunningham, Andrew"
+	picture = "Portrait_Britain_Andrew_Cunningham.dds"
+	traits = { blockade_runner superior_tactician navy_career_officer bold gunnery_expert }
+	skill = 5
+	attack_skill = 5
+	defense_skill = 4
+	maneuvering_skill = 3
+	coordination_skill = 4
+	id = 822
+}
+create_navy_leader = {
+	name = "Fraser, Bruce"
+	picture = "Portrait_Britain_Bruce_Fraser.dds"
+	traits = { aviation_enthusiast naval_lineage blockade_runner }
+	skill = 4
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 4
+	coordination_skill = 4
+	id = 658
+}
+create_navy_leader = {
+	name = "Tovey, John"
+	picture = "Portrait_Britain_John_Tovey.dds"
+	traits = { gentlemanly naval_lineage superior_tactician }
+	skill = 4
+	attack_skill = 3
+	defense_skill = 3
+	maneuvering_skill = 2
+	coordination_skill = 5
+	id = 659
+}
+create_navy_leader = {
+	name = "Rawlings, Bernard"
+	picture = "Portrait_Britain_Bernard_Rawlings.dds"
+	traits = { gentlemanly spotter blockade_runner }
+	skill = 1
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 3
+	coordination_skill = 2
+	id = 670
+}
+create_navy_leader = {
+	name = "Cunningham, John"
+	picture = "Portrait_Britain_John_Cunningham.dds"
+	traits = { navy_career_officer green_water_expert }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 3
+	id = 671
+}
+create_navy_leader = {
+	name = "Forbes, Charles"
+	picture = "Portrait_Britain_Charles_Forbes.dds"
+	traits = { gunnery_expert fly_swatter }
+	skill = 3
+
+	id = 672
+}
+create_navy_leader = {
+	name = "Willis, Algernon"
+	picture = "Portrait_Britain_Algernon_Willis.dds"
+	traits = { battleship_adherent spotter }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 3
+	coordination_skill = 2
+	id = 673
+}
+create_navy_leader = {
+	name = "Power, Arthur"
+	picture = "Portrait_Britain_Arthur_Power.dds"
+	traits = { gunnery_expert superior_tactician }
+	skill = 2
+	attack_skill = 3
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 2
+	id = 674
+}
+create_navy_leader = {
+	name = "Blagrove, Henry"
+	picture = "Portrait_Blagrove.dds"
+	traits = { }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 3
+	coordination_skill = 2
+	id = 675
+}
+create_navy_leader = {
+	name = "Boyd, Denis"
+	picture = "Portrait_Boyd.dds"
+	traits = { blockade_runner  }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 3
+	coordination_skill = 2
+	id = 676
+}
+create_navy_leader = {
+	name = "Cork, Lord"
+	picture = "Portrait_Lord_Cork.dds"
+	traits = { seawolf blockade_runner }
+	skill = 2
+	attack_skill = 3
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 2
+	id = 677
+}
+create_navy_leader = {
+	name = "Crutchley, Victor"
+	picture = "Portrait_Crutchley.dds"
+	traits = { seawolf }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 3
+	coordination_skill = 2
+	id = 679
+}
+create_navy_leader = {
+	name = "D'Oyly Lyon, Arthur"
+	picture = "Portrait_DOyly.dds"
+	traits = { superior_tactician  }
+	skill = 2
+	attack_skill = 3
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 2
+	id = 681
+}
+create_navy_leader = {
+	name = "Dunbar-Naismith, Martin"
+	picture = "Portrait_Dunbar_Naismith.dds"
+	traits = { superior_tactician  }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 3
+	id = 682
+}
+create_navy_leader = {
+	name = "Evans, Edward"
+	picture = "Portrait_Evans.dds"
+	traits = { superior_tactician  }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 3
+	id = 683
+}
+create_navy_leader = {
+	name = "Holland, Lancelot"
+	picture = "Portrait_Lancelot_Holland.dds"
+	traits = { spotter }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 3
+	id = 684
+}
+create_navy_leader = {
+	name = "Horton, Max"
+	picture = "Portrait_Horton.dds"
+	traits = {spotter }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 3
+	id = 685
+}
+create_navy_leader = {
+	name = "Layton, Geoffrey"
+	picture = "Portrait_Layton.dds"
+	traits = {spotter }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 3
+	id = 686
+}
+create_navy_leader = {
+	name = "Leatham, Ralph"
+	picture = "Portrait_Leatham.dds"
+	traits = { seawolf }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 3
+	id = 687
+}
+create_navy_leader = {
+	name = "Moore, Henry"
+	picture = "Portrait_Moore.dds"
+	traits = { old_guard_navy spotter }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 3
+	id = 688
+}
+create_navy_leader = {
+	name = "Noble, Percy"
+	picture = "Portrait_Noble.dds"
+	traits = {  }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 3
+	id = 689
+}
+create_navy_leader = {
+	name = "Phillips, Tom"
+	picture = "Portrait_Phillips.dds"
+	traits = { superior_tactician }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 3
+	id = 691
+}
+create_navy_leader = {
+	name = "Pizey, Charles"
+	picture = "Portrait_Pizey.dds"
+	traits = { superior_tactician  }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 3
+	id = 692
+}
+create_navy_leader = {
+	name = "Pound, Dudley"
+	picture = "Portrait_Dudley_pound.dds"
+	traits = { superior_tactician  spotter }
+	skill = 2
+	attack_skill = 3
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 2
+	id = 693
+}
+create_navy_leader = {
+	name = "Ramsey, Bertram"
+	picture = "Portrait_Ramsey.dds"
+	traits = { superior_tactician blockade_runner }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 3
+	id = 694
+}
+create_navy_leader = {
+	name = "Vian, Phillip"
+	picture = "Portrait_Vian.dds"
+	traits = { superior_tactician }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 3
+	id = 695
+}
+create_navy_leader = {
+	name = "Wake-Walker, Frederic"
+	picture = "Portrait_Wake_Walker.dds"
+	traits = { superior_tactician }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 3
+	id = 696
+}
+create_navy_leader = {
+	name = "Dreyer, Frederic"
+	picture = "Portrait_Britain_Generic_navy_3.dds"
+	traits = { old_guard_navy superior_tactician }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 3
+	id = 744
+}
+create_navy_leader = {
+	name = "Sommerville, James"
+	picture = "Portrait_Britain_Generic_navy_1.dds"
+	traits = { superior_tactician }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 3
+	id = 763
+}
+create_navy_leader = {
+	name = "McGrigor, Roderick"
+	picture = "Portrait_Britain_Generic_navy_3.dds"
+	traits = { }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 3
+	id = 777
+}
+create_navy_leader = {
+	name = "Mountbatten, Louis"
+	picture = "Portrait_Britain_Generic_navy_1.dds"
+	traits = { spotter }
+	skill = 4
+	id = 778
+}
+create_navy_leader = {
+	name = "Luce, David"
+	picture = "Portrait_Britain_Generic_navy_2.dds"
+	traits = { seawolf }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 3
+	id = 779
+}
+create_navy_leader = {
+	name = "Ashmore, Edward"
+	picture = "Portrait_Britain_Generic_navy_3.dds"
+	traits = { }
+	skill = 4
+	attack_skill = 2
+	defense_skill = 4
+	maneuvering_skill = 4
+	coordination_skill = 3
+	id = 792
+}
+create_navy_leader = {
+	name = "Blake, Geoffrey"
+	picture = "Portrait_Britain_Generic_navy_3.dds"
+	traits = { old_guard_navy superior_tactician blockade_runner }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	maneuvering_skill = 3
+	coordination_skill = 2
+	id = 813
+}
+### Ship Variants ###
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	### Variants ###
+	# Submarines #
+	create_equipment_variant = {
+		name = "H21 Class"
+		type = nrm_ship_hull_submarine_small_1
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 12
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_small_1
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_004
+			fixed_ship_sonar_slot = nrm_submarine_sonar_1
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_small_1h
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = empty
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x4
+			fixed_ship_torpedo_2_slot = empty
+			custom_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "L9 Class"
+		type = nrm_ship_hull_submarine_1
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 15
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_1
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_025
+			fixed_ship_sonar_slot = nrm_submarine_sonar_2
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_4
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x4
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_18_2_x2
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "L50 Class"
+		type = nrm_ship_hull_submarine_1
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 15
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_1
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_025
+			fixed_ship_sonar_slot = nrm_submarine_sonar_2
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_4
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+			fixed_ship_torpedo_2_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Oberon Class"
+		type = nrm_ship_hull_submarine_2
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 15
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_030
+			fixed_ship_sonar_slot = nrm_submarine_sonar_2
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_4
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_21_2_x2
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Oxley Class"
+		type = nrm_ship_hull_submarine_2
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 15
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_030
+			fixed_ship_sonar_slot = nrm_submarine_sonar_2
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_4
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_21_2_x2
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "O Class"
+		type = nrm_ship_hull_submarine_2
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 15
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D1_045
+			fixed_ship_sonar_slot = nrm_submarine_sonar_2
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_submarine_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_4
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_21_2_x2
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "P Class"
+		type = nrm_ship_hull_submarine_2
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 15
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D1_045
+			fixed_ship_sonar_slot = nrm_submarine_sonar_2
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_submarine_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_4
+			fixed_ship_anti_air_slot = nrm_submarine_AA_1
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_21_2_x2
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "R Class"
+		type = nrm_ship_hull_submarine_2
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 15
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D1_040
+			fixed_ship_sonar_slot = nrm_submarine_sonar_2
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_submarine_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_4
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_21_2_x2
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Thames Class"
+		type = nrm_ship_hull_submarine_cruiser_2
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 15
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_cruiser_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D1_040
+			fixed_ship_sonar_slot = nrm_submarine_sonar_3
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_submarine_cruiser_3
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_4
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+			fixed_ship_torpedo_2_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "S Class"
+		type = nrm_ship_hull_submarine_small_2
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 12
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_small_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D1_016
+			fixed_ship_sonar_slot = nrm_submarine_sonar_3
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_submarine_small_2h
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = empty
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+			fixed_ship_torpedo_2_slot = empty
+			custom_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Porpoise Class"
+		type = nrm_ship_hull_submarine_2
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 4
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D1_035
+			fixed_ship_sonar_slot = nrm_submarine_sonar_3
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_submarine_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_5
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+			fixed_ship_torpedo_2_slot = empty
+			custom_slot_1 = nrm_submarine_ML_1
+			custom_slot_2 = nrm_submarine_ML_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Grampus Class"
+		type = nrm_ship_hull_submarine_2
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 4
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D1_035
+			fixed_ship_sonar_slot = nrm_submarine_sonar_3
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_submarine_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_5
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+			fixed_ship_torpedo_2_slot = empty
+			custom_slot_1 = nrm_submarine_ML_1
+			custom_slot_2 = nrm_submarine_ML_1
+		}
+	}
+	# Destroyers #
+	create_equipment_variant = {
+		name = "Amazon Class"
+		type = nrm_ship_hull_destroyer_2
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 6
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_035
+			fixed_ship_sonar_slot = nrm_sonar_2
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_1_x4
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_destroyer_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x3
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x3
+			custom_slot_5 = nrm_support_destroyer_HAA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "A/B Class"
+		type = nrm_ship_hull_destroyer_2
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S2_035
+			fixed_ship_sonar_slot = nrm_sonar_3
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x4
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_destroyer_2h
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_MS_1
+			custom_slot_2 = nrm_support_destroyer_ASW_1
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_5 = nrm_support_destroyer_HAA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "A/B Leader Class"
+		type = nrm_ship_hull_destroyer_2
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S2_035
+			fixed_ship_sonar_slot = nrm_sonar_3
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x5
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_destroyer_2h
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_destroyer_ASW_1
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_5 = nrm_support_destroyer_HAA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "C/D Class"
+		type = nrm_ship_hull_destroyer_2
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S2_035
+			fixed_ship_sonar_slot = nrm_sonar_3
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x4
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_destroyer_2h
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_MS_1
+			custom_slot_2 = nrm_support_destroyer_ASW_1
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_5 = nrm_support_destroyer_HAA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "E/F Class"
+		type = nrm_ship_hull_destroyer_2
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S2_035
+			fixed_ship_sonar_slot = nrm_sonar_3
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x4
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_destroyer_2h
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_MS_1
+			custom_slot_2 = nrm_support_destroyer_ASW_1
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_5 = nrm_support_destroyer_AA_2
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "E/F Leader Class"
+		type = nrm_ship_hull_destroyer_2
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S2_040
+			fixed_ship_sonar_slot = nrm_sonar_3
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x5
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_destroyer_2h
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ASW_1
+			custom_slot_2 = nrm_support_destroyer_ASW_2
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_5 = nrm_support_destroyer_AA_2
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Esk Class"
+		type = nrm_ship_hull_destroyer_2
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 4
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S2_035
+			fixed_ship_sonar_slot = nrm_sonar_3
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_destroyer_2h
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ML_1
+			custom_slot_2 = nrm_support_destroyer_ML_1
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_5 = nrm_support_destroyer_AA_2
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "G/H Class"
+		type = nrm_ship_hull_destroyer_2
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S2_035
+			fixed_ship_sonar_slot = nrm_sonar_3
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x4
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_destroyer_2h
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_MS_1
+			custom_slot_2 = nrm_support_destroyer_ASW_1
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_5 = nrm_support_destroyer_AA_2
+			custom_slot_6 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "G/H Leader Class"
+		type = nrm_ship_hull_destroyer_2
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S2_040
+			fixed_ship_sonar_slot = nrm_sonar_3
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x5
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_destroyer_2h
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_MS_1
+			custom_slot_2 = nrm_support_destroyer_ASW_1
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x4
+			custom_slot_5 = nrm_support_destroyer_AA_2
+			custom_slot_6 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "V/W Class"
+		type = nrm_ship_hull_destroyer_1
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 6
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_1
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_030
+			fixed_ship_sonar_slot = nrm_sonar_2
+			fixed_ship_battery_slot = nrm_destroyer_battery_4_1_x4
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_1h
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_MS_1
+			custom_slot_2 = nrm_support_destroyer_ASW_1
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_5 = nrm_support_destroyer_HAA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "S Class"
+		type = nrm_ship_hull_destroyer_1
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 6
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_1
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_030
+			fixed_ship_sonar_slot = nrm_sonar_2
+			fixed_ship_battery_slot = nrm_destroyer_battery_4_1_x3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ASW_1
+			custom_slot_2 = nrm_support_destroyer_ASW_2
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x2
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_1_x2
+			custom_slot_5 = nrm_support_destroyer_HAA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Scott Class"
+		type = nrm_ship_hull_destroyer_1
+		name_group = ENG_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 6
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_1
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_045
+			fixed_ship_sonar_slot = nrm_sonar_2
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_1_x5
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ASW_1
+			custom_slot_2 = nrm_support_destroyer_ASW_2
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_5 = nrm_support_destroyer_HAA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	# Light Cruisers #
+	create_equipment_variant = {
+		name = "C Class"
+		type = nrm_ship_hull_cruiser_1
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_1
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_040
+			fixed_ship_armor_layout_slot = nrm_armour_layout_1
+			fixed_ship_armor_slot = nrm_cruiser_armour_02h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_1_x06
+			fixed_ship_tertiary_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_cruiser_TRP_21_1_x04
+			custom_slot_4 = nrm_support_cruiser_TRP_21_1_x04
+			custom_slot_5 = nrm_support_cruiser_HAA_1
+			custom_slot_6 = nrm_support_cruiser_SNR_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Danae Class"
+		type = nrm_ship_hull_cruiser_1
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_1
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_040
+			fixed_ship_armor_layout_slot = nrm_armour_layout_1
+			fixed_ship_armor_slot = nrm_cruiser_armour_02h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_1_x06
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_AA_2
+			custom_slot_3 = nrm_support_cruiser_TRP_21_1_x06
+			custom_slot_4 = nrm_support_cruiser_TRP_21_1_x06
+			custom_slot_5 = nrm_support_cruiser_HAA_1
+			custom_slot_6 = nrm_support_cruiser_SNR_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Emerald Class"
+		type = nrm_ship_hull_cruiser_1
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_1
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_080
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_02h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_1_x08
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_FP_1
+			custom_slot_3 = nrm_support_cruiser_TRP_21_1_x06
+			custom_slot_4 = nrm_support_cruiser_TRP_21_1_x06
+			custom_slot_5 = nrm_support_cruiser_AA_2
+			custom_slot_6 = nrm_support_cruiser_SNR_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Leander Class"
+		type = nrm_ship_hull_cruiser_3
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_3
+			fixed_ship_engine_slot = nrm_cruiser_engine_S2_070
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_03_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_3_x08
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_2_x08
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = nrm_support_cruiser_AA_2
+			custom_slot_5 = empty
+			custom_slot_6 = nrm_support_cruiser_SNR_2
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Arethusa Class"
+		type = nrm_ship_hull_cruiser_3
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_3
+			fixed_ship_engine_slot = nrm_cruiser_engine_S2_065
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_02h_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_3_x06
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = nrm_support_cruiser_AA_2
+			custom_slot_5 = empty
+			custom_slot_6 = nrm_support_cruiser_SNR_2
+		}
+	}
+	create_equipment_variant = {
+		name = "Aurora Class"
+		type = nrm_ship_hull_cruiser_3
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_3
+			fixed_ship_engine_slot = nrm_cruiser_engine_S2_065
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_02h_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_3_x06
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_2_x08
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = nrm_support_cruiser_AA_2
+			custom_slot_5 = empty
+			custom_slot_6 = nrm_support_cruiser_SNR_2
+		}
+	}
+	create_equipment_variant = {
+		name = "Southampton Class"
+		type = nrm_ship_hull_cruiser_3
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_3
+			fixed_ship_engine_slot = nrm_cruiser_engine_S2_075
+			fixed_ship_armor_layout_slot = nrm_armour_layout_3
+			fixed_ship_armor_slot = nrm_cruiser_armour_04_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_4
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_5
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_3_x12
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_2_x08
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = nrm_support_cruiser_HAA_2
+			custom_slot_5 = nrm_support_cruiser_AA_2
+			custom_slot_6 = nrm_support_cruiser_SNR_2
+		}
+	}
+	create_equipment_variant = {
+		name = "Adventure Class"						# cruiser minelayer
+		type = nrm_ship_hull_cruiser_2
+		name_group = ENG_MINELAYERS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 4
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_2
+			fixed_ship_engine_slot = nrm_cruiser_engine_S2_040
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_01h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_5_1_x04
+			fixed_ship_tertiary_slot = empty
+			custom_slot_1 = nrm_support_cruiser_ML_1
+			custom_slot_2 = nrm_support_cruiser_ML_1
+			custom_slot_3 = nrm_support_cruiser_ML_1
+			custom_slot_4 = nrm_support_cruiser_AA_1
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	# Heavy Cruisers #
+	create_equipment_variant = {
+		name = "Kent Class"
+		type = nrm_ship_hull_cruiser_2
+		name_group = ENG_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_2
+			fixed_ship_engine_slot = nrm_cruiser_engine_S2_080
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_03h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_4
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_2_x08
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_2_x08
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = nrm_support_cruiser_HAA_1
+			custom_slot_5 = nrm_support_cruiser_AA_2
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "London Class"
+		type = nrm_ship_hull_cruiser_2
+		name_group = ENG_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_2
+			fixed_ship_engine_slot = nrm_cruiser_engine_S2_080
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_03h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_4
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_2_x08
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_2_x08
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = nrm_support_cruiser_HAA_1
+			custom_slot_5 = nrm_support_cruiser_AA_2
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Norfolk Class"
+		type = nrm_ship_hull_cruiser_2
+		name_group = ENG_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_2
+			fixed_ship_engine_slot = nrm_cruiser_engine_S2_080
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_03h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_4
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_2_x08
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_2_x08
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = nrm_support_cruiser_HAA_1
+			custom_slot_5 = nrm_support_cruiser_AA_2
+			custom_slot_6 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "York Class"
+		type = nrm_ship_hull_cruiser_2
+		name_group = ENG_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_2
+			fixed_ship_engine_slot = nrm_cruiser_engine_S2_080
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_03h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_4
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_2_x06
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = nrm_support_cruiser_AA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Exeter Class"
+		type = nrm_ship_hull_cruiser_2
+		name_group = ENG_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 10
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_2
+			fixed_ship_engine_slot = nrm_cruiser_engine_S2_080
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_04_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_4
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_2_x06
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_3 = nrm_support_cruiser_FP_1
+			custom_slot_4 = nrm_support_cruiser_AA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Hawkins Class"
+		type = nrm_ship_hull_cruiser_1
+		name_group = ENG_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_1
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_060
+			fixed_ship_armor_layout_slot = nrm_armour_layout_1
+			fixed_ship_armor_slot = nrm_cruiser_armour_02h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_1_x06
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_3_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_cruiser_TRP_21_1_x04
+			custom_slot_3 = nrm_support_cruiser_HAA_1
+			custom_slot_4 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	# Battlecruisers #
+	create_equipment_variant = {
+		name = "Renown Class"
+		type = nrm_ship_hull_capital_1
+		name_group = ENG_BC_HISTORICAL
+		parent_version = 0
+		role_icon_index = 3
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S2_110
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BC_2
+			fixed_ship_armor_slot = nrm_capital_armour_09_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_3
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_15_1_2x3
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_5_1_x12
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_capital_AA_2
+			custom_slot_4 = nrm_support_capital_HAA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Repulse Class"
+		type = nrm_ship_hull_capital_1
+		name_group = ENG_BC_HISTORICAL
+		parent_version = 0
+		role_icon_index = 3
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S2_110
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BC_2
+			fixed_ship_armor_slot = nrm_capital_armour_09_3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_3
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_5
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_15_1_2x3
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_5_1_x12
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_4_1_x08
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_capital_FP_1
+			custom_slot_3 = nrm_support_capital_AA_2
+			custom_slot_4 = nrm_support_capital_HAA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	# Battlecruisers #
+	create_equipment_variant = {
+		name = "Admiral Class"
+		type = nrm_ship_hull_capital_2
+		name_group = ENG_BC_HISTORICAL
+		parent_version = 0
+		role_icon_index = 3
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_2
+			fixed_ship_engine_slot = nrm_capital_engine_S2_140
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BC_2
+			fixed_ship_armor_slot = nrm_capital_armour_13_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_3
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_15_1_2x4
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_5h_1_x12
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_capital_HAA_2
+			custom_slot_4 = nrm_support_capital_AA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	# Battleships #
+	create_equipment_variant = {
+		name = "Nelson Class"
+		type = nrm_ship_hull_capital_2
+		name_group = ENG_BB_HISTORICAL
+		parent_version = 0
+		role_icon_index = 11
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_2
+			fixed_ship_engine_slot = nrm_capital_engine_S2_050
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BB_3
+			fixed_ship_armor_slot = nrm_capital_armour_14_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_16_1_3x3
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_6_2_x12
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_5_1_x08
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_capital_AA_1
+			custom_slot_3 = nrm_support_capital_HAA_2
+			custom_slot_4 = nrm_support_capital_AA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Queen Elizabeth Class"
+		type = nrm_ship_hull_capital_1
+		name_group = ENG_BB_HISTORICAL
+		parent_version = 0
+		role_icon_index = 11
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S2_070
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BB_2
+			fixed_ship_armor_slot = nrm_capital_armour_13_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_15_1_2x4
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_6_1_x12
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_capital_FP_1
+			custom_slot_3 = nrm_support_capital_AA_1
+			custom_slot_4 = nrm_support_capital_HAA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Barham Class"
+		type = nrm_ship_hull_capital_1
+		name_group = ENG_BB_HISTORICAL
+		parent_version = 0
+		role_icon_index = 11
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S1_070
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BB_2
+			fixed_ship_armor_slot = nrm_capital_armour_13_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_15_1_2x4
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_6_1_x12
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_capital_FP_1
+			custom_slot_3 = nrm_support_capital_AA_2
+			custom_slot_4 = nrm_support_capital_HAA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Warspite Class"
+		type = nrm_ship_hull_capital_1
+		name_group = ENG_BB_HISTORICAL
+		parent_version = 0
+		role_icon_index = 11
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S1_080
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BB_2
+			fixed_ship_armor_slot = nrm_capital_armour_13_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_5
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_15_1_2x4
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_6_1_x08
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_4_2_x08
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_capital_FP_1
+			custom_slot_3 = nrm_support_capital_HAA_2
+			custom_slot_4 = nrm_support_capital_HAA_2
+			custom_slot_5 = nrm_support_capital_AA_2
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Revenge Class"
+		type = nrm_ship_hull_capital_1
+		name_group = ENG_BB_HISTORICAL
+		parent_version = 0
+		role_icon_index = 11
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S1_040
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BB_2
+			fixed_ship_armor_slot = nrm_capital_armour_13_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_15_1_2x4
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_6_1_x12
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_capital_FP_1
+			custom_slot_4 = nrm_support_capital_HAA_2
+			custom_slot_5 = nrm_support_capital_AA_2
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Eagle Class"
+		type = nrm_ship_hull_carrier_capital
+		name_group = ENG_CV_HISTORICAL
+		parent_version = 0
+		role_icon_index = 7
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S1_040
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BB_1
+			fixed_ship_armor_slot = nrm_capital_armour_06_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_5_1_x08
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_4_1_x04
+			fixed_ship_flightdeck_slot = nrm_carrier_flightdeck_CH_035
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_capital_AA_2
+			custom_slot_4 = nrm_support_capital_HAA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+
+	create_equipment_variant = {
+		name = "Hermes Class"
+		type = nrm_ship_hull_carrier_cruiser
+		name_group = ENG_CVL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 7
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_1
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_040
+			fixed_ship_armor_layout_slot = nrm_armour_layout_1
+			fixed_ship_armor_slot = nrm_cruiser_armour_03_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_secondary_slot = empty
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			fixed_ship_flightdeck_slot = nrm_carrier_flightdeck_CHL_020
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_cruiser_AA_2
+			custom_slot_4 = nrm_support_cruiser_HAA_1
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Courageous Class"
+		type = nrm_ship_hull_carrier_capital
+		name_group = ENG_CV_HISTORICAL
+		parent_version = 0
+		role_icon_index = 7
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S2_090
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BC_1
+			fixed_ship_armor_slot = nrm_capital_armour_06_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_3
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_5_1_x08
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_5_1_x08
+			fixed_ship_flightdeck_slot = nrm_carrier_flightdeck_CH_045
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_capital_AA_2
+			custom_slot_4 = nrm_support_capital_HAA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Furious Class"
+		type = nrm_ship_hull_carrier_capital
+		name_group = ENG_CV_HISTORICAL
+		parent_version = 0
+		role_icon_index = 7
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S2_090
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BC_1
+			fixed_ship_armor_slot = nrm_capital_armour_06_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_capital_3
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_6_1_x12
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_4_1_x04
+			fixed_ship_flightdeck_slot = nrm_carrier_flightdeck_CH_035
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_capital_AA_2
+			custom_slot_4 = nrm_support_capital_HAA_2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Ark Royal Class"
+		type = nrm_ship_hull_carrier_3
+		name_group = ENG_CV_HISTORICAL
+		parent_version = 0
+		role_icon_index = 7
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_carrier_3
+			fixed_ship_engine_slot = nrm_capital_engine_S2_110
+			fixed_ship_armor_layout_slot = nrm_armour_layout_CV_3
+			fixed_ship_armor_slot = nrm_carrier_armour_04_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_3
+			fixed_ship_range_slot = nrm_range_capital_3
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_4
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_secondary_slot = nrm_capital_secondary_DP_4_2_x08
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_DP_4_2_x08
+			fixed_ship_flightdeck_slot = nrm_carrier_flightdeck_AH_070
+			custom_slot_1 = empty
+			custom_slot_2 = nrm_support_capital_AA_2
+			custom_slot_3 = nrm_support_capital_HAA_2
+			custom_slot_4 = nrm_support_capital_HAA_2
+			custom_slot_5 = nrm_support_capital_AA_2
+			custom_slot_6 = empty
+		}
+	}
+}
+### EOF ###

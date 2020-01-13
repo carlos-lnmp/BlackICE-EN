@@ -1,0 +1,149 @@
+ideas = {
+	## Labor
+	labor_laws = { 
+		law = yes
+		
+		labor_none = {
+			
+			cost = 125
+			removal_cost = -1
+			level = 4
+			available = {
+				if =  { limit = { has_decision = labor_laws } NOT = { has_decision = labor_laws } }
+				OR = {
+					has_government = monarchism
+					has_government = conservatism
+					has_government = neutrality
+				}
+			}
+			
+			modifier = {
+				conscription_factor = -0.06
+				consumer_goods_factor = 0.02
+				political_power_factor = 0.07
+				stability_weekly = 0.001
+			}
+			
+			cancel_if_invalid = no
+			
+			}
+		labor_allowed = {
+			
+			cost = 125
+			removal_cost = -1
+			level = 3
+			available = {
+				if =  { limit = { has_decision = labor_laws } NOT = { has_decision = labor_laws } }
+				has_idea = labor_none
+			}
+			
+			default = yes
+			
+			modifier = {
+				conscription_factor = 0.01
+				consumer_goods_factor = 0.0
+				political_power_factor = 0.01
+				production_speed_buildings_factor = 0.015							 
+			}
+			
+			cancel_if_invalid = no
+			
+			on_add = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = labor_laws }
+					}
+					custom_effect_tooltip = take_time_TT
+					hidden_effect = { country_event = { id = law.53 hours = 1 } }
+				}
+			}
+			
+			}
+		labor_encouraged = {
+			
+			cost = 125
+			removal_cost = -1
+			level = 2
+			available = {
+				if =  { limit = { has_decision = labor_laws } NOT = { has_decision = labor_laws } }
+				has_idea = labor_allowed
+				is_major = yes
+				has_war_support > 0.4
+			}
+			
+			modifier = {
+				conscription_factor = 0.08
+				consumer_goods_factor = -0.02
+				production_factory_max_efficiency_factor = -0.02
+				production_factory_efficiency_gain_factor = -0.02
+				line_change_production_efficiency_factor = -0.02
+				#production_speed_industrial_complex_factor = 0.02
+				#production_speed_dockyard_factor = 0.04
+				political_power_factor = -0.05
+				army_morale_factor = -0.025
+				stability_weekly = -0.001
+				production_speed_buildings_factor = 0.03
+			}
+			
+			on_add = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = labor_laws }
+					}
+					custom_effect_tooltip = take_time_TT
+					hidden_effect = { country_event = { id = law.53 hours = 1 } }
+				}
+			}
+			
+			
+			cancel_if_invalid = no
+
+		}
+		labor_homefront = {
+			
+			cost = 150
+			removal_cost = -1
+			level = 1
+			available = {
+				if =  { limit = { has_decision = labor_laws } NOT = { has_decision = labor_laws } }
+				has_idea = labor_encouraged
+				AND = {
+					has_war = yes
+					is_major = yes
+					OR = {
+						has_idea = war_economy
+						has_idea = tot_economic_mobilisation
+					}
+					has_war_support > 0.8
+				}
+			}
+			
+			modifier = {
+				conscription_factor = 0.15
+				consumer_goods_factor = -0.04
+				production_factory_max_efficiency_factor = -0.04
+				production_factory_efficiency_gain_factor = -0.04
+				line_change_production_efficiency_factor = -0.04
+				political_power_factor = -0.11
+				army_morale_factor = -0.05
+				stability_weekly = -0.002
+				war_support_weekly = -0.001
+				production_speed_buildings_factor = 0.06
+			}
+
+			on_add = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = labor_laws }
+					}
+					custom_effect_tooltip = take_time_TT
+					hidden_effect = { country_event = { id = law.53 hours = 1 } }
+				}
+			}
+			
+			cancel_if_invalid = no
+
+		}
+	}
+}
+### EOF ###	

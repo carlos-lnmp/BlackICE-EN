@@ -1,0 +1,245 @@
+scripted_gui = {
+	#scripted_corruption_gui = {
+	#	context_type = player_context
+	#	
+	#	window_name = "corruption_gui"
+	#	parent_window_token = politics_tab 
+    #   
+	#	visible = { 
+	#		#has_global_flag = wip
+	#		player_only_trigger = yes
+	#	}  
+	#	  
+	#	effects = {     
+	#		corruption_button_click = {  
+	#			calculate_corruption_TT = yes            
+	#			corruption_button_effect = yes             
+	#		}    
+	#	}  
+	#	  
+	#	triggers = {
+	#	}
+	#	
+	#	properties = {
+	#		progress_bar_icon = { 
+	#			frame = corruption_frame
+	#		}
+	#	}
+	#}
+	scripted_weariness_gui = {
+		context_type = player_context
+		
+		window_name = "war_weariness_gui"
+		parent_window_token = politics_tab
+        
+		visible = {
+			has_global_flag = wip
+			player_only_trigger = yes
+		}
+		
+		effects = {
+		}
+		
+		triggers = {
+		}
+	}
+		
+	scripted_government_gui_button = {
+		context_type = player_context
+		
+		window_name = "scripted_government_gui_button"
+		parent_window_token = politics_tab
+        
+		visible = {
+			always = no
+		}
+		
+		effects = {
+			monarch_button_click={
+				if ={
+					limit={
+						has_country_flag=monarchgovermentview
+					}
+					clr_country_flag =monarchgovermentview
+				}
+				else={
+					set_country_flag=monarchgovermentview
+				}
+			}
+			parliament_button_click={
+				if ={
+					limit={
+						has_country_flag=parliamentgovermentview
+					}
+					clr_country_flag =parliamentgovermentview
+				}
+				else={
+					set_country_flag=parliamentgovermentview
+				}
+			}
+		}
+		
+		triggers = {
+			monarch_button_visible={
+				is_cons_monarch=yes
+			}
+			parliament_button_visible={
+				is_cons_monarch=no
+				democratic_govt=yes
+				NOT={
+					tag = AST
+					tag = CAN
+					tag = SAF
+					tag = MAL
+					tag = RAJ
+					tag = NZL
+					tag = SWI
+				}
+				is_puppet = no
+			}
+			parliament_button_enabled = {
+				is_ai = no
+			}
+		}
+	}
+	
+	parliament_government_gui= {
+		context_type = player_context
+		#parent_window_token = politics_tab 
+		window_name = "parliament_government_gui"
+        
+		visible = {
+			always = no
+		}
+		
+		effects = {
+			close_button_click={
+				clr_country_flag =parliamentgovermentview
+			}
+			select_act1_click={
+				add_political_power = -300
+				add_stability = -0.3
+				add_ideas=full_power
+				set_country_flag=fullpower
+			}
+			select_act2_click={
+				add_political_power = -150
+				add_stability = -0.1
+				add_timed_idea = {
+					idea = war_taxes
+					days = 200
+				}
+			}
+			select_act3_click={
+				add_political_power = -150
+				add_stability = -0.1
+				add_timed_idea = {
+					idea = war_time_resc
+					days = 200
+				}
+			}
+			select_act4_click={
+				add_political_power = -150
+				add_stability = -0.1
+				add_timed_idea = {
+					idea = war_rationing
+					days = 200
+				}
+			}
+		}
+		
+		triggers = {
+			select_act1_click_enabled = {
+				is_ai = no
+				NOT={has_idea = full_power}
+				NOT={has_country_flag = fullpower }
+				has_war=yes
+				has_political_power > 299
+			}
+			select_act2_click_enabled = {
+				is_ai = no
+				NOT={has_idea = war_taxes}
+				has_war=yes
+				has_political_power > 149
+			}
+			select_act3_click_enabled = {
+				is_ai = no
+				NOT={has_idea = war_time_resc}
+				has_war=yes
+				has_political_power > 149
+			}
+			select_act4_click_enabled = {
+				is_ai = no
+				NOT={has_idea = war_rationing}
+				has_war=yes
+				has_political_power > 149
+			}
+			
+		}
+	}
+	
+	monarch_government_gui= {
+		context_type = player_context
+		parent_window_token = politics_tab
+		window_name = "monarch_government_gui"
+        
+		visible = {
+			always = no
+		}
+		
+		effects = {
+			close_button_click={
+				clr_country_flag =monarchgovermentview
+			}
+		}
+		
+		triggers = {
+			select_act1_click_enabled = {
+				OR={
+					has_government = conservatism
+					has_government = liberalism
+					has_government = socialism
+				}
+				has_political_power > polperminus
+			}
+			select_act2_click_enabled = {
+				NOT={
+					has_country_flag=overruled
+				}
+				has_war = yes
+				has_political_power > 499
+			}
+			select_act3_click_enabled = {
+				ROOT={
+					has_political_power > polperminus
+				}
+			}
+			select_act4_click_enabled = {
+				ROOT={
+					has_political_power > polperminus
+				}
+			}
+			ENG_george_v_visible = {
+                original_tag = ENG
+				date < 1936.1.20
+            }
+			ENG_edward_viii_visible = {
+                original_tag = ENG
+				date > 1936.1.20
+				date < 1936.12.11
+            }
+			ENG_george_vi_visible = {
+                original_tag = ENG
+				date > 1936.12.11
+            }
+			ITA_victor_visible = {
+               original_tag = ITA
+            }
+			JAP_hirohito_visible = {
+                original_tag = JAP
+            }
+			
+		}
+	}
+}
+### EOF ###

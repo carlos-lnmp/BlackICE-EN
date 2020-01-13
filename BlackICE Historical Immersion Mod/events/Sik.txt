@@ -1,0 +1,366 @@
+﻿###########################
+# Sinkiang Events
+###########################
+
+add_namespace = xinjiang
+
+#Sinkiang civil war
+country_event = {
+	id = xinjiang.1
+	title = xinjiang.1.t
+	desc = xinjiang.1.d
+	picture = GFX_report_event_indian_soldiers
+
+	is_triggered_only = yes
+	option = { 
+		name = xinjiang.1.a
+		ai_chance = {
+			factor = 100
+		}
+		hidden_effect = {
+			949 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = mob_general
+			remove_ideas = SIK_divided_nation
+			leave_faction = yes
+			287 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			950 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			start_civil_war = {
+				ruling_party = communism
+				ideology = neutrality
+				size = 0.75
+				only_own_territory = yes
+				capital = 287
+				states = { 
+					287 619 918 754 950
+				}
+			}
+			random_other_country = {
+				limit = {
+					original_tag = SIK
+					has_government = neutrality
+				}
+				add_offsite_building = { type = arms_factory level = 5 }
+				load_oob = SIK_civil_war
+				load_focus_tree = china_warlord_focus
+				create_country_leader = {
+					name = "Ma Hu-shan"
+					desc = "POLITICS_Ma_Hushan_DESC"
+					picture = ""
+					expire = "1965.1.1"
+					ideology = reactionism
+					traits = {
+						warrior_code
+						spirit_of_genghis
+					}
+				}
+				add_ideas = CHI_ineffective_bureaucracy_warlord
+				add_timed_idea = {
+					idea = PER_neutral
+					days = 210
+				}
+			}
+			country_event = { id = xinjiang.2 days = 2 }
+			CHI = { country_event = { id = xinjiang.6 days = 5 } }
+		}
+	}
+}
+#Sinkiang needs soviet aid
+country_event = {
+	id = xinjiang.2
+	title = xinjiang.2.t
+	desc = xinjiang.2.d
+	picture = GFX_report_event_stalin_approves
+
+	is_triggered_only = yes
+	#Save us Pappa Stalin
+	option = { 
+		name = xinjiang.2.a
+		ai_chance = {
+			factor = 100
+		}
+		SOV = {
+			country_event = { id = xinjiang.3 }
+		}
+	}
+	#Who needs communism
+	option = { 
+		name = xinjiang.2.a
+		ai_chance = {
+			factor = 0
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = -0.25
+		}		
+	}
+}
+#Question for Soviets? Aid SIK?
+country_event = {
+	id = xinjiang.3
+	title = xinjiang.3.t
+	desc = xinjiang.3.d
+	picture = GFX_report_event_stalin_approves
+
+	is_triggered_only = yes
+	#Help out
+	option = { 
+		name = xinjiang.3.a
+		ai_chance = {
+			factor = 100
+		}
+		random_other_country = {
+			limit = {
+				original_tag = SIK
+				has_government = communism
+			}
+			add_country_leader_trait = stalins_puppet
+			hidden_effect = {
+				set_technology = {
+					interwar_Hvartillery = 1
+					gwtank = 1
+					tech_amph_soviet_tank_a = 1
+					tech_light_soviet_tank_a = 1
+					tech_medium_soviet_tank_a = 1
+					tech_heavy_soviet_tank_a = 1
+					tech_Tankettes = 1
+					tech_Gun_Carriers = 1
+					tech_ac_recon = 1
+					soviet_air_tech = 1
+					tech_po_2_bomber_equipment_1 = 1
+					tech_i_15_equipment_1 = 1
+					tech_i15_m25_engine_1 = 1
+					tech_i_15_equipment_2 = 1
+					tech_i_16_equipment_1 = 1
+					tech_i_16_equipment_2 = 1
+					tech_i_16_equipment_3 = 1
+					tech_i_152_equipment_1 = 1 #i-15bis
+					tech_i_14_fighter_equipment_1 = 1
+					tech_ip_1_fighter_equipment_1 = 1
+					tech_tb_3_bomber_equipment_1 = 1
+					tech_tb_3_bomber_equipment_2 = 1
+					tech_tb_3_bomber_equipment_3 = 1
+					tech_r_5_bomber_equipment_1 = 1
+					tech_r_5_bomber_equipment_2 = 1
+					tech_r_5_bomber_equipment_3 = 1
+					soviet_air_tech = 1
+					SMG_team = 1
+					tech_support = 1
+					gw_artillery = 1
+					interwar_artillery = 1
+				}
+				country_event = { id = xinjiang.4 }
+				set_country_flag = sov_aid
+			}
+		}
+		send_equipment = {
+			equipment = light_soviet_tank_equipment
+			amount = 100
+			target = SIK
+		}
+		send_equipment = {
+			equipment = tankette_equipment
+			amount = 25
+			target = SIK
+		}
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 2000
+			target = SIK
+		}
+		send_equipment = {
+			equipment = garrison_equipment
+			amount = 500
+			target = SIK
+		}
+		send_equipment = {
+			equipment = infantry_uniforms
+			amount = 1000
+			target = SIK
+		}
+		send_equipment = {
+			equipment = support_equipment
+			amount = 400
+			target = SIK
+		}
+		hidden_effect = {
+			add_ai_strategy = {
+				type = send_volunteers_desire
+				id = SIK
+				value = 2000
+			}
+		}	
+	}
+	#Who needs em
+	option = { 
+		name = xinjiang.3.b
+		ai_chance = {
+			factor = 0
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = -0.25
+		}
+		random_other_country = {
+			limit = {
+				original_tag = SIK
+				has_government = communism
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.25
+			}			
+			add_opinion_modifier = {
+				target = SOV
+				modifier = refused_help
+			}
+		}
+		MON = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.25
+			}
+		}
+		PRC = {
+			add_opinion_modifier = {
+				target = SOV
+				modifier = refused_help
+			}
+		}
+	}
+}
+#Soviets said yes
+country_event = {
+	id = xinjiang.4
+	title = xinjiang.4.t
+	desc = xinjiang.4.d
+	picture = GFX_report_event_stalin_approves
+
+	is_triggered_only = yes
+	option = { 
+		name = xinjiang.4.a
+		ai_chance = {
+			factor = 100
+		}
+		add_manpower = 1000
+		hidden_effect = {
+			load_oob = SIK_sov_help
+			if = {
+				limit = {
+					is_ai = yes
+					SOV = {
+						is_ai = yes
+					}
+				}
+				#dbl the troops if its all AI to ensure a swift victory
+				load_oob = SIK_sov_help
+			}
+		}
+		add_opinion_modifier = {
+			target = SOV
+			modifier = offered_support
+		}
+	}
+}
+#soviet Payment time
+country_event = {
+	id = xinjiang.5
+	title = xinjiang.5.t
+	desc = xinjiang.5.d
+	picture = GFX_report_event_stalin_approves
+
+	is_triggered_only = yes
+	#ok
+	option = { 
+		name = xinjiang.5.a
+		ai_chance = {
+			factor = 100
+		}
+		SOV = {
+			add_to_faction = SIK
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				
+				set_autonomy = {
+					target = SIK
+					autonomous_state = autonomy_integrated_puppet
+				}
+				else = {
+					set_autonomy = {
+						target = SIK
+						autonomous_state = autonomy_puppet
+					}
+				}
+			}
+		}
+		remove_ideas = SIK_soviet_tribute
+	}
+	#This way leads to death
+	option = { 
+		name = xinjiang.5.b
+		ai_chance = {
+			factor = 0
+		}
+		declare_war_on = {
+			target = SOV
+			type = annex_everything
+		}
+	}	
+}
+#Aid from China for Ma Hu-shan
+country_event = {
+	id = xinjiang.6
+	title = xinjiang.6.t
+	desc = xinjiang.6.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	#Help out
+	option = { 
+		name = xinjiang.6.a
+		ai_chance = {
+			factor = 40
+		}
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 100
+			target = D02
+		}
+		send_equipment = {
+			equipment = infantry_uniforms
+			amount = 50
+			target = D02
+		}
+		send_equipment = {
+			equipment = support_equipment
+			amount = 40
+			target = D02
+		}
+		hidden_effect = {
+			add_ai_strategy = {
+				type = send_volunteers_desire
+				id = D02
+				value = 2000
+			}
+		}	
+	}
+	#Who needs em
+	option = { 
+		name = xinjiang.6.b
+		ai_chance = {
+			factor = 60
+		}
+	}
+}
+				

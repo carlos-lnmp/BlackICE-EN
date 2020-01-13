@@ -1,0 +1,3092 @@
+SS_recruitment = {
+	
+	GER_wach_btl_LSSAH = {
+		
+		icon = ger_wach_btl_LSSAH
+		
+		available = {
+			has_country_flag = SS_enabled
+		}
+		
+		visible = {
+			has_country_flag = SS_enabled
+		}
+		
+		highlight_states = {
+			state = 896 
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_wach_btl_LSSAH_dec_tt
+			#TEMPLATE
+			division_template = {
+				name = "LSSAH Wach-Battalion"					# SS regiments (elite equipment & training)
+				division_names_group = GER_LSSAH_01
+				is_locked = yes
+				template_counter = 1000
+				priority = 2
+				
+				regiments = {
+					ss_garrison = { x = 0 y = 0 }	
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					military_police = { x = 0 y = 1 }
+					maintenance_company = { x = 0 y = 2 }
+					logistics_company = { x = 0 y = 3 }
+				}
+			}
+			country_event = ss_event.665
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	
+	GER_TV_Schutzstaffel = {
+ 
+		icon = ger_totenkopf
+
+		available = {
+			has_country_flag = SS_enabled
+		}
+		visible = {
+		
+		}
+		
+		highlight_states = {
+			state = 52 #1st Totenkopf 
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_TV_Schutzstaffel_TT
+			unlock_decision_tooltip = GER_TV_4_Schutzstaffel
+			unlock_decision_tooltip = GER_SS_TK
+			#TEMPLATE
+			division_template = {
+				name = "SS-Totenkopf"	# Represents SS Garrison/ Guard units
+				division_names_group = GER_TK_01
+				is_locked = yes
+				priority = 2
+				template_counter = 1014
+				
+				regiments = {
+					ss_garrison = { x = 0 y = 0 }				# Lower-quality equipment and training
+					ss_garrison = { x = 0 y = 1 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					military_police = { x = 0 y = 1 }
+				}
+				
+				priority = 2
+			}
+			country_event = ss_event.667
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_TV_4_Schutzstaffel = {#4th Totenkopf 
+
+		icon = ger_totenkopf
+
+		available = {
+			4 = { is_controlled_by_ROOT_or_subject = yes }
+			has_country_flag = SS_enabled
+		}
+		visible = {
+			has_country_flag = SS_TV_1_2_3
+			date > 1938.1.1
+		}
+		
+		highlight_states = {
+			state = 4 #Vienna
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		complete_effect = {
+			custom_effect_tooltip = GER_TV_4_Schutzstaffel_dec_tt
+			#TEMPLATE
+			division_template = {
+				name = "SS-Totenkopf Standarte"	# Represents SS Garrison/ Guard units
+				division_names_group = GER_TK_01
+				priority = 2
+				template_counter = 1014
+				
+				regiments = {
+					ss_garrison = { x = 0 y = 0 }				# Lower-quality equipment and training
+					ss_garrison = { x = 0 y = 1 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					military_police = { x = 0 y = 1 }
+				}
+			}
+			country_event = ss_event.642
+			
+			set_temp_variable = { wehrmacht_anger_temp = 1 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -1 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_TK_Reiter = {
+
+		icon = ger_totenkopf
+
+		available = {
+			862 = { is_controlled_by_ROOT_or_subject = yes }
+			has_country_flag = SS_enabled
+			has_country_flag = SS_TV_4
+		}
+		visible = {
+			date > 1939.9.1
+		}
+		
+		highlight_states = {
+			state = 862 #Warsaw
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		complete_effect = {
+			country_event = ss_event.644
+			
+			set_temp_variable = { wehrmacht_anger_temp = 1 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -1 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_VT_Schutzstaffel = {
+
+		icon = ger_ss_germania_deutschland_regt
+
+		available = {
+			date > 1936.2.1
+			has_country_flag = SS_enabled
+		}
+		visible = {
+			date > 1936.1.10
+			has_country_flag = SS_enabled
+			has_country_flag = SS_Start
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			delete_unit_template_and_units = { division_template = "SS-Standarte Germania(s-mot Rgt.)" }
+			delete_unit_template_and_units = { division_template = "SS-Standarte Deutschland(s-mot Rgt.)" }
+			
+			custom_effect_tooltip = GER_VT_Schutzstaffel_TT
+			unlock_decision_tooltip = GER_VT_Division
+			
+			country_event = ss_event.668
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_VT_Fuhrer = {
+
+		icon = ger_ss_standarte_fuhrer
+
+		available = {
+			date > 1938.1.3
+			GER = { controls_state = 4 }
+			has_country_flag = SS_enabled
+			has_country_flag = SS_VT_brig
+		}
+		
+		visible = {
+			date > 1937.1.11
+			has_country_flag = SS_Start
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		highlight_states = {
+			state = 4
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_VT_Fuhrer_TT
+			
+			country_event = { id = ss_event.689 hours = 6 }
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_SS_LSSAH = {
+		icon = ger_wach_btl_LSSAH
+
+		available = {
+			date > 1938.8.1
+			has_country_flag = SS_enabled
+		}
+		visible = {
+			date > 1938.5.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			
+			country_event = ss_event.664	# LSSAH Infanterie Regiment
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_motorize_SS_LSSAH = {
+		icon = ger_wach_btl_LSSAH
+
+		available = {
+			date > 1939.2.1
+			has_country_flag = SS_enabled
+			has_country_flag = LSSAH_regiment_38
+			
+			has_tech = tech_combat_engineers
+			has_tech = tech_signal_company
+		}
+		visible = {
+			date > 1938.11.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			
+			country_event = ss_event.663	# LSSAH Motorized Regiment
+			
+			set_temp_variable = { wehrmacht_anger_temp = 2 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -2 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_expand_SS_LSSAH = {
+		icon = ger_wach_btl_LSSAH
+
+		available = {
+			date > 1940.2.1
+			has_country_flag = SS_enabled
+			has_country_flag = LSSAH_regiment_39
+			
+			has_tech = subtech_panzer_iii_td_equipment_1
+		}
+		visible = {
+			date > 1939.11.1
+		}
+		
+		highlight_states = {
+			state = 57 #Westfalen
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			
+			country_event = ss_event.662	# LSSAH 1940 Expansion
+			
+			set_temp_variable = { wehrmacht_anger_temp = 2 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -2 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_form_SS_LSSAH_brigade = {
+		icon = ger_wach_btl_LSSAH
+
+		available = {
+			date > 1940.8.1
+			has_country_flag = SS_enabled
+			has_country_flag = LSSAH_regiment_40
+			
+			has_tech = subtech_panzer_iii_td_equipment_1
+			28 = { is_controlled_by_ROOT_or_subject = yes }
+		}
+		visible = {
+			date > 1939.11.1
+		}
+
+		highlight_states = {
+			state = 28 #Metz
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			
+			country_event = ss_event.661	# LSSAH 1940 Brigade
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_form_SS_LSSAH_division = {
+		icon = ger_wach_btl_LSSAH
+
+		available = {
+			date > 1942.2.1
+			has_country_flag = LSSAH_brigade_40
+			has_tech = tech_panzer_iv_equipment_3
+			has_tech = subtech_panzer_iii_td_equipment_1
+			843 = { is_controlled_by_ROOT_or_subject = yes }
+		}
+		
+		visible = {
+			date > 1941.11.1
+		}
+		
+		highlight_states = {
+			state = 843 #Prague
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			
+			country_event = ss_event.660	# LSSAH 1941 Division
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_form_SS_LSSAH_pzgren_division = {	#SS Pzgren.-Division LSSAH
+		icon = ger_wach_btl_LSSAH
+
+		available = {
+			date > 1942.11.24
+			has_country_flag = LSSAH_mot_div_42
+			916 = { is_controlled_by_ROOT_or_subject = yes }
+		}
+		
+		visible = {
+			date > 1942.8.24
+		}
+
+		highlight_states = {
+			state = 916 #Fiume Croatia
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			
+			country_event = ss_event.659	# LSSAH 1942 SS PzGren.-Division
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_form_SS_LSSAH_panzer_division = {	#SS Pzgren.-Division LSSAH
+		icon = ger_wach_btl_LSSAH
+
+		available = {
+			date > 1943.10.24
+			has_country_flag = LSSAH_mot_div_42
+			has_tech = mechanised_infantry2
+			has_tech = tech_heavy_panzer_equipment_2
+			has_tech = subtech_motorized_rocket_unit
+			has_tech = subtech_heavy_panzer_art_equipment_1
+			916 = { is_controlled_by_ROOT_or_subject = yes }
+		}
+		
+		visible = {
+			date > 1943.7.24
+		}
+
+		highlight_states = {
+			state = 916 #Fiume Croatia
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			
+			country_event = ss_event.658	# LSSAH SS-Pz-Division
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	#Totenkopf-division event-chain
+	GER_SS_TK = {
+
+		icon = ger_totenkopf
+
+		available = {
+			date > 1939.10.1
+			has_country_flag = SS_enabled
+			has_country_flag = SS_TV_1_2_3
+		}
+		visible = {
+			date > 1939.7.1
+		}
+		
+		highlight_states = {
+			state = 52 
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		complete_effect = {
+			country_event = ss_event.650
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_SS_TK_panzergrenadier = {
+
+		icon = ger_totenkopf
+
+		available = {
+			date > 1942.11.8
+			has_country_flag = totenkopf_div_39
+			has_tech = mechanised_infantry2
+			23 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1942.8.8
+		}
+		
+		highlight_states = {
+			state = 23 
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		complete_effect = {
+			
+			country_event = ss_event.651
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_SS_TK_panzerdivision = {
+
+		icon = ger_totenkopf
+
+		available = {
+			date > 1943.10.21
+			has_country_flag = totenkopf_pzgren_div_42
+		}
+		visible = {
+			date > 1943.7.21
+		}
+		
+		highlight_states = {
+			state = 23 
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		complete_effect = {
+			
+			country_event = ss_event.652
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	GER_VT_Division = {
+
+		icon = ger_ss_verfugungstruppen_div
+
+		available = {
+			date > 1939.10.10
+			has_country_flag = SS_enabled
+			has_country_flag = SS_Start_II
+		}
+		visible = {
+			date > 1939.7.10
+			has_country_flag = SS_enabled
+			has_country_flag = SS_Start_II
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		complete_effect = {
+			custom_effect_tooltip = SS_VT_Div
+			
+			country_event =  { id = ss_event.640 hours = 6 }
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	## SS regiments Nordland/Westland (mot.)
+	GER_SS_Nordland_Westland_regts = {
+
+		icon = ger_military_buildup
+
+		available = {
+			date > 1940.5.1
+			has_country_flag = SS_enabled
+			HOL = { 
+				OR = {
+					has_capitulated = yes
+					is_puppet_of = GER
+					786 = { is_controlled_by = GER }
+				}
+			}
+			BEL = {
+				OR = {
+					has_capitulated = yes
+					is_puppet_of = GER
+					774 = { is_controlled_by = GER }
+				}
+			}
+			NOR = {
+				OR = {
+					has_capitulated = yes
+					is_puppet_of = GER
+					866 = { is_controlled_by = GER }
+				}
+			}
+			DEN = {
+				OR = {
+					has_capitulated = yes
+					is_subject_of = GER
+					875 = { is_controlled_by = GER }
+				}
+			}
+		}
+		
+		visible = {
+			date > 1940.2.1
+			has_country_flag = SS_enabled
+			has_war = yes 
+		}
+		
+		highlight_states = {
+			state = 50
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		complete_effect = {
+			
+			country_event = { id = ss_event.671 hours = 6 }
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	## SS Reich Division(mot.)
+	GER_SS_reich_division = {
+
+		icon = ger_ss_division_reich
+
+		available = {
+			date > 1940.12.20
+			has_country_flag = SS_enabled
+			has_country_flag = ss_vt_division_39
+			
+			has_tech = subtech_light_panzer_td_equipment_1
+		}
+		visible = {
+			date > 1940.7.1
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			division_template = {
+				name = "SS-Infantry(mot.)"
+				division_names_group = GER_SS_01
+				priority = 2
+				template_counter = 213
+				
+				regiments = {
+					ss_motorized = { x = 0 y = 0 }
+					ss_motorized = { x = 0 y = 1 }
+					ss_motorized = { x = 0 y = 2 }
+					
+					ss_motorized = { x = 1 y = 0 }
+					ss_motorized = { x = 1 y = 1 }
+					ss_motorized = { x = 1 y = 2 }
+					
+					ss_motorized = { x = 2 y = 0 }
+					ss_motorized = { x = 2 y = 1 }
+					ss_motorized = { x = 2 y = 2 }
+					
+					ss_mechanized = { x = 3 y = 0 }
+					
+					ss_artillery_brigade_mot = { x = 4 y = 0 }
+					ss_artillery_brigade_mot = { x = 4 y = 1 }
+					ss_artillery_brigade_mot = { x = 4 y = 2 }
+					ss_light_assault_panzer = { x = 0 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					combat_engineer = { x = 0 y = 1 }
+					military_police = { x = 0 y = 2 }
+					anti_air = { x = 0 y = 3 }
+					recon_mot = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					anti_tank = { x = 1 y = 2 }
+				}
+			}
+			
+			country_event = { id = ss_event.641 hours = 6 }
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_SS_reich_division_expansion = {
+
+		icon = ger_ss_division_reich
+
+		available = {
+			date > 1942.11.8
+			has_country_flag = ss_division_reich
+			
+			has_tech = tech_heavy_panzer_equipment_2
+		}
+		visible = {
+			date > 1942.8.8
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			
+			country_event = ss_event.643
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_SS_reich_division_panzer = {
+
+		icon = ger_ss_division_reich
+
+		available = {
+			date > 1943.10.21
+			has_country_flag = ss_pzgren_division_dasreich
+			
+			has_tech = tech_panzer_v_equipment_1
+			has_tech = subtech_motorized_rocket_unit
+		}
+		visible = {
+			date > 1943.7.21
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			
+			country_event = ss_event.645
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	## SS Wiking Division(mot.)
+	GER_SS_Wiking_division = {
+
+		icon = ger_ss_division_wiking
+
+		available = {
+			date > 1940.12.20
+			has_country_flag = ss_wiking_regts
+		}
+		visible = {
+			has_country_flag = ss_wiking_regts
+			date > 1940.7.1
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			
+			country_event = ss_event.673
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	## SS Kavalerie
+	GER_SS_Kavallerie_brigade = {
+
+		icon = ger_military_buildup
+
+		available = {
+			date > 1941.8.1
+			has_country_flag = SS_enabled
+		}
+		visible = {
+			date > 1941.5.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			
+			country_event = ss_event.695
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	GER_1_ss_infantry_brigade = {
+
+		icon = ger_military_buildup
+
+		available = {
+			date > 1941.3.1
+			has_completed_focus = GER_1941_waffen_ss_expansion
+			10 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1941.1.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			
+			country_event = ss_event.696
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	GER_2_ss_infantry_brigade = {
+
+		icon = ger_military_buildup
+
+		available = {
+			date > 1941.5.1
+			has_country_flag = ss_infantry_brigade
+			has_completed_focus = GER_1941_waffen_ss_expansion
+			
+			88 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1941.2.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+		
+			country_event = ss_event.697
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	GER_SS_Brigade_Schuldt = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_infantry_brigade
+			has_completed_focus = GER_1941_waffen_ss_expansion
+			date > 1941.11.1
+		}
+		visible = {
+			date > 1941.8.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+		
+			country_event = ss_event.698
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	enable_ss_inf_art_units = {
+	
+		icon = ger_military_buildup
+		
+		available = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			has_completed_focus = GER_1940_waffen_ss_expansion
+		}
+		visible = {
+			date > 1939.1.1
+		}
+
+		cost = 200
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		complete_effect = {
+			hidden_effect = {
+				set_technology = {
+					ss_artillery_tech = 1
+					ss_artillery_mot_tech = 1
+					ss_artillery_mnt_tech = 1
+					ss_artillery_airborne_tech = 1
+					
+					ss_infantry_tech = 1
+					ss_semi_motorized_tech = 1
+					ss_motorized_tech = 1
+					ss_cavalry_tech = 1
+					ss_mountaineers_tech = 1
+				}
+			}
+		}
+	}
+	enable_ss_panzer_units = {
+	
+		icon = ger_military_buildup
+		
+		available = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			has_completed_focus = GER_1942_waffen_ss_expansion
+		}
+		visible = {
+			OR = {
+				has_idea = heinrich_himmler
+				has_country_leader = { name = "Heinrich Himmler" }
+			}
+			date > 1940.1.1
+		}
+
+		cost = 200
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		complete_effect = {
+			hidden_effect = {
+				set_technology = {
+					ss_light_panzer_td_tech = 1
+					ss_light_assault_panzer_tech = 1
+					ss_panzer_spaa_tech = 1
+					ss_panzer_iii_td_tech = 1
+					
+					ss_panzer_i_tech = 1
+					ss_panzer_ii_tech = 1
+					ss_panzer_iii_tech = 1
+					ss_panzer_iv_tech = 1
+					
+				}
+			}
+		}
+	}
+	GER_Schutzstaffel_foreign_ss_units = {
+
+		icon = ger_military_buildup
+
+		available = {
+			date > 1938.3.1	
+			
+		}
+		visible = {
+			date > 1938.1.1	
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			
+			country_event = ss_event.684
+			
+			set_country_flag = focus_foreign_SS_units
+			effect_tooltip = {
+				add_ideas = GER_foreign_SS_unit_recruitment
+				add_manpower = 500000
+			}
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	### 1942 ###
+	GER_ss_7_prinz_eugen = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1942.3.1
+			
+			OR = {
+				106 = { is_controlled_by_ROOT_or_ally = yes } 
+				107 = { is_controlled_by_ROOT_or_ally = yes } 
+			}
+			
+		}
+		visible = {
+			date > 1942.1.1	
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			
+			country_event = ss_event.699
+			update_all_subunits = yes
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	GER_ss_8_florian_geyer = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1942.6.1
+			has_war_with = SOV
+		}
+		visible = {
+			date > 1942.3.1	
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			
+			country_event = ss_event.700
+			update_all_subunits = yes
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	GER_SS_Serbis = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			has_country_flag = ss_infantry_brigade
+			date > 1942.1.1
+			107 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1941.10.1	
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.701
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_SS_RONA = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1942.10.1
+			206 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1942.7.1	
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.702
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_9_hohenstaufen = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1943.3.1 
+		}
+		visible = {
+			has_country_flag = ss_expansion
+			date > 1943.1.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.703
+			update_all_subunits = yes
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	## SS Wiking Division(Pzgren.)
+	GER_SS_pzgrendivision_Wiking = {
+
+		icon = ger_ss_division_wiking
+
+		available = {
+			date > 1942.11.9
+		}
+		visible = {
+			has_country_flag = ss_wiking_mot
+			date > 1942.1.1
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.669
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	### 1943 ###
+	## 5. SS Pz-Division Wiking
+	GER_SS_pzdivision_Wiking = {
+
+		icon = ger_ss_division_wiking
+
+		available = {
+			date > 1943.10.23
+		}
+		visible = {
+			has_country_flag = ss_wiking_pzgren
+			date > 1943.1.1
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.680
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	### Frundsberg
+	GER_ss_10_frundsberg = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			has_country_flag = SS_Pz_Division
+			date > 1943.3.1 
+		}
+		visible = {
+			has_country_flag = SS_Pz_Division
+			date > 1943.1.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.704
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_12_hitlerjugend = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			has_completed_focus = GER_hitler_youth_military_reserves
+			date > 1943.7.1
+		}
+		visible = {
+			date > 1943.4.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			
+			country_event = ss_event.705
+			update_all_subunits = yes
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	GER_ss_16_reichsfuhrer = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1943.10.1
+		}
+		visible = {
+			date > 1943.7.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			
+			country_event = ss_event.706
+			update_all_subunits = yes
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	GER_ss_17_gotzvonberlichingen = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1943.10.1
+		}
+		visible = {
+			date > 1943.7.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.707
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_11_nordland = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1943.4.1
+			OR = {
+				37 = { is_controlled_by_ROOT_or_ally = yes }
+				110 = { is_controlled_by_ROOT_or_ally = yes }
+			}
+		}
+		visible = {
+			date > 1943.1.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+
+			country_event = ss_event.708
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	GER_ss_13_handschar = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1943.2.1
+			OR = {
+				106 = { is_controlled_by_ROOT_or_ally = yes }
+				107 = { is_controlled_by_ROOT_or_ally = yes }
+			}
+		}
+		visible = {
+			date > 1942.12.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.709
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_14_waffendiv = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1943.3.1
+			10 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1943.1.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.710
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_15_waffendiv = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1943.1.1
+			has_war_with = SOV 
+			NOT = { has_war_with = LAT }
+			12 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1942.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.711
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_18_horst_wessel = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1943.11.1
+			is_in_faction_with = HUN
+			109 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1943.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+
+			country_event = ss_event.712
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	GER_ss_19_waffendiv = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1943.11.1
+			has_war_with = SOV
+			NOT = { has_war_with = LAT }
+			12 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1943.8.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.713
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_20_waffendiv = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1943.10.1
+			has_war_with = SOV
+			NOT = { has_war_with = EST }
+			13 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1943.7.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.714
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_21_skanderbeg = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.4.1
+			904 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.1.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.715
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_22_maria_theresia = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.3.1
+			155 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.1.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.716
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_23_kama = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.6.1
+			106 = { is_controlled_by_ROOT_or_ally = yes }
+			107 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.3.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.717 
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_ney = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.10.1
+			is_in_faction_with = HUN
+				
+		}
+		visible = {
+			date > 1944.7.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.718
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		
+		}
+	}
+	
+	GER_ss_24_karstjager = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.9.1
+			is_in_faction_with = ITA
+				
+		}
+		visible = {
+			date > 1944.6.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.719
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_25_hunyadi = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.10.1
+			is_in_faction_with = HUN
+				
+		}
+		visible = {
+			date > 1944.7.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.720
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_26_waffendiv = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.11.1
+			is_in_faction_with = HUN
+				
+		}
+		visible = {
+			date > 1944.8.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.721
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_27_langemarck = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.9.1
+			has_war_with = SOV
+			886 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.6.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.722
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_28_wallonien = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.9.1
+			has_war_with = SOV
+			34 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.6.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.723
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_30_waffendiv = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.8.1
+			has_war_with = SOV
+			60 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.5.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.724
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_bulgaris_regt = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.8.1
+			has_war_with = SOV
+			is_in_faction_with = BUL
+				
+		}
+		visible = {
+			date > 1944.5.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.725
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_31_waffendiv = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.10.1
+			is_in_faction_with = HUN
+			has_war_with = SOV
+				
+		}
+		visible = {
+			date > 1944.7.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.726
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_ostturkis = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.3.1
+			has_war_with = SOV
+			60 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.1.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.727
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_kaukasien = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.11.1
+			has_war_with = SOV
+			86 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.8.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.728
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_rumanis_regt = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1944.10.1
+			has_war_with = SOV
+			4 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.7.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.729
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_33_charlemagne = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1945.1.1
+			has_war_with = SOV
+			844 = { is_controlled_by_ROOT_or_ally = yes }
+			28 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.730
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_34_landstorm = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1945.1.1
+			844 = { is_controlled_by_ROOT_or_ally = yes }
+			7 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.731
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_37_lutzow = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1945.1.1
+			has_war_with = SOV
+			70 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.732
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_29_waffendiv = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1945.1.1
+			158 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.733
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_nederland = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1945.1.1
+			28 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+
+			country_event = ss_event.734
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+				update_all_subunits = yes
+			}
+		}
+	}
+	
+	GER_ss_1_ungarische_regt = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1945.1.1
+			is_in_faction_with = HUN
+			has_war_with = SOV
+				
+		}
+		visible = {
+			date > 1944.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.735
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_36_waffendiv = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1945.1.1
+			has_war_with = SOV
+			has_war_with = USA
+			NOT = {
+				is_in_faction_with = BUL 
+				is_in_faction_with = ROM 
+				is_in_faction_with = FIN 
+				is_in_faction_with = ITA 
+			}
+			10 = { is_controlled_by_ROOT_or_ally = yes }
+			844 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.736
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_35_polizei = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1945.1.1
+			has_war_with = SOV
+			has_war_with = USA
+			NOT = {
+				is_in_faction_with = BUL 
+				is_in_faction_with = ROM 
+				is_in_faction_with = FIN 
+				is_in_faction_with = ITA 
+			}
+			10 = { is_controlled_by_ROOT_or_ally = yes }
+			844 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.737
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_32_januar = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1945.1.1
+			has_war_with = SOV
+			has_war_with = USA
+			NOT = {
+				is_in_faction_with = BUL 
+				is_in_faction_with = ROM 
+				is_in_faction_with = FIN 
+				is_in_faction_with = ITA 
+			}
+			10 = { is_controlled_by_ROOT_or_ally = yes }
+			844 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.738
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+	
+	GER_ss_38_nibelungen = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_country_flag = ss_expansion
+			date > 1945.1.1
+			has_war_with = SOV
+			has_war_with = USA
+			NOT = {
+				is_in_faction_with = BUL 
+				is_in_faction_with = ROM 
+				is_in_faction_with = FIN 
+				is_in_faction_with = ITA 
+			}
+			10 = { is_controlled_by_ROOT_or_ally = yes }
+			844 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		visible = {
+			date > 1944.10.1
+		}
+
+		cost = 15
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ss_event.739
+			
+			set_temp_variable = { wehrmacht_anger_temp = 3 }
+			add_to_variable = { wehrmacht_anger = wehrmacht_anger_temp }
+			custom_effect_tooltip = wehrmacht_anger_TT
+			
+			set_temp_variable = { SS_anger_temp = -3 }
+			add_to_variable = { SS_anger = SS_anger_temp }
+			custom_effect_tooltip = SS_anger_TT
+			
+			hidden_effect = {
+				SS_resolve_effects_wehrmacht = yes
+			}
+		}
+	}
+}
+
+SS_demands = {
+	SS_himmler_wants_field_command = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_idea = heinrich_himmler
+			has_war = yes
+		}
+		visible = {
+			has_completed_focus = GER_1940_waffen_ss_expansion
+			has_idea = heinrich_himmler
+			has_war = yes
+		}
+		cost = 25
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			subtract_from_variable = { var = SS_anger value = 10 }
+			add_to_variable = { var = wehrmacht_anger value = 3 } #shitty little upstart
+			
+			create_field_marshal = {
+				name = "Heinrich Himmler"
+				picture = "Portrait_Germany_Heinrich_Himmler.dds"
+				traits = { politically_connected }
+				skill = 1
+				attack_skill = 1
+				defense_skill = 1
+				planning_skill = 1
+				logistics_skill = 1
+			}
+		}
+	}
+	SS_himmler_wants_government_seat = {
+
+		icon = ger_military_buildup
+
+		available = {
+			#NOT = { has_idea = heinrich_himmler }
+		}
+		visible = {
+			always = no
+			#NOT = { has_idea = heinrich_himmler }
+		}
+		cost = 25
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			add_ideas = heinrich_himmler
+		}
+	}
+	SS_himmler_wants_SS_units = {
+
+		icon = ger_military_buildup
+
+		available = {
+			
+		}
+		visible = {
+			always = no
+			#NOT = { has_idea = heinrich_himmler }
+		}
+		cost = 25
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			add_ideas = heinrich_himmler
+		}
+	}
+}
+
+wehrmacht_demands = {
+	
+}

@@ -1,0 +1,428 @@
+﻿instant_effect = {
+	set_country_flag = placed_research_centre
+
+	add_research_slot = 1
+	150 = { state_add_research_centre = yes }
+	SLOT:infantry_folder = yes
+	SLOT:support_folder = yes
+	SLOT:ww1_land_doctrine_folder = yes
+	SLOT:land_doctrine_folder = yes
+}
+
+##### Division Templates #####
+division_template = {
+	name = "Jalkaväkidivisioona"		# Infantry Division
+	division_names_group = FIN_INF_01
+	template_counter = 114
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+
+		light_infantry = { x = 2 y = 0 }
+		light_infantry = { x = 2 y = 1 }
+		light_infantry = { x = 2 y = 2 }
+
+		artillery_brigade = { x = 3 y = 0 }
+		artillery_brigade = { x = 3 y = 1 }
+		artillery_brigade = { x = 3 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 } 
+		recon_cav = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Jalkaväkidivisioona2"		# reserve Division
+	division_names_group = FIN_GAR_01
+	template_counter = 86
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+		
+		garrison = { x = 2 y = 0 }
+		garrison = { x = 2 y = 1 }
+		garrison = { x = 2 y = 2 }
+		
+		artillery_brigade = { x = 3 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 } 
+		recon_cav = { x = 0 y = 2 }
+	}
+	priority = 0
+}
+division_template = {
+	name = "Erillinen Prikaati" 	# Separate Brigade - Represents groups of separate battalions (Erillinen Pataljoona) 
+	#division_names_group = 
+	template_counter = 380
+	
+	regiments = {
+		light_infantry = { x = 0 y = 0 }
+		light_infantry = { x = 0 y = 1 }
+		light_infantry = { x = 0 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }  
+	}
+	priority = 2
+}
+division_template = {
+	name = "Ratsuväkiprikaati"  		# Cavalry Division
+	division_names_group = FIN_CAV_01
+	template_counter = 210
+	
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		
+		cavalry = { x = 2 y = 0 }
+		cavalry = { x = 2 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }   
+	}
+}
+#division_template = {
+#	name = "Militia"  
+#	
+#	regiments = {
+#		militia = { x = 0 y = 0 }
+#		militia = { x = 0 y = 1 }
+#		militia = { x = 0 y = 2 }
+#
+#		militia = { x = 1 y = 0 }
+#		militia = { x = 1 y = 1 }
+#		militia = { x = 1 y = 2 }
+#
+#		militia = { x = 2 y = 0 }
+#		militia = { x = 2 y = 1 }
+#		militia = { x = 2 y = 2 }
+#	}
+#	 support = {
+#		DIV_HQ = { x = 0 y = 0 }
+#		recon_cav = { x = 0 y = 1 }
+#		
+#	}
+#}
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#	
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+##### OOB #####
+units = {
+	##### LAND UNITS #####
+	##### Suomen Pääesikunta #####
+	#division= {	
+	#	name = "Suomen Pääesikunta" 
+	#	location = 11105
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 3137 # Tampere
+		division_template = "Jalkaväkidivisioona"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 158 # Oulu
+		division_template = "Jalkaväkidivisioona"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		name = "Lapin Ryhmä"
+		location = 197 # Salla
+		division_template = "Erillinen Prikaati"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+
+	}
+	division = {
+		name = "Pohjois-Karjalan Ryhmä"
+		location = 6210 # Uimaharju 
+		division_template = "Erillinen Prikaati"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+
+	}
+	
+	# IV Corps
+	#division= {	
+	#	name = "IV Corps" 
+	#	location = 9061
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 9061 # Joensuu
+		division_template = "Jalkaväkidivisioona"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
+		location = 11141 # Kuopio
+		division_template = "Jalkaväkidivisioona"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		name = "Räsäsen Ryhmä"
+		location = 6153 # Suojärvi
+		division_template = "Erillinen Prikaati"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+
+	}
+
+	### Kannaksen Armeija ###
+	#division= {	
+	#	name = "Kannaksen Armeija" 
+	#	location = 11105
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	# II Corps
+	#division= {	
+	#	name = "II Corps" 
+	#	location = 9206
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 9206 # Viipuri
+		division_template = "Jalkaväkidivisioona"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 11105 # Helsinki
+		division_template = "Jalkaväkidivisioona"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 3083 # Turku
+		division_template = "Jalkaväkidivisioona"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 11
+		}
+		location = 3061 # Kotka
+		division_template = "Jalkaväkidivisioona"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		name = "Ratsuväkiprikaati"
+		location = 6082 # Lappeenranta
+		division_template = "Ratsuväkiprikaati" 
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		name = "Lipolan Ryhmä"
+		location = 9176 # Salmi
+		division_template = "Erillinen Prikaati"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+
+	}
+	division = {
+		name = "Muolaan Ryhmä"
+		location = 3061 # Kotka
+		division_template = "Erillinen Prikaati"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+
+	}
+	division = {
+		name = "Uudenkirkon Ryhmä"
+		location = 9176 # Salmi
+		division_template = "Erillinen Prikaati"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+
+	}
+	# III Corps
+	#division= {	
+	#	name = "III Corps" 
+	#	location = 3122
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		} # Vaasa
+		location = 3122
+		division_template = "Jalkaväkidivisioona"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 9056 # Jyväskylä
+		division_template = "Jalkaväkidivisioona"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.6
+
+	}
+	division = {
+		name = "Raudun Ryhmä"
+		location = 9181 # Ilomantsi
+		division_template = "Erillinen Prikaati"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+
+	}				
+
+}
+	
+### No air units (first formed Jan-1938) ###
+### Bullshit. Have an air oob finland.
+air_wings = {
+	111 = {
+		pre_war_af_equipment_4 =  { # Bristol Bulldog IV
+			owner = "FIN" 
+			creator = "ENG"
+			amount = 17
+		}
+	}
+}
+### Starting Production ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "FIN"
+		}
+		requested_factories = 1
+		progress = 0.66
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "FIN"
+		}
+		requested_factories = 1
+		progress = 0.35
+		efficiency = 100
+	}
+	############################# equipment stockpile
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_1
+			amount = 3700
+			producer = SOV
+		}
+	
+	add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+			amount = 2400
+			producer = GER
+		}
+	
+	add_equipment_to_stockpile = {
+		type = artyhorse_equipment_0
+			amount = 500
+			producer = FIN
+		}
+	add_equipment_to_stockpile = {
+		type = horse_equipment_0
+			amount = 700
+			producer = FIN
+		}
+	add_equipment_to_stockpile = {
+		type = SMG_equipment_0
+			amount = 1000
+			producer = FIN
+		}
+	add_equipment_to_stockpile = {
+		type = garrison_equipment_0
+			amount = 1000
+			producer = FIN
+		}
+	add_equipment_to_stockpile = {
+		type = artillery_equipment_0
+		amount = 200
+		producer = FRA
+	}
+}

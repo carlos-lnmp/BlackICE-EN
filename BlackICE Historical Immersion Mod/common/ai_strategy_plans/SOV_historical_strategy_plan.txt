@@ -1,0 +1,300 @@
+Soviet_Historical = {
+	name = "Soviet historical plan"
+	desc = "Essentially historical behaviour for the Soviet Union"
+
+	enable = {
+		original_tag = SOV
+		is_historical_focus_on = yes
+		has_government = communism
+		NOT = { has_country_flag = Trotsky_government }
+	}
+	abort = {
+		OR = {
+			NOT = { has_government = communism }
+			has_country_flag = Trotsky_government
+		}
+	}
+
+	ai_national_focuses = {
+			
+		SOV_finish_five_year_plan		#35 days
+		SOV_production_effort			#35 days
+		SOV_stalin_constitution			#14 days
+		SOV_extra_tech_slot_early		#70 days
+		SOV_great_purge					#70 days
+		SOV_buildup_steel_industry		#35 days
+		SOV_kulaks_collectivisation		#35 days
+		SOV_collectivist_propaganda		#14 days
+		####1937
+		
+		SOV_great_officer_purge			#70 days
+		SOV_improve_railway				#35 days
+		SOV_peoples_commissariat		#21 days
+		SOV_conduct_Census				#35 days
+		SOV_first_Moscow_trial			#70 days
+		SOV_anti_fascist_diplomacy		#21 days
+		SOV_Moskva_Volga_canal			#35 days
+		SOV_second_Moscow_trial			#70 days	
+		SOV_infrastructure_effort		#35 days
+		###1938
+		
+		SOV_third_five_year_plan		#70 days
+		SOV_buildup_industry_urals		#70 days
+		SOV_third_Moscow_trial			#70 days
+		SOV_far_east_fortification		#35 days			
+		SOV_operation_zet				#7 days			
+		SOV_tranformation_of_nature		#70 days
+		SOV_nkvd_troika					#14 days
+		SOV_stalins_paranoia			#7 days
+		SOV_Moiseyev_Dance_troupe		#7 days
+		
+		SOV_Icebreaker					#0 days #requires german invasions of UK
+		
+		SOV_militarized_schools			#14 days	
+				
+		####1939
+		SOV_T34_focus					#14 days
+		SOV_aviation_cult				#21 days
+		SOV_KV1_focus					#14 days
+		SOV_great_navy_purge 			#35 days
+		SOV_Gosplan_aircraft_factories	#35 days
+		SOV_develop_cas					#14 days
+		SOV_workers_culture				#14 days
+		SOV_nkvd_primacy				#35 days
+		SOV_intelligentsia_purge		#21 days
+		
+		SOV_lend_lease					#7 days  #requires war with germany
+		SOV_guards_armyunits			#35 days #requires war with germany
+		SOV_move_industry_to_urals		#35 days #requires war with germany
+		SOV_GreatPatriotic_War_speech			#35 days #requires war with germany
+		SOV_Reinstate_Dual_command		#35 days #requires war with germany
+		SOV_defense_of_moscow			#35 days #requires war with germany
+		SOV_leningrad_ice_road			#35 days #requires war with germany
+						
+		SOV_improve_stalin_line			#70 days
+		SOV_spies_everywhere			#35 days
+		SOV_anti_capitalist_diplomacy	#49 days
+						
+		SOV_claims_on_poland			#14 days
+		SOV_demand_eastern_poland		#14 days
+		
+		SOV_claims_on_baltic
+		SOV_baltic_security				#21 days
+		
+		SOV_fortify_molotov_line		#49 days	
+		SOV_great_airforce_purge		#35 days
+		SOV_assassinate_trotsky			#70 days
+						
+		###1940
+		SOV_nkvd_divisions				#35 days
+		SOV_soviet_amazons				#14 days
+		SOV_socialist_realism			#35 days
+		SOV_art_affairs_committee		#35 days
+						
+		SOV_artists_writers_purged		#35 days
+		
+		
+		SOV_neighbourhood_witchhunt		#35 days
+		
+		SOV_fortify_brest_fortress		#35 days
+		###1941
+		
+		SOV_transpolar_flights			#14 days
+		SOV_ocean_going_navy			#14 days
+				
+		SOV_lessons_of_war				#21 days	
+		SOV_women_pilots				#21 days
+		SOV_women_snipers				#21 days
+		##?????????????
+		## Barbarossa ##################???????????
+		##?????????????
+			
+		SOV_claim_bessarabia
+		
+		SOV_anti_colonialist_rebels
+		
+		SOV_positive_heroism
+		SOV_extra_tech_slot
+		SOV_soviet_women_workers		#35 days
+				
+		SOV_smersh
+		
+		SOV_leave_World_Fair
+		SOV_partisan_suppression
+		SOV_annex_tannu_tuva
+		SOV_war_with_japan
+		SOV_dissolve_comintern
+		SOV_Sikorski_Mayski_agreement
+		SOV_berlings_army
+		SOV_polish_army
+		SOV_proletariat_divisions
+		SOV_expand_red_fleet			#70 days	
+		SOV_research_city_experiment
+		
+	}
+	
+	research = {
+	}
+
+	ideas = {
+		#hjalmar_schacht = 10
+		#roland_freisler = 10
+	}
+
+	traits = {
+		#captain_of_industry = 5
+		#sympathetic_judge = 15 #Always go for that
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 0
+			has_any_purge_idea = yes
+			OR = {
+				surrender_progress > 0 
+				has_war_with = GER 
+			}
+		}
+		modifier = {
+			factor = 0
+			has_war_with = GER 
+			NOT = { has_any_purge_idea = yes }
+		}
+	}
+
+	focus_factors = {
+	}
+		
+}
+
+Soviet_Barbarossa_Purge = {
+	name = "Soviet Purge plan"
+	desc = "Get rid of the Purge asap"
+
+	enable = {
+		original_tag = SOV
+		has_government = communism
+		has_any_purge_idea = yes
+		OR = {
+			surrender_progress > 0 
+			has_war_with = GER 
+		}
+	}
+	abort = {
+		OR = {
+			NOT = { has_any_purge_idea = yes }
+			has_war = no
+		}
+	}
+
+	ai_national_focuses = {
+		SOV_nkvd_troika
+		SOV_nkvd_primacy
+		SOV_nkvd_divisions	
+		SOV_military_reorganization2
+	}
+	
+	research = {
+	}
+
+	ideas = {
+	
+	}
+
+	traits = {
+		
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 0
+		modifier = {
+			add = 1
+			has_any_purge_idea = yes
+			OR = {
+				surrender_progress > 0 
+				has_war_with = GER 
+			}
+		}
+	}
+
+	focus_factors = {
+	}
+
+}
+
+Soviet_Barbarossa_Defence = {
+	name = "Soviet Defence plan"
+	desc = "Take focuses that are beneficial for defense"
+
+	enable = {
+		original_tag = SOV
+		has_government = communism
+		has_war_with = GER
+	}
+	abort = {
+		surrender_progress < 0.01
+	}
+
+	ai_national_focuses = {
+		SOV_smersh
+		SOV_tankograd
+		SOV_guards_armyunits
+		SOV_Moiseyev_Dance_troupe
+		SOV_GreatPatriotic_War_speech
+		SOV_proletariat_divisions
+		SOV_Sikorski_Mayski_agreement
+		SOV_lend_lease
+		SOV_onethousanders
+		SOV_Tank_Corps_focus
+		SOV_Tank_Corps_wave_two_focus
+		SOV_Tank_Corps_wave_three_focus
+		SOV_Tank_Corps_wave_four_focus
+		SOV_Tank_Corps_wave_five_focus
+		SOV_Mechanised_Corps_focus
+		SOV_Mechanised_Corps_II_focus
+		SOV_Tank_Corps_upgrade_one_focus
+		SOV_Tank_Corps_upgrade_two_focus
+		SOV_Tank_Corps_upgrade_three_focus
+		SOV_naval_infantry
+		SOV_katyusha
+		SOV_artillery_divisions
+		SOV_guards_airunits
+		SOV_OMSDON_NKVD
+		SOV_OSNAZ
+		SOV_guards_strengthen
+		SOV_lessons_of_war
+		SOV_research_city_experiment
+		SOV_closed_city_network
+	}
+	
+	research = {
+	}
+
+	ideas = {
+	
+	}
+
+	traits = {
+		
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 0
+		modifier = {
+			add = 1
+			has_war_with = GER 
+			NOT = { has_any_purge_idea = yes }
+		}
+	}
+
+	focus_factors = {
+	}
+
+}

@@ -1,0 +1,199 @@
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+
+# make italy and germany want to send stuff to the fascist side of SCW
+GER_help_SPA_win_civil_war = {
+	enable = {
+		tag = GER
+		NOT = { has_global_flag = scw_over }
+		has_government = fascism
+		SPR = { has_civil_war = yes }
+	}
+	abort = {
+		SPR = { has_civil_war = no }
+	}
+	
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = D01
+		value = 5000
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = MOR
+		value = -500
+	}
+}
+
+ITA_help_SPA_win_civil_war = {
+	enable = {
+		tag = ITA
+		NOT = { has_global_flag = scw_over }
+		has_government = fascism
+		SPR = { has_civil_war = yes }
+	}
+	abort = {
+		SPR = { has_civil_war = no }
+	}
+	
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = D01
+		value = 5000
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = MOR
+		value = -500
+	}
+}
+
+mexico_send_equipment = {
+	enable = {
+		tag = MEX
+		has_government = communism
+		SPR = { has_civil_war = yes }
+	}
+	abort = {
+			SPR = { has_civil_war = no }
+	}
+	
+	ai_strategy = {
+		type = support
+		id = SPR
+		value = 500
+	}
+	ai_strategy = {
+		type = befriend
+		id = SPR
+		value = 500
+	}
+}
+
+SPR_offensive_pose = {
+	enable = {
+		original_tag = SPR
+		has_civil_war = yes
+		country_exists = SPA
+		date > 1939.1.1
+	}
+	abort = {
+		SPR = { has_civil_war = no }
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = D01
+		value = 10
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = SPR
+		value = 10
+	}
+}
+
+
+#Strategies to rush the war in 39
+SPR_crush_them_39 = {
+	enable = {
+		original_tag = SPR
+		has_government = communism
+		has_civil_war = yes
+		country_exists = SPA
+		date > 1939.1.1
+	}
+	abort = {
+		has_civil_war = no 
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = SPA
+		value = 500
+	}
+}
+
+SPA_crush_them_39 = {
+	enable = {
+		original_tag = SPR
+		has_government = fascism
+		has_civil_war = yes
+		country_exists = SPR
+		date > 1939.1.1
+	}
+	abort = {
+		has_civil_war = no 
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = SPR
+		value = 500
+	}
+}
+
+dont_join_the_axis_with_rebuild = {
+	enable = {
+		tag = SPA
+		has_government = fascism
+		has_civil_war = no
+		has_idea = SPA_recovering_from_civil_war
+	}
+	abort = {
+		OR = {
+			NOT = { has_idea = SPA_recovering_from_civil_war }
+			has_war_with = GER
+			has_war_with = ITA
+			has_war_with = ENG
+		}
+	}
+	
+	ai_strategy = {
+		type = alliance
+		id = GER
+		value = -500
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = ITA
+		value = -500
+	}
+	
+	ai_strategy = {
+		type = ignore
+		id = GER
+		value = 50000
+	}
+	
+	ai_strategy = {
+		type = ignore
+		id = ITA
+		value = 50000
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

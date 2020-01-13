@@ -1,0 +1,562 @@
+#Overall Trigger if AI is currently focusing CIC or MIC
+EAI_prioritize_civilian_buildup = {
+	date < 1938.1.1
+}
+
+EAI_prioritize_military_buildup = {
+	date > 1938.1.1
+}
+
+#########################
+#### AI Stability Need Score
+#########################
+#Used to make AI deprio ideas 
+EAI_prioritise_stability = {
+	always = no
+}
+
+#########################
+#### AI Minister Score Ratio
+#########################
+
+EAI_prioritise_politicians = {
+	NOT = { EAI_prioritise_military_staff = yes }
+	OR = {
+	
+	}
+}
+EAI_prioritise_research_production = {
+	OR = {
+	
+	}
+}
+EAI_prioritise_military_staff = {
+	OR = {
+		
+	}
+}
+
+#########################
+#### AI Specific Idea Slot Prioritisation
+#########################
+
+##### politicians
+EAI_prioritise_head_of_state_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { head_of_state } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_foreign_minister_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { foreign_minister } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_interior_minister_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { interior_minister } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_intel_minister_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { intel_minister } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_economic_minister_pick = {
+	NOT = { amount_taken_ideas = { amount > 1 
+		slots = { economic_minister } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_political_advisor_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { political_advisor } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_domestic_minister_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { domestic_minister } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_influence_minister_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { influence_minister } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+##### military_staff
+EAI_prioritise_supreme_commander_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { supreme_commander } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_army_chief_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { army_chief } } 
+	}
+	OR = {
+		#EAI_is_threatened = yes
+		
+		AND = { original_tag = HOL date > 1939.1.1 }
+		AND = { original_tag = BEL date > 1939.1.1 }
+		AND = { original_tag = DEN date > 1939.1.1 }
+		AND = { original_tag = NOR date > 1939.1.1 }
+		AND = { original_tag = SWE date > 1940.1.1 }
+		AND = { original_tag = FIN date > 1938.6.1 }
+		AND = { original_tag = POL date > 1938.1.1 }
+		
+		AND = { original_tag = HUN date > 1939.1.1 }
+		AND = { original_tag = ROM date > 1939.6.1 }
+		AND = { original_tag = YUG date > 1939.1.1 }
+		AND = { original_tag = BUL date > 1939.6.1 }
+		AND = { original_tag = GRE date > 1939.1.1 }
+		
+		AND = { original_tag = SPR date > 1936.1.1 }
+		
+		AND = { original_tag = EGY date > 1939.1.1 }		
+		AND = { original_tag = TUN date > 1939.1.1 }
+		
+		AND = { is_chinese_nations = yes date > 1936.6.1 }
+	}
+}
+EAI_prioritise_air_chief_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { air_chief } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_navy_chief_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { navy_chief } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_high_command_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { high_command } } 
+	}
+	
+	OR = {
+		#EAI_is_threatened = yes
+		
+		AND = { original_tag = HOL date > 1939.1.1 }
+		AND = { original_tag = BEL date > 1939.1.1 }
+		AND = { original_tag = DEN date > 1939.1.1 }
+		AND = { original_tag = NOR date > 1939.1.1 }
+		AND = { original_tag = SWE date > 1940.1.1 }
+		AND = { original_tag = FIN date > 1938.6.1 }
+		AND = { original_tag = POL date > 1938.1.1 }
+		
+		AND = { original_tag = HUN date > 1939.1.1 }
+		AND = { original_tag = ROM date > 1939.6.1 }
+		AND = { original_tag = YUG date > 1939.1.1 }
+		AND = { original_tag = BUL date > 1939.6.1 }
+		AND = { original_tag = GRE date > 1939.1.1 }
+		
+		AND = { original_tag = SPR date > 1936.1.1 }
+		
+		AND = { original_tag = EGY date > 1939.1.1 }		
+		AND = { original_tag = TUN date > 1939.1.1 }
+		
+		AND = { is_chinese_nations = yes date > 1936.6.1 }
+	}
+}
+EAI_prioritise_theorist_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { theorist } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+##### research_production
+EAI_prioritise_tank_manufacturer_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { tank_manufacturer } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_naval_manufacturer_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { naval_manufacturer } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_aircraft_manufacturer_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { aircraft_manufacturer } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_big_aircraft_manufacturer_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { big_aircraft_manufacturer } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_materiel_manufacturer_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { materiel_manufacturer } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_industrial_concern_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { industrial_concern } } 
+	}
+	OR = {
+		original_tag = CIV	
+	}
+}
+EAI_prioritise_electrical_concern_pick = {
+	NOT = { amount_taken_ideas = { amount > 0 
+		slots = { electrical_concern } } 
+	}
+	OR = {
+		original_tag = CIV
+	}
+}
+
+
+#########################
+#### DEFENSIVE STANCE
+#########################
+
+EAI_prioritize_defensive_buildup = {
+	OR = {
+		tag = POL 
+		tag = DEN 
+		tag = HOL
+		tag = BEL
+		tag = CHI
+		tag = FIN
+	}
+}
+
+#Navy Chiefs are basically grouped into anti sub bonus or fleet bonus, carrier is too situational
+#These need to be mutually exclusive or AI pick will be random
+EAI_prioritize_anti_submarine = {
+	convoy_threat > 100
+}
+
+EAI_prioritize_fleet_bonus = {
+	convoy_threat < 100
+}
+
+
+EAI_prioritize_sub_bonus = {
+	OR = {
+		original_tag = GER 
+		has_navy_size = { size > 40 type = submarine }
+		has_navy_size = { size < 40 }
+	}
+}
+
+
+#Theorists
+EAI_prioritize_defensive_theorist = { 
+	NOT = { #finished offensive doctrines
+		has_tech = modern_blitzkrieg
+		has_tech = shock_and_awe
+		has_tech = breakthrough_priority
+		has_tech = flood_the_gap
+		has_tech = operational_concentration
+		has_tech = flexiable_armour
+		has_tech = night_assault_tactics
+		has_tech = assault_breakthrough
+	}
+}
+
+EAI_prioritize_offensive_theorist = {
+	NOT = { #finished defensive doctrines
+		has_tech = impassible_line
+		has_tech = mobile_defence
+		has_tech = strongpoint_focus
+		has_tech = deep_operations
+	}
+}
+
+
+@ST_STABILITY_NEED_MAX = 90 #At 90% Stability ai will do for stability decisions is <0
+@ST_STABILITY_NEED_WEIGHT = 0.1
+
+@ST_STABILITY_GAIN_WEIGHT = 5.0 #weight of stab gained by decision 
+@ST_WAR_SUPPORT_GAIN_WEIGHT = 2.5 #weight of warsupport gained by decision 
+EAI_dynamic_stability_score = {
+	if = { limit = { is_ai = yes }
+	set_temp_variable = { stability_score = @ST_STABILITY_NEED_MAX } #if stability is 100 AI will do for stability decisions is 0 
+
+	set_temp_variable = { stability_temp = has_stability }
+	multiply_temp_variable = { stability_temp = 100 }
+	
+	subtract_from_temp_variable = { stability_score = stability_temp }
+	multiply_temp_variable = { stability_score = @ST_STABILITY_NEED_WEIGHT }
+	
+	
+	if = { limit = { check_variable = { modifier@stability_weekly < 0 } }
+	
+	set_temp_variable = { stability_weekly_temp = modifier@stability_weekly }
+	multiply_temp_variable = { stability_weekly_temp = -250 }
+	
+	}
+	add_to_temp_variable = { stability_score = stability_weekly_temp }
+	
+	
+	#######################################################################################
+	### Decision Effect Weighting
+	
+	divide_temp_variable = { duration = 7 }
+	multiply_temp_variable = { stability_weekly = duration }
+	multiply_temp_variable = { war_support_weekly = duration }
+	
+	multiply_temp_variable = { stability_weekly = @ST_STABILITY_GAIN_WEIGHT }
+	multiply_temp_variable = { war_support_weekly = @ST_WAR_SUPPORT_GAIN_WEIGHT }
+	
+	add_to_temp_variable = { stability_weekly = 1 }
+	add_to_temp_variable = { war_support_weekly = 1 }
+	
+	
+	#######################################################################################
+	### Stop Decision Stacking
+	
+	set_temp_variable = { ai_factor = 1 } #if more than 2% weekly increase AI will stop doing stability decisions entirely
+	
+	if = { limit = { check_variable = { modifier@stability_weekly > 0 } }
+	
+	set_temp_variable = { stability_weekly_gain = modifier@stability_weekly }
+	multiply_temp_variable = { stability_weekly_gain = 50 }
+	
+	}
+	
+	subtract_from_temp_variable = { ai_factor = stability_weekly_gain }
+	
+	multiply_temp_variable = { stability_score = stability_weekly }
+	multiply_temp_variable = { stability_score = war_support_weekly }
+	
+	
+	#######################################################################################
+	### Consumer Goods Weighting
+	
+	#consumer_goods 
+	
+	if = { 	
+		limit = {
+			NOT = { check_variable = { consumer_goods = 0 } }
+		}
+		
+		multiply_temp_variable = { consumer_goods = 3 }
+		calculate_min_cons_goods_modifier_temp = yes 
+		
+		set_temp_variable = { cons_goods = modifier@consumer_goods_factor }
+		subtract_from_temp_variable = { cons_goods = min_cons_goods_temp }
+		add_to_temp_variable = { cons_goods = consumer_goods }
+		if = { limit = { check_variable = { cons_goods > 0.15 } }
+			multiply_temp_variable = { cons_goods = 50 }
+		}
+		else_if = { limit = { check_variable = { cons_goods > 0.10 } }
+			multiply_temp_variable = { cons_goods = 42.5 }
+		}
+		else_if = { limit = { check_variable = { cons_goods > 0.05 } }
+			multiply_temp_variable = { cons_goods = 33 }
+		}
+		else_if = { limit = { check_variable = { cons_goods > 0 } }
+			multiply_temp_variable = { cons_goods = 25 }
+		}
+		
+		
+		subtract_from_temp_variable = { stability_score = cons_goods }
+		
+	}
+		
+	multiply_temp_variable = { stability_score = ai_factor }
+	multiply_temp_variable = { stability_score = 10 }
+	
+
+	
+} }
+	
+
+@WS_WAR_SUPPORT_NEED_MAX = 90 #At 90% War support ai will do for war support decisions is <0
+@WS_WAR_SUPPORT_NEED_WEIGHT = 0.05
+@WS_WAR_SUPPORT_WEEKLY_NEED_WEIGHT = -150
+
+@WS_WAR_SUPPORT_GAIN_WEIGHT = 3.0 #weight of warsupport gained by decision 
+@WS_STABILITY_GAIN_WEIGHT = 1.5 #weight of stab gained by decision 
+
+EAI_dynamic_war_support_score = {
+	if = { limit = { is_ai = yes }
+	set_temp_variable = { war_support_score = @WS_WAR_SUPPORT_NEED_MAX } #if war support is 100 AI will do for stability decisions is 0 
+
+	set_temp_variable = { war_support_temp = has_war_support }
+	multiply_temp_variable = { war_support_temp = 100 }
+	
+	subtract_from_temp_variable = { war_support_score = war_support_temp }
+	multiply_temp_variable = { war_support_score = @WS_WAR_SUPPORT_NEED_WEIGHT }
+	
+	
+	if = { limit = { check_variable = { modifier@war_support_weekly < 0 } }
+	
+	set_temp_variable = { war_support_weekly_temp = modifier@war_support_weekly }
+	multiply_temp_variable = { war_support_weekly_temp = @WS_WAR_SUPPORT_WEEKLY_NEED_WEIGHT }
+	
+	}
+	add_to_temp_variable = { war_support_score = war_support_weekly_temp }
+	
+	
+	
+	#######################################################################################
+	### Decision Effect Weighting
+	
+	divide_temp_variable = { duration = 7 }
+	multiply_temp_variable = { war_support_weekly = duration }
+	multiply_temp_variable = { stability_weekly = duration }
+	
+	multiply_temp_variable = { war_support_weekly = @WS_WAR_SUPPORT_GAIN_WEIGHT }
+	multiply_temp_variable = { stability_weekly = @WS_STABILITY_GAIN_WEIGHT }
+	
+	add_to_temp_variable = { war_support_weekly = 1 }
+	add_to_temp_variable = { stability_weekly = 1 }
+	
+	
+	#######################################################################################
+	### Stop Decision Stacking
+	
+	set_temp_variable = { ai_factor = 1 } #if more than 2% weekly increase AI will stop doing war_support decisions entirely
+	
+	if = { limit = { check_variable = { modifier@war_support_weekly > 0 } }
+	
+	set_temp_variable = { war_support_weekly_gain = modifier@war_support_weekly }
+	multiply_temp_variable = { war_support_weekly_gain = 50 }
+	
+	}
+	
+	subtract_from_temp_variable = { ai_factor = war_support_weekly_gain }
+	
+	multiply_temp_variable = { war_support_score = war_support_weekly }
+	multiply_temp_variable = { war_support_score = stability_weekly }
+	multiply_temp_variable = { war_support_score = ai_factor }
+	
+} }	
+	
+	
+	
+calculate_min_cons_goods_modifier_temp = {
+	
+	if = {
+		limit = {
+			has_tech = commercial_refrigeration
+		}
+		subtract_from_temp_variable = { min_cons_goods_temp = 0.025 }
+	}
+	
+	if = {
+		limit = {
+			has_idea = undisturbed_isolation
+		}
+		add_to_temp_variable = { min_cons_goods_temp = 0.5 }
+	}
+	else_if = {
+		limit = {
+			has_idea = isolation
+		}
+		add_to_temp_variable = { min_cons_goods_temp = 0.4 }
+	}
+	else_if = {
+		limit = {
+			has_idea = civilian_economy
+		}
+		add_to_temp_variable = { min_cons_goods_temp = 0.3 }
+	}
+	else_if = {
+		limit = {
+			has_idea = low_economic_mobilisation
+		}
+		add_to_temp_variable = { min_cons_goods_temp = 0.25 }
+	}
+	else_if = {
+		limit = {
+			has_idea = partial_economic_mobilisation
+		}
+		add_to_temp_variable = { min_cons_goods_temp = 0.20 }
+	}
+	else_if = {
+		limit = {
+			has_idea = war_economy
+		}
+		add_to_temp_variable = { min_cons_goods_temp = 0.15 }
+	}
+	else_if = {
+		limit = {
+			has_idea = tot_economic_mobilisation
+		}
+		add_to_temp_variable = { min_cons_goods_temp = 0.10 }
+	}
+}
+	
+
+EAI_save_command_power = {
+	command_power < 55
+}	
+
+EAI_save_command_power_on_traits = {
+	OWNER = { command_power < 55 }
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

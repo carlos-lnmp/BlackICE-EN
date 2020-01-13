@@ -1,0 +1,9010 @@
+technologies = {
+# Vertical yearorder
+	@1930 = 0
+	@1935 = 2
+	@1935_1 = 3
+	@1936 = 4
+	@1936_1 = 5
+	@1936_2 = 6
+	@1936_3 = 7
+	@1937 = 8
+	@1937_1 = 9
+	@1937_2 = 10
+	@1937_3 = 11
+	@1938 = 12
+	@1938_1 = 13
+	@1939 = 16
+	@1939_1 = 17
+	@1939_2 = 18
+	@1939_3 = 19
+	@1940 = 20
+	@1940_1 = 21
+	@1941 = 24
+	@1941_1 = 25
+	@1941_2 = 26
+	@1941_3 = 27
+	@1942 = 28
+	@1943 = 32
+	@1943_1 = 33
+	@1943_2 = 34
+	@1943_3 = 35
+	@1944 = 36
+	@1945 = 40
+# Horizontal positions
+	@IMMUN = 0	#-4
+	@IMPR_MED = 1	#-3
+	@ATMICR_SULFA = 2	#-2
+	@QUAL_CONTR = 3	#-1
+	@TOOLS = 4	#0
+	@TOOLS_1 = 3	#-1
+	@TOOLS_2 = 5	#1
+	@CONV = 6	#2	#Enabled with DLC DoD
+	@WORKERS = 7	#3
+	@BASIC_TLS = 8	#4
+	@GUILDS = 9	#5
+	@BSC_TL = 10
+
+	@ARMOR_FACT = 11	#7
+	@VEH_FACT = 12	#8
+	@ART_FACT = 13	#9
+	@SMALLARMS_FACT = 14	#10
+	@UNIFORM_FACT = 15	#11
+	@CONC_IND = 16	#12
+	@MIL_PROD = 17	#13
+	@DISP_IND = 18	#14
+	@DISP_ARMOR_FACT = 19	#15
+	@DISP_VEH_FACT = 20	#16
+	@DISP_ART_FACT = 21	#17
+	@DISP_SMALLARMS_FACT = 22	#18
+	@DISP_UNIFORM_FACT = 23	#19
+
+	@CONSTR = 26
+	@DIG_IN = 27
+	@DEF_WORKS = 28
+	@PREFAB = 29
+	@IMPR_MAT = 30
+	@RAIL_INFRA = 31
+	@ROAD_INFRA = 32
+	@INFRA_WRK = 33
+	@AIR_INFRA = 34
+	@PORT_INFRA = 35
+	@POWER_GRID = 36
+	@HOUS_WRK = 37
+	@HOSP_CIVW = 38
+	@SCH_WRK = 39
+	@FM_RADIO = 40
+	@EXCAV = 41
+	@chemical = 42
+
+	@WDF_ENG = 43
+	@FUEL_CAN = 44
+	@FUEL_SILO_1 = 45
+	@FUEL_REF = 46
+	@FUEL_SILO = 47
+	@OIL_PLT = 48
+	@OIL_COAL = 49
+	@RUB_PROC = 50
+
+# Tools
+	basic_machine_tools = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_factory_max_efficiency_factor = 0.04
+		production_factory_start_efficiency_factor = 0.03
+
+		path = {
+			leads_to_tech = concentrated_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = quality_control
+			research_cost_coeff = 1
+		}
+		research_cost = 1.5
+		start_year = 1930
+		folder = {
+			name = industry_folder
+			position = { x = @BSC_TL y = @1930 }
+		}
+
+		ai_will_do = {
+			factor = 10000
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+	quality_control = {
+		allow = { can_research_industry_folder = yes } 
+		
+		unit_upkeep_attrition_factor = -0.012
+		
+		allow = {
+			always = yes 
+			NOT = { has_country_flag = flagflag }
+		}
+		path = {
+			leads_to_tech = electric_hoist
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tool_maintenance
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = fluorescent_lighting
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = commercial_food_processing
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = improved_medical_research
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = commercial_plastics
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = commercial_refrigeration
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1935
+		folder = {
+			name = industry_folder
+			position = { x = @QUAL_CONTR y = @1935 }
+		}
+
+		ai_will_do = {
+			factor = 10000
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+	commercial_refrigeration = {
+		allow = { can_research_industry_folder = yes } 
+
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @CONV y = @1936_2 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 10 
+				EAI_timegate_1937/2 = yes
+			}
+			modifier = {
+				factor = 10
+				EAI_timegate_1936/2 = yes
+			}
+		}
+		on_research_complete = {
+			set_temp_variable = { min_cons_goods_mod = -0.025 }
+			custom_effect_tooltip = "min_cons_goods_tech_TT"
+				
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = electronics_tt
+		}
+		categories = {
+			industry
+			electronics
+		}
+	}
+	fluorescent_lighting = {
+		allow = { can_research_industry_folder = yes } 
+		
+		production_factory_max_efficiency_factor = 0.04
+		research_cost = 0.80
+		start_year = 1935
+		folder = {
+			name = industry_folder
+			position = { x = @TOOLS_2 y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 10 
+				EAI_timegate_1936/6 = yes
+			}
+			modifier = {
+				factor = 10 
+				EAI_timegate_1937/2 = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = electronics_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+			electronics
+		}
+	}
+	commercial_plastics = {
+		allow = { can_research_industry_folder = yes } 
+		
+		production_lack_of_resource_penalty_factor = -0.03
+
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @WORKERS y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 10
+				OR = {
+					check_variable = { resource@oil < -5 }
+					check_variable = { resource@rubber < -5 }
+					check_variable = { resource@steel < -10 }
+					check_variable = { resource@tungsten < 10 }
+					check_variable = { resource@aluminium < 10 }
+					check_variable = { resource@chromium < 10 }
+				}
+			}
+			modifier = {
+				factor = 10
+				EAI_timegate_1936/2 = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		categories = {
+			industry
+			synth_resources
+		}
+	}
+
+	improved_medical_research = {
+		allow = { can_research_industry_folder = yes } 
+		
+		sickness_chance = -0.10
+		path = {
+			leads_to_tech = antimicrobial_sulfa_drugs
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = immunization_advances
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = improved_blood_transfusions
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @IMPR_MED y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor 5
+				EAI_timegate_1936/7 = yes
+			}
+			modifier = {
+				factor 5
+				EAI_timegate_1937/7 = yes
+			}
+			modifier = {
+				factor 5
+				EAI_timegate_1938/7 = yes
+			}
+			modifier = {
+				factor 5
+				EAI_timegate_1939/7 = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			medical_tech
+		}
+	}
+	improved_blood_transfusions = {
+		allow = { can_research_industry_folder = yes } 
+		
+		army_morale_factor = 0.02
+		wounded_chance_factor = -0.05
+
+		research_cost = 1.5
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = @IMPR_MED y = @1940 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			medical_tech
+		}
+	}
+
+	immunization_advances = {
+		allow = { can_research_industry_folder = yes } 
+		
+		sickness_chance = -0.05
+		monthly_population = 0.06
+		path = {
+			leads_to_tech = multiple_vaccines
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @IMMUN y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			medical_tech
+		}
+	}
+
+	multiple_vaccines = {
+		allow = { can_research_industry_folder = yes } 
+		
+		monthly_population = 0.06
+		DIV_HQ = {
+			casualty_trickleback = 0.01
+		}
+		research_cost = 1.5
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = @IMMUN y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			medical_tech
+		}
+	}
+
+	antimicrobial_sulfa_drugs = {
+		allow = { can_research_industry_folder = yes } 
+		
+		monthly_population = 0.05
+		stability_factor = 0.10
+		path = {
+			leads_to_tech = antibiotics
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @ATMICR_SULFA y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor 100
+				EAI_timegate_1936/7 = yes
+			}
+			modifier = {
+				factor 5
+				EAI_timegate_1937/7 = yes
+			}
+			modifier = {
+				factor 5
+				EAI_timegate_1938/7 = yes
+			}
+			modifier = {
+				factor 5
+				EAI_timegate_1939/7 = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			medical_tech
+		}
+	}
+
+	antibiotics = {
+		allow = { can_research_industry_folder = yes } 
+		
+		DIV_HQ = {
+			casualty_trickleback = 0.02
+		}
+		monthly_population = 0.05
+		path = {
+			leads_to_tech = healthcare_improvements
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = vaccine_research_improvements
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @ATMICR_SULFA y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+
+		categories = {
+			industry
+			medical_tech
+		}
+	}
+## Possibly too late tech
+#	vaccine_research_improvements = {
+#
+#		path = {
+#			leads_to_tech = polio_vaccines
+#			research_cost_coeff = 1
+#		}
+#
+#		research_cost = 1.5
+#		start_year = 1948
+#		folder = {
+#			name = industry_folder
+#			position = { x = -8 y = 44 }
+#		}
+#
+#		ai_will_do = {
+#			factor = 50
+#		}
+#
+#		on_research_complete = {
+#			custom_effect_tooltip = tech_category_tt
+#			custom_effect_tooltip = industry_tt
+#			custom_effect_tooltip = medical_tech_tt
+#		}
+#		categories = {
+#			industry
+#			medical_tech
+#		}
+#	}
+#
+#	polio_vaccines = {
+#
+#
+#		research_cost = 1.5
+#		start_year = 1952
+#		folder = {
+#			name = industry_folder
+#			position = { x = -8 y = 46 }
+#		}
+#
+#		ai_will_do = {
+#			factor = 50
+#		}
+#
+#		categories = {
+#			industry
+#			medical_tech
+#		}
+#	}
+
+	healthcare_improvements = {
+		allow = { can_research_industry_folder = yes } 
+		
+		DIV_HQ = {
+			casualty_trickleback = 0.02
+		}
+		path = {
+			leads_to_tech = fluoridated_water_supply
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1942
+		dependencies = {
+			computing_machine = 1
+		}
+		folder = {
+			name = industry_folder
+			position = { x = @ATMICR_SULFA y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			medical_tech
+		}
+	}
+
+	fluoridated_water_supply = {
+		allow = { can_research_industry_folder = yes } 
+		
+		stability_factor = 0.10
+		stability_weekly = 0.001
+		research_cost = 1
+		start_year = 1945
+		folder = {
+			name = industry_folder
+			position = { x = @ATMICR_SULFA y = 40 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+			factor = 0
+				EAI_timegate_1944/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			medical_tech
+		}
+	}
+	commercial_food_processing = {
+		allow = { can_research_industry_folder = yes } 
+		
+		monthly_population = 0.02
+		party_popularity_stability_factor = 0.05
+		path = {
+			leads_to_tech = improved_military_logistics
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.0
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = @QUAL_CONTR y = @1938 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+
+		categories = {
+			industry
+		}
+	}
+
+	improved_military_logistics = {
+		allow = { can_research_industry_folder = yes } 
+		
+		no_supply_grace = 5.0
+		army_fuel_capacity_factor = 0.05
+		research_cost = 1.0
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @QUAL_CONTR y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+		}
+		categories = {
+			industry
+		}
+	}
+	electric_hoist = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_factory_efficiency_gain_factor = 0.2
+
+
+		path = {
+			leads_to_tech = improved_machine_tools
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.0
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @TOOLS y = @1936_2 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 100
+				prioritise_industry_techs = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+	improved_machine_tools = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_factory_max_efficiency_factor = 0.08
+		production_factory_start_efficiency_factor = 0.02
+		production_factory_start_efficiency_factor = 0.03
+
+		path = {
+			leads_to_tech = advanced_machine_tools
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = improved_equipment_conversion
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @TOOLS y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 100
+				prioritise_industry_techs = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+	advanced_machine_tools = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_factory_max_efficiency_factor = 0.08
+		production_factory_efficiency_gain_factor = 0.25
+		production_speed_industrial_complex_factor = -0.05
+		production_speed_arms_factory_factor = -0.05
+		production_factory_start_efficiency_factor = 0.03
+
+		path = {
+			leads_to_tech = assembly_line_production
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @TOOLS y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 30000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					prioritise_industry_techs = yes
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+
+	assembly_line_production = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_factory_max_efficiency_factor = 0.15
+		production_speed_industrial_complex_factor = -0.15
+		production_speed_arms_factory_factor = -0.10
+		production_factory_start_efficiency_factor = 0.05
+
+		path = {
+			leads_to_tech = flexible_line
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = streamlined_line
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @TOOLS y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 100
+				prioritise_industry_techs = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+
+	flexible_line = {
+		allow = { can_research_industry_folder = yes } 
+
+	    production_factory_max_efficiency_factor = 0.05
+		line_change_production_efficiency_factor = 0.5
+		production_speed_industrial_complex_factor = -0.05
+		production_speed_arms_factory_factor = -0.05
+		production_factory_start_efficiency_factor = 0.03
+		on_research_complete = {
+			
+		}
+		XOR = {
+			streamlined_line
+		}
+		path = {
+			leads_to_tech = modern_machine_tools
+			research_cost_coeff = 1
+		}
+		research_cost = 2.51
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @TOOLS_1 y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					prioritise_industry_techs = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = streamlined_line
+					is_researching_technology = streamlined_line
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+	streamlined_line = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_factory_max_efficiency_factor = 0.07
+		production_factory_efficiency_gain_factor = 0.3
+		production_speed_industrial_complex_factor = -0.15
+		production_speed_arms_factory_factor = -0.15
+		production_factory_start_efficiency_factor = 0.02
+		on_research_complete = {
+			
+		}
+		XOR = {
+			flexible_line
+		}
+		path = {
+			leads_to_tech = modern_machine_tools
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @TOOLS_2 y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 3000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					prioritise_industry_techs = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = flexible_line
+					is_researching_technology = flexible_line
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+	modern_machine_tools = {
+		allow = { can_research_industry_folder = yes } 
+	
+		production_factory_max_efficiency_factor = 0.05
+		production_factory_efficiency_gain_factor = 0.1
+		path = {
+			leads_to_tech = automated_assembly_lines
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = @TOOLS y = @1944 }
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 10
+				EAI_timegate_1943/1 = yes
+			}
+			modifier = {
+				factor = 100
+				EAI_timegate_1944/1 = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+	automated_assembly_lines = {
+		allow = { can_research_industry_folder = yes } 
+		
+		production_speed_arms_factory_factor = -0.10
+		production_speed_dockyard_factor = -0.05
+		conscription = 0.02
+		research_cost = 1.5
+		start_year = 1945
+		dependencies = {
+			advanced_computing_machine = 1
+		}
+		folder = {
+			name = industry_folder
+			position = { x = @TOOLS y = @1945 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 100
+				has_manpower < 500000
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1944/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+			custom_effect_tooltip = computing_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+			computing_tech
+		}
+	}
+
+	tool_maintenance = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_factory_max_efficiency_factor = 0.06
+		industry_repair_factor = 0.05
+		production_factory_start_efficiency_factor = 0.02
+
+		path = {
+			leads_to_tech = worker_training
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @BASIC_TLS y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 100
+				prioritise_industry_techs = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+	# Conversion branch - Enabled in DoD
+	improved_equipment_conversion = {
+		allow = { can_research_industry_folder = yes } 
+
+		equipment_conversion_speed = 0.40
+
+		allow_branch = {
+			has_dlc = "Death or Dishonor"
+		}
+
+		path = {
+			leads_to_tech = advanced_equipment_conversion
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1937
+
+		folder = {
+			name = industry_folder
+			position = { x = @CONV y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+
+	advanced_equipment_conversion = {
+		allow = { can_research_industry_folder = yes } 
+
+		equipment_conversion_speed = 0.40
+
+		research_cost = 0.8
+		start_year = 1939
+
+		folder = {
+			name = industry_folder
+			position = { x = @CONV y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+	# Workers
+	worker_training = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_factory_max_efficiency_factor = 0.1
+		industrial_capacity_dockyard = 0.05
+		production_factory_start_efficiency_factor = 0.03
+
+
+		path = {
+			leads_to_tech = worker_safety
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = @BASIC_TLS y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1937/7 = yes
+					prioritise_industry_techs = yes
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+	worker_safety = {
+		allow = { can_research_industry_folder = yes } 
+
+		industry_repair_factor = 0.25
+		line_change_production_efficiency_factor = 0.05
+
+		path = {
+			leads_to_tech = worker_colleges
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = on_spot_training
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.0
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @BASIC_TLS y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 30000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					prioritise_industry_techs = yes
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+
+	worker_colleges = {
+		allow = { can_research_industry_folder = yes } 
+
+		line_change_production_efficiency_factor = 0.1
+		production_factory_efficiency_gain_factor = 0.2
+		industrial_capacity_dockyard = 0.05
+		production_factory_start_efficiency_factor = 0.03
+
+		research_cost = 1.7
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @GUILDS y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 100
+				prioritise_industry_techs = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+
+	on_spot_training = {
+		allow = { can_research_industry_folder = yes } 
+
+		industry_repair_factor = 0.05
+		production_factory_efficiency_gain_factor = 0.25
+		line_change_production_efficiency_factor = 0.05
+		production_factory_start_efficiency_factor = 0.03
+
+		path = {
+			leads_to_tech = foriegn_labour
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @WORKERS y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 100
+				prioritise_industry_techs = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+
+	foriegn_labour = {
+		allow = { can_research_industry_folder = yes } 
+
+		industrial_capacity_factory = 0.1
+		production_factory_efficiency_gain_factor = -0.15
+		line_change_production_efficiency_factor = -0.1
+		production_factory_start_efficiency_factor = -0.02
+		conscription = 0.01
+		industry_repair_factor = -0.25
+		research_cost = 2.5
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @WORKERS y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 150
+				AND = {
+					EAI_timegate_1942/7 = yes
+					tag = GER 
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = tool_tech_tt
+		}
+		categories = {
+			industry
+			tool_tech
+		}
+	}
+##### Concentrated Industry
+	concentrated_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		industrial_capacity_factory = 0.1
+		#industrial_capacity_dockyard = 0.1
+		global_building_slots_factor = 0.16
+	  industry_air_damage_factor = 0.1
+		line_change_production_efficiency_factor = -0.1
+
+		xor = { dispersed_industry }
+
+		path = {
+			leads_to_tech = concentrated_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = military_production_i
+			research_cost_coeff = 1
+		}
+
+		on_research_complete = {
+			
+		}
+		on_research_complete = {
+			if = {
+				limit = { is_ai = yes }
+				country_event = EAI_M.4444
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		research_cost = 2.01
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @CONC_IND y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 10
+				prioritise_industry_techs = yes
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_researching_technology = dispersed_industry
+					dispersed_industry_tech_focus = yes
+				}
+			}
+		}
+		categories = {
+			industry
+			concentrated_industry_category
+		}
+	}
+	concentrated_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		industrial_capacity_factory = 0.15
+		#industrial_capacity_dockyard = 0.15
+		global_building_slots_factor = 0.2
+		industry_air_damage_factor = 0.1
+		line_change_production_efficiency_factor = -0.1
+		path = {
+			leads_to_tech = concentrated_industry3
+			research_cost_coeff = 1
+		}
+		### Factories
+		path = {
+			leads_to_tech = armor_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = vehicle_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = artillery_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = smallarms_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = uniform_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Jetaircraft_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Ltaircraft_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Hvaircraft_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = ship_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = sub_industry
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			if = {
+				limit = { is_ai = yes }
+				country_event = EAI_M.4444
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+		research_cost = 1.7
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @CONC_IND y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 10
+				prioritise_industry_techs = yes
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_researching_technology = dispersed_industry
+					dispersed_industry_tech_focus = yes
+				}
+			}
+		}
+
+		categories = {
+			industry
+			concentrated_industry_category
+		}
+
+	}
+	concentrated_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			if = {
+				limit = { is_ai = yes }
+				country_event = EAI_M.4447
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		industrial_capacity_factory = 0.20
+		#industrial_capacity_dockyard = 0.2
+		global_building_slots_factor = 0.24
+		industry_air_damage_factor = 0.1
+		line_change_production_efficiency_factor = -0.1
+
+		path = {
+			leads_to_tech = concentrated_industry4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = military_production_ii
+			research_cost_coeff = 1
+		}
+		### Factories
+		path = {
+			leads_to_tech = armor_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = vehicle_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = artillery_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = smallarms_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = uniform_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Jetaircraft_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Ltaircraft_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Hvaircraft_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = ship_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = sub_industry2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @CONC_IND y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10000
+				AND = {
+					EAI_timegate_1938/7 = yes
+					prioritise_industry_techs = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_researching_technology = dispersed_industry
+					dispersed_industry_tech_focus = yes
+				}
+			}
+		}
+
+		categories = {
+			industry
+			concentrated_industry_category
+		}
+
+	}
+	concentrated_industry4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		industrial_capacity_factory = 0.25
+		on_research_complete = {
+			if = {
+				limit = { is_ai = yes }
+				country_event = EAI_M.4445
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+		global_building_slots_factor = 0.28
+		industry_air_damage_factor = 0.1
+		line_change_production_efficiency_factor = -0.1
+
+		path = {
+			leads_to_tech = concentrated_industry5
+			research_cost_coeff = 1
+		}
+		### Factories
+		path = {
+			leads_to_tech = armor_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = vehicle_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = artillery_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = smallarms_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = uniform_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Jetaircraft_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Ltaircraft_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Hvaircraft_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = ship_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = sub_industry3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1941
+
+		folder = {
+			name = industry_folder
+			position = { x = @CONC_IND y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 10
+				prioritise_industry_techs = yes
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_researching_technology = dispersed_industry
+					dispersed_industry_tech_focus = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+			
+		}
+
+		categories = {
+			industry
+			concentrated_industry_category
+		}
+
+	}
+	concentrated_industry5 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+		industrial_capacity_factory = 0.30
+		#industrial_capacity_dockyard = 0.3
+		global_building_slots_factor = 0.32
+		industry_air_damage_factor = 0.1
+		line_change_production_efficiency_factor = -0.1
+
+		research_cost = 2
+		start_year = 1943
+		path = {
+			leads_to_tech = military_production_iii
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = industry_folder
+			position = { x = @CONC_IND y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					prioritise_industry_techs = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_researching_technology = dispersed_industry
+					dispersed_industry_tech_focus = yes
+				}
+			}
+		}
+
+		categories = {
+			industry
+			concentrated_industry_category
+		}
+
+	}
+
+	##### Dispersed Industry
+	dispersed_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		industrial_capacity_factory = 0.10
+		#industrial_capacity_dockyard = 0.08
+		global_building_slots_factor = 0.1
+		industry_air_damage_factor = -0.1
+
+		XOR = { concentrated_industry }
+
+		path = {
+			leads_to_tech = dispersed_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = military_production_i
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			if = {
+				limit = { is_ai = yes }
+				country_event = EAI_M.4447
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+			
+		}
+
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_IND y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 10
+				prioritise_industry_techs = yes
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_researching_technology = concentrated_industry
+					concentrated_industry_tech_focus = yes
+				}
+			}
+		}
+
+		categories = {
+			industry
+			dispersed_industry_category
+		}
+	}
+	dispersed_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		industrial_capacity_factory = 0.13
+		#industrial_capacity_dockyard = 0.12
+		global_building_slots_factor = 0.12
+		industry_air_damage_factor = -0.1
+
+		on_research_complete = {
+			if = {
+				limit = { is_ai = yes }
+				country_event = EAI_M.4448
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		path = {
+			leads_to_tech = dispersed_industry3
+			research_cost_coeff = 1
+		}
+		### Factories
+		path = {
+			leads_to_tech = dispersed_armor_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_vehicle_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_artillery_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_smallarms_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_uniform_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_Jetaircraft_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_Ltaircraft_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_Hvaircraft_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_ship_industry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_sub_industry
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1937
+
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_IND y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 10
+				prioritise_industry_techs = yes
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_researching_technology = concentrated_industry
+					concentrated_industry_tech_focus = yes
+				}
+			}
+		}
+
+		categories = {
+			industry
+			dispersed_industry_category
+		}
+
+	}
+	dispersed_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			if = {
+				limit = { is_ai = yes }
+				country_event = EAI_M.4449
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		industrial_capacity_factory = 0.16
+		#industrial_capacity_dockyard = 0.15
+		global_building_slots_factor = 0.15
+		industry_air_damage_factor = -0.1
+
+		path = {
+			leads_to_tech = dispersed_industry4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = military_production_ii
+			research_cost_coeff = 1
+		}
+		### Factories
+		path = {
+			leads_to_tech = dispersed_armor_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_vehicle_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_artillery_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_smallarms_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_uniform_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_Jetaircraft_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_Ltaircraft_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_Hvaircraft_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_ship_industry2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_sub_industry2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_IND y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 10
+				prioritise_industry_techs = yes
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_researching_technology = concentrated_industry
+					concentrated_industry_tech_focus = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+
+		categories = {
+			industry
+			dispersed_industry_category
+		}
+
+	}
+	dispersed_industry4 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+		industrial_capacity_factory = 0.19
+		#industrial_capacity_dockyard = 0.18
+		global_building_slots_factor = 0.18
+		industry_air_damage_factor = -0.1
+
+		path = {
+			leads_to_tech = dispersed_industry5
+			research_cost_coeff = 1
+		}
+		### Factories
+		path = {
+			leads_to_tech = dispersed_armor_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_vehicle_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_artillery_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_smallarms_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_uniform_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_Jetaircraft_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_Ltaircraft_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_Hvaircraft_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_ship_industry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = dispersed_sub_industry3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.2
+		start_year = 1941
+
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_IND y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 10
+				prioritise_industry_techs = yes
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_researching_technology = concentrated_industry
+					concentrated_industry_tech_focus = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+
+		categories = {
+			industry
+			dispersed_industry_category
+		}
+
+	}
+	dispersed_industry5 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+		industrial_capacity_factory = 0.22
+		#industrial_capacity_dockyard = 0.22
+		global_building_slots_factor = 0.2
+		industry_air_damage_factor = -0.1
+
+		research_cost = 2
+		start_year = 1943
+		path = {
+			leads_to_tech = military_production_iii
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_IND y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000
+				AND = {
+					EAI_timegate_1942/7 = yes
+					prioritise_industry_techs = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_researching_technology = concentrated_industry
+					concentrated_industry_tech_focus = yes
+				}
+			}
+		}
+
+		categories = {
+			industry
+			dispersed_industry_category
+		}
+
+	}
+	#### Military Production
+	military_production_i = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = arms_factory
+			level = 10
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+		}
+		industrial_capacity_factory = 0.05
+		industrial_capacity_dockyard = 0.05
+		stability_factor = -0.05
+		research_cost = 1.25
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @MIL_PROD y = @1936_2 }
+		}
+
+		ai_will_do = {
+			factor = 10000
+			modifier = {
+				factor = 0.5 
+				has_stability < 0.35
+			}
+		}
+
+		categories = {
+			industry
+		}
+	}
+
+	military_production_ii = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = arms_factory
+			level = 15
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+		}
+		industrial_capacity_factory = 0.05
+		industrial_capacity_dockyard = 0.05
+		stability_factor = -0.05
+		dependencies = {
+			military_production_i = 1
+		}
+
+		research_cost = 1.25
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = @MIL_PROD y = @1940 }
+		}
+
+		ai_will_do = {
+			factor = 10000
+			modifier = {
+				factor = 0.5 
+				has_stability < 0.35
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+
+		categories = {
+			industry
+		}
+	}
+
+	military_production_iii = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = arms_factory
+			level = 20
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+		}
+		industrial_capacity_factory = 0.075
+		industrial_capacity_dockyard = 0.075
+		stability_factor = -0.05
+		dependencies = {
+			military_production_ii = 1
+		}
+
+		research_cost = 1.25
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = @MIL_PROD y = @1944 }
+		}
+
+		ai_will_do = {
+			factor = 10000
+			modifier = {
+				factor = 0.5 
+				has_stability < 0.35
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+
+		categories = {
+			industry
+		}
+	}
+	###########################################
+	##### Concentrated Factories Level I
+	armor_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = tank_factory
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	armor_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+
+		}
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @ARMOR_FACT y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	vehicle_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = truck_factory
+			level = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip =	vehicle_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @VEH_FACT y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			industry
+			concentrated_industry_category
+		}
+	}
+	artillery_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = artillery_factory
+			level = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip =	artillery_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @ART_FACT y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	smallarms_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = smallarms_factory
+			level = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip =	smallarms_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @SMALLARMS_FACT y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	uniform_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = uniform_factory
+			level = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip =	uniform_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @UNIFORM_FACT y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	Jetaircraft_industry = {
+		allow_branch = { always = no }
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Jetaircraft_factory
+			level = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip =	jetair_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @ARMOR_FACT y = @1937_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	Ltaircraft_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Ltaircraft_factory
+			level = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip =	ltair_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		research_cost = 0.5
+
+		folder = {
+			name = industry_folder
+			position = { x = @VEH_FACT y = @1937_2 }
+		}
+
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	Hvaircraft_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Hvaircraft_factory
+			level = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip =	hvair_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+		research_cost = 0.5
+
+		folder = {
+			name = industry_folder
+			position = { x = @ART_FACT y = @1937_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	ship_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = shipyard
+			level = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip =	ship_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @SMALLARMS_FACT y = @1937_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	sub_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+			enable_building = {
+			building = subyard
+			level = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip =	sub_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @UNIFORM_FACT y = @1937_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	##### Concentrated Factories Level II
+	armor_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = tank_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = armor_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			armor_industry = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @ARMOR_FACT y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	vehicle_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = truck_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = vehicle_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+		
+		dependencies = {
+			vehicle_industry = 1
+		}
+
+		research_cost = 0.5
+
+		folder = {
+			name = industry_folder
+			position = { x = @VEH_FACT y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	artillery_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = artillery_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = artillery_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			artillery_industry = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @ART_FACT y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	smallarms_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = smallarms_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = smallarms_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			smallarms_industry = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @SMALLARMS_FACT y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	uniform_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = uniform_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = uniform_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			uniform_industry = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @UNIFORM_FACT y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	Jetaircraft_industry2 = {
+		allow_branch = { always = no }
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Jetaircraft_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	jetair_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			Jetaircraft_industry = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @ARMOR_FACT y = @1939_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	Ltaircraft_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Ltaircraft_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	ltair_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+		
+		dependencies = {
+			Ltaircraft_industry = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @VEH_FACT y = @1939_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	Hvaircraft_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Hvaircraft_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	hvair_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			Hvaircraft_industry = 1
+		}
+		air_bombing_targetting = 0.01
+		strategic_bomb_visibility = -0.01
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @ART_FACT y = @1939_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	ship_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = shipyard
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	ship_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			ship_industry = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @SMALLARMS_FACT y = @1939_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	sub_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = subyard
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	sub_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			sub_industry = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @UNIFORM_FACT y = @1939_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	##### Concentrated Factories Level III
+	armor_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = tank_factory
+			level = 3
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	armor_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			armor_industry2 = 1
+		}
+		army_attack_factor = 0.02
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @ARMOR_FACT y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	vehicle_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = truck_factory
+			level = 3
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	vehicle_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			vehicle_industry2 = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @VEH_FACT y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	artillery_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = artillery_factory
+			level = 3
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	artillery_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			artillery_industry2 = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @ART_FACT y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	smallarms_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = smallarms_factory
+			level = 3
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	smallarms_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			smallarms_industry2 = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @SMALLARMS_FACT y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	uniform_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = uniform_factory
+			level = 3
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	uniform_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			uniform_industry2 = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @UNIFORM_FACT y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	Jetaircraft_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Jetaircraft_factory
+			level = 3
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	jetair_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			Ltaircraft_industry3 = 1
+			Hvaircraft_industry3 = 1
+			jet_aircraft_airframes = 1
+		}
+
+		research_cost = 1
+		folder = {
+			name = industry_folder
+			position = { x = @ARMOR_FACT y = @1941_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	Ltaircraft_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Ltaircraft_factory
+			level = 3
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	ltair_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			Ltaircraft_industry2 = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @VEH_FACT y = @1941_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	Hvaircraft_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Hvaircraft_factory
+			level = 3
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	hvair_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			Hvaircraft_industry2 = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @ART_FACT y = @1941_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	ship_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = shipyard
+			level = 3
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	ship_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			ship_industry2 = 1
+		}
+
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @SMALLARMS_FACT y = @1941_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	sub_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = subyard
+			level = 3
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	sub_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = concentrated_industry_category_tt
+		}
+
+		dependencies = {
+			sub_industry2 = 1
+		}
+		
+		research_cost = 0.5
+		folder = {
+			name = industry_folder
+			position = { x = @UNIFORM_FACT y = @1941_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			concentrated_industry_category
+			industry
+		}
+	}
+	#################################
+	##### Dispersed Factories Level I
+	dispersed_armor_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = tank_factory
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = armor_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ARMOR_FACT y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_vehicle_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = truck_factory
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = vehicle_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_VEH_FACT y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_artillery_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = artillery_factory
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = artillery_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ART_FACT y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_smallarms_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = smallarms_factory
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = smallarms_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_SMALLARMS_FACT y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_uniform_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = uniform_factory
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = uniform_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_UNIFORM_FACT y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_Jetaircraft_industry = {
+		allow_branch = { always = no }
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Jetaircraft_factory
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = jetair_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ARMOR_FACT y = @1937_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_Ltaircraft_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Ltaircraft_factory
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = ltair_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_VEH_FACT y = @1937_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_Hvaircraft_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Hvaircraft_factory
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = hvair_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ART_FACT y = @1937_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_ship_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = shipyard
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = ship_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_SMALLARMS_FACT y = @1937_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_sub_industry = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = subyard
+			level = 1
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = sub_1
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_UNIFORM_FACT y = @1937_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	##### Dispersed Factories Level II
+	dispersed_armor_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			custom_effect_tooltip =	armor_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_armor_industry = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ARMOR_FACT y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_vehicle_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			custom_effect_tooltip =	vehicle_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+		
+		dependencies = {
+			dispersed_vehicle_industry = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_VEH_FACT y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_artillery_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			custom_effect_tooltip =	artillery_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_artillery_industry = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ART_FACT y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_smallarms_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			custom_effect_tooltip =	smallarms_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_smallarms_industry = 1
+		}
+
+		research_cost = 0.4
+
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_SMALLARMS_FACT y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_uniform_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			custom_effect_tooltip =	uniform_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_uniform_industry = 1
+		}
+
+		research_cost = 0.4
+
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_UNIFORM_FACT y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_Jetaircraft_industry2 = {
+		allow_branch = { always = no }
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			custom_effect_tooltip =	jetair_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_Jetaircraft_industry = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ARMOR_FACT y = @1939_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_Ltaircraft_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			custom_effect_tooltip =	ltair_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_Ltaircraft_industry = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_VEH_FACT y = @1939_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_Hvaircraft_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			custom_effect_tooltip =	hvair_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_Hvaircraft_industry = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ART_FACT y = @1939_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_ship_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			custom_effect_tooltip =	ship_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_ship_industry = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_SMALLARMS_FACT y = @1939_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_sub_industry2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			custom_effect_tooltip =	sub_2
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_sub_industry = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_UNIFORM_FACT y = @1939_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	##### Dispersed Factories Level III
+	dispersed_armor_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = tank_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	armor_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_armor_industry2 = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ARMOR_FACT y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+
+	}
+	dispersed_vehicle_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = truck_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	vehicle_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_vehicle_industry2 = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_VEH_FACT y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_artillery_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = artillery_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	artillery_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_artillery_industry2 = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ART_FACT y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_smallarms_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = smallarms_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	smallarms_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_smallarms_industry2 = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_SMALLARMS_FACT y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_uniform_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = uniform_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	uniform_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_uniform_industry2 = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_UNIFORM_FACT y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_Jetaircraft_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Jetaircraft_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	jetair_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_Ltaircraft_industry3 = 1
+			dispersed_Hvaircraft_industry3 = 1
+			jet_aircraft_airframes = 1
+		}
+
+		research_cost = 0.8
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ARMOR_FACT y = @1941_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_Ltaircraft_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Ltaircraft_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	ltair_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_Ltaircraft_industry2 = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_VEH_FACT y = @1941_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_Hvaircraft_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = Hvaircraft_factory
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	hvair_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_Hvaircraft_industry2 = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_ART_FACT y = @1941_2 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_ship_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = shipyard
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	ship_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+
+		dependencies = {
+			dispersed_ship_industry2 = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_SMALLARMS_FACT y = @1941_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	dispersed_sub_industry3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = subyard
+			level = 2
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip =	sub_3
+			check_special_buildings = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = dispersed_industry_category_tt
+		}
+		
+		dependencies = {
+			dispersed_sub_industry2 = 1
+		}
+
+		research_cost = 0.4
+		folder = {
+			name = industry_folder
+			position = { x = @DISP_UNIFORM_FACT y = @1941_2 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			dispersed_industry_category
+			industry
+		}
+	}
+	###################################
+	### Woodfired Engines
+	wood_engines = {
+		allow = { can_research_industry_folder = yes } 
+		
+		production_speed_industrial_complex_factor = -0.02
+
+		path = {
+			leads_to_tech = wood_engines2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 0.6
+		start_year = 1935
+		folder = {
+			name = industry_folder
+			position = { x = @WDF_ENG y = @1935 }
+		}
+
+		categories = {
+			industry
+			fuel_tech
+		}
+		on_research_complete = {
+
+			custom_effect_tooltip = wood_tt
+			calculate_civilian_fuel_factor = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	wood_engines2 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		path = {
+			leads_to_tech = char_engines
+			research_cost_coeff = 1
+		}
+		
+		production_speed_industrial_complex_factor = -0.02
+		
+		research_cost = 0.65
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @WDF_ENG y = @1936 }
+		}
+		
+		categories = {
+			industry
+			fuel_tech
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = wood2_tt
+
+			calculate_civilian_fuel_factor = yes
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+	char_engines = {
+		allow = { can_research_industry_folder = yes } 
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		motorized = {
+			fuel_consumption_factor = -0.05
+		}
+		ss_motorized = {
+			fuel_consumption_factor = -0.05
+		}
+		semi_motorized = {
+			fuel_consumption_factor = -0.05
+		}
+		ss_semi_motorized = {
+			fuel_consumption_factor = -0.05
+		}
+		mechanized = {
+			fuel_consumption_factor = -0.01
+		}
+		ss_mechanized = {
+			fuel_consumption_factor = -0.01
+		}
+		amphibious_mechanized = {
+			fuel_consumption_factor = -0.01
+		}
+		american_amph_lv = {
+			fuel_consumption_factor = -0.01
+		}
+
+		research_cost = 0.95
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @WDF_ENG y = @1937 }
+		}
+
+		categories = {
+			industry
+			fuel_tech
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+	##### Fuel Silos
+	fuel_silos = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = fuel_silo
+			level = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		research_cost = 0.75
+		start_year = 1935
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_SILO_1 y = @1935_1 }
+		}
+		path = {
+			leads_to_tech = fuel_cans
+			research_cost_coeff = 1
+		}
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				OR = {
+					EAI_marm_army_focus = yes 
+					EAI_harm_army_focus = yes 
+					EAI_larm_attachment = yes 
+					EAI_motorized_attachment = yes 
+					EAI_marm_attachment = yes 
+					EAI_harm_attachment = yes 
+				}
+			}
+			modifier = {
+				factor = 100
+				EAI_fuel_refining_tech_focus = yes
+			}
+		}
+	}
+	fuel_cans = {
+		allow = { can_research_industry_folder = yes } 
+
+		army_fuel_capacity_factor = 0.32
+
+		research_cost = 0.75
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_CAN y = @1941 }
+		}
+		path = {
+			leads_to_tech = fuel_cans
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				OR = {
+					EAI_marm_army_focus = yes 
+					EAI_harm_army_focus = yes 
+					EAI_larm_attachment = yes 
+					EAI_motorized_attachment = yes 
+					EAI_marm_attachment = yes 
+					EAI_harm_attachment = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+			modifier = {
+				factor = 100
+				EAI_fuel_refining_tech_focus = yes
+			}
+		}
+	}
+	fuel_silos2 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		max_fuel_factor = 0.05
+		enable_building = {
+			building = fuel_silo
+			level = 2
+		}
+
+		research_cost = 0.6
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_SILO_1 y = @1937_1 }
+		}
+		dependencies = {
+			excavation1 = 1
+		}
+		dependencies = {
+			fuel_silos = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				OR = {
+					EAI_marm_army_focus = yes 
+					EAI_harm_army_focus = yes 
+					EAI_larm_attachment = yes 
+					EAI_motorized_attachment = yes 
+					EAI_marm_attachment = yes 
+					EAI_harm_attachment = yes 
+				}
+			}
+			modifier = {
+				factor = 100
+				EAI_fuel_refining_tech_focus = yes
+			}
+		}
+	}
+	fuel_silos3 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		max_fuel_factor = 0.05
+		enable_building = {
+			building = fuel_silo
+			level = 3
+		}
+		dependencies = {
+			excavation2 = 1
+		}
+		dependencies = {
+			fuel_silos2 = 1
+		}
+		research_cost = 0.6
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_SILO_1 y = @1939_1 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				OR = {
+					EAI_marm_army_focus = yes 
+					EAI_harm_army_focus = yes 
+					EAI_larm_attachment = yes 
+					EAI_motorized_attachment = yes 
+					EAI_marm_attachment = yes 
+					EAI_harm_attachment = yes 
+				}
+			}
+			modifier = {
+				factor = 100
+				EAI_fuel_refining_tech_focus = yes
+			}
+		}
+	}
+	fuel_silos4 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		max_fuel_factor = 0.05
+		enable_building = {
+			building = fuel_silo
+			level = 4
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		research_cost = 0.6
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_SILO_1 y = @1941_1 }
+		}
+		dependencies = {
+			excavation3 = 1
+		}
+		dependencies = {
+			fuel_silos3 = 1
+		}
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				OR = {
+					EAI_marm_army_focus = yes 
+					EAI_harm_army_focus = yes 
+					EAI_larm_attachment = yes 
+					EAI_motorized_attachment = yes 
+					EAI_marm_attachment = yes 
+					EAI_harm_attachment = yes 
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+			modifier = {
+				factor = 100
+				EAI_fuel_refining_tech_focus = yes
+			}
+		}
+	}
+	fuel_silos5 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		max_fuel_factor = 0.10
+		enable_building = {
+			building = fuel_silo
+			level = 5
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		research_cost = 0.6
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_SILO_1 y = @1943_1 }
+		}
+		dependencies = {
+			excavation4 = 1
+		}
+		dependencies = {
+			fuel_silos4 = 1
+		}
+
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+			modifier = {
+				add = 10
+				OR = {
+					EAI_marm_army_focus = yes 
+					EAI_harm_army_focus = yes 
+					EAI_larm_attachment = yes 
+					EAI_motorized_attachment = yes 
+					EAI_marm_attachment = yes 
+					EAI_harm_attachment = yes 
+				}
+			}
+			modifier = {
+				factor = 100
+				EAI_fuel_refining_tech_focus = yes
+			}
+		}
+	}
+	### Fuel Refining
+	fuel_refining = {
+		allow = { can_research_industry_folder = yes } 
+
+		fuel_gain_factor = 0.15
+		fuel_gain_factor_from_states = 0.15
+
+		path = {
+			leads_to_tech = fuel_refining2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = fuel_silos
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = catalytic_cracking
+			research_cost_coeff = 1
+		}
+		research_cost = 3
+		start_year = 1935
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_REF y = @1935 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_fuel_refining_tech_focus = yes
+			}
+		}
+	}
+	fuel_refining2 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		fuel_gain_factor = 0.15
+		fuel_gain_factor_from_states = 0.15
+
+		path = {
+			leads_to_tech = fuel_refining3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = fuel_silos2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = commercial_catalytic_cracking
+			research_cost_coeff = 1
+		}
+
+		research_cost = 3
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_REF y = @1937 }
+		}
+
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_fuel_refining_tech_focus = yes
+			}
+		}
+	}
+	fuel_refining3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		fuel_gain_factor = 0.15
+		fuel_gain_factor_from_states = 0.15
+
+		path = {
+			leads_to_tech = fuel_refining4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = fuel_silos3
+			research_cost_coeff = 1
+		}
+		research_cost = 3
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_REF y = @1939 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_fuel_refining_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+	}
+	fuel_refining4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		fuel_gain_factor = 0.15
+		fuel_gain_factor_from_states = 0.15
+
+		path = {
+			leads_to_tech = fuel_refining5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = fuel_silos4
+			research_cost_coeff = 1
+		}
+
+		research_cost = 3
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_REF y = @1941 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_fuel_refining_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+	}
+	fuel_refining5 = {
+		allow = { can_research_industry_folder = yes } 
+
+		fuel_gain_factor = 0.15
+		fuel_gain_factor_from_states = 0.15
+
+		research_cost = 3
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_REF y = @1943 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+		}
+		path = {
+			leads_to_tech = fuel_silos5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = fluid_catalytic_cracking
+			research_cost_coeff = 1
+		}
+
+		categories = {
+			industry
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_fuel_refining_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+		}
+	}
+	catalytic_cracking = {
+		allow = { can_research_industry_folder = yes } 
+		
+		fuel_gain_factor = 0.10
+
+		research_cost = 0.95
+		start_year = 1935
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_SILO y = @1935_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_fuel_refining_tech_focus = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = excavation_tech_tt
+		}
+		categories = {
+			industry
+			fuel_tech
+			excavation_tech
+		}
+	}
+
+	commercial_catalytic_cracking = {
+		allow = { can_research_industry_folder = yes } 
+		
+		fuel_gain_factor = 0.10
+		path = {
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			chemical_industry_i = 1
+		}
+		research_cost = 0.95
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_SILO y = @1938_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_fuel_refining_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = excavation_tech_tt
+		}
+		categories = {
+			industry
+			fuel_tech
+			excavation_tech
+		}
+	}
+
+	fluid_catalytic_cracking = {
+		allow = { can_research_industry_folder = yes } 
+		
+		fuel_gain_factor = 0.15
+		path = {
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			chemical_industry_iii = 1
+		}
+		research_cost = 0.95
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @FUEL_SILO y = @1943_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_fuel_refining_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = fuel_tech_tt
+			custom_effect_tooltip = excavation_tech_tt
+		}
+		categories = {
+			industry
+			fuel_tech
+			excavation_tech
+		}
+	}
+	###################################
+	##### Construction I
+	construction1 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = industrial_complex
+			level = 8
+		}
+		production_speed_buildings_factor = 0.03
+		production_speed_industrial_complex_factor = 0.03
+
+		path = {
+			leads_to_tech = construction2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = excavation1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = defence_works
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infra_works
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = civ_works
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @CONSTR y = @1936 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_construction = yes
+			}
+			modifier = {
+				factor = 500
+				OR = {
+					tag = GER	#pursuing autarky
+					tag = USA	#capitalism
+					tag = SOV	#5 year plans
+				}
+			}
+		}
+	}
+	defence_works = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = bunker
+			level = 3
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 3
+		}
+		max_dig_in = 1
+
+		path = {
+			leads_to_tech = on_site
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = pre_fab
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @DEF_WORKS y = @1936_1 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 30
+				prioritise_defence_works = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	on_site = {
+		allow = { can_research_industry_folder = yes } 
+
+		dig_in_speed_factor = 0.1 #2% bonus
+
+		research_cost = 1.2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @DIG_IN y = @1936_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				date > 1938.1.1
+			}
+			modifier = {
+				factor = 10
+				major_country = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	pre_fab = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = bunker
+			level = 4
+		}
+		production_speed_bunker_factor = 0.08
+		production_speed_coastal_bunker_factor = 0.08
+
+		research_cost = 1.2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @PREFAB y = @1936_3 }
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 100
+				prioritise_pre_fab = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	infra_works = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = infrastructure
+			level = 7
+		}
+		enable_building = {
+			building = naval_base
+			level = 5
+		}
+		production_speed_infrastructure_factor = 0.04
+		production_speed_naval_base_factor = 0.02
+
+		path = {
+			leads_to_tech = rail_infra
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = road_infra
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = air_infra
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = port_infra
+			research_cost_coeff = 1
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		research_cost = 1.2
+		start_year = 1936
+		categories = {
+			industry
+			construction_tech
+		}
+
+		folder = {
+			name = industry_folder
+			position = { x = @INFRA_WRK y = @1936_1 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_infra_works = yes
+			}
+		}
+	}
+	rail_infra = {
+		allow = { can_research_industry_folder = yes } 
+
+		industrial_capacity_factory = 0.02
+		line_change_production_efficiency_factor = 0.025
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		research_cost = 1.2
+		start_year = 1936
+		categories = {
+			industry
+			construction_tech
+		}
+
+		folder = {
+			name = industry_folder
+			position = { x = @RAIL_INFRA y = @1936_3 }
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	road_infra = {
+		allow = { can_research_industry_folder = yes } 
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		org_loss_when_moving = -0.02
+
+		research_cost = 1.2
+		start_year = 1936
+		categories = {
+			industry
+			construction_tech
+		}
+
+		folder = {
+			name = industry_folder
+			position = { x = @ROAD_INFRA y = @1936_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	air_infra = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = air_base
+			level = 6
+		}
+		production_speed_air_base_factor = 0.05
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		research_cost = 1.2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @AIR_INFRA y = @1936_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			#factor = 10
+			#modifier = {
+			#	factor = 300 
+			#	prioritise_air_infra = yes
+			#}
+		}
+
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	port_infra = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = dockyard
+			level = 6
+		}
+		production_speed_dockyard_factor = 0.05
+		industrial_capacity_dockyard = 0.05
+		repair_speed_factor = 0.05
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		research_cost = 1.2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @PORT_INFRA y = @1936_3 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_port_infra = yes
+			}
+			modifier = {
+				factor = 0
+				tag = SOV
+			}
+		}
+
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	civ_works = {
+		allow = { can_research_industry_folder = yes } 
+
+		stability_weekly = 0.001
+
+		path = {
+			leads_to_tech = housing_work
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hospital_work
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = schools_work
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @HOSP_CIVW y = @1936_1 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	housing_work = {
+		allow = { can_research_industry_folder = yes } 
+
+		conscription = 0.0005
+		production_speed_industrial_complex_factor = 0.03
+
+		research_cost = 1.2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @HOUS_WRK y = @1936_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	hospital_work = {
+		allow = { can_research_industry_folder = yes } 
+
+		attrition = -0.03 #take 3% less attrition losses
+
+		research_cost = 1.2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @HOSP_CIVW y = @1936_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+			medical_tech
+		}
+	}
+	schools_work = {
+		allow = { can_research_industry_folder = yes } 
+
+		training_time_army_factor = -0.04
+
+		research_cost = 1.2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @SCH_WRK y = @1936_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+# Construction II
+	construction2 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = industrial_complex
+			level = 11
+		}
+		production_speed_industrial_complex_factor = 0.02
+		production_speed_buildings_factor = 0.03
+		production_speed_arms_factory_factor = -0.02
+		production_speed_dockyard_factor = -0.02
+		path = {
+			leads_to_tech = construction3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = excavation2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = defence_works2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infra_works2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = civ_works2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = improved_materials
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = improved_power_grid_i
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = chemical_industry_i
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @CONSTR y = @1937 }
+		}
+		
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_construction = yes
+			}
+			modifier = {
+				factor = 500
+				OR = {
+					tag = GER	#pursuing autarky
+					tag = USA	#capitalism
+					tag = SOV	#5 year plans
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	chemical_industry_i = {
+		allow = { can_research_industry_folder = yes } 
+		
+		local_supplies = 0.05
+		production_speed_synthetic_refinery_factor = 0.05
+		production_speed_synthetic_rubber_refinery_factor = 0.05
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+			hidden_effect = {
+				every_owned_state = {
+					add_state_modifier = {
+						modifier = {
+							local_supplies = 0.05
+						}
+					}
+				}
+			}
+		}
+
+		dependencies = {
+			commercial_plastics = 1
+		}
+		path = {
+			leads_to_tech = chemical_industry_ii
+			research_cost_coeff = 1
+		}
+
+
+		research_cost = 1.25
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = @chemical y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+
+		categories = {
+			industry
+			synth_resources
+			construction_tech
+		}
+	}
+
+	chemical_industry_ii = {
+		allow = { can_research_industry_folder = yes } 
+		
+		local_supplies = 0.05
+		production_lack_of_resource_penalty_factor = -0.01
+		production_speed_synthetic_refinery_factor = 0.05
+		production_speed_synthetic_rubber_refinery_factor = 0.05
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+			hidden_effect = {
+				every_owned_state = {
+					add_state_modifier = {
+						modifier = {
+							local_supplies = 0.05
+						}
+					}
+				}
+			}
+		}
+		path = {
+			leads_to_tech = chemical_industry_iii
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.25
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = @chemical y = @1940 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+		categories = {
+			industry
+			synth_resources
+			construction_tech
+		}
+	}
+
+	chemical_industry_iii = {
+		allow = { can_research_industry_folder = yes } 
+		
+		local_supplies = 0.05
+		production_lack_of_resource_penalty_factor = -0.02
+		production_speed_synthetic_refinery_factor = 0.05
+		production_speed_synthetic_rubber_refinery_factor = 0.05
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+			hidden_effect = {
+				every_owned_state = {
+					add_state_modifier = {
+						modifier = {
+							local_supplies = 0.05
+						}
+					}
+				}
+			}
+		}
+		path = {
+			leads_to_tech = chemical_industry_iv
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.25
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = @chemical y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+
+		categories = {
+			industry
+			synth_resources
+			construction_tech
+		}
+	}
+
+	chemical_industry_iv = {
+		allow = { can_research_industry_folder = yes } 
+		
+		local_supplies = 0.05
+		production_lack_of_resource_penalty_factor = -0.02
+		production_factory_max_efficiency_factor = 0.03
+		production_speed_synthetic_refinery_factor = 0.05
+		production_speed_synthetic_rubber_refinery_factor = 0.05
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = synth_resources_tt
+			hidden_effect = {
+				every_owned_state = {
+					add_state_modifier = {
+						modifier = {
+							local_supplies = 0.05
+						}
+					}
+				}
+			}
+		}
+		path = {
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.25
+		start_year = 1945
+		folder = {
+			name = industry_folder
+			position = { x = @chemical y = @1945 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1944/7 = no
+			}
+		}
+
+		categories = {
+			industry
+			synth_resources
+			construction_tech
+		}
+	}
+	improved_power_grid_i = {
+		allow = { can_research_industry_folder = yes } 
+		
+		production_factory_start_efficiency_factor = 0.03
+		industry_air_damage_factor = 0.02
+
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = @POWER_GRID y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				EAI_timegate_1937/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = electronics_tt
+		}
+		categories = {
+			industry
+			construction_tech
+			electronics
+		}
+	}
+
+	improved_materials = {
+		allow = { can_research_industry_folder = yes } 
+
+		#path = {
+		#	leads_to_tech = magnetic_tapes
+		#	research_cost_coeff = 1
+		#}
+
+		#path = {
+		#	leads_to_tech = improved_glass_optics
+		#	research_cost_coeff = 1
+		#}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			add_ideas = {
+				nylon_tech_idea
+			}
+		}
+		paratrooper = {
+			maximum_speed = 0.02
+			breakthrough = 0.01
+		}
+
+		research_cost = 0.75
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = @IMPR_MAT y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		categories = {
+			industry
+		}
+	}
+	defence_works2 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = bunker
+			level = 6
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 5
+		}
+		max_dig_in = 1
+
+		path = {
+			leads_to_tech = on_site2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = pre_fab2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @DEF_WORKS y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 30
+				prioritise_defence_works = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	on_site2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		dig_in_speed_factor = 0.1 #2% bonus
+
+		dependencies = {
+			on_site = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @DIG_IN y = @1937_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				EAI_timegate_1936/2 = yes
+			}
+			modifier = {
+				factor = 10
+				major_country = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	pre_fab2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_speed_bunker_factor = 0.08
+		production_speed_coastal_bunker_factor = 0.08
+
+		dependencies = {
+			pre_fab = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @PREFAB y = @1937_3 }
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 100
+				prioritise_pre_fab = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	infra_works2 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = infrastructure
+			level = 8
+		}
+		enable_building = {
+			building = naval_base
+			level = 7
+		}
+		production_speed_infrastructure_factor = 0.04
+		production_speed_naval_base_factor = 0.02
+		path = {
+			leads_to_tech = rail_infra2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = road_infra2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = air_infra2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = port_infra2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = steel_industry_i
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			infra_works = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @INFRA_WRK y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_infra_works = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	steel_industry_i = {
+		allow = { can_research_industry_folder = yes } 
+		
+		on_research_complete = {
+			modify_building_resources = {
+				building = steel_refinery
+				resource = steel
+				amount = 1
+			}
+		}
+		research_cost = 0.5
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @INFRA_WRK y = @1938 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+
+	rail_infra2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		industrial_capacity_factory = 0.02
+		line_change_production_efficiency_factor = 0.035
+
+		dependencies = {
+			rail_infra = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @RAIL_INFRA y = @1937_3 }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	road_infra2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		org_loss_when_moving = -0.03
+
+		dependencies = {
+			road_infra = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @ROAD_INFRA y = @1937_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	air_infra2 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = air_base
+			level = 8
+		}
+		production_speed_air_base_factor = 0.05
+		air_volunteer_cap = 10
+
+		dependencies = {
+			air_infra = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @AIR_INFRA y = @1937_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		#	factor = 10
+		#	modifier = {
+		#		factor = 300 
+		#		prioritise_air_infra = yes
+		#	}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	port_infra2 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = dockyard
+			level = 9
+		}
+		production_speed_dockyard_factor = 0.05
+		industrial_capacity_dockyard = 0.05
+		repair_speed_factor = 0.05
+
+		dependencies = {
+			port_infra = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1936
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+
+		folder = {
+			name = industry_folder
+			position = { x = @PORT_INFRA y = @1937_3 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_port_infra = yes
+			}
+			modifier = {
+				factor = 0
+				tag = SOV
+			}
+		}
+	}
+	civ_works2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		path = {
+			leads_to_tech = housing_work2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hospital_work2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = schools_work2
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			civ_works = 1
+		}
+		stability_weekly = 0.0015
+
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @HOSP_CIVW y = @1937_1 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	housing_work2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		dependencies = {
+			housing_work = 1
+		}
+
+		conscription = 0.001
+		production_speed_industrial_complex_factor = 0.03
+
+		research_cost = 1.2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @HOUS_WRK y = @1937_3 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+	}
+	hospital_work2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		attrition = -0.03 #take 3% less attrition losses
+
+		dependencies = {
+			hospital_work = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @HOSP_CIVW y = @1937_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+			medical_tech
+		}
+	}
+	schools_work2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		training_time_army_factor = -0.04
+
+		dependencies = {
+			schools_work = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @SCH_WRK y = @1937_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				EAI_timegate_1936/7 = no
+			}
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	######################
+	### Construction III
+	construction3 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = industrial_complex
+			level = 14
+		}
+		production_speed_industrial_complex_factor = 0.03
+		production_speed_arms_factory_factor = -0.03
+		production_speed_buildings_factor = 0.03
+		production_speed_dockyard_factor = -0.03
+		path = {
+			leads_to_tech = construction4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = excavation3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = defence_works3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infra_works3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = civ_works3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = improved_power_grid_ii
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @CONSTR y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_construction = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+			modifier = {
+				factor = 500
+				OR = {
+					tag = GER	#pursuing autarky
+					tag = USA	#capitalism
+					tag = SOV	#5 year plans
+				}
+			}
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	improved_power_grid_ii = {
+		allow = { can_research_industry_folder = yes } 
+		
+		production_factory_start_efficiency_factor = 0.03
+		industry_air_damage_factor = 0.02
+		dependencies = {
+			improved_power_grid_i = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = @POWER_GRID y = @1940 }
+		}
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = electronics_tt
+		}
+		categories = {
+			industry
+			construction_tech
+			electronics
+		}
+	}
+	defence_works3 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = bunker
+			level = 8
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 7
+		}
+		path = {
+			leads_to_tech = on_site3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = pre_fab3
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			defence_works2 = 1
+		}
+		max_dig_in = 1
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @DEF_WORKS y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 30
+				prioritise_defence_works = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	on_site3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		dependencies = {
+			on_site2 = 1
+		}
+
+		dig_in_speed_factor = 0.1
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @DIG_IN y = @1939_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				EAI_timegate_1938/7 = yes
+			}
+			modifier = {
+				factor = 10
+				major_country = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	pre_fab3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_speed_bunker_factor = 0.08
+		production_speed_coastal_bunker_factor = 0.08
+
+		dependencies = {
+			pre_fab2 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @PREFAB y = @1939_3 }
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 100
+				prioritise_pre_fab = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	infra_works3 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = infrastructure
+			level = 9
+		}
+		enable_building = {
+			building = naval_base
+			level = 9
+		}
+		production_speed_infrastructure_factor = 0.08
+		production_speed_naval_base_factor = 0.04
+
+		path = {
+			leads_to_tech = rail_infra3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = road_infra3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = air_infra3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = port_infra3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = steel_industry_ii
+			research_cost_coeff = 1
+		}
+
+		dependencies = {
+			infra_works2 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @INFRA_WRK y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_infra_works = yes
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	steel_industry_ii = {
+		allow = { can_research_industry_folder = yes } 
+		
+		on_research_complete = {
+			modify_building_resources = {
+				building = steel_refinery
+				resource = aluminium
+				amount = 1
+			}
+		}
+		dependencies = {
+			steel_industry_i = 1
+		}
+
+		research_cost = 0.5
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = @INFRA_WRK y = @1940 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+
+	rail_infra3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		industrial_capacity_factory = 0.03
+		line_change_production_efficiency_factor = 0.045
+
+		dependencies = {
+			rail_infra2 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @RAIL_INFRA y = @1939_3 }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	road_infra3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		org_loss_when_moving = -0.04
+
+		dependencies = {
+			road_infra2 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @ROAD_INFRA y = @1939_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	air_infra3 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = air_base
+			level = 10
+		}
+		production_speed_air_base_factor = 0.05
+		extra_paratrooper_supply_grace = 5
+
+		dependencies = {
+			air_infra2 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @AIR_INFRA y = @1939_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		#	factor = 10
+		#	modifier = {
+		#		factor = 300 
+		#		prioritise_air_infra = yes
+		#	}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	port_infra3 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = dockyard
+			level = 12
+		}
+		production_speed_dockyard_factor = 0.05
+		industrial_capacity_dockyard = 0.05
+		repair_speed_factor = 0.05
+
+		dependencies = {
+			port_infra2 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @PORT_INFRA y = @1939_3 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_port_infra = yes
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					tag = SOV
+					EAI_timegate_1938/7 = no
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	civ_works3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		path = {
+			leads_to_tech = housing_work3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hospital_work3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = schools_work3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = fm_radio
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			civ_works2 = 1
+		}
+		stability_weekly = 0.002
+
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @HOSP_CIVW y = @1939_1 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	housing_work3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		dependencies = {
+			housing_work2 = 1
+		}
+
+		conscription = 0.0015
+		production_speed_industrial_complex_factor = 0.04
+
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @HOUS_WRK y = @1939_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	hospital_work3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		attrition = -0.03 #take 3% less attrition losses
+
+		dependencies = {
+			hospital_work2 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @HOSP_CIVW y = @1939_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+			medical_tech
+		}
+	}
+	schools_work3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		training_time_army_factor = -0.04
+
+		dependencies = {
+			schools_work2 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @SCH_WRK y = @1939_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	fm_radio = {
+		allow = { can_research_industry_folder = yes } 
+
+		encryption_factor = -0.015
+		political_power_factor = 0.07
+
+		dependencies = {
+			radio = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1940
+		folder = {
+			name = industry_folder
+			position = { x = @FM_RADIO y = @1940}
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = radio_tech_tt
+			custom_effect_tooltip = electronics_tt
+		}
+		categories = {
+			industry
+			radio_tech
+			electronics
+		}
+	}
+	#####################
+	### Construction IV
+	construction4 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = industrial_complex
+			level = 17
+		}
+		production_speed_industrial_complex_factor = 0.03
+		production_speed_arms_factory_factor = -0.03
+		production_speed_buildings_factor = 0.03
+		production_speed_dockyard_factor = -0.03
+		path = {
+			leads_to_tech = construction5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = excavation4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = defence_works4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infra_works4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = civ_works4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = improved_power_grid_iii
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @CONSTR y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				OR = {
+					prioritise_construction = yes
+					tag = SOV	#5 year plans for rapid industrialization
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+			modifier = {
+				factor = 500
+				OR = {
+					tag = GER	#pursuing autarky
+					tag = USA	#capitalism
+					tag = SOV	#5 year plans
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	improved_power_grid_iii = {
+		allow = { can_research_industry_folder = yes } 
+		
+		production_factory_start_efficiency_factor = 0.03
+		industry_air_damage_factor = 0.02
+		dependencies = {
+			improved_power_grid_ii = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = @POWER_GRID y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = electronics_tt
+		}
+		categories = {
+			industry
+			construction_tech
+			electronics
+		}
+	}
+	defence_works4 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = bunker
+			level = 10
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 9
+		}
+		path = {
+			leads_to_tech = on_site4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = pre_fab4
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			defence_works3 = 1
+		}
+		max_dig_in = 1
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @DEF_WORKS y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 30
+				prioritise_defence_works = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	on_site4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		dependencies = {
+			on_site3 = 1
+		}
+
+		dig_in_speed_factor = 0.1
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @DIG_IN y = @1941_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				date > 1938.1.1
+			}
+			modifier = {
+				factor = 10
+				major_country = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	pre_fab4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_speed_bunker_factor = 0.08
+		production_speed_coastal_bunker_factor = 0.08
+
+		dependencies = {
+			pre_fab3 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @PREFAB y = @1941_3 }
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 100
+				prioritise_pre_fab = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	infra_works4 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = infrastructure
+			level = 10
+		}
+		enable_building = {
+			building = naval_base
+			level = 10
+		}
+		production_speed_infrastructure_factor = 0.08
+		production_speed_naval_base_factor = 0.04
+
+		path = {
+			leads_to_tech = rail_infra4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = road_infra4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = air_infra4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = port_infra4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = steel_industry_iii
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = modern_highways
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			infra_works3 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @INFRA_WRK y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_infra_works = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	modern_highways = {
+		allow = { can_research_industry_folder = yes } 
+
+		reassignment_duration_factor = -0.20
+		org_loss_when_moving = -0.025
+
+		research_cost = 0.65
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = @ROAD_INFRA y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 2
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	steel_industry_iii = {
+		allow = { can_research_industry_folder = yes } 
+		
+		on_research_complete = {
+			modify_building_resources = {
+				building = steel_refinery
+				resource = steel
+				amount = 1
+			}
+		}
+		dependencies = {
+			steel_industry_ii = 1
+		}
+
+		research_cost = 0.5
+		start_year = 1942
+		folder = {
+			name = industry_folder
+			position = { x = @INFRA_WRK y = @1942 }
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	rail_infra4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		industrial_capacity_factory = 0.03
+		line_change_production_efficiency_factor = 0.055
+
+		dependencies = {
+			rail_infra3 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @RAIL_INFRA y = @1941_3 }
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	road_infra4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		org_loss_when_moving = -0.05
+		industrial_capacity_factory = 0.01
+
+		dependencies = {
+			road_infra3 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @ROAD_INFRA y = @1941_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	air_infra4 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = air_base
+			level = 12
+		}
+		production_speed_air_base_factor = 0.08
+		air_fuel_consumption_factor = -0.02
+
+		dependencies = {
+			air_infra3 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @AIR_INFRA y = @1941_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		#	factor = 10
+		#	modifier = {
+		#		factor = 300 
+		#		prioritise_air_infra = yes
+		#	}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	port_infra4 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = dockyard
+			level = 15
+		}
+		production_speed_dockyard_factor = 0.05
+		industrial_capacity_dockyard = 0.05
+		repair_speed_factor = 0.05
+
+		dependencies = {
+			port_infra3 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @PORT_INFRA y = @1941_3 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_port_infra = yes
+			}
+			modifier = {
+				factor = 0
+				tag = SOV
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	civ_works4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		path = {
+			leads_to_tech = housing_work4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hospital_work4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = schools_work4
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			civ_works3 = 1
+		}
+		stability_weekly = 0.0025
+
+		research_cost = 1.5
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @HOSP_CIVW y = @1941_1 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	housing_work4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		dependencies = {
+			housing_work2 = 1
+		}
+
+		conscription = 0.002
+		production_speed_industrial_complex_factor = 0.04
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @HOUS_WRK y = @1941_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	hospital_work4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		attrition = -0.04 #take 3% less attrition losses
+
+		dependencies = {
+			hospital_work2 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @HOSP_CIVW y = @1941_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+			medical_tech
+		}
+	}
+	schools_work4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		training_time_factor = -0.04
+
+		dependencies = {
+			schools_work2 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @SCH_WRK y = @1941_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	############################
+	##### Construction V
+	construction5 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = industrial_complex
+			level = 20
+		}
+		production_speed_industrial_complex_factor = 0.04
+		production_speed_buildings_factor = 0.02
+
+		path = {
+			leads_to_tech = excavation5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = defence_works5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infra_works5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = civ_works5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = improved_power_grid_iv
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @CONSTR y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_construction = yes
+			}
+			modifier = {
+				factor = 500
+				OR = {
+					tag = GER	#pursuing autarky
+					tag = USA	#capitalism
+					tag = SOV	#5 year plans
+				}
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	improved_power_grid_iv = {
+		allow = { can_research_industry_folder = yes } 
+		
+		production_factory_start_efficiency_factor = 0.05
+		industry_air_damage_factor = 0.02
+		dependencies = {
+			improved_power_grid_iii = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = @POWER_GRID y = @1944 }
+		}
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = ai_factor
+				set_temp_variable = { ai_factor = num_of_factories }
+				multiply_temp_variable = { ai_factor = 0.5 }
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = electronics_tt
+		}
+		categories = {
+			industry
+			construction_tech
+			electronics
+		}
+	}
+	# Defenses V
+	defence_works5 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = bunker
+			level = 12
+		}
+		enable_building = {
+			building = coastal_bunker
+			level = 10
+		}
+		path = {
+			leads_to_tech = on_site5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = pre_fab5
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			defence_works3 = 1
+		}
+
+		max_dig_in = 1
+
+		research_cost = 1.2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @DEF_WORKS y = @1943_1 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 30
+				prioritise_defence_works = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	on_site5 = {
+		allow = { can_research_industry_folder = yes } 
+
+		dependencies = {
+			on_site4 = 1
+		}
+
+		dig_in_speed_factor = 0.09
+
+		research_cost = 1.2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @DIG_IN y = @1943_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				date > 1938.1.1
+			}
+			modifier = {
+				factor = 10
+				major_country = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	pre_fab5 = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_speed_bunker_factor = 0.08
+		production_speed_coastal_bunker_factor = 0.08
+
+		dependencies = {
+			pre_fab4 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @PREFAB y = @1943_3 }
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 100
+				prioritise_pre_fab = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	# Infrastructure V
+	infra_works5 = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_speed_infrastructure_factor = 0.15
+		production_speed_naval_base_factor = 0.07
+
+		path = {
+			leads_to_tech = rail_infra5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = road_infra5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = air_infra5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = port_infra5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = steel_industry_iv
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			infra_works4 = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @INFRA_WRK y = @1943_1 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		#	factor = 10
+		#	modifier = {
+		#		factor = 300
+		#		prioritise_infra_works = yes
+		#	}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	steel_industry_iv = {
+		allow = { can_research_industry_folder = yes } 
+		
+		
+		on_research_complete = {
+			modify_building_resources = {
+				building = steel_refinery
+				resource = aluminium
+				amount = 1
+			}
+		}
+		dependencies = {
+			steel_industry_iii = 1
+		}
+
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = @INFRA_WRK y = @1944 }
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	rail_infra5 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		industrial_capacity_factory = 0.03
+		line_change_production_efficiency_factor = 0.065
+		
+		dependencies = {
+			rail_infra4 = 1
+		}
+		
+		research_cost = 1.2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @RAIL_INFRA y = @1943_3 }
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	road_infra5 = {
+		allow = { can_research_industry_folder = yes } 
+
+		org_loss_when_moving = -0.05
+		industrial_capacity_factory = 0.01
+
+		dependencies = {
+			road_infra4 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @ROAD_INFRA y = @1943_3 }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	air_infra5 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = air_base
+			level = 15
+		}
+		production_speed_air_base_factor = 0.15
+		fighter_sortie_efficiency = 0.05
+
+		dependencies = {
+			air_infra4 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @AIR_INFRA y = @1943_3 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300 
+				prioritise_air_infra = yes
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	port_infra5 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		enable_building = {
+			building = dockyard
+			level = 20
+		}
+		industrial_capacity_dockyard = 0.06
+		repair_speed_factor = 0.05
+
+		dependencies = {
+			port_infra4 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @PORT_INFRA y = @1943_3 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 300
+				prioritise_port_infra = yes
+			}
+			modifier = {
+				factor = 0
+				tag = SOV
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	##### Civilian works V
+	civ_works5 = {
+		allow = { can_research_industry_folder = yes } 
+
+		path = {
+			leads_to_tech = housing_work5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = hospital_work5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = schools_work5
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			civ_works4 = 1
+		}
+
+		stability_weekly = 0.003
+
+		research_cost = 1.5
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @HOSP_CIVW y = @1943_1 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	housing_work5 = {
+		allow = { can_research_industry_folder = yes } 
+
+		dependencies = {
+			housing_work4 = 1
+		}
+
+		conscription = 0.0025
+		production_speed_industrial_complex_factor = 0.05
+
+		research_cost = 1.2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @HOUS_WRK y = @1943_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	hospital_work5 = {
+		allow = { can_research_industry_folder = yes } 
+
+		attrition = -0.04 #take 3% less attrition losses
+
+		dependencies = {
+			hospital_work4 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @HOSP_CIVW y = @1943_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = medical_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+			medical_tech
+		}
+	}
+	schools_work5 = {
+		allow = { can_research_industry_folder = yes } 
+
+		training_time_factor = -0.04
+
+		dependencies = {
+			schools_work4 = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @SCH_WRK y = @1943_3 }
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+		}
+		categories = {
+			industry
+			construction_tech
+		}
+	}
+	##### Excavation
+	excavation1 = {
+		allow = { can_research_industry_folder = yes } 
+
+		local_resources_factor = 0.08
+
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @EXCAV y = @1936 }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				add = 300
+				EAI_resource_extraction_tech_focus = yes
+			}
+			modifier = {
+				factor = 500
+				OR = {
+					tag = GER	#pursuing autarky
+					tag = USA	#capitalism
+					tag = SOV	#5 year plans
+				}
+			}
+		}
+		on_research_complete = {	
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = excavation_tech_tt
+			custom_effect_tooltip = empty_line
+			
+			add_to_variable = { rubber_storage_output = 1 tooltip = rubber_storage_increase_TT }
+			add_to_variable = { tungsten_storage_output = 1 tooltip = tungsten_storage_increase_TT }
+			add_to_variable = { aluminium_storage_output = 1 tooltip = aluminium_storage_increase_TT }
+			add_to_variable = { steel_storage_output = 1 tooltip = steel_storage_increase_TT }
+			add_to_variable = { chromium_storage_output = 1 tooltip = chromium_storage_increase_TT }
+		}
+		categories = {
+			industry
+			construction_tech
+			excavation_tech
+		}
+	}
+	excavation2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		local_resources_factor = 0.08
+
+		dependencies = {
+			excavation1 = 1
+		}
+		research_cost = 2
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @EXCAV y = @1937 }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				add = 300
+				EAI_resource_extraction_tech_focus = yes
+			}
+			modifier = {
+				factor = 500
+				OR = {
+					tag = GER	#pursuing autarky
+					tag = USA	#capitalism
+					tag = SOV	#5 year plans
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = excavation_tech_tt
+			custom_effect_tooltip = empty_line
+			
+			add_to_variable = { rubber_storage_output = 1 tooltip = rubber_storage_increase_TT }
+			add_to_variable = { tungsten_storage_output = 1 tooltip = tungsten_storage_increase_TT }
+			add_to_variable = { aluminium_storage_output = 1 tooltip = aluminium_storage_increase_TT }
+			add_to_variable = { steel_storage_output = 1 tooltip = steel_storage_increase_TT }
+			add_to_variable = { chromium_storage_output = 1 tooltip = chromium_storage_increase_TT }
+		}
+		categories = {
+			industry
+			construction_tech
+			excavation_tech
+		}
+	}
+	excavation3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		local_resources_factor = 0.08
+
+		dependencies = {
+			excavation2 = 1
+		}
+
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @EXCAV y = @1939 }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				add = 300
+				EAI_resource_extraction_tech_focus = yes
+			}
+			modifier = {
+				factor = 500
+				OR = {
+					tag = GER	#pursuing autarky
+					tag = USA	#capitalism
+					tag = SOV	#5 year plans
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = excavation_tech_tt
+			custom_effect_tooltip = empty_line
+			
+			add_to_variable = { rubber_storage_output = 1 tooltip = rubber_storage_increase_TT }
+			add_to_variable = { tungsten_storage_output = 1 tooltip = tungsten_storage_increase_TT }
+			add_to_variable = { aluminium_storage_output = 1 tooltip = aluminium_storage_increase_TT }
+			add_to_variable = { steel_storage_output = 1 tooltip = steel_storage_increase_TT }
+			add_to_variable = { chromium_storage_output = 1 tooltip = chromium_storage_increase_TT }
+		}
+		categories = {
+			industry
+			construction_tech
+			excavation_tech
+		}
+	}
+	excavation4 = {
+		allow = { can_research_industry_folder = yes } 
+
+		local_resources_factor = 0.08
+
+		dependencies = {
+			excavation3 = 1
+		}
+
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = industry_folder
+			position = { x = @EXCAV y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				add = 300
+				EAI_resource_extraction_tech_focus = yes
+			}
+			modifier = {
+				factor = 500
+				OR = {
+					tag = GER	#pursuing autarky
+					tag = USA	#capitalism
+					tag = SOV	#5 year plans
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = excavation_tech_tt
+			custom_effect_tooltip = empty_line
+			
+			add_to_variable = { rubber_storage_output = 1 tooltip = rubber_storage_increase_TT }
+			add_to_variable = { tungsten_storage_output = 1 tooltip = tungsten_storage_increase_TT }
+			add_to_variable = { aluminium_storage_output = 1 tooltip = aluminium_storage_increase_TT }
+			add_to_variable = { steel_storage_output = 1 tooltip = steel_storage_increase_TT }
+			add_to_variable = { chromium_storage_output = 1 tooltip = chromium_storage_increase_TT }
+		}
+		categories = {
+			industry
+			construction_tech
+			excavation_tech
+		}
+	}
+	excavation5 = {
+		allow = { can_research_industry_folder = yes } 
+
+		local_resources_factor = 0.08
+
+		dependencies = {
+			excavation4 = 1
+		}
+
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @EXCAV y = @1943 }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				add = 300
+				EAI_resource_extraction_tech_focus = yes
+			}
+			modifier = {
+				factor = 500
+				OR = {
+					tag = GER	#pursuing autarky
+					tag = USA	#capitalism
+					tag = SOV	#5 year plans
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = construction_tech_tt
+			custom_effect_tooltip = excavation_tech_tt
+			custom_effect_tooltip = empty_line
+			
+			add_to_variable = { rubber_storage_output = 1 tooltip = rubber_storage_increase_TT }
+			add_to_variable = { tungsten_storage_output = 1 tooltip = tungsten_storage_increase_TT }
+			add_to_variable = { aluminium_storage_output = 1 tooltip = aluminium_storage_increase_TT }
+			add_to_variable = { steel_storage_output = 1 tooltip = steel_storage_increase_TT }
+			add_to_variable = { chromium_storage_output = 1 tooltip = chromium_storage_increase_TT }
+		}
+		categories = {
+			industry
+			construction_tech
+			excavation_tech
+		}
+	}
+	##### Synthetic Plants
+	synth_oil_experiments = {
+		allow = { can_research_industry_folder = yes } 
+
+		enable_building = {
+			building = synthetic_refinery
+			level = 1
+		}
+
+		#production_oil_factor = 0.1 #Can increase oil output - not used though.
+
+		path = {
+			leads_to_tech = oil_plant
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = coal_liquid
+			research_cost_coeff = 1
+		}
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = industry_folder
+			position = { x = @OIL_PLT y = @1936 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		categories = {
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_synth_tech_focus = yes
+			}
+		}
+	}
+	oil_plant = {
+		allow = { can_research_industry_folder = yes } 
+		
+		fuel_gain_factor_from_states = 0.1
+		production_speed_synthetic_refinery_factor = 0.05
+		
+		enable_building = {
+			building = synthetic_refinery
+			level = 2
+		}
+
+		path = {
+			leads_to_tech = improved_oil_plant
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = industry_folder
+			position = { x = @OIL_PLT y = @1937 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		categories = {
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_synth_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				tag = USA
+			}
+		}
+	}
+	improved_oil_plant = {
+		allow = { can_research_industry_folder = yes } 
+		
+		fuel_gain_factor_from_states = 0.15
+		production_speed_synthetic_refinery_factor = 0.05
+		
+		enable_building = {
+			building = synthetic_refinery
+			level = 3
+		}
+		enable_building = {
+			building = synthetic_rubber_refinery
+			level = 1
+		}
+
+		path = {
+			leads_to_tech = advanced_oil_plant
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @OIL_PLT y = @1939 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		categories = {
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_synth_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				tag = USA
+			}
+		}
+	}
+	advanced_oil_plant = {
+		allow = { can_research_industry_folder = yes } 
+		
+		fuel_gain_factor_from_states = 0.15
+		production_speed_synthetic_refinery_factor = 0.05
+		
+		enable_building = {
+			building = synthetic_refinery
+			level = 4
+		}
+		enable_building = {
+			building = synthetic_rubber_refinery
+			level = 2
+		}
+
+		path = {
+			leads_to_tech = oil_plant_processing
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1943
+		folder = {
+			name = industry_folder
+			position = { x = @OIL_PLT y = @1943 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		categories = {
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_timegate_1942/6 = yes
+				EAI_synth_tech_focus = yes
+			}
+			modifier = {
+				factor = 0
+				tag = USA
+			}
+		}
+	}
+	oil_plant_processing = {
+		allow = { can_research_industry_folder = yes } 
+		
+		fuel_gain_factor_from_states = 0.2
+		production_speed_synthetic_refinery_factor = 0.05
+
+		path = {
+			leads_to_tech = oil_plant_processing2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = industry_folder
+			position = { x = @OIL_PLT y = @1944 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		categories = {
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_synth_tech_focus = yes
+			}
+		}
+	}
+	oil_plant_processing2 = {
+		allow = { can_research_industry_folder = yes } 
+		
+		fuel_gain_factor_from_states = 0.2
+		production_speed_synthetic_refinery_factor = 0.05
+
+		research_cost = 1.5
+		start_year = 1945
+		folder = {
+			name = industry_folder
+			position = { x = @OIL_PLT y = @1945 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		categories = {
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_synth_tech_focus = yes
+			}
+		}
+	}
+	#### Coal Liquefaction ###
+	coal_liquid = {
+		allow = { can_research_industry_folder = yes } 
+
+		on_research_complete = {
+			modify_building_resources = {
+				building = steel_refinery
+				resource = steel
+				amount = -2
+			}
+			custom_effect_tooltip = coal_liquid_tt
+			country_event = {
+				id = BICE_buildings.4
+				days = 7		
+			}
+		}
+		path = {
+			leads_to_tech = coal_liquid2
+			research_cost_coeff = 1
+		}
+		#production_oil_factor = 0.1 #Can increase oil output - not used though.
+
+		research_cost = 1.75
+		start_year = 1938
+		folder = {
+			name = industry_folder
+			position = { x = @OIL_COAL y = @1938 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		categories = {
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	coal_liquid2 = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_oil_factor = 0.20
+
+		path = {
+			leads_to_tech = coal_liquid3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.75
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @OIL_COAL y = @1939_2 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		categories = {
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	coal_liquid3 = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_oil_factor = 0.25
+		fuel_gain_factor_from_states = 0.05
+
+		research_cost = 1.75
+		start_year = 1939
+		folder = {
+			name = industry_folder
+			position = { x = @OIL_COAL y = @1942 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = fuel_tech_tt
+		}
+		categories = {
+			synth_resources
+			fuel_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### Rubber processing
+	rubber_processing = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_speed_synthetic_rubber_refinery_factor = 0.05
+
+		on_research_complete = {
+			modify_building_resources = {
+				building = synthetic_rubber_refinery
+				resource = rubber
+				amount = 1
+			}
+		}
+		dependencies = {
+			improved_oil_plant = 1
+		}
+		path = {
+			leads_to_tech = improved_rubber_processing
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1939
+
+		folder = {
+			name = industry_folder
+			position = { x = @RUB_PROC y = @1939 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = industry_tt
+		}
+		categories = {
+			industry
+			synth_resources
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_rubber_processing_tech_focus = yes
+			}
+		}
+
+		show_effect_as_desc = yes
+	}
+	improved_rubber_processing = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_speed_synthetic_rubber_refinery_factor = 0.05
+
+		on_research_complete = {
+			modify_building_resources = {
+				building = synthetic_rubber_refinery
+				resource = rubber
+				amount = 1
+			}
+		}
+
+		path = {
+			leads_to_tech = advanced_rubber_processing
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1940
+
+		folder = {
+			name = industry_folder
+			position = { x = @RUB_PROC y = @1940 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = industry_tt
+		}
+		categories = {
+			synth_resources
+			industry
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_rubber_processing_tech_focus = yes
+			}
+		}
+
+		show_effect_as_desc = yes
+	}
+	advanced_rubber_processing = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_speed_synthetic_rubber_refinery_factor = 0.05
+
+		on_research_complete = {
+			modify_building_resources = {
+				building = synthetic_rubber_refinery
+				resource = rubber
+				amount = 1
+			}
+		}
+
+		path = {
+			leads_to_tech = modern_rubber_processing
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1941
+
+		folder = {
+			name = industry_folder
+			position = { x = @RUB_PROC y = @1941 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = industry_tt
+		}
+		categories = {
+			synth_resources
+			industry
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_rubber_processing_tech_focus = yes
+			}
+		}
+
+		show_effect_as_desc = yes
+	}
+	modern_rubber_processing = {
+		allow = { can_research_industry_folder = yes } 
+
+		production_speed_synthetic_rubber_refinery_factor = 0.05
+
+		on_research_complete = {
+			modify_building_resources = {
+				building = synthetic_rubber_refinery
+				resource = rubber
+				amount = 1
+			}
+		}
+
+		research_cost = 1.5
+		start_year = 1943
+
+		folder = {
+			name = industry_folder
+			position = { x = @RUB_PROC y = @1943 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = synth_resources_tt
+			custom_effect_tooltip = industry_tt
+		}
+		categories = {
+			synth_resources
+			industry
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_rubber_processing_tech_focus = yes
+			}
+		}
+
+		show_effect_as_desc = yes
+	}
+}
+#EOF#

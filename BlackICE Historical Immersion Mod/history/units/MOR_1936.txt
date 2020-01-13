@@ -1,0 +1,153 @@
+﻿##### Division Templates #####
+division_template = {
+	name = "Brigada de Infantería" 		# Infantry Brigade - Used for smaller garrison units
+	template_counter = 85
+	regiments = {
+		garrison = { x = 0 y = 0 }	
+		garrison = { x = 0 y = 1 }
+		
+		garrison = { x = 1 y = 0 }	
+		garrison = { x = 1 y = 1 }
+		
+		anti_tank_brigade =  { x = 2 y = 0 }	
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }   # Eng Bn
+	}
+}
+division_template = {
+	name = "Militia"  
+	# Note: all forces at reserve levels in 1936
+	template_counter = 68
+	
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Moroccan Spahis"	
+	template_counter = 213
+	
+	regiments = {
+		cavalry = { x = 0 y = 0 }	
+		cavalry = { x = 0 y = 1 }	
+		cavalry = { x = 0 y = 2 }	
+		
+		cavalry = { x = 1 y = 0 }	
+		cavalry = { x = 1 y = 1 }	
+		cavalry = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }		
+	}
+}
+division_template = {
+	name = "Garrison"	
+	template_counter = 81
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+		garrison = { x = 0 y = 2 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+###### OOB ######
+units = {
+	#####LAND UNITS #####		
+	### Ejército de África ###
+	division = {			
+		name = "Circunscripción Occidental"		
+		location = 9945  #Ceuta
+		division_template = "Brigada de Infantería"		# garrison division, lower equipment, experience
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division = {			
+		name = "Circunscripción Oriental"		
+		location = 12100  #Melilla
+		division_template = "Brigada de Infantería"		# garrison division, lower equipment, experience
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+	}
+	division = {			
+		name = "Circunscripción Oriental"		
+		location = 8038  #El Aaiun
+		division_template = "Militia"
+		start_experience_factor = 0.0
+		start_equipment_factor = 0.1
+	}
+}
+##### NAVAL UNITS #####
+##### Air Wings #####
+##### PRODUCTION #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "MOR"
+		}
+		requested_factories = 2
+		progress = 0.42
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = garrison_equipment_0
+			creator = "MOR"
+		}
+		requested_factories = 1
+		progress = 0.24
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = HQ_equipment_0
+			creator = "MOR"
+		}
+		requested_factories = 1
+		progress = 0.24
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "MOR"
+		}
+		requested_factories = 1
+		progress = 0.24
+		efficiency = 100
+	}
+##### ADDED TO STOCPILE #####
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_1
+		amount = 800
+		producer = SPR
+	}	
+	add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+		amount = 500
+		producer = SPR
+	}
+	add_equipment_to_stockpile = {
+		type = garrison_equipment_0
+		amount = 500
+		producer = SPR
+	}
+}
+### EOF ###

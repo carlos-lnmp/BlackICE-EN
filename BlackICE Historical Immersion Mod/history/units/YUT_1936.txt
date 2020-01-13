@@ -1,0 +1,92 @@
+﻿division_template = {
+	name = "Juntuán"				
+
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }	
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+	}
+}
+
+
+### OOB ###
+units = {
+	division = {
+		name = "63 Juntuán"
+		location = 1047
+		division_template = "Juntuán"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division = {
+		name = "65 Juntuán"
+		location = 9938
+		division_template = "Juntuán"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division = {
+		name = "66 Juntuán"
+		location = 994
+		division_template = "Juntuán"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division = {
+		name = "67 Juntuán"
+		location = 1047
+		division_template = "Juntuán"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division = {
+		name = "Guangzhou Jingbei"
+		location = 1047
+		division_template = "Juntuán"		
+		start_equipment_factor = 0.2
+
+	}
+	division = {
+		name = "Hainan Jingbei"
+		location = 994
+		division_template = "Juntuán"		
+		start_equipment_factor = 0.2
+
+	}
+	
+	navy = {
+		name = "Di 1 Jiandui"
+		base = 1047
+		location = 1047 #Panyu
+		ship = { name = "Haizhou" definition = destroyer equipment = { nrm_ship_hull_destroyer_1 = {amount = 1 owner = YUT version_name = "Jianwei Class" } } } #decommissioned British minesweeper, bought by Chen Jitang. Was called a cruiser after installing a 4.7 inch cannon.
+		ship = { name = "Guangjin" definition = destroyer equipment = { nrm_ship_hull_destroyer_1 = {amount = 1 owner = YUT version_name = "Jianwei Class" } } }
+	}
+}
+
+### Air Forces ###
+air_wings = {
+	592 = { 
+		fighter_equipment_0 = { owner = "YUT" amount = 200 }				
+	}
+}
+
+### STARTING PRODUCTION ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "YUT"
+		}
+		requested_factories = 1
+		progress = 0.79
+		efficiency = 100
+	}	
+}

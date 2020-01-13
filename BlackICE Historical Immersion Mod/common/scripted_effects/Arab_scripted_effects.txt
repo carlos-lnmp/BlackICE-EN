@@ -1,0 +1,220 @@
+#Add to scripted triggers if more levels of hyper inflation is added
+Arab_hyper_inflation_clear_all = {
+	remove_ideas = {
+		Arab_hyper_inflation_1
+		Arab_hyper_inflation_2
+		Arab_hyper_inflation_3
+		Arab_hyper_inflation_4
+		Arab_hyper_inflation_5
+	}
+}
+
+#Important to put HIGHEST first
+Arab_hyper_inflation_level_up = {
+	# level 5 not relevant. Cannot go above.
+	custom_effect_tooltip = "inflation up "
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_4 }
+		swap_ideas = {
+			remove_idea = Arab_hyper_inflation_4
+			add_idea = Arab_hyper_inflation_5
+		}
+	}
+	else_if = {
+		limit = { has_idea = Arab_hyper_inflation_3 }
+		swap_ideas = {
+			remove_idea = Arab_hyper_inflation_3
+			add_idea = Arab_hyper_inflation_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = Arab_hyper_inflation_2 }
+		swap_ideas = {
+			remove_idea = Arab_hyper_inflation_2
+			add_idea = Arab_hyper_inflation_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = Arab_hyper_inflation_1 }
+		swap_ideas = {
+			remove_idea = Arab_hyper_inflation_1
+			add_idea = Arab_hyper_inflation_2
+		}		
+	}
+	else_if = {
+		limit = { NOT = { has_idea = Arab_hyper_inflation_1 } }
+		add_ideas = Arab_hyper_inflation_1
+	}
+}
+
+#Important to put LOWEST first
+Arab_hyper_inflation_level_down = {
+custom_effect_tooltip = "inflation down "
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_1 }
+		#Makes the tooltip clearer if player looks at the effect early in the game
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = Arab_hyper_inflation_1
+				add_idea = Arab_hyper_inflation_none
+			}
+		}
+		hidden_effect = { remove_ideas = Arab_hyper_inflation_1 }
+	}
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_2 }
+		swap_ideas = {
+			remove_idea = Arab_hyper_inflation_2
+			add_idea = Arab_hyper_inflation_1
+		}
+	}
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_3 }
+		swap_ideas = {
+			remove_idea = Arab_hyper_inflation_3
+			add_idea = Arab_hyper_inflation_2
+		}
+	}
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_4 }
+		swap_ideas = {
+			remove_idea = Arab_hyper_inflation_4
+			add_idea = Arab_hyper_inflation_3
+		}
+	}
+	if = {
+		limit = { has_idea = Arab_hyper_inflation_5 }
+		swap_ideas = {
+			remove_idea = Arab_hyper_inflation_5
+			add_idea = Arab_hyper_inflation_4
+		}
+	}
+}
+
+### Anger at Iran
+#Important to put HIGHEST first
+## British
+PER_brit_anger = {
+
+}
+## Soviet
+PER_sov_anger = {
+
+}
+
+PER_training = {
+	custom_effect_tooltip = PER_training_tt
+	add_to_variable = {
+		var = Per_planning
+		value = 0.03
+	}
+	add_to_variable = {
+		var = Per_command
+		value = 0.02
+	}
+	add_to_variable = {
+		var = Per_command_max
+		value = 0.011
+	}
+	add_to_variable = {
+		var = Per_training
+		value = -0.03
+	}
+	add_to_variable = {
+		var = Per_loss
+		value = -0.03
+	}
+}
+
+PER_anger_ENG = {
+	custom_effect_tooltip = PER_anger_ENG_tt
+	hidden_effect = {
+		ENG = {
+			add_to_variable = { PER_angry = 1 }
+			if = {
+				limit = {
+					is_ai = yes
+					check_variable = { PER_angry > 7 }
+					not = { is_in_faction_with = PER }
+					has_war_with = GER
+					SOV = {
+						has_war_with = GER
+					}
+				}
+				declare_war_on = {
+					target = PER
+					type = annex_everything
+				}
+				SOV = {
+					if = {
+						limit = {
+							is_ai = yes
+							check_variable = { PER_angry > 4 }
+							has_war_with = GER
+							not = { has_non_aggression_pact_with = PER }
+							not = { is_in_faction_with = PER }
+						}
+						declare_war_on = {
+							target = PER
+							type = annex_everything
+						}
+					}
+				}
+			}
+			else = {
+				add_opinion_modifier = {
+					target = PER
+					modifier = kinda_angry
+				}
+			}		
+		}
+	}
+}
+
+PER_anger_SOV = {
+	custom_effect_tooltip = PER_anger_SOV_tt
+	hidden_effect = {
+		SOV = {
+			add_to_variable = { PER_angry = 1 }
+			if = {
+				limit = {
+					is_ai = yes
+					check_variable = { PER_angry > 5 }
+					not = { is_in_faction_with = PER }
+					has_war_with = GER
+				}
+				declare_war_on = {
+					target = PER
+					type = annex_everything
+				}
+				ENG = {
+					if = {
+						limit = {
+							is_ai = yes
+							check_variable = { PER_angry > 6 }
+							has_war_with = GER
+							not = { is_in_faction_with = PER }
+						}
+						declare_war_on = {
+							target = PER
+							type = annex_everything
+						}
+					}
+				}
+			}
+			else = {
+				add_opinion_modifier = {
+					target = PER
+					modifier = kinda_angry
+				}
+			}		
+		}
+	}
+}
+
+PER_anger_axis = {
+}
+
+PER_anger_USA = {
+}
+

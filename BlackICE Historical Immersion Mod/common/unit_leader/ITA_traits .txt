@@ -1,0 +1,214 @@
+leader_traits = {
+##################################
+# ITA Traits
+##################################
+	Order_of_Military_Medal = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			OR = {
+				is_attacker = yes
+				is_defender = yes
+			}
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		
+		cost = 3500
+		modifier = {
+			experience_gain_factor = 0.02
+			army_speed_factor = 0.01
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Order_of_the_Holy_Annuntiation = {
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_attacker = yes
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		
+		cost = 3500
+		
+		modifier = {
+			offence = 0.03			
+			army_speed_factor = 0.02
+		}
+				
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	For_Valor_Silver_Medal = {
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_attacker = no
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		
+		cost = 3500
+		
+		modifier = {
+			defence = 0.05			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Order_of_the_Crown_of_Italy = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		
+		modifier = {
+			offence = 0.03
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Order_of_Saint_Lazarus = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			has_trait = Italian_War_Cross
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		
+		cost = 4500
+		
+		modifier = {
+			recon_factor = 0.05		
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Italy_Now_and_Forever = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_attacker = no
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		
+		cost = 5500
+		
+		modifier = {
+			max_dig_in_factor = 0.15			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Italian_War_Cross = {
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		
+		cost = 2500
+		
+		modifier = {
+			experience_gain_factor = 0.05			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	Italian_Colonial_Order = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		
+		modifier = {
+			out_of_supply_factor = -0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	East_Africa_Campaign_Medal = {
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		
+		modifier = {
+			supply_consumption_factor = -0.03
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+### EOF ###

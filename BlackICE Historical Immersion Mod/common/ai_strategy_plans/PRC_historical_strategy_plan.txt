@@ -1,0 +1,119 @@
+PRC_historical_plan = {
+	name = "Communist China historical plan"
+	desc = "Historical behavior for Communist China"
+
+	enable = {
+		original_tag = PRC
+		is_historical_focus_on = yes
+	}
+	abort = {
+		OR = {
+			JAP = {
+				has_government = communism
+			}
+			USA = {
+				has_government = communism
+			}
+			SOV = {
+				exists = no
+			}
+		}
+	}
+
+	ai_national_focuses = {
+		PRC_found_our_nation
+		PRC_front_line_behind_enemy_line
+		PRC_lure_them_in_strategy
+		PRC_war_of_attrition
+		PRC_neccessary_flexibility
+		PRC_protracted_war
+		PRC_root_out_defeatism
+		PRC_debunk_the_underestimation
+		PRC_rectification
+		PRC_restart_the_civil_war
+		PRC_suppress_counterrevolutionaries
+		PRC_land_reform
+		PRC_cult_of_personality
+		PRC_the_united_front
+		PRC_supply_line_from_sov
+		
+		
+		PRC_recover_from_the_long_march
+		PRC_nine
+		PRC_anti_japanese_aim
+		PRC_the_grand_northwest_united_proposal
+		PRC_boost_the_morale
+		PRC_west_expedition
+		PRC_political_mobilisation
+		PRC_purge_dissident_element
+		PRC_prepare_for_war
+		PRC_military_civilian_corporation
+		PRC_the_goal_of_our_war
+		PRC_self_perservation
+		PRC_prepare_for_decisive_battle
+		PRC_army_reform
+		PRC_pla
+		PRC_sov_cooperation
+		PRC_the_first_five_year_plan
+		PRC_institution_reorganization
+		PRC_industrialization_NW
+		PRC_resources_prospection
+		PRC_156_project
+		PRC_hire_sov_experts
+		PRC_industrialization_S
+		PRC_import_sov_machinery
+		PRC_invest_in_new_companies
+		PRC_pioneering_the_north_east
+		PRC_study_sov_equipments
+		PRC_study_sov_aircrafts
+		PRC_assistance_in_naval_industry
+		PRC_study_soviet_ships
+		PRC_sov_military_advisor
+		PRC_excavation_NW
+		PRC_excavation_S
+		PRC_excavation_NE
+		PRC_adopt_soviet_education_system
+		PRC_eliminate_iliteracy
+		PRC_ndcprc
+		PRC_equipment_update
+		PRC_establish_navy
+		PRC_establish_air_force
+		PRC_liberate_tibet
+		PRC_fighter_focus
+		PRC_cas_effort
+		PRC_sea_ambition
+		KMT_hundred_flowers_campaign
+		KMT_great_leap_forawrd
+		PRC_economic_reform
+		PRC_generalissimo_lin
+		PRC_armament_reorganization
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "JAP"
+		value = -500
+		
+		type = antagonize
+		id = "CHI"
+		value = 100
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

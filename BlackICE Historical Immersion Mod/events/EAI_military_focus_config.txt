@@ -1,0 +1,414 @@
+﻿add_namespace = EAI_CFG
+add_namespace = EAI_CFG_switch
+############################################################################################################
+# Expert AI mod - AI military config events
+############################################################################################################
+
+####################################################################################
+# Land
+####################################################################################
+
+########################
+#	AIR
+########################
+
+# strategic bomber
+country_event = { # on
+	id = EAI_CFG_switch.2010
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+		
+		EAI_can_produce_strategic_bomber = yes 
+
+		NOT = { has_country_flag = EAI_country_focuses_edited_by_player }
+
+		NOT = { has_country_flag = EAI_FOCUS/AIR/strategic_bomber }
+		
+		### CONDITIONS
+		
+		num_of_military_factories > 99
+		
+		date > 1941.1.1
+		
+		NOT = { any_neighbor_country = { has_war_with = ROOT } }
+	}
+
+	immediate = {
+		set_country_flag = EAI_FOCUS/AIR/strategic_bomber
+	}
+
+	option = {}
+}
+
+# naval bomber
+country_event = { # on
+	id = EAI_CFG_switch.2020
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+		
+		EAI_can_produce_naval_bomber = yes 
+
+		NOT = { has_country_flag = EAI_country_focuses_edited_by_player }
+
+		NOT = { has_country_flag = EAI_FOCUS/AIR/naval_bomber }
+		
+		### CONDITIONS
+
+		enemies_naval_strength_ratio > 0.5
+
+		num_of_military_factories > 49
+	}
+
+	immediate = {
+		set_country_flag = EAI_FOCUS/AIR/naval_bomber
+	}
+
+	option = {}
+}
+
+# light bomber
+country_event = { # on
+	id = EAI_CFG_switch.2030
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+		
+		EAI_can_produce_light_bomber = yes 
+
+		NOT = { has_country_flag = EAI_country_focuses_edited_by_player }
+
+		NOT = { has_country_flag = EAI_FOCUS/AIR/light_bomber }
+		
+		### CONDITIONS
+
+		#NOT = { 
+		#	EAI_can_produce_strategic_bomber = yes 
+		#	EAI_can_produce_tactical_bomber = yes
+		#}
+
+		num_of_military_factories > 49
+	}
+
+	immediate = {
+		set_country_flag = EAI_FOCUS/AIR/light_bomber
+	}
+
+	option = {}
+}
+
+# interceptor
+country_event = { # on
+	id = EAI_CFG_switch.2040
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+		
+		EAI_can_produce_interceptor = yes 
+
+		NOT = { has_country_flag = EAI_country_focuses_edited_by_player }
+
+		NOT = { has_country_flag = EAI_FOCUS/AIR/interceptor }
+		
+		### CONDITIONS
+
+		has_deployed_air_force_size = {
+			size > 1499
+			type = fighter
+		}
+
+		num_of_military_factories > 49
+	}
+
+	immediate = {
+		set_country_flag = EAI_FOCUS/AIR/interceptor
+	}
+
+	option = {}
+}
+
+# multi role
+country_event = { # on
+	id = EAI_CFG_switch.2050
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+		
+		EAI_can_produce_multi_role = yes 
+
+		NOT = { has_country_flag = EAI_country_focuses_edited_by_player }
+
+		NOT = { has_country_flag = EAI_FOCUS/AIR/multi_role }
+		
+		### CONDITIONS
+
+		num_of_military_factories > 49
+	}
+
+	immediate = {
+		set_country_flag = EAI_FOCUS/AIR/multi_role
+	}
+
+	option = {}
+}
+########################
+#	NAVY
+########################
+
+### fleet compositions for minors
+
+country_event = { # 1
+	id = EAI_CFG_switch.300
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+
+		NOT = { has_country_flag = EAI_country_focuses_edited_by_player }
+
+		NOT = { EAI_major_country = yes }
+
+		NOT = { check_variable = { EAI_fleet_comp = 1 } }
+
+		### CONDITIONS
+
+		num_of_naval_factories > 25
+	}
+
+	immediate = {
+		set_variable = { EAI_fleet_comp = 1 }
+
+		###
+
+		set_variable = { EAI_FOCUS/NAVY/battleship = global.EAI_OFF }
+		set_variable = { EAI_FOCUS/NAVY/battlecruiser = global.EAI_OFF }
+		set_variable = { EAI_FOCUS/NAVY/heavy_cruiser = global.EAI_OFF }
+
+		###
+
+		random_list = {
+			1 = { set_variable = { EAI_FOCUS/NAVY/battleship = global.EAI_A_BB_DESIGN } }
+			1 = { set_variable = { EAI_FOCUS/NAVY/battlecruiser = global.EAI_ON } }
+		}
+
+		set_variable = { EAI_FOCUS/NAVY/light_cruiser = global.EAI_ON }
+
+		set_variable = { EAI_FOCUS/NAVY/destroyer = global.EAI_ON }
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | ARMY-SWITCH: fleet composition 1" } 
+	}
+
+	option = {}
+}
+country_event = { # 2
+	id = EAI_CFG_switch.301
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+	
+		NOT = { has_country_flag = EAI_country_focuses_edited_by_player }
+
+		NOT = { EAI_major_country = yes }
+
+		NOT = { check_variable = { EAI_fleet_comp = 2 } }
+
+		### CONDITIONS
+
+		num_of_naval_factories > 10
+		NOT = { num_of_naval_factories > 25 }
+	}
+
+	immediate = {
+		set_variable = { EAI_fleet_comp = 2 }
+
+		###
+
+		set_variable = { EAI_FOCUS/NAVY/battleship = global.EAI_OFF }
+		set_variable = { EAI_FOCUS/NAVY/battlecruiser = global.EAI_OFF }
+		set_variable = { EAI_FOCUS/NAVY/heavy_cruiser = global.EAI_OFF }
+
+		###
+
+		set_variable = { EAI_FOCUS/NAVY/heavy_cruiser = global.EAI_ON }
+
+		set_variable = { EAI_FOCUS/NAVY/light_cruiser = global.EAI_ON }
+
+		set_variable = { EAI_FOCUS/NAVY/destroyer = global.EAI_ON }
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | ARMY-SWITCH: fleet composition 2" } 
+	}
+
+	option = {}
+}
+country_event = { # 3
+	id = EAI_CFG_switch.302
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+
+		NOT = { has_country_flag = EAI_country_focuses_edited_by_player }
+
+		NOT = { EAI_major_country = yes }
+
+		NOT = { check_variable = { EAI_fleet_comp = 3 } }
+
+		### CONDITIONS
+
+		num_of_naval_factories > 3
+		NOT = { num_of_naval_factories > 10 }
+	}
+
+	immediate = {
+		set_variable = { EAI_fleet_comp = 3 }
+
+		###
+
+		set_variable = { EAI_FOCUS/NAVY/battleship = global.EAI_OFF }
+		set_variable = { EAI_FOCUS/NAVY/battlecruiser = global.EAI_OFF }
+		set_variable = { EAI_FOCUS/NAVY/heavy_cruiser = global.EAI_OFF }
+
+		###
+
+		set_variable = { EAI_FOCUS/NAVY/destroyer = global.EAI_ON }
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | ARMY-SWITCH: fleet composition 3" } 
+	}
+
+	option = {}
+}
+
+# carriers
+country_event = { # on
+	id = EAI_CFG_switch.3010
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+
+		NOT = { has_country_flag = EAI_country_focuses_edited_by_player }
+
+		check_variable = { EAI_FOCUS/NAVY/carrier = global.EAI_OFF }
+
+		### CONDITIONS
+		
+		num_of_naval_factories > 50
+
+		amount_research_slots > 4
+
+		if = { limit = { original_tag = GER is_historical_focus_on = yes } NOT = { SOV = { EAI_is_threat = yes } } }
+	}
+
+	immediate = {
+		set_variable = { EAI_FOCUS/NAVY/carrier = global.EAI_B_CV_DESIGN }
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | ARMY-SWITCH: carrier focus" } 
+	}
+
+	option = {}
+}
+
+country_event = {
+	id = EAI_CFG_switch.3090
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+
+		NOT = { has_country_flag = EAI_country_focuses_edited_by_player }
+
+		### CONDITIONS
+
+		num_of_naval_factories > 40
+
+		OR = {
+			AND = {
+				check_variable = { EAI_FOCUS/NAVY/destroyer = global.EAI_OFF }
+				check_variable = { EAI_FOCUS/NAVY/light_cruiser = global.EAI_OFF }
+			}
+			AND = {
+				check_variable = { EAI_FOCUS/NAVY/heavy_cruiser = global.EAI_OFF }
+				check_variable = { EAI_FOCUS/NAVY/battlecruiser = global.EAI_OFF }
+				check_variable = { EAI_FOCUS/NAVY/battleship = global.EAI_OFF }
+			}
+			AND = {
+				check_variable = { EAI_FOCUS/NAVY/carrier = global.EAI_OFF }
+			}
+		}
+
+		if = { limit = { original_tag = GER is_historical_focus_on = yes } NOT = { SOV = { EAI_is_threat = yes } } }
+		if = { limit = { original_tag = SOV is_historical_focus_on = yes } NOT = { GER = { EAI_is_threat = yes } } }
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				check_variable = { EAI_FOCUS/NAVY/destroyer = global.EAI_OFF }
+				check_variable = { EAI_FOCUS/NAVY/light_cruiser = global.EAI_OFF }
+			}
+
+			set_variable = { EAI_FOCUS/NAVY/destroyer = global.EAI_ON }
+		}
+
+		if = {
+			limit = {
+				check_variable = { EAI_FOCUS/NAVY/heavy_cruiser = global.EAI_OFF }
+				check_variable = { EAI_FOCUS/NAVY/battlecruiser = global.EAI_OFF }
+				check_variable = { EAI_FOCUS/NAVY/battleship = global.EAI_OFF }
+			}
+
+			random_list = {
+				1 = { set_variable = { EAI_FOCUS/NAVY/battlecruiser = global.EAI_ON } }
+				1 = { set_variable = { EAI_FOCUS/NAVY/battleship = global.EAI_ON } }
+			}
+		}
+
+		set_variable = { EAI_FOCUS/NAVY/carrier = global.EAI_B_CV_DESIGN }
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | ARMY-SWITCH: large fleet focus" } 
+	}
+
+	option = {}
+}
+
+# mine sweepers
+country_event = {
+	id = EAI_CFG_switch.3091
+	hidden = yes
+	mean_time_to_happen = { days = 20 }
+
+	trigger = {
+		is_ai = yes
+
+		### CONDITIONS
+
+		check_variable = { EAI_FOCUS/NAVY/mine_sweeper = global.EAI_OFF }
+
+		has_country_flag = EAI_enemy_mines_on_our_coasts
+	}
+
+	immediate = {
+		set_variable = { EAI_FOCUS/NAVY/mine_sweeper = global.EAI_ON }
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | ARMY-SWITCH: mine sweepers focus" } 
+	}
+
+	option = {}
+}

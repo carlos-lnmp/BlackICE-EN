@@ -1,0 +1,2344 @@
+﻿add_namespace = xian
+
+#inspect xian
+country_event = {
+	id = xian.1
+	title = xian.1.t
+	is_triggered_only = yes
+	desc = {
+		text = xian.1.d
+		trigger = {
+			744 = { is_border_conflict = no }
+			622 = { is_border_conflict = no }
+		}
+	}
+	desc = {
+		text = xian.1.d_2
+		trigger = {
+			OR = {
+				744 = { is_border_conflict = yes }
+				622 = { is_border_conflict = yes }
+			}
+		}
+	}
+	picture = GFX_report_event_chinese_soldiers_02
+
+	trigger = {
+		NOT = {
+			has_country_flag = KMT_pro_japanese_coup
+			has_country_flag = KMT_red_coup_finish
+			has_global_flag = KMT_xian_incident_fired
+			OR = {
+				has_war_with = JAP
+				has_global_flag = CHI_warred_with_JAP
+			}
+		}
+		tag = CHI
+		OR = {
+			AND = {
+				744 = { is_border_conflict = no }
+				622 = { is_border_conflict = no }
+				NOT = {
+					has_global_flag = liangguang_incident
+				}
+			}
+			has_war_with = PRC
+		}
+		country_exists = ZXL
+		country_exists = PRC
+		NOT = {
+			CHI = {
+				has_completed_focus = KMT_external_defense
+			}
+		}
+	}
+	
+	fire_only_once = yes
+	
+	#mean_time_to_happen = { days = 20 }
+	
+	option = {
+		ai_chance = { factor = 100 }
+		name = xian.1.a
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			ZXL = {
+				country_event = { id = xian.2 days = 10 }
+			}
+		}
+	}
+	
+	option = {
+		name = xian.1.b
+	}
+}
+
+#inspect xian
+country_event = {
+	id = xian.2
+	title = xian.2.t
+	desc = xian.2.d
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+	
+	trigger = {
+		CHI = {
+			NOT = {
+				has_country_flag = KMT_pro_japanese_coup
+				has_country_flag = KMT_red_coup_finish
+			}
+		}
+	}
+	
+	option = {
+		ai_chance = { factor = 100 }
+		name = xian.2.a
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			CHI = {
+				country_event = { id = xian.3 days = 2 }
+			}
+			add_stability = -0.05
+			add_war_support = 0.05
+			hidden_effect = {
+				SOV = {
+					country_event = { id = xian.6 days = 3 }
+				}
+				PRC = {
+					country_event = { id = xian.7 hours = 5 }
+				}
+				random_unit_leader = {
+					limit = { has_id = 1001 }
+					set_nationality = ZXL
+				}
+			}
+			set_global_flag = cks_held
+			set_global_flag = xian_incident_started
+		}
+	}
+	
+	option = {
+		name = xian.2.b
+		custom_effect_tooltip = KMT_will_Die_tt
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			declare_war_on = {
+				target = PRC
+				type = annex_everything
+			}
+			set_country_flag = ZXL_restart_war
+		}
+	}
+	
+	option = {
+		name = xian.2.c
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			CHI = {
+				effect_tooltip = {
+					kill_country_leader = yes
+				}
+				end_puppet = ROOT
+				country_event = { id = xian.14 }
+			}
+		}
+	}
+}
+
+#Chiang held hostage
+country_event = {
+	id = xian.3
+	title = xian.3.t
+	desc = xian.3.d
+	picture = GFX_report_event_dead_soldiers
+
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+	option = {
+		ai_chance = { factor = 100 }
+		name = xian.3.a
+			ZXL = { country_event = { id = xian.4 }}
+			if = {
+				limit = {
+					PRC = {
+						has_war_with = CHI
+					}
+				}
+				622 = {
+					set_demilitarized_zone = yes
+				}
+			}
+			set_global_flag = xian_incident
+	}
+	
+	option = {
+		name = xian.3.b
+			ZXL = { country_event = { id = xian.5 }}
+			end_puppet = ZXL
+			declare_war_on = {
+				target = ZXL
+				type = take_core_state
+			}
+	}
+}
+
+#Chiang held hostage
+country_event = {
+	id = xian.4
+	title = xian.4.t
+	desc = xian.4.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+	immediate = {
+		ZXL = {
+			custom_effect_tooltip = KMT_will_release_chiang_tt
+		}
+		CHI = {
+			custom_effect_tooltip = KMT_will_stop_civil_war_tt
+		}
+	}
+	
+	option = {
+		ai_chance = { factor = 100 }
+		name = xian.4.a
+			CHI = {
+				country_event = { id = xian.100 days = 2 }
+			}
+			set_global_flag = KMT_chi_stop_civil_war_demand
+			set_global_flag = KMT_zxl_release_chiang_demand
+	}
+}
+
+#CHI launches offensive
+country_event = {
+	id = xian.5
+	title = xian.5.t
+	desc = xian.5.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+	option = {
+		ai_chance = { factor = 1 }
+		name = xian.5.a
+			effect_tooltip = {
+				FROM = {
+					declare_war_on = {
+						target = ROOT
+						type = take_core_state
+					}
+				}
+			}
+	}
+	
+	option = {
+		ai_chance = { factor = 99 }
+		custom_effect_tooltip = KMT_civil_war_tt
+		name = xian.2.c
+			add_political_power = -300
+			CHI = {
+				effect_tooltip = {
+					kill_country_leader = yes
+				}
+				end_puppet = ROOT
+				country_event = { id = xian.14 }
+			}
+			effect_tooltip = {
+				FROM = {
+					declare_war_on = {
+						target = ROOT
+						type = take_core_state
+					}
+				}
+			}
+	}
+}
+
+#SOV reaction
+country_event = {
+	id = xian.6
+	title = xian.6.t
+	desc = xian.6.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = { factor = 100 }
+		name = xian.6.a
+		add_opinion_modifier = {
+			target = ZXL
+			modifier = KMT_xian_incident_sov_neg
+		}
+		add_opinion_modifier = {
+			target = ZXL
+			modifier = KMT_xian_incident_sov_neg_trade
+		}
+		ZXL = {
+			country_event = { id = xian.8 hours = 5 }
+		}
+	}
+	
+	option = {
+		name = xian.6.b
+		add_opinion_modifier = {
+			target = ZXL
+			modifier = KMT_xian_incident_sov_pos
+		}
+		add_opinion_modifier = {
+			target = ZXL
+			modifier = KMT_xian_incident_sov_pos_trade
+		}
+		ZXL = {
+			country_event = { id = xian.9 hours = 5 }
+		}
+	}
+}
+
+#PRC reaction
+country_event = {
+	id = xian.7
+	title = xian.6.t
+	desc = xian.7.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+	
+	option = {
+		name = xian.7.a
+	}
+}
+
+#SOV dislike
+country_event = {
+	id = xian.8
+	title = xian.8.t
+	desc = xian.8.d
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = xian.8.a
+		effect_tooltip = {
+			SOV = {
+				add_opinion_modifier = {
+					target = ZXL
+					modifier = KMT_xian_incident_sov_neg
+				}
+				add_opinion_modifier = {
+					target = ZXL
+					modifier = KMT_xian_incident_sov_neg_trade
+				}
+			}
+		}
+	}
+}
+
+#SOV ik
+country_event = {
+	id = xian.9
+	title = xian.9.t
+	desc = xian.9.d
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = xian.9.a
+		effect_tooltip = {
+			SOV = {
+				add_opinion_modifier = {
+					target = ZXL
+					modifier = KMT_xian_incident_sov_pos
+				}
+				add_opinion_modifier = {
+					target = ZXL
+					modifier = KMT_xian_incident_sov_pos_trade
+				}
+			}
+		}
+	}
+}
+
+#ZXL failed
+country_event = {
+	id = xian.10
+	title = xian.10.t
+	desc = xian.10.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	trigger = {
+		tag = ZXL
+		has_country_flag = {
+			flag = ZXL_restart_war
+			days > 90
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	fire_only_once = yes
+	
+	immediate = {
+		hidden_effect = {
+				CHI = {
+					country_event = { id = xian.11 hours = 1 }
+				}
+		}
+	}
+	
+	option = {
+		name = xian.10.a
+			effect_tooltip = {
+				CHI = {
+					annex_country = {
+						target = ROOT
+						transfer_troops = yes
+					}
+					declare_war_on = {
+						target = PRC
+						type = civil_war
+					}
+				}
+			}
+	}
+}
+
+#ZXL failed
+country_event = {
+	id = xian.11
+	title = xian.11.t
+	desc = xian.11.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+	immediate = {
+			hidden_effect = {
+				annex_country = {
+					target = ZXL
+					transfer_troops = yes
+				}
+				declare_war_on = {
+					target = PRC
+					type = civil_war
+				}
+			}
+	}
+	
+	option = {
+		name = xian.10.a
+			effect_tooltip = {
+				annex_country = {
+					target = ZXL
+					transfer_troops = yes
+				}
+				declare_war_on = {
+					target = PRC
+					type = civil_war
+				}
+			}
+	}
+}
+
+#arrest Zhang?
+country_event = {
+	id = xian.12
+	title = xian.12.t
+	desc = xian.12.d
+	picture = GFX_report_event_china_politicians_captured
+
+	trigger = {
+		has_global_flag = xian_resolved
+		tag = CHI
+		country_exists = ZXL
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	fire_only_once = yes
+	
+	option = {
+		ai_chance = {
+			factor = 100
+		}
+		name = xian.12.a
+			ZXL = {
+				if = {
+					limit = {
+						has_unit_leader = 3612
+					}
+					remove_unit_leader = 3612
+				}
+				retire_country_leader = yes
+			}
+			add_political_power = 75
+			set_global_flag = zxl_arrested
+			if = {
+				limit = {
+					ZXL = { is_ai = yes }
+				}
+				hidden_effect = {
+					ZXL = {
+						if = {
+							limit = { has_unit_leader = 3612 }
+							remove_unit_leader = 3612
+						}
+						if = {
+							limit = { 
+								has_country_leader = {
+									name = "Zhang Xueliang"
+									ruling_only = yes
+								}
+							}
+							retire_country_leader = yes
+						}
+						if = {
+							limit = { 
+								has_country_leader = {
+									name = "Yang Hucheng"
+									ruling_only = yes
+								}
+							}
+							retire_country_leader = yes
+						}
+						random_unit_leader = {
+							limit = { has_id = 3613 }
+							set_nationality = CHI
+						}
+					}
+					CHI = {
+						set_country_flag = zxl_sumitted
+					}
+				}
+				annex_country = {
+					target = ZXL
+					transfer_troops = yes
+				}
+			}
+	}
+	
+	option = {
+		name = xian.12.b
+			add_stability = 0.05
+	}
+}
+
+#chiang back
+country_event = {
+	id = xian.13
+	title = xian.13.t
+	desc = xian.13.d
+	picture = GFX_report_event_china_politicians_captured
+	
+	trigger = {
+		tag = CHI
+		ZXL = {
+			OR = {
+				exists = no
+				#is_puppet_of = ROOT
+				has_capitulated = yes
+			}
+		}
+		has_global_flag = cks_held
+		NOT = {
+			has_global_flag = cks_killed_xian
+		}
+	}
+	
+	mean_time_to_happen = { days = 0 }
+	
+	immediate = {
+			hidden_effect = {
+				random_unit_leader = {
+					limit = { has_id = 1001 }
+					set_nationality = CHI
+				}
+			}
+			clr_global_flag = cks_held
+	}
+	
+	option = {
+		name = xian.13.a
+			custom_effect_tooltip = KMT_chiang_returns_tt
+	}
+}
+
+#chiang killed
+country_event = {
+	id = xian.14
+	title = xian.14.t
+	desc = xian.14.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	
+	immediate = {
+		set_global_flag = cks_killed_xian
+
+			kill_country_leader = yes
+			dismantle_faction = yes
+			every_country = {
+				limit = {
+					is_puppet_of = ROOT
+				}
+				ROOT = {
+					end_puppet = PREV
+				}
+			}
+			hidden_effect = {
+				MEN = {
+					set_cosmetic_tag = MMGmen
+				}
+			}
+			set_global_flag = xian_civil_war
+	}
+	
+	option = {
+		name = xian.14.a
+		ai_chance = { factor = 100 }
+			hidden_effect = {
+				ZXL = {
+					if = {
+						limit = {
+							has_unit_leader = 1001
+						}
+						remove_unit_leader = 1001
+					}
+				}
+			}
+			if = {
+				limit = { 
+					NOT = {
+						has_government = fascism
+					}
+				}
+				if = {
+					limit = {
+						has_government = neutrality
+					}
+					create_country_leader = {
+						name = "Feng Yuxiang"
+						picture = "gfx/leaders/kmt_mod/Portrait_Feng_Yuxiang.dds"
+						desc = "POLITICS_FENG_YUXIANG_DESC"
+						expire = "1965.1.1"
+						ideology = oligarchism
+						traits = {
+							#
+						}
+					}
+				}
+				if = {
+					limit = { has_unit_leader = 1017 }
+					remove_unit_leader = 1017 
+				}
+				hidden_effect = {
+					create_field_marshal = {
+						name = "Feng Yuxiang"
+						portrait_path = "gfx/leaders/kmt_mod/Portrait_Feng_Yuxiang.dds"
+						id = 1023
+						attack_skill = 4
+						defense_skill = 4
+						planning_skill = 4
+						logistics_skill = 4
+						traits = { }
+						skill = 4
+					}
+					country_event = { id = loop.1 }
+					HYQ ={
+						set_party_name = { ideology = fascism long_name = KMT_hyq name = KMT_hyq }
+						create_country_leader = {
+							name = "He Yingqin"
+							picture = "gfx/leaders/kmt_mod/Portrait_He_Yingqin.dds"
+							desc = "POLITICS_HE_YINGQIN_DESC"
+							expire = "1965.1.1"
+							ideology = fascism_ideology
+							traits = {
+								#
+							}
+						}
+						division_template = {
+							name = "Zhengshi Shi"			
+
+							regiments = {
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+							}
+							support = {
+								engineer = { x = 0 y = 0 } 
+								recon = { x = 0 y = 1 }  
+							}
+						}
+						set_equipment_fraction = 1.12
+						add_popularity = {
+							ideology = fascism
+							popularity = 1
+						}
+						random_unit_leader = {
+							limit = { has_id = 1017 }
+							set_nationality = HYQ
+						}
+					}
+					every_state = {
+						limit = {
+							owner = { tag = HYQ }
+						}
+						create_unit = { 
+							division = "name = \"He Yingqin Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.3" 
+							owner = HYQ
+						}
+						create_unit = { 
+							division = "name = \"He Yingqin Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.3" 
+							owner = HYQ
+						}
+						create_unit = { 
+							division = "name = \"He Yingqin Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.3" 
+							owner = HYQ
+						}
+						create_unit = { 
+							division = "name = \"He Yingqin Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.3" 
+							owner = HYQ
+						}
+					}
+					HYQ = {
+						declare_war_on = {	
+							target = ROOT
+							type = civil_war
+						}
+					}
+				}
+				else = {
+					create_country_leader = {
+						name = "He Yingqin"
+						picture = "gfx/leaders/kmt_mod/Portrait_He_Yingqin.dds"
+						desc = "POLITICS_HE_YINGQIN_DESC"
+						expire = "1965.1.1"
+						ideology = fascism_ideology
+						traits = {
+							#
+						}
+					}
+					set_party_name = { ideology = fascism long_name = KMT_hyq name = KMT_hyq }
+					every_unit_leader = {
+						limit = { 
+							OR = {
+								has_id = 1002
+								has_id = 1003
+								has_id = 1004
+								has_id = 1005
+								has_id = 1006
+								has_id = 1007
+								has_id = 1008
+								has_id = 1009
+								has_id = 1010
+								has_id = 1011
+								has_id = 1012
+								has_id = 1013
+								has_id = 1014
+								has_id = 1015
+								has_id = 1016
+								has_id = 1018
+								has_id = 1020
+								has_id = 1021
+								has_id = 1022
+								has_id = 1023
+							}
+						}
+						set_nationality = HYQ
+					}
+					hidden_effect = {
+						country_event = { id = loop.2 }
+						HYQ ={
+							division_template = {
+								name = "Zhengshi Shi"			
+
+								regiments = {
+									infantry = { x = 0 y = 0 }
+									infantry = { x = 0 y = 1 }
+									infantry = { x = 0 y = 2 }
+									infantry = { x = 1 y = 0 }
+									infantry = { x = 1 y = 1 }
+									infantry = { x = 1 y = 2 }
+								}
+								support = {
+									engineer = { x = 0 y = 0 } 
+									recon = { x = 0 y = 1 }  
+								}
+							}
+							every_state = {
+								limit = {
+									owner = { tag = HYQ }
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+							}
+							kill_country_leader = yes
+							set_equipment_fraction = 1.12
+							set_politics = {
+								ruling_party = neutrality
+							}
+							declare_war_on = {	
+								target = ROOT
+								type = civil_war
+							}
+							add_popularity = {
+								ideology = neutrality
+								popularity = 1
+							}
+							create_country_leader = {
+								name = "Feng Yuxiang"
+								picture = "gfx/leaders/kmt_mod/Portrait_Feng_Yuxiang.dds"
+								desc = "POLITICS_FENG_YUXIANG_DESC"
+								expire = "1965.1.1"
+								ideology = oligarchism
+								traits = {
+									#
+								}
+							}
+							create_field_marshal = {
+								name = "Feng Yuxiang"
+								portrait_path = "gfx/leaders/kmt_mod/Portrait_Feng_Yuxiang.dds"
+								id = 1023
+								traits = { }
+								attack_skill = 4
+								defense_skill = 4
+								planning_skill = 4
+								logistics_skill = 4
+								skill = 4
+							}
+						}
+					}
+				}
+			}
+			every_state = {
+				limit = {
+					is_core_of = CHI
+				}
+				add_core_of = HYQ
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						PRC = { 
+							exists = yes
+							NOT = {
+								OR = {
+									has_war_together_with = CHI
+									has_war_together_with = HYQ
+									is_in_faction_with = CHI
+									is_in_faction_with = HYQ
+									has_war_with = CHI
+									has_war_with = HYQ
+								}
+							}
+						}
+					}
+					PRC = { country_event = { id = xian.15 hours = 5 }}
+				}
+				if = {
+					limit = {
+						JAP = {
+							exists = yes
+							NOT = {
+								OR = {
+									has_war_together_with = CHI
+									has_war_together_with = HYQ
+									is_in_faction_with = CHI
+									is_in_faction_with = HYQ
+									has_war_with = CHI
+									has_war_with = HYQ
+								}
+							}
+						}
+					}
+					JAP = { country_event = { id = xian.15 hours = 5 }}
+				}
+				every_country = {
+					limit = { 
+						OR = {
+							has_idea = cg_warlords 
+							has_idea = cg_displaced_warlords 
+							tag = PGR
+							tag = ZXL
+							tag = MEN
+						}
+						NOT = {
+							OR = {
+								has_war_together_with = CHI
+								has_war_together_with = HYQ
+								is_in_faction_with = CHI
+								is_in_faction_with = HYQ
+								has_war_with = CHI
+								has_war_with = HYQ
+							}
+						}
+						NOT = {
+							is_puppet_of = JAP
+							is_puppet_of = CHI
+							is_puppet_of = HYQ
+						}
+					}
+					country_event = { id = xian.15 hours = 5 }
+				}
+				if = {
+					limit = {
+						has_government = fascism
+					}
+					remove_opinion_modifier = {
+						modifier = hostile_status
+						target = JAP
+					}
+					JAP = {
+						remove_opinion_modifier = {
+							modifier = hostile_status
+							target = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_country_leader = {
+						name = "Feng Yuxiang"
+						ruling_only = yes
+					}
+				}
+				set_country_flag = KMT_supported_fyx_in_xian_incident_chaing_killed_event
+			}
+			add_ideas = KMT_xian_firm_stance
+	}
+	
+	option = {
+		name = xian.14.b
+			hidden_effect = {
+				ZXL = {
+					if = {
+						limit = {
+							has_unit_leader = 1001
+						}
+						remove_unit_leader = 1001
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_government = fascism
+					}
+				}
+				set_politics = {
+					ruling_party = fascism
+				}
+				set_party_name = { ideology = fascism long_name = KMT_hyq name = KMT_hyq }
+				create_country_leader = {
+					name = "He Yingqin"
+					picture = "gfx/leaders/kmt_mod/Portrait_He_Yingqin.dds"
+					desc = "POLITICS_HE_YINGQIN_DESC"
+					expire = "1965.1.1"
+					ideology = fascism_ideology
+					traits = {
+						#
+					}
+				}
+				every_unit_leader = {
+					limit = { 
+						OR = {
+							has_id = 1002
+							has_id = 1003
+							has_id = 1004
+							has_id = 1005
+							has_id = 1006
+							has_id = 1007
+							has_id = 1008
+							has_id = 1009
+							has_id = 1010
+							has_id = 1011
+							has_id = 1012
+							has_id = 1013
+							has_id = 1014
+							has_id = 1015
+							has_id = 1016
+							has_id = 1018
+							has_id = 1020
+							has_id = 1021
+							has_id = 1022
+							has_id = 1023
+						}
+					}
+					set_nationality = HYQ
+				}
+				hidden_effect = {
+					country_event = { id = loop.2 }
+					HYQ = {
+						division_template = {
+							name = "Zhengshi Shi"			
+							regiments = {
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+							}
+							support = {
+								engineer = { x = 0 y = 0 } 
+								recon = { x = 0 y = 1 }  
+							}
+						}
+						every_state = {
+							limit = {
+								owner = { tag = HYQ }
+							}
+							create_unit = { 
+								division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+								owner = HYQ
+							}
+							create_unit = { 
+								division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+								owner = HYQ
+							}
+							create_unit = { 
+								division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+								owner = HYQ
+							}
+							create_unit = { 
+								division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+								owner = HYQ
+							}
+							create_unit = { 
+								division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+								owner = HYQ
+							}
+							create_unit = { 
+								division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+								owner = HYQ
+							}
+							create_unit = { 
+								division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+								owner = HYQ
+							}
+							create_unit = { 
+								division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+								owner = HYQ
+							}
+						}
+						set_equipment_fraction = 3
+						add_popularity = {
+							ideology = neutrality
+							popularity = 1
+						}
+						kill_country_leader = yes
+						create_country_leader = {
+							name = "Feng Yuxiang"
+							picture = "gfx/leaders/kmt_mod/Portrait_Feng_Yuxiang.dds"
+							desc = "POLITICS_FENG_YUXIANG_DESC"
+							expire = "1965.1.1"
+							ideology = oligarchism
+							traits = {
+								#
+							}
+						}
+						set_politics = {
+							ruling_party = neutrality
+						}
+						create_field_marshal = {
+							name = "Feng Yuxiang"
+							portrait_path = "gfx/leaders/kmt_mod/Portrait_Feng_Yuxiang.dds"
+							traits = { }
+							attack_skill = 4
+							defense_skill = 4
+							planning_skill = 4
+							logistics_skill = 4
+							id = 1023
+							skill = 4
+						}
+						declare_war_on = {	
+							target = ROOT
+							type = civil_war
+						}
+					}
+				}
+				else = {
+					set_politics = {
+						ruling_party = neutrality
+					}
+					create_country_leader = {
+						name = "Feng Yuxiang"
+						picture = "gfx/leaders/kmt_mod/Portrait_Feng_Yuxiang.dds"
+						desc = "POLITICS_FENG_YUXIANG_DESC"
+						expire = "1965.1.1"
+						ideology = oligarchism
+						traits = {
+							#
+						}
+					}
+					hidden_effect = {
+						if = {
+							limit = { has_unit_leader = 1017 }
+							remove_unit_leader = 1017 
+						}
+						country_event = { id = loop.2 }
+						HYQ ={
+							set_party_name = { ideology = fascism long_name = KMT_hyq name = KMT_hyq }
+							create_country_leader = {
+								name = "He Yingqin"
+								picture = "gfx/leaders/kmt_mod/Portrait_He_Yingqin.dds"
+								desc = "POLITICS_HE_YINGQIN_DESC"
+								expire = "1965.1.1"
+								ideology = fascism_ideology
+								traits = {
+									#
+								}
+							}
+							division_template = {
+								name = "Zhengshi Shi"			
+									regiments = {
+									infantry = { x = 0 y = 0 }
+									infantry = { x = 0 y = 1 }
+									infantry = { x = 0 y = 2 }
+									infantry = { x = 1 y = 0 }
+									infantry = { x = 1 y = 1 }
+									infantry = { x = 1 y = 2 }
+								}
+								support = {
+									engineer = { x = 0 y = 0 } 
+									recon = { x = 0 y = 1 }  
+								}
+							}
+							every_state = {
+								limit = {
+									owner = { tag = HYQ }
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+								create_unit = { 
+									division = "name = \"Fengyu Xiang Bu\" division_template = \"Zhengshi Shi\" start_experience_factor = 0.4" 
+									owner = HYQ
+								}
+							}
+							set_equipment_fraction = 0.9
+							add_popularity = {
+								ideology = fascism
+								popularity = 1
+							}
+							create_country_leader = {
+								name = "He Yingqin"
+								picture = "gfx/leaders/kmt_mod/Portrait_He_Yingqin.dds"
+								desc = "POLITICS_HE_YINGQIN_DESC"
+								expire = "1965.1.1"
+								ideology = fascism_ideology
+								traits = {
+									#
+								}
+							}
+							every_unit_leader = {
+								limit = {
+									has_id = 1017 
+								}
+								set_nationality = HYQ
+							}
+							declare_war_on = {
+								target = ROOT
+								type = civil_war
+							}
+						}
+					}
+				}
+			}
+			every_state = {
+				limit = {
+					is_core_of = CHI
+				}
+				add_core_of = HYQ
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						PRC = { 
+							exists = yes
+							NOT = {
+								OR = {
+									has_war_together_with = CHI
+									has_war_together_with = HYQ
+									is_in_faction_with = CHI
+									is_in_faction_with = HYQ
+									has_war_with = CHI
+									has_war_with = HYQ
+								}
+							}
+						}
+					}
+					PRC = { country_event = { id = xian.15 hours = 2 }}
+				}
+				if = {
+					limit = {
+						JAP = { 
+							exists = yes
+							NOT = {
+								OR = {
+									has_war_together_with = CHI
+									has_war_together_with = HYQ
+									is_in_faction_with = CHI
+									is_in_faction_with = HYQ
+									has_war_with = CHI
+									has_war_with = HYQ
+								}
+							}
+						}
+					}
+					JAP = { country_event = { id = xian.15 hours = 2 }}
+				}
+				every_country = {
+					limit = { 
+						OR = {
+							tag = MEN
+							tag = PGR
+							tag = ZXL
+							has_idea = cg_warlords 
+						}
+						NOT = {
+							OR = {
+								has_war_together_with = CHI
+								has_war_together_with = HYQ
+								is_in_faction_with = CHI
+								is_in_faction_with = HYQ
+								has_war_with = CHI
+								has_war_with = HYQ
+							}
+						}
+					}
+					country_event = { id = xian.15 hours = 2 }
+				}
+				if = {
+					limit = {
+						has_government = fascism
+					}
+					remove_opinion_modifier = {
+						modifier = hostile_status
+						target = JAP
+					}
+					JAP = {
+						remove_opinion_modifier = {
+							modifier = hostile_status
+							target = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_country_leader = {
+						name = "Feng Yuxiang"
+						ruling_only = yes
+					}
+				}
+				set_country_flag = KMT_supported_fyx_in_xian_incident_chaing_killed_event
+			}
+			add_ideas = KMT_xian_firm_stance
+	}
+}
+
+#reaction to chiang killed
+country_event = {
+	id = xian.15
+	title = xian.15.t
+	desc = xian.15.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+	
+	option = {
+		name = xian.15.a_hyq
+		ai_chance = {
+			factor = 2
+			modifier = {
+				add = 90
+				tag = JAP
+			}
+			modifier = {
+				factor = 0
+				tag = PRC
+			}
+			modifier = {
+				add = 99
+				tag = MEN
+			}
+		}
+		every_country = {
+			limit = {
+				has_war_with = ROOT
+				any_country = {
+					has_country_leader = {
+						name = "He Yingqin"
+						ruling_only = yes
+					}
+					OR = {
+						is_in_faction_with = PREV
+						has_war_together_with = PREV
+					}
+				}
+			}
+			white_peace = PREV
+		}
+		random_country = {
+			limit = {
+				has_country_leader = {
+					name = "He Yingqin"
+					ruling_only = yes
+				}
+			}
+			country_event = { id = xian.16 }
+		}
+	}
+	
+	option = {
+		name = xian.15.a_fyx
+		ai_chance = {
+			factor = 97
+			modifier = {
+				factor = 0
+				tag = JAP
+			}
+			modifier = {
+				add = 20
+				tag = PRC
+			}
+			modifier = {
+				factor = 0
+				tag = MEN
+			}
+		}
+		random_country = {
+			limit = {
+				has_country_leader = {
+					name = "Feng Yuxiang"
+					ruling_only = yes
+				}
+			}
+			country_event = { id = xian.16 }
+		}
+	}
+	
+	option = {
+		ai_chance = {
+			factor = 0
+			modifier = {
+				factor = 10
+				tag = JAP
+			}
+			modifier = {
+				factor = 1
+				has_idea = cg_warlords
+			}
+		}
+		name = xian.15.b
+		declare_war_on = {
+			target = CHI
+			type = civil_war
+		}
+		declare_war_on = {
+			target = HYQ
+			type = civil_war
+		}
+		CHI = {
+			country_event = { id = xian.19 }
+		}
+		HYQ = {
+			country_event = { id = xian.19 }
+		}
+	}
+	
+	option = {
+		ai_chance = {
+			factor = 1
+		}
+		name = xian.15.c
+		set_country_flag = PRC_observe_xian
+	}
+}
+
+#FROM try to join us
+country_event = {
+	id = xian.16
+	title = xian.16.t
+	desc = xian.16.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+	
+	option = {
+		name = xian.16.a
+		ai_chance = {
+			factor = 80
+		}
+		every_country = {
+			limit = {
+				has_war_together_with = ROOT
+				has_war_with = FROM
+			}
+			white_peace = FROM
+		}
+		FROM = {
+			country_event = { id = xian.17 hours = 1 }
+		}
+		if = {
+			limit = {
+				tag = CHI
+			}
+			FROM = {
+				add_to_war = {
+					targeted_alliance = ROOT
+					enemy = HYQ
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = HYQ
+			}
+			FROM = {
+				add_to_war = {
+					targeted_alliance = ROOT
+					enemy = CHI
+				}
+			}
+		}
+	}
+	
+	option = {
+		ai_chance = {
+			factor = 20
+		}
+		name = xian.16.b
+		FROM = {
+			country_event = { id = xian.18 }
+		}
+	}
+}
+
+#FROM join ok
+country_event = {
+	id = xian.17
+	title = xian.17.t
+	desc = xian.17.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+	
+	option = {
+		name = xian.17.a
+		if = {
+			limit = {
+				FROM = { tag = CHI }
+			}
+			add_to_war = {
+				targeted_alliance = FROM
+				enemy = HYQ
+			}
+		}
+		if = {
+			limit = {
+				FROM = { tag = HYQ }
+			}
+			add_to_war = {
+				targeted_alliance = FROM
+				enemy = CHI
+			}
+		}
+	}
+}
+
+#FROM join rejected
+country_event = {
+	id = xian.18
+	title = xian.18.t
+	desc = xian.18.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+	
+	option = {
+		name = xian.18.a
+	}
+}
+
+#FROM declared war
+country_event = {
+	id = xian.19
+	title = xian.19.t
+	desc = xian.19.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+	
+	option = {
+		name = xian.19.a
+		effect_tooltip = {
+			FROM = {
+				declare_war_on = {
+					target = ROOT
+				}
+			}
+		}
+	}
+}
+
+
+#__________________________________________________________________________________________________________________________________________
+#__________________________________________________________________________________________________________________________________________
+
+#demand event
+country_event = {
+	id = xian.100
+	title = demand.t
+	desc = demand.d
+	
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		CHI = {
+			NOT = {
+				has_country_flag = KMT_pro_japanese_coup
+				has_country_flag = KMT_red_coup_finish
+			}
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_chi_stop_civil_war_demand_rejected
+				}
+				custom_effect_tooltip = KMT_chi_stop_civil_war_demand_rejected_tt
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_zxl_submit_demand_flag
+				}
+				custom_effect_tooltip = KMT_chi_demand_submission_tt
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_zxl_submit_demand_rejected
+				}
+				custom_effect_tooltip = KMT_chi_demand_submission_rejected_tt
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_chi_stop_civil_war_demand_again
+				}
+				custom_effect_tooltip = KMT_chi_stop_civil_war_demand_again_tt
+			}
+			custom_effect_tooltip = KMT_ZXL_NAME_TT
+			if = {
+				limit = {
+					has_global_flag = KMT_zxl_release_chiang_demand 
+				}
+				custom_effect_tooltip = KMT_will_release_chiang_tt
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_zxl_submit_demand 
+				}
+				custom_effect_tooltip = KMT_will_submit_to_chiang_tt
+			}
+			custom_effect_tooltip = KMT_CHI_NAME_TT
+			if = {
+				limit = {
+					has_global_flag = KMT_chi_stop_civil_war_demand 
+				}
+				custom_effect_tooltip = KMT_will_stop_civil_war_tt
+			}
+		}
+	}
+	
+	option = {
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 100
+				tag = ZXL
+				has_global_flag = KMT_chi_stop_civil_war_demand
+			}
+			modifier = {
+				factor = 100
+				tag = CHI
+			}
+		}
+		name = accept_all_demand
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			set_global_flag = xian_resolved
+			clr_global_flag = xian_incident
+			set_global_flag = PRC_yes_truce
+			if = {
+				limit = {
+					has_global_flag = KMT_zxl_release_chiang_demand
+				}
+				CHI = {
+					custom_effect_tooltip = KMT_chiang_return_tt
+					hidden_effect = {
+						if = {
+							limit = {
+								NOT = {
+									has_unit_leader = 1001
+								}
+							}
+							random_unit_leader = {
+								limit = { has_id = 1001 }
+								set_nationality = CHI
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_zxl_submit_demand
+				}
+				CHI = {
+					annex_country = {
+						target = ZXL
+						transfer_troops = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_chi_stop_civil_war_demand
+				}
+				set_global_flag = KMT_united_front_enabled
+				clr_global_flag = KMT_first_chinese_civil_war
+				custom_effect_tooltip = KMT_enables_united_front_tt
+				if = {
+					limit = {
+						any_country = {
+							OR = {
+								tag = PRC
+								has_country_flag = is_warlords
+							}
+							has_war_with = CHI
+						}
+					}
+					every_country = {
+						limit = {
+							OR = {
+								has_country_flag = is_warlords
+								tag = PRC
+							}	
+						}
+						CHI = {
+							white_peace = PREV
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						OR = {
+							has_country_flag = is_warlords
+							tag = PRC
+						}	
+					}
+					CHI = {
+						diplomatic_relation = {
+							country = PREV
+							relation = non_aggression_pact
+							active = yes
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				country_event = { id = xian.102 }
+				FROM = {
+					country_event = { id = xian.102 }
+				}
+			}
+			clr_global_flag = liangguang_incident
+			set_global_flag = liangguang_solved
+			clr_global_flag = KMT_chi_stop_civil_war_demand_rejected
+			clr_global_flag = KMT_zxl_submit_demand_flag
+			clr_global_flag = KMT_zxl_submit_demand_rejected
+			clr_global_flag = KMT_chi_stop_civil_war_demand_again
+			clr_global_flag = cks_held
+		}
+		622 = { set_demilitarized_zone = no }
+	}
+	
+	option = {
+		name = reject_all_demand_and_war
+		ai_chance = {
+			factor = 1
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 0
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 1
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 2
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 3
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 4
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 5
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 6
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 7
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 8
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 9
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 10
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 11
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 12
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 13
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 14
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					value > 15
+				}
+			}
+			modifier = {
+				add = 25
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					days > 10
+				}
+			}
+			modifier = {
+				add = 50
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					days > 15
+				}
+			}
+			modifier = {
+				add = 100
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					days > 20
+				}
+			}
+			modifier = {
+				add = 1000
+				has_global_flag = {
+					flag = KMT_xian_rejected_num
+					days > 25
+				}
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			clr_global_flag = xian_incident
+			CHI = {
+				end_puppet = ZXL
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						ZXL = {
+							has_war_together_with = CHI
+						}
+					}
+					ZXL = {
+						#country_event = { id = wd.1 }
+					}
+				}
+			}
+			declare_war_on = { 
+				target = FROM
+				type = annex_everything
+			}
+			FROM = {
+				country_event = { id = xian.101 }
+			}
+			clr_global_flag = KMT_chi_stop_civil_war_demand_rejected
+			clr_global_flag = KMT_zxl_submit_demand_flag
+			clr_global_flag = KMT_zxl_submit_demand_rejected
+			clr_global_flag = KMT_chi_stop_civil_war_demand_again
+		}
+		622 = { set_demilitarized_zone = no }
+	}
+	
+	option = {
+		name = xian.100.a
+		ai_chance = { factor = 0 }
+		trigger = { 
+			tag = CHI
+			has_global_flag = KMT_chi_stop_civil_war_demand
+		}
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			FROM = {
+				country_event = { id = xian.100 hours = 2 }
+			}
+			set_global_flag = KMT_chi_stop_civil_war_demand_rejected
+			clr_global_flag = KMT_chi_stop_civil_war_demand
+			clr_global_flag = KMT_zxl_submit_demand_flag
+			clr_global_flag = KMT_zxl_submit_demand_rejected
+			clr_global_flag = KMT_chi_stop_civil_war_demand_again
+			if = {
+				limit = {
+					OR = {
+						NOT = { has_country_flag = KMT_xian_rejected_num }
+						has_country_flag = {
+							flag = KMT_xian_rejected_num
+							value < 1
+						}
+					}
+				}
+				set_country_flag = {
+					flag = KMT_xian_rejected_num
+					value = 1
+				}
+				else = {
+					modify_country_flag = {
+						flag = KMT_xian_rejected_num
+						value = 1
+					}
+				}
+			}
+			else = {
+				622 = { set_demilitarized_zone = no }
+			}
+		}
+	}
+	
+	option = {
+		name = xian.100.b
+		ai_chance = { factor = 0 }
+		trigger = { 
+			tag = CHI
+		}
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			FROM = {
+				country_event = { id = xian.100 hours = 2 }
+			}
+			set_global_flag = KMT_zxl_submit_demand
+			set_global_flag = KMT_zxl_submit_demand_flag
+			clr_global_flag = KMT_chi_stop_civil_war_demand_rejected
+			clr_global_flag = KMT_zxl_submit_demand_rejected
+			clr_global_flag = KMT_chi_stop_civil_war_demand_again
+			if = {
+				limit = {
+					OR = {
+						NOT = { has_global_flag = KMT_xian_rejected_num }
+						has_global_flag = {
+							flag = KMT_xian_rejected_num
+							value < 1
+						}
+					}
+				}
+				set_global_flag = {
+					flag = KMT_xian_rejected_num
+					value = 1
+				}
+				else = {
+					modify_global_flag = {
+						flag = KMT_xian_rejected_num
+						value = 1
+					}
+				}
+			}
+			else = {
+				622 = { set_demilitarized_zone = no }
+			}
+		}
+	}
+	
+	option = {
+		ai_chance = {
+			factor = 0
+		}
+		name = xian.100.c
+		trigger = { 
+			tag = ZXL
+			has_global_flag = KMT_zxl_submit_demand
+		}
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			FROM = {
+				country_event = { id = xian.100 hours = 2 }
+			}
+			clr_global_flag = KMT_zxl_submit_demand
+			set_global_flag = KMT_zxl_submit_demand_rejected
+			clr_global_flag = KMT_chi_stop_civil_war_demand_rejected
+			clr_global_flag = KMT_zxl_submit_demand_flag
+			clr_global_flag = KMT_chi_stop_civil_war_demand_again
+			if = {
+				limit = {
+					OR = {
+						NOT = { has_global_flag = KMT_xian_rejected_num }
+						has_global_flag = {
+							flag = KMT_xian_rejected_num
+							value < 1
+						}
+					}
+				}
+				set_global_flag = {
+					flag = KMT_xian_rejected_num
+					value = 1
+				}
+				else = {
+					modify_global_flag = {
+						flag = KMT_xian_rejected_num
+						value = 1
+					}
+				}
+			}
+			else = { 622 = { set_demilitarized_zone = no }}
+		}
+	}
+	
+	option = {
+		name = xian.100.d
+		ai_chance = {
+			factor = 50
+		}
+		trigger = { 
+			tag = ZXL
+			NOT = { has_global_flag = KMT_chi_stop_civil_war_demand }
+		}
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			FROM = {
+				country_event = { id = xian.100 hours = 2 }
+			}
+			set_global_flag = KMT_chi_stop_civil_war_demand
+			set_global_flag = KMT_chi_stop_civil_war_demand_again
+			clr_global_flag = KMT_chi_stop_civil_war_demand_rejected
+			clr_global_flag = KMT_zxl_submit_demand_flag
+			clr_global_flag = KMT_zxl_submit_demand_rejected
+			if = {
+				limit = {
+					OR = {
+						NOT = { has_global_flag = KMT_xian_rejected_num }
+						has_global_flag = {
+							flag = KMT_xian_rejected_num
+							value < 1
+						}
+					}
+				}
+				set_global_flag = {
+					flag = KMT_xian_rejected_num
+					value = 1
+				}
+				else = {
+					modify_global_flag = {
+						flag = KMT_xian_rejected_num
+						value = 1
+					}
+				}
+			}
+			else = { 622 = { set_demilitarized_zone = no }}
+		}
+	}
+}
+
+#rejected and war
+country_event = {
+	id = xian.101
+	title = demand_rejected_war.t
+	desc = demand_rejected_war.d
+	
+	picture = GFX_report_event_chinese_soldiers_fighting
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = demand_rejected_war.a
+		effect_tooltip = {
+			FROM = {
+				declare_war_on = { 
+					target = ROOT
+					type = annex_everything
+				}
+			}
+		}
+	}
+}
+
+#resolved
+country_event = {
+	id = xian.102
+	title = resolved.t
+	desc = resolved.d
+	
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		CHI = {
+			NOT = {
+				has_country_flag = KMT_pro_japanese_coup
+				has_country_flag = KMT_red_coup_finish
+			}
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_chi_stop_civil_war_demand_rejected
+				}
+				custom_effect_tooltip = KMT_chi_stop_civil_war_demand_rejected_tt
+				clr_global_flag = KMT_chi_stop_civil_war_demand_rejected
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_zxl_submit_demand_flag
+				}
+				custom_effect_tooltip = KMT_chi_demand_submission_tt
+				clr_global_flag = KMT_zxl_submit_demand_flag
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_zxl_submit_demand_rejected
+				}
+				custom_effect_tooltip = KMT_chi_demand_submission_rejected_tt
+				clr_global_flag = KMT_zxl_submit_demand_rejected
+			}
+			custom_effect_tooltip = KMT_ZXL_NAME_TT
+			if = {
+				limit = {
+					has_global_flag = KMT_zxl_release_chiang_demand 
+				}
+				custom_effect_tooltip = KMT_will_release_chiang_tt
+			}
+			if = {
+				limit = {
+					has_global_flag = KMT_zxl_submit_demand 
+				}
+				custom_effect_tooltip = KMT_will_submit_to_chiang_tt
+			}
+			custom_effect_tooltip = KMT_CHI_NAME_TT
+			if = {
+				limit = {
+					has_global_flag = KMT_chi_stop_civil_war_demand 
+				}
+				custom_effect_tooltip = KMT_will_stop_civil_war_tt
+			}
+		}
+	}
+	
+	option = {
+		if = {
+			limit = {
+				CHI = {
+					NOT = {
+						has_country_flag = KMT_pro_japanese_coup
+						has_country_flag = KMT_red_coup_finish
+					}
+				}
+			}
+			effect_tooltip = {
+				if = {
+					limit = {
+						has_global_flag = KMT_zxl_release_chiang_demand
+					}
+					CHI = {
+						custom_effect_tooltip = KMT_chiang_return_tt
+						hidden_effect = {
+							random_unit_leader = {
+								limit = { has_id = 1001 }
+								set_nationality = CHI
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_global_flag = KMT_zxl_submit_demand
+					}
+					CHI = {
+						annex_country = {
+							target = ZXL
+							transfer_troops = yes
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_global_flag = KMT_chi_stop_civil_war_demand
+					}
+					set_global_flag = KMT_united_front_enabled
+					if = {
+						limit = {
+							any_country = {
+								OR = {
+									tag = PRC
+									has_country_flag = is_warlords
+								}
+								has_war_with = CHI
+							}
+						}
+						every_country = {
+							limit = {
+								OR = {
+									has_country_flag = is_warlords
+									tag = PRC
+								}	
+							}
+							CHI = {
+								white_peace = PREV
+							}
+						}
+					}
+					every_country = {
+						limit = {
+							OR = {
+								has_country_flag = is_warlords
+								tag = PRC
+							}	
+						}
+						CHI = {
+							diplomatic_relation = {
+								country = PREV
+								relation = non_aggression_pact
+								active = yes
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

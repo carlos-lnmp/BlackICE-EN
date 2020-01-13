@@ -1,0 +1,683 @@
+ideologies = {
+	#IMPORTANT: apparently when you add/modify the subideologies here you also need to modify them in common/ideas/zzz_generic.txt
+	#important video needed to understand this file: https://www.youtube.com/watch?v=LytpbjYthxI
+	conservatism = {
+	
+		types = {
+			moderate = {
+				political_power_factor = 0.025
+				drift_defence_factor = -0.10
+			}
+			classical_liberalism = {
+				political_power_factor = -0.05
+				production_factory_max_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+			social_conservatism = {
+				stability_factor = 0.05
+				
+			}
+			nationalism = {
+				stability_factor = 0.05
+				enemy_partisan_effect = 0.10
+				foreign_subversive_activites = -0.05
+			}
+			rep_party_us = {
+				political_power_factor = -0.05
+				production_factory_max_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+		
+		dynamic_faction_names = {
+			"FACTION_NAME_DEMOCRATIC_1"
+			"FACTION_NAME_DEMOCRATIC_2"
+			"FACTION_NAME_DEMOCRATIC_3"
+			"FACTION_NAME_DEMOCRATIC_4"
+			"FACTION_NAME_DEMOCRATIC_5"
+			"FACTION_NAME_DEMOCRATIC_6"
+		}
+		
+		color = { 0 0 255 } #blue
+		
+		rules = {
+			can_declare_war_on_same_ideology = no
+			can_force_government = yes
+			can_send_volunteers = no
+			can_puppet = yes
+			can_lower_tension = yes
+			can_only_justify_war_on_threat_country = yes
+			can_guarantee_other_ideologies = yes
+			#can_occupy_non_war = no
+		}
+		can_host_government_in_exile = yes
+
+		war_impact_on_world_tension = 0.25 #-1.0
+		faction_impact_on_world_tension = -0.1
+		
+		modifiers = {
+			stability_factor = 0.05
+			generate_wargoal_tension = 1.00
+			join_faction_tension = 0.80
+			lend_lease_tension = 0.50
+			send_volunteers_tension = 0.50
+			guarantee_tension = 0.25
+			take_states_cost_factor = 0.25
+			annex_cost_factor = 0.5
+		}
+		
+		faction_modifiers = {
+			faction_trade_opinion_factor = 0.50 #plus 50% trade opinion
+		}
+		ai_democratic = yes # uses the conservatism AI behaviour
+	}
+	
+	liberalism = {
+	
+		types = {
+			centrism = {
+				political_power_factor = 0.025
+				drift_defence_factor = -0.10
+			}
+			center_right = {
+				political_power_factor = 0.01
+				stability_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.025
+			}
+			libertarianism = {
+				political_power_factor = 0.02
+				stability_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.025
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				drift_defence_factor = -0.2
+			}
+			social_liberalism = {
+				political_power_factor = -0.05
+				industrial_capacity_dockyard = 0.025
+				industrial_capacity_factory = 0.025
+			}
+			#US style progressivism, not European social democracy
+			progressivism = {
+				stability_factor = 0.025
+				political_power_factor = 0.01
+				consumer_goods_factor = 0.025
+			}
+			dem_party_us = {
+				stability_factor = 0.025
+				political_power_factor = 0.01
+				consumer_goods_factor = 0.025
+			}
+			populism = {
+				stability_factor = 0.05
+				production_factory_max_efficiency_factor = -0.025
+				production_factory_efficiency_gain_factor = -0.025
+			}
+			#swiss_federalism = { #should not be used because the parties ruling SWI are cons/soc/lib. also this is non-generic so it makes randomly-generated leaders have weird sub-ideologies.
+			#	production_factory_efficiency_gain_factor = 0.025
+			#	industrial_capacity_factory = 0.025
+			#	industrial_capacity_dockyard = 0.025
+			#}
+			national_liberalism = {
+				political_power_factor = 0.01
+				stability_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.025
+			}
+		}
+		
+		dynamic_faction_names = {
+			"FACTION_NAME_DEMOCRATIC_1"
+			"FACTION_NAME_DEMOCRATIC_2"
+			"FACTION_NAME_DEMOCRATIC_3"
+			"FACTION_NAME_DEMOCRATIC_4"
+			"FACTION_NAME_DEMOCRATIC_5"
+			"FACTION_NAME_DEMOCRATIC_6"
+		}
+		
+		color = { 255 255 0 } #yellow
+		
+		rules = {
+			can_declare_war_on_same_ideology = no
+			can_force_government = yes
+			can_send_volunteers = no
+			can_puppet = yes
+			can_lower_tension = yes
+			can_only_justify_war_on_threat_country = yes
+			can_guarantee_other_ideologies = yes
+			#can_occupy_non_war = no
+		}
+		can_host_government_in_exile = yes
+
+		war_impact_on_world_tension = 0.25 #-1.0
+		faction_impact_on_world_tension = -0.1
+		
+		modifiers = {
+			production_factory_efficiency_gain_factor = 0.015
+			generate_wargoal_tension = 1.00
+			join_faction_tension = 0.80
+			lend_lease_tension = 0.50
+			send_volunteers_tension = 0.50
+			guarantee_tension = 0.25
+			take_states_cost_factor = 0.25
+			annex_cost_factor = 0.5
+		}
+		
+		faction_modifiers = {
+			faction_trade_opinion_factor = 0.50 #plus 50% trade opinion
+		}
+		ai_democratic = yes # uses the conservatism AI behaviour
+	}
+	
+	socialism = {
+	
+		types = {
+			#Not Progressivism, but European style social democracy
+			social_democracy = {
+				stability_factor = 0.05
+				political_power_factor = -0.025
+				consumer_goods_factor = 0.025
+			}
+			syndicalism = {
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				production_factory_max_efficiency_factor = -0.025
+				production_factory_efficiency_gain_factor = -0.025
+			}
+			#Turkish Nationalist Socialism
+			kemalism = {
+				stability_factor = 0.05
+				consumer_goods_factor = -0.025
+				experience_gain_army_factor = 0.1
+			}
+			anarcho_syndicalism = {
+			}
+			anarcho_socialism = {
+			}
+		}
+		
+		dynamic_faction_names = {
+			"FACTION_NAME_DEMOCRATIC_1"
+			"FACTION_NAME_DEMOCRATIC_2"
+			"FACTION_NAME_DEMOCRATIC_3"
+			"FACTION_NAME_DEMOCRATIC_4"
+			"FACTION_NAME_DEMOCRATIC_5"
+			"FACTION_NAME_DEMOCRATIC_6"
+		}
+		
+		color = { 242 110 84 } #something between pink and orange, maybe salmon
+		
+		rules = {
+			can_declare_war_on_same_ideology = no
+			can_force_government = yes
+			can_send_volunteers = no
+			can_puppet = yes
+			can_lower_tension = yes
+			can_only_justify_war_on_threat_country = yes
+			can_guarantee_other_ideologies = yes
+			#can_occupy_non_war = no
+		}
+		can_host_government_in_exile = yes
+
+		war_impact_on_world_tension = 0.25 #-1.0
+		faction_impact_on_world_tension = -0.1
+		
+		modifiers = {
+			industrial_capacity_factory = 0.015
+			industrial_capacity_dockyard = 0.015
+			generate_wargoal_tension = 1.00
+			join_faction_tension = 0.80
+			lend_lease_tension = 0.50
+			send_volunteers_tension = 0.50
+			guarantee_tension = 0.25
+			take_states_cost_factor = 0.25
+			annex_cost_factor = 0.5
+		}
+		
+		faction_modifiers = {
+			faction_trade_opinion_factor = 0.50 #plus 50% trade opinion
+		}
+		ai_democratic = yes # uses the conservatism AI behaviour
+	}
+
+	communism = {
+		
+		types = {
+			early_maoism = {
+				political_power_factor = 0.25
+				experience_gain_army_factor = 0.1
+				production_speed_buildings_factor = -0.07
+				industrial_capacity_dockyard = -0.05
+				industrial_capacity_factory = 0.1
+				stability_factor = 0.05
+			}
+			late_maoism = {
+				political_power_factor = 0.25
+				experience_gain_army_factor = 0.1
+				production_speed_buildings_factor = -0.07
+				industrial_capacity_dockyard = -0.05
+				industrial_capacity_factory = 0.1
+				stability_factor = 0.05
+			}
+			marxism = {
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				stability_factor = -0.025
+				production_factory_efficiency_gain_factor = -0.025
+				production_factory_max_efficiency_factor = -0.025
+				communism_drift = 0.02
+				political_power_factor = -0.025
+			}
+			leninism = {
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				stability_factor = -0.025
+				production_factory_efficiency_gain_factor = -0.025
+				production_factory_max_efficiency_factor = -0.025
+				political_power_factor = 0.025
+				communism_drift = 0.01
+			}
+			trotskyism = {
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				stability_factor = -0.025
+				production_factory_efficiency_gain_factor = -0.025
+				production_factory_max_efficiency_factor = -0.025
+				political_power_factor = 0.025
+				communism_drift = 0.01
+			}
+			stalinism = {
+				foreign_subversive_activites = -0.10
+				enemy_partisan_effect = 0.075
+				stability_factor = -0.05
+				political_power_factor = 0.025
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+			}
+			titoism = {
+				foreign_subversive_activites = -0.10
+				enemy_partisan_effect = 0.04
+				stability_factor = -0.05
+				political_power_factor = 0.02
+				industrial_capacity_factory = 0.05
+			}
+			national_communism = {
+				foreign_subversive_activites = -0.07
+				enemy_partisan_effect = 0.02
+				political_power_factor = 0.025
+				industrial_capacity_factory = 0.05
+			}
+			#national_bolshevism = { #not fit for this era and this is non-generic so it makes randomly-generated leaders have weird sub-ideologies.
+			#	foreign_subversive_activites = -0.10
+			#	enemy_partisan_effect = 0.075
+			#	enemy_partisan_effect = 0.02
+			#	political_power_factor = 0.02
+			#	industrial_capacity_factory = 0.05
+			#	industrial_capacity_dockyard = 0.05
+			#}
+			anti_revisionism = {
+				foreign_subversive_activites = -0.10
+				enemy_partisan_effect = 0.075
+				stability_factor = -0.05
+				political_power_factor = 0.025
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				#bunker_build_speed = 999
+			}
+			anarchist_communism = {
+			}
+			#hoxhaism = { #moved to anti_revisionism for the sake of not having randomly-generated leaders have non-generic sub-ideologies
+			#	foreign_subversive_activites = -0.10
+			#	enemy_partisan_effect = 0.075
+			#	stability_factor = -0.05
+			#	political_power_factor = 0.025
+			#	industrial_capacity_factory = 0.05
+			#	industrial_capacity_dockyard = 0.05
+			#	#bunker_build_speed = 999
+			#}
+		}
+		
+		dynamic_faction_names = {
+			"FACTION_NAME_COMMUNIST_1"
+			"FACTION_NAME_COMMUNIST_2"
+			"FACTION_NAME_COMMUNIST_3"
+			"FACTION_NAME_COMMUNIST_4"
+			"FACTION_NAME_COMMUNIST_5"
+		}
+		
+		color = { 255 0 0 } #perfect red
+		
+		war_impact_on_world_tension = 0.75		#Commie less threatening
+		faction_impact_on_world_tension = 0.5
+		
+		ai_communist = yes # uses the commie AI behaviour
+		
+		rules = {
+			can_declare_war_on_same_ideology = yes
+			can_force_government = yes
+			can_send_volunteers = yes
+			can_puppet = yes
+			can_only_justify_war_on_threat_country = no
+			#can_occupy_non_war = yes
+		}
+		#can_host_government_in_exile = yes #invalidated for now because i'm not sure about how this would work
+		
+		modifiers = {
+			production_speed_buildings_factor = 0.03
+			puppet_cost_factor = -0.3
+			modifier_army_sub_unit_category_corruption_attack_factor = 0.03
+			resistance_tick_in_states_controlled_by_enemy = 0.01
+		}
+		
+		faction_modifiers = {
+			
+		}
+
+	}
+
+	fascism = {
+	
+		types = {
+			nazism = {
+				enemy_partisan_effect = 0.10
+				political_power_factor = 0.075
+				production_factory_efficiency_gain_factor = -0.025
+				production_factory_max_efficiency_factor = -0.025
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+			}
+			strasserism = {
+				enemy_partisan_effect = 0.05
+				political_power_factor = 0.03
+				production_factory_efficiency_gain_factor = -0.03
+				production_factory_max_efficiency_factor = -0.03
+				industrial_capacity_factory = 0.02
+				industrial_capacity_dockyard = 0.02
+			}
+			fascism_ideology = {
+				enemy_partisan_effect = 0.05
+				political_power_factor = 0.025
+				production_factory_efficiency_gain_factor = -0.01
+				production_factory_max_efficiency_factor = -0.01
+				industrial_capacity_factory = 0.01
+				industrial_capacity_dockyard = 0.01
+			}
+			legionnairism = {
+				political_power_factor = 0.025
+				production_factory_efficiency_gain_factor = -0.02
+				production_factory_max_efficiency_factor = -0.01
+				industrial_capacity_factory = 0.01
+				industrial_capacity_dockyard = 0.01
+				stability_factor = 0.03
+				fascism_drift = 0.05
+			}
+			falangism = {
+				industrial_capacity_dockyard = 0.025
+				industrial_capacity_factory = 0.025
+				stability_factor = -0.03
+			}
+			french_fascism = {
+				#vichy
+				industrial_capacity_dockyard = 0.025
+				industrial_capacity_factory = 0.025
+				stability_factor = -0.03
+			}
+			rexism = {
+				industrial_capacity_dockyard = 0.025
+				industrial_capacity_factory = 0.025
+				stability_factor = -0.03
+			}
+			taisei_yokusankai  = {
+				enemy_partisan_effect = 0.05
+				political_power_factor = 0.025
+				production_factory_efficiency_gain_factor = -0.01
+				production_factory_max_efficiency_factor = -0.01
+				industrial_capacity_factory = 0.01
+				industrial_capacity_dockyard = 0.025
+				stability_factor = 0.03
+			}
+			british_fascism = {
+				enemy_partisan_effect = 0.05
+				political_power_factor = 0.025
+				drift_defence_factor = 0.1
+				industrial_capacity_factory = 0.01
+				industrial_capacity_dockyard = 0.01
+			}
+		}
+		
+		dynamic_faction_names = {
+			"FACTION_NAME_FASCIST_1"
+			"FACTION_NAME_FASCIST_2"
+			"FACTION_NAME_FASCIST_3"
+			"FACTION_NAME_FASCIST_4"
+			"FACTION_NAME_FASCIST_5"
+		}
+		
+		color = { 0 0 0 } #perfect black #color = { 0 0 12 }
+		
+		war_impact_on_world_tension = 1.0			#evil!
+		faction_impact_on_world_tension = 1.0
+		
+		rules = {
+			can_force_government = yes
+			can_send_volunteers = yes
+			can_puppet = yes
+			can_only_justify_war_on_threat_country = no
+			#can_occupy_non_war = no
+		}
+		#can_host_government_in_exile = yes
+		
+		modifiers = {
+			command_power_gain_mult = 0.03
+			justify_war_goal_when_in_major_war_time = -0.60
+			modifier_army_sub_unit_category_corruption_attack_factor = -0.1
+			resistance_tick_in_states_controlled_by_enemy = 0.05
+		}
+
+		ai_fascist = yes # uses the fascist AI behaviour
+	}
+	
+	neutrality = {
+	
+		types = {
+			provisional_government  = {
+			}
+			military_dictatorship  = {
+				experience_gain_army_factor = 0.07
+				drift_defence_factor = 0.35
+				command_power_gain_mult = 0.05
+			}
+			pseudo_fascism = {
+				#maybe fascism-lite? anyway this is meant for stuff like metaxas, salazar, antonescu during the national legionary state, petain, weird grey areas between neutrality and fascism, but not full fascism.
+				#one main symptom of this is having a dictator but no big fascist political party supporting him in the parliament and/or as ministers for example
+				#this is also meant to be used if the fascist party/movement in that country isn't fully in power
+				enemy_partisan_effect = 0.015
+				political_power_factor = 0.015
+				production_factory_efficiency_gain_factor = -0.005
+				production_factory_max_efficiency_factor = -0.005
+				industrial_capacity_factory = 0.005
+				industrial_capacity_dockyard = 0.005
+				drift_defence_factor = 0.15
+				fascism_drift = 0.008
+			}
+			vichy = {
+				industrial_capacity_dockyard = 0.025
+				industrial_capacity_factory = 0.025
+				stability_factor = -0.03
+			}
+			pan_arabism  = { #not fit for this era and this is non-generic so it makes randomly-generated leaders have weird sub-ideologies.only one guy in history/countries/IRQ has it
+			}
+			despotism  = {
+			}
+			oligarchism  = {
+			}
+			moderatism = {
+			}
+			#centrism = {
+			#}
+			the_peoples_tutelage = {
+			}
+			corporatism = {
+			}
+			lon_mandate = {
+			}
+			#gaullism = {
+			#}
+			reactionism = {
+			}
+		
+		}
+
+		dynamic_faction_names = {
+			"FACTION_NAME_NONALIGNED_1"
+			"FACTION_NAME_NONALIGNED_2"
+			"FACTION_NAME_NONALIGNED_3"
+			"FACTION_NAME_NONALIGNED_4"
+			"FACTION_NAME_NONALIGNED_5"
+		}
+		
+		color = { 124 124 124 } #grey
+		
+		war_impact_on_world_tension = 0.25		#no major danger
+		faction_impact_on_world_tension = 0.1
+		
+		rules = {
+			can_declare_war_on_same_ideology = yes
+			can_force_government = yes
+			can_puppet = yes
+			can_send_volunteers = yes
+			can_only_justify_war_on_threat_country = no
+		}
+		#can_host_government_in_exile = yes
+		
+		modifiers = {
+			conversion_cost_civ_to_mil_factor = -0.05
+			#increased_influence_factor = 0.3 #30% easier to influence
+			generate_wargoal_tension = 0.5
+			join_faction_tension = 0.4
+			lend_lease_tension = 0.4
+			send_volunteers_tension = 0.4
+			guarantee_tension = 0.4
+			drift_defence_factor = -0.3	
+			modifier_army_sub_unit_category_corruption_attack_factor = 0.05
+		}
+		
+		faction_modifiers = {
+		}
+
+		can_be_boosted = no
+		can_collaborate = yes
+
+		ai_neutral = yes # 
+	}
+	
+	monarchism = {
+	
+		types = {
+			absolutism = {
+				stability_factor = 0.025
+				drift_defence_factor = -0.05
+			}
+			emiratism = {
+				stability_factor = 0.03
+			}
+			imperial = {
+				stability_factor = 0.05
+				drift_defence_factor = -0.10
+			}
+			popular = {
+				stability_factor = 0.01
+			}
+			theocracy = {
+				war_support_factor = 0.10 
+			}
+			#regency = {
+			#}
+		}
+		
+		dynamic_faction_names = {
+			"FACTION_NAME_MONARCHIST_1"
+			"FACTION_NAME_MONARCHIST_2"
+			"FACTION_NAME_MONARCHIST_3"
+			"FACTION_NAME_MONARCHIST_4"
+			"FACTION_NAME_MONARCHIST_5"
+		}
+		
+		color = { 97 0 87 } #dark-ish purple
+		
+		war_impact_on_world_tension = 0.75			#
+		faction_impact_on_world_tension = 0.6
+		
+		rules = {
+			can_force_government = yes
+			can_send_volunteers = yes
+			can_puppet = yes
+			can_only_justify_war_on_threat_country = no
+		}
+		#can_host_government_in_exile = yes
+		
+		modifiers = {
+			special_forces_min = 3
+			political_power_factor = 0.02
+			justify_war_goal_when_in_major_war_time = -0.40
+		}
+
+		ai_fascist = yes # uses the fascist AI behaviour
+	}
+	
+	#Every Ideology below here is hidden.
+	#We only need them for their modifiers.
+	ruling_party = {
+	
+		types = {
+			ruling_party_type = {
+				
+			}
+		}
+		
+		dynamic_faction_names = {
+			"FACTION_NAME_RULING_1"
+		}
+		
+		color = { 0 255 255 } #cyan
+		
+		war_impact_on_world_tension = 0.75			#
+		faction_impact_on_world_tension = 0.6
+		
+		rules = {
+			can_force_government = yes
+			can_send_volunteers = yes
+			can_puppet = yes
+			can_only_justify_war_on_threat_country = no
+		}
+		
+		ai_fascist = yes # uses the fascist AI behaviour
+	}
+	
+	opposition_party = {
+	
+		types = {
+			opposition_party_type = {
+				
+			}
+		}
+		
+		dynamic_faction_names = {
+			"FACTION_NAME_RULING_1"
+		}
+		
+		color = { 255 0 255 } #magenta
+		
+		war_impact_on_world_tension = 0.75			#
+		faction_impact_on_world_tension = 0.6
+		
+		rules = {
+			can_force_government = yes
+			can_send_volunteers = yes
+			can_puppet = yes
+			can_only_justify_war_on_threat_country = no
+		}
+		
+		ai_fascist = yes # uses the fascist AI behaviour
+	}
+}
+### EOF ###

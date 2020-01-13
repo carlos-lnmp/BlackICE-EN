@@ -1,0 +1,1190 @@
+﻿add_namespace = licenses
+
+#Countries gaining a production bonus if the country of a license is in the same faction
+country_event = {
+	id = licenses.1
+	hidden = yes
+	
+	trigger = {
+		is_ai = no
+		is_in_faction = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		#set_country_flag = in_faction
+		every_country = {
+			ROOT = {
+				remove_relation_modifier = {
+					target = PREV
+					modifier = in_faction
+				}
+				add_relation_modifier = {
+					target = PREV
+					modifier = in_faction
+				}
+			}
+		}
+	}
+	
+	option = {
+	
+	}
+}
+
+country_event = {
+	id = licenses.2
+	hidden = yes
+	
+	trigger = {
+		is_ai = no 
+		NOT = { has_country_flag = recent_license_government_relation }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		set_country_flag = {
+			flag = recent_license_government_relation
+			value = 1 
+			days = 30 
+		}
+		every_country = {
+			limit = {
+				if = {
+					limit = {
+						ROOT = {
+							NOT = {
+								democratic_govt = yes 
+							}
+						}
+					}
+					NOT = { has_government = ROOT }
+				}
+				else_if = {
+					limit = {
+						ROOT = { democratic_govt = yes }
+					}
+					democratic_govt = yes 
+				}		
+			}
+			ROOT = {
+				remove_relation_modifier = {
+					target = PREV
+					modifier = different_ideology
+				}
+				add_relation_modifier = {
+					target = PREV
+					modifier = different_ideology
+				}
+			}
+		}
+	}
+	
+	option = {
+	
+	}
+}
+
+country_event = {
+	id = licenses.3
+	hidden = yes
+	
+	trigger = {
+		is_ai = no
+		NOT = { has_country_flag = recent_license_economy_relation }
+	}
+	
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = {
+		set_country_flag = {
+			flag = recent_license_economy_relation
+			value = 1 
+			days = 50
+		}
+		set_country_flag = clear_economy_license_relations
+		
+		every_country = {
+			ROOT = { 
+				remove_relation_modifier = { target = PREV 
+					modifier = large_economy_1 }
+				remove_relation_modifier = { target = PREV 
+					modifier = large_economy_2 }
+				remove_relation_modifier = { target = PREV 
+					modifier = large_economy_3 }
+				remove_relation_modifier = { target = PREV 
+					modifier = large_economy_4 }
+				remove_relation_modifier = { target = PREV 
+					modifier = large_economy_5 }
+				remove_relation_modifier = { target = PREV 
+					modifier = large_economy_6 }
+				remove_relation_modifier = { target = PREV 
+					modifier = large_economy_7 }
+				remove_relation_modifier = { target = PREV 
+					modifier = large_economy_8 }
+				remove_relation_modifier = { target = PREV 
+					modifier = large_economy_9 }
+				remove_relation_modifier = { target = PREV 
+					modifier = large_economy_10 }
+			}
+		}
+			
+			
+		country_event = { id = licenses.5 days = 1 }
+	}
+	
+	option = {
+	
+	}
+}
+
+country_event = {
+	id = licenses.4
+	title = licenses.4.t
+	desc = licenses.4.desc
+	
+	is_triggered_only = yes
+	
+	option = { #Yes
+		ai_chance = { base = 100 }
+		name = "Agree to their offer"
+		add_opinion_modifier = {
+			target = FROM
+			modifier = license_cooperation
+		}
+		add_relation_modifier = {
+			target = ROOT
+			modifier = close_cooperation
+		}
+	}
+	
+	option = { #No
+		ai_chance = { base = 0 }
+		name = "Reject their offer"
+		FROM = { country_event = { id = licenses.6 days = 1 } }
+	}
+}
+
+country_event = {
+	id = licenses.5
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		clr_country_flag = clear_economy_license_relations
+		if = {
+			limit = {
+				num_of_factories < 50 
+			}
+			every_country = {
+				ROOT = { add_relation_modifier = { target = PREV 
+					modifier = large_economy_1 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				num_of_factories < 75 
+			}
+			every_country = {
+				ROOT = { add_relation_modifier = { target = PREV 
+					modifier = large_economy_2 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				num_of_factories < 100
+			}
+			every_country = {
+				ROOT = { add_relation_modifier = { target = PREV 
+					modifier = large_economy_3 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				num_of_factories < 150
+			}
+			every_country = {
+				ROOT = { add_relation_modifier = { target = PREV 
+					modifier = large_economy_4 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				num_of_factories < 200
+			}
+			every_country = {
+				ROOT = { add_relation_modifier = { target = PREV 
+					modifier = large_economy_5 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				num_of_factories < 250
+			}
+			every_country = {
+				ROOT = { add_relation_modifier = { target = PREV 
+					modifier = large_economy_6 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				num_of_factories < 300
+			}
+			every_country = {
+				ROOT = { add_relation_modifier = { target = PREV 
+					modifier = large_economy_7 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				num_of_factories < 350
+			}
+			every_country = {
+				ROOT = { add_relation_modifier = { target = PREV 
+					modifier = large_economy_8 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				num_of_factories < 400
+			}
+			every_country = {
+				ROOT = { add_relation_modifier = { target = PREV 
+					modifier = large_economy_9 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				num_of_factories < 500
+			}
+			every_country = {
+				ROOT = { add_relation_modifier = { target = PREV 
+					modifier = large_economy_10 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = licenses.6
+	title = licenses.6.t
+	desc = licenses.6.desc
+	
+	trigger = {
+		always = no
+		is_ai = no
+		has_any_license = yes 
+		NOT = { has_country_flag = first_license }
+	}
+	
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	option = {
+		name = "Ok"
+	}
+	
+}
+
+country_event = {
+	id = licenses.1000
+	hidden = yes
+	
+	trigger = {
+		is_ai = no
+		has_any_license = yes 
+		
+		#All tank units :)
+		OR = {
+		
+			#GERMANY
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = panzer_i_equipment
+					}
+					has_equipment = { panzer_i_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = panzer_i }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = panzer_ii_equipment
+					}
+					has_equipment = { panzer_ii_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = panzer_ii }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = panzer_iii_equipment
+					}
+					has_equipment = { panzer_iii_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = panzer_iii }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = panzer_iv_equipment
+					}
+					has_equipment = { panzer_iv_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = panzer_iv }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = panzer_v_equipment
+					}
+					has_equipment = { panzer_v_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = panzer_v }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = tiger_panzer_equipment
+					}
+					has_equipment = { tiger_panzer_equipment > 49 }
+				}
+				
+				NOT = { has_template_containing_unit = panzer_vi }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = panzer_vii_equipment
+					}
+					has_equipment = { panzer_vii_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = panzer_vii }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = panzer_amph_equipment
+					}
+					has_equipment = { panzer_amph_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = panzer_amph }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = flammpanzer_equipment
+					}
+					has_equipment = { flammpanzer_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = flammpanzer }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = panzer_spaa_equipment
+					}
+					has_equipment = { panzer_spaa_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = panzer_spaa }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = light_assault_panzer_equipment
+					}
+					has_equipment = { light_assault_panzer_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = light_assault_panzer }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = light_panzer_td_equipment
+					}
+					has_equipment = { light_panzer_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = light_panzer_td }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = panzer_iii_td_equipment
+					}
+					has_equipment = { panzer_iii_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = panzer_iii_td }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = medium_panzer_td_equipment
+					}
+					has_equipment = { medium_panzer_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = medium_panzer_td }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = heavy_panzer_td_fast_equipment
+					}
+					has_equipment = { heavy_panzer_td_fast_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = heavy_panzer_td_fast }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = heavy_panzer_td_slow_equipment
+					}
+					has_equipment = { heavy_panzer_td_slow_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = heavy_panzer_td_slow }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = light_panzer_art_equipment
+					}
+					has_equipment = { light_panzer_art_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = light_panzer_art }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = heavy_panzer_art_equipment
+					}
+					has_equipment = { heavy_panzer_art_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = heavy_panzer_art }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = assault_panzer_equipment
+					}
+					has_equipment = { assault_panzer_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = assault_panzer }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = panzer_v_spaa_equipment
+					}
+					has_equipment = { panzer_v_spaa_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = panzer_v_spaa }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = GER
+						archetype = Landkreuzer_equipment
+					}
+					has_equipment = { Landkreuzer_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = Landkreuzer }
+			}
+			
+			#ENGLAND
+			AND = {	
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = cruiser_tank_equipment
+					}
+					has_equipment = { cruiser_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_cruiser_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = churchill_tank_equipment
+					}
+					has_equipment = { churchill_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_heavy_infantry_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = british_infantry_tank_equipment
+					}
+					has_equipment = { british_infantry_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_infantry_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = british_light_tank_equipment
+					}
+					has_equipment = { british_light_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_light_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = british_mbt_equipment
+					}
+					has_equipment = { british_mbt_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_main_battle_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = tortoise_equipment
+					}
+					has_equipment = { tortoise_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_super_heavy_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = cruiser_tank_art_equipment
+					}
+					has_equipment = { cruiser_tank_art_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_tank_artillery_brigade }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = infantry_tank_art_equipment
+					}
+					has_equipment = { infantry_tank_art_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_infantry_tank_artillery_brigade }
+			}
+			AND = {		
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = churchill_tank_art_equipment
+					}
+					has_equipment = { churchill_tank_art_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_heavy_infantry_tank_artillery_brigade }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = cruiser_tank_td_equipment
+					}
+					has_equipment = { cruiser_tank_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_tank_destroyer_brigade }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ENG
+						archetype = infantry_tank_td_equipment
+					}
+					has_equipment = { infantry_tank_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = british_infantry_tank_destroyer_brigade }
+			}
+			
+			#FRANCE
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_light_tank_equipment
+					}
+					has_equipment = { fra_light_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = fra_light_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_light_cavalry_tank_equipment
+					}
+					has_equipment = { fra_light_cavalry_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = french_light_cavalry_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_infantry_tank_equipment
+					}
+					has_equipment = { fra_infantry_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = french_infantry_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_heavy_tank_equipment
+					}
+					has_equipment = { fra_heavy_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = french_heavy_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_cavalry_tank_equipment
+					}
+					has_equipment = { fra_cavalry_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = french_cavalry_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_medium_tank_equipment
+					}
+					has_equipment = { fra_medium_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = french_medium_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_light_main_tank_equipment
+					}
+					has_equipment = { fra_light_main_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = french_light_main_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_main_tank_equipment
+					}
+					has_equipment = { fra_main_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = french_main_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_superheavy_tank_equipment
+					}
+					has_equipment = { fra_superheavy_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = french_superheavy_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_ag_equipment
+					}
+					has_equipment = { fra_ag_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = fra_ag }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_spart_equipment
+					}
+					has_equipment = { fra_spart_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = fra_spart }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = FRA
+						archetype = fra_tank_destroyer_equipment
+					}
+					has_equipment = { fra_tank_destroyer_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = fra_td }
+			}
+			
+			#ITALY
+			AND = {	
+				OR = {
+					has_license = {
+						from = ITA
+						archetype = ita_tankette_armor_equipment
+					}
+					has_equipment = { ita_tankette_armor_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = ita_tankette_armor }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ITA
+						archetype = ita_light_armor_equipment
+					}
+					has_equipment = { ita_light_armor_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = ita_light_armor }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ITA
+						archetype = ita_medium_armor_equipment
+					}
+					has_equipment = { ita_medium_armor_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = ita_medium_armor }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ITA
+						archetype = ita_med_art_equipment
+					}
+					has_equipment = { ita_med_art_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = ita_med_art_armor }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ITA
+						archetype = ita_heavy_art_equipment
+					}
+					has_equipment = { ita_heavy_art_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = ita_heavy_art_armor }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ITA
+						archetype = ita_light_td_equipment
+					}
+					has_equipment = { ita_light_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = ita_light_td_armor }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = ITA
+						archetype = ita_med_td_equipment
+					}
+					has_equipment = { ita_med_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = ita_med_td_armor }
+			}
+			
+			#JAPAN
+			AND = {	
+				OR = {
+					has_license = {
+						from = JAP
+						archetype = japanese_heavy_tank_equipment
+					}
+					has_equipment = { japanese_heavy_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = japanese_heavy_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = JAP
+						archetype = japanese_light_tank_equipment
+					}
+					has_equipment = { japanese_light_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = japanese_light_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = JAP
+						archetype = japanese_medium_tank_equipment
+					}
+					has_equipment = { japanese_medium_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = japanese_medium_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = JAP
+						archetype = japanese_superheavy_tank_equipment
+					}
+					has_equipment = { japanese_superheavy_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = japanese_superheavy_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = JAP
+						archetype = japanese_amph_tank_equipment
+					}
+					has_equipment = { japanese_amph_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = japanese_amph_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = JAP
+						archetype = japanese_light_tank_art_equipment
+					}
+					has_equipment = { japanese_light_tank_art_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = japanese_light_tank_art }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = JAP
+						archetype = japanese_medium_tank_art_equipment
+					}
+					has_equipment = { japanese_medium_tank_art_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = japanese_medium_tank_art }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = JAP
+						archetype = japanese_light_tank_td_equipment
+					}
+					has_equipment = { japanese_light_tank_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = japanese_light_tank_td }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = JAP
+						archetype = japanese_medium_tank_td_equipment
+					}
+					has_equipment = { japanese_medium_tank_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = japanese_medium_tank_td }
+			}
+			
+			#SOVIET
+			AND = {	
+				OR = {
+					has_license = {
+						from = SOV
+						archetype = heavy_soviet_infantry_tank_equipment
+					}
+					has_equipment = { heavy_soviet_infantry_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = sov_infantry_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = SOV
+						archetype = heavy_soviet_tank_equipment
+					}
+					has_equipment = { heavy_soviet_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = sov_heavy_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = SOV
+						archetype = light_soviet_tank_equipment
+					}
+					has_equipment = { light_soviet_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = sov_light_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = SOV
+						archetype = medium_soviet_tank_equipment
+					}
+					has_equipment = { medium_soviet_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = sov_medium_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = SOV
+						archetype = amph_soviet_tank_equipment
+					}
+					has_equipment = { amph_soviet_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = sov_amph_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = SOV
+						archetype = light_soviet_tank_aa_equipment
+					}
+					has_equipment = { light_soviet_tank_aa_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = light_soviet_tank_aa }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = SOV
+						archetype = medium_soviet_ag_equipment
+					}
+					has_equipment = { medium_soviet_ag_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = medium_soviet_ag }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = SOV
+						archetype = heavy_soviet_ag_equipment
+					}
+					has_equipment = { heavy_soviet_ag_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = heavy_soviet_ag }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = SOV
+						archetype = light_soviet_tank_td_equipment
+					}
+					has_equipment = { light_soviet_tank_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = light_soviet_tank_td }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = SOV
+						archetype = t_34_td_equipment
+					}
+					has_equipment = { t_34_td_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = t_34_td }
+			}
+			
+			#AMERICAN
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = american_heavy_tank_equipment
+					}
+					has_equipment = { american_heavy_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_heavy_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = american_light_tank_equipment
+					}
+					has_equipment = { american_light_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_light_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = american_mbt_equipment
+					}
+					has_equipment = { american_mbt_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_main_battle_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = american_medium_tank_equipment
+					}
+					has_equipment = { american_medium_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_medium_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = t28_equipment
+					}
+					has_equipment = { t28_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_super_heavy_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = amph_american_tank_equipment
+					}
+					has_equipment = { amph_american_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_amph_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = amph_american_lv_equipment
+					}
+					has_equipment = { amph_american_lv_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_amph_lv }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = american_medium_tank_flame_equipment
+					}
+					has_equipment = { american_medium_tank_flame_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_medium_tank_flame_brigade }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = american_para_tank_equipment
+					}
+					has_equipment = { american_para_tank_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_para_tank }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = american_light_tank_aa_equipment
+					}
+					has_equipment = { american_light_tank_aa_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_light_tank_anti_air_brigade }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = american_light_tank_artillery_equipment
+					}
+					has_equipment = { american_light_tank_artillery_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_light_tank_artillery_brigade }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = american_medium_tank_artillery_equipment
+					}
+					has_equipment = { american_medium_tank_artillery_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_medium_tank_artillery_brigade }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = hellcat_equipment
+					}
+					has_equipment = { hellcat_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_tank_destroyer_brigade }
+			}
+			AND = {	
+				OR = {
+					has_license = {
+						from = USA
+						archetype = american_medium_tank_destroyer_equipment
+					}
+					has_equipment = { american_medium_tank_destroyer_equipment > 49 }
+				}
+				NOT = { has_template_containing_unit = american_medium_tank_destroyer_brigade }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = {
+		license_templates = yes
+	}
+	
+	
+	option = {
+		
+	}
+}
+

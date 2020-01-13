@@ -1,0 +1,118 @@
+﻿capital = 946
+
+oob = "MON_1936"
+
+set_war_support = 0.15
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	soviet_armor_tech = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## armor ##############
+	gwtank = 1
+	################## aircraft ##############
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	early_CAS = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+
+	ww1_battlefield_support = 1
+}
+add_ideas = { 	
+	constitutional_republic
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_censored
+	key_industries
+	labor_none
+	fdi_encouraged
+	
+	cons_one
+	foreign_volunteers
+	mob_standing
+	train_none
+	age_17
+
+	edu_minimal
+	security_minor_restrictions
+	officer_train_none
+	foreign_cooperative
+	neutrality_idea
+}
+
+activate_decision = ban_fascist_party
+activate_decision = ban_conservative_party
+activate_decision = ban_liberal_party
+activate_decision = ban_socialist_party
+
+set_politics = {
+	ruling_party = communism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	communism = 100
+	monarchism = 0
+	neutrality = 0
+	ruling_party = 0
+	opposition_party = 0
+}
+###########################################################
+create_country_leader = {
+	name = "Anandyn Amar"
+	desc = "POLITICS_ANANDYN_AMAR_DESC"
+	picture = "portrait_mon_anandyn_amar.dds"
+	expire = "1965.1.1"
+	ideology = marxism
+	traits = {
+		#
+	}
+}
+##### CORPS COMMANDERS ####################################################
+create_corps_commander = {
+	name = "Choibalsan"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+	traits = { Bad_General trickster_CC }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Tsendenbal"
+	portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+	traits = { Bad_General }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
+### EOF ###

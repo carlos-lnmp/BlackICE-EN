@@ -1,0 +1,99 @@
+#	Example:
+# 
+#	example_effect = {
+#		add_political_power = 66
+#		add_popularity = {
+#			ideology = fascism
+#			popularity = 0.33
+#		}
+#	}
+#
+#
+#	In a script file:
+#
+#	effect = {
+#		example_effect = yes
+#	}
+#
+
+## Order is important
+reduce_commonwealth = {
+	if = {
+		limit = { 
+			has_idea = ENG_commonwealth_wealth9
+		}
+		add_political_power = -50		
+	}
+	else_if = {
+		limit = { 
+			has_idea = ENG_commonwealth_wealth8
+		}
+		swap_ideas = {
+			remove_idea = ENG_commonwealth_wealth8
+			add_idea = ENG_commonwealth_wealth9
+		}
+	}
+	else_if = {
+		limit = { 
+			has_idea = ENG_commonwealth_wealth7
+		}
+		swap_ideas = {
+			remove_idea = ENG_commonwealth_wealth7
+			add_idea = ENG_commonwealth_wealth8
+		}
+	}
+	else_if = {
+		limit = { 
+			has_idea = ENG_commonwealth_wealth6
+		}
+		swap_ideas = {
+			remove_idea = ENG_commonwealth_wealth6
+			add_idea = ENG_commonwealth_wealth7
+		}
+	}
+	else_if = {
+		limit = { 
+			has_idea = ENG_commonwealth_wealth5
+		}
+		swap_ideas = {
+			remove_idea = ENG_commonwealth_wealth5
+			add_idea = ENG_commonwealth_wealth6
+		}
+	}
+	else_if = {
+		limit = { 
+			has_idea = ENG_commonwealth_wealth4
+		}
+		swap_ideas = {
+			remove_idea = ENG_commonwealth_wealth4
+			add_idea = ENG_commonwealth_wealth5
+		}
+	}
+	else_if = {
+		limit = { 
+			has_idea = ENG_commonwealth_wealth3
+		}
+		swap_ideas = {
+			remove_idea = ENG_commonwealth_wealth3
+			add_idea = ENG_commonwealth_wealth4
+		}
+	}
+	else_if = {
+		limit = { 
+			has_idea = ENG_commonwealth_wealth2
+		}
+		swap_ideas = {
+			remove_idea = ENG_commonwealth_wealth2
+			add_idea = ENG_commonwealth_wealth3
+		}
+	}
+	else_if = {
+		limit = { 
+			has_idea = ENG_commonwealth_wealth
+		}
+		swap_ideas = {
+			remove_idea = ENG_commonwealth_wealth
+			add_idea = ENG_commonwealth_wealth2
+		}
+	}
+}

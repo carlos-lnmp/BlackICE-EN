@@ -1,0 +1,3365 @@
+focus_tree = {
+	id = SIK_warlord_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 15
+			OR = {
+				tag = SIK
+			}
+			has_dlc = "Waking the Tiger"
+		}
+	}
+	
+	default = no
+
+	continuous_focus_position = { x = 50 y = 1350 }
+
+	focus = {
+		#anti-imperialism
+		id = SIK_anti
+		icon = GFX_focus_eng_tackle_capitalism
+		x = 0
+		y = 0 
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = FRA
+				modifier = minor_sanctions_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = ENG
+				modifier = minor_sanctions_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = POR
+				modifier = minor_sanctions_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = BEL
+				modifier = minor_sanctions_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = USA
+				modifier = minor_sanctions_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = ITA
+				modifier = minor_sanctions_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = HOL
+				modifier = minor_sanctions_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = JAP
+				modifier = minor_sanctions_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = CHI
+				modifier = anti_imperialist
+			}
+		}
+	}
+	focus = {
+		#anti-USA
+		id = SIK_anti_USA
+		icon = GFX_focus_generic_strike_at_democracy3
+		prerequisite = {
+			focus = SIK_anti
+		}		
+		x = -1
+		y = 1 
+		relative_position_id = SIK_anti
+		cost = 4
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = USA
+				modifier = minor_sanctions_relations
+			}
+			set_country_flag = nine_usa
+		}
+	}
+	focus = {
+		#anti-JAP
+		id = SIK_anti_JAP
+		icon = GFX_focus_generic_japanese_imperial_glory
+		prerequisite = {
+			focus = SIK_anti
+		}		
+		x = 1
+		y = 1 
+		relative_position_id = SIK_anti
+		cost = 4
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = JAP
+				modifier = minor_sanctions_relations
+			}
+			set_country_flag = nine_jap
+		}
+	}
+	focus = {
+		#anti-POR
+		id = SIK_anti_POR
+		icon = GFX_focus_generic_strike_at_democracy1
+		prerequisite = {
+			focus = SIK_anti_JAP
+			focus = SIK_anti_USA
+		}		
+		x = 2
+		y = 2 
+		relative_position_id = SIK_anti
+		cost = 3
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = POR
+				modifier = minor_sanctions_relations
+			}
+			set_country_flag = nine_por
+		}
+	}
+	focus = {
+		#anti-BEL
+		id = SIK_anti_BEL
+		icon = GFX_goal_BEL_support_democracy
+		prerequisite = {
+			focus = SIK_anti_JAP
+			focus = SIK_anti_USA
+		}		
+		x = 0
+		y = 2 
+		relative_position_id = SIK_anti
+		cost = 3
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = BEL
+				modifier = minor_sanctions_relations
+			}
+			set_country_flag = nine_bel
+		}
+	}
+	focus = {
+		#anti-HOL
+		id = SIK_anti_HOL
+		icon = GFX_focus_generic_strike_at_democracy2
+		prerequisite = {
+			focus = SIK_anti_JAP
+			focus = SIK_anti_USA
+		}		
+		x = -2
+		y = 2 
+		relative_position_id = SIK_anti
+		cost = 3
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = HOL
+				modifier = minor_sanctions_relations
+			}
+			set_country_flag = nine_hol
+		}
+	}
+	focus = {
+		#anti-FRA
+		id = SIK_anti_FRA
+		icon = GFX_attack_FRA
+		prerequisite = {
+			focus = SIK_anti_JAP
+			focus = SIK_anti_USA
+		}		
+		x = -1
+		y = 3 
+		relative_position_id = SIK_anti
+		cost = 4
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = FRA
+				modifier = minor_sanctions_relations
+			}
+			set_country_flag = nine_fra
+		}
+	}
+	focus = {
+		#anti-ITA
+		id = SIK_anti_ITA
+		icon = GFX_goal_Vive_Italia
+		prerequisite = {
+			focus = SIK_anti_JAP
+			focus = SIK_anti_USA
+		}		
+		x = 1
+		y = 3 
+		relative_position_id = SIK_anti
+		cost = 4
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = ITA
+				modifier = minor_sanctions_relations
+			}
+			set_country_flag = nine_ita
+		}
+	}
+	focus = {
+		#anti-ENG
+		id = SIK_anti_ENG
+		icon = GFX_focus_AST_never_gallipoli
+		prerequisite = {
+			focus = SIK_anti_ITA
+		}
+		prerequisite = {
+			focus = SIK_anti_FRA
+		}		
+		x = 0
+		y = 4 
+		relative_position_id = SIK_anti
+		cost = 4
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = ENG
+				modifier = minor_sanctions_relations
+			}
+			reverse_add_opinion_modifier = {
+				target = RAJ
+				modifier = minor_sanctions_relations
+			}
+			set_country_flag = nine_eng
+		}
+	}
+	focus = {
+		#Freedom
+		id = SIK_renounce_nine
+		icon = GFX_focus_renounce_the_treaty_of_trianon	
+		x = 0
+		y = 5
+		relative_position_id = SIK_anti
+		cost = 2
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 0.5
+				not = {
+					has_country_flag = nine_ita
+				}
+			}
+			modifier = {
+				factor = 0.5
+				not = {
+					has_country_flag = nine_eng
+				}
+			}
+			modifier = {
+				factor = 0.5
+				not = {
+					has_country_flag = nine_usa
+				}
+			}
+			modifier = {
+				factor = 0.5
+				not = {
+					has_country_flag = nine_fra
+				}
+			}
+			modifier = {
+				factor = 0.5
+				not = {
+					has_country_flag = nine_jap
+				}
+			}
+			modifier = {
+				factor = 0.5
+				not = {
+					has_country_flag = nine_por
+				}
+			}	
+			modifier = {
+				factor = 0.5
+				not = {
+					has_country_flag = nine_hol
+				}
+			}
+			modifier = {
+				factor = 0.5
+				not = {
+					has_country_flag = nine_bel
+				}
+			}			
+		}
+
+		available = {
+	
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			remove_ideas = CHI_nine_power_treaty
+			set_temp_variable = { temp_power = -900 }
+			if = {
+				limit = {
+					has_country_flag = nine_ita
+				}
+				add_to_temp_variable { temp_power = 115 }
+			}
+			if = {
+				limit = {
+					has_country_flag = nine_eng
+				}
+				add_to_temp_variable { temp_power = 200 }
+			}
+			if = {
+				limit = {
+					has_country_flag = nine_usa
+				}
+				add_to_temp_variable { temp_power = 135 }
+			}				
+			if = {
+				limit = {
+					has_country_flag = nine_fra
+				}
+				add_to_temp_variable { temp_power = 115 }
+			}
+			if = {
+				limit = {
+					has_country_flag = nine_jap
+				}
+				add_to_temp_variable { temp_power = 135 }
+			}
+			if = {
+				limit = {
+					has_country_flag = nine_por
+				}
+				add_to_temp_variable { temp_power = 100 }
+			}
+			if = {
+				limit = {
+					has_country_flag = nine_bel
+				}
+				add_to_temp_variable { temp_power = 100 }
+			}
+			if = {
+				limit = {
+					has_country_flag = nine_hol
+				}
+				add_to_temp_variable { temp_power = 100 }
+			}
+			add_political_power = temp_power			
+		}
+	}
+	focus = {
+		#friendship with the Soviet Union
+		id = SIK_SOV
+		icon = GFX_focus_ger_great_red_menace
+		x = 7
+		y = 0
+		relative_position_id = SIK_anti
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = SOV
+				modifier = communism_leanings_good
+			}
+			reverse_add_opinion_modifier = {
+				target = PRC
+				modifier = communism_leanings_good
+			}
+		}
+	}
+	focus = {
+		#friendship with PRC
+		id = SIK_friend_PRC
+		icon = GFX_focus_prc_maoism
+		x = -4
+		y = 1
+		relative_position_id = SIK_SOV
+		mutually_exclusive = { focus = SIK_challenge_PRC }
+		prerequisite = {
+			focus = SIK_SOV			
+		}
+		prerequisite = {
+			focus = SIK_anti			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = PRC
+				modifier = medium_increase
+			}
+			CHI = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = CHI_cooperation_with_the_communists_negative
+				}
+			}			
+		}
+	}
+	focus = {
+		#PRC minister Sets
+		id = SIK_PRC_ministers
+		icon = GFX_focus_prc_proclaim_the_peoples_republic
+		x = 0
+		y = 2
+		relative_position_id = SIK_friend_PRC
+
+		prerequisite = {
+			focus = SIK_friend_PRC			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {	
+			add_timed_idea = {
+				idea = SIK_communists
+				days = 375
+			}
+		}
+	}
+	focus = {
+		# Farming
+		id = SIK_PRC_farming
+		icon = GFX_focus_prc_agrarian_socialism
+		x = 0
+		y = 1
+		relative_position_id = SIK_PRC_ministers
+
+		prerequisite = {
+			focus = SIK_PRC_ministers			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = Arab_Farms
+				days = 222
+			}
+		}
+	}
+	focus = {
+		#Allow Border Wars
+		id = SIK_border_commie
+		icon = GFX_focus_generic_provoke_border_clashes
+		x = 1
+		y = 1
+		relative_position_id = SIK_friend_PRC
+
+		prerequisite = {
+			focus = SIK_friend_PRC			
+		}
+		
+		cost = 4
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			not = {
+				has_idea = SIK_divided_nation
+			}			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+			custom_effect_tooltip = CHI_anti_opposition_campaigns_effect_tooltip
+
+			if = {
+				limit = {			
+					NOT = { any_other_country = { has_completed_focus = CHI_cooperation_with_the_nationalists } }
+				}
+				custom_effect_tooltip = CHI_anti_opposition_campaigns_effect_tooltip_no_nationalists
+			}
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = CHI_anti_opposition_campaigns_effect_tooltip
+			if = {
+				limit = {			
+					NOT = { any_other_country = { has_completed_focus = CHI_cooperation_with_the_nationalists } }
+				}
+				custom_effect_tooltip = CHI_anti_opposition_campaigns_effect_tooltip_no_nationalists
+			}
+		}
+	}
+	focus = {
+		#Challenge PRC
+		id = SIK_challenge_PRC
+		icon = GFX_goal_generic_war_with_comintern
+		x = -1
+		y = 1
+		relative_position_id = SIK_SOV
+		mutually_exclusive = { focus = SIK_friend_PRC }
+		prerequisite = {
+			focus = SIK_SOV			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		available = {
+			not = {
+				has_idea = SIK_divided_nation
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = PRC
+				modifier = CHI_opposition
+			}
+		}
+	}
+	focus = {
+		#Allow Border Wars
+		id = SIK_border_alone
+		icon = GFX_focus_generic_provoke_border_clashes
+		x = 0
+		y = 1
+		relative_position_id = SIK_challenge_PRC
+
+		prerequisite = {
+			focus = SIK_challenge_PRC			
+		}
+		
+		cost = 4
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			strength_ratio = {
+				tag = PRC
+				ratio = 1.25
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = CHI_institute_cross_border_raids_effect_tooltip
+			set_country_flag = CHI_institute_cross_border_raids			
+		}
+	}
+	focus = {
+		#Help China
+		id = SIK_aid_china
+		icon = GFX_focus_chi_united_front
+		x = -2
+		y = 3
+		relative_position_id = SIK_SOV
+		prerequisite = {
+			focus = SIK_SOV			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			not = { has_idea = SIK_divided_nation }
+			has_war = no
+			OR = {
+				CHI = {
+					has_war_with = JAP
+				}
+				PRC = {
+					has_war_with = JAP
+				}
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.15
+				uses = 1
+				category = ww1_doctrine
+			}
+			add_timed_idea = {
+				idea = SIK_volunteers
+				days = 75
+			}		
+		}
+	}
+	focus = {
+		#Soviet Weapons
+		id = SIK_SOV_arms
+		icon = GFX_goal_soviet_guards
+		x = 1
+		y = 1
+		relative_position_id = SIK_SOV
+		prerequisite = {
+			focus = SIK_SOV			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.15
+				uses = 2
+				category = ww1_doctrine
+			}
+		}
+	}
+	focus = {
+		#Work with Mon
+		id = SIK_MON
+		icon = GFX_focus_generic_soviet_politics
+		x = 0
+		y = 4
+		relative_position_id = SIK_SOV
+		prerequisite = {
+			focus = SIK_SOV			
+		}
+		
+		cost = 3
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			give_military_access = Mon
+			MON = {
+				give_military_access = ROOT
+			}
+			760 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			330 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}			
+		}
+	}
+	focus = {
+		#Sikiang under went a mini purge similar to what happened in SOV
+		id = SIK_purge
+		icon = GFX_goal_intellectual_purge
+		x = 1
+		y = 1
+		relative_position_id = SIK_SOV_arms
+		prerequisite = {
+			focus = SIK_SOV_arms			
+		}
+		prerequisite = {
+			focus = SIK_government			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			SOV = {
+				OR = {
+					has_completed_focus = SOV_first_Moscow_trial
+					has_completed_focus = SOV_assassinate_trotsky
+				}
+			}					
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.10
+			}
+			add_ideas = SIK_purged_idea
+		}
+	}
+	focus = {
+		#Pao-an-tui - Security Preservation Corps
+		id = SIK_police
+		icon = GFX_secret_police
+		x = -1
+		y = 1
+		relative_position_id = SIK_purge
+		prerequisite = {
+			focus = SIK_purge			
+		}
+		
+		cost = 7.2
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+								
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = communism
+				popularity = 0.03
+			}
+			set_technology = {
+				tech_military_police = 1
+			}
+			custom_effect_tooltip = SIK_Gestapo_Div_effect
+			hidden_effect = {
+				set_technology = {
+					GER_Gestapo_Div_tech = 1
+				}
+			}
+		}
+	}
+	focus = {
+		#Sikiang under went a mini purge similar to what happened in SOV
+		id = SIK_purge2
+		icon = GFX_goal_spy_purge
+		x = 0
+		y = 2
+		relative_position_id = SIK_purge
+		prerequisite = {
+			focus = SIK_purge			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			SOV = {
+				OR = {
+					has_completed_focus = SOV_second_Moscow_trial
+					has_completed_focus = SOV_assassinate_trotsky
+				}
+			}					
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			hidden_effect = {
+				remove_ideas = SIK_purged_idea
+				set_country_flag = SIK_purged
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_timed_idea = {
+				idea = SIK_purged_idea
+				days = 375
+			}				
+		}
+	}
+	focus = {
+		#Join the soviet communist party
+		id = SIK_true_commie
+		icon = GFX_focus_generic_join_comintern
+		x = 1
+		y = 1
+		relative_position_id = SIK_purge2
+		prerequisite = {
+			focus = SIK_purge2			
+		}
+		
+		cost = 2
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {				
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			add_country_leader_trait = communist
+			set_country_leader_ideology = stalinism
+		}
+	}
+	focus = {
+		#Sov Armor
+		id = SIK_armor
+		icon = GFX_goal_generic_army_tanks
+		x = -1
+		y = 1
+		relative_position_id = SIK_purge2
+		prerequisite = {
+			focus = SIK_purge2			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {					
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+                name = armor_bonus
+                technology = tech_medium_soviet_tank_c
+                bonus = 0.35
+                uses = 1
+                category = cat_medium_armor
+            }
+		}
+	}
+	focus = {
+		id = SIK_generic_focus_command
+		icon = GFX_focus_generic_military_mission_red
+		prerequisite = { focus = SIK_purge2 }
+		x = -5
+		y = 1
+		relative_position_id = SIK_purge2
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			if = {
+				limit = { has_idea = CHI_incompetent_officers}
+				remove_ideas = CHI_incompetent_officers
+			}
+			else = {
+				air_experience = 25
+				navy_experience = 25
+				army_experience = 25
+			}
+		}
+	}
+	focus = {
+		#Sov air
+		id = SIK_air
+		icon = GFX_goal_generic_build_airforce
+		x = -3
+		y = 1
+		relative_position_id = SIK_purge2
+		prerequisite = {
+			focus = SIK_purge2			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			OR = {
+				has_tech = Ltaircraft_industry
+				has_tech = dispersed_Ltaircraft_industry
+			}		
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					Ltaircraft_factory > 0
+				
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = Ltaircraft_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+				
+			}
+		}
+	}
+	focus = {
+		#Sov air
+		id = SIK_air_training
+		icon = GFX_goal_generic_build_airforce
+		x = 0
+		y = 1
+		relative_position_id = SIK_air
+		prerequisite = {
+			focus = SIK_air			
+		}
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}				
+			}
+			air_experience = 25
+
+			add_tech_bonus = {
+				name = air_bonus
+				bonus = 0.25
+				uses = 3
+				category = light_air
+				category = medium_air
+				category = heavy_air
+			}
+			add_research_slot = 1
+			add_research_centre = yes	
+			SLOT:air_doctrine_folder = yes
+			SLOT:air_techs_folder = yes
+			SOV = {
+				air_experience = 15
+			}
+		}
+	}
+	focus = {
+		id = SIK_fighter_focus
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = SIK_air_training }
+		mutually_exclusive = { focus = SIK_bomber_focus }
+		x = -1
+		y = 2
+		relative_position_id = SIK_air
+		cost = 4.5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 0.25
+				uses = 5
+				technology = tech_i_15_equipment_1
+				technology = tech_i15_m25_engine_1
+				technology = tech_i_15_equipment_2
+				technology = tech_i_16_equipment_1
+				technology = tech_i_16_equipment_2
+				technology = tech_i_16_equipment_3
+				technology = tech_i_152_equipment_1
+				technology = tech_i_153_equipment_1
+				technology = tech_i_14_fighter_equipment_1
+				technology = tech_ip_1_fighter_equipment_1
+				technology = tech_pe_2_fighter_equipment_1
+			}
+		}
+	}
+
+	focus = {
+		id = SIK_bomber_focus
+		icon = GFX_goal_generic_air_bomber
+		prerequisite = { focus = SIK_air_training }
+		mutually_exclusive = { focus = SIK_fighter_focus }
+		x = 1
+		y = 2
+		relative_position_id = SIK_air
+		cost = 4.5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = bomber_bonus
+				bonus = 0.30
+				uses = 4
+				technology = tech_sb_2m_bomber_equipment_1
+				technology = tech_po_2_bomber_equipment_1
+				technology = tech_tb_3_bomber_equipment_1
+				technology = tech_tb_3_bomber_equipment_2
+				technology = tech_tb_3_bomber_equipment_3
+				technology = tech_pe_8_bomber_equipment_1
+			}
+		}
+	}
+
+	focus = {
+		id = SIK_aviation_effort_2
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = SIK_bomber_focus focus = SIK_fighter_focus }
+		x = -1
+		y = 3
+		relative_position_id = SIK_air
+		cost = 4.5
+
+		available_if_capitulated = yes
+		complete_tooltip = {
+			air_experience = 25
+			if = { limit = { has_country_flag = aviation_effort_2_AB }
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name =  air_doc_bonus
+				bonus = 0.25
+				uses = 1
+				category = air_doctrine
+			}
+		}
+		completion_reward = {
+			air_experience = 25
+			if = {
+				limit = {
+					capital_scope = {
+						OR = {
+							NOT = { is_controlled_by = ROOT }
+							NOT = {
+								free_building_slots = {
+									building = air_base
+									size > 1
+								}
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						is_controlled_by = ROOT
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}				
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+			add_tech_bonus = {
+				name =  air_doc_bonus
+				bonus = 0.25
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	
+	focus = {
+		id = SIK_CAS_effort
+		icon = GFX_goal_generic_CAS
+		prerequisite = { focus = SIK_bomber_focus focus = SIK_fighter_focus }
+		x = 1
+		y = 3
+		relative_position_id = SIK_air
+		cost = 4.5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = CAS_bonus
+				bonus = 0.25
+				ahead_reduction = 1
+				uses = 2
+				category = cas_bomber
+			}
+		}
+	}
+	focus = {
+		#Sov Science Sharing
+		id = SIK_SOV_sci
+		icon = GFX_focus_generic_socialist_science
+		x = 0
+		y = 2
+		relative_position_id = SIK_purge2
+		prerequisite = {
+			focus = SIK_purge2			
+		}
+		
+		cost = 12
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {		
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {	
+		}
+
+		completion_reward = {
+			add_to_tech_sharing_group = comintern_research
+			every_country = {
+				limit = {
+					is_in_faction_with = SOV
+				}
+				add_to_tech_sharing_group = comintern_research
+			}
+		}
+	}
+	focus = {
+		id = SIK_SOV_sci_slot
+		icon = GFX_goal_generic_scientific_exchange
+		available = {
+			is_in_faction_with = SOV
+		}
+		prerequisite = {
+			focus = SIK_SOV_sci			
+		}
+		x = 0
+		y = 2
+		relative_position_id = SIK_SOV_sci
+		cost = 8
+		ai_will_do = {
+			factor = 10
+		}
+		
+		completion_reward = {
+			add_research_slot = 1
+			845 = { state_add_research_centre = yes }
+			SLOT:infantry_folder = yes
+			SLOT:support_folder = yes
+			SLOT:artillery_folder = yes
+			SLOT:tank_techs_folder = yes
+			SLOT:armor_folder = yes
+			SLOT:air_techs_folder = yes
+			SLOT:industry_folder = yes
+			SLOT:ww1_land_doctrine_folder = yes
+			SLOT:land_doctrine_folder = yes
+			SLOT:air_doctrine_folder = yes
+			SLOT:electronics_folder = yes
+		}
+	}
+	focus = {
+		#clean government
+		id = SIK_government
+		icon = GFX_focus_chi_examination_yuan
+		x = 10
+		y = 0
+		relative_position_id = SIK_anti
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			remove_country_leader_trait = ineffective_politician3
+			add_country_leader_trait = ineffective_politician2
+		}
+	}
+	focus = {
+		#1st slot
+		id = SIK_research
+		icon = GFX_focus_research
+		x = 0
+		y = 1
+		relative_position_id = SIK_government
+		prerequisite = {
+			focus = SIK_government			
+		}
+		cost = 9.5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+			add_research_centre = yes
+			SLOT:infantry_folder = yes
+			SLOT:support_folder = yes
+			SLOT:industry_folder = yes
+		}
+	}
+	focus = {
+		#Expand ministers
+		id = SIK_expand
+		icon = GFX_focus_generic_self_management
+		x = 1
+		y = 2
+		relative_position_id = SIK_government
+		prerequisite = {
+			focus = SIK_government			
+		}
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+	focus = {
+		#Better Leader
+		id = SIK_leader
+		icon = GFX_focus_chi_proclaim_rival_government
+		x = 1
+		y = 1
+		relative_position_id = SIK_expand
+		prerequisite = {
+			focus = SIK_expand		
+		}
+		prerequisite = {
+			focus = SIK_purge	
+		}		
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			remove_country_leader_trait = ineffective_politician2
+			add_country_leader_trait = ineffective_politician
+		}
+	}
+	focus = {
+		#New minister
+		id = SIK_self_manage
+		icon = GFX_focus_YUG_pan_slavic_congress
+		x = -1
+		y = 1
+		relative_position_id = SIK_expand
+		prerequisite = {
+			focus = SIK_expand		
+		}
+		prerequisite = {
+			focus = SIK_purge	
+		}		
+		cost = 6
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = SIK_available_indi_guy
+			show_ideas_tooltip = SIK_indi_guy
+		}
+	}
+	focus = {
+		id = SIK_root_out_corruption
+		icon = GFX_goal_demand_sudetenland
+		prerequisite = { focus = SIK_leader }
+		mutually_exclusive = { focus = SIK_embrace_the_opium_trade }
+		x = -1
+		y = 1
+		relative_position_id = SIK_leader
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 5
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			remove_ideas = PRC_government_corruption
+		}
+	}
+
+	focus = {
+		id = SIK_embrace_the_opium_trade
+		icon = GFX_goal_generic_trade
+		prerequisite = { focus = SIK_leader }
+		mutually_exclusive = { focus = SIK_root_out_corruption }
+		x = 1
+		y = 1
+		relative_position_id = SIK_leader
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_ideas = CHI_embrace_the_opium_trade
+		}
+	}
+	focus = {
+		id = SIK_leader2
+		icon = GFX_focus_generic_china1
+		prerequisite = { focus = SIK_purge2 }
+		prerequisite = { focus = SIK_root_out_corruption focus = SIK_embrace_the_opium_trade }
+		x = 0
+		y = 2
+		relative_position_id = SIK_leader
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			remove_country_leader_trait = ineffective_politician
+		}
+	}
+	focus = {
+		id = SIK_sov_distance
+		icon = GFX_focus_rom_parties_end
+		prerequisite = { focus = SIK_leader2 }
+		mutually_exclusive = { focus = SIK_sov_economic }
+		x = -1
+		y = 1
+		relative_position_id = SIK_leader2
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			SOV = {
+				surrender_progress > 0.25
+			}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			remove_country_leader_trait = stalins_puppet
+			add_country_leader_trait = independent_guy
+		}
+	}
+	focus = {
+		id = SIK_sov_break
+		icon = GFX_focus_ger_strike_at_the_source
+		prerequisite = { focus = SIK_leader2 }
+		x = 0
+		y = 1
+		relative_position_id = SIK_sov_distance
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			SOV = {
+				surrender_progress > 0.45
+			}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			set_autonomy = {
+				target = SIK
+				autonomy_state = autonomy_free
+			}
+			remove_from_faction = Comintern
+			white_peace = GER
+			remove_from_tech_sharing_group = comintern_research
+		}
+	}
+	focus = {
+		id = SIK_leader3
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = SIK_sov_break }
+		x = 0
+		y = 1
+		relative_position_id = SIK_sov_break
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_country_leader_trait = demagogue
+			add_command_power = 50
+		}
+	}
+	focus = {
+		id = SIK_sov_economic
+		icon = GFX_goal_tankograd
+		prerequisite = { focus = SIK_leader2 }
+		mutually_exclusive = { focus = SIK_sov_distance }
+		x = 1
+		y = 1
+		relative_position_id = SIK_leader2
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_subject_of = SOV
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			every_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = SIK_sov_tanks
+		icon = GFX_focus_generic_socialist_science
+		prerequisite = { focus = SIK_sov_economic }
+		prerequisite = { focus = SIK_import }
+		x = 1
+		y = 2
+		relative_position_id = SIK_sov_economic
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_subject_of = SOV
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+			add_research_centre = yes
+			SLOT:armor_folder = yes
+			SLOT:tank_techs_folder = yes
+		}
+	}
+	
+	focus = {
+		#racial and national equality
+		id = SIK_equality
+		icon = GFX_focus_chi_legislative_yuan
+		x = 14
+		y = 0
+		relative_position_id = SIK_anti
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		#Tribal Army
+		id = SIK_draft
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		x = -1
+		y = 1
+		relative_position_id = SIK_equality
+		prerequisite = { focus = SIK_equality }
+		mutually_exclusive = { focus = SIK_draft2  }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_ineffective_bureaucracy
+				add_idea = CHI_tribal_army
+			}
+		}
+	}
+	focus = {
+		#Unified Army
+		id = SIK_draft2
+		icon = GFX_focus_generic_little_entente
+		x = 1
+		y = 1
+		relative_position_id = SIK_equality
+		prerequisite = { focus = SIK_equality }
+		mutually_exclusive = { focus = SIK_draft }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_ineffective_bureaucracy
+				add_idea = CHI_national_army
+			}
+		}
+	}
+	focus = {
+		#one people
+		id = SIK_one
+		icon = GFX_focus_chi_one_china_policy
+		x = 0
+		y = 2
+		relative_position_id = SIK_equality
+		prerequisite = { focus = SIK_draft2 focus = SIK_draft }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			remove_ideas = CHI_ineffective_bureaucracy_warlord
+		}
+	}
+	focus = {
+		#Equal Employment
+		id = SIK_labour
+		icon = GFX_goal_generic_major_alliance
+		x = 0
+		y = 1
+		relative_position_id = SIK_one
+		prerequisite = { focus = SIK_one }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_ideas = CHI_labor_reform
+		}
+	}
+	focus = {
+		#reconstruction
+		id = SIK_reconstruction
+		icon = GFX_focus_man_claim_the_mandate_of_heaven
+		x = 18
+		y = 0
+		relative_position_id = SIK_anti
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_ideas = CHI_public_works
+		}
+	}
+	focus = {
+		#Collective Farming
+		id = SIK_farms
+		icon = GFX_IRE_farms
+		x = 0
+		y = 1
+		relative_position_id = SIK_reconstruction
+		prerequisite = { focus = SIK_reconstruction }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_stability = -0.10
+			every_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	focus = {
+		#soviet developement
+		id = SIK_sov_mines
+		icon = GFX_goal_tankograd
+		x = -2
+		y = 1
+		relative_position_id = SIK_farms
+		prerequisite = { focus = SIK_farms }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			OR = {
+				has_idea = SIK_soviet_tribute
+				is_subject_of = SOV
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			SOV = {
+				unlock_decision_category_tooltip = prospect_for_resources
+			}
+			618 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					not = { has_dlc = "Waking the Tiger" }
+				}
+				618 = {
+					add_resource = {
+						type = oil
+						amount = 10
+					}				
+				}
+				619 = {
+					add_resource = {
+						type = chromium
+						amount = 5
+					}
+					add_resource = {
+						type = aluminium
+						amount = 5
+					}					
+				}
+				754 = {
+					add_resource = {
+						type = steel
+						amount = 8
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		#planning
+		id = SIK_planned
+		icon = GFX_goal_generic_production2
+		x = 0
+		y = 1
+		relative_position_id = SIK_farms
+		prerequisite = { focus = SIK_farms }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_ideas = CHI_long_term_economic_planning
+		}
+	}
+	focus = {
+		#Capital
+		id = SIK_new
+		icon = GFX_goal_generic_fortify_city
+		x = -3
+		y = 2
+		relative_position_id = SIK_planned
+		prerequisite = { focus = SIK_planned }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			capital_scope = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		#Civ Factory
+		id = SIK_civ1
+		icon = GFX_focus_focus_generic_industry_1
+		x = 2
+		y = 1
+		relative_position_id = SIK_planned
+		prerequisite = { focus = SIK_planned }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		#research slot
+		id = SIK_slot3
+		icon = GFX_focus_research
+		x = 0
+		y = 1
+		relative_position_id = SIK_civ1
+		prerequisite = { focus = SIK_civ1 }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+			add_research_centre = yes
+			SLOT:industry_folder = yes		
+		}
+	}
+	focus = {
+		#Electrical grid
+		id = SIK_electric
+		icon = GFX_goal_power_plant
+		x = 0
+		y = 1
+		relative_position_id = SIK_planned
+		prerequisite = { focus = SIK_planned }
+		mutually_exclusive = { focus = SIK_construct }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_tech = basic_machine_tools
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_ideas = SIK_electrical
+		}
+	}
+	focus = {
+		#Lotsa buildings
+		id = SIK_construct
+		icon = GFX_focus_generic_industry_3
+		x = -2
+		y = 1
+		relative_position_id = SIK_planned
+		prerequisite = { focus = SIK_planned }
+		mutually_exclusive = { focus = SIK_electric }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		#civ building
+		id = SIK_civ2
+		icon = GFX_focus_generic_industry_2
+		x = -1
+		y = 1
+		relative_position_id = SIK_electric
+		prerequisite = { focus = SIK_electric focus = SIK_construct}
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		#Industry
+		id = SIK_industry
+		icon = GFX_goal_generic_construction
+		x = 1
+		y = 1
+		relative_position_id = SIK_civ2
+		prerequisite = { focus = SIK_civ2 }
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			add_tech_bonus = {
+					name = industrial_bonus
+					bonus = 0.25
+					uses = 2
+					category = industry
+			}
+		}
+	}
+	focus = {
+		#Heavy Industry
+		id = SIK_mic
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 0
+		y = 1
+		relative_position_id = SIK_industry
+		prerequisite = { focus = SIK_industry }
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+		}
+	}
+	focus = {
+		#Road
+		id = SIK_infra
+		icon = GFX_goal_generic_construct_infrastructure
+		x = -1
+		y = 1
+		relative_position_id = SIK_civ2
+		prerequisite = { focus = SIK_civ2 }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 0
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 0
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}	
+	focus = {
+		#Rail
+		id = SIK_rail
+		icon = GFX_idea_USA_national_railway
+		x = 0
+		y = 1
+		relative_position_id = SIK_infra
+		prerequisite = { focus = SIK_infra }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			not = { 
+				has_war_with = SOV
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			617 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			760 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			330 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			654 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			reverse_add_opinion_modifier = {
+				target = MON
+				modifier = aided_industry
+			}
+			reverse_add_opinion_modifier = {
+				target = SOV
+				modifier = aided_industry
+			}				
+		}
+	}
+	focus = {
+		#Use new rail for weapons
+		id = SIK_import
+		icon = GFX_focus_generic_tank_production
+		x = -1
+		y = 1
+		relative_position_id = SIK_rail
+		prerequisite = { focus = SIK_rail }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			not = { 
+				has_war_with = SOV
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 3 }				
+		}
+	}
+	focus = {
+		#Use new rail for construction
+		id = SIK_import_civ
+		icon = GFX_focus_generic_industry_3
+		x = 1
+		y = 1
+		relative_position_id = SIK_rail
+		prerequisite = { focus = SIK_rail }
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			not = { 
+				has_war_with = SOV
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }				
+		}
+	}
+	focus = {
+		#peace
+		id = SIK_peace
+		icon = GFX_goal_generic_alliance
+		x = 22
+		y = 0
+		relative_position_id = SIK_anti
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_war_support > 0.10
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_war_support = -0.1
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		#peace slot
+		id = SIK_peace_research
+		icon = GFX_goal_religious_harmony
+		x = 2
+		y = 1
+		relative_position_id = SIK_peace
+		prerequisite = { focus = SIK_peace }
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_war_support < 0.75
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = edu_minimal
+				}
+				swap_ideas = {
+					remove_idea = edu_minimal
+					add_idea = edu_low
+				}
+			}
+			add_ideas = SIK_education_idea
+		}
+	}
+	focus = {
+		#peace welfare
+		id = SIK_peace_welfare
+		icon = GFX_goal_government_icon
+		x = 0
+		y = 1
+		relative_position_id = SIK_peace
+		prerequisite = { focus = SIK_peace }
+
+		cost = 9
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_war_support < 0.75
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_ideas = Arab_Social		
+		}
+	}
+	focus = {
+		#peace medicine
+		id = SIK_peace_medi
+		icon = GFX_goal_medicine
+		x = -2
+		y = 1
+		relative_position_id = SIK_peace
+		prerequisite = { focus = SIK_peace }
+
+		cost = 6
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_war_support < 0.75
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = hospitals
+				bonus = 0.5
+				uses = 1
+				category = medical_tech
+			}	
+		}
+	}
+	focus = {
+		#peace done
+		id = SIK_peace_done
+		icon = GFX_goal_generic_national_unity
+		x = 0
+		y = 2
+		relative_position_id = SIK_peace
+		prerequisite = { focus = SIK_peace_medi }
+		prerequisite = { focus = SIK_peace_welfare }
+		prerequisite = { focus = SIK_peace_research }
+
+		cost = 6
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_war_support < 0.75
+			not = { has_idea = SIK_divided_nation }
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			remove_ideas = SIK_resent	
+		}
+	}
+	focus = {
+		id = SIK_army_effort
+		icon = GFX_goal_generic_allies_build_infantry
+		#prerequisite = { focus = SIK_peace }
+		x = 5
+		y = 0
+		relative_position_id = SIK_peace
+		cost = 9
+		available_if_capitulated = yes
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.2
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = SIK_equipment_effort
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = SIK_army_effort }
+		x = -1
+		y = 1
+		relative_position_id = SIK_army_effort
+		cost = 9
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_weapons_bonus
+				bonus = 0.2
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = SIK_motorization_effort
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = SIK_army_effort }
+		bypass = { has_tech = motorised_infantry }
+		x = 1
+		y = 1
+		relative_position_id = SIK_army_effort
+		cost = 9
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 0.2
+				technology = motorised_infantry
+			}
+		}
+	}
+
+	focus = {
+		id = SIK_doctrine_effort
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = SIK_army_effort }
+		x = 0
+		y = 2
+		relative_position_id = SIK_army_effort
+		cost = 9
+		available_if_capitulated = yes
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.2
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = SIK_equipment_effort_2
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = SIK_equipment_effort }
+		x = -1
+		y = 3
+		relative_position_id = SIK_army_effort
+		cost = 9
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 0.2
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = SIK_mechanization_effort
+		icon = GFX_goal_generic_build_tank
+		prerequisite = { focus = SIK_motorization_effort }
+		x = 1
+		y = 3
+		relative_position_id = SIK_army_effort
+		cost = 9
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				ahead_reduction = 0.2
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = SIK_special_forces
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = SIK_equipment_effort_2 }
+		prerequisite = { focus = SIK_doctrine_effort }
+		prerequisite = { focus = SIK_mechanization_effort }
+		x = 0
+		y = 4
+		relative_position_id = SIK_army_effort
+		cost = 9
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.2
+				uses = 1
+				technology = paratroopers
+				technology = paratroopers2
+				technology = marines
+				technology = marines2
+				technology = tech_mountaineers
+				technology = tech_mountaineers2
+			}
+		}
+	}
+	focus = {
+		id = SIK_mil_research
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = SIK_special_forces }
+		x = 0
+		y = 5
+		relative_position_id = SIK_army_effort
+		cost = 9
+		available_if_capitulated = yes
+		completion_reward = {
+			add_research_slot = 1
+			add_research_centre = yes
+			SLOT:infantry_folder = yes
+			SLOT:artillery_folder = yes
+			SLOT:ww1_land_doctrine_folder = yes
+			SLOT:land_doctrine_folder = yes
+		}
+	}
+}
+

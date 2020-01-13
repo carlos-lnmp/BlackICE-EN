@@ -1,0 +1,388 @@
+﻿###########################
+# Canadian Events
+###########################
+
+add_namespace = canada
+
+########################### Canadian Broadcasting Corporation is created ###########################
+country_event = {
+	id = canada.1
+	title = canada.1.t
+	desc = canada.1.d
+	picture = report_event_cbc
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = CAN
+		#date > 1936.11.2
+		NOT = { has_country_flag = can_cbc_created }
+	}
+
+	
+	option = {
+		name = canada.1.a
+		set_country_flag = can_cbc_created
+		add_stability = 0.1
+		hidden_effect = {
+			country_event = { id = canada.2 days = 306 random = 1440 } #2 months random time
+			country_event = { id = canada.4 days = 180 random = 120 } #5 days random time
+		}
+			
+	}
+}
+########################### Canadian Military Pattern trucks ###########################
+# Start Design work
+country_event = {
+	id = canada.2
+	title = canada.2.t
+	desc = canada.2.d
+	picture = event_truck_maintainence
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = CAN
+		#date > 1937.3.1
+		#date < 1939.1.1
+		NOT = { has_country_flag = can_cmp_design }
+	}
+
+	#mean_time_to_happen = { months = 2 }
+	
+	option = {
+		name = canada.2.a #Proceed
+		set_country_flag = can_cmp_design
+		set_country_flag = can_cmp_design_OK
+		add_tech_bonus = {
+			name = Truck_design
+			
+			bonus = 0.25
+			uses = 1
+			category = motorized_equipment
+		}
+		country_event = { id = canada.3 days = 640 random = 120 } #5 days random time
+		ai_chance = { factor = 9 }
+	}
+
+	option = {
+		name = canada.2.b #There is no need
+		set_country_flag = can_cmp_design		
+		ai_chance = { factor = 1 }
+	}
+}
+# Design complete
+country_event = {
+	id = canada.3
+	title = canada.3.t
+	desc = canada.3.d
+	picture = event_truck_maintainence
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = CAN
+		#date > 1939.1.1
+		has_country_flag = can_cmp_design_OK
+		NOT = { has_country_flag = can_cmp_trucks }
+	}
+	
+	#mean_time_to_happen = { days = 10 }
+
+	option = {
+		name = canada.3.a #Excellent
+		set_country_flag = can_cmp_trucks 
+		add_tech_bonus = {
+			name = cmp_truck_design
+			bonus = 0.25
+			uses = 1
+			category = motorized_equipment
+		}
+	}
+}
+########################### Canadian Prime Minister meets Hitler ###########################
+country_event = {
+	id = canada.4
+	title = canada.4.t
+	desc = canada.4.d
+	picture = report_event_hitler_meets_troops
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = CAN
+		#date > 1937.5.1
+		NOT = { has_country_flag = can_king_hitler }
+		NOT = { has_war_with = GER }
+	}
+	
+	#mean_time_to_happen = { days = 10 }
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = canada.5 days = 746 random = 60 } 
+		}
+	}
+
+	option = {
+		name = canada.4.a
+		set_country_flag = can_king_hitler
+		add_named_threat = { threat = -1 name = canada.4.t }
+		ai_chance = { factor = 9 }
+	}
+
+	option = {
+		name = canada.4.b #That man is evil
+		set_country_flag = can_king_hitler
+		add_popularity = {
+			ideology = liberalism
+			popularity = -0.15
+		}
+		add_named_threat = {
+			threat = 1
+			name = canada.4.t
+		}	
+		ai_chance = { factor = 1 }
+	}
+}
+########################### 1939 Royal Tour of Canada ###########################
+country_event = {
+	id = canada.5
+	title = canada.5.t
+	desc = canada.5.d
+	picture = report_event_queen_elizabeth_and_king_george_VI_visit_blitzed_London
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = CAN
+		#date > 1939.5.17
+		NOT = { has_country_flag = can_royal_visit }
+	}
+	
+	
+	option = {
+		name = canada.5.a
+		set_country_flag = can_royal_visit
+		ENG = {
+			add_opinion_modifier = {
+				target = CAN
+				modifier = small_increase
+			}
+		}
+		add_stability = 0.025
+	}
+}
+########################### Ram Tank Tech ###########################
+# Start Design work
+country_event = {
+		
+	id = canada.6
+	title = canada.6.t
+	desc = canada.6.d
+	picture = report_event_canadian_ram_tank
+
+	trigger = {
+		tag = CAN
+		has_war_with = GER
+		has_global_flag = fall_of_france
+		NOT = { has_country_flag = can_ram_design }
+	}
+
+	mean_time_to_happen = { months = 2 }
+
+	option = {
+		name = canada.6.a #Proceed
+		ai_chance = { factor = 9 }
+		
+		set_country_flag = can_ram_design
+		set_country_flag = can_ram_design_OK
+		add_tech_bonus = {
+			name = RAM_design
+			bonus = 0.25
+			uses = 1
+			category = cat_light_armor
+		}
+		hidden_effect = {
+			country_event = { id = canada.7 days = 341 random = 720 } #1 month random time
+		}		
+	}
+
+	option = {
+		name = "No need"
+		ai_chance = { factor = 1 }
+		set_country_flag = can_ram_design		
+		
+	}
+}
+# Design complete
+country_event = {
+	id = canada.7
+	title = canada.7.t
+	desc = canada.7.d
+	picture = report_event_canadian_ram_tank
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = CAN
+		#date > 1941.6.1	
+		has_country_flag = can_ram_design_OK
+		NOT = { has_country_flag = can_ram_tank }
+	}
+	
+	option = {
+		name = canada.7.a #Excellent
+		set_country_flag = can_ram_tank
+		add_tech_bonus = {
+			name = Ram_Tank
+			bonus = 0.25
+			uses = 2
+			category = armor
+		}
+	}
+}
+########################### Grizzly Tank Tech ###########################
+country_event = {
+	id = canada.8
+	title = canada.8.t
+	desc = canada.8.d
+	picture = report_event_canadian_ram_tank
+	trigger = {
+		tag = CAN
+		check_variable = { global.days_passed > 2737 } #date > 1943.7.1
+		NOT = { has_country_flag = can_grizzly_tank }
+	}
+	
+	mean_time_to_happen = { days = 10 }
+
+	option = {
+		name = canada.8.a #Excellent
+		set_country_flag = can_grizzly_tank	
+		add_tech_bonus = {
+			name = Grizzly_Tank
+			bonus = 0.25
+			uses = 2
+			category = armor
+		}
+	}
+}
+
+# canadian Infantry division
+country_event = {
+	id = canada.9
+	title = canada.9.t
+	desc = canada.9.d
+	picture = GFX_report_event_
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = CAN
+		has_war = yes
+		not = { has_country_flag = canada_inf }
+		is_ai = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = canada.9.a
+		ai_chance = { factor = 100 }
+		
+		hidden_effect = {
+			load_oob = "CAN_1_infantry_Division"
+			set_country_flag = canada_inf
+		}
+	}
+}
+# Canadian Armor division
+country_event = {
+	id = canada.10
+	title = canada.10.t
+	desc = canada.10.d
+	picture = GFX_report_event_
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = CAN
+		has_tech = basic_light_tank
+		has_war = yes
+		not = { has_country_flag = canada_arm }
+		is_ai = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_tech = tech_cav_tanks }
+			}
+			set_technology = { tech_cav_tanks = 1 }
+		}
+		if = { 	
+			limit = { 
+				NOT = { has_tech = basic_medium_tank }
+			}
+			set_technology = { basic_medium_tank = 1 }
+		}
+		if = {
+			limit = {
+				NOT = { has_tech = tech_inf_tanks }
+			}
+			set_technology = { tech_inf_tanks = 1 }
+		}
+		if = {
+			limit = {
+				NOT = { has_tech = tech_ac_recon }
+			}
+			set_technology = { tech_ac_recon = 1 }
+		}
+	}
+	
+	option = {
+		name = canada.10.a
+		ai_chance = { factor = 100 }
+		
+		hidden_effect = {
+			load_oob = "CAN_1_armor_Division"
+		}
+		set_country_flag = canada_arm
+	}
+}
+# Canadian commando units
+country_event = {
+	id = canada.11
+	title = canada.11.t
+	desc = canada.11.d
+	picture = GFX_report_event_
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = CAN
+		has_war = yes
+		not = { has_country_flag = canada_comm}
+		is_ai = yes
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = canada.11.a
+		ai_chance = { factor = 100 }
+		
+		hidden_effect = {
+			set_technology = { marines = 1 }
+			set_technology = { amphibious_equipment = 1 }
+			set_technology = { commando_team = 1 }
+			set_technology = { paratroopers  = 1 }
+			set_technology = { tech_mountaineers = 1 }
+			load_oob = "CAN_commandoes"
+		}
+		set_country_flag = canada_comm
+	}
+}

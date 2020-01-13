@@ -1,0 +1,61 @@
+﻿### 4. Panzer-Division 1939 after Poland-campagne AI ######
+division_template = {
+	name = "4. Pz-Div"
+	division_names_group = GER_Arm_01
+	priority = 2
+	template_counter = 242
+
+	regiments = {
+		#Panzer-Regiment 35
+		panzer_ii = { x = 0 y = 0 }
+		panzer_iii = { x = 0 y = 1 }
+		panzer_iv = { x = 0 y = 2 }
+		
+		#Panzer-Regiment 36
+		panzer_ii = { x = 1 y = 0 }
+		panzer_iii = { x = 1 y = 1 }
+		panzer_iv = { x = 1 y = 2 }
+		
+		#Schützen-Regiment 12
+		motorized = { x = 2 y = 0 }
+		motorized = { x = 2 y = 1 }
+		
+		#Schützen-Regiment 33
+		motorized = { x = 3 y = 0 }
+		motorized = { x = 3 y = 1 }
+		#Kradschützen-Btl 34
+		mechanized = { x = 3 y = 2 } 
+		
+		#Artillerie-Regiment 1
+		artillery_brigade_mot = { x = 4 y = 0 }
+		artillery_brigade_mot = { x = 4 y = 1 }
+		artillery_brigade_mot = { x = 4 y = 2 }
+		anti_tank_brigade_mot =  { x = 4 y = 3 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_ac = { x = 0 y = 1 }
+		recon_mot = { x = 0 y = 2 }
+		combat_engineer = { x = 0 y = 3 }
+		maintenance_company = { x = 0 y = 4 }
+		logistics_company = { x = 1 y = 0 }
+		field_hospital = { x = 1 y = 1 }
+		anti_air = { x = 1 y = 2 }
+		signal_company = { x = 1 y = 3 }
+	}
+}
+
+units = {
+
+	division= {	
+		#4. Panzer-Division
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location  = 11417	#Würzburg
+		division_template = "4. Pz-Div"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.75
+	}
+}

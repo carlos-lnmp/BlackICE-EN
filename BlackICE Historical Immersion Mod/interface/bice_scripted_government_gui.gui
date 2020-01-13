@@ -1,0 +1,273 @@
+### Scripted Government ###
+guiTypes = {
+	
+	containerWindowType = {
+		name = "scripted_government_gui_button"
+		position = {x=10 y=0}
+		size = { width=15 height=15 }
+		
+		buttonType ={
+			name ="monarch_button"
+			spriteType = "GFX_monarch_button"
+			position = { x=187 y=179 }
+			pdx_tooltip = "GOVERNMENT_ACT_MONARCH_BUTTON_TOOLTIP"
+			shortcut = "g"
+		}
+		
+		buttonType ={
+			name ="parliament_button"
+			spriteType = "GFX_senate_button"
+			position = { x=187 y=179 }
+			pdx_tooltip = "GOVERNMENT_ACT_SENATE_BUTTON_TOOLTIP"
+			shortcut = "g"
+		}
+	}
+	
+	containerWindowType = {
+		name = "parliament_government_gui"
+		position = {x=692 y=110 }
+		#show_position = { x = 692 y = 110 }
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 300
+		size = { width=550 height=501 }
+		moveable = yes
+		
+		background = {
+			name ="background"
+			spriteType = "GFX_government_scripted_view2"
+			position = { x = 0 y = 0 }
+		}
+		
+		instantTextBoxType = {
+			name = "view_text"
+			position = { x = 270 y = 45 }
+			font = "hoi_30header"
+			text = "Parliament/Senate Actions"
+			maxWidth = 300
+			maxHeight = 25 
+			format = center
+		}
+		instantTextBoxType = {
+			name = "country_name"
+			position = { x = 270 y =175 }
+			font = "cg_16b" #Arial12
+			text = "[From.GetName] Parliament/Senate"
+			maxWidth = 300
+			maxHeight = 25 
+			format = center
+			pdx_tooltip = ""
+		}
+		instantTextBoxType = {
+			name = "leader_name"
+			position = { x = 270 y =198 }
+			font = "cg_16b" #Arial12 looks really bad on different aspect ratios, please don't use it, and now that the President part is removed, we really don't need such a small font
+			text = "[From.GetLeader]"
+			maxWidth = 300
+			maxHeight = 25 
+			format = center
+			pdx_tooltip = ""
+		}
+		instantTextBoxType = {
+			name = "acts_text"
+			position = { x = 115 y = 262 }
+			font = "hoi_36header"
+			text = "Acts"
+			maxWidth = 300
+			maxHeight = 25 
+			format = center
+		}	
+		buttonType = {
+			name ="select_act1"
+			spriteType = "GFX_decision_select_icon_strip"
+			position = { x= 491 y = 315 }
+			clicksound = click_checkbox
+			pdx_tooltip = "GOVERNMENT_ACT_SENATE_TOOLTIP1"
+		}
+		instantTextBoxType = {
+			name = "act1_text"
+			position = { x = 75 y = 314 }
+			font = "hoi_24header"
+			text = "Get More Power to Government"
+			maxWidth = 350
+			maxHeight = 25 
+			format = center
+			pdx_tooltip = "GOVERNMENT_ACT_SENATE_TOOLTIP1"
+		}
+		buttonType = {
+			name ="select_act2"
+			spriteType = "GFX_decision_select_icon_strip"
+			position = { x= 491 y = 355 }
+			clicksound = click_checkbox
+			pdx_tooltip = "GOVERNMENT_ACT_SENATE_TOOLTIP2"
+		}
+		instantTextBoxType = {
+			name = "act2_text"
+			position = { x = 50 y = 354 }
+			font = "hoi_24header"
+			text = "Raise the War Taxes"
+			maxWidth = 400
+			maxHeight = 25 
+			format = center
+			pdx_tooltip = "GOVERNMENT_ACT_SENATE_TOOLTIP2"
+		}
+		buttonType = {
+			name ="select_act3"
+			spriteType = "GFX_decision_select_icon_strip"
+			position = { x= 491 y = 395 }
+			clicksound = click_checkbox
+			pdx_tooltip = "GOVERNMENT_ACT_SENATE_TOOLTIP3"
+		}
+		instantTextBoxType = {
+			name = "act3_text"
+			position = { x = 100 y = 392 }
+			font = "hoi_24header"
+			text = "War Time Restrictions"
+			maxWidth = 300
+			maxHeight = 25 
+			format = center
+			pdx_tooltip = "GOVERNMENT_ACT_SENATE_TOOLTIP3"
+		}
+		buttonType = {
+			name ="select_act4"
+			spriteType = "GFX_decision_select_icon_strip"
+			position = { x= 491 y = 432 }
+			clicksound = click_checkbox
+			pdx_tooltip = "GOVERNMENT_ACT_SENATE_TOOLTIP4"
+		}
+		instantTextBoxType = {
+			name = "act4_text"
+			position = { x = 100 y = 431 }
+			font = "hoi_24header"
+			text = "War Rationing"
+			maxWidth = 300
+			maxHeight = 25 
+			format = center
+			pdx_tooltip = "GOVERNMENT_ACT_SENATE_TOOLTIP4"
+		}
+		buttonType = {
+			name ="close_button"
+			spriteType = "GFX_closebutton"
+			position = { x= 504 y = 14 }
+			shortcut = "ESCAPE"
+		}
+	}
+	#containerWindowType = {
+	#	name = "corruption_gui"
+	#	position = {x=500 y=440}
+	#	size = { width=550 height=501 }
+	#	moveable = yes
+	#	
+	#	buttonType = {
+	#		name = "corruption_button"
+	#		position = {x=0 y=0}
+	#		spriteType = "GFX_government_button_sprite"
+	#		scale = 1
+	#		pdx_tooltip = "corruption_button_TT"
+	#	}  
+	#	iconType = {
+	#		name ="progress_bar_icon"
+	#		spriteType = "GFX_progress_bar"
+	#		position = {x=31 y=-9}
+	#		scale = 1.1
+	#		allwaystransparent = yes
+	#	}
+	#	iconType = {
+	#		name = "corruption_icon"
+	#		position = {x=6 y=4}
+	#		spriteType = "GFX_corruption"
+	#		scale = 1.1
+	#		pdx_tooltip = "corruption_button_TT"
+	#	} 
+	#}
+	containerWindowType = {
+		name = "war_weariness_gui"
+		position = {x=300 y=440}
+		size = { width=550 height=501 }
+		moveable = yes
+		
+		buttonType = {
+			name = "war_weariness_button"
+			position = {x=0 y=0}
+			spriteType = "GFX_government_button_sprite"
+			scale = 1
+			pdx_tooltip = ""
+		}
+	}
+	containerWindowType = {
+		name = "monarch_government_gui"
+		position = {x=6 y=5}
+		size = { width=550 height=501 }
+		moveable = yes
+		
+		background = {
+			name ="background"
+			spriteType = ""
+			position = { x = 0 y = 0 }
+		}
+		iconType = {
+			name = "backname"
+			position = {x=3 y=264}
+			spriteType = "GFX_diplo_details_header"
+			scale = 0.72
+			pdx_tooltip = ""
+		}
+		instantTextBoxType = {
+			name = "monarch_leader_name"
+			position = { x = -61 y =268}
+			font = "hoi_20bs"
+			text = "[Root.GetMonarchLoc]"
+			maxWidth = 300
+			maxHeight = 25 
+			format = center
+			pdx_tooltip = "GOVERNMENT_ACT_MONARCH_LEADER_TOOLTIP"
+		}
+		#instantTextBoxType = {
+		#	name = "monarch_heir_name"
+		#	position = { x = 215 y =268 }
+		#	font = "hoi_20bs"
+		#	text = "Heir [Root.GetHeirLoc]"
+		#	maxWidth = 300
+		#	maxHeight = 25 
+		#	format = center
+		#	pdx_tooltip = "GOVERNMENT_ACT_MONARCH_HEIR_TOOLTIP"
+		#}
+		iconType = {
+			name = "ENG_george_v"
+			position = {x=10 y=49}
+			spriteType = "GFX_ENG_George_V"
+			pdx_tooltip = "GOVERNMENT_ACT_MONARCH_LEADER_TOOLTIP"
+		}
+		iconType = {
+			name = "ENG_edward_viii"
+			position ={x=10 y=49}
+			spriteType = "GFX_ENG_Edward_VIII"
+			pdx_tooltip = "GOVERNMENT_ACT_MONARCH_LEADER_TOOLTIP"
+		}
+		iconType = {
+			name = "ENG_george_vi"
+			position = {x=10 y=49}
+			spriteType = "GFX_ENG_George_VI"
+			pdx_tooltip = "GOVERNMENT_ACT_MONARCH_LEADER_TOOLTIP"
+		}
+		iconType = {
+			name = "ITA_victor"
+			position = {x=10 y=49}
+			spriteType = "GFX_ITA_victor"
+			pdx_tooltip = "GOVERNMENT_ACT_MONARCH_LEADER_TOOLTIP"
+		}
+		#iconType = { #do this if japan has different leader then hirohito
+		#	name = "JAP_hirohito"
+		#	position = {x=10 y=49}
+		#	spriteType = "GFX_JAP_hirohito"
+		#	pdx_tooltip = "GOVERNMENT_ACT_MONARCH_LEADER_TOOLTIP"
+		#}
+		iconType = {
+			name = "leader_frame3"
+			spriteType = "GFX_pol_leader_frame2"
+			position = { x = 4 y = 39 }		
+			allwaystransparent = yes
+		}
+	}
+}
+### EOF ###

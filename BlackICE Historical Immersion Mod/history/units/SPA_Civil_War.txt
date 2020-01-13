@@ -1,0 +1,471 @@
+﻿division_template = {
+	name = "División de Infantería"
+	is_locked = yes
+	# Used for both regular infantry divisions and larger garrison divisions
+	# Note: Spanish divisions were 2x brigades of 2x2 rgts each, + support
+	template_counter = 113
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		garrison = { x = 1 y = 0 }
+		garrison = { x = 1 y = 1 }
+		garrison = { x = 1 y = 2 }
+		
+		artillery_brigade = { x = 2 y = 0 }		# Spanish Arty Rgt/Bge had 2 Bn 105mm arty	
+		artillery_brigade = { x = 2 y = 1 }	
+		anti_tank_brigade =  { x = 2 y = 2 }	
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 } # Eng Bn
+		anti_tank = { x = 0 y = 2 }	
+	}
+}
+division_template = {
+	name = "Tabor de Regulares"
+	template_counter = 113
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 } # Eng Bn
+	}
+}
+division_template = {
+	name = "Militia"  
+	# Note: all forces at reserve levels in 1936
+	is_locked = yes
+	template_counter = 69
+	
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		anti_tank_brigade =  { x = 2 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Brigada Legionario"
+	is_locked = yes
+	template_counter = 113
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+		
+		militia = { x = 3 y = 0 }
+		militia = { x = 3 y = 1 }
+		militia = { x = 3 y = 2 }
+		
+		anti_tank_brigade =  { x = 4 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Brigada Legionario II"
+	is_locked = yes
+	template_counter = 114
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		
+		anti_tank_brigade =  { x = 2 y = 0 }
+		anti_tank_brigade =  { x = 2 y = 1 }
+	}
+	 support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Brigada Legionario III"
+	is_locked = yes
+	template_counter = 125
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+		
+		anti_tank_brigade =  { x = 3 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Fascist Volunteers"
+	is_locked = yes
+	template_counter = 72
+	
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+	}
+	support = { 
+		DIV_HQ = { x = 0 y = 0 }
+	}
+}
+##### INSTANT #####
+instant_effect = {
+##### ADDED TO STOCKPILE #####
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_1
+		amount = 20000
+		producer = SPR
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+		amount = 15000
+		producer = SPR
+	}
+	add_equipment_to_stockpile = {
+		type = strat_bomber_equipment_0
+		amount = 25
+		producer = SPR
+	}
+	add_equipment_to_stockpile = {
+		type = tac_bomber_equipment_0
+		amount = 25
+		producer = SPR
+	}
+}
+##### OOB #####
+units = {
+	division = {
+		name = "1a Milicia Falangista"
+		location = 1048  # ?
+		division_template = "Brigada Legionario II"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "2a Milicia Falangista"
+		location = 7183  # ?
+		division_template = "Brigada Legionario II"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "1a Bandera de la Legión"
+		location = 875  # ?
+		division_template = "Brigada Legionario III"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "2a Bandera de la Legión"
+		location = 875  # ?
+		division_template = "Brigada Legionario II"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "3a Bandera de la Legión"
+		location = 1048  # ?
+		division_template = "Brigada Legionario III"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "3a Milicia Falangista"
+		location = 1048  # ?
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "4a Milicia Falangista"
+		location = 7183  # ?
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "5a Milicia Falangista"
+		location = 7213  # ?
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "6a Milicia Falangista"
+		location = 875  # ?
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "1os Voluntarios Tradicionalistas"
+		location = 7213  # Burgos
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "Fuerzas de Galicia"
+		location = 948  # Burgos
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "Fuerzas de Córdoba"
+		location = 813  # Valladolid
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "7a Milicia Falangista"
+		location = 11766  # Valladolid
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "5o Tabor de Regulares"
+		location = 7215  # Nador
+		division_template = "Tabor de Regulares"
+	}
+	division = {
+		name = "2os Voluntarios Tradicionalistas"
+		location = 3859  # Valladolid
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "5a Bandera de la Legión"
+		location = 11806  # Oviedo
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "3er Tabor de Regulares"
+		location = 3820  # Oviedo
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "4o Tabor de Regulares"
+		location = 9800  # Oviedo
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "3os Voluntarios Tradicionalistas"
+		location = 3874  # Coruna
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "1er Tabor de Regulares"
+		location = 794  # Coruna
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "2o Tabor de Regulares"
+		location = 11756  # Sevilla
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "Fuerzas de Melilla"
+		location = 9917  # Zaragoza
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "6a Bandera de la Legión"
+		location = 11780  # Zaragoza
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "7a Bandera de la Legión"
+		location = 985  # Sevilla
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "1a Milicia de la CEDA"
+		location = 985  # Sevilla
+		division_template = "Militia"
+	}	
+	division = {
+		name = "8a Bandera de la Legión"
+		location = 6948  # Zaragoza
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "9a Bandera de la Legión"
+		location = 3810  # Sevilla
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "10a Bandera de la Legión"
+		location = 3871  # Coruna
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "2a Milicia de la CEDA"
+		location = 885  # Burgos
+		division_template = "Militia"
+	}
+	division = {
+		name = "4os Voluntarios Tradicionalistas"
+		location = 950  # Oviedo
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "Fuerzas de Canarias"
+		location = 10111  # Oviedo
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "3a Milicia de la CEDA"
+		location = 885  # Burgos
+		division_template = "Militia"
+	}
+	division = {
+		name = "11a Bandera de la Legión"
+		location = 6744  # Oviedo
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "7a Milicia Falangista"
+		location = 4182  # Oviedo
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "8a Milicia Falangista"
+		location = 10094  # Oviedo
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "9a Milicia Falangista"
+		location = 11854  # Oviedo
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "12a Bandera de la Legión"
+		location = 9700  # Oviedo
+		division_template = "Brigada Legionario"
+		start_equipment_factor = 1
+	}
+	division = {
+		name = "10a Milicia Falangista"
+		location = 11798  # 
+		division_template = "Militia"
+		start_equipment_factor = 1
+		start_experience_factor = 0.3
+	}
+	division = {
+		name = "11a Milicia Falangista"
+		location = 9839  # 
+		division_template = "Militia"
+		start_equipment_factor = 1
+		start_experience_factor = 0.3
+	}
+	division = {
+		name = "12a Milicia Falangista"
+		location = 9793  # 
+		division_template = "Militia"
+		start_equipment_factor = 1
+		start_experience_factor = 0.3
+	}
+	division = {
+		name = "13a Milicia Falangista"
+		location = 915  # 
+		division_template = "Militia"
+		start_equipment_factor = 0.75
+		start_experience_factor = 0.05
+	}
+	division = {
+		name = "14a Milicia Falangista"
+		location = 11821  # 
+		division_template = "Militia"
+		start_equipment_factor = 0.75
+		start_experience_factor = 0.05
+	}
+	division = {
+		name = "15a Milicia Falangista"
+		location = 9813  # 
+		division_template = "Militia"
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "16a Milicia Falangista"
+		location = 6764  # 
+		division_template = "Militia"
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "17a Milicia Falangista"
+		location = 729  # 
+		division_template = "Militia"
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "18a Milicia Falangista"
+		location = 3933  # 
+		division_template = "Militia"
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "19a Milicia Falangista"
+		location = 13247  # 
+		division_template = "Militia"
+		start_equipment_factor = 0.75
+	}
+	division = {
+		name = "Golpistas de Oviedo"
+		location = 758  # Oviedo
+		division_template = "Brigada Legionario II"
+	}
+}
+### EOF ###

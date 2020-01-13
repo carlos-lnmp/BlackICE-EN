@@ -1,0 +1,386 @@
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+# invade
+# contain
+# area_priority
+
+FRA_troops_free_france = {
+	enable = {
+		tag = FRA
+		has_capitulated = yes
+	}
+	abort = {
+		has_capitulated = no
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = RAJ
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = BUR
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = INS
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = AST
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = MAL
+		value = 2000
+	}
+}
+stay_in_allies = {
+    enable = {
+		tag = FRA
+		is_in_faction_with = ENG
+    }
+    abort = {
+		OR = {
+			NOT = { is_in_faction_with = ENG }
+			democratic_govt = no
+		}
+    }
+ 
+    ai_strategy = { type = alliance id = "ENG"     		        value = 300000     }
+}
+
+stay_in_lil_entente_cze = {
+    enable = {
+        tag = CZE
+		is_in_faction_with = FRA
+		NOT = { is_faction_leader = yes }
+        FRA = { is_faction_leader = yes }
+    }
+    abort = {
+		FRA = { 
+			is_faction_leader = no
+		}
+    }
+ 
+    ai_strategy = { type = alliance id = "FRA"     		        value = 300000     }
+}
+
+stay_in_lil_entente_pol = {
+    enable = {
+        tag = POL
+		is_in_faction_with = FRA
+		is_faction_leader = no
+        FRA = { is_faction_leader = yes }
+    }
+    abort = {
+		FRA = {
+			is_faction_leader = no
+		}
+    }
+ 
+    ai_strategy = { type = alliance id = "FRA"     		 		value = 300000     }
+}
+
+stay_defensive_on_maginot = {
+    enable = {
+		tag = FRA
+		date > 1939.1.1
+		has_capitulated = no
+		
+		GER = { has_government = fascism }
+		BEL = { has_capitulated = no }
+	}
+    abort = {
+		OR = {
+			has_capitulated = yes
+			has_war = no 
+			BEL = { has_capitulated = yes }
+			date > 1941.1.1
+		}
+    }
+ 
+	ai_strategy = {
+		type = consider_weak
+		id = GER
+		value = -20
+	}
+	ai_strategy = { type = conquer id = "GER"	value = 5000 }
+}
+
+FRA_war_with_germany = {
+	enable = {
+		tag = FRA
+		date > 1939.1.1
+		GER = { has_government = fascism }
+		NOT = { has_war_with = ITA }
+	}
+	abort = {
+		OR = {
+			has_war_with = GER
+			date > 1941.1.1
+		}
+	}
+	
+	ai_strategy = { type = conquer id = "GER"	value = 500 }
+}
+FRA_war_with_italy = {
+	enable = {
+		tag = FRA
+		date > 1939.1.1
+		ITA = { has_government = fascism }
+		NOT = { has_war_with = ITA }
+	}
+	abort = {
+		OR = {
+			has_war_with = ITA
+			date > 1941.1.1
+		}
+	}
+	
+	ai_strategy = { type = conquer id = "ITA"	value = 500 }
+}
+
+prepare_benelux_campaign = {
+    enable = {
+		tag = FRA
+		has_capitulated = no
+		surrender_progress < 0.1
+		BEL = { has_capitulated = no }
+		GER = {
+			focus_progress = {
+				focus = GER_around_maginot
+				progress > 0.5
+			}
+		}
+	}
+    abort = {
+		OR = {
+			has_capitulated = yes
+			has_war = no 
+			BEL = { has_capitulated = yes }
+			date > 1941.1.1
+		}
+    }
+ 
+	ai_strategy = {
+		type = conquer
+		id = BEL
+		value = 1000
+	}
+}
+
+FRA_dont_defend_syria = {
+	enable = {
+		tag = FRA
+		is_in_faction_with = SYR
+		has_war_with = GER
+	}
+	abort = {
+		NOT = { is_in_faction_with = SYR }
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "SYR"
+		value = 200
+	}
+}
+FRA_defend_france = {
+	enable = {
+		tag = FRA
+		has_capitulated = no
+		OR = {
+			date > 1939.1.1
+			has_war = yes 
+		}
+	}
+	abort = {
+		has_capitulated = yes
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = TUN
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = MAR
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = SYR
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = LEB
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = FRI
+		value = 2000
+	}
+}
+FRA_default_unit_production = {
+	enable = {
+		original_tag = FRA
+	}
+	# Naval unit factors
+	ai_strategy = {
+		type = unit_ratio
+		id = capital_ship
+		value = 15
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = submarine
+		value = 20
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = screen_ship
+		value = 30
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = convoy
+		value = 10
+	}
+}
+FRA_naval_role_ratios_historical = {
+	enable = {
+		has_dlc = "Man the Guns"
+		original_tag = FRA
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bb
+		value = 20
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bc
+		value = 40
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_carrier
+		value = -100
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_submarine
+		value = 50
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_screen
+		value = 50
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = 40
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_heavy
+		value = -100
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_sweeper
+		value = 10
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_layer
+		value = 10
+	}
+}
+FRA_naval_finish_capitals_1 = {
+	enable = {
+		original_tag = FRA
+	}
+	abort = {
+		OR = {
+			check_variable = { FRA.num_ships_with_type@battle_cruiser > 1 }
+			date > 1941.1.1
+		}
+	}
+	
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = capital_ship
+		value = 2
+	}
+}
+FRA_naval_finish_capitals_2 = {
+	enable = {
+		original_tag = FRA
+	}
+	abort = {
+		date > 1942.1.1
+	}
+	
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = capital_ship
+		value = 4
+	}
+}
+FRA_naval_screens = {
+	enable = {
+		original_tag = FRA
+	}
+	
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = screen_ship
+		value = 2
+	}
+}
+FRA_naval_role_ratios_bc = {
+	enable = {
+		has_dlc = "Man the Guns"
+		original_tag = FRA
+		check_variable = { FRA.num_ships_with_type@battle_cruiser > 1 }
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bc
+		value = -40
+	}
+}
+
+

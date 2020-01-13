@@ -1,0 +1,4755 @@
+technologies = {
+	#Vertical positions
+	@1918 = 0 	#Example{ x = @1918 y = 0 }  X = vertical position(Year defined countrytechtreeview.gui) Y = horizontal position 
+	@1934 = 2
+	@1936 = 4
+	@1937 = 6
+	@1938 = 8
+	@1939 = 10
+	@1940 = 12
+	@1940_1 = 13
+	@1941 = 14
+	@1941_1 = 15
+	@1941_3 = 17
+	@1942 = 18
+	@1942_1 = 19
+	@1942_2 = 21
+	@1943 = 20
+	@1944 = 24
+	@1945 = 26
+	@1946 = 28
+	@1947 = 30
+	@1948 = 32
+	@1949 = 34
+	@1950 = 36
+	@1951 = 38
+	#Horizontal positions
+	@HQ = 0
+	@ARC_EQP = 2
+	@MOT_MECH = 4
+	@DSRT = 6
+	@SUBMECH = 7
+	@SMG = 11
+	@URBAN_WF = 13
+	@EXPL = 14
+	@INF = 16
+	@INF_AT = 19
+	@GAR = 21
+	@GAR_1 = 22
+	@SNPR = 23
+	@INF_GUNS = 26
+	@UNIFORMS = 29
+	@UNIFORMS_CAMO = 30
+	@HMG = 32
+	@MORTARS = 35
+	@MRN = 39
+	@MRN_EQP = 41
+	@LWS = 43
+	@MNT = 46
+	@MNT_EQP = 48
+	@PARATR_SUPPLY = 50
+	@PARATR = 51
+	@PARATR_EQP = 53
+	@COMM = 55
+	
+	### Technologies ###
+	infantry_weapons = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_equipments = {
+			infantry_equipment_0
+		}
+		
+		enable_subunits = {
+			infantry
+			militia
+		}
+		
+		path = {
+			leads_to_tech = infantry_weapons1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = sniper_team
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_infantry_uniforms
+			research_cost_coeff = 0.75
+		}
+		path = {
+			leads_to_tech = tech_Headquarters
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infantry_guns
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1918
+		folder = {
+			name = infantry_folder
+			position = { x = @INF y = @1918 }
+		}
+		
+		on_research_complete = {
+		
+			clear_variable = infantry_equipment_lvl_1
+			clear_variable = infantry_equipment_lvl_2
+			clear_variable = infantry_equipment_lvl_3
+			if = {
+				limit = {
+					NOT = {
+						has_template_containing_unit = infantry
+						has_template_containing_unit = garrison
+					}
+				}
+				hidden_effect = {
+					load_oob = "unlock_infantry"
+					load_oob = "unlock_garrison"
+				}
+				custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+			}
+			if = {
+				limit = {
+				 tag = GER
+				}
+				hidden_effect = {
+					set_technology = { ss_infantry_tech = 1 }
+				}
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+	
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				add = 200
+				EAI_infantry_tech_focus = yes 
+			}
+		}
+	}
+####################### Pre war HQ
+	tech_Headquarters = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			HQ_equipment_0
+		}
+		
+		enable_equipments = {
+			horse_equipment_0
+		}
+		enable_equipments = { 
+			motorized_lia_equipment_01
+		}
+		
+		#enable_equipments = { 
+		#	officer_equipment_1
+		#	officer_equipment_2
+		#	officer_equipment_3
+		#}
+		
+		enable_subunits = {
+			#HQ
+			DIV_HQ
+		}
+		
+		path = {
+			leads_to_tech = tech_Headquarters2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1934
+		folder = {
+			name = infantry_folder
+			position = { x = @HQ y = @1934 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		}
+
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_HQ_tech_focus = yes
+			}
+		}
+	}
+############################ Early War HQ
+	tech_Headquarters2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		#enable_equipments = {
+		#	HQ_equipment_1
+		#}
+		
+		path = {
+			leads_to_tech = tech_Headquarters3
+			research_cost_coeff = 1
+		}
+		
+		DIV_HQ = { max_organisation = 5 }
+
+		research_cost = 1.5
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x = @HQ y = @1940 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_engineers3
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_recon4
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_cav_recon4
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_mot_recon4
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_military_police3
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_maintenance_company3
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_field_hospital3
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_signal_company3
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt	
+		}
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_HQ_tech_focus = yes
+				}
+			}
+		}
+	}
+####################### Late war HQ
+	tech_Headquarters3 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		#enable_equipments = {
+		#	HQ_equipment_2
+		#}
+		
+		DIV_HQ = { max_organisation = 5 }
+
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = infantry_folder
+			position = { x = @HQ y = @1944 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_engineers4
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_recon5
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_mot_recon5
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_military_police4
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_maintenance_company4
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_field_hospital4
+			custom_effect_tooltip = unlock_tech_TT_2
+			
+			custom_effect_tooltip = unlock_tech_TT
+			custom_effect_tooltip = tech_signal_company4
+			custom_effect_tooltip = unlock_tech_TT_2
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt	
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_HQ_tech_focus = yes
+				}
+			}
+		}
+	}
+########################## Garrison ########################
+	tech_Garrison = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			garrison_equipment_0
+		}
+		
+		enable_subunits = {
+			garrison
+		}
+		path = {
+			leads_to_tech = tech_Garrison_2
+			research_cost_coeff = 1
+		}		
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = infantry_folder
+			position = { x = @GAR y = @1936 }
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_template_containing_unit = garrison
+					}
+
+				}
+				hidden_effect = {
+					load_oob = "unlock_garrison"
+				}
+				custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+			}
+			#if = {
+			#	limit = {
+			#		tag = GER
+			#	}
+			#	hidden_effect = {
+			#		set_technology = { ss_garrison_tech = 1 }
+			#	}
+			#}
+			#custom_effect_tooltip = ENABLE_SS_GARRISON
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt	
+
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_Garrison_2 = {	
+		allow = { can_research_infantry_folder = yes } 
+		
+		research_cost = 1.2
+		start_year = 1937
+		
+		garrison = {
+		    defense = 0.1
+			soft_attack = 0.05
+		    max_strength = 0.05
+			default_morale = 0.05
+			maximum_speed = 0.05
+		}
+		ss_garrison = {
+		    defense = 0.1
+			soft_attack = 0.05
+		    max_strength = 0.05
+			default_morale = 0.05
+			maximum_speed = 0.05
+		}
+		path = {
+			leads_to_tech = tech_Garrison_3
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = infantry_folder
+			position = { x = @GAR_1 y = @1937 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt	
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_Garrison_3 = {	
+		allow = { can_research_infantry_folder = yes } 
+		
+		research_cost = 1.2
+		start_year = 1941
+
+		enable_equipments = {
+			garrison_equipment_1
+		}	
+
+		folder = {
+			name = infantry_folder
+			position = { x = @GAR_1 y = @1941 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt	
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	arctic_weather_tech = {
+		allow_branch = {
+			original_tag = GER
+		}
+		category_all_subs = {
+			max_organisation = 5
+			surface_detection = 0.03
+			convoy_raiding_coordination = 0.03
+		}
+		
+		research_cost = 0.6
+		start_year = 1937
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	arctic_equipment = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = { 
+			arctic_equipment_0
+		}
+		
+		enable_subunits = {
+			arctic_support
+		}
+	
+		research_cost = 0.6
+		start_year = 1941
+		folder = {
+			name = infantry_folder
+			position = { x = @ARC_EQP y = @1941 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = support_tech_tt	
+		}
+		categories = {
+			infantry_weapons
+			support_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				OR = {
+					original_tag = FIN 
+					
+				}
+			}
+		}
+	}	
+	
+	desert_equipment = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = { 
+			desert_equip_0
+		}
+		
+		enable_subunits = {
+			desert_support
+		}
+	
+		research_cost = 0.7
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x = @DSRT y = @1940 }
+		}
+		
+		#on_research_complete = {
+		#	limit = {
+		#		tag = GER
+		#	}
+		#	hidden_effect = {
+		#		set_technology = { ss_desertsupport_tech = 1 }
+		#	}
+		#	custom_effect_tooltip = ENABLE_SS_DESSERT_SUPPORT
+		#}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = support_tech_tt	
+		}		
+		categories = {
+			infantry_weapons
+			support_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				OR = {
+					original_tag = ITA 
+					original_tag = EGY 
+					original_tag = SYR 
+					original_tag = LEB 
+					original_tag = JOR 
+					original_tag = BMP 
+					original_tag = TUN 
+					original_tag = SAU
+					original_tag = YEM
+					original_tag = OMA
+					original_tag = IRQ
+					original_tag = MAR
+					
+				}
+			}
+		}
+	}	
+	sniper_team = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		#enable_equipments = { 
+		#	sniper_equipment_0
+		#}
+		
+		category_all_infantry = {
+			defense = 0.03
+			soft_attack = 0.03
+			#need = {
+            #   	sniper_equipment = 6
+         	#}
+		}
+		
+		commando = {
+			defense = 0.1
+			soft_attack = 0.1
+			#need = {
+            #  	sniper_equipment = 3
+         	#}
+		}
+		
+		on_research_complete = {
+			#custom_effect_tooltip = new_equipment_tt
+			#custom_effect_tooltip = sniper_equipment_0
+			#custom_effect_tooltip = new_equipment_tt_2
+			#custom_effect_tooltip = infantry_tt
+			#custom_effect_tooltip = garrison_tt
+			#custom_effect_tooltip = militia_tt
+			#custom_effect_tooltip = semi_motorized_tt
+			#custom_effect_tooltip = motorized_tt
+			#custom_effect_tooltip = mechanized_tt
+			#custom_effect_tooltip = special_forces_tt
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		}
+	
+		research_cost = 0.8
+		start_year = 1939
+		folder = {
+			name = infantry_folder
+			position = { x = @SNPR y = @1939  }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 50
+				EAI_timegate_1938/7 = yes
+			}
+		}
+	}
+	### ww1 era SMG ( 1920 era)
+	SMG_team = {
+		allow = { can_research_infantry_folder = yes } 
+	
+		enable_subunits = {
+			light_infantry
+		}
+		
+		enable_equipments = {
+			SMG_equipment_0
+		}
+		
+		on_research_complete = {	
+			#custom_effect_tooltip = new_equipment_tt
+			#custom_effect_tooltip = SMG_equipment_0
+			#custom_effect_tooltip = new_equipment_tt_2
+			#custom_effect_tooltip = infantry_tt
+			#custom_effect_tooltip = garrison_tt
+			#custom_effect_tooltip = militia_tt
+			#custom_effect_tooltip = semi_motorized_tt
+			#custom_effect_tooltip = motorized_tt
+			#custom_effect_tooltip = mechanized_tt
+			#custom_effect_tooltip = special_forces_tt
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		}
+		
+		path = {
+			leads_to_tech = explosives_team
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = SMG_team1
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1937
+
+		folder = {
+			name = infantry_folder
+			position = { x = @SMG y = @1937 }
+		}
+
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1936/7 = yes
+					EAI_SMG_tech_focus = yes
+				}
+			}
+		}
+	}
+	### pre war SMG (1930 era)
+	SMG_team1 = {
+		allow = { can_research_infantry_folder = yes } 
+	
+		enable_equipments = {
+			SMG_equipment_1
+		}
+		
+		path = {
+			leads_to_tech = SMG_team2
+			research_cost_coeff = 1
+		}
+		
+		category_all_infantry = {
+			soft_attack = 0.04
+		}
+
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = infantry_folder
+			position = { x = @SMG y = @1938 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		}
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1937/7 = yes
+					OR = {
+						EAI_SMG_tech_focus = yes
+						EAI_combat_engineer_tech_focus = yes 
+					}
+				}
+			}
+		}
+	}
+	### war SMG (1940 era)
+	SMG_team2 = {
+		allow = { can_research_infantry_folder = yes } 
+	
+		enable_equipments = {
+			SMG_equipment_2
+		}
+		
+		path = {
+			leads_to_tech = assault_rifle
+			research_cost_coeff = 1
+		}
+		
+		category_all_infantry = {
+			soft_attack = 0.04
+		}
+
+		research_cost = 1.2
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x = @SMG y = @1940 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		}
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_SMG_tech_focus = yes
+				}
+			}
+		}
+	}
+	
+	explosives_team = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		combat_engineer = {
+			urban = {
+				attack = 0.1
+			}
+			fort = {
+				attack = 0.15
+			}
+			river = {
+			   defence = 0.1
+			}
+		}
+		
+		path = {
+			leads_to_tech = urban_war_equipment
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 0.8
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x = @EXPL y = @1940 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = combat_engineer_tt2
+			custom_effect_tooltip = terrain_urban_TT
+			set_temp_variable = { attack = 0.1 }
+			custom_effect_tooltip = terrain_attack_TT
+			
+			custom_effect_tooltip = terrain_forts_TT
+			set_temp_variable = { attack = 0.15 }
+			custom_effect_tooltip = terrain_attack_TT
+			
+			custom_effect_tooltip = terrain_river_TT
+			set_temp_variable = { defence = 0.1 }
+			custom_effect_tooltip = terrain_defence_TT
+			
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		}
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_combat_engineer_tech_focus = yes 
+				}
+			}
+		}
+		
+		category_all_infantry = {
+			hard_attack = 0.02
+			ap_attack = 0.01
+			breakthrough = 0.01
+		}
+	}
+	urban_war_equipment = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			urbanwar_equipment_0
+		}
+		
+		combat_engineer = {
+			need = {
+               	urbanwar_equipment = 10
+         	}
+			breakthrough = 0.01
+			urban = {
+				attack = 0.05
+				defence = 0.1
+				movement = 0.05
+			}
+			densecity = {
+				attack = 0.1
+				defence = 0.1
+				movement = 0.05
+			}
+			capital = {
+				attack = 0.1
+				defence = 0.1
+				movement = 0.05
+			}
+		}
+
+		research_cost = 0.8
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @URBAN_WF y = @1942 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = combat_engineer_tt2
+			custom_effect_tooltip = terrain_urban_TT
+			set_temp_variable = { attack = 0.05 }
+			set_temp_variable = { defence = 0.1 }
+			set_temp_variable = { movement = 0.05 }
+			custom_effect_tooltip = terrain_attack_TT
+			custom_effect_tooltip = terrain_defence_TT
+			custom_effect_tooltip = terrain_movement_TT
+			
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = urbanwar_equipment_0
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = combat_engineer_tt
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = support_tech_tt
+		}
+		
+		categories = {
+			infantry_weapons
+			support_tech
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_combat_engineer_tech_focus = yes 
+					EAI_timegate_1941/7 = yes
+				}
+			}
+		}
+	}
+####################### Infantry Equipment #################################
+	infantry_weapons1 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			infantry_equipment_1
+		}
+		
+		path = {
+			leads_to_tech = infantry_weapons2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_Garrison
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = SMG_team
+			research_cost_coeff = 1
+		}	
+		path = {
+			leads_to_tech = semi_motorised_infantry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = infantry_at
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = infantry_folder
+			position = { x = @INF y = @1936 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = infantry_equipment_lvl_1
+			clear_variable = infantry_equipment_lvl_2
+			clear_variable = infantry_equipment_lvl_3
+		}
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 500 
+				OR = {
+					num_divisions > 0
+					EAI_timegate_1937/2 = yes
+				}
+			}
+		}
+	}
+	infantry_weapons2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		category_light_infantry = {
+			soft_attack = 0.05
+		}
+		cavalry = {
+			soft_attack = 0.05
+		}
+		motorized = {
+			soft_attack = 0.05
+		}
+		mechanized = {
+			soft_attack = 0.05
+		}
+		amphibious_mechanized = {
+			soft_attack = 0.05
+		}
+		american_amph_lv = {
+			soft_attack = 0.05
+		}		
+		ss_mechanized = {
+			soft_attack = 0.05
+		}
+		semi_motorized = {
+			soft_attack = 0.05
+		}
+ 		ss_semi_motorized = {
+			soft_attack = 0.05
+		}
+		ss_motorized = {
+			soft_attack = 0.05
+		}
+		guards_infantry = {
+			soft_attack = 0.05
+		}
+		guards_cavalry = {
+			soft_attack = 0.05
+		}
+		guards_motorized = {
+			soft_attack = 0.05
+		}
+		path = {
+			leads_to_tech = improved_infantry_weapons
+			research_cost_coeff = 1
+		}		
+	
+		research_cost = 0.6
+		start_year = 1938
+		folder = {
+			name = infantry_folder
+			position = { x = @INF y = @1938 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_infantry_tech_focus = yes 
+				}
+			}
+		}
+	}
+	improved_infantry_weapons = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			infantry_equipment_2
+		}
+		
+		path = {
+			leads_to_tech = improved_infantry_weapons_2
+			research_cost_coeff = 1
+		}		
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = infantry_folder
+			position = { x = @INF y = @1939 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			clear_variable = infantry_equipment_lvl_1
+			clear_variable = infantry_equipment_lvl_2
+			clear_variable = infantry_equipment_lvl_3
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_infantry_tech_focus = yes 
+				}
+			}
+		}
+	}
+	improved_infantry_weapons_2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		category_light_infantry = {
+			soft_attack = 0.05
+		}
+		cavalry = {
+			soft_attack = 0.05
+		}
+		motorized = {
+			soft_attack = 0.05
+		}
+		mechanized = {
+			soft_attack = 0.05
+		}
+		amphibious_mechanized = {
+			soft_attack = 0.05
+		}
+		american_amph_lv = {
+			soft_attack = 0.05
+		}
+		semi_motorized = {
+			soft_attack = 0.05
+		}
+ 		ss_semi_motorized = {
+			soft_attack = 0.05
+		}
+		ss_motorized = {
+			soft_attack = 0.05
+		}
+		ss_mechanized = {
+			soft_attack = 0.05
+		}
+		guards_infantry = {
+			soft_attack = 0.05
+		}
+		guards_cavalry = {
+			soft_attack = 0.05
+		}
+		guards_motorized = {
+			soft_attack = 0.05
+		}
+		
+		path = {
+			leads_to_tech = advanced_infantry_weapons
+			research_cost_coeff = 1
+		}
+
+		research_cost = 0.7
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x = @INF y = @1940 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_infantry_tech_focus = yes 
+				}
+			}
+		}
+	}
+	############################## assault_rifle
+	assault_rifle = {
+		allow = { can_research_infantry_folder = yes } 
+	
+		enable_equipments = {
+			assault_rifle_equipment_0
+		}
+		dependencies = {
+			SMG_team2 = 1
+			improved_infantry_weapons_2 = 1
+		}
+		
+		on_research_complete = {
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		 }
+		
+		research_cost = 3.5
+		start_year = 1943
+		folder = {
+			name = infantry_folder
+			position = { x = @SMG  y = @1943 }
+		}
+
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_SMG_tech_focus = yes
+				}
+			}
+		}
+	}
+	############################## Infantry AT
+	infantry_at = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_equipments = {
+			handheld_at_equipment_0
+		}
+		
+		infantry = {
+			#hard_attack = 0.05 #They already get the bonus from the equipment
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		ss_infantry = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		light_infantry = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 6
+         	}
+		}
+		ss_light_infantry = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 6
+         	}
+		}
+		paratrooper = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		ss_paratrooper = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		gurkha = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 6
+         	}
+		}
+		mountaineers = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 6
+         	}
+		}
+		ss_mountaineers = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 6
+         	}
+		}
+		commando = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 3
+         	}
+		}
+		semi_motorized = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		ss_semi_motorized = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		motorized = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		ss_motorized = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		mechanized = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		amphibious_mechanized = {
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		american_amph_lv = {
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		ss_mechanized = {
+			#hard_attack = 0.05
+			#ap_attack = 0.01
+			need = {
+               	handheld_at_equipment = 20
+         	}
+		}
+		
+		path = {
+			leads_to_tech = infantry_at_1
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = handheld_at_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = infantry_tt
+			custom_effect_tooltip = light_infantry_tt
+			custom_effect_tooltip = semi_motorized_tt
+			custom_effect_tooltip = motorized_tt
+			custom_effect_tooltip = mechanized_tt
+			custom_effect_tooltip = special_forces_tt
+			
+			custom_effect_tooltip = add_equipment
+			custom_effect_tooltip = handheld_at_equipment
+			custom_effect_tooltip = production_line
+			hidden_effect = { country_event = { id = BI_techs.1 hours = 1 } }
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = inf_at_lvl_1
+			clear_variable = inf_at_lvl_2
+		}
+		
+		research_cost = 1
+		start_year = 1938
+		folder = {
+			name = infantry_folder
+			position = { x = @INF_AT y = @1938 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1937/7 = yes
+					#EAI_anti_tank_army_focus = yes
+				}				
+			}
+		}
+	}
+	infantry_at_1 = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		path = {
+			leads_to_tech = infantry_at_2
+			research_cost_coeff = 1
+		}
+		
+		category_all_infantry = {
+			hard_attack = 0.05
+			#ap_attack = 1.5
+		}
+		
+		research_cost = 0.7
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x = @INF_AT y = @1940 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_anti_tank_army_focus = yes 
+				}
+			}
+		}
+	}
+	infantry_at_2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			handheld_at_equipment_1
+		}
+		
+		#category_all_infantry = {
+		#	hard_attack = 0.05
+			#ap_attack = 1.5
+		#}
+		
+		path = {
+			leads_to_tech = RPG_weapons
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.2
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @INF_AT y = @1942 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = inf_at_lvl_1
+			clear_variable = inf_at_lvl_2
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_anti_tank_army_focus = yes
+					EAI_timegate_1941/7 = yes				
+				}
+			}
+		}
+	}
+	RPG_weapons = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_equipments = {
+			handheld_at_equipment_2
+			#rocket_artillery_equipment_0
+		}
+		
+		#category_all_infantry = {
+		#	hard_attack = 0.05
+		#	ap_attack = 1
+		#}  
+		
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = infantry_folder
+			position = { x = @INF_AT y = @1944 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = inf_at_lvl_1
+			clear_variable = inf_at_lvl_2
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_anti_tank_army_focus = yes 
+				}
+			}
+		}
+	}
+	advanced_infantry_weapons = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			infantry_equipment_3
+		}	
+		
+		path = {
+			leads_to_tech = advanced_infantry_weapons2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @INF y = @1942 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = infantry_equipment_lvl_1
+			clear_variable = infantry_equipment_lvl_2
+			clear_variable = infantry_equipment_lvl_3
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300
+				AND = {
+					EAI_infantry_tech_focus = yes 
+					EAI_timegate_1941/7 = yes
+				}
+			}
+		}
+	}
+	advanced_infantry_weapons2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		category_light_infantry = {
+			soft_attack = 0.05
+		}
+		cavalry = {
+			soft_attack = 0.1
+		}
+		motorized = {
+			soft_attack = 0.1
+		}
+		mechanized = {
+			soft_attack = 0.1
+		}
+		amphibious_mechanized = {	
+			soft_attack = 0.1
+		}	
+		american_amph_lv = {
+			soft_attack = 0.1
+		}		
+		semi_motorized = {
+			soft_attack = 0.1
+		}
+ 		ss_semi_motorized = {
+			soft_attack = 0.1
+		}
+		ss_motorized = {
+			soft_attack = 0.1
+		}
+		ss_mechanized = {
+			soft_attack = 0.1
+		}
+		guards_infantry = {
+			soft_attack = 0.1
+		}
+		guards_cavalry = {
+			soft_attack = 0.1
+		}
+		guards_motorized = {
+			soft_attack = 0.1
+		}		
+		research_cost = 1.2
+		start_year = 1944
+		folder = {
+			name = infantry_folder
+			position = { x = @INF y = @1944 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_infantry_tech_focus = yes 
+				}
+			}
+		}
+	}
+	### Uniforms and Helmuts
+	######################## Pre war
+	tech_infantry_uniforms = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			infantry_uniforms_1
+		}
+		
+		#category_all_infantry = {
+		#	default_morale = 0.05
+		#}
+		
+		path = {
+			leads_to_tech = tech_infantry_uniforms1
+			research_cost_coeff = 1
+		}		
+		
+		research_cost = 0.5
+
+		start_year = 1936
+		folder = {
+			name = infantry_folder
+			position = { x= @UNIFORMS y= @1918 }
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					tag = GER
+				}
+				hidden_effect = {
+					set_technology = { ss_infantry_uniforms_tech1 = 1 }
+				}
+				custom_effect_tooltip = ENABLE_SS_UNIFORM_I
+			}
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = infantry_uniform_lvl_1
+			clear_variable = infantry_uniform_lvl_2
+			clear_variable = infantry_uniform_lvl_3
+			clear_variable = infantry_uniform_lvl_4
+		}
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+############################## Early war
+	tech_infantry_uniforms1 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			infantry_uniforms_2
+		}
+		#category_all_infantry = {
+		#	default_morale = 0.1
+		#}
+		
+		path = {
+			leads_to_tech = tech_infantry_uniforms2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_infantry_uniforms_camo
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 0.5
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x= @UNIFORMS y= @1940 }
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					tag = GER
+				}
+				hidden_effect = {
+					set_technology = { ss_infantry_uniforms_tech2 = 1 }
+				}
+				custom_effect_tooltip = ENABLE_SS_UNIFORM_II
+			}
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = infantry_uniform_lvl_1
+			clear_variable = infantry_uniform_lvl_2
+			clear_variable = infantry_uniform_lvl_3
+			clear_variable = infantry_uniform_lvl_4
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_uniform_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_infantry_uniforms_camo = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		DIV_HQ = {
+			initiative = 0.01
+		}
+		special_forces_cap = 0.01
+		
+		research_cost = 0.5
+		start_year = 1943
+		folder = {
+			name = infantry_folder
+			position = { x= @UNIFORMS_CAMO y= @1943 }
+		}
+		
+		on_research_complete = {
+			
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = uniform_camo_tt
+			
+			clear_variable = infantry_uniform_lvl_1
+			clear_variable = infantry_uniform_lvl_2
+			clear_variable = infantry_uniform_lvl_3
+			clear_variable = infantry_uniform_lvl_4
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_uniform_tech_focus = yes 
+				}
+			}
+		}
+	}
+###################### Late war
+	tech_infantry_uniforms2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			infantry_uniforms_3
+		}
+		#category_all_infantry = {
+		#	default_morale = 0.2
+		#}
+		
+		#path = {
+		#	leads_to_tech = tech_infantry_uniforms3
+		#	research_cost_coeff = 1
+		#}
+		
+		research_cost = 0.5
+		start_year = 1944
+		folder = {
+			name = infantry_folder
+			position = { x = @UNIFORMS y = @1944 }
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					tag = GER
+				}
+				hidden_effect = {
+					set_technology = { ss_infantry_uniforms_tech3 = 1 }
+				}
+				custom_effect_tooltip = ENABLE_SS_UNIFORM_III
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = infantry_uniform_lvl_1
+			clear_variable = infantry_uniform_lvl_2
+			clear_variable = infantry_uniform_lvl_3
+			clear_variable = infantry_uniform_lvl_4
+
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0 
+			modifier = {
+				add = 300 
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_uniform_tech_focus = yes 
+				}
+			}
+		}
+	}
+###################### Disabled ######################
+#	tech_infantry_uniforms3 = {
+#
+#		enable_equipments = {
+#			infantry_uniforms_3
+#		}
+#		category_all_infantry = {
+#			default_morale = 0.5
+#		}
+#		research_cost = 0.5
+#		start_year = 1944
+#		folder = {
+#			name = infantry_folder
+#			position = { x = @UNIFORMS y = @1944 }
+#		}
+#		
+#		categories = {
+#			infantry_weapons
+#		}
+#		
+#		ai_will_do = {
+			factor = 0 
+			#modifier = {
+			#	add = 300 
+			#	EAI_uniform_tech_focus = yes 
+			#}
+		}
+#	}
+######################################################	
+	marines = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_subunits = {
+			marine
+		}
+		enable_equipments = {
+			amph_equipment_0
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_template_containing_unit = marine
+					}
+				}
+				hidden_effect = {
+					load_oob = "unlock_marines"
+				}			
+				custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+			}
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = marine_tech_tt
+			
+
+		}
+		
+		path = {
+			leads_to_tech = marines2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = amphibious_equipment
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1936
+		folder = {
+			name = infantry_folder
+			position = { x = @MRN y = @1936 }
+		}
+		
+		categories = {
+			marine_tech
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_marine_tech_focus = yes 
+			}
+		}
+	}
+	amphibious_equipment = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			amph_equipment_1
+		}
+		enable_subunits = {
+			amph_support
+		}
+		
+		research_cost = 1.2
+		start_year = 1938
+		folder = {
+			name = infantry_folder
+			position = { x = @MRN_EQP y = @1938 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = marine_tech_tt
+		}
+		categories = {
+			infantry_weapons
+			marine_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_marine_tech_focus = yes 
+				}
+			}
+		}
+	}
+	marines2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		marine = {
+			max_organisation = 5
+			soft_attack = 0.05
+		}
+		dependencies = {
+			amphibious_equipment = 1
+		}
+		
+		path = {
+			leads_to_tech = marines3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = amphibious_equipment2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = infantry_folder
+			position = { x = @MRN y = @1939 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = marine_tech_tt
+		}
+		categories = {
+			infantry_weapons
+			marine_tech
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_marine_tech_focus = yes 
+				}
+			}
+		}
+	}
+	amphibious_equipment2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			amph_equipment_2
+		}
+		
+		research_cost = 1.2
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @MRN_EQP y = @1942 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = marine_tech_tt
+		}
+		categories = {
+			infantry_weapons
+			marine_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_marine_tech_focus = yes 
+				}
+			}
+		}
+	}
+	marines3 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		marine = {
+			max_organisation = 5
+		}
+		
+		dependencies = {
+			amphibious_equipment2 = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1943
+		folder = {
+			name = infantry_folder
+			position = { x = @MRN y = @1943 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = marine_tech_tt
+		}
+		categories = {
+			infantry_weapons
+			marine_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_marine_tech_focus = yes 
+				}
+			}
+		}
+	}	
+	### Mountaineers
+	tech_mountaineers = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_subunits = {
+			mountaineers
+		}
+		enable_equipments = {
+			mount_equipment_0
+		}
+		
+		path = {
+			leads_to_tech = mountain_equipment
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_mountaineers2
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+			#if = {
+			#	limit = { tag = GER }
+			#	hidden_effect = {
+			#		set_technology = { ss_mountaineers_tech = 1 }
+			#	}
+			#	custom_effect_tooltip = ENABLE_SS_GEBJGR
+			#}
+			if = {
+				limit = {
+					NOT = {
+						has_template_containing_unit = mountaineers
+					}
+				}
+				hidden_effect = {
+					load_oob = "unlock_mountineers"
+				}
+				custom_effect_tooltip = UNLOCK_DIVISION_MOUNT
+			}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = mountaineers_tech_tt
+		}
+		
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = infantry_folder
+			position = { x = @MNT y = @1936 }
+		}
+		
+		categories = {
+			infantry_tech
+			mountaineers_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1936/2 = yes
+					EAI_mountaineer_tech_focus = yes 
+				}
+			}
+		}
+	}
+	mountain_equipment = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			mount_equipment_1
+		}
+		enable_subunits = {
+			mount_support
+			
+		}
+		
+		research_cost = 1.2
+		start_year = 1938
+		folder = {
+			name = infantry_folder
+			position = { x = @MNT_EQP y = @1938 }
+		}
+		
+		on_research_complete = {
+		#	if = {
+		#		limit = { tag = GER }
+		#		hidden_effect = {
+		#			set_technology = { ss_mountainsupport_tech = 1 }
+		#		}
+		#		custom_effect_tooltip = ENABLE_SS_GEBJGR_SUPPORT
+		#	}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = mountaineers_tech_tt
+		}
+		
+		categories = {
+			infantry_weapons
+			mountaineers_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_mountaineer_tech_focus = yes 
+				}
+			}
+		}
+	}
+	tech_mountaineers2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		mountaineers = {
+			max_organisation = 5
+			soft_attack = 0.05
+		}
+		ss_mountaineers = {
+			max_organisation = 5
+			soft_attack = 0.05
+		}
+		dependencies = {
+			mountain_equipment = 1
+		}
+		
+		path = {
+			leads_to_tech = tech_mountaineers3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = infantry_folder
+			position = { x = @MNT y = @1939 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = mountaineers_tech_tt
+		}
+		categories = {
+			infantry_tech
+			mountaineers_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_mountaineer_tech_focus = yes
+				}				
+			}
+		}
+	}
+	tech_mountaineers3 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		mountaineers = {
+			max_organisation = 5
+		}
+		ss_mountaineers = {
+			max_organisation = 5
+		}
+		gurkha = {
+			max_organisation = 5
+		}
+		
+		research_cost = 1.5
+		start_year = 1943
+		folder = {
+			name = infantry_folder
+			position = { x = @MNT y = @1943 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = mountaineers_tech_tt
+		}		
+		categories = {
+			infantry_tech
+			mountaineers_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_mountaineer_tech_focus = yes 
+				}
+			}
+		}
+	}
+	### Paratroopers
+	paratroopers = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_subunits = {
+			paratrooper
+		}
+		enable_equipments = {
+			para_equipment_0
+		}
+		
+		path = {
+			leads_to_tech = paratroopers2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = paratroop_equipment
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = commando_team
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1936
+		folder = {
+			name = infantry_folder
+			position = { x = @PARATR y = @1936 }
+		}
+		
+		on_research_complete = {
+			if= {
+				limit = {
+					tag = GER
+					NOT = {
+						has_template_containing_unit = paratrooper
+					}
+				}
+				hidden_effect = {
+					load_oob = "unlock_fallschirmjaeger"
+				}
+				custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+			}
+			if= {
+				limit = {
+					NOT = {
+						tag = GER
+						has_template_containing_unit = paratrooper
+					}
+				}
+				hidden_effect = {
+					load_oob = "unlock_paratrooper"
+				}
+				custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+			}
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = para_tech_tt
+		}
+		
+		categories = {
+			para_tech
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	paratroop_equipment = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			para_equipment_1
+		}
+		enable_subunits = {
+			para_support
+		}
+		
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = infantry_folder
+			position = { x = @PARATR_EQP y = @1939 }
+		}
+		
+		on_research_complete = {
+		#	limit = {
+		#		tag = GER
+		#	}
+		#	hidden_effect = {
+		#		set_technology = { ss_paratrooper_tech = 1 }
+		#	}
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = para_tech_tt
+		}
+		
+		categories = {
+			infantry_weapons
+			para_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	paratroopers2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		paratrooper = {
+			max_organisation = 5
+			soft_attack = 0.05
+		}
+		ss_paratrooper = {
+			max_organisation = 5
+			soft_attack = 0.05
+		}
+		guards_paratrooper = {
+			max_organisation = 5
+			soft_attack = 0.05
+		}		
+		dependencies = {
+			paratroop_equipment = 1
+		}		
+		path = {
+			leads_to_tech = paratroopers3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = para_supply_tech
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x = @PARATR y = @1940 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = para_tech_tt
+		}
+		categories = {
+			infantry_weapons
+			para_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	para_supply_tech = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		extra_paratrooper_supply_grace = 24
+		paratrooper = {
+			
+		}
+		ss_paratrooper = {
+			
+		}
+		guards_paratrooper = {
+			
+		}		
+		dependencies = {
+			radio = 1
+		}
+
+		research_cost = 1.0
+		start_year = 1941
+		folder = {
+			name = infantry_folder
+			position = { x = @PARATR_SUPPLY y = @1941 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = para_tech_tt
+		}
+		categories = {
+			infantry_weapons
+			para_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	paratroopers3 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		paratrooper = {
+			max_organisation = 5
+		}
+		ss_paratrooper = {
+			max_organisation = 5
+		}
+		guards_paratrooper = {
+			max_organisation = 5
+		}		
+		enable_subunits = {
+			airborne_artillery_brigade			
+		}
+		
+		#on_research_complete = {
+		#	limit = {
+		#		tag = GER
+		#	}
+		#	hidden_effect = {
+		#		set_technology = { ss_artillery_airborne_tech = 1 }
+		#	}
+		#	custom_effect_tooltip = ENABLE_SS_AIRNORNE_ART
+		#}
+		
+		research_cost = 1.5
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @PARATR y = @1943 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = para_tech_tt
+		}
+		categories = {
+			infantry_weapons
+			para_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	commando_team = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_subunits = {
+			commando
+		}
+		
+		dependencies = {
+			paratroopers = 1
+			tech_mountaineers = 1
+			marines = 1
+		}
+
+		path = {
+			leads_to_tech = jungle_equipment
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.5
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x = @COMM y = @1940 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = para_tech_tt
+		}
+		categories = {
+			infantry_weapons
+			para_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	jungle_equipment = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_equipments = {
+			jungle_equipment_0
+		}
+		
+		enable_subunits = {
+			jungle_support
+		}
+		research_cost = 1.2
+		start_year = 1941
+		folder = {
+			name = infantry_folder
+			position = { x = @COMM y = @1941 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = support_tech_tt
+		}
+		
+		categories = {
+			infantry_weapons
+			support_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	############ JUNGLE WARFARE ###########
+	jungle_warfare = {
+
+		research_cost = 1
+		# only from focus!!! #####
+		allow = {
+			always = no
+		}
+		#If you change these
+		#Change the custom tooltip too: RAJ_jungle_training_effect
+		marine = {
+			jungle = {
+				attack = 0.05 
+				movement = 0.1
+			}
+		}
+		gurkha  = {
+			jungle = {
+				attack = 0.05
+				movement = 0.1
+			}
+		}
+		mountaineers = {
+			jungle = {
+				attack = 0.05
+				movement = 0.1
+			}
+		}
+		paratrooper = {
+			jungle = {
+				attack = 0.05
+				movement = 0.1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	############ NIGHT VISION ###########
+	night_vision = {
+		allow = { can_research_infantry_folder = yes } 
+
+		land_night_attack = 0.1
+		
+		path = {
+			leads_to_tech = night_vision2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.8
+		start_year = 1943
+		folder = {
+			name = infantry_folder
+			position = { x = @EXPL y = @1943 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = night_vision_tt
+		}		
+		categories = {
+			night_vision
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1942/7 = yes
+					EAI_infantry_tech_focus = yes 
+				}
+			}
+		}
+	}
+	night_vision2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		land_night_attack = 0.15	
+
+		research_cost = 1.5
+		start_year = 1946
+		folder = {
+			name = infantry_folder
+			position = { x = @EXPL y = @1946 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = night_vision_tt
+		}		
+		categories = {
+			night_vision
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1945/7 = yes
+					EAI_infantry_tech_focus = yes 
+				}
+			}
+		}
+	}
+	### Heavy Machinegun
+	hmg = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_equipments = {
+			HMG_equipment_0
+		}
+	
+		infantry = {
+			#defense = 0.02 #They already get the bonus from the equipment
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 12
+         	}
+		}
+		light_infantry = {
+			need = {
+               	HMG_equipment = 6
+         	}
+		}
+		ss_light_infantry = {
+			need = {
+               	HMG_equipment = 6
+         	}
+		}
+		ss_infantry = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 12
+			}
+		}
+		garrison = {
+			#defense = 0.03
+			need = {
+               	HMG_equipment = 12
+         	}
+		}
+		ss_garrison = {
+			#defense = 0.03
+			need = {
+               	HMG_equipment = 12
+         	}
+		}
+		cavalry = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 6
+         	}
+		}	
+		gurkha = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 8
+         	}
+		}	
+		mountaineers = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 8
+         	}
+		}
+		ss_mountaineers = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 8
+         	}
+		}
+		marine = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 8
+         	}
+		}
+		motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 12
+         	}
+		}
+		mechanized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 12
+			}
+		}
+		amphibious_mechanized = {	
+			need = {
+               	HMG_equipment = 12
+			}
+		}
+		american_amph_lv = {
+			need = {
+               	HMG_equipment = 12
+			}
+		}	
+		semi_motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+				HMG_equipment = 12
+         	}
+		}
+ 		ss_semi_motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 12
+         	}
+		}
+		ss_motorized = {
+			#defense = 0.05
+			#breakthrough = 0.025
+			need = {
+               	HMG_equipment = 12
+         	}
+		}
+		ss_mechanized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 12
+         	}
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = HMG_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = infantry_tt
+			custom_effect_tooltip = light_infantry_tt
+			custom_effect_tooltip = garrison_tt
+			custom_effect_tooltip = cavalry_tt
+			custom_effect_tooltip = semi_motorized_tt
+			custom_effect_tooltip = motorized_tt
+			custom_effect_tooltip = mechanized_tt
+			custom_effect_tooltip = special_forces_tt
+			
+			custom_effect_tooltip = add_equipment
+			custom_effect_tooltip = HMG_equipment
+			custom_effect_tooltip = production_line
+			hidden_effect = { country_event = { id = BI_techs.2 hours = 1 } }
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = hmg_equipment_lvl_1
+			clear_variable = hmg_equipment_lvl_2
+
+		}
+		
+		path = {
+			leads_to_tech = hmg_2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1918
+		folder = {
+			name = infantry_folder
+			position = { x = @HMG y = @1918 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+	hmg_2 = {
+		allow = { can_research_infantry_folder = yes } 
+	
+		enable_equipments = { 
+			HMG_equipment_1
+		}
+		
+		infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		garrison = {
+			defense = 0.03
+		}
+		ss_garrison = {
+			defense = 0.03
+		}
+		cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		gurkha = {
+			defense = 0.02
+			breakthrough = 0.01
+		}		
+		mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		marine = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		amphibious_mechanized = {	
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		american_amph_lv = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+ 		ss_semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}		
+		path = {
+			leads_to_tech = hmg_3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1938
+		folder = {
+			name = infantry_folder
+			position = { x = @HMG y = @1938 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = hmg_equipment_lvl_1
+			clear_variable = hmg_equipment_lvl_2
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_HMG_tech_focus = yes 
+				}
+			}
+		}
+	}
+	hmg_3 = {
+		allow = { can_research_infantry_folder = yes } 
+	
+		enable_equipments = { 
+			HMG_equipment_2
+		}
+		
+		infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		garrison = {
+			defense = 0.03
+		}
+		ss_garrison = {
+			defense = 0.03
+		}
+		cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		gurkha = {
+			defense = 0.02
+			breakthrough = 0.01
+		}		
+		mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		marine = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		amphibious_mechanized = {	
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		american_amph_lv = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+ 		ss_semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					tag = GER 
+				}
+				hidden_effect = { add_ideas = GER_mg_42 }
+				show_ideas_tooltip = GER_mg_42
+			}
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = hmg_equipment_lvl_1
+			clear_variable = hmg_equipment_lvl_2
+		}
+		
+		path = {
+			leads_to_tech = hmg_4
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.2
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x = @HMG y = @1940 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_HMG_tech_focus = yes 
+				}
+			}
+		}
+	}
+	hmg_4 = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_equipments = { 
+			HMG_equipment_3
+		}
+		infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		garrison = {
+			defense = 0.04
+		}
+		ss_garrison = {
+			defense = 0.04
+		}
+		cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		gurkha = {
+			defense = 0.02
+			breakthrough = 0.01
+		}		
+		mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}	
+		paratrooper = {
+			#defense = 0.02 #They already get the bonus from the equipment
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 10
+        	}
+		}
+		ss_paratrooper = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	HMG_equipment = 10
+        	}
+		}
+		marine = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		amphibious_mechanized = {	
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		american_amph_lv = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+ 		ss_semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = HMG_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = paratrooper_tt
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = hmg_equipment_lvl_1
+			clear_variable = hmg_equipment_lvl_2
+		}
+		
+		research_cost = 1.2
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @HMG y = @1942 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_HMG_tech_focus = yes 
+				}
+			}
+		}
+	}
+	### Mortars
+	mortars = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_equipments = { 
+			mortar_equipment_0
+		}
+	
+		infantry = {
+			#defense = 0.02 #They already get the bonus from the equipment
+			#breakthrough = 0.01
+			need = {
+				mortar_equipment = 10
+         	}
+		}
+		light_infantry = {
+			need = {
+				mortar_equipment = 5
+         	}
+		}
+		ss_light_infantry = {
+			need = {
+				mortar_equipment = 5
+         	}
+		}
+		ss_infantry = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 10
+         	}
+		}
+		cavalry = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 5
+         	}
+		}
+		gurkha = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 7
+         	}
+		}		
+		mountaineers = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 7
+         	}
+		}
+		ss_mountaineers = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 10
+         	}
+		}
+		marine = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 7
+         	}
+		}
+		motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 10
+         	}
+		}
+		mechanized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 10
+         	}
+		}
+		amphibious_mechanized = {	
+			need = {
+               	mortar_equipment = 10
+         	}
+		}
+		american_amph_lv = {
+			need = {
+               	mortar_equipment = 10
+         	}
+		}
+		semi_motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 10
+         	}
+		}
+ 		ss_semi_motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 10
+         	}
+		}
+		ss_motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 10
+         	}
+		}
+		ss_mechanized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 10
+         	}
+		}
+		guards_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}			
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = mortar_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = infantry_tt
+			custom_effect_tooltip = light_infantry_tt
+			custom_effect_tooltip = cavalry_tt
+			custom_effect_tooltip = semi_motorized_tt
+			custom_effect_tooltip = motorized_tt
+			custom_effect_tooltip = mechanized_tt
+			custom_effect_tooltip = special_forces_tt
+			
+			custom_effect_tooltip = add_equipment
+			custom_effect_tooltip = mortar_equipment
+			custom_effect_tooltip = production_line
+			hidden_effect = { country_event = { id = BI_techs.3 hours = 1 } }
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = mortar_equipment_lvl_1
+			clear_variable = mortar_equipment_lvl_2
+		}
+		
+		path = {
+			leads_to_tech = mortars_2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1918
+		folder = {
+			name = infantry_folder
+			position = { x = @MORTARS y = @1918 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = ai_factor
+				EAI_prioritize_defensive_buildup = yes 
+				set_temp_variable = { ai_factor = field_strength }
+			}
+		}
+	}
+	mortars_2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = { 
+			mortar_equipment_1
+		}
+		
+		infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		gurkha = {
+			defense = 0.02
+			breakthrough = 0.01
+		}		
+		mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		marine = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		amphibious_mechanized = {	
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		american_amph_lv = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+ 		ss_semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}	
+		paratrooper = {
+			#defense = 0.02 #They already get the bonus from the equipment
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 10
+        	}
+		}
+		ss_paratrooper = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mortar_equipment = 10
+        	}
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = mortar_equipment
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = paratrooper_tt
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = mortar_equipment_lvl_1
+			clear_variable = mortar_equipment_lvl_2
+		}
+		
+		path = {
+			leads_to_tech = mortars_3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.2
+		start_year = 1938
+		folder = {
+			name = infantry_folder
+			position = { x = @MORTARS y = @1938 }
+		}
+		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_mortar_tech_focus = yes 
+				}
+			}
+		}
+	}
+	mortars_3 = {
+		allow = { can_research_infantry_folder = yes } 
+	
+		enable_equipments = { 
+			mortar_equipment_2
+		}
+		infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		gurkha = {
+			defense = 0.02
+			breakthrough = 0.01
+		}			
+		mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		marine = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		amphibious_mechanized = {	
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		american_amph_lv = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+ 		ss_semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		paratrooper = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_paratrooper = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_paratrooper = {
+			defense = 0.02
+			breakthrough = 0.01
+		}		
+		path = {
+			leads_to_tech = mortars_4
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.2
+		start_year = 1940
+		folder = {
+			name = infantry_folder
+			position = { x = @MORTARS y = @1940 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = mortar_equipment_lvl_1
+			clear_variable = mortar_equipment_lvl_2
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1939/7 = yes
+					EAI_mortar_tech_focus = yes 
+				}
+			}
+		}
+	}
+	mortars_4 = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_equipments = { 
+			mortar_equipment_3
+		}
+		infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+			
+		}
+		ss_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		gurkha = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mountaineers = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		paratrooper = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_paratrooper = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		marine = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		amphibious_mechanized = {	
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		american_amph_lv = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+ 		ss_semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_mechanized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_cavalry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_paratrooper = {
+			defense = 0.02
+			breakthrough = 0.01
+		}		
+		research_cost = 1.2
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @MORTARS y = @1942 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			
+			clear_variable = mortar_equipment_lvl_1
+			clear_variable = mortar_equipment_lvl_2
+		}		
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_mortar_tech_focus = yes
+					EAI_timegate_1941/7 = yes
+				}				
+			}
+		}
+	}
+	### Mot Cav
+	motorised_cavalry = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		cavalry = {
+			maximum_speed = 0.09
+			need = {
+				motorized_equipment = 80
+				horse_equipment = -90
+         	}
+		}
+		
+		research_cost = 1.2
+		start_year = 1940
+		#folder = {
+		#	name = infantry_folder
+		#	position = { x = @SUBMECH y = @1938 }
+		#}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = motorized_equipment_tt
+		}		
+		categories = {
+			motorized_equipment
+			infantry_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	### S-Mot Infantry
+	semi_motorised_infantry = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		enable_subunits = {
+			semi_motorized
+		}
+		enable_equipments = {
+			motorized_equipment_1
+		}
+		
+		path = {
+			leads_to_tech = motorised_infantry
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1.2
+		start_year = 1936
+		folder = {
+			name = infantry_folder
+			position = { x = @MOT_MECH y = @1936 }
+		}
+		
+		#on_research_complete = {
+		#	limit = {
+		#		tag = GER
+		#	}
+		#	hidden_effect = {
+		#		set_technology = { ss_semi_motorized_tech = 1 }
+		#	}
+		#	custom_effect_tooltip = ENABLE_SS_SMOT_INF
+		#}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = motorized_equipment_tt
+		}	
+		categories = {
+			motorized_equipment
+			infantry_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_motorized_tech_focus = yes 
+			}
+		}
+	}
+	### Mot Infantry
+	motorised_infantry = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_subunits = {
+			motorized
+		}
+		enable_equipments = {
+			motorized_equipment_2
+		}
+		
+		path = {
+			leads_to_tech = mechanised_infantry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = transportation_improvements
+			research_cost_coeff = 1
+		}
+		
+		dependencies = {
+			semi_motorised_infantry = 1
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					NOT = {
+						has_template_containing_unit = motorized
+					}
+				}
+				hidden_effect = {
+					load_oob = "unlock_motorized"
+					
+				}			
+				custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+			}
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_weapons_tt
+			custom_effect_tooltip = motorized_equipment_tt	
+			#if = {
+			#	limit = {
+			#		tag = GER
+			#	}
+			#	hidden_effect = {
+			#		set_technology = { ss_motorized_tech = 1 }
+			#	}
+			#	custom_effect_tooltip = ENABLE_SS_MOT_INF
+			#}
+		}
+		
+		research_cost = 1.5
+		start_year = 1938
+		folder = {
+			name = infantry_folder
+			position = { x = @MOT_MECH y = @1938 }
+		}
+		folder = {
+			name = support_folder
+			position = { x = 18 y = 0 }
+		}
+		
+		sub_technologies = {
+			subtech_motorized_rocket_unit
+		}
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1937/7 = yes
+					EAI_motorized_tech_focus = yes 
+				}
+			}
+		}
+	}
+	transportation_improvements = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		research_cost = 1.25
+		start_year = 1939
+		folder = {
+			name = infantry_folder
+			position = { x = @ARC_EQP y = @1939 }
+		}
+		on_research_complete = {
+			add_ideas = {
+				truck_tech_idea
+			}
+		}
+		motorized = {
+			#no_supply_grace = 0.05
+		}
+
+		semi_motorized = {
+			#no_supply_grace = 0.05
+		}
+ 		ss_semi_motorized = {
+			#no_supply_grace = 0.05
+		}
+		ss_motorized = {
+			#no_supply_grace = 0.05
+		}		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 300
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_motorized_tech_focus = yes 
+				}
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = industry_tt
+			custom_effect_tooltip = motorized_equipment_tt
+		}			
+		categories = {
+			industry
+			motorized_equipment
+		}
+	}
+	### subtech mot-inf
+	subtech_motorized_rocket_unit = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_subunits = {
+			motorized_rocket_brigade
+		}
+		enable_equipments = {
+			motorized_rocket_equipment_1
+		}
+		
+		#on_research_complete = {
+		#	limit = {
+		#		tag = GER
+		#	}
+		#	hidden_effect = {
+		#		set_technology = { ss_mot_rocketartillery_tech = 1 }
+		#	}
+		#	custom_effect_tooltip = ENABLE_SS_MOT_RCT_ART
+		#}
+		
+		research_cost = 1.5
+		start_year = 1941
+		
+		ai_will_do = {
+			factor = 0
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = mot_rockets_tt
+			custom_effect_tooltip = motorized_equipment_tt
+		}		
+		categories = {
+			mot_rockets
+			motorized_equipment
+		}
+	}
+	### mechanized Infantry
+	mechanised_infantry = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			mechanized_equipment_1
+		}
+		enable_subunits = {
+			mechanized
+		}
+		
+		#on_research_complete = {
+		#	if = {
+		#		limit = {
+		#			tag = GER
+		#		}
+		#		hidden_effect = {
+		#			set_technology = { ss_mechinfantry_tech = 1 }
+		#		}
+		#	}
+		#	custom_effect_tooltip = ENABLE_SS_MECH_INF
+		#}
+		
+		path = {
+			leads_to_tech = mechanised_infantry2
+			research_cost_coeff = 1
+		}
+		
+		path = {
+			leads_to_tech = desert_equipment
+			research_cost_coeff = 0.75
+		}
+		
+		path = {
+			leads_to_tech = arctic_equipment
+			research_cost_coeff = 0.75
+		}
+
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = infantry_folder
+			position = { x = @MOT_MECH y = @1939 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+			custom_effect_tooltip = cat_mechanized_equipment_tt
+		}		
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_mechanized_tech_focus = yes 
+				}
+			}
+		}
+	}
+	mechanised_infantry2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			mechanized_equipment_2
+		}
+		
+		path = {
+			leads_to_tech = mechanised_infantry3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = mechanized_hmg_tech
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = mechanized_mortar_tech
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = mechanized_at_tech
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = mechanized_aa_tech
+			research_cost_coeff = 1
+		}		
+		
+		research_cost = 1.8
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @MOT_MECH y = @1942 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+			custom_effect_tooltip = cat_mechanized_equipment_tt
+		}		
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_mechanized_tech_focus = yes 
+					EAI_timegate_1941/7 = yes
+				}
+			}
+		}
+	}
+	mechanised_infantry3 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			mechanized_equipment_3
+		}
+
+		#mechanized = {
+		#	soft_attack = 0.1
+		#	hard_attack = 0.1
+		#}
+		#ss_mechanized = {
+		#	soft_attack = 0.1
+		#	hard_attack = 0.1
+		#}
+
+		research_cost = 2.4
+		start_year = 1944
+		folder = {
+			name = infantry_folder
+			position = { x = @MOT_MECH y = @1944 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+			custom_effect_tooltip = cat_mechanized_equipment_tt
+		}		
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1943/7 = yes
+					EAI_mechanized_tech_focus = yes 
+				}
+			}
+		}
+	}
+	amphibious_mechanized_infantry = {
+		allow = { can_research_infantry_folder = yes } 
+		
+		allow_branch = {
+			has_dlc = "Man the Guns"
+		}
+		dependencies = {
+			marines2 = 1
+			mechanised_infantry = 1
+		}
+		
+		enable_equipments = {
+			amphibious_mechanized_equipment_1
+		}
+		enable_subunits = {
+			amphibious_mechanized
+		}
+		
+		path = {
+			leads_to_tech = amphibious_mechanized_infantry_2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = infantry_folder
+			position = { x = @LWS y = @1941_1 }
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+			custom_effect_tooltip = cat_mechanized_equipment_tt
+		}
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	amphibious_mechanized_infantry_2 = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			amphibious_mechanized_equipment_2
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = infantry_folder
+			position = { x = @LWS y = @1944 }
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+			custom_effect_tooltip = cat_mechanized_equipment_tt
+		}		
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### Mechanized HMG, Mortar, AT and AA equipment
+	mechanized_hmg_tech = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			mechanized_hmg_0
+		}
+
+		mechanized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mechanized_hmg = 10
+         	}
+		}
+		amphibious_mechanized = {
+			need = {
+               	mechanized_hmg = 10
+         	}
+		}
+		american_amph_lv = {
+			need = {
+               	mechanized_hmg = 10
+         	}
+		}
+		ss_mechanized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               mechanized_hmg = 10
+         	}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = mechanized_hmg
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = mechanized_tt
+
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+			custom_effect_tooltip = cat_mechanized_equipment_tt
+		}
+
+		research_cost = 1.2
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @SUBMECH y = @1941_1  }
+		}
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_mechanized_tech_focus = yes 
+				}
+			}
+		}
+	}
+	mechanized_mortar_tech = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			mechanized_mortar_0
+		}
+
+		mechanized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	mechanized_mortar = 10
+         	}
+		}
+		amphibious_mechanized = {	
+			need = {
+               	mechanized_mortar = 10
+         	}
+		}
+		american_amph_lv = {
+			need = {
+               	mechanized_mortar = 10
+         	}
+		}
+		ss_mechanized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               mechanized_mortar = 10
+         	}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = mechanized_mortar
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = mechanized_tt
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+			custom_effect_tooltip = cat_mechanized_equipment_tt
+		}
+
+		research_cost = 1.2
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @SUBMECH y = @1941_3 }
+		}
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_mechanized_tech_focus = yes 
+				}
+			}
+		}
+	}
+	mechanized_at_tech = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			mechanized_at_0
+		}
+
+		mechanized = {
+			#soft_attack = 0.02	#10 equipment value
+			#hard_attack = 0.02 	#8	equipment value
+			#ap_attack = 0.01	#26	equipment value
+			need = {
+               	mechanized_at = 5
+         	}
+		}
+		amphibious_mechanized = {	
+			need = {
+               	mechanized_at = 5
+         	}
+		}
+		american_amph_lv = {
+			need = {
+               	mechanized_at = 5
+         	}
+		}
+		ss_mechanized = {
+			#soft_attack = 0.02 	#10	equipment value
+			#hard_attack = 0.02	#8	equipment value
+			#ap_attack = 0.01		#26	equipment value
+			need = {
+               mechanized_at = 5
+         	}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = mechanized_at
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = mechanized_tt
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+			custom_effect_tooltip = cat_mechanized_equipment_tt
+		}
+		
+		research_cost = 1.2
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @SUBMECH y = @1942_1 }
+		}
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_mechanized_tech_focus = yes 
+				}
+			}
+		}
+	}
+	mechanized_aa_tech = {
+		allow = { can_research_infantry_folder = yes } 
+
+		enable_equipments = {
+			mechanized_aa_0
+		}
+		
+		mechanized = {
+			#air_attack = 0.02
+			need = {
+               	mechanized_aa = 5
+         	}
+		}
+		amphibious_mechanized = {	
+			need = {
+               	mechanized_aa = 5
+         	}
+		}
+		american_amph_lv = {
+			need = {
+               	mechanized_aa = 5
+         	}
+		}
+		ss_mechanized = {
+			#air_attack = 0.02
+			need = {
+               mechanized_aa = 5
+         	}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = mechanized_aa
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = mechanized_tt
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+			custom_effect_tooltip = motorized_equipment_tt
+			custom_effect_tooltip = cat_mechanized_equipment_tt
+		}
+
+		research_cost = 1.2
+		start_year = 1942
+		folder = {
+			name = infantry_folder
+			position = { x = @SUBMECH y = @1942_2 }
+		}
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1941/7 = yes
+					EAI_mechanized_tech_focus = yes
+				}
+			}
+		}
+	}
+############################## Infantry guns ##############################
+	infantry_guns = {
+		allow = { can_research_infantry_folder = yes } 
+	
+		enable_equipments = {
+			infantrygun_equipment_0
+		}
+		
+		path = {
+			leads_to_tech = infantry_guns1
+			research_cost_coeff = 1
+		}
+	
+		infantry = {
+			#defense = 0.02 #They already get the bonus from the equipment
+			#breakthrough = 0.01
+			need = {
+               	infantrygun_equipment = 6
+         	}
+		}
+		ss_infantry = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	infantrygun_equipment = 6
+         	}
+		}
+		semi_motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	infantrygun_equipment = 6
+         	}
+		}
+		ss_semi_motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	infantrygun_equipment = 6
+         	}
+		}
+		motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	infantrygun_equipment = 6
+         	}
+		}
+		ss_motorized = {
+			#defense = 0.02
+			#breakthrough = 0.01
+			need = {
+               	infantrygun_equipment = 6
+         	}
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = new_equipment_tt
+			custom_effect_tooltip = infantrygun_equipment_0
+			custom_effect_tooltip = new_equipment_tt_2
+			custom_effect_tooltip = infantry_tt
+			custom_effect_tooltip = semi_motorized_tt
+			custom_effect_tooltip = motorized_tt
+			custom_effect_tooltip = mechanized_tt
+			
+			custom_effect_tooltip = add_equipment
+			custom_effect_tooltip = infantrygun_equipment_0
+			custom_effect_tooltip = production_line
+			hidden_effect = { country_event = { id = BI_techs.4 hours = 1 } }
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+		}
+		
+		research_cost = 1
+		start_year = 1918
+		folder = {
+			name = infantry_folder
+			position = { x = @INF_GUNS y = @1918 }
+		}
+
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				EAI_infgun_tech_focus = yes 
+			}
+			modifier = {
+				factor = ai_factor
+				EAI_prioritize_defensive_buildup = yes 
+				set_temp_variable = { ai_factor = field_strength }
+			}
+		}
+	}
+	infantry_guns1 = {
+		allow = { can_research_infantry_folder = yes } 
+	
+		enable_equipments = {
+			infantrygun_equipment_1
+		}
+		
+		infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_semi_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		ss_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_infantry = {
+			defense = 0.02
+			breakthrough = 0.01
+		}
+		guards_motorized = {
+			defense = 0.02
+			breakthrough = 0.01
+		}	
+		research_cost = 1.2
+		start_year = 1939
+		folder = {
+			name = infantry_folder
+			position = { x = @INF_GUNS y = @1939 }
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = tech_category_tt
+			custom_effect_tooltip = infantry_tech_tt
+		}
+		categories = {
+			infantry_weapons
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 300
+				AND = {
+					EAI_timegate_1938/7 = yes
+					EAI_infgun_tech_focus = yes
+				}					
+			}
+		}
+	}
+	##tibetan blood 
+	TIB_mountainous_people_tech = {
+	##add idea to make it visible??
+		research_cost = 1
+
+		# only from starting techs!!! #####
+		allow = {
+			always = no
+		}
+
+		#If you change these
+		#Change the custom tooltip too: TIB_montainous_people_effect
+		infantry = {
+			mountain = {
+				attack = 0.02
+				movement = 0.10
+			}
+		}
+	}
+}
+#EOF#

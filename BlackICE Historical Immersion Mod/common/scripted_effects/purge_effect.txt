@@ -1,0 +1,159 @@
+
+
+
+
+@PURGE_ARMY_AT_WAR_FACTOR = 2.0
+@PURGE_ARMY_AT_PEACE_FACTOR = 1.0
+
+@PURGE_AIR_AT_WAR_FACTOR = 2.0
+@PURGE_AIR_AT_PEACE_FACTOR = 1.0
+
+@PURGE_NAVY_AT_WAR_FACTOR = 2.0
+@PURGE_NAVY_AT_PEACE_FACTOR = 1.0
+
+@PURGE_BALANCE_MULT = 0.01 #general balance of purge reductions, also includes max and min
+
+@PURGE_MAX_REDUCTION = 100 #max reduction
+@PURGE_MIN_REDUCTION = 10 #min redcution
+
+@PURGE_TROOPS_MULTIPLIER = 0.1 #multiplies battalions
+@PURGE_SURRENDER_PROGRESS_MULTIPLIER = 2.0 #multiplies surrender progress
+
+@PURGE_RESERVE_VALUE = -5.0 
+@PURGE_STANDING_VALUE = -2.0
+@PURGE_LIMITED_VALUE = 2.0
+@PURGE_GENERAL_VALUE = 5.0
+
+@PURGE_ARMY_MAX_DROPOFF = 0.5 #when you only concentrate on 1 branch too long the max reduction gets reduced up to this amount
+@PURGE_ARMY_DROPOFF_MAX_DAYS = 90 #
+@PURGE_ARMY_DROPOFF_RECOVERY_PEACE_FACTOR = 2.0
+@PURGE_ARMY_DROPOFF_RECOVERY_WAR_FACTOR = 4.0
+
+purge_army_on_action = {
+	set_temp_variable = { daily_dropoff_gain = @PURGE_ARMY_MAX_DROPOFF }
+	divide_temp_variable = { daily_dropoff_gain = @PURGE_ARMY_DROPOFF_MAX_DAYS }
+	
+	add_to_variable = { army_dropoff_factor = daily_dropoff_gain }
+	
+	if = {
+		limit = {
+			check_variable = { army_dropoff_factor > @PURGE_ARMY_MAX_DROPOFF }
+		}
+		set_variable = { army_dropoff_factor = @PURGE_ARMY_MAX_DROPOFF }
+	} 
+}
+
+purge_army_dropoff_recovery = {
+	set_temp_variable = { army_dropoff_recovery = 1 }
+	set_temp_variable = { daily_dropoff_gain = @PURGE_ARMY_MAX_DROPOFF }
+	divide_temp_variable = { daily_dropoff_gain = @PURGE_ARMY_DROPOFF_MAX_DAYS }
+	if = {
+		limit = {
+			has_war = no 
+		}
+		multiply_temp_variable = { army_dropoff_recovery = @PURGE_ARMY_DROPOFF_RECOVERY_PEACE_FACTOR }
+		multiply_temp_variable = { daily_dropoff_gain = @PURGE_ARMY_DROPOFF_RECOVERY_PEACE_FACTOR }
+	}
+	if = {
+		limit = {
+			has_war = yes 
+		}
+		multiply_temp_variable = { army_dropoff_recovery = @PURGE_ARMY_DROPOFF_RECOVERY_WAR_FACTOR }
+		multiply_temp_variable = { daily_dropoff_gain = @PURGE_ARMY_DROPOFF_RECOVERY_WAR_FACTOR }
+	}
+	subtract_from_variable = { army_rebuild_days = army_dropoff_recovery }
+	set_temp_variable = { army_dropoff_factor = army_rebuild_days }
+	divide_temp_variable = { army_dropoff_factor = daily_dropoff_gain }
+
+}
+PURGE_army_rebuild_effect = {
+	set_temp_variable = { army_purge_reduction = 0 }
+	
+	set_temp_variable = { army_rebuild_troops_factor = num_battalions }
+	multiply_temp_variable = { army_rebuild_troops_factor = @PURGE_TROOPS_MULTIPLIER }
+	add_to_temp_variable = { army_purge_reduction = army_rebuild_troops_factor }
+	
+	set_temp_variable = { army_rebuild_surrender_progress_factor = modifier@surrender_progress }
+	multiply_temp_variable = { army_rebuild_surrender_progress_factor = @PURGE_SURRENDER_PROGRESS_MULTIPLIER }
+	add_to_temp_variable = { army_purge_reduction = army_rebuild_surrender_progress_factor }
+	
+	if = {
+		limit = {
+			has_idea = mob_reserve
+		}
+		set_temp_variable = { army_rebuild_mobilization_factor = @PURGE_RESERVE_VALUE }
+		add_to_temp_variable = { army_purge_reduction = @PURGE_RESERVE_VALUE }
+	}
+	else_if = {
+		limit = {
+			has_idea = mob_standing
+		}
+		set_temp_variable = { army_rebuild_mobilization_factor = @PURGE_STANDING_VALUE }
+		add_to_temp_variable = { army_purge_reduction = army_rebuild_mobilization_factor }
+	}
+	else_if = {
+		limit = {
+			has_idea = mob_limited
+		}
+		set_temp_variable = { army_rebuild_mobilization_factor = @PURGE_LIMITED_VALUE }
+		add_to_temp_variable = { army_purge_reduction = army_rebuild_mobilization_factor }
+	}
+	else_if = {
+		limit = {
+			has_idea = mob_general
+		}
+		set_temp_variable = { army_rebuild_mobilization_factor = @PURGE_GENERAL_VALUE }
+		add_to_temp_variable = { army_purge_reduction = army_rebuild_mobilization_factor }
+	}
+
+	if = {	
+		limit = {
+			has_war = yes
+		}
+		set_temp_variable = { army_rebuild_war_peace_factor = @PURGE_ARMY_AT_WAR_FACTOR }
+		multiply_temp_variable = { army_purge_reduction = army_rebuild_war_peace_factor }
+	}
+	else_if = {	
+		limit = {
+			has_war = no
+		}
+		set_temp_variable = { army_rebuild_war_peace_factor = @PURGE_ARMY_AT_PEACE_FACTOR }
+		multiply_temp_variable = { army_purge_reduction = army_rebuild_war_peace_factor }
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

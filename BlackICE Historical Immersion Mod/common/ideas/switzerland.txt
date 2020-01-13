@@ -1,0 +1,493 @@
+ideas = {
+	country = {
+		SWI_neutral = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				not = {
+					has_government = fascism
+					has_government = communism
+					has_government = monarchism
+				}
+			}
+			
+			cancel = {
+				has_war = yes
+			}
+			
+			removal_cost = -1
+
+			picture = ROM_king_carol_ii_handled
+
+			modifier = {
+				monarchism_drift = -0.05 ## the swiss have never had or wanted a king
+				join_faction_tension = 1.00
+				send_volunteers_tension = 0.30
+				guarantee_tension = 1.0
+				trade_opinion_factor = 0.25
+				enemy_justify_war_goal_time = 1.0 
+				ai_badass_factor = 0.01    # Will receive 1% of the threat from others
+				ai_get_ally_desire_factor = -100
+				ai_focus_aggressive_factor = -0.5 
+				opposition_party_drift = 0.04				
+			}
+		}
+		SWI_air_payment = {
+			
+			picture = generic_fighter_production_diverted
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.03
+			}
+		}
+		SWI_fighter_production_diverted = {
+			
+			picture = generic_fighter_production_diverted
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+			}
+
+			equipment_bonus = {
+				fighter_equipment = {
+					build_cost_ic = 0.05
+					instant = yes
+				}
+			}
+		}
+		SWI_bomber_production_diverted = {
+			
+			picture = generic_bomber_production_diverted
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+			}
+
+			equipment_bonus = {
+				tac_bomber_equipment = {
+					build_cost_ic = 0.05
+					instant = yes
+				}
+			}
+		}
+	}
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+		SWI_albert_meyer = {
+			picture = generic_political_advisor_europe_3
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { 
+				liberal
+				effective_leader
+head_of_state_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Foreign Ministers
+	foreign_minister = {
+		SWI_ernst_wetter = {
+			picture = generic_political_advisor_europe_3
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { 
+				communist
+				backroom_backstabber
+foreign_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		SWI_johannes_baumann = {
+			picture = generic_political_advisor_europe_2
+
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { 
+				liberal
+				compassionate_gentleman 
+foreign_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Propaganda/Security
+	interior_minister = {
+	}
+	#Intelligence
+	intel_minister = {
+	}
+	#Economic Ministers
+	economic_minister = {
+		SWI_roger_masson = {
+			picture = generic_army_europe_3
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { 
+				socialist
+				war_industrialist 
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		SWI_hermann_obrecht = {
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { 
+				liberal
+				captain_of_industry 
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+		SWI_rudolf_minger = {
+			picture = generic_political_advisor_europe_2
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { 
+				neutral
+				military_entrepreneur
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+	}
+	#Political Advisors
+	political_advisor = {
+		SWI_giuseppe_motta = {
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { 
+				conservative
+				anti_communist
+				silent_workhorse 
+political_advisor_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	influence_minister = {
+	}
+	#Domestic
+	domestic_minister = {
+		SWI_philipp_etter = {
+			picture = generic_political_advisor_europe_5
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { 
+				incognito
+				conservative
+				domestminster_science
+				capitalist
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		SWI_marcel_golaz = {
+			picture = generic_political_advisor_europe_6
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { 
+				liberal
+				neutral
+				transport_minster
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Academy
+	military_academy = {
+	}
+	#Theorist
+	theorist = {
+		SWI_werner_jenni = {
+			allowed = {
+				original_tag = SWI
+			}
+			
+			picture = generic_army_europe_4
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { military_theorist  theorist_trait }
+		}
+		SWI_oskar_bider = {	
+			allowed = {
+				original_tag = SWI
+			}
+			
+			picture = generic_air_europe_1
+			
+			research_bonus = {
+				air_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+	}
+	#MILITARY
+	#Supreme Commanders
+	supreme_commander = {
+	}
+	#Army
+	army_chief = {
+		SWI_johann_august_sutter = {
+			picture = generic_army_europe_5
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { army_chief_defensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		SWI_ernst_laur = {
+			picture = generic_army_europe_1
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { army_chief_organizational_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Air
+	air_chief = {
+		SWI_carl_jacob_burckhardt = {
+			picture = generic_air_europe_3
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { air_chief_ground_support_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		SWI_j_d_de_montenach = {
+			
+			picture = generic_air_europe_2
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { air_chief_safety_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Navy
+	navy_chief = {
+		SWI_rene_von_graffenried = {
+			picture = generic_navy_europe_2
+			
+			allowed = {
+				original_tag = SWI
+			}
+			available = {
+				any_owned_state = { naval_base > 0 }
+			}				
+			traits = { navy_naval_air_defense_2  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		SWI_hans_peter_bichsel_sohn = {
+			
+			picture = generic_navy_europe_1
+			
+			allowed = {
+				original_tag = SWI
+			}
+			available = {
+				any_owned_state = { naval_base > 0 }
+			}
+			
+			traits = { navy_chief_decisive_battle_2  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	high_command = {
+		SWI_hermann_hessel_lorenz = {
+			picture = generic_navy_europe_1
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { navy_amphibious_assault_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		SWI_jean_de_muralt = {
+			picture = generic_army_europe_1
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { army_artillery_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		SWI_eugen_bircher = {
+			picture = generic_army_europe_2
+
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { army_armored_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		SWI_etienne_primault = {
+			picture = generic_air_europe_2
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { air_air_superiority_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		SWI_hans_oehler = {
+			picture = generic_navy_europe_2
+			
+			allowed = {
+				original_tag = SWI
+			}
+			
+			traits = { navy_capital_ship_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+}
+### EOF ###

@@ -1,0 +1,313 @@
+ideas = {
+	political_advisor = {
+		
+		YUT_hu_hanwen = {
+		
+			picture = generic_political_advisor_asia_2
+			
+			allowed = {
+				tag = YUT
+			}
+			
+			available = {
+				NOT = { has_global_flag = huhanwen_dead }
+			}
+			
+			traits = { 
+				silent_workhorse 
+				popular_figurehead
+political_advisor_trait
+			}
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		YUT_li_jishen = {
+
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			traits = { smooth_talking_charmer  political_advisor_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		YUT_lin_yizhong = {
+
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = YUT
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { popular_figurehead  political_advisor_trait }
+		}
+	}
+	economic_minister = {
+		YUT_feng_zhuwan = {
+
+			picture = generic_political_advisor_asia_1
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			traits = { captain_of_industry  economic_minister_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+	}
+
+	theorist = {
+		YUT_yu_hanmou = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			available = {
+				NOT = {
+					has_war_with = YHM
+				}
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { military_theorist  theorist_trait }
+		}
+		
+		YUT_xu_heng = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { naval_theorist  theorist_trait }
+		}
+		
+		YUT_zhou_baoheng = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			available = {
+				NOT = {
+					has_global_flag = jyut_generals_defected
+				}
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+	}
+
+	high_command = {
+
+		YUT_huang_zhenqiu = {
+
+			picture = generic_air_asia_2
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			traits = { army_concealment_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+		YUT_ye_zhao = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			traits = { army_regrouping_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		YUT_deng_shizeng = {
+
+			picture = generic_army_asia_2
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			traits = { army_artillery_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+
+		YUT_liu_guangkai = {
+
+			picture = generic_navy_asia_2
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			traits = { navy_amphibious_assault_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		YUT_chen_jitang = {
+		
+			picture = generic_army_asia_2
+			
+			allowed = {
+				tag = GXC
+			}
+			
+			available = {
+				has_country_flag = chen_jitang_join_gxc
+			}
+			
+			traits = { 
+				army_chief_morale_1
+army_chief_trait
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+
+	army_chief = {
+
+		YUT_zhang_fakui = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			traits = { army_chief_offensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		YUT_cai_tingkai = {
+
+			picture = generic_army_asia_1
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			traits = { army_commando_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+
+	air_chief = {
+		
+		YUT_huang_guangrui = {
+			
+			picture = generic_air_asia_1
+			
+			allowed = {
+				original_tag = YUT
+			}
+			
+			available = {
+				NOT = {
+					has_global_flag = jyut_generals_defected
+				}
+			}
+			
+			traits = { air_chief_safety_3  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	
+	navy_chief = {
+
+		YUT_chen_ce = {
+			
+			picture = generic_navy_asia_1
+
+			allowed = {
+				original_tag = YUT
+			}
+					
+			traits = { navy_chief_reform_3  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		YUT_feng_qicong = {
+			
+			picture = generic_navy_asia_3
+
+			allowed = {
+				original_tag = YUT
+			}
+					
+			traits = { navy_screen_2  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+}

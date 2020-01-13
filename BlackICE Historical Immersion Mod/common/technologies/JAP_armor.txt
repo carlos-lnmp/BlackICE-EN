@@ -1,0 +1,904 @@
+technologies = {
+	# Vertical position Y
+	@1930 = 0
+	@1933 = 2
+	@1935 = 4
+	@1936 = 6
+	@1937 = 8
+	@1938 = 10
+	@1939 = 12
+	@1940 = 14
+	@1941 = 16
+	@1942 = 18
+	@1943 = 20
+	@1944 = 22
+	@1945 = 24
+	# Horizontal position X
+	@JAP_ARM = 9
+	@JAP_AMP_ARM = 0
+	@JAP_L_ARM = 4
+	@JAP_M_ARM = 8
+	@JAP_H_ARM = 12
+	@JAP_SH_ARM = 16
+############## TECHNOLOGIES ##############
+	japanese_tech_a = {
+		allow = { can_research_armor_folder = yes } 
+
+		
+		research_cost = 2
+		start_year = 1930
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_ARM y = @1930 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	tech_japanese_gw_tank = {
+		allow = { can_research_armor_folder = yes } 
+
+		
+		path = {
+			leads_to_tech = tech_japanese_light_tank_a
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_japanese_medium_tank_a
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_japanese_heavy_tank_a
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_ARM y = @1930 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+######### amphibious tanks	
+	# Type 2 Ka-Mi
+	tech_japanese_amph_tank_a = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_amph_tank_equipment_1
+		}
+	
+		path = {
+			leads_to_tech = tech_japanese_amph_tank_b
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_AMP_ARM y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Type 3 Ka-Chi
+	tech_japanese_amph_tank_b = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_amph_tank_equipment_2
+		}
+		
+		path = {
+			leads_to_tech = tech_japanese_amph_tank_c
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_AMP_ARM y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Type 4 Ka-Tsu
+	tech_japanese_amph_tank_c = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_amph_tank_equipment_3
+		}
+		
+		path = {
+			leads_to_tech = tech_japanese_amph_tank_d
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_AMP_ARM y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Type 5 To-Ku
+	tech_japanese_amph_tank_d = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_amph_tank_equipment_4
+		}
+		
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_AMP_ARM y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+###################### light tanks
+	# Type 95 Ha-Go
+	tech_japanese_light_tank_a = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_light_tank_equipment_1 
+		}
+	
+		path = {
+			leads_to_tech = tech_japanese_light_tank_b
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_japanese_amph_tank_a
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_japanese_light_tank_d
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_L_ARM y = @1935 }
+		}
+		
+		sub_technologies = {
+			subtech_japanese_light_tank_td_1
+			subtech_japanese_light_tank_art_1
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	##### Variant: Type 5 Ho-Ru
+		subtech_japanese_light_tank_td_1 = {
+		allow = { can_research_armor_folder = yes } 
+
+			enable_equipments = {
+				japanese_light_tank_td_equipment_1
+			}
+		
+			enable_subunits = {
+				japanese_light_tank_td
+			}
+		
+			research_cost = 0.5
+			start_year = 1945
+		
+			ai_will_do = {
+				factor = 0
+			}
+
+			categories = {
+				armor
+				cat_light_armor
+			}
+		}
+	##### Variant: Type 5 Ho-To
+		subtech_japanese_light_tank_art_1 = {
+		allow = { can_research_armor_folder = yes } 
+
+			enable_equipments = {
+				japanese_light_tank_art_equipment_1
+			}
+		
+			enable_subunits = {
+				japanese_light_tank_art
+			}
+		
+			research_cost = 0.5
+			start_year = 1944
+		
+			ai_will_do = {
+				factor = 0
+			}
+
+			categories = {
+				armor
+				cat_light_armor
+			}
+		}
+	# Type 98 Ke-Ni
+	tech_japanese_light_tank_b = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_light_tank_equipment_2 
+		}
+	
+		path = {
+			leads_to_tech = tech_japanese_light_tank_c
+			research_cost_coeff = 1
+		}
+
+		on_research_complete = {
+
+			hidden_effect = {
+				if = {
+					limit = {
+						has_tech = motorised_infantry
+					}
+
+					load_oob = "JAP_tanks_I"
+				}
+			}
+
+			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+		}		
+		research_cost = 2
+		start_year = 1938
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_L_ARM y = @1938 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Type 2 Ke-To
+	tech_japanese_light_tank_c = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_light_tank_equipment_3 
+		}
+	
+		path = {
+			leads_to_tech = tech_japanese_light_tank_e
+			research_cost_coeff = 1
+		}
+
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_L_ARM y = @1942 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Type 4 Ke-Nu
+	tech_japanese_light_tank_d = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_light_tank_equipment_4 
+		}
+
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_L_ARM y = @1944 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# Type 5 Ke-Ho
+	tech_japanese_light_tank_e = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_light_tank_equipment_5 
+		}
+	
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_L_ARM y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+######################## medium tanks
+	#Type 89 I-Go
+	tech_japanese_medium_tank_a = {
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_medium_tank_equipment_1 
+		}
+	
+		path = {
+			leads_to_tech = tech_japanese_medium_tank_b
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_M_ARM y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	#Type 97 Chi-Ha
+	tech_japanese_medium_tank_b = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_medium_tank_equipment_2 
+		}
+	
+		path = {
+			leads_to_tech = tech_japanese_medium_tank_c
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_M_ARM y = @1936 }
+		}
+
+		sub_technologies = {
+			subtech_japanese_medium_tank_td_1
+			subtech_japanese_medium_tank_art_1
+		}	
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	##### Variant: Type 1 Ho-Ni
+		subtech_japanese_medium_tank_td_1 = {
+		allow = { can_research_armor_folder = yes } 
+
+			enable_equipments = {
+				japanese_medium_tank_td_equipment_1
+			}
+		
+			enable_subunits = {
+				japanese_medium_tank_td
+			}
+		
+			research_cost = 0.5
+			start_year = 1941
+		
+			ai_will_do = {
+				factor = 0
+			}
+
+			categories = {
+				armor
+				cat_medium_armor
+			}
+		}
+	##### Variant: Type 2 Ho-I
+		subtech_japanese_medium_tank_art_1 = {
+		allow = { can_research_armor_folder = yes } 
+
+			enable_equipments = {
+				japanese_medium_tank_art_equipment_1
+			}
+		
+			enable_subunits = {
+				japanese_medium_tank_art
+			}
+		
+			research_cost = 0.5
+			start_year = 1942
+		
+			ai_will_do = {
+				factor =  0
+			}
+
+			categories = {
+				armor
+				cat_medium_armor
+			}
+		}
+	#Type 97 Shinhoto Chi-Ha
+	tech_japanese_medium_tank_c = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_medium_tank_equipment_3 
+		}
+	
+		path = {
+			leads_to_tech = tech_japanese_medium_tank_d
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_M_ARM y = @1939 }
+		}
+
+		sub_technologies = {
+			subtech_japanese_medium_tank_td_2
+			subtech_japanese_medium_tank_art_2
+			subtech_japanese_medium_tank_art_3
+		}	
+		
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				EAI_timegate_1938/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	##### Variant: Type 3 Ho-Ni III
+		subtech_japanese_medium_tank_td_2 = {
+		allow = { can_research_armor_folder = yes } 
+
+			enable_equipments = {
+				japanese_medium_tank_td_equipment_2
+			}
+		
+			research_cost = 0.5
+			start_year = 1943
+		
+			ai_will_do = {
+				factor = 0
+			}
+
+			categories = {
+				armor
+				cat_medium_armor
+			}
+		}
+	##### Variant: Type 97 Shinhoto Chi-Ha (120mm)
+		subtech_japanese_medium_tank_art_2 = {
+		allow = { can_research_armor_folder = yes } 
+
+			enable_equipments = {
+				japanese_medium_tank_art_equipment_2
+			}
+		
+			research_cost = 0.5
+			start_year = 1941
+		
+			ai_will_do = {
+				factor = 0
+			}
+
+			categories = {
+				armor
+				cat_medium_armor
+			}
+		}
+	##### Variant: Type 4 Ho-Ro
+		subtech_japanese_medium_tank_art_3 = {
+		allow = { can_research_armor_folder = yes } 
+
+			enable_equipments = {
+				japanese_medium_tank_art_equipment_3
+			}
+		
+			research_cost = 0.5
+			start_year = 1944
+		
+			ai_will_do = {
+				factor = 0
+			}
+
+			categories = {
+				armor
+				cat_medium_armor
+			}
+		}
+	# Type 1 Chi-He
+	tech_japanese_medium_tank_d = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_medium_tank_equipment_4 
+		}
+	
+		path = {
+			leads_to_tech = tech_japanese_medium_tank_e
+			research_cost_coeff = 1
+		}
+		
+		on_research_complete = {
+
+			hidden_effect = {
+				if = {
+					limit = {
+						has_tech = motorised_infantry
+					}
+
+					load_oob = "JAP_tanks_II"
+				}
+				
+			}
+
+			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+		}
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_M_ARM y = @1941 }
+		}
+
+		ai_will_do = {
+			factor = 500
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# Type 3 Chi-Nu
+	tech_japanese_medium_tank_e = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_medium_tank_equipment_5 
+		}
+	
+		path = {
+			leads_to_tech = tech_japanese_medium_tank_f
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_M_ARM y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 500
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# Type 4 Chi-To
+	tech_japanese_medium_tank_f = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_medium_tank_equipment_6 
+		}
+	
+		path = {
+			leads_to_tech = tech_japanese_medium_tank_g
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_M_ARM y = @1944 }
+		}
+
+		sub_technologies = {
+			subtech_japanese_medium_tank_td_3
+			subtech_japanese_medium_tank_art_4
+		}	
+		
+		ai_will_do = {
+			factor = 500
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	##### Variant: Type 4 Ha-To
+		subtech_japanese_medium_tank_art_4 = {
+		allow = { can_research_armor_folder = yes } 
+
+			enable_equipments = {
+				japanese_medium_tank_art_equipment_4
+			}
+		
+			research_cost = 0.5
+			start_year = 1944
+		
+			ai_will_do = {
+				factor = 0
+			}
+
+			categories = {
+				armor
+				cat_medium_armor
+			}
+		}
+	##### Variant: Type 5 Na-To
+		subtech_japanese_medium_tank_td_3 = {
+		allow = { can_research_armor_folder = yes } 
+
+			enable_equipments = {
+				japanese_medium_tank_td_equipment_3
+			}
+		
+			research_cost = 0.5
+			start_year = 1945
+		
+			ai_will_do = {
+				factor = 0
+			}
+
+			categories = {
+				armor
+				cat_medium_armor
+			}
+		}
+	# Type 5 Chi-Ri
+	tech_japanese_medium_tank_g = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_medium_tank_equipment_7 
+		}
+	
+		
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_M_ARM y = @1945 }
+		}
+
+		sub_technologies = {
+			subtech_japanese_medium_tank_td_4
+		}
+
+		ai_will_do = {
+			factor = 500
+			modifier = {
+				factor = 0
+				EAI_timegate_1944/7 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	##### Variant: Type 5 Ho-Ri I
+		subtech_japanese_medium_tank_td_4 = {
+		allow = { can_research_armor_folder = yes } 
+
+			enable_equipments = {
+				japanese_medium_tank_td_equipment_4
+			}
+		
+			research_cost = 0.5
+			start_year = 1945
+		
+			ai_will_do = {
+				factor = 0
+			}
+
+			categories = {
+				armor
+				cat_medium_armor
+			}
+		}
+######################## heavy tanks
+	#Type 95
+	tech_japanese_heavy_tank_a = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_heavy_tank_equipment_1 
+		}
+	
+		#path = {
+		#	leads_to_tech = tech_japanese_heavy_tank_b
+		#	research_cost_coeff = 1
+		#}
+		path = {
+			leads_to_tech = tech_japanese_superheavy_tank_a
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_H_ARM y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+
+#	#xxx		does not exist, just a placeholder
+#	tech_japanese_heavy_tank_b = { 
+#		
+#		enable_equipments = {
+#			japanese_heavy_tank_equipment_2 
+#		}
+#	
+#		research_cost = 2
+#		start_year = 1942
+#		folder = {
+#			name = japanarmor_folder
+#			position = { x = 3 y = @1942 }
+#		}
+#				
+#		ai_will_do = {
+#			factor = 0
+#		}
+#		
+#		categories = {
+#			armor
+#			cat_heavy_armor
+#		}
+#	}	
+#	
+######################## super-heavy tanks
+	#I-O
+	tech_japanese_superheavy_tank_a = { 
+		allow = { can_research_armor_folder = yes } 
+		
+		enable_equipments = {
+			japanese_superheavy_tank_equipment_1 
+		}
+	
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = japanarmor_folder
+			position = { x = @JAP_SH_ARM y = @1943 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+}
+## EOF ##

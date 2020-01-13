@@ -1,0 +1,1255 @@
+technologies = {
+	#Vertical position
+	@1930 = 0
+	@1933 = 2
+	@1934 = 4
+	@1935 = 6
+	@1936 = 8
+	@1937 = 9
+	@1938 = 10
+	@1939 = 12
+	@1940 = 14
+	@1941 = 16
+	@1942 = 18
+	@1943 = 20
+	@1944 = 22
+	@1945 = 24
+	@1946 = 26
+	@1947 = 28
+	@1948 = 30
+	@1949 = 32
+	@1950 = 34
+	@1951 = 36
+	
+	# Horizontal position X
+	@SOV_ARMOR = 7
+	@AMP_TK = 1
+	@L_TK = 5
+	@M_TK = 9
+	@H_TK = 13
+	
+	soviet_armor_tech = {
+		allow = { can_research_armor_folder = yes }
+		
+		path = {
+			leads_to_tech = tech_amph_soviet_tank_a
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_light_soviet_tank_a
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_medium_soviet_tank_a
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_heavy_soviet_tank_a
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = soviet_folder
+			position = { x = @SOV_ARMOR y = @1930 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	##### AMPHIBIOUS TANKS
+	# T-37A
+	tech_amph_soviet_tank_a = { 
+		allow = { can_research_armor_folder = yes }
+			
+		enable_equipments = {
+			amph_soviet_tank_equipment_1
+		}
+	
+		path = {
+			leads_to_tech = tech_amph_soviet_tank_b
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = soviet_folder
+			position = { x = @AMP_TK y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+
+	# T-40
+	tech_amph_soviet_tank_b = { 
+		allow = { can_research_armor_folder = yes }
+		
+		enable_equipments = {
+			amph_soviet_tank_equipment_2
+		}
+		
+		
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = soviet_folder
+			position = { x = @AMP_TK y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	##### Light Tanks
+	# T-26
+	tech_light_soviet_tank_a = { 
+		allow = { can_research_armor_folder = yes }
+		
+		enable_equipments = {
+			light_soviet_tank_equipment_1 
+		}
+	
+		path = {
+			leads_to_tech = tech_light_soviet_tank_b
+			research_cost_coeff = 1
+		}
+
+		
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = soviet_folder
+			position = { x = @L_TK y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# T-50
+	tech_light_soviet_tank_b = { 
+		allow = { can_research_armor_folder = yes }
+		
+		enable_equipments = {
+			light_soviet_tank_equipment_2 
+		}
+		path = {
+			leads_to_tech = tech_light_soviet_tank_c
+			research_cost_coeff = 1
+		}		
+		
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = soviet_folder
+			position = { x = @L_TK y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# T-60
+	tech_light_soviet_tank_c = { 
+		allow = { can_research_armor_folder = yes }
+		
+		enable_equipments = {
+			light_soviet_tank_equipment_3 
+		}
+		path = {
+			leads_to_tech = tech_light_soviet_tank_d
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = soviet_folder
+			position = { x = @L_TK y = @1941 }
+		}
+		sub_technologies = {
+			subtech_light_soviet_tank_td_1
+		}	
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# ZiS-30
+	subtech_light_soviet_tank_td_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			light_soviet_tank_td_equipment_1
+		}
+		enable_subunits = {
+			light_soviet_tank_td
+		}
+		
+		research_cost = 0.5
+		start_year = 1941
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# T-70
+	tech_light_soviet_tank_d = { 
+		allow = { can_research_armor_folder = yes }
+		
+		enable_equipments = {
+			light_soviet_tank_equipment_4 
+		}
+		path = {
+			leads_to_tech = tech_light_soviet_tank_e
+			research_cost_coeff = 1
+		}
+			
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = soviet_folder
+			position = { x = @L_TK y = @1942 }
+		}
+		sub_technologies = {
+			subtech_light_soviet_tank_td_2
+			subtech_light_soviet_tank_aa_1
+		}		
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# SU-76
+	subtech_light_soviet_tank_td_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			light_soviet_tank_td_equipment_2
+		}
+		
+		research_cost = 0.5
+		start_year = 1942
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# T-90 SPAA
+	subtech_light_soviet_tank_aa_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			light_soviet_tank_aa_equipment_1
+		}
+		enable_subunits = {
+			light_soviet_tank_aa
+		}
+		
+		research_cost = 1
+		start_year = 1943
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# T-80
+	tech_light_soviet_tank_e = { 
+		allow = { can_research_armor_folder = yes }
+		
+		enable_equipments = {
+			light_soviet_tank_equipment_5
+		}
+		path = {
+			leads_to_tech = tech_light_soviet_tank_f
+			research_cost_coeff = 1
+		}
+			
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = soviet_folder
+			position = { x = @L_TK y = @1943 }
+		}
+		sub_technologies = {
+			subtech_light_soviet_tank_td_3
+			subtech_light_soviet_tank_aa_2
+		}		
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# PT-76
+	tech_light_soviet_tank_f = { 
+		allow = { can_research_armor_folder = yes }
+		
+		enable_equipments = {
+			light_soviet_tank_equipment_6
+		}
+			
+		research_cost = 1
+		start_year = 1951
+		folder = {
+			name = soviet_folder
+			position = { x = @L_TK y = @1951 }
+		}	
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# SU-76M
+	subtech_light_soviet_tank_td_3 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			light_soviet_tank_td_equipment_3
+		}
+		
+		research_cost = 0.5
+		start_year = 1943
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	# ZSU-37
+	subtech_light_soviet_tank_aa_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			light_soviet_tank_aa_equipment_2
+		}
+		enable_subunits = {
+			light_soviet_tank_aa
+		}
+		
+		research_cost = 1
+		start_year = 1944
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	######################## Medium / quick tanks
+	#BT-5
+	tech_medium_soviet_tank_a = { 
+		allow = { can_research_armor_folder = yes }
+		
+		enable_equipments = {
+			medium_soviet_tank_equipment_1 
+		}
+	
+		path = {
+			leads_to_tech = tech_medium_soviet_tank_b
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = soviet_folder
+			position = { x = @M_TK y = @1933 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# BT-7
+	tech_medium_soviet_tank_b = { 
+		allow = { can_research_armor_folder = yes }
+			
+		enable_equipments = {
+			medium_soviet_tank_equipment_2
+		}
+	
+		path = {
+			leads_to_tech = tech_medium_soviet_tank_c
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = soviet_folder
+			position = { x = @M_TK y = @1935 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	#T-34/76 mod.40
+	tech_medium_soviet_tank_c = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			medium_soviet_tank_equipment_3 
+		}
+		
+		on_research_complete = {
+			if = {
+				limit = {
+					is_ai = yes 
+				}
+				add_equipment_to_stockpile = {
+					type = medium_soviet_tank_equipment_3
+					amount = 3000
+				}
+			}
+		}
+		
+		path = {
+			leads_to_tech = tech_medium_soviet_tank_d
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1940
+
+		folder = {
+			name = soviet_folder
+			position = { x = @M_TK y = @1940 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = { 
+				factor = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 10
+				has_completed_focus = SOV_T34_focus 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1939/6 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	#T-34/76 mod.41
+	tech_medium_soviet_tank_d = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			medium_soviet_tank_equipment_4 
+		}
+		
+		path = {
+			leads_to_tech = tech_medium_soviet_tank_e 
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1941
+
+		folder = {
+			name = soviet_folder
+			position = { x = @M_TK y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = { 
+				factor = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 10
+				has_completed_focus = SOV_T34_focus 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1940/6 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	#T-34/76 mod.42
+	tech_medium_soviet_tank_e = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			medium_soviet_tank_equipment_5 
+		}
+		
+		path = {
+			leads_to_tech = tech_medium_soviet_tank_f
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = soviet_folder
+			position = { x = @M_TK y = @1942 }
+		}
+
+		sub_technologies = {
+			subtech_medium_soviet_ag_1
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = { 
+				factor = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 10
+				has_completed_focus = SOV_T34_focus 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1941/6 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# SU-122
+	subtech_medium_soviet_ag_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			medium_soviet_ag_equipment_1
+		}
+		
+		enable_subunits = {
+			medium_soviet_ag
+		}
+		
+		research_cost = 1
+		start_year = 1942
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	#T-34/76 mod.43
+	tech_medium_soviet_tank_f = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			medium_soviet_tank_equipment_6
+		}
+		
+		path = {
+			leads_to_tech = tech_medium_soviet_tank_g
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = soviet_folder
+			position = { x = @M_TK y = @1943 }
+		}
+
+		sub_technologies = {
+			subtech_t_34_td_1
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = { 
+				factor = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 10
+				has_completed_focus = SOV_T34_focus 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1942/6 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+
+	# SU-85
+	subtech_t_34_td_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			t_34_td_equipment_1
+		}
+		
+		enable_subunits = {
+			t_34_td
+		}
+		
+		research_cost = 0.5
+		start_year = 1943
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}	
+	#T-34/85
+	tech_medium_soviet_tank_g = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			medium_soviet_tank_equipment_7
+		}
+		
+		path = {
+			leads_to_tech = tech_medium_soviet_tank_h
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = soviet_folder
+			position = { x = @M_TK y = @1944 }
+		}
+
+		sub_technologies = {
+			subtech_t_34_td_2
+		}		
+		
+		ai_will_do = {
+			factor = 1
+			modifier = { 
+				factor = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 10
+				has_completed_focus = SOV_T34_focus 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1943/6 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	# SU-100
+	subtech_t_34_td_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			t_34_td_equipment_2
+		}
+		
+		research_cost = 1
+		start_year = 1944
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	#T-44
+	tech_medium_soviet_tank_h = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			medium_soviet_tank_equipment_8
+		}
+		path = {
+			leads_to_tech = tech_medium_soviet_tank_i
+			research_cost_coeff = 1
+		}		
+		
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = soviet_folder
+			position = { x = @M_TK y = @1945 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = { 
+				factor = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 10
+				has_completed_focus = SOV_T34_focus 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1944/6 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	#T-54
+	tech_medium_soviet_tank_i = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			medium_soviet_tank_equipment_9
+		}
+	
+			
+		research_cost = 3
+		start_year = 1947
+		folder = {
+			name = soviet_folder
+			position = { x = @M_TK y = @1947 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = { 
+				factor = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+			modifier = {
+				factor = 10
+				has_completed_focus = SOV_T34_focus 
+			}
+			modifier = {
+				factor = 0
+				EAI_timegate_1946/6 = no
+			}
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	##### Heavy Tanks
+	#T-28
+	tech_heavy_soviet_tank_a = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_infantry_tank_equipment_1 
+		}
+	
+		path = {
+			leads_to_tech = tech_heavy_soviet_tank_b
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = soviet_folder
+			position = { x = @H_TK y = @1933 }
+		}
+		
+		ai_will_do = {
+			base = 5000
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	#T-35
+	tech_heavy_soviet_tank_b = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_infantry_tank_equipment_2 
+		}
+	
+		path = {
+			leads_to_tech = tech_heavy_soviet_tank_c
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = soviet_folder
+			position = { x = @H_TK y = @1935 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 400 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	#KV-1A
+	tech_heavy_soviet_tank_c = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_tank_equipment_1
+		}
+		on_research_complete = {
+			
+			hidden_effect = {
+				if = {
+					limit = {
+						has_tech = motorised_infantry
+					}
+
+					load_oob = "SOV_HV_Tank_Brigada_1940"
+				}
+				
+			}
+
+			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+		}
+		path = {
+			leads_to_tech = tech_heavy_soviet_tank_d
+			research_cost_coeff = 1
+		}
+		
+		
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = soviet_folder
+			position = { x = @H_TK y = @1939 }
+		}
+
+		sub_technologies = {
+			subtech_heavy_soviet_ag_1
+		}
+
+		ai_will_do = {
+			factor = 0
+#			modifier = { 
+#				add = 500 
+#				EAI_SOV_armor_tech_focus = yes 
+#			}
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	#KV-2
+	subtech_heavy_soviet_ag_1 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_ag_equipment_1
+		}
+		enable_subunits = {
+			heavy_soviet_ag
+		}	
+
+		research_cost = 2
+		start_year = 1939
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+
+	#KV-1B
+	tech_heavy_soviet_tank_d = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_tank_equipment_2
+		}
+		path = {
+			leads_to_tech = tech_heavy_soviet_tank_e
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = soviet_folder
+			position = { x = @H_TK y = @1941 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}	
+	#KV-1S
+	tech_heavy_soviet_tank_e = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_tank_equipment_3
+		}
+		path = {
+			leads_to_tech = tech_heavy_soviet_tank_f
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = soviet_folder
+			position = { x = @H_TK y = @1942 }
+		}
+
+		sub_technologies = {
+			subtech_heavy_soviet_ag_2
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}	
+	# SU-152
+	subtech_heavy_soviet_ag_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_ag_equipment_2
+		}
+		
+
+		research_cost = 1
+		start_year = 1942
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	#IS-85 / IS-1
+	tech_heavy_soviet_tank_f = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_tank_equipment_4
+		}
+		path = {
+			leads_to_tech = tech_heavy_soviet_tank_g
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = soviet_folder
+			position = { x = @H_TK y = @1943 }
+		}
+		sub_technologies = {
+			subtech_medium_soviet_ag_2
+			subtech_heavy_soviet_ag_3
+		}	
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	# ISU-122
+	subtech_medium_soviet_ag_2 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			medium_soviet_ag_equipment_2
+		}
+
+		research_cost = 1
+		start_year = 1943
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	# ISU-152
+	subtech_heavy_soviet_ag_3 = {
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_ag_equipment_3
+		}
+
+		research_cost = 1
+		start_year = 1943
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}	
+	#IS-2
+	tech_heavy_soviet_tank_g = { 
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_tank_equipment_5
+		}
+		path = {
+			leads_to_tech = tech_heavy_soviet_tank_h
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1
+		start_year = 1944
+		folder = {
+			name = soviet_folder
+			position = { x = @H_TK y = @1944 }
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	#IS-3
+	tech_heavy_soviet_tank_h = { 
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_tank_equipment_6
+		}
+		path = {
+			leads_to_tech = tech_heavy_soviet_tank_i
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = soviet_folder
+			position = { x = @H_TK y = @1945 }
+		}
+				
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	#IS-4
+	tech_heavy_soviet_tank_i = { 
+		allow = { can_research_armor_folder = yes }
+
+		enable_equipments = {
+			heavy_soviet_tank_equipment_7
+		}
+		
+		research_cost = 2
+		start_year = 1947
+		folder = {
+			name = soviet_folder
+			position = { x = @H_TK y = @1947 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = { 
+				add = 500 
+				EAI_SOV_armor_tech_focus = yes 
+			}
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+}

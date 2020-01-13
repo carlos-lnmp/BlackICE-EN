@@ -1,0 +1,211 @@
+leader_traits = {
+##################################
+# ENG Traits
+##################################
+
+	Victory_Medal = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			OR = {
+				is_winning = yes
+				has_trait = Conspicuous_Galantry_Cross
+			}
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		
+		cost = 3000
+		
+		modifier = {
+			offence = 0.03
+			defence = 0.03
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	Victoria_Cross = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			OR = {
+				is_winning = yes
+				has_trait = Victory_Medal
+			}
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		
+		cost = 8000
+		
+		modifier = {
+			offence = 0.04
+			defence = 0.04
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	General_Service_Medal = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			OR = {
+				is_attacker = yes
+				is_defender = yes
+			}
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		
+		cost = 2000
+		
+		non_shared_modifier = {
+			promote_cost_factor = -0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	Conspicuous_Galantry_Cross = {
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		
+		cost = 8000
+		
+		modifier = {
+			offence = 0.05
+			defence = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	Most_Excellent_Order = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_winning = yes
+			is_attacker = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		
+		cost = 8000
+		
+		modifier = {
+			offence = 0.05
+			defence = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	Military_Cross = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_attacker = no
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		
+		cost = 2500
+		
+		modifier = {
+			defence = 0.03
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	Distinguished_Service_Order = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		
+		cost = 2500
+		
+		modifier = {
+			army_speed_factor = 0.02
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	Silver_War_Badge = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			has_trait = General_Service_Medal
+		}
+		
+		allowed = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		
+		cost = 2500
+		
+		modifier = {
+			army_speed_factor = 0.02
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

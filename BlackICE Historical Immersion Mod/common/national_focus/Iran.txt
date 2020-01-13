@@ -1,0 +1,2801 @@
+focus_tree = {
+	id = Iran
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = PER
+			#has_dlc = "Waking the Tiger"
+		}	
+	}
+	default = no
+	continuous_focus_position = { x = 50 y = 540 }
+	
+	
+### Tehran Uni
+	focus = {
+		id = PER_kashf-e_hijab
+		icon = GFX_goal_generic_political_pressure
+		x = 2
+		y = 0
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_stability = -0.2
+			add_popularity = {
+				ideology = monarchism
+				popularity = -0.1
+			}
+			hidden_effect = {
+				country_event = {
+					id = persia.15
+					days = 10
+					random = 45
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_tehran_university
+		icon = GFX_focus_research2
+		prerequisite = {
+			focus = PER_kashf-e_hijab
+		}		
+		x = 2
+		y = 1
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_research_slot = 1
+			add_research_centre = yes
+			SLOT:industry_folder = yes
+			SLOT:electronics_folder = yes
+		}
+	}
+	focus = {
+		id = PER_focus_politics
+		icon = GFX_goal_supremacy_of_will
+		prerequisite = {
+			focus = PER_tehran_university
+		}	
+		mutually_exclusive = { focus = PER_focus_economics focus = PER_focus_medical }			
+		x = 0
+		y = 2
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_political_power = 75
+			add_ideas = PER_politics
+		}
+	}
+	focus = {
+		id = PER_focus_medical
+		icon = GFX_goal_medicine
+		prerequisite = {
+			focus = PER_tehran_university
+		}
+		mutually_exclusive = { focus = PER_focus_economics focus = PER_focus_politics }			
+		x = 2
+		y = 2
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_ideas = PER_medicine
+			custom_effect_tooltip = medicine_tt
+			add_to_variable = {
+				var = Per_loss
+				value = -0.02
+			}
+		}
+	}
+	focus = {
+		id = PER_focus_economics
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = {
+			focus = PER_tehran_university
+		}
+		mutually_exclusive = { focus = PER_focus_medical focus = PER_focus_politics }	
+		x = 4
+		y = 2
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_tech_bonus = {
+				bonus = 0.10
+				uses = 2
+				category = tool_tech
+			}
+		}
+	}
+	focus = {
+		id = PER_focus_economics2
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = {
+			focus = PER_focus_medical
+			focus = PER_focus_politics
+		}
+		mutually_exclusive = { focus = PER_focus_medical2 focus = PER_focus_politics2 focus = PER_focus_economics}	
+		x = 4
+		y = 3
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_tech_bonus = {
+				bonus = 0.10
+				uses = 2
+				category = tool_tech
+			}
+		}
+	}
+	focus = {
+		id = PER_focus_medical2
+		icon = GFX_goal_medicine
+		prerequisite = {
+			focus = PER_focus_economics 
+			focus = PER_focus_politics
+		}
+		mutually_exclusive = { focus = PER_focus_economics2 focus = PER_focus_politics2 focus = PER_focus_medical}			
+		x = 2
+		y = 3
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_ideas = PER_medicine
+			custom_effect_tooltip = medicine_tt
+			add_to_variable = {
+				var = Per_loss
+				value = -0.02
+			}
+		}
+	}	
+	focus = {
+		id = PER_focus_politics2
+		icon = GFX_goal_supremacy_of_will
+		prerequisite = {
+			focus = PER_focus_economics 
+			focus = PER_focus_medical
+		}	
+		mutually_exclusive = { focus = PER_focus_economics2 focus = PER_focus_medical2 focus = PER_focus_politics}			
+		x = 0
+		y = 3
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_political_power = 75
+			add_ideas = PER_politics
+		}
+	}	
+### Military Colleges
+
+	focus = {
+		id = PER_war_uni
+		icon = GFX_focus_generic_military_academy			
+		x = 15
+		y = 0
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			add_research_slot = 1
+			add_research_centre = yes	
+			SLOT:infantry_folder = yes
+			SLOT:support_folder = yes
+			SLOT:land_doctrine_folder = yes
+		}
+	}
+	
+	focus = {
+		id = PER_war_school
+		#school of management and police
+		icon = GFX_focus_generic_military_academy			
+		x = 10
+		y = 0
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			add_tech_bonus = {
+				bonus = 0.15
+				uses = 2
+				category = military_police_tech
+			}
+		}
+	}
+	
+### French Guys
+	focus = {
+		id = PER_war_georges
+		#Lieutenant General François-Georges Gendre
+		icon = GFX_goal_TIB_philip_neame			
+		x = 5
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = PER_war_uni
+		}	
+		available_if_capitulated = no
+		available = {
+			FRA = {
+				has_war = no
+			}
+			not = { has_country_flag = french_recalled }
+		}
+		completion_reward = {
+			PER_training = yes
+			PER_training = yes
+			set_technology = {
+				battlefield_commissions = 1
+			}
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 2
+				category = ww1_doctrine
+			}
+			FRA = {
+				add_to_variable = {
+					var = persia_training
+					value = 2
+				}
+			}
+			#command guy
+		}
+	}
+	focus = {
+		id = PER_war_royadeh
+		#Colonel Royadeh
+		icon = GFX_france_first		
+		x = 6
+		y = 2
+		cost = 7
+		prerequisite = {
+			focus = PER_war_uni
+		}
+		available = {
+			FRA = {
+				has_war = no
+			}
+			not = { has_country_flag = french_recalled }
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			set_technology = {
+				small_unit_raids = 1
+			}
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = ww1_doctrine
+			}
+			FRA = {
+				add_to_variable = {
+					var = persia_training
+					value = 1
+				}
+			}
+			#inf guy
+		}
+	}
+	focus = {
+		id = PER_war_constant
+		#Colonel Constant
+		icon = GFX_france_first			
+		x = 7
+		y = 1
+		cost = 7
+		prerequisite = {
+			focus = PER_war_uni
+		}
+		available = {
+			FRA = {
+				has_war = no
+			}
+			not = { has_country_flag = french_recalled }
+		}		
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			set_technology = {
+				artillery_concentration = 1
+			}
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = ww1_doctrine
+			}
+			FRA = {
+				add_to_variable = {
+					var = persia_training
+					value = 1
+				}
+			}
+			#art guy
+		}
+	}
+	focus = {
+		id = PER_war_pusho
+		#Colonel pusho
+		icon = GFX_france_first			
+		x = 8
+		y = 2
+		cost = 7
+		prerequisite = {
+			focus = PER_war_uni
+		}
+		available = {
+			FRA = {
+				has_war = no
+			}
+			not = { has_country_flag = french_recalled }
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			set_technology = {
+				artillery_observers = 1
+			}
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = ww1_doctrine
+			}
+			FRA = {
+				add_to_variable = {
+					var = persia_training
+					value = 1
+				}
+			}
+			#art engineer
+		}
+	}
+	focus = {
+		id = PER_war_bersk
+		#Col. Bersk
+		icon = GFX_france_first			
+		x = 9
+		y = 1
+		cost = 7
+		prerequisite = {
+			focus = PER_war_uni
+		}
+		available = {
+			FRA = {
+				has_war = no
+			}
+			not = { has_country_flag = french_recalled }
+		}		
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			set_technology = {
+				logistics_trenches = 1
+			}
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = ww1_doctrine
+			}
+			FRA = {
+				add_to_variable = {
+					var = persia_training
+					value = 1
+				}
+			}
+			#Military Logistics
+		}
+	}	
+	focus = {
+		id = PER_war_yar
+		#Colonel Chuan Yar
+		icon = GFX_france_first			
+		x = 10
+		y = 2
+		cost = 7
+		prerequisite = {
+			focus = PER_war_uni
+		}
+		available = {
+			FRA = {
+				has_war = no
+			}
+			not = { has_country_flag = french_recalled }
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			set_technology = {
+				dispersed_infantry_attacks = 1
+			}
+			add_tech_bonus = {
+				bonus = 0.15
+				uses = 1
+				category = ww1_doctrine
+			}
+			FRA = {
+				add_to_variable = {
+					var = persia_training
+					value = 1
+				}
+			}			
+			#inf guy
+		}
+	}
+	focus = {
+		id = PER_war_simon
+		#Major Simon
+		icon = GFX_france_first			
+		x = 11
+		y = 1
+		cost = 7
+		prerequisite = {
+			focus = PER_war_uni
+		}
+		available = {
+			FRA = {
+				has_war = no
+			}
+			not = { has_country_flag = french_recalled }
+		}		
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			set_technology = {
+				communication_trenches = 1
+			}
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = ww1_doctrine
+			}
+			FRA = {
+				add_to_variable = {
+					var = persia_training
+					value = 1
+				}
+			}			
+			#communications guy
+		}
+	}
+	focus = {
+		id = PER_war_cald
+		#Colonel Calderón
+		icon = GFX_france_first			
+		x = 12
+		y = 2
+		cost = 7
+		prerequisite = {
+			focus = PER_war_uni
+		}
+		available = {
+			FRA = {
+				has_war = no
+			}
+			not = { has_country_flag = french_recalled }
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			set_technology = {
+				cavalry_exploitation = 1
+			}
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = ww1_doctrine
+			}
+			FRA = {
+				add_to_variable = {
+					var = persia_training
+					value = 1
+				}
+			}			
+			#cav guy
+		}
+	}
+	focus = {
+		id = PER_war_dovlaor
+		#Maj. Dovlaor
+		icon = GFX_france_first			
+		x = 13
+		y = 1
+		cost = 7
+		prerequisite = {
+			focus = PER_war_uni
+		}
+		available = {
+			FRA = {
+				has_war = no
+			}
+			not = { has_country_flag = french_recalled }
+		}		
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			set_technology = {
+				terrain_mapping = 1
+			}
+			add_tech_bonus = {
+				bonus = 0.15
+				uses = 1
+				category = ww1_doctrine
+			}
+			FRA = {
+				add_to_variable = {
+					var = persia_training
+					value = 1
+				}
+			}
+			#map and planning guy
+		}
+	}	
+### Iran guys	
+	focus = {
+		id = PER_war_zarg
+		#Major General Zarghami takes command available as supreme?
+		icon = GFX_focus_generic_military_mission	
+		prerequisite = {
+			focus = PER_war_uni
+		}		
+		x = 15
+		y = 1
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			add_ideas = PER_azizullah
+		}
+	}
+	focus = {
+		id = PER_war_diba
+		#Brigadier Mohsen Diba deputy
+		icon = GFX_focus_generic_military_mission
+		prerequisite = {
+			focus = PER_war_zarg
+		}			
+		x = 15
+		y = 2
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			##TODO
+		}
+	}
+	focus = {
+		id = PER_war_razmara
+		#Hajali Razmara  tactics, mapping and military geography
+		icon = GFX_focus_generic_military_mission
+		prerequisite = {
+			focus = PER_war_diba
+		}			
+		x = 13
+		y = 3
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			set_technology = {
+				weather_reporting = 1
+			}
+			##TODO some idea?
+		}
+	}	
+	focus = {
+		id = PER_war_arfa
+		#Hassan Arfa Head of the Cavalry Department and Head of the Secretariat of the University
+		#He paid great attention to the Aryan race and focused on the teachings of fascism and Nazism
+		icon = GFX_focus_generic_military_mission
+		prerequisite = {
+			focus = PER_war_diba
+		}			
+		x = 11
+		y = 3
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			PER_training = yes
+			add_ideas = PER_horsemen	
+		}
+	}
+#### Army
+	focus = {
+		id = PER_equipment_effort
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = PER_war_diba }
+		x = 15
+		y = 3
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_weapons_bonus
+				bonus = 0.2
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+	focus = {
+		id = PER_motorization_effort
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = PER_equipment_effort }
+		bypass = { has_tech = motorised_infantry }
+		x = 12
+		y = 4
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 0.2
+				technology = motorised_infantry
+			}
+		}
+	}
+
+	focus = {
+		id = PER_doctrine_effort
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = PER_equipment_effort }
+		x = 17
+		y = 4
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.2
+				uses = 1
+				category = land_doctrine
+			}
+			PER_training = yes
+		}
+	}
+
+	focus = {
+		id = PER_equipment_effort_2
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = PER_equipment_effort }
+		x = 15
+		y = 4
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 0.2
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = PER_mechanization_effort
+		icon = GFX_goal_generic_build_tank
+		prerequisite = { focus = PER_motorization_effort }
+		x = 13
+		y = 5
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				ahead_reduction = 0.2
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = PER_doctrine_effort_2
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = PER_doctrine_effort }
+		x = 17
+		y = 5
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.2
+				uses = 1
+				category = land_doctrine
+			}
+			PER_training = yes
+		}
+	}
+
+	focus = {
+		id = PER_equipment_effort_3
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = PER_equipment_effort_2 }
+		x = 15
+		y = 5
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				ahead_reduction = 0.2
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+	focus = {
+		id = PER_support
+		icon = GFX_focus_secret_rearmament
+		prerequisite = { focus = PER_equipment_effort_3 }
+		prerequisite = { focus = PER_doctrine_effort_2 }
+		x = 16
+		y = 6
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = support_bonus
+				ahead_reduction = 0.2
+				uses = 2
+				category = support_tech
+			}
+		}
+	}
+
+	focus = {
+		id = PER_armor_effort
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = PER_mechanization_effort }
+		x = 14
+		y = 6
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 0.2
+				uses = 2
+				category = armor
+			}
+		}
+	}
+
+	focus = {
+		id = PER_special_forces
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = PER_support }
+		prerequisite = { focus = PER_armor_effort }
+		x = 15
+		y = 7
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.2
+				uses = 1
+				technology = paratroopers
+				technology = paratroopers2
+				technology = marines
+				technology = marines2
+				technology = tech_mountaineers
+				technology = tech_mountaineers2
+			}
+		}
+	}
+#### AIR
+focus = {
+		id = PER_air
+		#Tehran Mehrabad International Airport 1938
+		icon = GFX_goal_generic_build_airforce
+		prerequisite = {
+			focus = PER_war_diba
+		}
+		available = {
+			has_country_flag = industry_aid_removed
+		}		
+		x = 9
+		y = 3
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			capital_scope = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+focus = {
+		id = PER_fighters
+		
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = {
+			focus = PER_air
+		}			
+		x = 8
+		y = 4
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 0.2
+				uses = 2
+				technology = early_fighter
+				technology = fighter1
+				technology = fighter2
+				technology = fighter3
+				technology = heavy_fighter1
+				technology = heavy_fighter2
+				technology = heavy_fighter3
+			}
+		}
+	}
+focus = {
+		id = PER_fighters_ita
+		
+		icon = GFX_focus_chi_flying_tigers
+		prerequisite = {
+			focus = PER_fighters
+		}
+		available = {
+			has_country_flag = industry_aid_removed
+		}		
+		x = 8
+		y = 5
+		cost = 12
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			ITA = {
+				send_equipment = {
+					equipment = fighter_equipment
+					amount = 40
+					target = PER
+				}
+				air_experience = 50
+			}
+		}
+	}
+focus = {
+		id = PER_cas
+		
+		icon = GFX_focus_USA_ground_support
+		prerequisite = { focus = PER_air }	
+		prerequisite = { focus = PER_motorization_effort }			
+		x = 10
+		y = 5
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			add_tech_bonus = {
+				name = CAS_bonus
+				bonus = 0.2
+				ahead_reduction = 1
+				uses = 1
+				category = cas_bomber
+			}
+		}
+	}
+focus = {
+		id = PER_bases
+		
+		icon = GFX_goal_expand_the_luftwaffe
+		prerequisite = {
+			focus = PER_cas
+		}			
+		x = 10
+		y = 6
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 0
+					}
+					is_capital = no
+					}
+					add_building_construction = {
+						type = air_base
+						level = 1
+						instant_build = yes
+					}
+				}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 0
+					}
+					is_capital = no
+					}
+					add_building_construction = {
+						type = air_base
+						level = 1
+						instant_build = yes
+					}
+				}
+		}
+	}
+focus = {
+		id = PER_bombers
+		
+		icon = GFX_goal_generic_air_bomber
+		prerequisite = {
+			focus = PER_bases
+		}			
+		x = 10
+		y = 7
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			add_tech_bonus = {
+				name = bomber_bonus
+				bonus = 0.2
+				uses = 2
+				technology = strategic_bomber1
+				technology = strategic_bomber2
+				technology = strategic_bomber3
+				category = tactical_bomber
+			}
+		}
+	}
+##### Industry
+	focus = {
+		id = PER_energy
+		#Ministry of Energy founded 36
+		icon = GFX_goal_power_plant
+		prerequisite = {
+		}			
+		x = 19
+		y = 0
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			add_tech_bonus = {
+				name = power_bonus
+				bonus = 0.2
+				uses = 1
+				technology = improved_power_grid_i
+				technology = improved_power_grid_ii
+				technology = improved_power_grid_iii
+				technology = improved_power_grid_iv
+			}
+		}
+	}
+	focus = {
+		id = PER_sugar
+		icon = GFX_goal_sugar
+		prerequisite = { focus = PER_energy	}			
+		x = 18
+		y = 1
+		cost = 10
+
+		available_if_capitulated = no
+		bypass = {
+			
+		}
+
+		complete_tooltip = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}			
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_tea
+		icon = GFX_goal_coffee
+		prerequisite = { focus = PER_energy	}			
+		x = 20
+		y = 1
+		cost = 10
+
+		available_if_capitulated = no
+		bypass = {
+			
+		}
+
+		complete_tooltip = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}			
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_rail_ns
+		#North south rail, disliked by Brit
+		#states 413 Khuzestan, 417 Hamadan, 266 Tehran
+		icon = GFX_goal_generic_construct_infrastructure
+		mutually_exclusive = { focus = PER_rail_ew }
+		prerequisite = {
+		}			
+		x = 24
+		y = 0
+		cost = 9.85
+
+		available_if_capitulated = no
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		completion_reward = {
+			PER_anger_ENG = yes
+			413 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				hidden_effect = {
+					add_state_modifier = {
+						modifier = {
+							local_building_slots_factor = 0.05
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = PER_rail_ns2
+		#North south rail, disliked by Brit
+		#states 413 Khuzestan, 417 Hamadan, 266 Tehran
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = PER_rail_ns }			
+		x = 24
+		y = 1
+		cost = 9.85
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			417 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				hidden_effect = {
+					add_state_modifier = {
+						modifier = {
+							local_building_slots_factor = 0.05
+						}
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_rail_ns3
+		#North south rail, disliked by Brit
+		#states 413 Khuzestan, 417 Hamadan, 266 Tehran
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = PER_rail_ns2 }			
+		x = 24
+		y = 2
+		cost = 9.85
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			266 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				hidden_effect = {
+					add_state_modifier = {
+						modifier = {
+							local_building_slots_factor = 0.05
+						}
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_rail_ew
+		#East West rail, disliked by Sov (ahistorical)
+		#states 410 Sistan, 412 Fars, 413 Khuzestan
+		icon = GFX_goal_generic_construct_infrastructure
+		mutually_exclusive = { focus = PER_rail_ns }
+		prerequisite = {
+		}	
+		available = {
+			has_country_flag = industry_aid_removed
+		}		
+		x = 22
+		y = 0
+		cost = 11
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			PER_anger_SOV = yes
+			410 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}			
+				hidden_effect = {
+					add_state_modifier = {
+						modifier = {
+							local_building_slots_factor = 0.05
+						}
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_rail_ew2
+		#East West rail, disliked by Sov (ahistorical)
+		#states 410 Sistan, 412 Fars, 413 Khuzestan
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = PER_rail_ew }			
+		x = 22
+		y = 1
+		cost = 11
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			412 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				hidden_effect = {
+					add_state_modifier = {
+						modifier = {
+							local_building_slots_factor = 0.05
+						}
+					}
+				}
+			}
+		}
+	}	
+	focus = {
+		id = PER_rail_ew3
+		#East West rail, disliked by Sov (ahistorical)
+		#states 410 Sistan, 412 Fars, 413 Khuzestan
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = PER_rail_ew2 }			
+		x = 22
+		y = 2
+		cost = 11
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			413 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				hidden_effect = {
+					add_state_modifier = {
+						modifier = {
+							local_building_slots_factor = 0.05
+						}
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_steel
+		#Central District of Damavand County 38
+		icon = GFX_IRE_heavy_industry
+		prerequisite = { focus = PER_rail_ew3 focus = PER_rail_ns3 }		
+		x = 1
+		y = 1
+		relative_position_id = PER_rail_ew3
+		cost = 5.8
+
+		available_if_capitulated = no
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = steel_refinery
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = steel_refinery
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = construction_bonus
+				bonus = 0.15
+				uses = 1
+				technology = steel_industry_i
+				technology = steel_industry_ii
+			}			
+		}
+	}
+	focus = {
+		id = PER_damavand
+		#Central District of Damavand County 38
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = PER_tea focus = PER_sugar }		
+		x = 18
+		y = 2
+		cost = 8.8
+
+		available_if_capitulated = no
+		completion_reward = {
+			418 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			add_tech_bonus = {
+				name = construction_bonus
+				bonus = 0.2
+				uses = 1
+				category = construction_tech
+			}			
+		}
+	}
+	focus = {
+		id = PER_fit_service
+		icon = GFX_goal_manpower
+		prerequisite = { focus = PER_damavand }
+		prerequisite = { focus = PER_war_diba }
+		x = 17
+		y = 3
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			remove_ideas = PER_uncounted
+		}
+	}
+	focus = {
+		id = PER_melli_bank
+		#strengthen the Iran nation bank to break the imperial bank of persia (british)
+		icon = GFX_focus_SAF_colonialist_crusade_ENG
+		prerequisite = { focus = PER_tea focus = PER_sugar }			
+		x = 20
+		y = 2
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			PER_anger_ENG = yes
+			swap_ideas = {
+				remove_idea = PER_bad_industry
+				add_idea = PER_bad_industry2
+			}			
+		}
+	}
+
+	focus = {
+		id = PER_ats
+		#1939 in Abadan as Abadan Technical School (oil)
+		icon = GFX_focus_USA_synthetic_development
+		prerequisite = { focus = PER_melli_bank }	
+		prerequisite = { focus = PER_rail_ew3 focus = PER_rail_ns3 }
+		x = 21
+		y = 3
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_tech_bonus = {
+				name = synth_bonus
+				bonus = 0.10
+				uses = 3
+				category = synth_resources
+			}	
+			custom_effect_tooltip = available_industrial_concern
+			show_ideas_tooltip = PER_ats_fuel
+		}
+	}
+	focus = {
+		id = PER_trade_ger
+		icon = GFX_focus_chi_mission_to_germany
+		mutually_exclusive = { focus = PER_trade_sov }
+		prerequisite = { focus = PER_ats }	
+		prerequisite = { focus = PER_aioc2 }
+		x = 23
+		y = 4
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		cost = 10
+		available_if_capitulated = no
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			GER = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			}
+		}
+	}
+	focus = {
+		id = PER_modernise_industry
+		icon = GFX_focus_generic_industry_3
+		prerequisite = { focus = PER_trade_ger }	
+		x = -1
+		y = 1
+		relative_position_id = PER_trade_ger
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		cost = 13
+		available_if_capitulated = no
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PER_bad_industry2
+				add_idea = PER_better_industry
+			}
+		}
+	}
+	focus = {
+		id = PER_trade_sov
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		mutually_exclusive = { focus = PER_trade_ger }
+		prerequisite = { focus = PER_ats }	
+		prerequisite = { focus = PER_aioc2 }
+		prerequisite = { focus = PER_treaty_sov }
+		x = 25
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		available = {
+			not = { has_war_with = SOV }
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+
+		}
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			SOV = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			}
+		}
+	}
+	focus = {
+		id = PER_peace_sov
+		icon = GFX_goal_support_communism
+		prerequisite = { focus = PER_trade_sov }	
+
+		x = 1
+		y = 1
+		relative_position_id = PER_trade_sov
+		cost = 10
+		available_if_capitulated = no
+		available = {
+			not = { has_war_with = SOV }
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+
+		}
+		completion_reward = {
+			diplomatic_relation = {
+				country = SOV
+				relation = non_aggression_pact
+				active = yes
+			}			
+		}
+	}
+	focus = {
+		id = PER_paint
+		#Rangsazi Iran - Iran Paint Manufacturing Company, was founded in 1939 as the first paint producer in Iran as well as the Middle East.
+		icon = GFX_focus_generic_industry_2
+		prerequisite = { focus = PER_tea focus = PER_sugar }	
+		x = 19
+		y = 3
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = PER_paint_sales
+		}
+	}	
+	focus = {
+		id = PER_arms_buildup
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = PER_trade_ger }
+		x = 24
+		y = 5
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_release_IRQ
+		icon = GFX_focus_AST_never_gallipoli
+		prerequisite = { focus = PER_arms_buildup }	
+		prerequisite = { focus = PER_military_business }
+		x = 21
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+
+		}
+		completion_reward = {
+			add_state_claim = 835
+			835 = {
+				owner = {	
+					ROOT = {
+						create_wargoal = {
+							type = take_claimed_state
+							target = PREV
+						}
+					}
+				}
+			}
+		}
+	}	
+	focus = {
+		id = PER_ita_business
+		icon = GFX_focus_ger_assassinate_mussolini
+		prerequisite = { focus = PER_ats }	
+		x = 21
+		y = 4
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		cost = 10
+		available_if_capitulated = no
+		completion_reward = {
+			custom_effect_tooltip = PER_ita_business_TT
+		}
+	}
+	focus = {
+		id = PER_poke_bear
+		icon = GFX_focus_eng_expose_the_belly_of_the_bear
+		prerequisite = { focus = PER_arms_buildup }			
+		x = 1
+		y = 1
+		relative_position_id = PER_arms_buildup
+		cost = 6.2
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			add_state_claim = 584
+			#todo maybe a border war?
+		}
+	}
+	focus = {
+		id = PER_friend_high
+		icon = GFX_goal_TIB_monasteries
+		prerequisite = { focus = PER_poke_bear }			
+		x = -1
+		y = 1
+		relative_position_id = PER_poke_bear
+		cost = 6.2
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			give_guarantee = AFG
+			give_guarantee = TIB
+			AFG = {
+				remove_ideas = neutrality_idea
+			}
+			TIB = {
+				remove_ideas = neutrality_idea
+			}
+		}
+	}
+	focus = {
+		id = PER_strike_north
+		icon = GFX_focus_ger_strike_at_the_source
+		prerequisite = { focus = PER_poke_bear }			
+		x = 0
+		y = 2
+		relative_position_id = PER_poke_bear
+		cost = 10
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			create_wargoal = {
+				type = take_claimed_state
+				target = SOV
+			}
+		}
+	}
+	focus = {
+		id = PER_equip_army
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = PER_paint }	
+		x = 0
+		y = 1
+		relative_position_id = PER_paint
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_military_business
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = PER_ita_business }	
+		prerequisite = { focus = PER_equip_army }
+		available = {
+			has_country_flag = industry_aid_removed
+		}		
+		x = 0
+		y = 1
+		relative_position_id = PER_equip_army
+		cost = 10
+		available_if_capitulated = no
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = tool_bonus
+				bonus = 0.30
+				uses = 1
+				category = tool_tech
+			}			
+		}
+	}
+
+### Politics
+	focus = {
+		id = PER_king		
+		icon = GFX_focus_rom_royal_dictatorship
+		prerequisite = {
+		}	
+		available = {
+			has_country_flag = industry_aid_removed
+			custom_trigger_tooltip = {
+				tooltip = has_railroad
+				OR = {
+					has_completed_focus = PER_rail_ew3
+					has_completed_focus = PER_rail_ns3
+				}
+			}
+		}		
+		x = 28
+		y = 0
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_political_power = 75
+			add_popularity = {
+				ideology = monarchism
+				popularity = 0.20
+			}
+		}
+	}
+	focus = {
+		id = PER_53
+		#The Fifty-Three were a group of 53 Iranians arrested for involvement in communist political activities in 1937 and brought to trial in November 1938 
+		icon = GFX_goal_stalin_paranoia
+		prerequisite = { focus = PER_king }			
+		x = 30
+		y = 1
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			PER_anger_SOV = yes
+			swap_ideas = {
+				remove_idea = PER_commie_plot
+				add_idea = PER_commie_plot2
+			}
+				
+		}
+	}
+	focus = {
+		id = PER_trial
+		#The Fifty-Three were a group of 53 Iranians arrested for involvement in communist political activities in 1937 and brought to trial in November 1938 
+		icon = GFX_goal_generic_war_with_comintern
+		prerequisite = { focus = PER_53 }			
+		x = -1
+		y = 2
+		relative_position_id = PER_53
+		cost = 6.8
+
+		available_if_capitulated = no
+		completion_reward = {
+			PER_anger_SOV = yes
+			remove_ideas = PER_commie_plot2
+		}
+	}
+	
+	focus = {
+		id = PER_election
+		#fake election 1937
+		icon = GFX_focus_generic_home_defense
+		prerequisite = { focus = PER_53 }			
+		x = 30
+		y = 2
+		cost = 7.5
+		available_if_capitulated = no
+		completion_reward = {
+			hold_election = ROOT
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = PER_pride
+		icon = GFX_focus_hol_united_netherlands
+		prerequisite = { focus = PER_library }		
+		x = 32
+		y = 4
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			remove_country_leader_trait = rising_star
+			add_country_leader_trait = autocratic_imperialist
+		}
+	}
+	focus = {
+		id = PER_election2
+		#fake election 1939
+		icon = GFX_focus_generic_home_defense
+		prerequisite = { focus = PER_pride }
+		prerequisite = { focus = PER_aioc2 }		
+		x = 29
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		completion_reward = {
+			hold_election = ROOT
+			add_political_power = 75
+		}
+	}
+	focus = {
+		id = PER_marble_palace
+		#in Tehran 37
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		prerequisite = { focus = PER_king }				
+		x = 28
+		y = 1
+		cost = 12
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_popularity = {
+				ideology = monarchism
+				popularity = 0.05
+			}
+			add_political_power = 20
+			if = {
+				limit = {
+					has_idea = Per_crown
+				}
+				add_ideas = Per_crown2
+			}
+			else = {
+				add_ideas = Per_crown
+			}
+		}
+	}
+	focus = {
+		id = PER_ramsar_palace
+		#The Ramsar Palace is one of the historic buildings and royal residences in Iran. The palace is in Ramsar, a city on the coast of the Caspian Sea. 37
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		prerequisite = { focus = PER_king }				
+		x = 26
+		y = 1
+		cost = 8
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_political_power = 10
+			if = {
+				limit = {
+					has_idea = Per_crown
+				}
+				add_ideas = Per_crown2
+			}
+			else = {
+				add_ideas = Per_crown
+			}
+		}
+	}
+	focus = {
+		id = PER_aioc
+		icon = GFX_focus_RAJ_clamp_down_on_corruption
+		prerequisite = { focus = PER_ramsar_palace focus = PER_marble_palace }				
+		x = 27
+		y = 2
+		cost = 14
+
+		available_if_capitulated = no
+		bypass = {
+			has_war_with = ENG
+		}
+		completion_reward = {
+			ENG = { country_event = { id = persia.2 } }
+		}
+	}
+	focus = {
+		id = PER_aioc2
+		icon = GFX_focus_SAF_colonialist_crusade_ENG
+		prerequisite = { focus = PER_aioc }				
+		x = 27
+		y = 3
+		cost = 10
+		bypass = {
+			or = {
+				has_country_flag = oil_back
+				has_war_with = ENG
+			}
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			PER_anger_ENG = yes
+			ENG = {
+				remove_resource_rights = 412
+			}
+			remove_ideas = PER_aioc_idea
+		}
+	}
+	focus = {
+		id = PER_horde_fuel
+		icon = GFX_goal_storage
+		prerequisite = { focus = PER_aioc2 }				
+		x = 1
+		y = 1
+		relative_position_id = PER_aioc2
+		cost = 3.6
+		available = {
+			has_tech = fuel_silos
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = fuel_silo
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = fuel_silo
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+			}				
+		}
+	}
+	focus = {
+		id = PER_treaty_sov
+		#The Treaty of Commerce and Navigation was signed on March 25, 1940 between representatives of Iran and the Soviet Union. This accord helped to reinforce the tenets of the Treaty of Establishment, Commerce and Navigation. 
+		icon = GFX_goal_consitution
+		prerequisite = { focus = PER_rail_ns3 }
+		prerequisite = { focus = PER_ramsar_palace }
+		x = 25
+		y = 3
+		cost = 6.4
+		available = {
+			not = { has_war_with = SOV }
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			add_opinion_modifier = {
+				target = SOV
+				modifier = trade_partner
+			}
+			add_timed_idea = {
+				idea = PER_trade
+				days = 125
+			}
+			SOV = {
+				add_opinion_modifier = {
+					target = PER
+					modifier = trade_partner
+				}
+				add_timed_idea = {
+					idea = PER_trade
+					days = 100
+				}
+			}
+		}
+	}
+### Culture
+	focus = {
+		id = PER_museum
+		#The Pars Museum is a museum in Shiraz, Fars Province, southern Iran and is located in Nazar Garden 36
+		icon = GFX_goal_government_icon
+		prerequisite = {
+		}			
+		x = 32
+		y = 0
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_ideas = politicalpower_research3
+		}
+	}
+	focus = {
+		id = PER_radio
+		icon = GFX_goal_generic_radar
+		prerequisite = { focus = PER_museum focus = PER_soccer }			
+		x = 1
+		y = 2
+		relative_position_id = PER_museum
+		cost = 10
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_tech_bonus = {
+				name = radio_bonus
+				bonus = 0.20
+				uses = 2
+				category = radio_tech
+			}
+		}
+	}
+	focus = {
+		id = PER_soccer
+		#6 clubs in 36
+		icon = GFX_goal_generic_propaganda
+		prerequisite = {
+		}			
+		x = 34
+		y = 0
+		cost = 9
+
+		available_if_capitulated = no
+		completion_reward = {
+			add_stability = 0.12
+			add_political_power = 25
+		}
+	}
+	focus = {
+		id = PER_library
+		#official inauguration in 1937
+		icon = GFX_goal_government_icon
+		prerequisite = { focus = PER_museum }
+		prerequisite = { focus = PER_election }		
+		x = 32
+		y = 3
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			add_research_slot = 1
+			add_research_centre = yes
+			SLOT:infantry_folder = yes
+			SLOT:support_folder = yes
+			SLOT:artillery_folder = yes
+			SLOT:tank_techs_folder = yes
+			SLOT:armor_folder = yes
+			SLOT:air_techs_folder = yes
+			SLOT:naval_folder = yes
+			SLOT:naval_techs_folder = yes
+			SLOT:industry_folder = yes
+			SLOT:electronics_folder = yes
+		}
+	}
+	focus = {
+		id = PER_amjadiyeh
+		#Amjadiyeh Stadium is a sports stadium in Tehran, 1939
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = PER_soccer }			
+		x = 34
+		y = 1
+		cost = 8
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			add_country_leader_trait = great_architect
+			add_political_power = 25
+		}
+	}
+#### Navy
+	focus = {
+		id = PER_ports_fars
+		#
+		icon = GFX_focus_USA_higgins_boats
+		prerequisite = {
+		}			
+		x = 36
+		y = 0
+		cost = 10
+		available = {
+			has_tech = infra_works
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			412 = {
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					### Adds a port on the red sea
+					province = 1015	
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_ports_khuz
+		#
+		icon = GFX_focus_USA_higgins_boats
+		prerequisite = {
+		}			
+		x = 38
+		y = 0
+		cost = 10
+		available = {
+			has_tech = infra_works
+		}
+
+		available_if_capitulated = no
+		completion_reward = {
+			413 = {
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					### Adds a port on the red sea
+					province = 5005	
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_naval
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 37
+		y = 1
+		cost = 10
+		prerequisite = { focus = PER_ports_khuz focus = PER_ports_fars }
+		available_if_capitulated = no
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available = {
+			has_country_flag = coastal_state
+		}
+
+		complete_tooltip = {
+			navy_experience = 25
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = dockyard
+				level = 3
+				instant_build = yes
+			}
+		}
+		
+		completion_reward = {
+			navy_experience = 25
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							dockyard > 0
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+					has_country_flag = coastal_state
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = yes
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				set_country_flag = naval_effort_built
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					any_owned_state = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				set_country_flag = naval_effort_built
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+				}
+				random_state = {
+					limit = {
+						controller = { tag = ROOT }
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+			}			
+		}
+	}
+	focus = {
+		id = PER_ship_babr
+		#The Iranian warship Babr (Tiger)
+		icon = GFX_focus_generic_destroyer
+		prerequisite = { focus = PER_naval }	
+		x = 35
+		y = 2
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		allow_branch = {
+			has_dlc = "Man the Guns"
+		}
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = PER_babr_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						not = { has_dlc = "Man the Guns" }
+					}
+					load_oob = PER_babr
+				}
+				if = {
+					limit = {
+						has_dlc = "Man the Guns"
+					}
+					create_equipment_variant = {
+						name = "Babr Class"
+						type = nrm_ship_hull_destroyer_2
+						parent_version = 0
+						role_icon_index = 2
+						modules = {
+							fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+							fixed_ship_engine_slot = nrm_destroyer_engine_S2_005
+							fixed_ship_sonar_slot = nrm_sonar_3
+							fixed_ship_battery_slot = nrm_destroyer_battery_4_2_x3
+							fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+							fixed_ship_range_slot = nrm_range_destroyer_3
+							fixed_ship_radar_slot = empty
+							fixed_ship_fire_control_system_slot = nrm_fire_control_3
+							fixed_ship_fire_control_system_aa_slot = empty
+							custom_slot_1 = nrm_support_destroyer_ASW_1
+							custom_slot_2 = nrm_support_destroyer_ASW_2
+							custom_slot_3 = nrm_support_destroyer_ASW_2
+							custom_slot_4 = nrm_support_destroyer_AA_1
+							custom_slot_5 = nrm_support_destroyer_AA_2
+							custom_slot_6 = nrm_support_destroyer_AA_1
+						}
+					}
+					load_oob = PER_babr_NRM
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_ship_palang
+		#the Iranian warship Palang (Leopard)
+		icon = GFX_focus_generic_destroyer
+		prerequisite = { focus = PER_ship_babr }	
+		x = 35
+		y = 3
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+			OR = {
+				has_tech = early_destroyer 
+				AND = {
+					has_tech = nrm_battery_improved_5
+					has_tech = early_ship_hull_light
+					has_tech = early_engine
+				}
+			}
+		}
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = PER_palang_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						not = { has_dlc = "Man the Guns" }
+					}
+					set_technology = { basic_destroyer = 1 }
+					load_oob = PER_palang
+				}
+				if = {
+					limit = {
+						has_dlc = "Man the Guns"
+					}
+					create_equipment_variant = {
+						name = "Palang Class"
+						type = nrm_ship_hull_destroyer_2
+						parent_version = 0
+						role_icon_index = 2
+						modules = {
+							fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+							fixed_ship_engine_slot = nrm_destroyer_engine_S1_050
+							fixed_ship_sonar_slot = nrm_sonar_2
+							fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x5
+							fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+							fixed_ship_range_slot = nrm_range_destroyer_3
+							fixed_ship_radar_slot = empty
+							fixed_ship_fire_control_system_slot = nrm_fire_control_3
+							fixed_ship_fire_control_system_aa_slot = empty
+							custom_slot_1 = nrm_support_destroyer_ASW_1
+							custom_slot_2 = nrm_support_destroyer_ASW_2
+							custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x4
+							custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x4
+							custom_slot_5 = nrm_support_destroyer_AA_1
+							custom_slot_6 = nrm_support_destroyer_AA_1
+						}
+					}
+					load_oob = PER_palang_NRM
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_ship_shir
+		#fictional ship, cruiser #currently another terrible TB
+		#icon = GFX_focus_generic_cruiser2
+		icon = GFX_focus_generic_destroyer
+		prerequisite = { focus = PER_ship_palang }	
+		x = 35
+		y = 4
+		cost = 10
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+
+		}
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = PER_shir_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						not = { has_dlc = "Man the Guns" }
+					}
+					set_technology = { early_light_cruiser = 1 }
+					load_oob = PER_shir
+				}
+				if = {
+					limit = {
+						has_dlc = "Man the Guns"
+					}
+					create_equipment_variant = {
+						name = "Shir Class"
+						type = nrm_ship_hull_cruiser_2
+						parent_version = 0
+						role_icon_index = 2
+						modules = {
+							fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_2
+							fixed_ship_engine_slot = nrm_cruiser_engine_S1_055
+							fixed_ship_armor_layout_slot = nrm_armour_layout_2
+							fixed_ship_armor_slot = nrm_cruiser_armour_02h_2
+							fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+							fixed_ship_range_slot = nrm_range_cruiser_3
+							fixed_ship_radar_slot = empty
+							fixed_ship_fire_control_system_slot = nrm_fire_control_3
+							fixed_ship_fire_control_system_aa_slot = empty
+							fixed_ship_battery_slot = nrm_cruiser_battery_6_2_x08
+							fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+							custom_slot_1 = nrm_support_cruiser_FP_1
+							custom_slot_2 = empty
+							custom_slot_3 = nrm_support_cruiser_TRP_21_2_x06
+							custom_slot_4 = nrm_support_cruiser_TRP_21_2_x06
+							custom_slot_5 = nrm_support_cruiser_AA_1
+							custom_slot_6 = empty
+						}
+					}
+					load_oob = PER_shir_NRM
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_ship_reza
+		#fictional ship, battlecruiser
+		icon = GFX_focus_generic_navy_battleship2
+		prerequisite = { focus = PER_ship_shir }	
+		prerequisite = { focus = PER_capital_ships_effort }	
+		prerequisite = { focus = PER_pride }			
+		x = 35
+		y = 5
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		cost = 15.8
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+
+		}
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = PER_reza_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						not = { has_dlc = "Man the Guns" }
+					}
+					set_technology = { late_ww1_battlecruiser = 1 }
+					load_oob = PER_reza
+				}
+				if = {
+					limit = {
+						has_dlc = "Man the Guns"
+					}
+					create_equipment_variant = {
+						name = "Reza Class"
+						type = nrm_ship_hull_capital_1
+						parent_version = 0
+						role_icon_index = 4
+						modules = {
+							fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+							fixed_ship_engine_slot = nrm_capital_engine_S1_080
+							fixed_ship_armor_layout_slot = nrm_armour_layout_BC_2
+							fixed_ship_armor_slot = nrm_capital_armour_10_1
+							fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+							fixed_ship_range_slot = nrm_range_capital_3
+							fixed_ship_radar_slot = empty
+							fixed_ship_fire_control_system_slot = nrm_fire_control_3
+							fixed_ship_fire_control_system_aa_slot = empty
+							fixed_ship_battery_slot = nrm_capital_battery_14_1_2x4
+							fixed_ship_secondary_slot = nrm_capital_secondary_SB_5_1_x16
+							fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_5_1_x04
+							custom_slot_1 = nrm_support_capital_FP_1
+							custom_slot_2 = empty
+							custom_slot_3 = nrm_support_capital_AA_1
+							custom_slot_4 = nrm_support_capital_AA_1
+							custom_slot_5 = nrm_support_capital_AA_1
+							custom_slot_6 = empty
+						}
+					}
+					load_oob = PER_reza_NRM
+				}
+			}
+		}
+	}
+	focus = {
+		id = PER_flexible_navy
+		icon = GFX_goal_generic_build_navy
+		prerequisite = { focus = PER_naval }
+		mutually_exclusive = { focus = PER_large_navy }
+		x = 37
+		y = 2
+		cost = 10
+
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { has_country_flag = coastal_state }
+					num_of_naval_factories > 1
+				}
+			}
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = sub_op_bonus
+				bonus = 0.2
+				uses = 2
+				category = naval_doctrine_submarine
+			}
+		}
+	}
+
+	focus = {
+		id = PER_large_navy
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = PER_naval }
+		mutually_exclusive = { focus = PER_flexible_navy }
+		x = 39
+		y = 2
+		cost = 10
+
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { has_country_flag = coastal_state }
+					num_of_naval_factories > 1
+				}
+			}
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = fleet_in_being_bonus
+				bonus = 0.2
+				uses = 2
+				category = naval_doctrine_fleet_in_being
+			}
+		}
+	}
+
+	focus = {
+		id = PER_submarine_effort
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = PER_flexible_navy focus = PER_large_navy }
+		x = 39
+		y = 3
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { has_country_flag = coastal_state }
+					num_of_naval_factories > 1
+				}
+			}
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = ss_bonus
+				bonus = 0.2
+				uses = 1
+				category = ss_tech
+			}
+		}
+	}
+
+	focus = {
+		id = PER_cruiser_effort
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = PER_large_navy focus = PER_flexible_navy }
+		x = 37
+		y = 3
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { has_country_flag = coastal_state }
+					num_of_naval_factories > 1
+				}
+			}
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 0.5
+				uses = 1
+                category = cl_tech
+                category = ca_tech
+			}
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus = {
+					bonus = 0.25
+					uses = 1
+					category = naval_battery_medium
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = PER_destroyer_effort
+		icon = GFX_goal_generic_wolf_pack
+		prerequisite = { focus = PER_submarine_effort }
+		x = 39
+		y = 4
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { has_country_flag = coastal_state }
+					num_of_naval_factories > 1
+				}
+			}
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 0.2
+				uses = 1
+                category = dd_tech
+			}
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus = {
+					bonus = 0.25
+					uses = 1
+					category = naval_battery_light
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = PER_capital_ships_effort
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = PER_cruiser_effort }
+		x = 37
+		y = 4
+		cost = 10
+		available = {
+			has_country_flag = industry_aid_removed
+		}
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { has_country_flag = coastal_state }
+					num_of_naval_factories > 1
+				}
+			}
+		}
+
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = capital_ships_bonus
+				bonus = 0.2
+				uses = 1
+				category = bb_tech
+				category = bc_tech
+			}
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus = {
+					bonus = 0.25
+					uses = 1
+					category = naval_battery_heavy
+				}
+			}
+		}
+	}
+	
+}

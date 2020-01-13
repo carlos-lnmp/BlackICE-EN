@@ -1,0 +1,519 @@
+﻿add_namespace = EAI_DM
+
+############################################################################################################
+# Expert AI mod - diplomacy events
+############################################################################################################
+
+### AI events
+
+# default historical mode settings (cant be applied on startup)
+country_event = { 
+	id = EAI_DM.0
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		#if = { limit = { is_historical_focus_on = yes }
+		#
+		#	USA = { if = { limit = { is_ai = yes } add_ideas = EAI_neutrality_idea_USA } }
+		#	
+		#	set_global_flag = EAI_neutral_spr
+		#}
+	}
+	option = {}
+}
+
+# SOV: make sure USSR starts the winter war on time
+country_event = { 
+	id = EAI_DM.2
+	hidden = yes
+	fire_only_once = yes
+	trigger = {
+		tag = FIN
+		SOV = { is_ai = yes }
+		is_historical_focus_on = yes
+		date < 1941.1.1
+		date > 1939.11.1
+
+		NOT = {
+			SOV = { has_capitulated = yes }
+			SOV = { exists = no }
+			SOV = { is_subject = yes }
+			SOV = { is_in_faction_with = GER }
+			is_in_faction_with = SOV
+		}
+
+		OR = { SOV = { has_completed_focus = SOV_baltic_security } has_global_flag = sov_yes_pact }
+		146 = { is_controlled_by = FIN }
+		has_war = no
+		SOV = { has_war = no }
+	}
+	immediate = {
+		FIN = {
+			set_country_flag = { flag = EAI_declare_war_from_SOV value = 1 days = 180 }
+			set_country_flag = { flag = EAI_prepare_for_war_from_SOV value = 1 days = 180 }
+		}
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | DIPLO-AI-EVENT: winter war" } 
+	}
+	option = { name = "OK" }
+}
+country_event = { 
+	id = EAI_DM.7
+	hidden = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		if = { limit = { SOV = { NOT = { has_war_with = GER } } }
+			SOV = { declare_war_on = { target = GER type = puppet_wargoal_focus } }
+		}
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | DIPLO-AI-EVENT: wardec GER" } 
+	}
+	option = { name = "OK" }
+}
+
+
+# neutral countries: join allies
+country_event = { 
+	id = EAI_DM.21
+	hidden = yes
+	mean_time_to_happen = { 
+		days = 180 
+		modifier = {
+			factor = 0.25
+
+			ENG = { 
+				democratic_govt = yes
+				NOT = { EAI_is_not_independent = yes }
+				any_enemy_country = { 
+					original_tag = GER 
+					has_government = fascism 
+					is_faction_leader = yes
+					OR = {
+						surrender_progress > 0.5
+						ENG = { alliance_strength_ratio > 2.0 }
+					}
+				}
+			}
+		}
+	}
+	trigger = {
+		is_ai = yes
+
+		NOT = { has_country_flag = EAI_neutral_joins_allies_triggered }
+
+		NOT = { has_global_flag = EAI_performance_mode }
+
+		is_historical_focus_on = yes
+
+		threat > 0.99
+
+		date > 1942.1.1
+
+		### this country
+
+		OR = { has_government = neutrality democratic_govt = yes }
+
+		NOT = { 
+			is_in_faction = yes 
+			EAI_neutral_country = yes
+			EAI_is_not_independent = yes
+		}
+
+		NOT = {
+			any_neighbor_country = {
+				has_war_with = ENG
+				strength_ratio = { tag = ROOT ratio > 2.0 }
+			}
+		}
+
+		### allies
+
+		ENG = { 
+			democratic_govt = yes
+			any_enemy_country = { is_major = yes }
+		}
+
+		USA = {
+			democratic_govt = yes
+			is_major = yes
+			surrender_progress < 0.2
+			is_in_faction_with = ENG
+			has_navy_size = { size > 200 }
+			NOT = { EAI_is_not_independent = yes }
+		}
+
+		### other conditions
+
+		OR = {
+			AND = { # south america
+				capital_scope = { is_on_continent = south_america }
+				OR = {
+					AND = { date > 1944.1.1 }
+					AND = { date > 1942.2.1 original_tag = BRA }
+				}
+			}
+			AND = { # rest of the world
+				any_country = { 
+					OR = { original_tag = ENG original_tag = USA }
+					democratic_govt = yes
+					is_major = yes
+					is_faction_leader = yes
+
+					any_enemy_country = { 
+						original_tag = GER 
+						has_government = fascism 
+						is_faction_leader = yes
+						surrender_progress > 0.5
+					}
+				}
+			}
+		}
+	}
+	immediate = {
+		set_country_flag = { flag = EAI_neutral_joins_allies value = 1 days = 180 }
+		set_country_flag = EAI_neutral_joins_allies_triggered
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | DIPLO-AI-EVENT: join allies" } 
+	}
+	option = {}
+}
+
+# neutral countries: join axis
+country_event = { 
+	id = EAI_DM.22
+	hidden = yes
+	mean_time_to_happen = { days = 100 }
+	trigger = {
+		is_ai = yes
+
+		NOT = { has_country_flag = EAI_neutral_joins_axis_triggered }
+
+		NOT = { has_global_flag = EAI_performance_mode }
+
+		is_historical_focus_on = yes
+
+		threat > 0.99
+
+		date > 1942.1.1
+
+		### this country
+
+		OR = { has_government = fascism }
+
+		NOT = { 
+			is_in_faction = yes 
+			EAI_neutral_country = yes
+			EAI_is_not_independent = yes
+		}
+
+		NOT = {
+			any_neighbor_country = {
+				has_war_with = GER
+				strength_ratio = { tag = ROOT ratio > 2.0 }
+			}
+		}
+
+		any_neighbor_country = { is_in_faction_with = GER }
+
+		### axis
+
+		GER = { 
+			any_enemy_country = { is_major = yes }
+			is_major = yes
+			has_government = fascism
+			is_faction_leader = yes
+			NOT = { 
+				EAI_is_not_independent = yes 
+				surrender_progress > 0.05
+			}
+		}
+
+		### other conditions
+
+		OR = {
+			AND = { # south america
+				capital_scope = { is_on_continent = south_america }
+				date > 1943.1.1
+
+				OR = {
+					ENG = { OR = { EAI_is_not_independent = yes has_government = fascism } }
+					USA = { OR = { EAI_is_not_independent = yes has_government = fascism } }
+				}
+			}
+			AND = { # rest of the world
+				OR = {
+					AND = {
+						ENG = { OR = { EAI_is_not_independent = yes has_government = fascism } }
+						USA = { OR = { EAI_is_not_independent = yes has_government = fascism } }
+					}
+				
+					SOV = { OR = { EAI_is_not_independent = yes has_government = fascism } }
+				}
+			}
+		}
+	}
+	immediate = {
+		set_country_flag = { flag = EAI_neutral_joins_axis value = 1 days = 180 }
+		set_country_flag = EAI_neutral_joins_axis_triggered
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | DIPLO-AI-EVENT: join axis" } 
+	}
+	option = {}
+}
+
+# ger wardec on sov: call all minors immediately to avoid a SOV AI frontline issue
+country_event = { 
+	id = EAI_DM.23
+	hidden = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		for_each_scope_loop = { array = GER.allies
+			
+			if = { limit = { is_neighbor_of = SOV is_ai = yes }
+
+				add_to_war = {
+					targeted_alliance = GER
+					enemy = SOV
+					hostility_reason = asked_to_join
+				}
+			}
+		}
+	}
+	option = { name = "OK" }
+}
+
+# debug
+country_event = {
+	id = EAI_DM.1000
+	title = EAI_DM.1000.t
+	desc = EAI_DM.1000.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+	is_triggered_only = yes
+	option = { name = "OK" }
+}
+
+#######################################################
+# random generic nation ideology setting
+#######################################################
+
+# makes the AI choose an ideology to focus on
+country_event = {
+	id = EAI_DM.1230
+	hidden = yes
+
+	mean_time_to_happen = { days = 2 }
+
+	trigger = {
+		is_ai = yes
+		has_global_flag = EAI_random_ideology
+		has_focus_tree = generic_focus
+		NOT = {
+			has_country_flag = EAI_democratic_focus
+			has_country_flag = EAI_communist_focus
+			has_country_flag = EAI_fascist_focus
+			has_country_flag = EAI_neutral_focus
+		}
+	}
+
+	option = { name = "democratic"
+		trigger = { 
+			OR = {
+				has_available_idea_with_traits = { idea = democratic_reformer limit = 1 } 
+				has_idea_with_trait = democratic_reformer
+			}
+		}
+
+		ai_chance = {
+			base = 1
+
+			modifier = { add = 1 EAI_democratic_nation = yes }
+			modifier = { add = 1 check_variable = { party_popularity@democratic > 0.8 } }
+			modifier = { add = 1 check_variable = { party_popularity@democratic > 0.6 } }
+			modifier = { add = 1 check_variable = { party_popularity@democratic > 0.4 } }
+			modifier = { add = 1 check_variable = { party_popularity@democratic > 0.2 } }
+		}
+
+		set_country_flag = EAI_democratic_focus
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | IDEOLOGY FOCUS: democratic" } 
+	}
+
+	option = { name = "communist"
+		trigger = { 
+			OR = {
+				has_available_idea_with_traits = { idea = communist_revolutionary limit = 1 } 
+				has_idea_with_trait = communist_revolutionary
+			}
+		}
+
+		ai_chance = {
+			base = 1
+
+			modifier = { add = 1 EAI_communist_nation = yes }
+			modifier = { add = 1 check_variable = { party_popularity@communism > 0.8 } }
+			modifier = { add = 1 check_variable = { party_popularity@communism > 0.6 } }
+			modifier = { add = 1 check_variable = { party_popularity@communism > 0.4 } }
+			modifier = { add = 1 check_variable = { party_popularity@communism > 0.2 } }
+		}
+
+		set_country_flag = EAI_communist_focus
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | IDEOLOGY FOCUS: communist" } 
+	}
+
+	option = { name = "fascist"
+		trigger = { 
+			OR = {
+				has_available_idea_with_traits = { idea = fascist_demagogue limit = 1 } 
+				has_idea_with_trait = fascist_demagogue
+			}
+		}
+
+		ai_chance = {
+			base = 1
+
+			modifier = { add = 1 EAI_fascist_nation = yes }
+			modifier = { add = 1 check_variable = { party_popularity@fascism > 0.8 } }
+			modifier = { add = 1 check_variable = { party_popularity@fascism > 0.6 } }
+			modifier = { add = 1 check_variable = { party_popularity@fascism > 0.4 } }
+			modifier = { add = 1 check_variable = { party_popularity@fascism > 0.2 } }
+		}
+
+		set_country_flag = EAI_fascist_focus
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | IDEOLOGY FOCUS: fascist" } 
+	}
+
+	option = { name = "neutral"
+		ai_chance = {
+			base = 1
+
+			modifier = { add = 3 EAI_nonaligned_nation = yes }
+		}
+
+		set_country_flag = EAI_neutral_focus
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | IDEOLOGY FOCUS: neutral" } 
+	}
+}
+
+# allows a neutral country to pick up an ideology
+country_event = {
+	id = EAI_DM.1231
+	hidden = yes
+
+	mean_time_to_happen = { days = 365 }
+
+	trigger = {
+		is_ai = yes
+		has_global_flag = EAI_random_ideology
+		has_focus_tree = generic_focus
+		has_country_flag = EAI_neutral_focus
+
+		OR = {
+			check_variable = { party_popularity@democratic > 0.5 }
+			check_variable = { party_popularity@fascism > 0.5 }
+			check_variable = { party_popularity@communism > 0.5 }
+		}
+	}
+
+	immediate = {
+		clr_country_flag = EAI_neutral_focus
+
+		if = { limit = { check_variable = { party_popularity@democratic > 0.5 } } 
+			set_country_flag = EAI_democratic_focus
+		}
+		if = { limit = { check_variable = { party_popularity@communism > 0.5 } } 
+			set_country_flag = EAI_communist_focus
+		}
+		if = { limit = { check_variable = { party_popularity@fascism > 0.5 } } 
+			set_country_flag = EAI_fascist_focus
+		}
+
+		if = { limit = { has_country_flag = EAI_logging } log = "[GetYear] [GetMonth] | AI | [Root.GetName] | IDEOLOGY FOCUS: neutral" } 
+	}
+
+	option = {}
+}
+
+#######################################################
+# operations
+#######################################################
+
+### operation countenance
+
+country_event = {
+	id = EAI_DM.1300
+	title = EAI_DM.1300_t
+	desc = EAI_DM.1300_d
+	picture = GFX_report_event_vienna_award_hungary
+
+	is_triggered_only = yes
+
+	option = { name = EAI_DM.1300.o1
+
+		ai_chance = { factor = 100 }
+
+		custom_effect_tooltip = EAI_DM.1300.tt
+		activate_decision = EAI_operation_countenance
+		FROM = { 
+			activate_decision = EAI_operation_countenance 
+			hidden_effect = { country_event = EAI_DM.1303 } 
+		}
+
+		country_event = { id = EAI_DM.1301 days = 36 }
+
+		set_global_flag = { flag = EAI_operation_countenance_started value = 1 days 365 }
+	}
+
+	option = { name = EAI_DM.1300.o2
+
+		FROM = { 
+			add_opinion_modifier = { target = ROOT modifier = refused_help }
+			hidden_effect = { country_event = EAI_DM.130 } 
+		}
+	}
+}
+
+news_event = {
+	id = EAI_DM.1301
+	title = EAI_DM.1301_t
+	desc = EAI_DM.1301_d
+	picture = GFX_news_event_soviet_tanks
+
+	is_triggered_only = yes
+
+	major = yes
+
+	option = { name = EAI_DM.1301.o1
+
+	}
+}
+
+country_event = {
+	id = EAI_DM.1302
+	title = EAI_DM.1302_t
+	desc = EAI_DM.1302_d
+	picture = GFX_report_event_vienna_award_hungary
+
+	is_triggered_only = yes
+
+	option = { name = EAI_DM.1302.o1
+
+	}
+}
+
+country_event = {
+	id = EAI_DM.1303
+	title = EAI_DM.1303_t
+	desc = EAI_DM.1303_d
+	picture = GFX_report_event_vienna_award_hungary
+
+	is_triggered_only = yes
+
+	option = { name = EAI_DM.1303.o1
+	
+	}
+}

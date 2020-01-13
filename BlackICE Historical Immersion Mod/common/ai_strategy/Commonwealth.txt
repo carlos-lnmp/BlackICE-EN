@@ -1,0 +1,278 @@
+stay_out_of_comintern = {
+    enable = {
+		is_in_faction_with = ENG
+	}
+	
+	abort = {
+       ENG = { is_faction_leader = no }
+    }
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = SOV
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = SIK
+		value = 20000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = MON
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = VIC
+		value = 2000
+	}
+}
+canada_stay_in_commonwealth = {
+    enable = {
+		tag = CAN
+		democratic_govt = yes
+		is_in_faction_with = ENG
+        ENG = { 
+			is_faction_leader = yes 
+		}
+    }
+    abort = {
+       ENG = { is_faction_leader = no }
+    }
+
+    ai_strategy = {
+        type = alliance
+        id = "ENG"     
+        value = 300000
+    }
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = RAJ
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = BUR
+		value = 20000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = INS
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = AST
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = MAL
+		value = 2000
+	}
+}
+southafrica_stay_in_commonwealth = {
+    enable = {
+		tag = SAF
+		democratic_govt = yes
+		is_in_faction_with = ENG
+        ENG = { 
+			is_faction_leader = yes 
+		}
+    }
+    abort = {
+       ENG = { is_faction_leader = no }
+    }
+
+    ai_strategy = {
+        type = alliance
+        id = "ENG"     
+        value = 300000
+    }
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = RAJ
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = BUR
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = INS
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = AST
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = MAL
+		value = 2000
+	}
+}
+newzealand_stay_in_commonwealth = {
+    enable = {
+		tag = NZL
+		democratic_govt = yes
+		is_in_faction_with = ENG
+        ENG = { 
+			is_faction_leader = yes 
+		}
+    }
+    abort = {
+       ENG = { is_faction_leader = no }
+    }
+
+    ai_strategy = {
+        type = alliance
+        id = "ENG"     
+        value = 300000
+    }
+}
+australia_stay_in_commonwealth = {
+    enable = {
+		tag = AST
+		democratic_govt = yes
+		is_in_faction_with = ENG
+        ENG = { 
+			is_faction_leader = yes 
+		}
+    }
+    abort = {
+       ENG = { is_faction_leader = no }
+    }
+
+    ai_strategy = {
+        type = alliance
+        id = "ENG"     
+        value = 300000
+    }
+	
+}
+burma_stay_in_commonwealth = {
+    enable = {
+		tag = BUR
+		democratic_govt = yes
+		is_in_faction_with = ENG
+        ENG = { 
+			is_faction_leader = yes 
+		}
+    }
+    abort = {
+       ENG = { is_faction_leader = no }
+    }
+
+    ai_strategy = {
+        type = alliance
+        id = "ENG"     
+        value = 300000
+    }
+}
+raj_stay_in_commonwealth = {
+    enable = {
+		tag = RAJ
+		democratic_govt = yes
+		is_in_faction_with = ENG
+        ENG = { 
+			is_faction_leader = yes 
+		}
+    }
+    abort = {
+       ENG = { is_faction_leader = no }
+    }
+
+    ai_strategy = {
+        type = alliance
+        id = "ENG"     
+        value = 300000
+    }
+}
+
+Allies_Minors_stay_defensive = { 
+	enable = {
+		OR = {
+			tag = INS
+			tag = SYR
+			tag = LEB 
+			tag = MAR
+			tag = TUN
+			tag = BMP
+			tag = JOR
+			tag = EGY
+		}
+		is_in_faction_with = ENG
+		has_war = yes
+	}
+
+	abort = {
+		has_war = no
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = RAJ
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = BUR
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = INS
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = AST
+		value = 2000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = MAL
+		value = 2000
+	}
+}
+
+allies_crush_ethiopia = {
+	enable = {
+		has_war_with = ETH
+		is_in_faction_with = ENG
+		ETH = { is_puppet_of = ITA }
+	}
+	abort = {
+		NOT = { has_war_with = ETH } 
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = "ETH"
+		value = 500
+	}
+}
+welcome_nepal = {
+    enable = {
+		tag = NEP
+		is_in_faction_with = ENG
+        ENG = { 
+			is_faction_leader = yes 
+		}
+    }
+    abort = {
+       ENG = { is_faction_leader = no }
+    }
+
+    ai_strategy = {
+        type = alliance
+        id = "ENG"     
+        value = 300000
+    }
+}
+

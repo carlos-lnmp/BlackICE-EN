@@ -1,0 +1,796 @@
+ideas = {
+	hidden_ideas = {
+		IRE_payments = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				civilian_factory_use = 1
+			} 
+		}
+	}
+	country = {
+		IRE_ira = {
+			picture = FRA_scw_intervention_republicans_focus
+			
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+		
+			modifier = {
+				political_power_cost = 0.5
+				stability_factor = -0.05
+				stability_weekly = -0.003 
+				neutrality_drift = 0.01
+				#production_speed_corruption_factor = -0.02
+			}
+		}
+		IRE_great_depression_1 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = great_depression
+			
+			
+			modifier = {
+				consumer_goods_factor = 0.20
+				industrial_capacity_factory = -0.25
+				industrial_capacity_dockyard = -0.25
+				stability_factor = -0.10
+				opposition_party_drift = 0.03
+			}
+		}
+		IRE_great_depression_2 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = great_depression
+			
+			modifier = {
+				consumer_goods_factor = 0.15
+				industrial_capacity_factory = -0.15
+				industrial_capacity_dockyard = -0.15
+				opposition_party_drift = 0.02
+			}
+		}
+		IRE_great_depression_3 = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = great_depression
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+				industrial_capacity_factory = -0.10
+				industrial_capacity_dockyard = -0.1
+				opposition_party_drift = 0.01
+			}
+		}
+		IRE_trade_war = {
+			picture = ROM_king_carol_emptied_accounts
+			
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+		
+			modifier = {
+				economy_cost_factor = 0.25
+				consumer_goods_factor = 0.08
+				production_speed_buildings_factor = -0.05
+				production_factory_max_efficiency_factor = -0.1
+				MONTHLY_POPULATION = -0.50
+				opposition_party_drift = 0.01
+			}
+		}
+		IRE_trade_war2 = {
+			name = IRE_trade_war
+			picture = ROM_king_carol_emptied_accounts
+			
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+		
+			modifier = {
+				economy_cost_factor = 0.15
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = -0.05
+				production_factory_max_efficiency_factor = -0.05
+			}
+		}
+		IRE_trade_war_eng = {
+			picture = ROM_king_carol_emptied_accounts
+			
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+		
+			modifier = {
+				consumer_goods_factor = 0.03
+				opposition_party_drift = 0.01
+			}
+		}
+		IRE_freedom = {
+			picture = generic_constitutional_guarantees
+			
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+		
+			modifier = {				
+				autonomy_gain = 0.30
+			}
+		}
+		IRE_ira2 = {
+			picture = FRA_scw_intervention_republicans_focus
+			
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+		
+			modifier = {
+				political_power_cost = 0.5
+				stability_factor = -0.10
+				stability_weekly = -0.003
+				neutrality_drift = 0.02
+				#production_speed_corruption_factor = -0.01
+			}
+		}
+		IRE_neutral = {
+			picture = generic_disjointed_gov 
+		
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+		
+			modifier = {
+				conscription_factor = -0.5
+				join_faction_tension = 1.00
+				send_volunteers_tension = 0.20
+				guarantee_tension = 1.0
+				ai_badass_factor = 0.01  
+				ai_get_ally_desire_factor = -100
+			}
+		}
+		IRE_unite = {
+			picture = triumphant_will
+			
+			allowed = {
+				always = no
+			}
+				
+			removal_cost = -1
+				
+			modifier = {
+				stability_factor = 0.3
+				political_power_gain = 1
+				drift_defence_factor = 0.5
+			}
+			
+		}
+	}
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+		IRE_domhnall_buachalla = {
+			picture = generic_political_advisor_europe_2
+				
+			allowed = {
+				original_tag = IRE
+				is_subject = yes
+			}
+			
+			traits = { 
+				reluctant_minister
+				head_of_state_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					is_subject = yes
+				}
+			}
+		}			
+		IRE_douglas_hyde = {
+			picture = generic_political_advisor_europe_3
+				
+			allowed = {
+				original_tag = IRE
+				is_subject = no
+			}
+			
+			traits = { 
+				popular_figurehead
+				intellectual
+head_of_state_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					is_subject = no
+				}
+			}
+		}
+	}
+	#Foreign Ministers
+	foreign_minister = {
+		IRE_sean_ceallaigh = {
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				conservative
+				smooth_talking_charmer 
+foreign_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Propaganda/Security
+	interior_minister = {
+		IRE_william_cosgrave = {
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				liberal
+				efficient_sociopath 
+interior_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Intelligence
+	intel_minister = {
+		IRE_william_norton = {
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				socialist
+				codebreaker 
+intel_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRE_spy2 = { 
+			picture = generic_spy_intel
+			allowed = {
+				original_tag = IRE
+			}
+			research_bonus = {
+				infantry_weapons = 0.09
+			}
+			traits = { 
+				neutral
+				spy_generic 
+intel_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}			
+			on_add = {
+				hidden_effect = {
+					country_event = {
+						id = politics.56
+						days = 150
+						random = 90
+					}
+				}
+			}
+		}
+	}
+	#Domestic
+	domestic_minister = {
+		IRE_sean_kelly = {
+			picture = generic_political_advisor_europe_2
+
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				conservative
+				hedonist
+				domestminster_health
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		IRE_james_ryan = {
+			picture = generic_political_advisor_europe_1
+
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				conservative
+				propaganda_expert
+				domestminster_farms
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRE_thomas_derrig = {
+			picture = generic_political_advisor_europe_3
+
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				conservative
+				neutral
+				organizer
+				domestminster_education
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		IRE_oscar_traynor_dom = {
+			picture = generic_political_advisor_europe_2
+
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				conservative
+				ineffective_politician
+				transport_minster
+domestic_minister_trait
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+	}
+	#Economic
+	economic_minister = {
+		IRE_sean_lemass = {
+			picture = generic_political_advisor_europe_2
+
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				conservative
+				organizer2
+				captain_of_industry 
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}			
+		}
+		IRE_ruairi_brugha = {
+			picture = generic_political_advisor_europe_1
+
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				neutral
+				armaments_organizer 
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		IRE_john_costello = {
+			picture = generic_political_advisor_europe_3
+
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				liberal
+				capitalist
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+		IRE_thomas_higgins = {
+			picture = generic_political_advisor_europe_4
+
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				incognito
+				guns_over_butter_advocate
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_military_buildup = yes 
+				}
+			}
+		}
+		IRE_james_everett = {
+			picture = generic_political_advisor_europe_4
+
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { 
+				socialist
+				public_works_focus
+economic_minister_trait
+			}
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+	}
+	#Political Advisors
+	political_advisor = {	
+	}
+	influence_minister = {
+		IRE_guy1 = {
+			allowed = {
+				original_tag = "IRE"
+			}
+			picture = generic_political_advisor_europe_1
+			available = {
+
+			}
+
+			traits = { 
+				steady_peace 
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRE_guy2 = {
+			allowed = {
+				original_tag = "IRE"
+			}
+			picture = generic_political_advisor_europe_2
+			available = {
+
+			}
+
+			traits = { 
+				angry_warrior
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		IRE_guy3 = {
+			allowed = {
+				original_tag = "IRE"
+			}
+			picture = generic_political_advisor_europe_3
+			available = {
+
+			}
+
+			traits = { 
+				political_fearmonger
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+	}
+	#Academy
+	military_academy = {
+	}
+	#Theorist
+	theorist = {
+		IRE_michael_joe_costello = {
+			picture = generic_army_europe_2
+
+			allowed = {
+				original_tag = IRE
+			}
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { military_theorist  theorist_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRE_oscar_traynor = {
+			picture = generic_political_advisor_europe_2
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			research_bonus = {
+				air_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+	}
+	#MILITARY
+	#Supreme Commanders
+	supreme_commander = {
+	}
+	#Army
+	army_chief = {
+		IRE_liam_archer = {
+			picture = generic_army_europe_2
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { army_chief_offensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		IRE_richard_james_mulcahy = {
+			picture = generic_army_europe_1
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { army_chief_defensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRE_sean_russell = {
+			picture = generic_army_europe_1
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			available = {
+				has_completed_focus = IRE_irapower
+			}
+
+			traits = { 
+				army_chief_offensive_3
+				neutral
+army_chief_trait
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Air
+	air_chief = {
+		IRE_h_t_green = {
+			picture = generic_air_europe_1
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { air_chief_safety_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		IRE_p_a_mulcahy = {
+			picture = generic_air_europe_2
+			
+			allowed = {
+				original_tag = IRE
+			}
+		
+			traits = { air_chief_ground_support_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Navy
+	navy_chief = {
+		IRE_john_byrne = {
+			picture = generic_navy_europe_1
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { navy_chief_naval_aviation_2  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		IRE_s_muiris = {
+			picture = generic_navy_europe_3
+			
+			allowed = {
+				original_tag = IRE
+			}
+		
+			traits = { navy_chief_decisive_battle_2  navy_chief_trait }
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_fleet_bonus = yes 
+				}
+			}
+		}
+	}
+	#High Command
+	high_command = {
+		IRE_dan_mckenna = {
+			picture = generic_army_europe_1
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { army_regrouping_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRE_frank_fahy = {
+			picture = generic_army_europe_2
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { army_commando_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRE_michael_brennan = {
+			picture = generic_air_europe_3
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { air_bomber_interception_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		IRE_a_t_lawlor = {
+			picture = generic_navy_europe_2
+			
+			allowed = {
+				original_tag = IRE
+			}
+			
+			traits = { navy_fleet_logistics_2  high_command_trait }
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_fleet_bonus = yes 
+				}
+			}
+		}
+	}
+}
+### EOF ###

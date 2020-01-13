@@ -1,0 +1,1252 @@
+
+
+shared_focus = {
+	id = ANZAC_treaty
+	icon = GFX_focus_anzac_compromise
+	x = 20
+	y = 5
+	offset = {
+		x = -8
+		y = 2
+		trigger = {
+			tag = NZL
+		}
+	}
+		ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = treaty_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = treaty_started }
+		}
+			
+	}
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = treaty_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = treaty_started
+			}
+		}
+    }
+	cost = 2.5
+	completion_reward = {
+		add_threat = -2
+		NZL = {
+			add_opinion_modifier = {
+				target = AST
+				modifier = AST_commitment_to_the_cause
+			}
+		}
+		AST = {
+			add_opinion_modifier = {
+				target = NZL
+				modifier = AST_commitment_to_the_cause
+			}
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_treaty
+			}
+			AST = {
+				has_completed_focus = ANZAC_treaty
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_army
+	icon = GFX_focus_anzac_compromise
+	prerequisite = { focus = ANZAC_treaty }
+	x = -3
+	y = 1
+	relative_position_id = ANZAC_treaty
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = army_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = army_started }
+		}
+			
+	}
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = army_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = army_started
+			}
+		}
+    }
+	cost = 8.5
+	completion_reward = {
+		NZL = {
+			add_war_support = 0.08
+		}
+		AST = {
+			add_war_support = 0.08
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_army
+			}
+			AST = {
+				has_completed_focus = ANZAC_army
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_drills
+	icon = GFX_focus_anzac_compromise
+	prerequisite = { focus = ANZAC_army }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = drills_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = drills_started }
+		}
+	}
+	x = 0
+	y = 1
+	relative_position_id = ANZAC_army
+	cost = 8
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = drills_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = drills_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			add_command_power = 20
+		}
+		AST = {
+			add_command_power = 10
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_drills
+			}
+			AST = {
+				has_completed_focus = ANZAC_drills
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_flight
+	icon = GFX_goal_generic_air_fighter2
+	prerequisite = { focus = ANZAC_drills }
+	mutually_exclusive = { focus = ANZAC_ground }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = flight_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = flight_started }
+		}
+	}
+	x = -1
+	y = 1
+	relative_position_id = ANZAC_drills
+	cost = 9
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = flight_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = flight_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			add_tech_bonus = {
+				name = nav_bomber_bonus
+				bonus = 0.15
+				ahead_reduction = 1
+				uses = 1
+				category = naval_bomber
+			}
+			add_tech_bonus = {
+				name =  air_doc_bonus
+				bonus = 0.1
+				uses = 1
+				category = air_doctrine
+			}
+			capital_scope = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		AST = {
+			add_tech_bonus = {
+				name = nav_bomber_bonus
+				bonus = 0.15
+				ahead_reduction = 1
+				uses = 1
+				category = naval_bomber
+			}
+			add_tech_bonus = {
+				name =  air_doc_bonus
+				bonus = 0.1
+				uses = 1
+				category = air_doctrine
+			}
+			capital_scope = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_flight
+			}
+			AST = {
+				has_completed_focus = ANZAC_flight
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_ground
+	icon = GFX_goal_generic_small_arms
+	prerequisite = { focus = ANZAC_drills }
+	mutually_exclusive = { focus = ANZAC_flight }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = flight_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = flight_started }
+		}
+	}
+	x = 1
+	y = 1
+	relative_position_id = ANZAC_drills
+	cost = 9
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = flight_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = flight_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			add_tech_bonus = {
+				name = infantry_weapons_bonus
+				bonus = 0.15
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.1
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		AST = {
+			add_tech_bonus = {
+				name = infantry_weapons_bonus
+				bonus = 0.15
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.1
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_ground
+			}
+			AST = {
+				has_completed_focus = ANZAC_ground
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_sing
+	icon = GFX_goal_fortify_city_AA
+	prerequisite = { focus = ANZAC_flight focus = ANZAC_ground }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		threat > 0.2
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = sing_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = sing_started }
+		}
+	}
+	x = 0
+	y = 2
+	relative_position_id = ANZAC_drills
+	cost = 12
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = sing_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = sing_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			add_ideas = ANZAC_Command
+		}
+		AST = {
+			add_ideas = ANZAC_Command
+		}
+		IF = {
+			limit = {
+				#singapore
+				336 = {
+					CONTROLLER = {
+						OR = {
+							tag = ROOT
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+			}
+			336 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1					
+					instant_build = yes
+				}
+			}
+		}
+		IF = {
+			limit = {
+				#naru
+				725 = {
+					CONTROLLER = {
+						OR = {
+							tag = ROOT
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+			}
+			725 = {
+				add_building_construction = {
+					type = coastal_bunker
+					province = 13038
+					level = 1					
+					instant_build = yes
+				}
+			}
+		}
+		IF = {
+			limit = {
+				#new Cal
+				635 = {
+					CONTROLLER = {
+						OR = {
+							tag = ROOT
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+			}
+			635 = {
+				add_building_construction = {
+					type = coastal_bunker
+					province = 4268
+					level = 1					
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1					
+					instant_build = yes
+				}
+			}
+		}		
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_sing
+			}
+			AST = {
+				has_completed_focus = ANZAC_sing
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_museum
+	icon = GFX_goal_supremacy_of_will
+	prerequisite = { focus = ANZAC_treaty }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = mus_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = mus_started }
+		}
+	}
+	x = -1
+	y = 1
+	relative_position_id = ANZAC_treaty
+	cost = 7
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = mus_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = mus_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			add_timed_idea = {
+				idea = ANZAC_art
+				days = 256
+			}
+			hidden_effect = {
+				country_event = { id = australia.26 days = 256 }
+			}
+		}
+		AST = {
+			add_timed_idea = {
+				idea = ANZAC_art
+				days = 256
+			}
+			hidden_effect = {
+				country_event = { id = australia.26 days = 256 }
+			}
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_museum
+			}
+			AST = {
+				has_completed_focus = ANZAC_museum
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_sci
+	icon = GFX_goal_generic_scientific_exchange
+	prerequisite = { focus = ANZAC_museum }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = sci_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = sci_started }
+		}
+	}
+	x = -1
+	y = 2
+	relative_position_id = ANZAC_treaty
+	cost = 7
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = sci_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = sci_started
+			}
+		}
+    }
+	completion_reward = {
+		if = {
+			limit = { original_tag = NZL }
+			add_research_slot = 1
+			674 = { state_add_research_centre = yes }
+			SLOT:industry_folder = yes
+		}
+		if = {
+			limit = { original_tag = AST }
+			add_research_slot = 1
+			284 = { state_add_research_centre = yes }
+			SLOT:industry_folder = yes
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_sci
+			}
+			AST = {
+				has_completed_focus = ANZAC_sci
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_antartic
+	icon = GFX_focus_un_7_dec_1946
+	prerequisite = { focus = ANZAC_sci }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		has_dlc = "Waking the Tiger"
+		threat < 0.95
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = ant_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = ant_started }
+		}
+	}
+	x = 0
+	y = 3
+	relative_position_id = ANZAC_museum
+	cost = 6.2
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = ant_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = ant_started
+			}
+		}
+    }
+	completion_reward = {
+		add_threat = -3
+		NZL = {
+			add_timed_idea = {
+				idea = ANZAC_ant
+				days = 150
+			}
+			hidden_effect = {
+				country_event = { id = australia.27 days = 300 }
+			}
+		}
+		AST = {
+			add_timed_idea = {
+				idea = ANZAC_ant
+				days = 150
+			}
+			hidden_effect = {
+				country_event = { id = australia.27 days = 300 }
+			}
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_antartic
+			}
+			AST = {
+				has_completed_focus = ANZAC_antartic
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_people
+	icon = GFX_goal_generic_improve_relations
+	prerequisite = { focus = ANZAC_treaty }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = ppl_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = ppl_started }
+		}
+	}
+	x = 1
+	y = 1
+	relative_position_id = ANZAC_treaty
+	cost = 7.7
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = ppl_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = ppl_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			add_ideas = ANZAC_ppl
+		}
+		AST = {
+			add_ideas = ANZAC_ppl
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_people
+			}
+			AST = {
+				has_completed_focus = ANZAC_people
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_trade
+	icon = GFX_goal_generic_positive_trade_relations
+	prerequisite = { focus = ANZAC_people }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = trade_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = trade_started }
+		}
+	}
+	x = 0
+	y = 1
+	relative_position_id = ANZAC_people
+	cost = 7.5
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = trade_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = trade_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			add_opinion_modifier = {
+				target = AST
+				modifier = trade_partner
+			}
+		}
+		AST = {
+			add_opinion_modifier = {
+				target = NZL
+				modifier = trade_partner
+			}
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_trade
+			}
+			AST = {
+				has_completed_focus = ANZAC_trade
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_develop
+	icon = GFX_goal_generic_construction
+	prerequisite = { focus = ANZAC_trade }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = dev_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = dev_started }
+		}
+	}
+	x = -1
+	y = 1
+	relative_position_id = ANZAC_trade
+	cost = 6.6
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = dev_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = dev_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		AST = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_develop
+			}
+			AST = {
+				has_completed_focus = ANZAC_develop
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_econ
+	icon = GFX_idea_USA_national_railway
+	prerequisite = { focus = ANZAC_trade }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = econ_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = econ_started }
+		}
+	}
+	x = 1
+	y = 1
+	relative_position_id = ANZAC_trade
+	cost = 4.5
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = econ_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = econ_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			random_owned_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1					
+					instant_build = yes
+				}
+			}
+		}
+		AST = {
+			random_owned_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1					
+					instant_build = yes
+				}
+			}
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_econ
+			}
+			AST = {
+				has_completed_focus = ANZAC_econ
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_fac
+	icon = GFX_focus_generic_industry_2
+	prerequisite = { focus = ANZAC_econ }
+	prerequisite = { focus = ANZAC_develop }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		AST = {
+			is_in_faction_with = NZL			
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = fac_started }
+		}
+		custom_trigger_tooltip = {
+			tooltip = ast_depressed
+			not = { 
+				has_idea = AST_great_depression_1
+				has_idea = AST_great_depression_2
+				has_idea = AST_great_depression_3 
+			}
+		}
+		hidden_trigger = {
+			not = { has_country_flag = fac_started }
+			AST = {
+				not = {
+					has_idea = AST_great_depression_1
+					has_idea = AST_great_depression_2
+					has_idea = AST_great_depression_3
+				}
+			}
+		}
+	}
+	x = 0
+	y = 2
+	relative_position_id = ANZAC_trade
+	cost = 9.3
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = fac_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = fac_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			hidden_effect = {
+				country_event = { id = nzl.12 days = 180 random = 3648 } #6 month random
+			}
+		}
+		AST = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_fac
+			}
+			AST = {
+				has_completed_focus = ANZAC_fac
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_navy
+	icon = GFX_goal_generic_navy_cruiser
+	prerequisite = { focus = ANZAC_treaty }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = navy_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = navy_started }
+		}
+	}
+	x = 3
+	y = 1
+	relative_position_id = ANZAC_treaty
+	cost = 5
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = navy_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = navy_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			navy_experience = 25
+		}
+		AST = {
+			navy_experience = 25
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_navy
+			}
+			AST = {
+				has_completed_focus = ANZAC_navy
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_dock
+	icon = GFX_goal_generic_construct_naval_dockyard
+	prerequisite = { focus = ANZAC_navy }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = dock_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = dock_started }
+		}
+	}
+	x = 0
+	y = 1
+	relative_position_id = ANZAC_navy
+	cost = 5
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = dock_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = dock_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1					
+					instant_build = yes
+				}
+			}
+		}
+		AST = {
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1					
+					instant_build = yes
+				}
+			}
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_dock
+			}
+			AST = {
+				has_completed_focus = ANZAC_dock
+			}
+		}
+    }
+}
+shared_focus = {
+	id = ANZAC_sea
+	icon = GFX_focus_generic_coastal_fort
+	prerequisite = { focus = ANZAC_dock }
+	prerequisite = { focus = ANZAC_sing }
+			ai_will_do = {
+			factor = 1
+		}
+	Available = {
+		threat > 0.5
+		NZL = {
+			is_in_faction_with = AST
+		}
+		custom_trigger_tooltip = {
+			tooltip = anzac_started
+			not = { has_country_flag = sea_started }
+		}
+		hidden_trigger = {
+			not = { has_country_flag = sea_started }
+		}
+	}
+	x = 0
+	y = 3
+	relative_position_id = ANZAC_dock
+	cost = 15
+	select_effect = {
+		IF = {
+			limit = {
+				tag = NZL
+			}
+			
+			AST = {
+				set_country_flag = sea_started
+			}
+		}
+		else = {
+			NZL = {
+				set_country_flag = sea_started
+			}
+		}
+    }
+	completion_reward = {
+		NZL = {
+			add_ideas = ANZAC_sea_patrol
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1					
+					instant_build = yes
+				}
+			}
+		}
+		AST = {
+			add_ideas = ANZAC_sea_patrol
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1					
+					instant_build = yes
+				}
+			}
+		}
+	}
+	bypass = {
+        OR = {
+			NZL = {
+				has_completed_focus = ANZAC_sea
+			}
+			AST = {
+				has_completed_focus = ANZAC_sea
+			}
+		}
+    }
+}

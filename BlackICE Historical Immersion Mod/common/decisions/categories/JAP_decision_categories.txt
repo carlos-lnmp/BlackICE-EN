@@ -1,0 +1,76 @@
+JAP_intervene_in_china = {
+	allowed = {
+		original_tag = JAP
+	}
+}
+
+JAP_southern_expansion = {
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		is_puppet = no
+	}
+}
+
+JAP_pacific_guardian = {
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		is_puppet = no
+		OR = { 
+			has_war = yes
+			any_state = {
+				is_controlled_by = JAP
+				OR = { 
+					is_core_of = MAL
+					is_core_of = INS
+				}
+			}
+		}
+	}
+}
+
+JAP_colonial_independence = {
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		is_puppet = no
+		#has_completed_focus = JAP_pacific_guardian
+	}
+}
+JAP_interservice_rivalry = {
+	allowed = {
+		original_tag = JAP
+		has_dlc = "Waking the Tiger"
+	}
+}
+MEN_reclaim_china = {
+	#icon = GFX_decision_category_infiltration	
+	allowed = {
+		OR = {
+			original_tag = MEN
+			original_tag = MAN
+		}
+	}
+	
+	visible = {
+		is_puppet = yes
+	}
+}
+
+JAP_develop_conquests
+{
+    allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		is_puppet = no
+	}
+}

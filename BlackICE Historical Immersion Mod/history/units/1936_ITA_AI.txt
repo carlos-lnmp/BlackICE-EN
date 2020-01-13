@@ -1,0 +1,319 @@
+﻿########################
+##### ITALY AI OOB #####
+########################
+instant_effect = {
+	set_technology = {
+		############### aircraft ##############
+		tech_ita = 1
+		tech_italian_aircraft1 = 1
+		tech_cr_32_fighter_equipment_1 = 1
+		tech_cr_32_fighter_equipment_2 = 1
+	}
+}
+
+### Air Wings ###
+air_wings = {
+	### 1a Squadra Aerea -- Milan/Turin
+	158 = { 
+		# 2a Divisione Aerea 'Borea'
+		cr_32_fighter_equipment_1 = {
+			owner = "ITA" 
+			amount = 80
+		}
+		# 4a Divisione Aerea 'Drago'
+		# 6a Divisione Aerea 'Falco'
+		sm81_bomber_equipment_1 =  {
+			owner = "ITA" 
+			amount = 48
+		}
+	}
+
+	### 2a Squadra Aerea -- Palermo
+	115 = {
+		# 1a Divisione Aerea 'Aquila'
+		cr_32_fighter_equipment_1 = {
+			owner = "ITA" 
+			amount = 80
+		}
+		# 3a Divisione Aerea 'Centauro'
+		sm81_bomber_equipment_1 =  {
+			owner = "ITA" 
+			amount = 48
+		}
+	}
+
+	### 3a Squadra Aerea -- Rome
+	2 = {
+		# 5a Divisione Aerea 'Eolo'
+		ca111_bomber_equipment_1 =  {
+			owner = "ITA" 
+			#version_name = "Caproni Ca.111 RC"
+			amount = 21
+		}
+		# 8a Divisione Aerea 'Ibis'
+		cr_series_fighter_equipment_1 =  { 
+			owner = "ITA" 
+			#version_name = "Fiat CR.30"
+			amount = 80
+		}
+		ca111_transport_plane_equipment_1 =  { #preproduction series... IDK if tra or bomber.
+			owner = "ITA" 
+			amount = 4
+		}
+		ca133_transport_plane_equipment_1 =  { #25 done in february
+			owner = "ITA" 
+			amount = 18
+		}
+	}
+
+	### 4a Squadra Aerea -- Bari
+	156 = {
+		# 9a Divisione Aerea 'Leone'
+		cr_series_fighter_equipment_1 =  { 
+			owner = "ITA" 
+			#version_name = "Fiat CR.30"
+			amount = 44
+		}
+	}
+
+	### Commando Aeronautica Sardegna -- Caligari
+	114 = {
+		# 10a Divisione Aerea 'Marte'
+		ca111_bomber_equipment_1 = {
+			owner = "ITA" 
+			amount = 24
+		}
+		m41_boat_fighter_equipment_1 = {
+			owner = "ITA" 
+			amount = 40
+		}
+		m71_fighter_equipment_1 = { #technically aboard cruisers.
+			owner = "ITA" 
+			amount = 12
+		}
+		cr_32_fighter_equipment_1 =  {
+			owner = "ITA" 
+			amount = 40
+		}
+		
+	}
+
+	### Commando Aeronautica Libia -- Tripoli
+	448 = {
+		cr_32_fighter_equipment_1 =  {
+			owner = "ITA" 
+			amount = 29
+		}
+		ca111_bomber_equipment_1 =  {
+			owner = "ITA" 
+			amount = 25
+		}
+		ro37_cas_equipment_1 =  { #
+			owner = "ITA" 
+			#version_name = "IMAM Ro.37 bis"
+			amount = 43
+		}
+		
+	}
+
+	### Commando Aeronautica Africa Orientale -- Eritrea
+	550 = { #4 E 20 d2 at start, 1 e 21 d2 at end
+		cr_series_fighter_equipment_1 =  {
+			owner = "ITA" 
+			#version_name = "Fiat CR.20bis AQ"
+			amount = 10
+		}
+		ca101_bomber_equipment_1 =  { #Squadriglia di Stato maggiore
+			owner = "ITA" 
+			#version_name = "Caproni Ca.101 E"
+			amount = 4
+		}
+		ca101_bomber_equipment_1 =  { #Commando IV Grouppo Bombardamento A.O.
+			owner = "ITA" 
+			#version_name = "Caproni Ca.101 D2"
+			amount = 20
+		}
+		ca111_bomber_equipment_1 =  { #
+			owner = "ITA" 
+			#version_name = "Caproni Ca.111 RC"
+			amount = 29
+		}
+		ro37_cas_equipment_1 =  { #
+			owner = "ITA" 
+			amount = 9
+		}
+		ro37_cas_equipment_1 =  { #
+			owner = "ITA" 
+			#version_name = "IMAM Ro.37 bis"
+			amount = 10
+		}
+		#73 Ro.1, 9 Ro.37, 4 MF.4, 2 CANT.25, 10 Ro.37bis
+		
+	}
+	559 = { #somalia 22 bis at start, 3 e 21 bis at end
+		ca101_bomber_equipment_1 =  { #Comando 25 Gruppo Bombardamento
+			owner = "ITA" 
+			amount = 22
+		}
+		cr_series_fighter_equipment_1 =  {
+			owner = "ITA" 
+			#version_name = "Fiat CR.20bis AQ"
+			amount = 8
+		}
+		#18 Ro.1
+	}
+}
+#########################
+## STARTING PRODUCTION ##
+#########################
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "ITA"
+		}
+		requested_factories = 4
+		progress = 0.1
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "ITA" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = ita_tankette_armor_equipment_1
+			creator = "ITA" 
+		}
+		requested_factories = 1
+		progress = 0.4
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = motorized_equipment_1
+			creator = "ITA" 
+		}
+		requested_factories = 2
+		progress = 0.4
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_0
+			creator = "ITA" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_uniforms_0
+			creator = "ITA"
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = HQ_equipment_0
+			creator = "ITA"
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = garrison_equipment_0
+			creator = "ITA"
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type =  horse_equipment_0
+			creator = "ITA"
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type =  HMG_equipment_0
+			creator = "ITA"
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type =  mortar_equipment_0
+			creator = "ITA"
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+}
+instant_effect = {
+
+############################ Equipment stockpile
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_0
+		amount = 5000
+		producer = ITA
+	}
+	
+	add_equipment_to_stockpile = {
+		type = infantry_uniforms_0
+		amount = 5000
+		producer = ITA
+	}
+	
+	add_equipment_to_stockpile = {
+		type = horse_equipment_0
+		amount = 1000
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = HMG_equipment_0
+		amount = 1700
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = mortar_equipment_0
+		amount = 2100
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = SMG_equipment_0
+		amount = 500
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = mount_equipment_0
+		amount = 1000
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = horse_equipment_0
+		amount = 500
+		producer = ITA
+	}
+}
+	#####################

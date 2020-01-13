@@ -1,0 +1,67 @@
+﻿division_template = {
+	name = "Colonial Militia"
+	template_counter = 68
+	
+	regiments = {
+		Militia = { x = 0 y = 0 }
+		Militia = { x = 0 y = 1 }
+		Militia = { x = 0 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+	}
+}
+division_template = {
+	name = "Regular Garrison"
+	#division_names_group = ENG_GAR_01
+	template_counter = 84
+	priority = 0
+	
+	regiments = {
+		garrison = { x = 0 y = 0 }
+		garrison = { x = 0 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		military_police = { x = 0 y = 1 }
+		artillery_heavy = { x = 0 y = 2 }
+		anti_air = { x = 0 y = 3 }
+	}
+}
+division_template = {
+	name = "Arab Legion 1930s"
+	is_locked = yes
+	template_counter = 372
+	
+	regiments = {
+		light_infantry = { x = 0 y = 0 }
+	}
+	support = {
+		recon_cav = { x = 0 y = 0 }
+		desert_support = { x = 0 y = 1 }
+	}
+}
+##### OOB #####
+units = {
+	division = {
+		name = "Arab Legion"
+		location = 7151 ##Amman in Jordan
+		division_template = "Arab Legion 1930s"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+}
+#########################
+## STARTING PRODUCTION ##
+#########################
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 50
+	}
+}
+### EOF ###

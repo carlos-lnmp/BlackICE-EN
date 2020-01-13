@@ -1,0 +1,1817 @@
+@INFANTRY_AT_PRIORITY = 1
+TEMPLATE_VARIANT:AT_infantry_template = {
+	meta_effect = {
+		text = {
+			TEMPLATE:[DOCTRINE]_AT_infantry_width_[WIDTH]/FOCUS:[FOCUS]/VARIANT:[VARIANT] = yes
+			if = { limit = { log = yes } log = "[Root.GetName] | [GetMonth] | TEMPLATE:[DOCTRINE]_AT_infantry_width_[WIDTH]/FOCUS:[FOCUS]/VARIANT:[VARIANT]" }
+		}
+		DOCTRINE = "[Root.GetDoctrine]"
+		WIDTH = AT_infantry_width
+		VARIANT = "[Root.GetATInfantryTemplateVariant]"
+		FOCUS = "[Root.GetATInfantryTemplateFocus]"
+	}
+	update_all_subunits = yes	
+}	
+
+### -- INFANTRY TYPE:
+#ROLE:INF/FOCUS:OFFENCE
+#ROLE:INF/FOCUS:DEFENCE
+#ROLE:INF/FOCUS:BALANCED
+
+### -- ANTI TANK TYPE:
+#OFF
+#ROLE:AT/FOCUS:LINE_ANTI_TANK
+#ROLE:AT/FOCUS:LIGHT_TD_FOCUS
+#ROLE:AT/FOCUS:MEDIUM_TD_FOCUS
+
+### -- SPECIALIST TYPE:
+#OFF
+#ROLE:SPECIAL/FOCUS:MARINE
+#ROLE:SPECIAL/FOCUS:MOUNTAINEER
+
+### -- ATTACHMENT TYPE:
+#OFF
+#ROLE:ATTACHMENT/FOCUS:MOTORIZED
+#ROLE:ATTACHMENT/FOCUS:LIGHT_ARMOR
+#ROLE:ATTACHMENT/FOCUS:MEDIUM_ARMOR
+#ROLE:ATTACHMENT/FOCUS:HEAVY_ARMOR
+
+### -- ARMOUR TYPE:
+#OFF
+#ROLE:ARMOR/FOCUS:LIGHT
+#ROLE:ARMOR/FOCUS:MEDIUM
+#ROLE:ARMOR/FOCUS:HEAVY
+
+### -- ARMOUR COMPOSITION TYPE:
+#OFF
+#ROLE:ARMOR/FOCUS:TOUGHNESS
+#ROLE:ARMOR/FOCUS:OFFENCE
+#ROLE:ARMOR/FOCUS:BALANCED
+
+### -- TANK DESTROYER TYPE:
+#OFF
+#ROLE:TD/FOCUS:MEDIUM
+#ROLE:TD/FOCUS:HEAVY
+
+### -- TANK DESTROYER COMPOSITION TYPE:
+#OFF
+#ROLE:TD/FOCUS:TOUGHNESS
+#ROLE:TD/FOCUS:OFFENCE
+#ROLE:TD/FOCUS:BALANCED
+
+### -- MOTORIZED SUPPORT TYPE 
+#OFF
+#ROLE:MOT/FOCUS:DEFAULT
+#ROLE:MOT/FOCUS:LIGHT_TD
+#ROLE:MOT/FOCUS:MEDIUM_TD
+#ROLE:MOT/FOCUS:ANTI_TANK
+#ROLE:MOT/FOCUS:SPEED
+#
+set_starting_AT_width = {
+	if = {
+		limit = {
+			OR = {
+				original_tag = GER 
+				original_tag = SOV 
+				original_tag = USA
+				original_tag = FRA
+			}
+		}
+		set_variable = { anti_tank_width = 26 }
+	}
+	if = {
+		limit = {
+			OR = {
+				original_tag = ITA 
+				original_tag = ENG 
+				original_tag = JAP
+			}
+		}
+		set_variable = { anti_tank_width = 20 }
+	}
+	if = {
+		limit = {
+			NOT = { major_country = yes }
+		}
+		set_variable = { anti_tank_width = 20 }
+	}
+}
+clear_DOCTRINE/FOCUS = {
+	clr_country_flag = DOCTRINE:SF/OVERRIDE
+	clr_country_flag = DOCTRINE:GB/OVERRIDE
+	clr_country_flag = DOCTRINE:MA/OVERRIDE
+	clr_country_flag = DOCTRINE:MW/OVERRIDE
+}
+		
+clear_ROLE:INF/FOCUS = { 
+	clr_country_flag = ROLE:INF/FOCUS:OFFENCE
+	clr_country_flag = ROLE:INF/FOCUS:DEFENCE
+	clr_country_flag = ROLE:INF/FOCUS:BALANCED
+}
+clear_ROLE:AT/FOCUS = {
+	clr_country_flag = ROLE:AT/FOCUS:LINE_ANTI_TANK
+	clr_country_flag = ROLE:AT/FOCUS:LIGHT_TD_FOCUS
+	clr_country_flag = ROLE:AT/FOCUS:MEDIUM_TD_FOCUS
+}
+clear_ROLE:SPECIAL/FOCUS = {
+	clr_country_flag = ROLE:SPECIAL/FOCUS:OFF
+	clr_country_flag = ROLE:SPECIAL/FOCUS:MARINES
+	clr_country_flag = ROLE:SPECIAL/FOCUS:MOUNTAINEERS
+}
+clear_ROLE:ATTACHMENT/FOCUS = {
+	clr_country_flag = ROLE:ATTACHMENT/FOCUS:MOTORIZED
+	clr_country_flag = ROLE:ATTACHMENT/FOCUS:LIGHT_ARMOR
+	clr_country_flag = ROLE:ATTACHMENT/FOCUS:MEDIUM_ARMOR
+	clr_country_flag = ROLE:ATTACHMENT/FOCUS:HEAVY_ARMOR
+}
+ROLE:ATTACHMENT/FOCUS = {
+	if = {
+		limit = {
+			OR = { 
+				has_country_flag = ROLE:ARMOR/FOCUS:MEDIUM
+				has_country_flag = ROLE:ARMOR/FOCUS:HEAVY
+			}
+		}
+		
+		if = {
+			limit = {
+				OR = { 
+					#AND = { sf_doctrine = yes num_of_military_factories > 140 }
+					#AND = { mw_doctrine = yes num_of_military_factories > 140 }
+					#AND = { ma_doctrine = yes num_of_military_factories > 200 }
+					#AND = { gb_doctrine = yes num_of_military_factories > 160 }
+				}
+			}
+			set_country_flag = ROLE:ATTACHMENT/FOCUS:LIGHT_ARMOR
+		}
+		
+	}
+	if = {
+		limit = { #MOTORIZED
+			NOT = {
+				has_country_flag = ROLE:ATTACHMENT/FOCUS:LIGHT_ARMOR
+				has_country_flag = ROLE:ATTACHMENT/FOCUS:MEDIUM_ARMOR
+				has_country_flag = ROLE:ATTACHMENT/FOCUS:HEAVY_ARMOR
+			}
+		}
+		set_country_flag = ROLE:ATTACHMENT/FOCUS:MOTORIZED
+	}
+}
+clear_ROLE:AT/VARIANT = {
+	clr_country_flag = AT_MED_ARTY_1
+	clr_country_flag = AT_MED_ARTY_2
+}
+clear_ROLE:ARMOR/FOCUS = {
+	clr_country_flag = ROLE:ARMOR/FOCUS:LIGHT
+	clr_country_flag = ROLE:ARMOR/FOCUS:MEDIUM
+	clr_country_flag = ROLE:ARMOR/FOCUS:HEAVY
+}
+clear_ROLE:ARMOR/COMPOSITION = {
+	clr_country_flag = ROLE:ARMOR/FOCUS:TOUGHNESS
+	clr_country_flag = ROLE:ARMOR/FOCUS:BALANCED
+	clr_country_flag = ROLE:ARMOR/FOCUS:OFFENCE
+}
+
+ROLE:INF/WIDTH = {
+	if = {
+		limit = {
+			OR = { 
+				#AND = { sf_doctrine = yes num_of_military_factories < 100 }
+				#AND = { mw_doctrine = yes num_of_military_factories < 120 }
+				#AND = { ma_doctrine = yes num_of_military_factories < 160 }
+				#AND = { gb_doctrine = yes num_of_military_factories < 140 }
+			}
+		}
+		set_variable = { infantry_width = 20 }
+	}
+	if = {
+		limit = {
+			OR = { 
+				#AND = { sf_doctrine = yes num_of_military_factories > 100 }
+				#AND = { mw_doctrine = yes num_of_military_factories > 120 }
+				#AND = { ma_doctrine = yes num_of_military_factories > 160 }
+				#AND = { gb_doctrine = yes num_of_military_factories > 140 }
+			}
+		}
+		set_variable = { infantry_width = 26 }
+	}
+}
+ROLE:AT/WIDTH = {
+	if = {
+		limit = {
+			OR = { 
+				#AND = { sf_doctrine = yes num_of_military_factories < 80 }
+				#AND = { mw_doctrine = yes num_of_military_factories < 100 }
+				#AND = { ma_doctrine = yes num_of_military_factories < 140 }
+				#AND = { gb_doctrine = yes num_of_military_factories < 120 }
+			}
+		}
+		set_variable = { anti_tank_width = 20 }
+	}
+	if = {
+		limit = {
+			OR = { 
+				#AND = { sf_doctrine = yes num_of_military_factories > 80 }
+				#AND = { mw_doctrine = yes num_of_military_factories > 100 }
+				#AND = { ma_doctrine = yes num_of_military_factories > 140 }
+				#AND = { gb_doctrine = yes num_of_military_factories > 120 }
+			}
+		}
+		set_variable = { anti_tank_width = 26 }
+	}
+}
+				
+ROLE:AT/FOCUS = {
+	clear_ROLE:AT/FOCUS = yes 
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = ROLE:TD/FOCUS:MEDIUM 
+				has_country_flag = ROLE:TD/FOCUS:HEAVY 
+			}
+		}
+		set_country_flag = ROLE:AT/FOCUS:LINE_ANTI_TANK
+		if = { limit = { check_variable = { EAI_max_armor_seen < 30 } }
+			set_country_flag = { flag = AT_LINE_1 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_LINE_1" }
+		}
+		else_if = { limit = { NOT = { has_tech = HVantitank1 } check_variable = { EAI_max_armor_seen > 30 } }
+			set_country_flag = { flag = AT_LINE_2 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_LINE_2" }
+		}
+		else_if = { limit = { has_tech = HVantitank1 check_variable = { EAI_max_armor_seen > 30 } }
+			set_country_flag = { flag = AT_LINE_3 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_LINE_3" }
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = ROLE:TD/FOCUS:MEDIUM 
+				has_country_flag = ROLE:TD/FOCUS:HEAVY 
+			}
+		}
+		set_country_flag = ROLE:AT/FOCUS:LIGHT_TD_FOCUS
+		if = { limit = { NOT = { has_country_flag = ROLE:AT/MOTORIZE } check_variable = { EAI_max_armor_seen < 30 } }
+			set_country_flag = { flag = AT_LTD_1 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_LTD_1" }
+		}
+		else_if = { limit = { NOT = { has_country_flag = ROLE:AT/MOTORIZE } has_tech = HVantitank1 check_variable = { EAI_max_armor_seen > 30 } }
+			set_country_flag = { flag = AT_LTD_2 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_LTD_2" }
+		}
+		else_if = { limit = { has_country_flag = ROLE:AT/MOTORIZE has_tech = HVantitank1 check_variable = { EAI_max_armor_seen > 30 } }
+			set_country_flag = { flag = AT_LTD_3 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_LTD_3" }
+		}
+		else_if = { limit = { has_country_flag = ROLE:AT/MOTORIZE has_tech = HVantitank1 check_variable = { EAI_max_armor_seen > 30 } }
+			set_country_flag = { flag = AT_LTD_4 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_LTD_4" }
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = ROLE:TD/FOCUS:MEDIUM 
+				has_country_flag = ROLE:TD/FOCUS:HEAVY 
+			}
+		}
+		set_country_flag = ROLE:AT/FOCUS:MEDIUM_TD_FOCUS
+		if = { limit = { NOT = { has_country_flag = ROLE:AT/MOTORIZE } check_variable = { EAI_max_armor_seen < 30 } }
+			set_country_flag = { flag = AT_MTD_1 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_MTD_1" }
+		}
+		else_if = { limit = { NOT = { has_country_flag = ROLE:AT/MOTORIZE } has_tech = HVantitank1 check_variable = { EAI_max_armor_seen > 30 } }
+			set_country_flag = { flag = AT_MTD_2 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_MTD_2" }
+		}
+		else_if = { limit = { has_country_flag = ROLE:AT/MOTORIZE has_tech = HVantitank1 check_variable = { EAI_max_armor_seen > 30 } }
+			set_country_flag = { flag = AT_MTD_3 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_MTD_3" }
+		}
+		else_if = { limit = { has_country_flag = ROLE:AT/MOTORIZE has_tech = HVantitank1 check_variable = { EAI_max_armor_seen > 30 } }
+			set_country_flag = { flag = AT_MTD_4 value = 1 days = 1 }
+			if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_MTD_4" }
+		}
+	}
+}
+ROLE:AT/VARIANT = {
+	if = {
+		limit = {
+			has_capitulated = no 
+			NOT = { surrender_progress > 0.05 }
+			OR = {
+				#AND = { sf_doctrine = yes num_of_military_factories > 100 num_divisions > 30 }
+				#AND = { mw_doctrine = yes num_of_military_factories > 140 num_divisions > 40 }
+				#AND = { ma_doctrine = yes num_of_military_factories > 200 num_divisions > 60 }
+				#AND = { gb_doctrine = yes num_of_military_factories > 120 num_divisions > 50 }
+			}
+		}
+		clear_ROLE:AT/VARIANT = yes 
+		set_country_flag = { flag = AT_MED_ARTY_1 value = 1 days = 30 }
+		if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_MED_ARTY_1" }
+	}
+	if = {
+		limit = {
+			has_capitulated = no 
+			NOT = { surrender_progress > 0.05 }
+			OR = {
+				#AND = { sf_doctrine = yes num_of_military_factories > 120 num_divisions > 30 }
+				#AND = { mw_doctrine = yes num_of_military_factories > 180 num_divisions > 40 }
+				#AND = { ma_doctrine = yes num_of_military_factories > 240 num_divisions > 60 }
+				#AND = { gb_doctrine = yes num_of_military_factories > 160 num_divisions > 50 }
+			}
+		}
+		clear_ROLE:AT/VARIANT = yes 
+		set_country_flag = { flag = AT_MED_ARTY_2 value = 1 days = 30 }
+		if = { limit = { log = yes } log = "[This.GetName] | [GetMonth] | AT_MED_ARTY_2" }
+	}
+}
+				
+#AI COUNTRY FOCUSES
+### --- ROLES --- ###
+#infantry
+#anti_tank
+#garrison
+#marines
+#mountaineers
+#motorized (later mechanized)
+#
+#light_armor (mostly starting templates)
+#medium_armor
+#heavy_armor
+#anti_tank_armor (either medium or heavy)
+
+ROLE:INF/FOCUS = {
+	clear_ROLE:INF/FOCUS = yes 
+	if = {
+		limit = {
+			#sf_doctrine = yes 
+		}
+		set_country_flag = ROLE:INF/FOCUS:OFFENCE
+	}
+	else_if = {
+		limit = {
+			#mw_doctrine = yes 
+		}
+		set_country_flag = ROLE:INF/FOCUS:OFFENCE 
+	}
+	else_if = {
+		limit = {
+			#ma_doctrine = yes 
+		}
+		set_country_flag = ROLE:INF/FOCUS:DEFENCE 
+	}
+	else_if = {
+		limit = {
+			#gb_doctrine = yes
+		}
+		set_country_flag = ROLE:INF/FOCUS:BALANCED
+	}
+}
+ROLE:ARMOR/FOCUS = {
+	clear_ROLE:ARMOR/FOCUS = yes
+	if = {
+		limit = { 
+			OR = { 
+				#AND = { sf_doctrine = yes num_of_military_factories < 60 }#num_of_military_factories > 30 }
+				#AND = { mw_doctrine = yes num_of_military_factories < 50 }#num_of_military_factories > 20 }
+				#AND = { ma_doctrine = yes num_of_military_factories < 100 }#num_of_military_factories > 70 }
+				#AND = { gb_doctrine = yes num_of_military_factories < 80 }#num_of_military_factories > 40 }
+			}
+		}
+		set_country_flag = ROLE:ARMOR/FOCUS:LIGHT
+	}
+	else_if = { 
+		limit = { 
+			OR = { 
+				#AND = { sf_doctrine = yes num_of_military_factories > 60 }
+				#AND = { mw_doctrine = yes num_of_military_factories > 50 }
+				#AND = { ma_doctrine = yes num_of_military_factories > 100 }
+				#AND = { gb_doctrine = yes num_of_military_factories > 80 }
+			}
+		}
+		set_country_flag = ROLE:ARMOR/FOCUS:MEDIUM
+	}
+	if = { 
+		limit = { 
+			has_country_flag = unit_capped
+			date > 1943.1.1
+			OR = { 
+				#AND = { sf_doctrine = yes num_of_military_factories > 140 }
+				#AND = { mw_doctrine = yes num_of_military_factories > 160 }
+				#AND = { ma_doctrine = yes num_of_military_factories > 240 }
+				#AND = { gb_doctrine = yes num_of_military_factories > 200 }
+			}
+		}
+		clear_ROLE:ARMOR/FOCUS = yes
+		set_country_flag = ROLE:ARMOR/FOCUS:HEAVY
+	}
+}
+ROLE:ARMOR/WIDTH = {
+	if = {
+		limit = {
+			OR = { 
+				#AND = { sf_doctrine = yes num_of_military_factories < 60 }
+				#AND = { mw_doctrine = yes num_of_military_factories < 80 }
+				#AND = { ma_doctrine = yes num_of_military_factories < 120 }
+				#AND = { gb_doctrine = yes num_of_military_factories < 100 }
+			}
+		}
+		set_variable = { armor_width = 20 }
+	}
+	if = {
+		limit = {
+			OR = { 
+				#AND = { sf_doctrine = yes num_of_military_factories > 60 }
+				#AND = { mw_doctrine = yes num_of_military_factories > 80 }
+				#AND = { ma_doctrine = yes num_of_military_factories > 120 }
+				#AND = { gb_doctrine = yes num_of_military_factories > 100 }
+			}
+		}
+		set_variable = { armor_width = 26 }
+	}
+}
+ROLE:ARMOR/COMPOSITION = {
+	clear_ROLE:ARMOR/COMPOSITION = yes
+	if = {
+		limit = {
+			#sf_doctrine = yes
+		}
+		set_country_flag = ROLE:ARMOR/FOCUS:TOUGHNESS
+	}
+	if = {
+		limit = {
+			#mw_doctrine = yes
+		}
+		set_country_flag = ROLE:ARMOR/FOCUS:OFFENCE
+	}
+	if = {
+		limit = {
+			#ma_doctrine = yes
+		}
+		set_country_flag = ROLE:ARMOR/FOCUS:BALANCED
+	}
+	if = {
+		limit = {
+			#gb_doctrine = yes
+		}
+		set_country_flag = ROLE:ARMOR/FOCUS:BALANCED
+	}
+}
+	
+
+
+###################
+### -- FOCUS -- ###
+###################
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LINE_1/VARIANT:BASE = {
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LINE_1/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			
+			infantry = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}	
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LINE_2/VARIANT:BASE = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LINE_2/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+			
+			infantry = { x = 3 y = 0 }
+			
+			anti_tank_brigade = { x = 4 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LINE_3/VARIANT:BASE = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LINE_3/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+			
+			infantry = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+
+### -- LTD FOCUS
+
+
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_1/VARIANT:BASE = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_1/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_2/VARIANT:BASE = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_2/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_3/VARIANT:BASE = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_3/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			semi_motorized = { x = 0 y = 0 }
+			semi_motorized = { x = 0 y = 1 }
+			semi_motorized = { x = 0 y = 2 }
+			semi_motorized = { x = 0 y = 3 }
+			semi_motorized = { x = 0 y = 4 }
+			
+			semi_motorized = { x = 1 y = 0 }
+			semi_motorized = { x = 1 y = 1 }
+			semi_motorized = { x = 1 y = 2 }
+			semi_motorized = { x = 1 y = 3 }
+			semi_motorized = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_4/VARIANT:BASE = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_4/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			motorized = { x = 0 y = 0 }
+			motorized = { x = 0 y = 1 }
+			motorized = { x = 0 y = 2 }
+			motorized = { x = 0 y = 3 }
+			motorized = { x = 0 y = 4 }
+			
+			motorized = { x = 1 y = 0 }
+			motorized = { x = 1 y = 1 }
+			motorized = { x = 1 y = 2 }
+			motorized = { x = 1 y = 3 }
+			motorized = { x = 1 y = 4 }
+			
+			artillery_brigade_mot = { x = 2 y = 0 }
+			artillery_brigade_mot = { x = 2 y = 1 }
+			anti_tank_brigade_mot = { x = 2 y = 2 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+
+## LTD 
+
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_1/VARIANT:MED_ARTY_1 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_1/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_1/VARIANT:MED_ARTY_2 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_1/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_2/VARIANT:MED_ARTY_1 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_2/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_2/VARIANT:MED_ARTY_2 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_2/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_3/VARIANT:MED_ARTY_1 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_3/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			semi_motorized = { x = 0 y = 0 }
+			semi_motorized = { x = 0 y = 1 }
+			semi_motorized = { x = 0 y = 2 }
+			semi_motorized = { x = 0 y = 3 }
+			semi_motorized = { x = 0 y = 4 }
+			
+			semi_motorized = { x = 1 y = 0 }
+			semi_motorized = { x = 1 y = 1 }
+			semi_motorized = { x = 1 y = 2 }
+			semi_motorized = { x = 1 y = 3 }
+			semi_motorized = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_3/VARIANT:MED_ARTY_2 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_3/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			semi_motorized = { x = 0 y = 0 }
+			semi_motorized = { x = 0 y = 1 }
+			semi_motorized = { x = 0 y = 2 }
+			semi_motorized = { x = 0 y = 3 }
+			semi_motorized = { x = 0 y = 4 }
+			
+			semi_motorized = { x = 1 y = 0 }
+			semi_motorized = { x = 1 y = 1 }
+			semi_motorized = { x = 1 y = 2 }
+			semi_motorized = { x = 1 y = 3 }
+			semi_motorized = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_4/VARIANT:MED_ARTY_1 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_4/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			motorized = { x = 0 y = 0 }
+			motorized = { x = 0 y = 1 }
+			motorized = { x = 0 y = 2 }
+			motorized = { x = 0 y = 3 }
+			motorized = { x = 0 y = 4 }
+			
+			motorized = { x = 1 y = 0 }
+			motorized = { x = 1 y = 1 }
+			motorized = { x = 1 y = 2 }
+			motorized = { x = 1 y = 3 }
+			motorized = { x = 1 y = 4 }
+			
+			artillery_brigade_mot_med = { x = 2 y = 0 }
+			artillery_brigade_mot_med = { x = 2 y = 1 }
+			anti_tank_brigade_mot = { x = 2 y = 2 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LTD_4/VARIANT:MED_ARTY_2 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LTD_4/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			motorized = { x = 0 y = 0 }
+			motorized = { x = 0 y = 1 }
+			motorized = { x = 0 y = 2 }
+			motorized = { x = 0 y = 3 }
+			motorized = { x = 0 y = 4 }
+			
+			motorized = { x = 1 y = 0 }
+			motorized = { x = 1 y = 1 }
+			motorized = { x = 1 y = 2 }
+			motorized = { x = 1 y = 3 }
+			motorized = { x = 1 y = 4 }
+			
+			artillery_brigade_mot_med = { x = 2 y = 0 }
+			artillery_brigade_mot_med = { x = 2 y = 1 }
+			artillery_brigade_mot_med = { x = 2 y = 2 }
+			anti_tank_brigade_mot = { x = 2 y = 3 }
+			
+			light_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+
+### -- MTD FOCUS
+
+
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_1/VARIANT:BASE = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_1/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_mot = { x = 2 y = 0 }
+			artillery_brigade_mot = { x = 2 y = 1 }
+			anti_tank_brigade_mot = { x = 2 y = 2 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_2/VARIANT:BASE = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_2/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_3/VARIANT:BASE = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_3/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			semi_motorized = { x = 0 y = 0 }
+			semi_motorized = { x = 0 y = 1 }
+			semi_motorized = { x = 0 y = 2 }
+			semi_motorized = { x = 0 y = 3 }
+			semi_motorized = { x = 0 y = 4 }
+			
+			semi_motorized = { x = 1 y = 0 }
+			semi_motorized = { x = 1 y = 1 }
+			semi_motorized = { x = 1 y = 2 }
+			semi_motorized = { x = 1 y = 3 }
+			semi_motorized = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_4/VARIANT:BASE = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_4/VARIANT:BASE
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			motorized = { x = 0 y = 0 }
+			motorized = { x = 0 y = 1 }
+			motorized = { x = 0 y = 2 }
+			motorized = { x = 0 y = 3 }
+			motorized = { x = 0 y = 4 }
+			
+			motorized = { x = 1 y = 0 }
+			motorized = { x = 1 y = 1 }
+			motorized = { x = 1 y = 2 }
+			motorized = { x = 1 y = 3 }
+			motorized = { x = 1 y = 4 }
+			
+			artillery_brigade = { x = 2 y = 0 }
+			artillery_brigade = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_1/VARIANT:MED_ARTY_1 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_1/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_1/VARIANT:MED_ARTY_2 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_1/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_2/VARIANT:MED_ARTY_1 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_2/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_2/VARIANT:MED_ARTY_2 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_2/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_3/VARIANT:MED_ARTY_1 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_3/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			semi_motorized = { x = 0 y = 0 }
+			semi_motorized = { x = 0 y = 1 }
+			semi_motorized = { x = 0 y = 2 }
+			semi_motorized = { x = 0 y = 3 }
+			semi_motorized = { x = 0 y = 4 }
+			
+			semi_motorized = { x = 1 y = 0 }
+			semi_motorized = { x = 1 y = 1 }
+			semi_motorized = { x = 1 y = 2 }
+			semi_motorized = { x = 1 y = 3 }
+			semi_motorized = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_3/VARIANT:MED_ARTY_2 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_3/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			semi_motorized = { x = 0 y = 0 }
+			semi_motorized = { x = 0 y = 1 }
+			semi_motorized = { x = 0 y = 2 }
+			semi_motorized = { x = 0 y = 3 }
+			semi_motorized = { x = 0 y = 4 }
+			
+			semi_motorized = { x = 1 y = 0 }
+			semi_motorized = { x = 1 y = 1 }
+			semi_motorized = { x = 1 y = 2 }
+			semi_motorized = { x = 1 y = 3 }
+			semi_motorized = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_4/VARIANT:MED_ARTY_1 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_4/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			motorized = { x = 0 y = 0 }
+			motorized = { x = 0 y = 1 }
+			motorized = { x = 0 y = 2 }
+			motorized = { x = 0 y = 3 }
+			motorized = { x = 0 y = 4 }
+			
+			motorized = { x = 1 y = 0 }
+			motorized = { x = 1 y = 1 }
+			motorized = { x = 1 y = 2 }
+			motorized = { x = 1 y = 3 }
+			motorized = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:MTD_4/VARIANT:MED_ARTY_2 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:MTD_4/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			motorized = { x = 0 y = 0 }
+			motorized = { x = 0 y = 1 }
+			motorized = { x = 0 y = 2 }
+			motorized = { x = 0 y = 3 }
+			motorized = { x = 0 y = 4 }
+			
+			motorized = { x = 1 y = 0 }
+			motorized = { x = 1 y = 1 }
+			motorized = { x = 1 y = 2 }
+			motorized = { x = 1 y = 3 }
+			motorized = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			
+			medium_tank_destroyer_brigade = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LINE_1/VARIANT:MED_ARTY_1 = {
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LINE_1/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			
+			infantry = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}	
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LINE_1/VARIANT:MED_ARTY_2 = {
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LINE_1/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+			
+			infantry = { x = 3 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}	
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LINE_2/VARIANT:MED_ARTY_1 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LINE_2/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+			
+			infantry = { x = 3 y = 0 }
+			
+			anti_tank_brigade = { x = 4 y = 0 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LINE_2/VARIANT:MED_ARTY_2 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LINE_2/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+			
+			infantry = { x = 3 y = 0 }
+			
+			anti_tank_brigade = { x = 4 y = 0 }
+			anti_tank_brigade = { x = 4 y = 1 }
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LINE_3/VARIANT:MED_ARTY_1 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LINE_3/VARIANT:MED_ARTY_1
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			anti_tank_brigade = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+			
+			infantry = { x = 3 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}
+TEMPLATE:SF_AT_infantry_width_26/FOCUS:LINE_3/VARIANT:MED_ARTY_2 = {	
+	set_country_flag = SF_AT_infantry_width_26/FOCUS:LINE_3/VARIANT:MED_ARTY_2
+	division_template = {
+		name = "Anti-Tank Infantry Division"			
+		
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 0 y = 3 }
+			infantry = { x = 0 y = 4 }
+			
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 1 y = 3 }
+			infantry = { x = 1 y = 4 }
+			
+			artillery_brigade_med = { x = 2 y = 0 }
+			artillery_brigade_med = { x = 2 y = 1 }
+			artillery_brigade_med = { x = 2 y = 2 }
+			anti_tank_brigade = { x = 2 y = 3 }
+			anti_tank_brigade = { x = 2 y = 4 }
+			
+			infantry = { x = 3 y = 0 }
+			
+			anti_tank_brigade = { x = 4 y = 0 }
+		
+		}
+		
+		support = {
+			DIV_HQ = { x = 0 y = 0 }
+			engineer = { x = 0 y = 1 }
+			combat_engineer = { x = 0 y = 2 }
+			logistics_company = { x = 0 y = 3 }
+			maintenance_company = { x = 0 y = 4 }
+			
+			field_hospital = { x = 1 y = 0 }
+			recon = { x = 1 y = 1 }
+			anti_tank_heavy = { x = 1 y = 2 }
+		}
+		priority = @INFANTRY_AT_PRIORITY
+	}	
+}

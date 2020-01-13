@@ -1,0 +1,170 @@
+﻿capital = 266
+
+oob = "PER_1936"
+
+set_war_support = 0.15
+
+set_convoys = 15
+
+set_country_flag = industry_aid_removed
+set_variable = { Per_planning = -0.30 }
+set_variable = { Per_command = -0.25 }
+set_variable = { Per_command_max = -0.05 }
+set_variable = { Per_training = 0.27 }
+set_variable = { Per_loss = 0.25 }
+
+add_dynamic_modifier = {
+	modifier = persian_command
+}
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		nrm_battery_basic = 1
+		early_ship_hull_submarine = 1
+	}
+}
+
+# Starting tech
+set_technology = {
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	desert_equipment = 1
+	tech_support = 1
+	################## artillery ###############
+	gw_artillery = 1
+	################## aircraft ##############
+	tech_persian_aircraft = 1 
+	early_fighter = 1
+	early_CAS = 1
+	CAS1 = 1
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	############### economy ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+
+	ww1_battlefield_support = 1
+	
+}
+
+add_ideas = { 	
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_regulated
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	age_19
+	officer_train_none
+	security_minor_restrictions
+	edu_minimal
+	
+	#unity_united_nation		
+	foreign_isolationism
+	PER_german_investment
+	PER_uncounted
+	PER_bad_industry
+	PER_commie_plot
+	PER_aioc_idea
+}
+
+set_politics = {
+	ruling_party = monarchism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	monarchism = 81
+	conservatism = 8
+	fascism = 1
+	communism = 3
+	neutrality = 7
+}
+#####################################################################
+#His son, who came to power in 1941
+create_country_leader = {
+	name = "Mohammad Reza Pahlavi"
+	desc = "POLITICS_MOHAMMAD_REZA_PAHLAVI_DESC"
+	picture = "gfx/leaders/SAU/Portrait_Arabia_Generic_3.dds"
+	expire = "1965.1.1"
+	ideology = absolutism
+	traits = {
+		British_Ally
+	}
+}
+create_country_leader = {
+	name = "Reza Shah Pahlavi"
+	desc = "POLITICS_REZA_SHAH_PAHLAVI_DESC"
+	picture = "Portrait_Iran_Reza_Shah_Pahlavi.dds"
+	expire = "1941.16.9"
+	ideology = absolutism
+	traits = {
+		rising_star
+		good_soldier
+		pet_projects
+	}
+}
+create_country_leader = {
+	name = "Soleyman Mirza Eskandari"
+	desc = "POLITICS_SOLEYMAN_MIRZA_ESKANDARI_DESC"
+	picture = "gfx/leaders/South America/Portrait_South_America_Generic_land_1.dds"
+	expire = "1965.1.1"
+	ideology = anarchist_communism
+	traits = {
+		stalins_puppet
+	}
+}
+##### CORPS COMMANDERS #######################################################
+create_corps_commander = {
+	name = "Hasan Arfa"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
+	traits = { Bad_General desert_fox }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 2
+}
+### EOF ###

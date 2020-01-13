@@ -1,0 +1,37 @@
+defined_text = {
+	name = GetPartisanTemplate
+
+	text = {
+		trigger = {
+			check_variable = { Prev.modifier@production_speed_partisan_size_factor < 0.2 }
+		}
+		localization_key = "Tiny Partisan Formations"
+	}
+	text = {
+		trigger = {
+			check_variable = { Prev.modifier@production_speed_partisan_size_factor > 0.2 }
+			check_variable = { Prev.modifier@production_speed_partisan_size_factor < 0.4 }
+		}
+		localization_key = "Small Partisan Formations"
+	}
+	text = {
+		trigger = {
+			check_variable = { Prev.modifier@production_speed_partisan_size_factor > 0.4 }
+			check_variable = { Prev.modifier@production_speed_partisan_size_factor < 0.6 }
+		}
+		localization_key = "Partisan Formations"
+	}
+	text = {
+		trigger = {
+			check_variable = { Prev.modifier@production_speed_partisan_size_factor > 0.6 }
+			check_variable = { Prev.modifier@production_speed_partisan_size_factor < 0.8 }
+		}
+		localization_key = "Large Partisan Formations"
+	}
+	text = {
+		trigger = {
+			check_variable = { Prev.modifier@production_speed_partisan_size_factor > 0.8 }
+		}
+		localization_key = "Huge Partisan Formations"
+	}
+}

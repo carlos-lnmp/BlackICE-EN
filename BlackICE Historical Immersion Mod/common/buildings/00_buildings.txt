@@ -1,0 +1,635 @@
+buildings = {
+
+	# show_on_map:
+	#    if provincial = yes, then show_on_map = X is amount per each province
+	#    if provincial = no, then show_on_map = X is amount per state
+	# State buildings
+	infrastructure = {
+		base_cost = 2500
+		icon_frame = 1
+		infrastructure = yes
+		max_level = 10
+		value = 5
+		show_modifier = yes
+		max_fuel_building = 0.25
+		per_level_extra_cost = 100
+	}
+	air_base = {
+		show_on_map = 1
+		base_cost = 300
+		icon_frame = 2
+		air_base = yes
+		max_level = 15
+		value = 1
+		damage_factor = 0.5
+		per_level_extra_cost = 150
+	}
+	anti_air_building = {
+		show_on_map = 3
+		base_cost = 3500
+		icon_frame = 3
+		anti_air = yes
+		disabled_in_dmz = yes
+		air_defence = 1
+		max_level = 5 
+		damage_factor = 0.1
+		value = 1
+	}
+	flakturm = {
+		show_on_map = 0
+		base_cost = 6000
+		icon_frame = 29
+		anti_air = yes
+		disabled_in_dmz = yes
+		air_defence = 2
+		max_level = 1 
+		damage_factor = 0.1
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	radar_station = {
+		show_on_map = 1
+		base_cost = 6400
+		per_level_extra_cost = 300
+		icon_frame = 4
+		radar = yes
+		max_level = 6
+		damage_factor = 0.5
+		value = 8
+	}
+	
+	# Province buildings
+	naval_base = {
+		show_on_map = 1
+		show_on_map_meshes = 3
+		always_shown = yes
+		base_cost = 3000
+		provincial = yes
+		only_costal = yes
+		is_port = yes
+		icon_frame = 10
+		max_level = 10
+		value = 1
+	}
+	pillbox = {
+		show_on_map = 1
+		has_destroyed_mesh = yes
+		base_cost = 4200
+		provincial = yes
+		disabled_in_dmz = yes
+		icon_frame = 28
+		land_fort = 1
+		max_level = 1
+		value = 1
+	}
+	bunker = {
+		show_on_map = 1
+		has_destroyed_mesh = yes
+		base_cost = 7200
+		per_level_extra_cost = 1200
+		provincial = yes
+		disabled_in_dmz = yes
+		icon_frame = 6
+		land_fort = 1
+		max_level = 12
+		value = 1
+	}
+	coastal_bunker = {
+		show_on_map = 1
+		has_destroyed_mesh = yes
+		base_cost = 7200
+		per_level_extra_cost = 1800
+		provincial = yes
+		disabled_in_dmz = yes
+		only_costal = yes
+		icon_frame = 7
+		naval_fort = 1
+		max_level = 10
+		value = 1
+	}
+	
+	# Shared buildings
+	industrial_complex = {
+		show_on_map = 6
+		base_cost = 8850
+		base_cost_conversion = 6000
+		general_production = 1
+		icon_frame = 8
+		max_level = 20
+		shares_slots = yes
+		value = 8
+		infrastructure_construction_effect = yes
+	}
+	arms_factory = {
+		show_on_map = 6
+		base_cost = 8000
+		base_cost_conversion = 5600
+		military_production = 1
+		icon_frame = 9
+		max_level = 20
+		shares_slots = yes
+		value = 10
+		infrastructure_construction_effect = yes
+	}
+	dockyard = {
+		show_on_map = 1
+		show_on_map_meshes = 3
+		base_cost = 13700
+		only_costal = yes
+		naval_production = 1
+		icon_frame = 5
+		only_costal = yes
+		max_level = 20
+		shares_slots = yes
+		value = 6
+		infrastructure_construction_effect = yes
+	}
+	synthetic_refinery = {
+		show_on_map = 1
+		base_cost = 16000
+		icon_frame = 11
+		refinery = yes
+		max_level = 4 # This is the max unlock level
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+		
+		show_modifier = yes
+		fuel_gain_from_states = 2.0 #per hour
+	}
+	fuel_silo = {
+		show_on_map = 1
+		base_cost = 7200
+		icon_frame = 12
+		#max_level = 1
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+		fuel_silo = yes
+		per_level_extra_cost = -500
+		show_modifier = yes
+		max_fuel_building = 100.0 #k
+	}
+	synthetic_rubber_refinery = {
+		show_on_map = 1
+		base_cost = 20000
+		icon_frame = 13
+		local_resources_rubber = 2
+		refinery = yes
+		max_level = 4 
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	steel_refinery = {
+		show_on_map = 1
+		base_cost = 8000
+		icon_frame = 14
+		local_resources_steel = 6 
+		local_resources_aluminium = 3 
+		refinery = yes
+		max_level = 4 
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	rocket_site = {
+		show_on_map = 1
+		base_cost = 6400
+		icon_frame = 16
+		rocket_production = 5
+		rocket_launch_capacity = 1
+		max_level = 5
+		shares_slots = yes
+		value = 1
+		infrastructure_construction_effect = yes
+	}
+	nuclear_reactor = {
+		show_on_map = 1
+		base_cost = 45000
+		icon_frame = 17
+		nuclear_reactor = yes
+		nuclear_production_factor = 1
+		max_level = 2
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	recruitment_building = {
+		show_on_map = 0
+		base_cost = 4500
+		icon_frame = 43
+		max_level = 1
+		shares_slots = yes
+		weekly_manpower = 100
+		show_modifier = yes
+		value = 0
+		infrastructure_construction_effect = no
+	}
+#######################
+###### STORAGE BUILDINGS
+#######################
+	rubber_storage = {
+		show_on_map = 0
+		base_cost = 5000
+		icon_frame = 32
+		max_level = 1
+		shares_slots = yes
+		local_resources_rubber = 0
+		show_modifier = no
+		value = 0
+		infrastructure_construction_effect = no
+	}
+	aluminium_storage = {
+		show_on_map = 0
+		base_cost = 5000
+		icon_frame = 33
+		max_level = 1
+		shares_slots = yes
+		local_resources_aluminium = 0
+		show_modifier = no
+		value = 0
+		infrastructure_construction_effect = no
+	}
+	tungsten_storage = {
+		show_on_map = 0
+		base_cost = 5000
+		icon_frame = 35
+		max_level = 1
+		shares_slots = yes
+		local_resources_tungsten = 0
+		show_modifier = no
+		value = 0
+		infrastructure_construction_effect = no
+	}
+	steel_storage = {
+		show_on_map = 0
+		base_cost = 5000
+		icon_frame = 34
+		max_level = 1
+		shares_slots = yes
+		local_resources_steel = 0
+		show_modifier = no
+		value = 0
+		infrastructure_construction_effect = no
+	}
+	chromium_storage = {
+		show_on_map = 0
+		base_cost = 5000
+		icon_frame = 36
+		max_level = 1
+		shares_slots = yes
+		local_resources_chromium = 0
+		show_modifier = no
+		value = 0
+		infrastructure_construction_effect = no
+	}
+	
+#######################
+###### EQUIPMENT BUILDINGS
+#######################	
+	tank_factory = {
+		show_on_map = 1
+		provincial = no
+		base_cost = 4400
+		per_level_extra_cost = 400
+		icon_frame = 18
+		max_level = 4 
+		
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	truck_factory = {
+		show_on_map = 1
+		base_cost = 4000
+		per_level_extra_cost = 400
+		icon_frame = 19
+		max_level = 4
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	artillery_factory = {
+		show_on_map = 1
+		base_cost = 3600
+		per_level_extra_cost = 400
+		icon_frame = 20
+		max_level = 4 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	smallarms_factory = {
+		show_on_map = 1
+		base_cost = 3200
+		per_level_extra_cost = 400
+		icon_frame = 21
+		max_level = 4 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	uniform_factory = {
+		show_on_map = 1
+		base_cost = 3000
+		per_level_extra_cost = 400
+		icon_frame = 22
+		max_level = 4 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	Ltaircraft_factory = {
+		show_on_map = 1
+		base_cost = 3400
+		per_level_extra_cost = 400
+		icon_frame = 24
+		max_level = 4 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	Hvaircraft_factory = {
+		show_on_map = 1
+		base_cost = 4000
+		per_level_extra_cost = 400
+		icon_frame = 25
+		max_level = 4 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	Jetaircraft_factory = {
+		show_on_map = 1
+		base_cost = 4000
+		per_level_extra_cost = 400
+		icon_frame = 23
+		max_level = 4 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	shipyard = {
+		show_on_map = 1
+		base_cost = 5000
+		per_level_extra_cost = 400
+		icon_frame = 26
+		only_costal = yes
+		max_level = 4 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	subyard = {
+		show_on_map = 1
+		base_cost = 3800
+		per_level_extra_cost = 400
+		icon_frame = 27
+		only_costal = yes
+		max_level = 4
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+#######################
+###### RESEARCH BUILDINGS
+#######################
+	#used for money research calculations
+	research_centre = {
+		show_on_map = 0
+		base_cost = 99999
+		icon_frame = 31
+		only_costal = no
+		max_level = 0 
+		shares_slots = no
+		value = 0
+		infrastructure_construction_effect = no
+	}
+	industry_research = {
+		show_on_map = 0
+		base_cost = 18000
+		icon_frame = 31
+		max_level = 0 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	electronics_research = {
+		show_on_map = 0
+		base_cost = 18000
+		icon_frame = 31
+		max_level = 0 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	armor_research = {
+		show_on_map = 0
+		base_cost = 18000
+		icon_frame = 31
+		max_level = 0 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	infantry_research = {
+		show_on_map = 0
+		base_cost = 18000
+		icon_frame = 31
+		max_level = 0 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	support_units_research = {
+		show_on_map = 0
+		base_cost = 18000
+		icon_frame = 31
+		max_level = 0 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	lt_aircraft_research = {
+		show_on_map = 0
+		base_cost = 18000
+		icon_frame = 31
+		max_level = 0 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	hv_aircraft_research = {
+		show_on_map = 0
+		base_cost = 18000
+		icon_frame = 31
+		max_level = 0 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	large_ship_research = {
+		show_on_map = 0
+		base_cost = 18000
+		icon_frame = 31
+		max_level = 0 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	small_ship_research = {
+		show_on_map = 0
+		base_cost = 18000
+		icon_frame = 31
+		max_level = 0 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	experimental_research = {
+		show_on_map = 0
+		base_cost = 18000
+		icon_frame = 31
+		max_level = 0 
+		shares_slots = yes
+		value = 0
+		infrastructure_construction_effect = yes
+	}
+	
+	
+	
+	supply_depot = {
+		show_on_map = 0
+		icon_frame = 37
+		base_cost = 7200
+		max_level = 1
+		shares_slots = no
+		value = 0
+		infrastructure_construction_effect = no
+	}
+	police_station = {
+		show_on_map = 0
+		base_cost = 3800
+		icon_frame = 40
+		max_level = 1
+		shares_slots = no
+		value = 0
+		infrastructure_construction_effect = no
+	}
+	#school = {
+	#	show_on_map = 0
+	#	base_cost = 14000
+	#	icon_frame = 1
+	#	max_level = 1
+	#	shares_slots = no
+	#	value = 0
+	#	infrastructure_construction_effect = no
+	#}
+	
+	
+##################################################################################################
+# The following buildings are used to add in custom modifiers by using the building speed modifiers
+##################################################################################################
+	dummy = { 
+		show_on_map = 100
+		base_cost = 90000
+		base_cost_conversion = 100000
+		military_production = 0
+		icon_frame = 30
+		max_level = 20
+		shares_slots = yes
+		value = 0
+	}
+	dummy_1 = { 
+		show_on_map = 100
+		base_cost = 90000
+		base_cost_conversion = 100000
+		military_production = 0
+		icon_frame = 30
+		max_level = 20
+		shares_slots = yes
+		value = 0
+	}
+	dummy_2 = { #Max Storage
+		show_on_map = 100
+		base_cost = 90000
+		base_cost_conversion = 100000
+		military_production = 0
+		icon_frame = 30
+		max_level = 1
+		shares_slots = yes
+		value = 0
+	}
+	dummy_3 = { #Equipment Factories
+		show_on_map = 100
+		base_cost = 90000
+		base_cost_conversion = 100000
+		military_production = 0
+		icon_frame = 30
+		max_level = 1
+		shares_slots = yes
+		value = 0
+	}
+	
+	nuke_effect = { #Nuke Damage Factor
+		show_on_map = 100
+		base_cost = 90000
+		base_cost_conversion = 100000
+		military_production = 0
+		icon_frame = 30
+		max_level = 1
+		shares_slots = yes
+	}
+	factory_output = { #Factory Output Factor
+		show_on_map = 100
+		base_cost = 90000
+		base_cost_conversion = 100000
+		military_production = 0
+		icon_frame = 30
+		max_level = 1
+		shares_slots = yes
+	}
+	dockyard_output = { #Dockyard Output Factor
+		show_on_map = 100
+		base_cost = 90000
+		base_cost_conversion = 100000
+		military_production = 0
+		icon_frame = 30
+		max_level = 1
+		shares_slots = yes
+	}
+	corruption = { #Corruption
+		show_on_map = 100
+		base_cost = 90000
+		base_cost_conversion = 100000
+		military_production = 0
+		icon_frame = 30
+		max_level = 1
+		shares_slots = yes
+	}
+	### disabled for now 
+	#arms_supercomplex = {
+	#	show_on_map = 1
+	#	base_cost = 8000
+	##	base_cost_conversion = 5000
+	#	military_production = 2
+	#	icon_frame = 28
+	#	max_level = 20
+	#	shares_slots = yes
+	#	value = 10
+	#}
+
+	#industrial_supercomplex = {
+	#	show_on_map = 1
+	#	base_cost = 15000
+	#	base_cost_conversion = 12000
+	#	general_production = 2
+	#	icon_frame = 29
+	##	max_level = 20
+	#	shares_slots = yes
+	#	value = 10
+	#}
+	
+}
+#EOF#

@@ -1,0 +1,1880 @@
+﻿
+add_namespace = blackiceairevents
+
+country_event = {
+	id = blackiceairevents.1
+	hidden = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		country_exists = GER
+		#date > 1936.6.3 
+	}
+	
+	immediate = {
+		random_list = { 
+			50 = { GER = { news_event = { id = blackiceairevents.2 } } }
+			50 = { GER = { news_event = { id = blackiceairevents.3 } } }
+		}
+	}
+	
+	option = {
+		name = blackiceairevents.1.a
+	}
+}
+news_event = {
+	id = blackiceairevents.2
+	title = blackiceairevents.2.t
+	desc = blackiceairevents.2.d
+	picture = GFX_news_event_wever_funeral
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = wever_dead
+	}
+	
+	option = {
+		name = blackiceairevents.2.a
+		custom_effect_tooltip = remove_theorist
+		show_ideas_tooltip = walther_wever
+		hidden_effect = {
+			remove_ideas = walther_wever
+		}
+	}
+}
+news_event = {
+	id = blackiceairevents.3
+	title = blackiceairevents.3.t
+	desc = blackiceairevents.3.d
+	picture = GFX_news_event_wever_survived
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = wever_alive
+	}
+	
+	option = {
+		name = blackiceairevents.3.a
+	}
+}
+
+country_event = {
+	id = blackiceairevents.8
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		has_global_flag = fall_of_odessa 
+	}
+	
+	immediate = { SOV = { news_event = { id = blackiceairevents.9 } } 
+	}
+	option = {
+		name = blackiceairevents.8.a
+	}
+}
+country_event = {
+	id = blackiceairevents.9
+	title = blackiceairevents.9.t
+	desc = blackiceairevents.9.d
+	picture = GFX_report_event_po2
+	
+	is_triggered_only = yes
+	
+
+	
+	option = {
+		name = blackiceairevents.9.a
+		set_technology = {
+			tech_po_2_bomber_equipment_1 = 1
+		}
+	}
+}
+news_event = {
+	id = blackiceairevents.10
+	hidden = yes
+
+	trigger = {
+		192 = { 
+			NOT { is_controlled_by = SOV } 
+		    is_owned_by = SOV 
+		}
+		GER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_odessa }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_odessa
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+	}
+}
+country_event = {
+	id = blackiceairevents.11
+	title = blackiceairevents.11.t
+	desc = blackiceairevents.11.d
+	picture = report_event_stalin_propoganda
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 2342 } #date > 1942.6.1
+		tag = SOV
+		is_ai = no
+		has_completed_focus = SOV_women_pilots
+		controls_state = 845
+		GER = { has_war_with = SOV }
+		has_tech = tech_po_2_bomber_equipment_1 
+	}
+		
+	option = {
+		name = blackiceairevents.11.a
+		load_oob = "SOV_nightwitches"
+	}
+
+}
+country_event = {
+	id = blackiceairevents.12
+	title = blackiceairevents.12.t
+	desc = blackiceairevents.12.d
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+	
+	trigger = {
+		check_variable = { global.days_passed > 366 } #date > 1937.1.1
+		tag = JAP
+		is_ai = no
+		has_war_with = CHI 
+	}
+	
+	mean_time_to_happen = {
+		days = 200
+	}
+	
+	option = {
+		name = blackiceairevents.12.a
+		ai_chance = { factor = 5 }
+		set_technology = {
+			tech_seversky_a8v1_equipment_1 = 1
+		}
+		USA = { country_event = { id = blackiceairevents.13 } }
+	}
+	option = {
+		name = blackiceairevents.12.b
+		ai_chance = { factor = 1 }
+		USA = { country_event = { id = blackiceairevents.14 } }
+		add_tech_bonus = {
+			name = air_bonus
+			bonus = 0.25
+			uses = 1
+			category = cat_heavy_fighter
+		}
+	}
+}
+country_event = {
+	id = blackiceairevents.13
+	title = blackiceairevents.13.t
+	desc = blackiceairevents.13.d
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.13.a
+		set_technology = {
+			tech_seversky_a8v1_equipment_1 = 1
+		}
+		JAP = { country_event = { id = blackiceairevents.15 } }
+	}
+}
+country_event = {
+	id = blackiceairevents.14
+	title = blackiceairevents.14.t
+	desc = blackiceairevents.14.d
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.14.a
+		set_technology = {
+			tech_seversky_a8v1_equipment_1 = 1
+		}
+	}
+}
+country_event = {
+	id = blackiceairevents.15
+	title = blackiceairevents.15.t
+	desc = blackiceairevents.15.d
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.15.a
+		load_oob = "JAP_Seversky_Purchase"
+	}
+}
+country_event = {
+	id = blackiceairevents.20
+	title = blackiceairevents.20.t
+	desc = blackiceairevents.20.d
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+	
+	trigger = {
+		check_variable = { global.days_passed > 366 } #date > 1937.1.1
+		tag = JAP
+		has_war_with = CHI 
+		GER = { 
+			has_tech = tech_he_112_equipment_1  #Ai isn't going to do this... 
+			has_completed_focus = GER_japan_friend 
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+	}
+	
+	option = {
+		name = blackiceairevents.20.a
+		ai_chance = { factor = 5 }
+		add_ideas = japanese_liscense_cost_int_one
+		hidden_effect = {	
+			set_country_flag = heinkel_liscense_start
+			GER = { country_event = { days = 6 id = blackiceairevents.24 } } 
+		}
+	}
+	option = {
+		name = blackiceairevents.20.b
+		ai_chance = { factor = 1 }
+	}
+}
+country_event = {
+	id = blackiceairevents.21
+	title = blackiceairevents.21.t
+	desc = blackiceairevents.21.d
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.21.a
+		set_technology = {
+			tech_he_112_equipment_1 = 1
+		}
+		load_oob = "JAP_He112_Purchase_a"
+	}
+}
+country_event = {
+	id = blackiceairevents.22
+	title = blackiceairevents.22.t
+	desc = blackiceairevents.22.d
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.22.a
+		set_technology = {
+			tech_he_112_equipment_1 = 1
+		}
+		load_oob = "JAP_He112_Purchase_b"
+	}
+}
+country_event = {
+	id = blackiceairevents.23
+	title = blackiceairevents.23.t
+	desc = blackiceairevents.23.d
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.23.a
+		set_technology = {
+			tech_he_112_equipment_1 = 1
+		}
+	}
+}
+country_event = {
+	id = blackiceairevents.24
+	title = blackiceairevents.24.t
+	desc = blackiceairevents.24.d
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.24.a
+		JAP = { country_event = { id = blackiceairevents.21 } } #Intended
+		ai_chance = { factor = 3 }
+	}
+	option = {
+		name = blackiceairevents.24.b
+		add_political_power = -25
+		load_oob = "GER_He112_Purchase_a"
+		JAP = { country_event = { id = blackiceairevents.22 } } #Historical
+		ai_chance = { factor = 6 }
+	}
+	option = {
+		name = blackiceairevents.24.c
+		add_political_power = -50
+		load_oob = "GER_He112_Purchase_b"
+		JAP = { country_event = { id = blackiceairevents.23 } } #Nothing shipped
+		ai_chance = { factor = 1 }
+	}
+}
+country_event = {
+	id = blackiceairevents.25
+	title = blackiceairevents.25.t
+	desc = blackiceairevents.25.d
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = JAP
+		has_country_flag = heinkel_liscense_start
+		GER = { has_tech = tech_he_100_equipment_1 }
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+	}
+	
+	option = {
+		name = blackiceairevents.25.a
+		ai_chance = { factor = 5 }
+		add_ideas = japanese_liscense_cost_int_two
+		remove_ideas = japanese_liscense_cost_int_one
+		hidden_effect = {	
+			set_country_flag = heinkel_liscense_done
+			GER = { country_event = { days = 6 id = blackiceairevents.26 } } 
+		}
+		
+	}
+	option = {
+		name = blackiceairevents.25.b
+		ai_chance = { factor = 1 }
+	}
+}
+country_event = { #Germany says yes or no to liscense, final chance to cancel
+	id = blackiceairevents.26
+	title = blackiceairevents.26.t
+	desc = blackiceairevents.26.d
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.26.a
+		JAP = { add_ideas = hitachi }
+		JAP = { country_event = { id = blackiceairevents.27 } } 
+		ai_chance = { factor = 3 }
+	}
+	option = {
+		name = blackiceairevents.26.b
+		add_political_power = -25
+		JAP = { country_event = { id = blackiceairevents.28 } } 
+		ai_chance = { factor = 3 }
+	}
+}
+country_event = { #Germany says yes
+	id = blackiceairevents.27
+	title = blackiceairevents.27.t
+	desc = blackiceairevents.27.d
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.27.a
+		set_technology = {
+			tech_he_100_equipment_1 = 1
+		}
+	}
+}
+country_event = { #Germany says no
+	id = blackiceairevents.28
+	title = blackiceairevents.28.t
+	desc = blackiceairevents.28.d
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.28.a
+		remove_ideas = japanese_liscense_cost_int_two
+		clr_country_flag = heinkel_liscense_done
+	}
+	
+}
+country_event = {
+	id = blackiceairevents.29
+	hidden = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 2 } #date > 1936.1.2
+		tag = JAP
+		is_ai = no
+	}
+
+	immediate = {
+		JAP = { country_event = { id = blackiceairevents.30 } }
+	}
+	
+	option = {
+		name = blackiceairevents.29.a
+	}
+}
+country_event = {
+	id = blackiceairevents.30
+	title = blackiceairevents.30.t
+	desc = blackiceairevents.30.d
+	picture = GFX_event_aircraft_producer
+
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.30.a
+		ai_chance = { factor = 5 }
+		country_event = blackiceairevents.31
+	}
+
+	option = {
+		name = blackiceairevents.30.c
+		ai_chance = { factor = 1 }
+	}
+}
+country_event = {
+	id = blackiceairevents.31
+	title = blackiceairevents.31.t
+	desc = blackiceairevents.31.d
+	picture = GFX_event_aircraft_producer
+
+	is_triggered_only = yes
+
+	option = {
+		name = blackiceairevents.31.a
+		country_event = blackiceairevents.32
+	}
+}
+country_event = {
+	id = blackiceairevents.32
+	title = blackiceairevents.32.t
+	desc = blackiceairevents.32.d
+	picture = GFX_event_aircraft_producer
+
+	is_triggered_only = yes 
+
+	option = {
+		name = blackiceairevents.32.a
+		country_event = blackiceairevents.33
+	}
+}
+country_event = {
+	id = blackiceairevents.33
+	title = blackiceairevents.33.t
+	desc = blackiceairevents.33.d
+	picture = GFX_event_aircraft_producer
+
+	is_triggered_only = yes 
+	
+	option = {
+		name = blackiceairevents.33.a
+		country_event = blackiceairevents.34
+	}
+}
+country_event = {
+	id = blackiceairevents.34
+	title = blackiceairevents.34.t
+	desc = blackiceairevents.34.d
+	picture = GFX_event_aircraft_producer
+
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.34.a
+	}
+}
+country_event = {
+	id = blackiceairevents.35
+	title = blackiceairevents.35.t
+	desc  = blackiceairevents.35.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	option = {
+		name = blackiceairevents.35.a
+		load_oob = "GER_aircraftmissiontest"
+	}
+}
+country_event = {
+	id = blackiceairevents.36
+	title = blackiceairevents.36.t
+	desc  = blackiceairevents.36.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.36.a
+		load_oob = "FRA_aircraftmissiontest"
+	}
+}
+country_event = {
+	id = blackiceairevents.37
+	title = blackiceairevents.37.t
+	desc = blackiceairevents.37.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 130 } #date > 1936.5.10
+		tag = ARG
+		owns_state = 278
+		USA = { is_ai = no }
+	}
+	
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.37.a
+		load_oob = "ARG_hawkiii_purchase"
+		USA = { country_event = { id = blackiceairevents.38 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.38
+	title = blackiceairevents.38.t
+	desc = blackiceairevents.38.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = blackiceairevents.38.a
+		add_political_power = 3
+	}
+}
+country_event = {
+	id = blackiceairevents.39
+	title = blackiceairevents.39.t
+	desc = blackiceairevents.39.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 152 } #date > 1936.6.1
+		tag = CHI
+		owns_state = 613
+		USA = { is_ai = no }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = blackiceairevents.39.a
+		load_oob = "CHI_hawkiii_purchase_a"
+		USA = { country_event = { id = blackiceairevents.41 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.40
+	title = blackiceairevents.40.t
+	desc = blackiceairevents.40.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 130 } #date > 1936.6.1
+		tag = GXC
+		owns_state = 599
+		USA = { is_ai = no } 
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = blackiceairevents.40.a
+		load_oob = "GXC_hawkiii_purchase"
+		USA = { country_event = { id = blackiceairevents.44 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.41
+	title = blackiceairevents.41.t
+	desc = blackiceairevents.41.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.41.a
+		add_political_power = 5
+	}
+	
+}
+country_event = {
+	id = blackiceairevents.42
+	title = blackiceairevents.42.t
+	desc = blackiceairevents.42.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 366 } #date > 1937.1.1
+		tag = CHI
+		owns_state = 613 
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.42.a
+		load_oob = "CHI_hawkiii_purchase_b"
+		USA = { country_event = { id = blackiceairevents.43 } } 
+	}
+	
+}
+country_event = {
+	id = blackiceairevents.43
+	title = blackiceairevents.43.t
+	desc = blackiceairevents.43.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.43.a
+		add_political_power = 10
+	}
+	
+}
+country_event = {
+	id = blackiceairevents.44
+	title = blackiceairevents.44.t
+	desc = blackiceairevents.44.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.44.a
+		add_political_power = 5
+	}
+	
+}
+country_event = { #Purchase of attack aircraft by republican spain, Goblins from Canada
+	id = blackiceairevents.45
+	title = blackiceairevents.45.t
+	desc = blackiceairevents.45.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		has_civil_war = yes
+		tag = SPR
+		has_government = communism
+	}
+	mean_time_to_happen = {
+		days = 150
+	}
+	
+	#Historical purchase from Canada. 40 GE-23
+	option = { 
+		name = blackiceairevents.45.a 
+		ai_chance = { factor = 10 }
+		CAN = { country_event = { id = blackiceairevents.46 } } 
+	}
+	#Ahistorical Purchase from Russia. 20 R-5
+	option = {
+		name = blackiceairevents.45.b
+		ai_chance = { factor = 2 }
+		SOV = { country_event = { id = blackiceairevents.47 } } 
+	}
+	#Ahistorical purchase from Czechoslovokia. 30 Letov S.328?
+	option = {
+		name = blackiceairevents.45.c
+		ai_chance = { factor = 1 }
+		CZE = { country_event = { id = blackiceairevents.48 } } 
+	}
+	#Ahistorical purchase from Netherlands. 30 C.X ?
+	option = {
+		name = blackiceairevents.45.e 
+		ai_chance = { factor = 1 }
+		HOL = { country_event = { id = blackiceairevents.49 } } 
+	}
+	#Ahistorical Purchase from USA. 30 A-12. AI won't choose this and US AI will decline.
+	option = {
+		name = blackiceairevents.45.f
+		ai_chance = { factor = 0 }
+		USA = { country_event = { id = blackiceairevents.50 } } 
+	}
+	
+}
+country_event = { #Historical purchase from Canada
+	id = blackiceairevents.46
+	title = blackiceairevents.46.t
+	desc = blackiceairevents.46.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = { #Yes
+		name = blackiceairevents.46.a
+		ai_chance = { factor = 5 }
+		add_political_power = 5
+		air_experience = 10
+		hidden_effect = {
+			set_technology = {
+				tech_grumman_goblin = 1
+			}
+			random_country = {
+				limit = {
+					tag = SPR
+					or = {
+						has_government = communism
+						has_government = liberalism
+						has_government = socialism
+					}
+				}
+				load_oob = "SPR_attack_air_purchase_a"	
+				country_event = { id = blackiceairevents.53 }
+			}
+			CAN = { country_event = { id = blackiceairevents.52 } } 
+		}
+	}
+	option = { #No
+		name = blackiceairevents.46.b
+		ai_chance = { factor = 1 }
+		hidden_effect = {
+			random_country = {
+				limit = {
+					tag = SPR
+					has_government = communism
+				}
+				country_event = { id = blackiceairevents.54 }
+			}
+		}
+	}
+}
+country_event = { #Ahistorical purchase from Russia
+	id = blackiceairevents.47
+	title = blackiceairevents.47.t
+	desc = blackiceairevents.47.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = { #Yes
+		name = blackiceairevents.47.a
+		ai_chance = { factor = 7 }
+		add_political_power = 5
+		air_experience = 10
+		hidden_effect = {
+			random_country = {
+				limit = {
+					tag = SPR
+					or = {
+						has_government = communism
+						has_government = liberalism
+						has_government = socialism
+					}
+				}
+				load_oob = "SPR_attack_air_purchase_b"	
+				country_event = { id = blackiceairevents.53 }
+			}
+		}
+	}
+	option = { #No
+		name = blackiceairevents.47.b
+		ai_chance = { factor = 1 }
+		hidden_effect = {
+			random_country = {
+				limit = {
+					tag = SPR
+					or = {
+						has_government = communism
+						has_government = liberalism
+						has_government = socialism
+					}
+				}
+				country_event = { id = blackiceairevents.54 }
+			}
+		}
+	}
+}
+country_event = { #Ahistorical purchase from Czechs
+	id = blackiceairevents.48
+	title = blackiceairevents.48.t
+	desc = blackiceairevents.48.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = { #Yes
+		name = blackiceairevents.48.a
+		ai_chance = { factor = 10 }
+		add_political_power = 5
+		air_experience = 10
+		hidden_effect = {
+			random_country = {
+				limit = {
+				tag = SPR
+					or = {
+						has_government = communism
+						has_government = liberalism
+						has_government = socialism
+					}
+				}
+				load_oob = "SPR_attack_air_purchase_c"	
+				country_event = { id = blackiceairevents.53 }
+			}
+		}
+	}
+	option = { #No
+		name = blackiceairevents.48.b
+		ai_chance = { factor = 1 }
+		hidden_effect = {
+			random_country = {
+				limit = {
+				tag = SPR
+					has_government = communism
+				}
+				country_event = { id = blackiceairevents.54 }
+			}
+		}
+	}
+}
+country_event = { #Ahistorical purchase from Netherlands
+	id = blackiceairevents.49
+	title = blackiceairevents.49.t
+	desc = blackiceairevents.49.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = { #Yes
+		name = blackiceairevents.49.a
+		ai_chance = { factor = 10 }
+		add_political_power = 5
+		air_experience = 10
+		hidden_effect = {
+			random_country = {
+				limit = {
+					tag = SPR
+					or = {
+						has_government = communism
+						has_government = liberalism
+						has_government = socialism
+					}
+				}
+				load_oob = "SPR_attack_air_purchase_d"	
+				country_event = { id = blackiceairevents.53 }
+			}
+		}
+	}
+	option = { #No
+		name = blackiceairevents.49.b
+		ai_chance = { factor = 1 }
+		hidden_effect = {
+			random_country = {
+				limit = {
+				tag = SPR
+					or = {
+						has_government = communism
+						has_government = liberalism
+						has_government = socialism
+					}
+				}
+				country_event = { id = blackiceairevents.54 }
+			}
+		}
+	}
+}
+country_event = { #Ahistorical purchase from USA
+	id = blackiceairevents.50
+	title = blackiceairevents.50.t
+	desc = blackiceairevents.50.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = { #Yes
+		name = blackiceairevents.50.a
+		ai_chance = { factor = 0 }
+		add_political_power = -50
+		air_experience = 10
+		hidden_effect = {
+			random_country = {
+				limit = {
+					tag = SPR
+					or = {
+						has_government = communism
+						has_government = liberalism
+						has_government = socialism
+					}
+				}
+				load_oob = "SPR_attack_air_purchase_e"	
+				country_event = { id = blackiceairevents.53 }
+			}
+		}
+	}
+	option = { #No
+		name = blackiceairevents.50.b
+		ai_chance = { factor = 5 }
+		hidden_effect = {
+			random_country = {
+				limit = {
+					tag = SPR
+					or = {
+						has_government = communism
+						has_government = liberalism
+						has_government = socialism
+					}
+				}
+				country_event = { id = blackiceairevents.54 }
+			}
+		}
+	}
+}
+country_event = { #Canada discovers it has been tricked
+	id = blackiceairevents.52
+	title = blackiceairevents.52.t
+	desc = blackiceairevents.52.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.52.a
+		add_political_power = -15
+	}
+	
+}
+country_event = { #Purchases succeed
+	id = blackiceairevents.53
+	title = blackiceairevents.53.t
+	desc = blackiceairevents.53.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.53.a
+		add_political_power = 5
+	}
+	
+}
+country_event = { #Purchases Failed
+	id = blackiceairevents.54
+	title = blackiceairevents.54.t
+	desc = blackiceairevents.54.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.54.a
+		add_political_power = -15
+	}
+	
+}
+country_event = { #Brewster 239 for Finland
+	id = blackiceairevents.55
+	title = blackiceairevents.55.t
+	desc = blackiceairevents.55.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = FIN
+		OR = {
+			check_variable = { global.days_passed > 1369 } #date > 1939.10.1 
+			AND = { 
+				FIN = { has_war_with = SOV }
+				check_variable = { global.days_passed > 1186 } #date > 1939.4.1
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 15
+	}
+	
+	
+	option = { 
+		name = blackiceairevents.55.a 
+		hidden_effect = {
+			USA = { set_technology = { tech_finnish_buffalo = 1 } } 
+			FIN = { country_event = { days = 90 id = blackiceairevents.56 } }
+		}
+	}
+	
+}
+country_event = { #Arrival of the aircraft
+	id = blackiceairevents.56
+	title = blackiceairevents.56.t
+	desc = blackiceairevents.56.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.56.a
+		load_oob = "FIN_buffalo_purchase"	
+	}
+	
+}
+country_event = { #Vought 142A for argentina
+	id = blackiceairevents.57
+	title = blackiceairevents.57.t
+	desc = blackiceairevents.57.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 222 } #date > 1936.8.10
+		tag = ARG
+		owns_state = 278 
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.57.a
+		load_oob = "ARG_v142_purchase"
+		USA = { country_event = { id = blackiceairevents.58 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.58
+	title = blackiceairevents.58.t
+	desc = blackiceairevents.58.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.58.a
+		add_political_power = 3
+	}
+	
+}
+country_event = { #Curtiss A-12 for china
+	id = blackiceairevents.59
+	title = blackiceairevents.59.t
+	desc = blackiceairevents.59.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 152 } #date > 1936.6.1
+		tag = CHI
+		owns_state = 613
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.59.a
+		load_oob = "CHI_a12_purchase"
+		USA = { country_event = { id = blackiceairevents.60 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.60
+	title = blackiceairevents.60.t
+	desc = blackiceairevents.60.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.60.a
+		add_political_power = 3
+	}
+	
+}
+country_event = { #Martin 139WAN
+	id = blackiceairevents.61
+	title = blackiceairevents.61.t
+	desc = blackiceairevents.61.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 578 } #date > 1937.8.1
+		tag = ARG
+		owns_state = 278
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.61.a
+		load_oob = "ARG_b10_purchase_a"
+		USA = { country_event = { id = blackiceairevents.62 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.62
+	title = blackiceairevents.62.t
+	desc = blackiceairevents.62.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.62.a
+		add_political_power = 1
+	}
+	
+}
+country_event = { #Martin 139 for argentina navy
+	id = blackiceairevents.63
+	title = blackiceairevents.63.t
+	desc = blackiceairevents.63.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 731 } #date > 1938.1.1
+		tag = ARG
+		owns_state = 278 
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.63.a
+		load_oob = "ARG_b10_purchase_b"
+		USA = { country_event = { id = blackiceairevents.64 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.64
+	title = blackiceairevents.64.t
+	desc = blackiceairevents.64.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.64.a
+		add_political_power = 3
+	}
+	
+}
+country_event = { #Martin 139 for China
+	id = blackiceairevents.65
+	title = blackiceairevents.65.t
+	desc = blackiceairevents.65.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 366 } #date > 1937.1.1
+		tag = CHI
+		owns_state = 613 
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.65.a
+		load_oob = "CHI_b10_purchase"
+		USA = { country_event = { id = blackiceairevents.66 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.66
+	title = blackiceairevents.66.t
+	desc = blackiceairevents.66.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.66.a
+		add_political_power = 1
+	}
+	
+}
+country_event = { #Martin 139 for Siam
+	id = blackiceairevents.67
+	title = blackiceairevents.67.t
+	desc = blackiceairevents.67.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 397 } #date > 1937.2.1
+		tag = SIA
+		owns_state = 289
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.67.a
+		load_oob = "SIA_b10_purchase"
+		USA = { country_event = { id = blackiceairevents.68 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.68
+	title = blackiceairevents.68.t
+	desc = blackiceairevents.68.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.68.a
+		add_political_power = 1
+	}
+	
+}
+country_event = { #Martin 139 for Turkey
+	id = blackiceairevents.69
+	title = blackiceairevents.69.t
+	desc = blackiceairevents.69.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 547 } #date > 1937.7.1
+		tag = TUR
+		owns_state = 49 
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.69.a
+		load_oob = "TUR_b10_purchase"
+		USA = { country_event = { id = blackiceairevents.70 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.70
+	title = blackiceairevents.70.t
+	desc = blackiceairevents.70.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.70.a
+		add_political_power = 4
+	}
+	
+}
+country_event = { #Martin 139 for Holland 1/3
+	id = blackiceairevents.71
+	title = blackiceairevents.71.t
+	desc = blackiceairevents.71.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 335 } #date > 1936.12.1
+		tag = HOL
+		owns_state = 673 
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.71.a
+		load_oob = "HOL_b10_purchase_a"
+		USA = { country_event = { id = blackiceairevents.72 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.72
+	title = blackiceairevents.72.t
+	desc = blackiceairevents.72.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.72.a
+		add_political_power = 2
+	}
+	
+}
+country_event = { #Martin 139 for Holland 2/3
+	id = blackiceairevents.73
+	title = blackiceairevents.73.t
+	desc = blackiceairevents.73.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 740 } #date > 1938.1.1
+		tag = HOL
+		owns_state = 673 
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.73.a
+		load_oob = "HOL_b10_purchase_b"
+		USA = { country_event = { id = blackiceairevents.74 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.74
+	title = blackiceairevents.74.t
+	desc = blackiceairevents.74.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.74.a
+		add_political_power = 4
+	}
+	
+}
+country_event = { #Martin 139 for Holland 3/3
+	id = blackiceairevents.75
+	title = blackiceairevents.75.t
+	desc = blackiceairevents.75.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 1155 } #date > 1939.3.1
+		tag = HOL
+		owns_state = 673 
+		USA = { is_ai = no }
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.75.a
+		load_oob = "HOL_b10_purchase_c"
+		USA = { country_event = { id = blackiceairevents.76 } } 
+	}
+}
+country_event = {
+	id = blackiceairevents.76
+	title = blackiceairevents.76.t
+	desc = blackiceairevents.76.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.76.a
+		add_political_power = 10
+	}
+	
+}
+country_event = { #Night Harrasment
+	id = blackiceairevents.77
+	title = blackiceairevents.77.t
+	desc = blackiceairevents.77.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes
+
+	trigger = {
+		check_variable = { global.days_passed > 2556 } #date > 1943.1.1
+		tag = GER
+		is_ai = no
+		has_war_with = SOV 
+	}
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	option = {
+		name = blackiceairevents.77.a
+		load_oob = "GER_nightharrasment"
+	}
+}
+country_event = { #Italian Series 0 design competition
+	id = blackiceairevents.78
+	title = blackiceairevents.78.t
+	desc = blackiceairevents.78.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.78.a #G.50
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_g50_multirole_equipment_1
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = blackiceairevents.78.b #MC.200
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_mc200_fighter_equipment_1
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = blackiceairevents.78.c #Re.2000
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_re2000_multirole_equipment_1
+		}
+		ai_chance = { factor = 0 }
+		
+	}
+	option = {
+		name = blackiceairevents.78.e #All. Historical
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.15
+			uses = 1
+			technology = tech_g50_multirole_equipment_1
+		}
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.15
+			uses = 1
+			technology = tech_mc200_fighter_equipment_1
+		}
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.15
+			uses = 1
+			technology = tech_re2000_multirole_equipment_1
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = blackiceairevents.78.f #all, AI
+		trigger = {
+			is_ai = yes
+		}
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_g50_multirole_equipment_1
+		}
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_mc200_fighter_equipment_1
+		}
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_re2000_multirole_equipment_1
+		}
+		ai_chance = { factor = 10 }
+	}
+	
+}
+country_event = { #Italian Series 5 design competition
+	id = blackiceairevents.79
+	title = blackiceairevents.79.t
+	desc = blackiceairevents.79.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.79.a #G.55
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_g55_fighter_equipment_1
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = blackiceairevents.79.b #MC.205
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_mc205_fighter_equipment_1 
+			technology = tech_mc205n_fighter_equipment_1 
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = blackiceairevents.79.c #Re.2005
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_re2005_multirole_equipment_1
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = blackiceairevents.79.e #All. Historical
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.15
+			uses = 1
+			technology = tech_g55_fighter_equipment_1
+		}
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.15
+			uses = 1
+			technology = tech_mc205_fighter_equipment_1 
+			technology = tech_mc205n_fighter_equipment_1 
+		}
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.15
+			uses = 1
+			technology = tech_re2005_multirole_equipment_1
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = blackiceairevents.79.f #all, AI
+		trigger = {
+			is_ai = yes
+		}
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_g55_fighter_equipment_1
+		}
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_mc205_fighter_equipment_1 
+			technology = tech_mc205n_fighter_equipment_1 
+		}
+		add_tech_bonus = {
+			name = fighter_bonus
+			bonus = 0.5
+			uses = 1
+			technology = tech_re2005_multirole_equipment_1
+		}
+		ai_chance = { factor = 10 }
+	}
+	
+}
+country_event = { #Italian cas aircraft
+	id = blackiceairevents.80
+	title = blackiceairevents.80.t
+	desc = blackiceairevents.80.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.80.a #Single engine
+		add_tech_bonus = {
+			name = ITA_bomber_effort
+			bonus = 0.15
+			uses = 4
+			technology = tech_ca355_cas_equipment_1 
+			technology = tech_ba201_cas_equipment_1
+			technology = tech_re2002_multirole_equipment_1 
+			technology = tech_sm93_cas_equipment_1
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = blackiceairevents.80.b #Twin engine
+		add_tech_bonus = {
+			name = ITA_bomber_effort
+			bonus = 0.15
+			uses = 7
+			technology = tech_ca309_light_bomber_equipment_1 
+			technology = tech_ca310_light_bomber_equipment_1 
+			technology = tech_ca311_light_bomber_equipment_1
+			technology = tech_ca313_light_bomber_equipment_1 
+			technology = tech_ca314_light_bomber_equipment_1
+			technology = tech_fc20_cas_equipment_1
+			technology = tech_sm89_cas_equipment_1
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = blackiceairevents.80.c #AI
+		trigger = {
+			is_ai = yes
+		}
+		
+		add_tech_bonus = {
+			name = ITA_bomber_effort
+			bonus = 0.50
+			uses = 11
+			technology = tech_ca355_cas_equipment_1 
+			technology = tech_ba201_cas_equipment_1
+			technology = tech_re2002_multirole_equipment_1 
+			technology = tech_sm93_cas_equipment_1
+			technology = tech_ca309_light_bomber_equipment_1 
+			technology = tech_ca310_light_bomber_equipment_1
+			technology = tech_ca311_light_bomber_equipment_1 
+			technology = tech_ca313_light_bomber_equipment_1
+			technology = tech_ca314_light_bomber_equipment_1
+			technology = tech_fc20_cas_equipment_1
+			technology = tech_sm89_cas_equipment_1
+		}
+		ai_chance = { factor = 10 }
+	}
+	
+}
+country_event = { #Italian NAV aircraft
+	id = blackiceairevents.81
+	title = blackiceairevents.81.t
+	desc = blackiceairevents.81.d
+
+	picture = GFX_event_aircraft_producer
+	
+	is_triggered_only = yes
+
+	
+	option = {
+		name = blackiceairevents.81.a #Small
+		add_tech_bonus = {
+			name = ITA_naval_air_effort
+			bonus = 0.15
+			uses = 5
+			technology = tech_z506b_naval_bomber_equipment_1 
+			technology = tech_ca313s_naval_bomber_equipment_1
+			technology = tech_z1018a_naval_bomber_equipment_1 
+			technology = tech_z1018_naval_bomber_equipment_1
+			technology = tech_g55s_naval_bomber_equipment_1
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {
+		name = blackiceairevents.81.b #large
+		ai_chance = { factor = 0 }
+		
+		add_tech_bonus = {
+			name = ITA_naval_air_effort
+			bonus = 0.15
+			uses = 4
+			technology = tech_mc99_flying_boat_equipment_1 
+			technology = tech_sm79_naval_bomber_equipment_1 
+			technology = tech_sm84_naval_bomber_equipment_1
+			technology = tech_p108_naval_bomber_equipment_1 
+		}
+	}
+	#AI
+	option = {
+		name = blackiceairevents.81.c 
+		trigger = {
+			is_ai = yes
+		}
+		ai_chance = { factor = 100 }
+		
+		add_tech_bonus = {
+			name = ITA_naval_air_effort
+			bonus = 0.50
+			uses = 9
+			technology = tech_z506b_naval_bomber_equipment_1 
+			technology = tech_ca313s_naval_bomber_equipment_1
+			technology = tech_z1018a_naval_bomber_equipment_1 
+			technology = tech_z1018_naval_bomber_equipment_1
+			technology = tech_g55s_naval_bomber_equipment_1 
+			technology = tech_mc99_flying_boat_equipment_1
+			technology = tech_sm79_naval_bomber_equipment_1 
+			technology = tech_sm84_naval_bomber_equipment_1
+			technology = tech_p108_naval_bomber_equipment_1
+		}
+		
+	}
+}
+country_event = { #Italian engines
+	id = blackiceairevents.82
+	title = blackiceairevents.82.t
+	desc = blackiceairevents.82.d
+
+	picture = GFX_event_aircraft_producer
+	
+	fire_only_once = yes 
+	
+	trigger = {
+		tag = ITA
+		OR = {
+			is_in_faction_with = GER
+			is_in_faction_with = ENG
+			is_in_faction_with = USA
+			is_in_faction_with = FRA
+		}
+	}
+	
+	mean_time_to_happen = { days = 60 }
+	
+	option = {
+		name = blackiceairevents.82.a 
+		ai_chance = { factor = 100 }
+		
+		add_tech_bonus = {
+			name = ITA_air_engine
+			ahead_reduction = 1
+			uses = 3
+			technology = tech_mediumengine1
+			technology = tech_heavyengine1
+			technology = tech_heavyengine2
+		}
+		
+		add_tech_bonus = {
+			name = ITA_air_engine
+			bonus = 0.50
+			uses = 3
+			technology = tech_mediumengine1
+			technology = tech_heavyengine1
+			technology = tech_heavyengine2
+		}
+	}
+}
+

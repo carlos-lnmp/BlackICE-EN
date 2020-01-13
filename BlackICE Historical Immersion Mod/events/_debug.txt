@@ -1,0 +1,705 @@
+﻿add_namespace = performance
+add_namespace = debug
+
+country_event = {
+	id = performance.1
+	title = performance.1.t
+	desc = performance.1.desc
+	picture = GFX_report_event_vienna_award_negotiations
+	
+	is_triggered_only = yes
+	
+	#fire_only_once = yes
+	
+	#trigger = {
+	#	#is_ai = no
+	#}
+	immediate = {
+		set_global_flag = performance_event
+	}
+	
+	option = {
+		name = "South America"
+		custom_effect_tooltip = unifiy_sa_TT
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = BRA 
+						tag = BOL 
+						tag = CHL 
+						tag = ARG 
+						tag = VEN 
+						tag = URG 
+						tag = PAR 
+						tag = COL 
+						tag = PAN 
+						tag = COS 
+						tag = NIC 
+						tag = HON 
+						tag = ELS 
+						tag = GUA 
+						tag = PRU 
+						tag = HAI 
+						tag = DOM 
+						tag = CUB 
+					}
+				}
+				ECU = { 
+					annex_country = { target = PREV }
+					add_ideas = undisturbed_isolation
+					add_ideas = consumer_max
+					set_cosmetic_tag = ECU_SOA
+				}
+				every_state = { 
+					limit = {
+						is_owned_by = ECU 
+					}
+					remove_building = { type = arms_factory level = 10 }
+					remove_building = { type = industrial_complex level = 10 }
+					remove_building = { type = dockyard level = 10 }
+					remove_core_of = PREV
+				}
+			}
+		}
+	}
+	option = {
+		name = "South American Minors"
+		custom_effect_tooltip = unify_no_bra_TT
+			hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = BOL 
+						tag = CHL 
+						tag = ARG 
+						tag = VEN 
+						tag = URG 
+						tag = PAR 
+						tag = COL 
+						tag = PAN 
+						tag = COS 
+						tag = NIC 
+						tag = HON 
+						tag = ELS 
+						tag = GUA 
+						tag = PRU 
+						tag = HAI 
+						tag = DOM 
+						tag = CUB 
+					}
+				}
+				ECU = { 
+					annex_country = { target = PREV }
+					add_ideas = undisturbed_isolation
+					add_ideas = consumer_max
+					set_cosmetic_tag = ECU_SOA
+				}
+				every_state = { 
+					limit = {
+						is_owned_by = ECU 
+					}
+					remove_building = { type = arms_factory level = 10 }
+					remove_building = { type = industrial_complex level = 10 }
+					remove_building = { type = dockyard level = 10 }
+					remove_core_of = PREV
+				}
+			}
+		}
+	}
+	option = {
+		name = "English Puppets"
+		ENG = { 
+			annex_country = { target = BMP }
+			annex_country = { target = EGY }
+			annex_country = { target = MAL }
+			annex_country = { target = JOR }
+			annex_country = { target = YEM }
+		}
+		RAJ = { annex_country = { target = BHU } }
+	}
+	option = {
+		name = "French Puppets"
+		FRA = { 
+			annex_country = { target = MAR }
+			annex_country = { target = TUN }
+			annex_country = { target = FRI }
+			annex_country = { target = LEB }
+			annex_country = { target = SYR }
+		}
+	}
+	option = {
+		trigger = { NOT = { has_global_flag = units_cleared } }
+		name = "Clear neutral units"
+		set_global_flag = units_cleared
+		hidden_effect = {
+			SWI = {
+				delete_unit_template_and_units = {
+					division_template = "Infanterie-Division"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Gebirgs-Division"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Gebirgsbrigade"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Grenzbrigade"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Leichte-Brigade"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			POR = {
+				delete_unit_template_and_units = {
+					division_template = "Guarda Nacional Republicana"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Divisão de Infantaria"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Força de Caçadores"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Brigada de Guarda"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			SWE = {
+				delete_unit_template_and_units = {
+					division_template = "Arméfördelning"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Kavalleribrigaden"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Militäromraade"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			IRE = {
+				delete_unit_template_and_units = {
+					division_template = "Cavalry Brigade"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Local Defence Force"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			LIT = {
+				delete_unit_template_and_units = {
+					division_template = "Pestininku Divizija"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Pestininku Brigata"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			EST = {
+				delete_unit_template_and_units = {
+					division_template = "Jalaväediviisi"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			LAT = {
+				delete_unit_template_and_units = {
+					division_template = "Kajnieku Divizija"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			ALB = { 
+				delete_unit_template_and_units = {
+					division_template = "Këmbësori Pjesëtim"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			TUN = { 
+				delete_unit_template_and_units = {
+					division_template = "Tunisian Spahis"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Tunisian Tirailleurs"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			MAR = { 
+				delete_unit_template_and_units = {
+					division_template = "Moroccan Goumiers"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Moroccan Spahis"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Moroccan Tirailleurs"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			MEX = { 
+				delete_unit_template_and_units = {
+					division_template = "División de Infanteriaa"
+				}
+				delete_unit_template_and_units = {
+					division_template = "División de Caballería"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			TUR = { 
+				delete_unit_template_and_units = {
+					division_template = "Piyade Tümeni"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Dağcı Tugayı"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Iç Güvenlik Tugayı"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Süvari Tümeni"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			SAU = { 
+				delete_unit_template_and_units = {
+					division_template = "Alfurqat Almasha"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Alfurqat Alfursan"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			OMA = { 
+				delete_unit_template_and_units = {
+					division_template = "Alfurqat Almasha"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			YEM = { 
+				delete_unit_template_and_units = {
+					division_template = "Alfurqat Almasha"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Alfurqat Alfursan"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			AFG = { 
+				delete_unit_template_and_units = {
+					division_template = "Royal Guard"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Militia"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			NEP = { 
+				delete_unit_template_and_units = {
+					division_template = "Paidala Dibhijana"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			TIB = { 
+				delete_unit_template_and_units = {
+					division_template = "Juntuan"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			SIA = { 
+				delete_unit_template_and_units = {
+					division_template = "Infantry Division"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			FRI = { 
+				delete_unit_template_and_units = {
+					division_template = "Indochinese Regiment"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			PHI = { 
+				delete_unit_template_and_units = {
+					division_template = "Indochinese Regiment"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			MON = { 
+				delete_unit_template_and_units = {
+					division_template = "Morit Diviziin"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			MEN = { 
+				delete_unit_template_and_units = {
+					division_template = "Juntuán"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			LIB = { 
+				delete_unit_template_and_units = {
+					division_template = "Infantry Division"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			SYR = { 
+				delete_unit_template_and_units = {
+					division_template = "Brigade Coloniale"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			LEB = { 
+				delete_unit_template_and_units = {
+					division_template = "Brigade Coloniale"
+				}
+				add_to_temp_variable = { Root.temp = num_divisions }
+			}
+			#SOV = { 
+			#	delete_unit_template_and_units = {
+			#		division_template = "NKVD Pogranichnaya Diviziya"
+			#	}
+			#	add_to_temp_variable = { Root.temp = 36 }
+			#}
+		}
+		
+		custom_effect_tooltip = "clear_units_tt"
+	}
+	option = {
+		name = "Minor Research"
+		custom_effect_tooltip = "minor_research_tt"
+		every_country = {
+			limit = {
+				is_ai = yes
+				NOT = { major_country = yes }
+			}
+			set_research_slots = 1
+		}
+	}
+	option = {
+		name = "Do nothing"
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = {
+	id = debug.1
+	title = debug.1.t
+	desc = debug.1.desc 
+	picture = GFX_report_event_vienna_award_negotiations
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "Annex all"
+		every_country = {
+			ROOT = { annex_country = { target = PREV } }
+		}
+	}
+	
+	option = {
+		name = "Annex South A."
+		every_country = {
+			limit = {
+				capital_scope = {
+					is_on_continent = south_america
+				}
+			}
+			ROOT = { annex_country = { target = PREV } }
+		}
+	}
+	
+	option = {
+		name = "Annex North A."
+		every_country = {
+			limit = {
+				capital_scope = {
+					is_on_continent = north_america
+				}
+			}
+			ROOT = { annex_country = { target = PREV } }
+		}
+	}
+	
+	option = {
+		name = "Annex Europe"
+		every_country = {
+			limit = {
+				capital_scope = {
+					is_on_continent = europe
+				}
+			}
+			ROOT = { annex_country = { target = PREV } }
+		}
+	}
+	
+	option = {
+		name = "Annex Middle East"
+		every_country = {
+			limit = {
+				capital_scope = {
+					is_on_continent = middle_east
+				}
+			}
+			ROOT = { annex_country = { target = PREV } }
+		}
+	}
+	
+	option = {
+		name = "Annex Africa"
+		every_country = {
+			limit = {
+				capital_scope = {
+					is_on_continent = africa
+				}
+			}
+			ROOT = { annex_country = { target = PREV } }
+		}
+	}
+	
+	option = {
+		name = "Annex Asia"
+		every_country = {
+			limit = {
+				OR = {
+					capital_scope = {
+						is_on_continent = asia
+					}
+					capital_scope = {
+						is_on_continent = australia
+					}
+				}
+			}
+			ROOT = { annex_country = { target = PREV } }
+		}
+	}
+	
+	option = {
+		name = "Normal difficulty"
+		every_other_country = {
+			limit = { has_idea = normal_difficulty_AI }
+			remove_ideas = normal_difficulty_AI
+		}
+		add_ideas = normal_difficulty_AI
+		set_country_flag = player
+	}
+	
+	option = {
+		name = "Exit"
+	}
+}
+country_event = { #Colors for Ideologies
+	id = debug.102
+	title = debug.102.t
+	desc = debug.102.desc
+	picture = GFX_report_event_vienna_award_negotiations
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Paint them!"
+		every_country = {
+			save_cosmetic_tags = yes
+			
+			if = {
+				limit = { has_government = conservatism }
+				set_cosmetic_tag = CONSERVATIVE
+			}
+			if = {
+				limit = { has_government = liberalism }
+				set_cosmetic_tag = LIBERAL
+			}
+			if = {
+				limit = { has_government = socialism }
+				set_cosmetic_tag = SOCIALIST
+			}
+			if = {
+				limit = { has_government = communism }
+				set_cosmetic_tag = COMMUNIST
+			}
+			if = {
+				limit = { has_government = fascism }
+				set_cosmetic_tag = FASCIST
+			}
+			if = {
+				limit = { has_government = neutrality }
+				set_cosmetic_tag = AUTHORITARIAN
+			}
+			if = {
+				limit = { has_government = monarchism }
+				set_cosmetic_tag = MONARCHIST
+			}
+		}
+	}
+	option = {
+		name = "Exit"
+	}
+}
+country_event = { #Colors for Monarchy/Republic status
+	id = debug.103
+	title = debug.103.t
+	desc = debug.103.desc
+	picture = GFX_report_event_vienna_award_negotiations
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Paint them!"
+		every_country = {
+			save_cosmetic_tags = yes
+			
+			if = {
+				limit = { has_idea = monarchy_republic_feature_unused }
+				set_cosmetic_tag = MONREPUNUSED
+			}
+			if = {
+				limit = { has_idea = crowned_republic }
+				set_cosmetic_tag = CROWNEDREPUBLIC
+			}
+			if = {
+				limit = { has_idea = constitutional_monarchy }
+				set_cosmetic_tag = MONARCHY
+			}
+			if = {
+				limit = { has_idea = constitutional_monarchy2 }
+				set_cosmetic_tag = CONSTMONARCHY
+			}
+			if = {
+				limit = { has_idea = constitutional_republic }
+				set_cosmetic_tag = REPUBLIC
+			}
+			if = {
+				limit = { has_idea = constitutional_republic2 }
+				set_cosmetic_tag = CONSTREPUBLIC
+			}
+		}
+	}
+	option = {
+		name = "Exit"
+	}
+}
+country_event = { #Drop Cosmetic Tags globally and partially regenerate them
+	id = debug.104
+	title = debug.104.t
+	desc = debug.104.desc
+	picture = GFX_report_event_vienna_award_negotiations
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Drop the tags"
+		every_country = {
+			save_cosmetic_tags = yes #added in case you do this twice and lose your cosmetic tags
+			drop_cosmetic_tag = yes
+			apply_cosmetic_tags = yes
+		}
+	}
+	option = {
+		name = "Exit"
+	}
+}
+country_event = { #Stability / War Support / Surrender Limit Filter.
+	id = debug.105
+	title = debug.105.t
+	desc = debug.105.desc
+	picture = GFX_report_event_vienna_award_negotiations
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Paint them from red to blue, through green"
+		
+		#set_temp_variable = { temp_var = <variable> }
+		#accepts any variable / modifier ranging from 0 to 0.9+ (1 being 100%)
+		#so in theory you can also use variables like num_divisions, you only have to divide it by 10 first, and it wont go over 90 (0.9 after being divided)
+		
+		every_country = {
+			save_cosmetic_tags = yes
+			if = {
+				limit = { ROOT = { check_variable = { mapmode_filter = 0 } } }
+				
+				set_temp_variable = { temp_var = has_stability }
+				
+				apply_mapmode_colours = yes
+			}
+			if = {
+				limit = { ROOT = { check_variable = { mapmode_filter = 1 } } }
+				
+				set_temp_variable = { temp_var = has_war_support }
+				
+				apply_mapmode_colours = yes
+			}
+			if = {
+				limit = { ROOT = { check_variable = { mapmode_filter = 2 } } }
+				
+				set_temp_variable = { temp_var = surrender_progress }
+				
+				apply_mapmode_colours = yes
+			}
+			if = {
+				limit = { ROOT = { check_variable = { mapmode_filter = 3 } } }
+				
+				set_temp_variable = { temp_var = modifier@consumer_goods_factor }
+				
+				apply_mapmode_colours = yes
+			}
+			if = {
+				limit = { ROOT = { check_variable = { mapmode_filter = 4 } } }
+				
+				set_temp_variable = { temp_var = modifier@surrender_limit }
+				#multiply_temp_variable = { temp_var = 100 }
+				subtract_from_temp_variable = { temp_var = -0.5 }
+				
+				apply_mapmode_colours = yes
+			}
+		}
+	}
+	option = {
+		name = "Paint them from red to green"
+		
+		#set_temp_variable = { temp_var = <variable> }
+		#accepts any variable / modifier ranging from 0 to 0.9+ (1 being 100%)
+		#so in theory you can also use variables like num_divisions, you only have to divide it by 10 first, and it wont go over 90 (0.9 after being divided)
+		
+		every_country = {
+			save_cosmetic_tags = yes
+			if = {
+				limit = { ROOT = { check_variable = { mapmode_filter = 0 } } }
+				
+				set_temp_variable = { temp_var = has_stability }
+				
+				apply_alternative_mapmode_colours = yes
+			}
+			if = {
+				limit = { ROOT = { check_variable = { mapmode_filter = 1 } } }
+				
+				set_temp_variable = { temp_var = has_war_support }
+				
+				apply_alternative_mapmode_colours = yes
+			}
+			if = {
+				limit = { ROOT = { check_variable = { mapmode_filter = 2 } } }
+				
+				set_temp_variable = { temp_var = surrender_progress }
+				
+				apply_alternative_mapmode_colours = yes
+			}
+			if = {
+				limit = { ROOT = { check_variable = { mapmode_filter = 3 } } }
+				
+				set_temp_variable = { temp_var = modifier@consumer_goods_factor }
+				
+				apply_alternative_mapmode_colours = yes
+			}
+			if = {
+				limit = { ROOT = { check_variable = { mapmode_filter = 4 } } }
+				
+				set_temp_variable = { temp_var = modifier@surrender_limit }
+				subtract_from_temp_variable = { temp_var = -0.5 }
+				
+				apply_alternative_mapmode_colours = yes
+			}
+		}
+	}
+	option = {
+		name = "Exit"
+	}
+}
+### EOF ###

@@ -1,0 +1,416 @@
+CHI_default_plan = {
+	name = "Nationalist China default plan"
+	desc = "Default behavior for Nationalist China"
+
+	enable = {
+		original_tag = CHI
+	}
+	abort = {
+		always = no
+	}
+
+	focus_factors = {
+	
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+CHI_industrial_buildup = {
+	name = "Nationalist China industrial buildup plan"
+	desc = "Makes Nationalist China more likely to expand industry if not at war"
+
+	enable = {
+		OR = {
+			original_tag = CHI
+		}
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+	}
+	focus_factors = {
+		KMT_industrial_effort = 5
+		KMT_industrialization_S = 10 
+		KMT_industrialization_NW = 10 
+		KMT_pioneering_the_north_east = 10 
+		KMT_nationa_resources_commission = 10 
+		KMT_excation_NE = 10 
+		KMT_excation_NW = 10 
+		KMT_excation_S = 10 
+	}
+
+	research = {
+		industry = 15.0
+		electronics = 15.0
+	}
+
+	ideas = {
+		CHI_t_v_soong = 5
+		CHI_h_h_kung = 5
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+
+CHI_inflation_handling = {
+	name = "Nationalist China Secret Plan to Fight Inflation"
+	desc = "Teaches the AI to handle the inflation mechanic for China"
+
+	enable = {
+		OR = {
+			original_tag = CHI
+		}
+		has_idea = KMT_jinyuanquan_inflation
+	}
+	abort = {
+		NOT = { 
+			has_idea = KMT_jinyuanquan_inflation
+		}
+	}
+	focus_factors = {
+		KMT_monetary_reform = 10
+	}
+
+	research = {
+	}
+
+	ideas = {
+		KMT_he_lian = 10
+		KMT_t_v_soong = 0
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+
+CHI_war_measures = {
+	name = "Nationalist China War measures"
+	desc = "Teaches the AI to fix issues if at war"
+
+	enable = {
+		OR = {
+			original_tag = CHI
+		}
+		has_war = yes
+	}
+	abort = {
+		OR = {
+			has_war = no
+		}
+	}
+	focus_factors = {
+		KMT_the_big_rear_concept = 20
+		KMT_lure_them_in_strategy = 20
+		KMT_dare_to_die_corps = 30
+		KMT_democratic_republic = 0 
+		KMT_military_dictatorship = 0 
+		KMT_voting_rights = 0 
+		KMT_civ_control_of_mil = 0 
+	}
+
+	research = {
+		infantry_weapons = 15.0
+		artillery = 15.0
+		air_equipment = 0
+	}
+
+	ideas = {
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+CHI_befriend_britain = {
+	name = "Befirend Britain"
+	desc = "Teaches the AI to make friends with britain to progress further down the tree"
+
+	enable = {
+		tag = CHI
+		ENG = {
+			has_idea = KMT_assistance_to_CHI
+		}
+	}
+	abort = {
+		ENG = {
+			NOT = {
+				has_idea = KMT_assistance_to_CHI
+			}
+		}
+	}
+	focus_factors = {
+		KMT_the_burma_road = 20
+		KMT_pursuade_britain = 20
+		KMT_fighter_purchases = 20
+	}
+
+	research = {
+	}
+
+	ideas = {
+	}
+	ai_strategy = {
+		type = befriend
+		id = "ENG"			
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+CHI_befriend_america = {
+	name = "Befirend America"
+	desc = "Teaches the AI to make friends with britain to progress further down the tree"
+
+	enable = {
+		tag = CHI
+		USA = {
+			has_idea = KMT_assistance_to_CHI
+		}
+	}
+	abort = {
+		NOT = {
+			USA = {
+				has_idea = KMT_assistance_to_CHI
+			}
+		}
+	}
+	focus_factors = {
+		KMT_hire_chennault = 20
+		KMT_fighter_purchases = 20
+		KMT_flying_tigers = 20
+		KMT_saco = 20
+		KMT_cacw = 20
+		KMT_introduce_shipbuilding_technology = 1
+	}
+
+	research = {
+	}
+
+	ideas = {
+	}
+	ai_strategy = {
+		type = befriend
+		id = "USA"			
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+CHI_befriend_France = {
+	name = "Befirend France"
+	desc = "Teaches the AI to make friends with britain to progress further down the tree"
+
+	enable = {
+		tag = CHI
+		FRA = {
+			has_idea = KMT_assistance_to_CHI
+		}
+	}
+	abort = {
+		NOT = {
+			FRA = {
+				has_idea = KMT_assistance_to_CHI
+			}
+		}
+	}
+	focus_factors = {
+		KMT_yunnan_bahn = 30
+		KMT_defense_of_indochina = 20
+		KMT_purchase_french_equipment = 20
+		KMT_french_military_mission = 20
+		KMT_french_drill = 20
+		KMT_static_defense = 15
+	}
+
+	research = {
+	}
+
+	ideas = {
+	}
+	ai_strategy = {
+		type = befriend
+		id = "FRA"			
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+CHI_befriend_Soviet = {
+	name = "Befirend Soviet"
+	desc = "Teaches the AI to make friends with Soviet to progress further down the tree"
+
+	enable = {
+		tag = CHI
+		SOV = {
+			has_idea = KMT_assistance_to_CHI
+		}
+	}
+	abort = {
+		NOT = {
+			SOV = {
+				has_idea = KMT_assistance_to_CHI
+			}
+		}
+	}
+	focus_factors = {
+		KMT_soviet_volunteer_groups = 30
+		KMT_soviet_advisors = 20
+		KMT_purchase_soviet_aircraft = 20
+		KMT_soviet_equipments = 20
+		KMT_soviet_tanks = 20
+	}
+
+	research = {
+	}
+
+	ideas = {
+	}
+	ai_strategy = {
+		type = befriend
+		id = "SOV"			
+		value = 200
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+
+CHI_european_allies = { #used to make minor European nations like Axis more
+	name = "Minor European Countries"
+
+	enable = {
+		has_war = yes
+		OR = {
+			is_in_faction = no
+			is_faction_leader = yes
+		}
+		OR = {
+			original_tag = ROM
+			original_tag = HUN
+			original_tag = BUL
+			original_tag = YUG
+			original_tag = ITA
+			original_tag = CZE
+			original_tag = DEN
+			original_tag = NOR
+			original_tag = SWE
+			original_tag = FIN
+			original_tag = SPR
+			original_tag = POR
+			original_tag = HOL
+			original_tag = BEL
+			original_tag = LUX
+			original_tag = POL
+			original_tag = LAT
+			original_tag = LIT
+			original_tag = EST
+			original_tag = CRO
+			original_tag = SLO
+		}
+	}
+	abort = {
+		OR = {
+			has_war = no
+			AND = {
+				is_in_faction = yes
+				is_faction_leader = no
+			}
+		}
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "CHI"
+		value = -500
+	}
+	ai_strategy = {
+		type = alliance
+		id = "PRC"
+		value = -500
+	}
+	ai_strategy = {
+		type = alliance
+		id = "GXC"
+		value = -500
+	}
+	ai_strategy = {
+		type = alliance
+		id = "YUN"
+		value = -500
+	}
+	ai_strategy = {
+		type = alliance
+		id = "XSM"
+		value = -500
+	}
+	ai_strategy = {
+		type = alliance
+		id = "SHX"
+		value = -500
+	}
+	ai_strategy = {
+		type = alliance
+		id = "SIK"
+		value = -500
+	}
+}

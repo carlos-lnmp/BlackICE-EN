@@ -1,0 +1,1503 @@
+﻿add_namespace = EAI_M
+
+####################################################
+# background events
+####################################################
+
+country_event = { #player check
+	id = EAI_M.0
+	hidden = yes
+	mean_time_to_happen = { days = 2 }
+	trigger = {
+		OR = {
+			is_ai = no
+			has_idea = normal_difficulty_AI
+		}
+		NOT = { is_in_array = { global.players = THIS } }
+	}
+	immediate = {
+		set_country_flag = player
+		add_to_array = { global.players = THIS }
+	}
+	option = {}
+}
+
+country_event = {
+	id = EAI_M.8
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_popularities = {
+			monarchism = 0
+			fascism = 0
+			communism = 0
+			socialism = 0
+			conservatism = 0
+			liberalism = 0
+			neutrality = 0
+		}
+		
+		add_popularity = {
+			ideology = fascism
+			popularity = save_fascism
+		}
+		add_popularity = {
+			ideology = monarchism
+			popularity = save_monarchism
+		}
+		add_popularity = {
+			ideology = socialism
+			popularity = save_socialism
+		}
+		add_popularity = {
+			ideology = liberalism
+			popularity = save_liberalism
+		}
+		add_popularity = {
+			ideology = conservatism
+			popularity = save_conservatism
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = save_neutrality
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = save_communism
+		}
+		
+		if = {
+			limit = { has_country_flag = was_conservatism }
+			set_politics = {
+				ruling_party = conservatism
+			}
+		}
+		if = {
+			limit = { has_country_flag = was_liberalism }
+			set_politics = {
+				ruling_party = liberalism
+			}
+		}
+		if = {
+			limit = { has_country_flag = was_socialism }
+			set_politics = {
+				ruling_party = socialism
+			}
+		}
+		if = {
+			limit = { has_country_flag = was_monarchism }
+			set_politics = {
+				ruling_party = monarchism
+			}
+		}
+		if = {
+			limit = { has_country_flag = was_fascism }
+			set_politics = {
+				ruling_party = fascism
+			}
+		}
+		if = {
+			limit = { has_country_flag = was_communism }
+			set_politics = {
+				ruling_party = communism
+			}
+		}
+		if = {
+			limit = { has_country_flag = was_neutrality }
+			set_politics = {
+				ruling_party = neutrality
+			}
+		}
+		
+		clear_variable = save_fascism
+		clear_variable = save_monarchism
+		clear_variable = save_socialism
+		clear_variable = save_liberalism
+		clear_variable = save_conservatism
+		clear_variable = save_neutrality
+		clear_variable = save_communism
+	}
+	
+	option = { }
+	
+}
+
+country_event = {
+	id = EAI_M.9
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		has_political_power < 0 
+	}
+	
+	mean_time_to_happen = { 
+		days = 2 
+	}
+	
+	immediate = {
+		set_temp_variable = { temp_pol = political_power }
+		multiply_temp_variable = { temp_pol = -1 }
+		add_political_power = temp_pol
+	}
+	
+	option = { }
+	
+}
+
+country_event = {
+	id = EAI_M.11
+	hidden = yes
+	
+	trigger = {
+		OR = {
+			is_ai = no
+			has_idea = normal_difficulty_AI
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	fire_only_once = no
+	
+	immediate = {
+		clear_variable = field_marshal_count 
+		clear_variable = assigned_field_marshal_count 
+		clear_variable = general_count 
+		clear_variable = assigned_general_count 
+		clear_variable = army_group_count 
+		clear_variable = army_count 
+		clear_variable = assigned_divisions 
+		clear_variable = low_unit_leader 
+		every_unit_leader = {
+			if = {
+				limit = {
+					is_field_marshal = yes
+				}
+				add_to_variable = { Root.field_marshal_count = 1 }
+				if = {
+					limit = {
+						is_assigned = yes
+					}
+					add_to_variable = { Root.assigned_field_marshal_count = 1 }
+				}
+			}
+			if = {
+				limit = {
+					is_field_marshal = no
+				}
+				add_to_variable = { Root.general_count = 1 }
+				if = {
+					limit = {
+						is_assigned = yes
+					}
+					add_to_variable = { Root.assigned_general_count = 1 }
+				}
+			}
+			if = {
+				limit = {
+					is_assigned = yes
+				}
+				add_to_variable = { Root.assigned_divisions = num_units }
+				if = {
+					limit = {
+						is_leading_army = yes
+					}
+					add_to_variable = { Root.army_count = 1 }
+					if = {
+						limit = {
+							is_leading_army_group = yes
+						}
+						add_to_variable = { Root.army_group_count = 1 }
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					OR = {
+						has_trait = Mindless_General
+						has_trait = Incompetent_General
+						has_trait = Terrible_General
+						has_trait = Bad_General
+						has_trait = Decent_General
+						has_trait = Competent_General
+						has_trait = Awesome_General
+						has_trait = Masterful_General
+						has_trait = Genius_General
+					}
+				}
+				add_to_temp_variable = { Root.unit_leader_count = 1 }
+				
+				if = {
+					limit = {
+						has_trait = Mindless_General
+					}
+					add_to_temp_variable = { Root.trait_count = 1 }
+					add_to_variable = { Root.low_unit_leader = 1 }
+				}
+				if = {
+					limit = {
+						has_trait = Incompetent_General
+					}
+					add_to_temp_variable = { Root.trait_count = 2 }
+					add_to_variable = { Root.low_unit_leader = 1 }
+				}
+				if = {
+					limit = {
+						has_trait = Terrible_General
+					}
+					add_to_temp_variable = { Root.trait_count = 3 }
+					add_to_variable = { Root.low_unit_leader = 1 }
+				}
+				if = {
+					limit = {
+						has_trait = Bad_General
+					}
+					add_to_temp_variable = { Root.trait_count = 4 }
+					add_to_variable = { Root.low_unit_leader = 1 }
+				}
+				if = {
+					limit = {
+						has_trait = Decent_General
+					}
+					add_to_temp_variable = { Root.trait_count = 5 }
+				}
+				if = {
+					limit = {
+						has_trait = Competent_General
+					}
+					add_to_temp_variable = { Root.trait_count = 6 }
+				}
+				if = {
+					limit = {
+						has_trait = Awesome_General
+					}
+					add_to_temp_variable = { Root.trait_count = 7 }
+				}
+				if = {
+					limit = {
+						has_trait = Masterful_General
+					}
+					add_to_temp_variable = { Root.trait_count = 8 }
+				}
+			}
+		}
+		
+		divide_temp_variable = { trait_count = unit_leader_count }
+		set_variable = { unit_leader_average_trait_level = trait_count }
+	}
+	
+	option = { }
+	
+}
+
+country_event = {
+	id = EAI_M.13
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+	
+	}
+	
+	immediate = {
+		every_unit_leader = {
+			if = {
+				limit = {
+					#ROOT = { is_ai = no }
+					is_field_marshal = no 
+					NOT = {
+						has_trait = Mindless_General
+						has_trait = Incompetent_General
+						has_trait = Terrible_General
+						has_trait = Bad_General
+						has_trait = Decent_General
+						has_trait = Competent_General
+						has_trait = Awesome_General
+						has_trait = Masterful_General
+						has_trait = Genius_General
+					}
+				}
+				add_unit_leader_trait = Decent_General	
+			}
+			
+			if = {
+				limit = {
+					is_field_marshal = yes 
+					OR = {
+						has_trait = Mindless_General
+						has_trait = Incompetent_General
+						has_trait = Terrible_General
+						has_trait = Bad_General
+						has_trait = Decent_General
+						has_trait = Competent_General
+						has_trait = Awesome_General
+						has_trait = Masterful_General
+						has_trait = Genius_General
+					}
+				}
+				remove_unit_leader_trait = Mindless_General
+				remove_unit_leader_trait = Incompetent_General
+				remove_unit_leader_trait = Terrible_General
+				remove_unit_leader_trait = Bad_General
+				remove_unit_leader_trait = Decent_General
+				remove_unit_leader_trait = Competent_General
+				remove_unit_leader_trait = Awesome_General
+				remove_unit_leader_trait = Masterful_General
+				remove_unit_leader_trait = Genius_General
+			}
+			
+			if = {
+				limit = {
+					is_field_marshal = yes 
+				}
+				#add_unit_leader_trait = Experienced_Field_Marshal
+			}
+			if = {
+				limit = {
+					ROOT = { is_ai = yes } 
+				}
+				add_unit_leader_trait = Good_General
+			}
+				
+		}
+		every_navy_leader = {
+			limit = {
+				OR =  {
+					has_trait = Mindless_General
+					has_trait = Incompetent_General
+					has_trait = Terrible_General
+					has_trait = Bad_General
+					has_trait = Decent_General
+					has_trait = Competent_General
+					has_trait = Awesome_General
+					has_trait = Masterful_General
+					has_trait = Genius_General
+					has_trait = Good_General
+				}
+			}
+			remove_unit_leader_trait = Mindless_General
+			remove_unit_leader_trait = Incompetent_General
+			remove_unit_leader_trait = Terrible_General
+			remove_unit_leader_trait = Bad_General
+			remove_unit_leader_trait = Decent_General
+			remove_unit_leader_trait = Competent_General
+			remove_unit_leader_trait = Awesome_General
+			remove_unit_leader_trait = Masterful_General
+			remove_unit_leader_trait = Genius_General
+			remove_unit_leader_trait = Good_General
+		}
+	}
+	
+	option = { }
+	
+}
+
+country_event = {
+	id = EAI_M.107
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = CHI_the_hump_completed }
+	}
+	
+	#immediate = {
+	#	calculate_corruption = yes
+	##	set_corruption_bar_frame = yes
+	#}
+	
+	is_triggered_only = yes 
+	
+	option = {
+	if = {
+	limit = {
+	any_of_scopes = {
+					array = global.chinese_nations
+					
+					check_variable = { CHI_hanoi_route_current_level > 10 }
+					OR = {
+						is_subject = no
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_war_with = ROOT }
+				}
+			}
+		every_country = {
+	limit = { major_country = yes }
+	log = "	----------------- COUNTRY [This.GetTag] -------------------- "
+	log = "	Offence: [?This.modifier@offence|%1] "
+	log = "	Defence: [?This.modifier@defence|%1] "
+	log = "	Division Attack Factor: [?This.modifier@army_attack_factor|%1] "
+	log = "	Division Defence Factor: [?This.modifier@army_defence_factor|%1] "
+	log = "	Core Attack Factor: [?This.modifier@army_core_attack_factor|%1] "
+	log = "	Core Defence Factor: [?This.modifier@army_core_defence_factor|%1] "
+	log = "	Army Infantry Attack Factor: [?This.modifier@army_infantry_attack_factor|%1] "
+	log = "	Army Infantry Defence Factor: [?This.modifier@army_infantry_defence_factor|%1] "
+	log = "	Army Armor Attack Factor: [?This.modifier@army_armor_attack_factor|%1] "
+	log = "	Army Armor Defence Factor: [?This.modifier@army_armor_defence_factor|%1] "
+	log = "	Army Artillery Attack Factor: [?This.modifier@army_artillery_attack_factor|%1] "
+	log = "	Special Forces Attack Factor: [?This.modifier@special_forces_attack_factor|%1] "
+	log = "	Special Forces Defence Factor: [?This.modifier@special_forces_defence_factor|%1] "
+	log = "	Motorized Attack Factor: [?This.modifier@motorized_attack_factor|%1] "
+	log = "	Motorized Defence Factor: [?This.modifier@motorized_defence_factor|%1] "
+	log = "	Mechanized Attack Factor: [?This.modifier@mechanized_attack_factor|%1] "
+	log = "	Mechanized Defence Factor: [?This.modifier@mechanized_defence_factor|%1] "
+	
+	} }
+	}
+	
+	option = {
+		if = {
+			limit = {
+				
+				any_of_scopes = {
+					array = Root.controlled_states
+					
+					state = 900 
+				}
+			}
+			add_manpower = 100 
+		}
+	}
+	option = {
+		add_ai_strategy = {
+							type = factory_build_score_factor
+							target = 836
+							value = 200
+						}
+					}
+}
+
+country_event = {
+	id = EAI_M.1080
+	hidden = yes
+	
+	is_triggered_only = yes 
+	
+	
+	immediate = {
+		every_owned_state = {
+			limit = {
+				check_variable = { arms_lvl > 0 }
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = arms_lvl
+				instant_build = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = EAI_M.201
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = { factor = 100  }
+		if = {
+			limit = {
+				has_country_flag = mob_reserve
+			}
+			add_timed_idea = { idea = mobilisation_1 days = 14 }
+			set_country_flag = Organizing
+			add_ideas = Organizing
+			country_event = { id = EAI_M.301 days = 7 }
+		}
+		set_country_flag = mob_standing
+		clr_country_flag = mob_reserve
+		clr_country_flag = mob_general
+		clr_country_flag = mob_limited
+	}
+}
+
+country_event = {
+	id = EAI_M.202
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = { factor = 100  }
+		if = {
+			limit = {
+				has_country_flag = mob_standing
+			}
+			#remove_ideas = mobilisation_6
+			add_timed_idea = { idea = mobilisation_7 days = 14 }
+			set_country_flag = Organizing
+			add_ideas = Organizing
+			country_event = { id = EAI_M.302 days = 7 }
+		}
+		set_country_flag = mob_limited
+		clr_country_flag = mob_reserve			
+		clr_country_flag = mob_standing
+		clr_country_flag = mob_general
+	}
+}
+
+country_event = {
+	id = EAI_M.203
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = { factor = 100  }
+		if = {
+			limit = {
+				has_country_flag = mob_limited
+			}
+			#remove_ideas = mobilisation_11
+			add_timed_idea = { idea = mobilisation_12 days = 14 }
+			set_country_flag = Organizing
+			add_ideas = Organizing
+			country_event = { id = EAI_M.303 days = 7 }
+		}
+		set_country_flag = mob_general
+		clr_country_flag = mob_limited
+		clr_country_flag = mob_reserve
+		clr_country_flag = mob_standing
+	}
+}
+
+country_event = {
+	id = EAI_M.301
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_1
+		}
+		remove_ideas = mobilisation_1
+		add_timed_idea = { idea = mobilisation_2 days = 14 }
+		country_event = { id = EAI_M.301 days = 7 }
+	}
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_2
+		}
+		remove_ideas = mobilisation_2
+		add_timed_idea = { idea = mobilisation_3 days = 14 }
+		country_event = { id = EAI_M.301 days = 7 }
+	}
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_3
+		}
+		remove_ideas = mobilisation_3
+		add_timed_idea = { idea = mobilisation_4 days = 14 }
+		country_event = { id = EAI_M.301 days = 7 }
+	}
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_4
+		}
+		remove_ideas = mobilisation_4
+		add_timed_idea = { idea = mobilisation_5 days = 14 }
+		country_event = { id = EAI_M.301 days = 7 }
+	}
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_5
+		}
+		remove_ideas = mobilisation_5
+		remove_ideas = Organizing
+		clr_country_flag = Organizing
+		add_ideas = mob_standing
+		
+		country_event = EAI_M.310 #inform the player
+		
+		set_country_flag = mob_standing_active
+		clr_country_flag = mob_limited_active
+		clr_country_flag = mob_general_active
+	}
+}
+
+country_event = {
+	id = EAI_M.302
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	
+	option = {
+		ai_chance = { factor = 100 }
+		trigger = {
+			has_idea = mobilisation_7
+		}
+		remove_ideas = mobilisation_7
+		add_timed_idea = { idea = mobilisation_8 days = 14 }
+		country_event = { id = EAI_M.302 days = 7 }
+	}
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_8
+		}
+		remove_ideas = mobilisation_8
+		add_timed_idea = { idea = mobilisation_9 days = 14 }
+		country_event = { id = EAI_M.302 days = 7 }
+	}
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_9
+		}
+		remove_ideas = mobilisation_9
+		add_timed_idea = { idea = mobilisation_10 days = 14 }
+		country_event = { id = EAI_M.302 days = 7 }
+	}
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_10
+		}
+		remove_ideas = mobilisation_10
+		remove_ideas = Organizing
+		remove_ideas = Organizing	
+		add_ideas = mob_limited
+		
+		country_event = EAI_M.311 #inform the player
+		
+		clr_country_flag = mob_standing_active
+		set_country_flag = mob_limited_active
+		clr_country_flag = mob_general_active
+	}
+	
+}
+
+country_event = {
+	id = EAI_M.303
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_12
+		}
+		remove_ideas = mobilisation_12
+		add_timed_idea = { idea = mobilisation_13 days = 14 }
+		country_event = { id = EAI_M.303 days = 7 }
+	}
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_13
+		}
+		remove_ideas = mobilisation_13
+		add_timed_idea = { idea = mobilisation_14 days = 14 }
+		country_event = { id = EAI_M.303 days = 7 }
+	}
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_14
+		}
+		remove_ideas = mobilisation_14
+		add_timed_idea = { idea = mobilisation_15 days = 14 }
+		country_event = { id = EAI_M.303 days = 7 }
+	}
+	
+	option = {
+		ai_chance = { factor = 100  }
+		trigger = {
+			has_idea = mobilisation_15
+		}
+		remove_ideas = mobilisation_15
+		remove_ideas = Organizing
+		clr_country_flag = Organizing
+		add_ideas = mob_general
+		
+		country_event = EAI_M.312 #inform the player
+		
+		clr_country_flag = mob_standing_active
+		clr_country_flag = mob_limited_active
+		set_country_flag = mob_general_active
+	}
+}
+
+country_event = {
+	id = EAI_M.310
+	title = EAI_M.310.t
+	desc = EAI_M.310.desc
+	
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = { factor = 100  }
+		name = EAI_M.310.a
+	}
+}
+
+country_event = {
+	id = EAI_M.311
+	title = EAI_M.311.t
+	desc = EAI_M.311.desc
+	
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = { factor = 100  }
+		name = EAI_M.311.a
+	}
+}
+
+country_event = {
+	id = EAI_M.312
+	title = EAI_M.312.t
+	desc = EAI_M.312.desc
+	
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = { factor = 100  }
+		name = EAI_M.312.a
+	}
+}
+
+country_event = {
+	id = EAI_M.8000
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_country_flag = placed_research_centre }
+	}
+	
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = { 
+		set_country_flag = placed_research_centre
+		set_variable = { research_amount = amount_research_slots }
+		subtract_from_variable = { research_amount = 2 } #BASE
+		
+		every_owned_state = {
+			limit = { 
+				is_fully_controlled_by = ROOT
+				if = {
+					limit = {
+						any_of_scopes = {
+							array = owned_states
+							
+							is_research_centre_state = yes
+							is_fully_controlled_by = ROOT
+							#is_owned_by = ROOT
+						}
+					}
+					is_research_centre_state = yes
+				}
+			} 
+			
+			if = { 
+				limit = {
+					check_variable = { Root.research_amount > 0 }
+				}
+				subtract_from_variable = { Root.research_amount = 1 }
+				add_building_construction = {
+					type = research_centre
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = research_centre
+				add_to_variable = { Root.research_centre = 1 }
+				
+				add_to_array = { research_slots = 1 }
+				add_to_array = { research_slots = 2 }
+				set_research_centre = yes
+			}
+			if = {
+				limit = {
+					check_variable = { Root.research_amount = 0 }
+				}
+				clear_variable = Root.research_amount
+			}
+		}
+		
+		if = { 
+			limit = { 	
+				check_variable = { amount_research_slots > 2 }
+			}
+			set_temp_variable = { target_slot = 3 }
+			SLOT:infantry_folder = yes
+			SLOT:support_folder = yes
+			SLOT:artillery_folder = yes
+			SLOT:tank_techs_folder = yes
+			SLOT:armor_folder = yes
+			SLOT:air_techs_folder = yes
+			#SLOT:air_techs_folder_army = yes
+			#SLOT:air_techs_folder_navy = yes
+			SLOT:naval_folder = yes
+			SLOT:naval_techs_folder = yes
+			SLOT:industry_folder = yes
+			SLOT:ww1_land_doctrine_folder = yes
+			SLOT:land_doctrine_folder = yes
+			SLOT:naval_doctrine_folder = yes
+			SLOT:air_doctrine_folder = yes
+			SLOT:electronics_folder = yes
+			SLOT:nuclear_folder = yes
+			SLOT:special_forces = yes
+		}
+		if = { 
+			limit = { 	
+				check_variable = { amount_research_slots > 3 }
+			}
+			set_temp_variable = { target_slot = 4 }
+			SLOT:infantry_folder = yes
+			SLOT:support_folder = yes
+			SLOT:artillery_folder = yes
+			SLOT:tank_techs_folder = yes
+			SLOT:armor_folder = yes
+			SLOT:air_techs_folder = yes
+			#SLOT:air_techs_folder_army = yes
+			#SLOT:air_techs_folder_navy = yes
+			SLOT:naval_folder = yes
+			SLOT:naval_techs_folder = yes
+			SLOT:industry_folder = yes
+			SLOT:ww1_land_doctrine_folder = yes
+			SLOT:land_doctrine_folder = yes
+			SLOT:naval_doctrine_folder = yes
+			SLOT:air_doctrine_folder = yes
+			SLOT:electronics_folder = yes
+			SLOT:nuclear_folder = yes
+			SLOT:special_forces = yes
+		}
+		if = { 
+			limit = { 	
+				check_variable = { amount_research_slots > 4 }
+			}
+			set_temp_variable = { target_slot = 5 }
+			SLOT:infantry_folder = yes
+			SLOT:support_folder = yes
+			SLOT:artillery_folder = yes
+			SLOT:tank_techs_folder = yes
+			SLOT:armor_folder = yes
+			SLOT:air_techs_folder = yes
+			#SLOT:air_techs_folder_army = yes
+			#SLOT:air_techs_folder_navy = yes
+			SLOT:naval_folder = yes
+			SLOT:naval_techs_folder = yes
+			SLOT:industry_folder = yes
+			SLOT:ww1_land_doctrine_folder = yes
+			SLOT:land_doctrine_folder = yes
+			SLOT:naval_doctrine_folder = yes
+			SLOT:air_doctrine_folder = yes
+			SLOT:electronics_folder = yes
+			SLOT:nuclear_folder = yes
+			SLOT:special_forces = yes
+		}
+		if = { 
+			limit = { 	
+				check_variable = { amount_research_slots > 5 }
+			}
+			set_temp_variable = { target_slot = 6 }
+			SLOT:infantry_folder = yes
+			SLOT:support_folder = yes
+			SLOT:artillery_folder = yes
+			SLOT:tank_techs_folder = yes
+			SLOT:armor_folder = yes
+			SLOT:air_techs_folder = yes
+			#SLOT:air_techs_folder_army = yes
+			#SLOT:air_techs_folder_navy = yes
+			SLOT:naval_folder = yes
+			SLOT:naval_techs_folder = yes
+			SLOT:industry_folder = yes
+			SLOT:ww1_land_doctrine_folder = yes
+			SLOT:land_doctrine_folder = yes
+			SLOT:naval_doctrine_folder = yes
+			SLOT:air_doctrine_folder = yes
+			SLOT:electronics_folder = yes
+			SLOT:nuclear_folder = yes
+			SLOT:special_forces = yes
+		}
+		if = { 
+			limit = { 	
+				check_variable = { amount_research_slots > 6 }
+			}
+			set_temp_variable = { target_slot = 7 }
+			SLOT:infantry_folder = yes
+			SLOT:support_folder = yes
+			SLOT:artillery_folder = yes
+			SLOT:tank_techs_folder = yes
+			SLOT:armor_folder = yes
+			SLOT:air_techs_folder = yes
+			#SLOT:air_techs_folder_army = yes
+			#SLOT:air_techs_folder_navy = yes
+			SLOT:naval_folder = yes
+			SLOT:naval_techs_folder = yes
+			SLOT:industry_folder = yes
+			SLOT:ww1_land_doctrine_folder = yes
+			SLOT:land_doctrine_folder = yes
+			SLOT:naval_doctrine_folder = yes
+			SLOT:air_doctrine_folder = yes
+			SLOT:electronics_folder = yes
+			SLOT:nuclear_folder = yes
+			SLOT:special_forces = yes
+		}
+	}
+	
+	option = { }
+	
+}
+
+country_event = {
+	id = EAI_M.4444
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate= {
+		set_technology = { armor_industry = 1 }
+		set_technology = { vehicle_industry = 1 }
+		set_technology = { artillery_industry = 1 }
+		set_technology = { smallarms_industry = 1 }
+		set_technology = { uniform_industry = 1 }
+		set_technology = { Ltaircraft_industry = 1 }
+		set_technology = { Hvaircraft_industry = 1 }
+		set_technology = { ship_industry = 1 }
+		set_technology = { sub_industry = 1 }
+	}
+	
+	option = { }
+	
+}
+
+country_event = {
+	id = EAI_M.4445
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate= {
+		set_technology = { armor_industry2 = 1 }
+		set_technology = { vehicle_industry2 = 1 }
+		set_technology = { artillery_industry2 = 1 }
+		set_technology = { smallarms_industry2 = 1 }
+		set_technology = { uniform_industry2 = 1 }
+		set_technology = { Ltaircraft_industry2 = 1 }
+		set_technology = { Hvaircraft_industry2 = 1 }
+		set_technology = { ship_industry2 = 1 }
+		set_technology = { sub_industry2 = 1 }
+	}
+	
+	option = { }
+	
+}
+	
+country_event = {
+	id = EAI_M.4446
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate= {
+		set_technology = { armor_industry3 = 1 }
+		set_technology = { vehicle_industry3 = 1 }
+		set_technology = { artillery_industry3 = 1 }
+		set_technology = { smallarms_industry3 = 1 }
+		set_technology = { uniform_industry3 = 1 }
+		set_technology = { Jetaircraft_industry3 = 1 }
+		set_technology = { Ltaircraft_industry3 = 1 }
+		set_technology = { Hvaircraft_industry3 = 1 }
+		set_technology = { ship_industry3 = 1 }
+		set_technology = { sub_industry3 = 1 }
+	}
+	
+	option = { }
+	
+}	
+	
+country_event = {
+	id = EAI_M.4447
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate= {
+		set_technology = { dispersed_armor_industry = 1 }
+		set_technology = { dispersed_vehicle_industry = 1 }
+		set_technology = { dispersed_artillery_industry = 1 }
+		set_technology = { dispersed_smallarms_industry = 1 }
+		set_technology = { dispersed_uniform_industry = 1 }
+		set_technology = { dispersed_Ltaircraft_industry = 1 }
+		set_technology = { dispersed_Hvaircraft_industry = 1 }
+		set_technology = { dispersed_ship_industry = 1 }
+		set_technology = { dispersed_sub_industry = 1 }
+	}
+	
+	option = { }
+	
+}
+
+country_event = {
+	id = EAI_M.4448
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate= {
+		set_technology = { dispersed_armor_industry2 = 1 }
+		set_technology = { dispersed_vehicle_industry2 = 1 }
+		set_technology = { dispersed_artillery_industry2 = 1 }
+		set_technology = { dispersed_smallarms_industry2 = 1 }
+		set_technology = { dispersed_uniform_industry2 = 1 }
+		set_technology = { dispersed_Ltaircraft_industry2 = 1 }
+		set_technology = { dispersed_Hvaircraft_industry2 = 1 }
+		set_technology = { dispersed_ship_industry2 = 1 }
+		set_technology = { dispersed_sub_industry2 = 1 }
+	}
+	
+	option = { }
+	
+}
+	
+country_event = {
+	id = EAI_M.4449
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate= {
+		set_technology = { dispersed_armor_industry3 = 1 }
+		set_technology = { dispersed_vehicle_industry3 = 1 }
+		set_technology = { dispersed_artillery_industry3 = 1 }
+		set_technology = { dispersed_smallarms_industry3 = 1 }
+		set_technology = { dispersed_uniform_industry3 = 1 }
+		set_technology = { dispersed_Jetaircraft_industry3 = 1 }
+		set_technology = { dispersed_Ltaircraft_industry3 = 1 }
+		set_technology = { dispersed_Hvaircraft_industry3 = 1 }
+		set_technology = { dispersed_ship_industry3 = 1 }
+		set_technology = { dispersed_sub_industry3 = 1 }
+	}
+	
+	option = { }
+	
+}	
+
+country_event = {
+	id = EAI_M.121
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		OR = {
+			AND = {
+				NOT = { has_idea = officer_train_high }
+				OR = {
+					has_country_flag = tax_average
+					has_country_flag = tax_high
+					has_country_flag = tax_extreme
+				}
+			}
+			AND = {
+				NOT = { has_idea = officer_train_elite }
+				OR = {
+					has_country_flag = tax_average
+					has_country_flag = tax_high
+					has_country_flag = tax_extreme
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		
+	}
+}
+	
+country_event = {
+	id = EAI_M.122
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = yes
+	}
+	
+	immediate = {
+		set_temp_variable = { max_cp = modifier@max_command_power }
+		add_to_temp_variable = { max_cp = 100 } 
+		add_command_power = max_cp
+	}
+}
+
+	
+country_event = {
+	id = EAI_M.123
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_idea = research_centre_malus }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	immediate = {
+		add_ideas = research_centre_malus
+	}
+	option = {	
+		#add_ideas = research_centre_malus
+	}
+}
+
+country_event = {
+	id = EAI_M.124
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		OR = { 
+			NOT = { has_idea = normal_difficulty_AI }
+			NOT = { has_tech = BICE_airrange_balance }
+		}
+	}
+	 
+	is_triggered_only = yes
+	
+	immediate = {
+		add_ideas = normal_difficulty_AI
+		set_technology = { BICE_airrange_balance = 1 }
+	}
+	
+	option = {	
+		
+	}
+}
+
+country_event = {
+	id = EAI_M.125
+	title = EAI_M.125.t
+	desc = EAI_M.125.desc
+	picture = GFX_report_event_manhattan_scientists
+	
+	trigger = {
+		#is_ai = yes
+	}
+	 
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {	
+		name = EAI_M.125.a
+	}
+}
+
+country_event = {
+	id = EAI_M.128
+	hidden = yes
+	
+	trigger = {
+		has_war = yes
+		NOT = { has_idea = waging_war }
+	}
+	 
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = {
+		add_ideas = waging_war
+		if = {
+			limit = {
+				has_offensive_war = yes 
+			}
+			set_country_flag = offensive_war 
+		}
+		if = {
+			limit = {
+				has_defensive_war = yes 
+			}
+			set_country_flag = defensive_war 
+		}
+	}
+	
+	option = {	
+
+	}
+}
+
+country_event = {
+	id = EAI_M.130
+	hidden = yes
+	
+	trigger = {
+		is_major = no
+		has_war = no 
+		is_in_faction = yes
+		NOT = { has_idea = minor_AI } 
+	}
+	 
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = {
+		add_ideas = minor_AI
+	}
+	
+	option = {	
+
+	}
+}
+
+country_event = {
+	id = EAI_M.132
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		NOT = { has_idea = civil_war }
+		has_civil_war = yes
+	}
+	 
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = {
+		add_ideas = civil_war
+	}
+	
+	option = {	
+
+	}
+}
+
+country_event = {
+	id = EAI_M.133
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		has_idea = civil_war 
+		has_civil_war = no
+	}
+	 
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = {
+		remove_ideas = civil_war
+	}
+	
+	option = {	
+
+	}
+}
+
+country_event = {
+	id = EAI_M.135
+	hidden = yes
+	
+	trigger = {
+		tag = SOV
+		is_ai = yes
+		has_war_with = ENG
+		POL = { 
+			OR = {
+				has_capitulated = yes
+				surrender_progress > 0.99
+				exists = no 
+			}
+		}
+	}
+	 
+	mean_time_to_happen = {
+		days = 10
+	}
+	
+	fire_only_once = yes
+	
+	immediate = {	
+		SOV = { white_peace = ENG }
+	}
+	
+	option = {	
+
+	}
+}
+
+country_event = {
+	id = EAI_M.140
+	hidden = yes
+	
+	trigger = {
+		is_ai = yes
+		major_country = yes
+		fuel_ratio < 0.2
+		check_variable = { ai_fuel < 4 }
+	}
+	
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = {
+		add_to_variable = { ai_fuel = 1 }
+		set_fuel = 0.5		
+	}
+}
+
+country_event = {
+	 id = EAI_M.1500
+    hidden = yes
+    
+    trigger = {
+        is_ai = yes 
+        is_puppet = yes
+        NOT = { has_country_flag = applied_overlord_oppinion }
+    }
+    
+    mean_time_to_happen = {
+        days = 2 
+    }
+    
+    immediate = {
+        set_country_flag = applied_overlord_oppinion
+        OVERLORD = {
+            add_opinion_modifier = {
+                target = ROOT
+                modifier = overlord_opinion
+            }    
+        }
+    }
+}
+
+country_event = {
+	id = EAI_M.750
+	hidden = yes
+	
+	trigger = {
+		#has_country_flag = recent_state_gained
+		#any_state = {
+		#	check_variable = { resource_state_change > 0 }
+		#}
+	}
+		
+	is_triggered_only = yes
+	
+	immediate = {
+		for_each_scope_loop = {
+			array = global.state_change_resource
+			
+			if = {
+				limit = {
+					check_variable = { resource_state_change = 3 }
+				}
+				add_to_variable = { resource_state_change = -1 }
+				add_state_modifier = {
+					modifier = {
+						local_resources = 0.15
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = { resource_state_change = 2 }
+				}
+				add_to_variable = { resource_state_change = -1 }
+				add_state_modifier = {
+					modifier = {
+						local_resources = 0.15
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = { resource_state_change = 1 }
+				}
+				add_to_variable = { resource_state_change = -1 }
+				add_state_modifier = {
+					modifier = {
+						local_resources = 0.15
+					}
+				}
+				remove_from_array = { global.state_change_resource = THIS.id }
+			}
+		}	
+	}
+	
+	option = { }
+}
+
+country_event = {
+	id = EAI_M.4000
+	hidden = yes
+	
+	
+	trigger = {
+		check_variable = { EAI_declare_war_target^num > 0 }
+		any_of_scopes = {
+			array = EAI_declare_war_target
+			
+			has_country_flag = { flag = EAI_declare_war_from_@ROOT value = 1 days > 365 }
+		}
+	}
+		
+	mean_time_to_happen = {
+		days = 2 
+	}
+	
+	immediate = {
+		for_each_loop = {
+			array = EAI_declare_war_target
+			
+			var:v = {
+				if = {
+					limit = {
+						has_country_flag = { flag = EAI_declare_war_from_@ROOT value = 1 days > 365 }
+					}
+					clr_country_flag = EAI_declare_war_from_@ROOT
+					remove_from_array = { EAI_declare_war_target = POL.id }
+					ROOT = {
+						add_ai_strategy = {
+							type = declare_war
+							id = PREV
+							value = -5000
+						} 
+					}
+				}
+			}
+		}
+	}
+}
+			
+### EOF ###

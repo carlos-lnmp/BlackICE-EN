@@ -1,0 +1,1729 @@
+guiTypes = {
+	
+	containerWindowType = { # STOCKPILE WINDOW
+		name = "EAI_stockpile_window"
+		position = {x=-200 y=-450}
+		size = { width=329 height=1182 }
+		
+		orientation = center
+
+		moveable = yes
+		
+		click_to_front = yes
+
+		background = {
+			name = "Background"
+			spriteType = "GFX_EAI_config_bg_stockpile"
+		}
+
+		######################
+
+		buttonType = {
+			position = {x=288 y=10}
+			name = "EAI_stockpile_close_button"
+			spriteType = "GFX_closebutton"
+		}
+
+		######################
+
+		instantTextboxType = {
+			name = "EAI_stockpile_window_headline"
+			position = {x=-5 y=20}
+			font = "hoi_30header"
+			text = "EAI_stockpile_window_headline"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		######################
+
+		instantTextboxType = {
+			name = "EAI_stockpile_text"
+			position = {x=27 y=70}
+			font = "hoi_24header"
+			text = "EAI_stockpile_text"
+			maxWidth = 200
+			maxHeight = 23
+			format = left
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_text2"
+			position = {x=240 y=75}
+			font = "cg_16b"
+			text = "EAI_stockpile_text2"
+			maxWidth = 80
+			maxHeight = 23
+			format = center
+
+			pdx_tooltip = "EAI_stockpile_text2_tt"
+		}
+
+		instantTextboxType = {
+			name = "EAI_stockpile_text3"
+			position = {x=185 y=75}
+			font = "cg_16b"
+			text = "EAI_stockpile_text3"
+			maxWidth = 80
+			maxHeight = 23
+			format = center
+
+			pdx_tooltip = "EAI_stockpile_text3_tt"
+		}
+		
+		######################
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_infantry_equipment_text"
+			position = {x=30 y=100}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_infantry_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_infantry_equipment_value"
+			position = {x=110 y=100}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_infantry_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_infantry_equipment_ratio"
+			position = {x=55 y=100}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_1_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_support_equipment_text"
+			position = {x=30 y=130}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_support_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_infantry_uniforms_text"
+			position = {x=30 y=115}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_infantry_uniforms_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = { 
+			name = "EAI_stockpile_infantry_uniforms_value"
+			position = {x=110 y=115}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_infantry_uniforms|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_infantry_uniforms_ratio"
+			position = {x=55 y=115}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_02_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_support_equipment_value"
+			position = {x=110 y=130}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_support_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_support_equipment_ratio"
+			position = {x=55 y=130}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_02_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_SMG_equipment_text"
+			position = {x=30 y=145}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_SMG_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_SMG_equipment_value"
+			position = {x=110 y=145}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_SMG_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_SMG_equipment_ratio"
+			position = {x=55 y=145}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_03_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_HMG_equipment_text"
+			position = {x=30 y=160}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_HMG_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_HMG_equipment_value"
+			position = {x=110 y=160}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_HMG_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_HMG_equipment_ratio"
+			position = {x=55 y=160}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_04_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_mortar_equipment_text"
+			position = {x=30 y=175}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_mortar_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mortar_equipment_value"
+			position = {x=110 y=175}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_mortar_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mortar_equipment_ratio"
+			position = {x=55 y=175}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_05_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_handheld_at_equipment_text"
+			position = {x=30 y=190}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_handheld_at_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_handheld_at_equipment_value"
+			position = {x=110 y=190}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_handheld_at_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_handheld_at_equipment_ratio"
+			position = {x=55 y=190}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_06_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_horse_equipment_text"
+			position = {x=30 y=205}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_horse_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_horse_equipment_value"
+			position = {x=110 y=205}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_horse_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_horse_equipment_ratio"
+			position = {x=55 y=205}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_07_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_garrison_equipment_text"
+			position = {x=30 y=220}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_garrison_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_garrison_equipment_value"
+			position = {x=110 y=220}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_garrison_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_garrison_equipment_ratio"
+			position = {x=55 y=220}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_08_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_recon_equipment_text"
+			position = {x=30 y=235}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_recon_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_recon_equipment_value"
+			position = {x=110 y=235}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_recon_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_recon_equipment_ratio"
+			position = {x=55 y=235}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_09_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_recon_mot_equipment_text"
+			position = {x=30 y=250}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_recon_mot_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_recon_mot_equipment_value"
+			position = {x=110 y=250}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_recon_mot_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_recon_mot_equipment_ratio"
+			position = {x=55 y=250}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_010_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_HQ_equipment_text"
+			position = {x=30 y=265}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_HQ_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_HQ_equipment_value"
+			position = {x=110 y=265}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_HQ_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_HQ_equipment_ratio"
+			position = {x=55 y=265}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_011_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_desert_equipment_text"
+			position = {x=30 y=280}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_desert_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_desert_equipment_value"
+			position = {x=110 y=280}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_desert_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_desert_equipment_ratio"
+			position = {x=55 y=280}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_012_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_arctic_equipment_text"
+			position = {x=30 y=295}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_arctic_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_arctic_equipment_value"
+			position = {x=110 y=295}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_arctic_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_arctic_equipment_ratio"
+			position = {x=55 y=295}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_013_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_urban_equipment_text"
+			position = {x=30 y=310}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_urban_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_urban_equipment_value"
+			position = {x=110 y=310}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_urban_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_urban_equipment_ratio"
+			position = {x=55 y=310}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_014_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_flame_equipment_text"
+			position = {x=30 y=325}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_flame_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_flame_equipment_value"
+			position = {x=110 y=325}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_flame_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_flame_equipment_ratio"
+			position = {x=55 y=325}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_015_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_mount_equipment_text"
+			position = {x=30 y=340}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_mount_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mount_equipment_value"
+			position = {x=110 y=340}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_mount_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mount_equipment_ratio"
+			position = {x=55 y=340}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_016_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_amph_equipment_text"
+			position = {x=30 y=355}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_amph_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_amph_equipment_value"
+			position = {x=110 y=355}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_amph_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_amph_equipment_ratio"
+			position = {x=55 y=355}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_017_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_para_equipment_text"
+			position = {x=30 y=370}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_para_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_para_equipment_value"
+			position = {x=110 y=370}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_para_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_para_equipment_ratio"
+			position = {x=55 y=370}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_018_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_jungle_equipment_text"
+			position = {x=30 y=385}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_jungle_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_jungle_equipment_value"
+			position = {x=110 y=385}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_jungle_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_jungle_equipment_ratio"
+			position = {x=55 y=385}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_019_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_radio_equipment_text"
+			position = {x=30 y=400}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_radio_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_radio_equipment_value"
+			position = {x=110 y=400}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_radio_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_radio_equipment_ratio"
+			position = {x=55 y=400}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_020_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_anti_tank_equipment_text"
+			position = {x=30 y=2050}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_anti_tank_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_anti_tank_equipment_value"
+			position = {x=110 y=2050}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_anti_tank_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_anti_tank_equipment_ratio"
+			position = {x=55 y=2050}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_8_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_anti_air_equipment_text"
+			position = {x=30 y=2200}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_anti_air_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_anti_air_equipment_value"
+			position = {x=110 y=2200}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_anti_air_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_anti_air_equipment_ratio"
+			position = {x=55 y=2200}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_9_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		######################
+		
+		instantTextboxType = {
+			name = "EAI_light_armor_text"
+			position = {x=27 y=747}
+			font = "hoi_24header"
+			text = "EAI_light_armor_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_larm_equipment_text"
+			position = {x=30 y=775}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_larm_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_larm_equipment_value"
+			position = {x=110 y=775}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_light_tank_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_larm_equipment_ratio"
+			position = {x=55 y=775}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_10_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_ltd_equipment_text"
+			position = {x=30 y=791}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_ltd_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_ltd_equipment_value"
+			position = {x=110 y=791}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_light_tank_destroyer_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_ltd_equipment_ratio"
+			position = {x=55 y=791}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_11_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_lspart_equipment_text"
+			position = {x=30 y=807}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_lspart_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_lspart_equipment_value"
+			position = {x=110 y=807}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_light_tank_artillery_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_lspart_equipment_ratio"
+			position = {x=55 y=807}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_12_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_lspaa_equipment_text"
+			position = {x=30 y=822}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_lspaa_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_lspaa_equipment_value"
+			position = {x=110 y=822}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_light_tank_aa_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_lspaa_equipment_ratio"
+			position = {x=55 y=822}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_13_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		######################
+		
+		instantTextboxType = {
+			name = "EAI_medium_armor_text"
+			position = {x=27 y=853}
+			font = "hoi_24header"
+			text = "EAI_medium_armor_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_marm_equipment_text"
+			position = {x=30 y=880}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_marm_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_marm_equipment_value"
+			position = {x=110 y=880}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_medium_tank_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_marm_equipment_ratio"
+			position = {x=55 y=880}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_14_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_mtd_equipment_text"
+			position = {x=30 y=896}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_mtd_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mtd_equipment_value"
+			position = {x=110 y=896}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_medium_tank_destroyer_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mtd_equipment_ratio"
+			position = {x=55 y=896}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_15_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_mspart_equipment_text"
+			position = {x=30 y=912}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_mspart_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mspart_equipment_value"
+			position = {x=110 y=912}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_medium_tank_artillery_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mspart_equipment_ratio"
+			position = {x=55 y=912}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_16_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_mspaa_equipment_text"
+			position = {x=30 y=927}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_mspaa_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mspaa_equipment_value"
+			position = {x=110 y=927}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_medium_tank_aa_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mspaa_equipment_ratio"
+			position = {x=55 y=927}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_17_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		 
+		######################
+		
+		instantTextboxType = {
+			name = "EAI_artillery_text"
+			position = {x=27 y=430}
+			font = "hoi_24header"
+			text = "EAI_artillery_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_artillery_equipment_text"
+			position = {x=30 y=460}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_artillery_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_artillery_equipment_value"
+			position = {x=110 y=460}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_artillery_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_artillery_equipment_ratio"
+			position = {x=55 y=460}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_021_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_mountain_artillery_equipment_text"
+			position = {x=30 y=475}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_mountain_artillery_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mountain_artillery_equipment_value"
+			position = {x=110 y=475}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_mountain_artillery_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mountain_artillery_equipment_ratio"
+			position = {x=55 y=475}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_022_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_medartillery_equipment_text"
+			position = {x=30 y=490}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_medartillery_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_medartillery_equipment_value"
+			position = {x=110 y=490}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_medartillery_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_medartillery_equipment_ratio"
+			position = {x=55 y=490}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_023_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_Hvartillery_equipment_text"
+			position = {x=30 y=505}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_Hvartillery_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_Hvartillery_equipment_value"
+			position = {x=110 y=505}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_Hvartillery_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_Hvartillery_equipment_ratio"
+			position = {x=55 y=505}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_024_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_superartillery_equipment_text"
+			position = {x=30 y=520}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_superartillery_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_superartillery_equipment_value"
+			position = {x=110 y=520}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_superartillery_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_superartillery_equipment_ratio"
+			position = {x=55 y=520}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_025_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_railartillery_equipment_text"
+			position = {x=30 y=535}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_railartillery_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_railartillery_equipment_value"
+			position = {x=110 y=535}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_railartillery_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_railartillery_equipment_ratio"
+			position = {x=55 y=535}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_026_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_rocket_artillery_equipment_text"
+			position = {x=30 y=550}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_rocket_artillery_equipment_text"
+			maxWidth = 340 
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_rocket_artillery_equipment_value"
+			position = {x=110 y=550}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_rocket_artillery_equipment|.0]"
+			maxWidth = 340 
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_rocket_artillery_equipment_ratio"
+			position = {x=55 y=550}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_027_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center 
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_motorized_rocket_equipment_text"
+			position = {x=30 y=565}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_motorized_rocket_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_motorized_rocket_equipment_value"
+			position = {x=110 y=565}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_motorized_rocket_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_motorized_rocket_equipment_ratio"
+			position = {x=55 y=565}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_028_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_infantrygun_equipment_text"
+			position = {x=30 y=580}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_infantrygun_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_infantrygun_equipment_value"
+			position = {x=110 y=580}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_infantrygun_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center 
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_infantrygun_equipment_ratio"
+			position = {x=55 y=580}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_029_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		######################
+		
+		instantTextboxType = {
+			name = "EAI_transports_text"
+			position = {x=27 y=610}
+			font = "hoi_24header"
+			text = "EAI_transports_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_artyhorse_equipment_text"
+			position = {x=30 y=640}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_artyhorse_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_artyhorse_equipment_value"
+			position = {x=110 y=640}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_artyhorse_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center 
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_artyhorse_equipment_ratio"
+			position = {x=55 y=640}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_030_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_artytruck_equipment_text"
+			position = {x=30 y=655}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_artytruck_equipment_text"
+			maxWidth = 340 
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_artytruck_equipment_value"
+			position = {x=110 y=655}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_artytruck_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center 
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_artytruck_equipment_ratio"
+			position = {x=55 y=655}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_031_Value]"
+			maxWidth = 340 
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_artytractor_equipment_text"
+			position = {x=30 y=670}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_artytractor_equipment_text"
+			maxWidth = 340 
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = { 
+			name = "EAI_stockpile_artytractor_equipment_value"
+			position = {x=110 y=670}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_artytractor_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center 
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_artytractor_equipment_ratio"
+			position = {x=55 y=670}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_032_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_liason_equipment_text"
+			position = {x=30 y=685}
+			font = "EAI_Arial12" 
+			text = "EAI_stockpile_liason_equipment_text"
+			maxWidth = 340 
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = { 
+			name = "EAI_stockpile_liason_equipment_value"
+			position = {x=110 y=685}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_liason_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center 
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_liason_equipment_ratio"
+			position = {x=55 y=685}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_033_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_motorized_equipment_text"
+			position = {x=30 y=700}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_motorized_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_motorized_equipment_value"
+			position = {x=110 y=700}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_motorized_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_motorized_equipment_ratio"
+			position = {x=55 y=700}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_3_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_mechanized_equipment_text"
+			position = {x=30 y=715}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_mechanized_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mechanized_equipment_value"
+			position = {x=110 y=715}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_mechanized_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_mechanized_equipment_ratio"
+			position = {x=55 y=715}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_4_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		 
+		
+		instantTextboxType = {
+			name = "EAI_heavy_armor_text"
+			position = {x=27 y=959}
+			font = "hoi_24header"
+			text = "EAI_heavy_armor_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_harm_equipment_text"
+			position = {x=30 y=985}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_harm_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_harm_equipment_value"
+			position = {x=110 y=985}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_heavy_tank_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_harm_equipment_ratio"
+			position = {x=55 y=985}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_18_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_htd_equipment_text"
+			position = {x=30 y=1002}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_htd_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_htd_equipment_value"
+			position = {x=110 y=1002}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_heavy_tank_destroyer_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_htd_equipment_ratio"
+			position = {x=55 y=1002}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_19_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_hspart_equipment_text"
+			position = {x=30 y=1017}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_hspart_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_hspart_equipment_value"
+			position = {x=110 y=1017}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_heavy_tank_artillery_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_hspart_equipment_ratio"
+			position = {x=55 y=1017}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_20_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_hspaa_equipment_text"
+			position = {x=30 y=1033}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_hspaa_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_hspaa_equipment_value"
+			position = {x=110 y=1033}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_heavy_tank_aa_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_hspaa_equipment_ratio"
+			position = {x=55 y=1033}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_21_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		######################
+		
+		instantTextboxType = {
+			name = "EAI_modern_armor_text"
+			position = {x=27 y=7300}
+			font = "hoi_24header"
+			text = "EAI_modern_armor_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_modarm_equipment_text"
+			position = {x=30 y=5550}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_modarm_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_modarm_equipment_value"
+			position = {x=110 y=5550}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_modern_tank_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_modarm_equipment_ratio"
+			position = {x=55 y=5550}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_22_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_modtd_equipment_text"
+			position = {x=30 y=5700}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_modtd_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_modtd_equipment_value"
+			position = {x=110 y=5700}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_modern_tank_destroyer_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_modtd_equipment_ratio"
+			position = {x=55 y=5700}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_23_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_modspart_equipment_text"
+			position = {x=30 y=5850}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_modspart_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_modspart_equipment_value"
+			position = {x=110 y=5850}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_modern_tank_artillery_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_modspart_equipment_ratio"
+			position = {x=55 y=5850}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_24_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		
+		instantTextboxType = {
+			name = "EAI_stockpile_modspaa_equipment_text"
+			position = {x=30 y=6000}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_modspaa_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_modspaa_equipment_value"
+			position = {x=110 y=6000}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_modern_tank_aa_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_modspaa_equipment_ratio"
+			position = {x=55 y=6000}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_25_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+
+		######################
+
+		instantTextboxType = {
+			name = "EAI_misc_cat_text"
+			position = {x=27 y=1065}
+			font = "hoi_24header"
+			text = "EAI_misc_cat_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+
+		instantTextboxType = {
+			name = "EAI_stockpile_convoy_equipment_text"
+			position = {x=30 y=1092}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_convoy_equipment_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_convoy_equipment_value"
+			position = {x=110 y=1092}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_convoy_equipment|.0]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_convoy_equipment_ratio"
+			position = {x=55 y=1092}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_27_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+
+		instantTextboxType = {
+			name = "EAI_stockpile_fuel_equipment_text"
+			position = {x=30 y=1109}
+			font = "EAI_Arial12"
+			text = "EAI_stockpile_fuel_text"
+			maxWidth = 340
+			maxHeight = 23
+			format = left
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_fuel_equipment_value"
+			position = {x=110 y=1109}
+			font = "EAI_Arial12"
+			text = "[?EAI_stockpile_fuel|.0]k"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+		instantTextboxType = {
+			name = "EAI_stockpile_fuel_equipment_ratio"
+			position = {x=55 y=1109}
+			font = "EAI_Arial12"
+			text = "[EAI_GetStockpile_26_Value]"
+			maxWidth = 340
+			maxHeight = 23
+			format = center
+		}
+	}
+}

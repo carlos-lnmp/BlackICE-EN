@@ -1,0 +1,392 @@
+﻿capital = 291
+
+oob = "IRQ_1936"
+
+set_war_support = 0.25
+
+set_convoys = 10
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		generic_naval_tech = 1
+		generic_naval = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+	}
+}
+
+# Starting tech
+set_technology = {
+	### BICE STUFF ###
+	BICE_sub_balance = 1
+	#BICE_airrange_balance = 1
+	building_tech = 1
+	################# infantry ###############
+	mortars = 1
+	mortars_2 = 1
+	tech_infantry_uniforms = 1
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	semi_motorised_infantry = 1
+	tech_mountaineers = 1
+	tech_Garrison = 1
+	tech_Headquarters = 1
+	################## support ##################
+	tech_support = 1
+	tech_ac_recon = 1
+	tech_ac_recon2 = 1
+	tech_recon = 1
+	subtech_recon_cav_1 = 1
+	################## artillery ###############
+	gw_artillery = 1
+	interwar_artillery = 1
+	interwar_antiair = 1
+	################## armor-techs ##############
+	tech_Tankettes = 1
+	################## armor ##############
+	generic_armor = 1
+	gwtank = 1
+	basic_light_tank = 1
+	################## aircraft ##############
+	early_fighter = 1
+	early_CAS = 1
+	CAS1 = 1
+	generic_fighter = 1
+	generic_bomber = 1
+	generic_strategic_bomber = 1
+	############### WW1 doctrines ############
+	ww1_infantry = 1
+	infantry_charge = 1
+	complex_trench_systems = 1
+	
+	ww1_artillery = 1
+	foot_runners = 1
+	
+	mobile_doctrines = 1
+	cavalry_charges = 1
+	cavalry_dismounting = 1
+	
+	ww1_battlefield_support = 1
+	
+	WW1_air_power = 1
+	WW1_air_survey = 1
+	WW1_air_control = 1
+	############### naval doctrines ##################
+	nrm_pre_ww1_naval_doctrine = 1
+	nrm_mahanian_concepts = 1
+	nrm_jeune_ecole_concepts = 1
+	nrm_commerce_warfare = 1
+	nrm_destroyer_support = 1
+	nrm_destroyer_screen = 1
+	nrm_destroyer_torpedo_tactics = 1
+	nrm_submarine_tactics_early = 1
+	nrm_submarine_raiding = 1
+}
+
+add_ideas = { 	
+	IRQ_ghazi_faisal
+	export_focus
+	tax_low
+	tariffs_average
+	
+	civilian_economy
+	press_censored
+	key_industries
+	labor_none
+	fdi_allowed
+	
+	cons_volunteer
+	foreign_volunteers
+	mob_reserve
+	train_none
+	age_19
+	officer_train_none
+	security_minor_restrictions
+	edu_minimal
+	
+	#unity_united_nation		
+	foreign_isolationism
+	neutrality_idea
+
+	IRQ_iraqi_navy
+	IRQ_internal_conflict
+	IRQ_revolt
+	IRQ_treaty
+}
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		Arab_Minor
+		CHI_incompetent_officers
+		Arab_hyper_inflation_1
+		Arab_Tribes
+	}
+}
+
+set_politics = {
+	ruling_party = monarchism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	monarchism = 85
+	conservatism = 0
+	liberalism = 0.5
+	fascism = 4.5
+	communism = 0
+	neutrality = 10
+}
+###Country Leader###
+create_country_leader = {
+	name = "Ghazi I"
+	desc = "POLITICS_GHAZI_I_DESC"
+	picture = "GFX_portrait_iraq_ghazi"
+	expire = "1965.1.1"
+	ideology = emiratism
+	traits = {
+		inexperienced_imperialist
+		fascist
+	}
+}
+#create_country_leader = {
+#	name = "Faisal II"
+#	desc = "POLITICS_FAISAL_II_DESC"
+#	picture = "gfx/leaders/SAU/Portrait_Arabia_Generic_3.dds"
+#	expire = "1965.1.1"
+#	ideology = absolutism
+#	traits = {
+#		#
+#	}
+#}
+create_country_leader = {
+	name = "Rashid Ali al-Gaylani"
+	desc = ""
+	picture = "GFX_portrait_iraq_rashid"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+		fascist
+	}
+}
+create_country_leader = {
+	name = "Yusuf Salman Yusuf"
+	desc = ""
+	picture = "gfx/leaders/SAU/Portrait_Arabia_Generic_navy_3.dds"
+	expire = "1965.1.1"
+	ideology = leninism
+	traits = {
+		#
+	}
+}
+create_country_leader = {
+	name = "Khashif al-Ghita"
+	desc = ""
+	picture = "gfx/leaders/SAU/Portrait_Arabia_Generic_navy_3.dds"
+	expire = "1965.1.1"
+	ideology = pan_arabism
+	traits = {
+		#
+	}
+}
+###Army###
+create_corps_commander = {
+	name = "Mahmud Salman"
+	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
+	traits = { offensive_doctrine_CC  Terrible_General}
+	skill = 1
+}
+
+create_corps_commander = {
+	name = "Salah ed-Din es-Sabbagh"
+	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
+	traits = { trench_warfare_specialist  defensive_doctrine_CC Terrible_General}
+	skill = 1
+}
+
+create_corps_commander = {
+	name = "Kamal Shahib"
+	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
+	traits = { trait_mountaineer  defensive_doctrine_CC Bad_General}
+	skill = 2
+}
+
+create_corps_commander = {
+	name = "Fahmi Said"
+	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
+	traits = { desert_fox  Decent_General}
+	skill = 3
+}
+
+#### Old BI corps ###
+#create_corps_commander = {
+#	name = "abn Hussein"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
+#	traits = { Terrible_General logistics_wizard_CC old_guard }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "al Arshat"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
+#	traits = { Terrible_General }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "al Hassan"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
+#	traits = { Bad_General logistics_wizard_CC }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "al Rawi"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
+#	traits = { Terrible_General }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "al Umari"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
+#	traits = { Terrible_General }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "as Sabbagh"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
+#	traits = { Decent_General defensive_doctrine_CC old_guard }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "as Said"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
+#	traits = { Terrible_General offensive_doctrine_CC }
+#	skill = 2
+#}
+#create_corps_commander = {
+#	name = "Bakr Sidqi" ##Is now a political choice
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
+#	traits = { Terrible_General }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Dafni"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
+#	traits = { Decent_General }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Davis"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
+#	traits = { Decent_General commando }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Erekat"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
+#	traits = { Terrible_General panzer_leader }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Fawzi"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
+#	traits = { Terrible_General commando }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Ghazi I"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
+#	traits = { Incompetent_General }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Glubb"  ### Now in BMP
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
+#	traits = { Competent_General logistics_wizard_CC offensive_doctrine_CC }
+#	skill = 3
+#}
+#create_corps_commander = {
+#	name = "Ishakat"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
+#	traits = { Bad_General }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Osborne-Wilkinson"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
+#	traits = { Bad_General panzer_leader }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Peake" ## Now in BMP
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
+#	traits = { Decent_General defensive_doctrine_CC }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Sha'alan"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
+#	traits = { Terrible_General fortress_buster }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Shaker ben Zaid"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
+#	traits = { Terrible_General }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Shawkat"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
+#	traits = { Terrible_General }
+#	skill = 1
+#}
+#create_corps_commander = {
+#	name = "Thornhill"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
+#	traits = { Decent_General trait_engineer }
+#	skill = 1
+#}
+
+
+create_navy_leader = {
+	name = "as Sabbagh"
+	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_navy_1.dds"
+	traits = { old_guard_navy }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 2
+	maneuvering_skill = 1
+	coordination_skill = 1
+}
+#create_navy_leader = {
+#	name = "Nye"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_navy_2.dds"
+#	traits = { }
+#	skill = 1
+#}
+#create_navy_leader = {
+#	name =  "Tatton-Sykes"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_navy_3.dds"
+#	traits = { seawolf }
+#	skill = 1
+#}
+#create_navy_leader = {
+#	name = "Timms"
+#	portrait_path = "gfx/leaders/SAU/Portrait_Arabia_Generic_navy_1.dds"
+#	traits = { }
+#	skill = 1
+#}

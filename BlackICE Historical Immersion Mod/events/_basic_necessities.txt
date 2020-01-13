@@ -1,0 +1,96 @@
+﻿add_namespace = basic_necessity
+
+country_event = {
+	id = basic_necessity.1 #Gain
+#  The equation is: "num_of_consumer_civilian_factories" X "industrial_capacity_factory" X "100" X "necessity gain modifier"
+#  Once we have Grain as a Resource it can / should also be linked to that, as Basic Necessities also include food of course
+#
+	hidden = yes
+	
+	trigger = {
+		always = no
+		check_variable = { num_of_consumer_civilian_factories > 0 }
+	}
+	
+	mean_time_to_happen = {
+		days = 30 #at the end of each month, this is only a placeholder
+	}
+	
+	immediate = {
+		set_temp_variable = { cons_goods_gain = num_of_consumer_civilian_factories }
+		set_temp_variable = { cons_goods_mod = Root.modifier@industrial_capacity_factory }
+		
+		multiply_temp_variable = { cons_goods_mod = 10 } #otherwise the modifier is 0.xxx
+		
+		multiply_temp_variable = { cons_goods_gain = cons_goods_mod } 
+		
+		#multiply_temp_variable = { cons_goods_gain = Root.modifier@ } #Necessity Gain Modifier
+		
+		multiply_temp_variable = { cons_goods_gain = 100 } #just as a base increase to have more room for adjustments
+		
+		log = "[GetMonth] | [?cons_goods_gain] Necessities | [Root.GetName]"
+		
+		add_equipment_to_stockpile = {
+			type = basic_necessities
+			amount = cons_goods_gain
+		}
+		set_variable = { output = cons_goods_gain }
+	}
+	
+	option = {
+		name = "Output"
+		effect_tooltip = {
+			add_manpower = output
+		}
+		clear_variable = output
+	}
+	
+}
+#add dynamic modifier which gives a malus / bonus depending on amount of basic nec.
+#make a core only button- prioritise core states in necessity delivery
+#add malus linked to the pop value of the blocked states
+country_event = {
+	id = basic_necessity.2 #Consume
+# 1000 Population (which is total, doesnt matter if core or not) consume 1 necessity monthly
+# TODO: a law set for it
+# TODO: a modifier for it
+	hidden = yes
+	
+	trigger = {
+		always = no #set to always = yes when done
+	}
+	
+	mean_time_to_happen = {
+		days = 30 #at the end of each month, this is only a placeholder
+	}
+	
+	immediate = {
+		set_temp_variable = { temp_max_manpower = max_manpower_k }
+		
+		divide_temp_variable = { temp_max_manpower = 10 }
+		
+		log = "[GetMonth] | [?cons_goods_gain] Consumed | [Root.GetName]"
+		
+		#add_equipment_to_stockpile = {
+		#	type = basic_necessity
+		#	amount = cons_goods_consume
+		#}
+		set_variable = { output = temp_max_manpower }
+	}
+	
+	option = {
+		name = "Output"
+		effect_tooltip = {
+			add_manpower = output
+		}
+		clear_variable = output
+	}
+	
+}
+
+
+
+
+
+
+

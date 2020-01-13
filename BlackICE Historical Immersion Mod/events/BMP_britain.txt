@@ -1,0 +1,255 @@
+﻿add_namespace = britain 
+
+#####
+
+#to do: remove jordan stuff, maybe replace it with west bank and gaza strip stuff. jordan needs to gain independence separately
+
+#Mandate demands Palestine 500
+country_event = {
+	id = britain.500
+	title = britain.500.t
+	desc = britain.500.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #accept
+		name = britain.500.a
+		news_event = { id = news.5002}
+		ai_chance = { factor = 25 }
+			
+		454 = {
+			add_core_of = ISR
+			}
+		ISR = {
+			transfer_state = 454
+			country_event = { id = bmpisrael.1 hours = 1 }
+			change_tag_from = BMP
+			recalculate_tag_change = yes
+			}
+	
+	#Order of annex matters. It must be after ISR takes the land so the only result of the annexation is that the troops are destroyed
+	annex_country = { target = BMP transfer_troops = no }
+	}
+	
+	option = { #refuse
+	name = britain.500.b
+	ai_chance = { factor = 75 }
+		BMP = {
+			country_event = { id = mandate.3 hours = 1 }
+		}
+	}
+}
+
+#Mandate demands Palestine and Jordan 501
+country_event = {
+	id = britain.501
+	title = britain.501.t
+	desc = britain.501.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #accept
+		name = britain.501.a
+		news_event = { id = news.5002}
+		ai_chance = { factor = 25 }
+			
+		454 = {
+			add_core_of = ISR
+			}
+		455 = {
+			add_core_of = ISR
+			}
+		ISR = {
+			transfer_state = 454
+			transfer_state = 455
+			country_event = { id = bmpisrael.1 hours = 1 }
+			change_tag_from = BMP
+			recalculate_tag_change = yes
+			}
+	
+	#Order of annex matters. It must be after ISR takes the land so the only result of the annexation is that the troops are destroyed
+	annex_country = { target = BMP transfer_troops = no }
+	}
+	
+	option = { #refuse
+	name = britain.501.b
+	ai_chance = { factor = 75 }
+		BMP = {
+			country_event = { id = mandate.4 hours = 1 }
+		}
+	}
+}
+
+#Mandate negotiates for Palestine and Allies 502
+country_event = {
+	id = britain.502
+	title = britain.502.t
+	desc = britain.502.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #accept
+		name = britain.502.a
+		news_event = { id = news.5003}
+		ai_chance = { factor = 95 }
+		454 = {
+			add_core_of = ISR
+			}
+			
+		ISR = {
+			transfer_state = 454
+			country_event = { id = bmpisrael.1 hours = 1 }
+			change_tag_from = BMP
+			recalculate_tag_change = yes
+			}
+		
+		ENG = {
+			add_to_faction = ISR
+		}
+
+		#Order of annex matters. It must be after ISR takes the land so the only result of the annexation is that the troops are destroyed
+		annex_country = { target = BMP transfer_troops = yes }
+
+	}
+
+	option = { #refuse
+		name = britain.502.b
+		ai_chance = { factor = 5 }
+		
+		BMP = {
+			country_event = { id = mandate.6 hours = 1 }
+		}
+	}
+}
+
+#Mandate negotiates for Palestine, Jordan, and Allies 503
+country_event = {
+	id = britain.503
+	title = britain.503.t
+	desc = britain.503.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #accept
+		name = britain.501.a
+		news_event = { id = news.5003}
+
+		ai_chance = { factor = 80 }
+			
+		454 = {
+			add_core_of = ISR
+			}
+		455 = {
+			add_core_of = ISR
+			}
+		ISR = {
+			transfer_state = 454
+			transfer_state = 455
+			country_event = { id = bmpisrael.1 hours = 1 }
+			change_tag_from = BMP
+			recalculate_tag_change = yes
+			}
+		ENG = {
+			add_to_faction = ISR
+		}
+
+	#Order of annex matters. It must be after ISR takes the land so the only result of the annexation is that the troops are destroyed
+	annex_country = { target = BMP transfer_troops = no }
+	}
+
+	option = { #refuse
+		name = britain.503.b
+		ai_chance = { factor = 20 }
+		
+		BMP = {
+			country_event = { id = mandate.6 hours = 1 }
+		}
+	}
+}
+
+#Mandate negotiates for just Palestine, no allies 504
+country_event = {
+	id = britain.504
+	title = britain.504.t
+	desc = britain.504.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #accept
+		name = britain.504.a
+		ai_chance = { factor = 65 }
+		news_event = { id = news.5003}
+
+		454 = { #ISRAEL
+			add_core_of = ISR
+			}
+			
+		ISR = {
+			transfer_state = 454 #ISRAEL
+			country_event = { id = bmpisrael.1 hours = 1 }
+			change_tag_from = BMP
+			recalculate_tag_change = yes
+			}
+
+		#Order of annex matters. It must be after ISR takes the land so the only result of the annexation is that the troops are destroyed
+		annex_country = { target = BMP transfer_troops = yes }
+
+	}
+
+	option = { #refuse
+		name = britain.504.b
+		ai_chance = { factor = 35 }
+		
+		BMP = {
+			country_event = { id = mandate.6 hours = 1 }
+		}
+	}
+}
+
+#Mandate negotiates for just Palestine and Jordan. No allies 505
+country_event = {
+	id = britain.505
+	title = britain.505.t
+	desc = britain.505.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #accept
+		name = britain.505.a
+		news_event = { id = news.5003}
+
+		ai_chance = { factor = 45 }
+			
+		454 = { #JORDAN
+			add_core_of = ISR
+			}
+		455 = { #ISRAEL
+			add_core_of = ISR
+			}
+		ISR = {
+			transfer_state = 454 #JORDAN
+			transfer_state = 455 #ISRAEL
+			country_event = { id = bmpisrael.1 hours = 1 }
+			change_tag_from = BMP
+			recalculate_tag_change = yes
+			}
+
+	#Order of annex matters. It must be after ISR takes the land so the only result of the annexation is that the troops are destroyed
+	annex_country = { target = BMP transfer_troops = no }
+	}
+
+	option = { #refuse
+		name = britain.505.b
+		ai_chance = { factor = 55 }
+		
+		BMP = {
+			country_event = { id = mandate.6 hours = 1 }
+		}
+	}
+}

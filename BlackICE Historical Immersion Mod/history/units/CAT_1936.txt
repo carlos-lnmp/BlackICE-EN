@@ -1,0 +1,110 @@
+﻿##### Division Templates #####
+division_template = {
+	name = "Divisió d'Infanteria" 		# Used for both regular infantry divisions and larger garrison divisions
+	# Note: Spanish divisions were 2x brigades of 2x2 rgts each, + support
+	template_counter = 113
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 0 y = 3 }
+		
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 1 y = 3 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Divisió de Cavalleria"  		# Only one Cavalry Division
+	template_counter = 209
+	
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+		cavalry = { x = 0 y = 3 }
+		
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 1 y = 2 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Brigada de Muntanya"  		# Mountain Brigades were 2x2 Rgts + support
+	template_counter = 3007
+	
+	regiments = {
+		mountaineers = { x = 0 y = 0 }	
+		mountaineers = { x = 0 y = 1 }
+		
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Militia"			#poor equipment, no experience (militia)
+	is_locked = yes
+	template_counter = 68
+	
+	regiments = {		
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }		
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon_cav = { x = 0 y = 1 }
+	}
+}
+############ OOB
+units = {
+	division = {
+		name = "Catalonian d'Infanteria"
+		location = 9764  # Barcelona
+		division_template = "Divisió d'Infanteria"
+		start_equipment_factor = 1.0
+		start_experience_factor = 0.3
+	}
+	division = {
+		name = "Catalonian d'Militia"
+		location = 879  # Catalonia
+		division_template = "Militia"
+		start_equipment_factor = 0.3
+		start_experience_factor = 0.05
+	}
+	division = {
+		name = "Catalonian d'Militia"
+		location = 872  # Catalonia
+		division_template = "Militia"
+		start_equipment_factor = 0.3
+		start_experience_factor = 0.05
+	}
+	division = {
+		name = "Catalonian de Cavalleria"
+		location = 6836  # Catalonia
+		division_template = "Divisió de Cavalleria"
+		start_equipment_factor = 0.4
+		start_experience_factor = 0.05
+	}
+	division = {
+		name = "Catalonian de Cavalleria"
+		location = 3898  # Catalonia
+		division_template = "Brigada de Muntanya"
+		start_equipment_factor = 0.5
+		start_experience_factor = 0.25
+	}
+}

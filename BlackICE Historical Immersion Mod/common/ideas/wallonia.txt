@@ -1,0 +1,141 @@
+ideas = {
+	# search VLA_Hendrick_Elias
+	# search WLL_Franz_Hellebaut etat major wallon pas communiste
+	# search  Lucien Lippert etat major wallon	pas communiste
+	# Fernand Rouleau bras droit degrelle recrutement
+	#Raimond   Tollenaere, vnv 
+	#Georges Woyciekowski russe blanc fasciste
+	#général Dénikine russe + democrate
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+		WLL_Jules_Mahieu = {
+			allowed = {
+				original_tag = WLL
+			}
+			
+			traits = { conservative_reformer  head_of_state_trait }
+	
+			on_add = {
+				country_event = political.13
+			}
+	
+			do_effect = {
+				NOT = {
+					democratic_govt = yes
+				}
+			}
+	
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Foreign Ministers
+	foreign_minister = {
+		WLL_arille_carlier = {
+			picture = generic_political_advisor_europe_2
+			
+			allowed = {
+				original_tag = WLL
+				
+			}
+			available = {
+				democratic_govt = yes
+			}
+			traits = { smooth_talking_charmer  foreign_minister_trait }
+		}
+	}
+	#Propaganda/Security
+	interior_minister = {
+	}
+	#Intelligence
+	intel_minister = {
+	}
+	#Economic Ministers
+	economic_minister = {
+		WLL_georges_thone = {
+			
+			picture = generic_political_advisor_europe_3
+			
+			allowed = {
+				original_tag = WLL
+				
+			}
+			available = {
+				democratic_govt = yes
+			}
+			traits = { captain_of_industry  economic_minister_trait }
+		}
+		WLL_Prosper_Theugels = {
+			
+			allowed = {
+				original_tag = WLL
+				
+			}
+			available = { has_government = fascism }
+			traits = { armaments_organizer  economic_minister_trait }
+		}
+	}
+	#Political Advisors
+	political_advisor = {
+		WLL_auguste_buisseret = {
+			allowed = {
+				original_tag = WLL
+			}
+			
+			available = {
+				democratic_govt = yes
+			}
+			traits = { ideological_crusader  political_advisor_trait }
+		}
+	}
+	#Domestic
+	domestic_minister = {
+	}
+	influence_minister = {
+	}
+	#Academy
+	military_academy = {
+	}
+	#Theorist
+	theorist = {
+	}
+	#MILITARY
+	#Supreme Commanders
+	supreme_commander = {
+	}
+	#Army
+	army_chief = {
+		BEL_olivier_derousseaux2 = {
+			allowed = {
+				original_tag = WLL
+			}
+			
+			traits = { army_chief_defensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}		
+	}
+	#High Command
+	high_command = {
+		WLL_fernand_rouleau = {
+			allowed = {
+				original_tag = WLL
+			}
+			
+			available = { has_government = fascism }			
+			
+			traits = { army_chief_drill_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}		
+	}
+}
+### EOF ###

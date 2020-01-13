@@ -1,0 +1,120 @@
+#	Example:
+# 
+#	example_dynamic_modifier = {
+#		icon = "GFX_idea_unknown" # optional, will show up in guis if icon is specified
+#		enable = { always = yes } #optional, the modifier won't apply if not enabled
+#		remove_trigger = { always = no } #optional, will remove the modifier if true
+#
+#		# list of modifiers
+#		fuel_cost = 321
+#		max_fuel = var_max_fuel # will be taken from a variable
+#	}
+#
+#
+#	In a script file:
+#
+#	effect = {
+#		add_dynamic_modifier = {
+#			modifier = example_dynamic_modifier
+#			scope = GER # optional, if you specify this your dynamic modifier scoped to this scope (root is the effect scope)
+#			days = 14 # optional, will be removed after this many days passes
+#		}
+#	}
+#
+#	can be added to countries, states or unit leaders
+#	will only update daily, unless forced by force_update_dynamic_modifier effect
+
+
+civ_fuel_usage = {
+	#icon = "GFX_idea_unknown"
+	fuel_gain_factor = civ_fuel_usage_var
+}
+
+foreign_police_station = {
+	icon = "GFX_idea_ast_classify_aliens"
+	#remove_trigger = { has_capitulated = no }
+	partisan_effect = foreign_police_station_var_1
+	resistance_tick_in_states_controlled_by_enemy = foreign_police_station_var
+}
+
+#A scaled Resistance Tick modifier linked to num_occupied
+#The more occupied states you have the more resistance will form
+#and the more you need to invest into police buildings
+#or garrisons
+occupied_state_resistance = {
+	icon = "GFX_idea_unknown"
+	resistance_tick_auto = num_occupied_var
+}
+
+casualties_effect = {
+	#icon = "GFX_idea_unknown"
+	war_support_factor = currentWarsupportHit
+	
+	remove_trigger = {
+		has_war = no 
+	}
+}
+
+ruling_party_modifier = {
+	#icon = "GFX_idea_POL_ideology_drift_defence" #GFX_idea_unity_100
+	
+	fascism_drift = fascism_modifier
+	communism_drift = communism_modifier
+	conservatism_drift = conservatism_modifier
+	liberalism_drift = liberalism_modifier
+	socialism_drift = socialism_modifier
+	neutrality_drift = neutrality_modifier
+	monarchism_drift = monarchism_modifier
+	
+}
+opposition_party_modifier = {
+	#icon = "GFX_idea_POL_ideology_drift_defence" #GFX_idea_unity_100
+	
+	fascism_drift = fascism_modifier_2
+	communism_drift = communism_modifier_2
+	conservatism_drift = conservatism_modifier_2
+	liberalism_drift = liberalism_modifier_2
+	socialism_drift = socialism_modifier_2
+	neutrality_drift = neutrality_modifier_2
+	monarchism_drift = monarchism_modifier_2
+}
+
+output_factor = {
+	#icon = "GFX_idea_unity_100"
+	industrial_capacity_factory = factory_output_factor
+	industrial_capacity_dockyard = dockyard_output_factor
+}
+
+persian_command = {
+	icon = "GFX_idea_brotherhood"
+	enable = { tag = PER }
+	command_power_gain_mult = Per_command
+	max_command_power_mult = Per_command_max
+	training_time_factor = Per_training	
+	max_planning = Per_planning
+	experience_loss_factor = Per_loss
+	
+}
+
+min_consumer_goods = {
+	#icon = "GFX_idea_brotherhood"
+	consumer_goods_factor = min_cons_goods_value
+}
+
+special_forces_cap = {
+	#icon = "GFX_idea_brotherhood"
+	special_forces_min = special_forces_cap
+	modifier_army_sub_unit_category_special_forces_attack_factor = num_specialised_over_limit
+	modifier_army_sub_unit_category_special_forces_defence_factor = num_specialised_over_limit
+	special_forces_training_time_factor = special_forces_training_debuff
+}
+unity_base = {
+	stability_weekly = stability_base
+	war_support_weekly = war_support_base
+}
+high_unity = {
+	icon = "GFX_idea_unity_100"
+	stability_weekly_factor = high_stability
+	war_support_weekly_factor = high_war_support
+	
+}

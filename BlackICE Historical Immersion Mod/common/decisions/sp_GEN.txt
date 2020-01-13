@@ -1,0 +1,268 @@
+GEN_speeches_category = {
+
+	sp_POL = {
+
+		icon = generic_civil_support
+
+		cost = 30
+		fire_only_once = yes
+		
+		allowed = {
+			tag = POL
+		}
+
+		visible = {
+
+			}
+
+
+		available = {
+			85 = { is_claimed_by = GER }
+			86 = { is_claimed_by = GER }
+			has_idea = POL_jozef_beck
+			NOT = { has_war_with = GER }
+		}
+
+		complete_effect = {
+			add_stability = 0.05
+			ENG = { add_opinion_modifier = { target = POL modifier = medium_increase } } 
+			FRA = { add_opinion_modifier = { target = POL modifier = medium_increase } } 
+			
+		hidden_effect = {
+			sound_effect = sp_POL_peace
+			}
+		}		
+	}
+
+	sp_ENG_peaceforourtime = {
+
+		icon = generic_decision
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		cost = 25
+		days_mission_timeout = 7
+		
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Neville Chamberlain" }
+			NOT = { has_war_with = GER }
+		}
+
+		activation = {
+			GER = { owns_state = 69 }
+		}
+
+		complete_effect = {
+			add_stability = 0.05
+			add_war_support = -0.05
+			
+			hidden_effect = {
+				sound_effect = sp_ENG_peaceforourtime
+			}
+		
+		}		
+	}
+
+	sp_ENG_warwithGER = {
+
+		icon = generic_ignite_civil_war
+
+		fire_only_once = yes
+		
+		allowed = {
+			tag = ENG
+		}
+
+		visible = {
+			has_country_leader = { ruling_only = yes name = "Neville Chamberlain" }
+			NOT = { has_war_with = GER }
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Neville Chamberlain" }
+			has_guaranteed = POL
+			POL = { has_defensive_war_with = GER } 
+		}
+
+		complete_effect = {
+			declare_war_on = { target = GER type = puppet_wargoal_focus }
+			
+			hidden_effect = {
+				sound_effect = sp_ENG_warwithGER
+			}
+		
+		}		
+	}
+
+	sp_ENG_bloodtoiltearssweat = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			democratic_govt = yes
+			has_country_leader = { ruling_only = yes name = "Winston Churchill" }
+			has_war_with = GER
+		}
+
+		fire_only_once = yes
+
+		visible = {
+			tag = ENG
+			democratic_govt = yes
+			has_war_with = GER
+			has_country_leader = { ruling_only = yes name = "Winston Churchill" }
+		}
+
+		complete_effect = {
+
+		hidden_effect = {
+			sound_effect = sp_eng_bloodtoiltearssweat 
+			}
+		}
+
+	}
+
+	sp_ENG_fightonthebeaches = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			democratic_govt = yes
+			has_country_leader = { ruling_only = yes name = "Winston Churchill" }
+			has_war_with = GER
+			is_in_faction_with = FRA
+			FRA = {
+				surrender_progress > 0.2
+			}
+		}
+
+		fire_only_once = yes
+
+		visible = {
+			tag = ENG
+			democratic_govt = yes
+			has_war_with = GER
+			has_country_leader = { ruling_only = yes name = "Winston Churchill" }
+		}
+
+		complete_effect = {
+
+			hidden_effect = {
+				sound_effect = sp_eng_fightonthebeaches 
+			}
+		}
+
+	}
+
+	sp_ENG_finesthour = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			democratic_govt = yes
+			has_country_leader = { ruling_only = yes name = "Winston Churchill" }
+			has_war_with = GER
+			is_in_faction_with = FRA
+			FRA = { has_capitulated = yes }
+		}
+
+		fire_only_once = yes
+
+		visible = {
+			tag = ENG
+			democratic_govt = yes
+			has_war_with = GER
+			has_country_leader = { ruling_only = yes name = "Winston Churchill" }
+		}
+
+		complete_effect = {
+
+		hidden_effect = {
+			sound_effect = sp_eng_finesthour 
+			}
+		}
+
+	}
+
+	sp_SOV_patrioticwar = {
+
+		icon = generic_civil_support
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		cost = 25
+		days_mission_timeout = 31
+		
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Joseph Stalin" }
+		}
+
+		activation = {
+			has_defensive_war_with = GER
+		}
+
+		complete_effect = {
+			add_war_support = 0.05
+			
+			hidden_effect = {
+				sound_effect = sp_SOV_patrioticwar
+			}
+		
+		}		
+	}
+
+	sp_USA_warwithJAP = {
+
+		icon = generic_ignite_civil_war
+
+		selectable_mission = yes
+		is_good = yes
+		fire_only_once = yes
+		cost = 25
+		days_mission_timeout = 31
+		
+		allowed = {
+			tag = USA
+		}
+
+		available = {
+			has_country_leader = { ruling_only = yes name = "Franklin Delano Roosevelt" }
+		}
+
+		activation = {
+			has_defensive_war_with = JAP
+		}
+
+		complete_effect = {
+			add_war_support = 0.05
+			
+			hidden_effect = {
+				sound_effect = sp_USA_warwithJAP
+			}
+		
+		}		
+	}
+
+}

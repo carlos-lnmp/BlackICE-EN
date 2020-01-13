@@ -1,0 +1,32 @@
+MAN_handle_bandits = { # haha manhandle.... hah... hah... lol... I'm tired... STOP LOOKING AT ME LIKE THAT!
+	enable = {
+		original_tag = MAN
+		has_idea = MAN_banditry
+	}
+	abort = {
+		NOT = {	has_idea = MAN_banditry }
+	}
+
+	ai_strategy = {
+		type = save_equipment
+		id = infantry_equipment
+		value = 501
+	}
+}
+
+MAN_support_JAP = {
+	enable = {
+		original_tag = MAN
+		is_subject_of = JAP 
+		JAP = { has_war_with = CHI }
+	}
+	abort = { 
+		NOT = {	JAP = { has_war_with = CHI } }
+	}
+
+	ai_strategy = {
+		type = force_defend_ally_borders
+		id = "JAP"
+		value = 1000
+	}
+}

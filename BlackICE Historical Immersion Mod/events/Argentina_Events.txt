@@ -1,0 +1,103 @@
+﻿###########################
+# Argentine Events
+###########################
+
+add_namespace = argentina
+
+# Nazi rally In Luna park	
+country_event = {
+	id = argentina.1
+	title = argentina.1.t
+	desc = argentina.1.d
+	picture = GFX_report_event_hitler_parade
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = ARG
+		NOT = { has_war_with = GER }
+		GER = { has_country_flag = AUS_annexed }
+		controls_state = 278 
+		is_in_faction = no
+	}
+		
+	option = {
+		name = argentina.1.a #Germany is Great
+		set_country_flag = luna_nazi
+		GER = {
+			add_opinion_modifier = {
+				target = ARG
+				modifier = medium_increase
+			}
+		}
+		ITA = {
+			add_opinion_modifier = {
+				target = ARG
+				modifier = small_increase
+			}
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.15
+		}
+		ai_chance = { factor = 95 }
+		country_event = { id = argentina.3 days = 100 } #removes flag for GER decision
+	}
+	option = {
+		name = argentina.1.b #maybe Join with Germany
+		trigger = {
+			#GER = { is_ai = no } #no reason to give the german player a free ticket
+			ARG = { is_ai = no }
+		}
+		set_country_flag = luna_nazi
+		add_stability = -0.2
+		GER = {
+			add_opinion_modifier = {
+				target = ARG
+				modifier = large_increase
+			}
+		}
+		ITA = {
+			add_opinion_modifier = {
+				target = ARG
+				modifier = medium_increase
+			}
+		}
+		add_popularity	= {
+			ideology = fascism
+			popularity = 0.3
+		}
+	GER = { country_event = { id = argentina.2 days = 1 } }
+		ai_chance = { factor = 5 }
+	}
+}
+# ARG joins Axis
+country_event = {
+	id = argentina.2
+	title = argentina.2t
+	desc = argentina.2d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = argentina.2.a # join axis
+		add_to_faction = ARG
+		ai_chance = { factor = 5 }
+	}
+	option = {
+		name = argentina.2.b # better not
+		
+		ai_chance = { factor = 95 }
+	}
+}
+country_event = {
+	id = argentina.3
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		clr_country_flag = luna_nazi
+	}
+}
+### EOF ###

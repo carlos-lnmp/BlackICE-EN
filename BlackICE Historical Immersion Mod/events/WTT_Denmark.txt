@@ -1,0 +1,54 @@
+﻿###########################
+# Danish Events
+###########################
+
+add_namespace = wtt_denmark
+
+# Icelandic De Facto Independence
+country_event = {
+	id = wtt_denmark.1
+	title = wtt_denmark.1.t
+	desc = wtt_denmark.1.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_denmark.1.a
+		if = {
+			limit = {
+				has_dlc = "Man the Guns"
+			}			
+			release_autonomy = {
+				target = ICE
+				autonomy_state = autonomy_supervised_state
+				freedom_level = 0.75
+			}
+		}
+		else = {
+			release_autonomy = {
+				target = ICE
+				autonomy_state = autonomy_puppet
+				freedom_level = 0.95
+			}
+		}
+		ICE = {
+			set_politics = {
+				ruling_party = conservatism
+				last_election = "1933.10.16"
+				election_frequency = 36
+				elections_allowed = yes
+			}
+
+			set_popularities = {
+				conservatism = 96
+				fascism = 2
+				communism = 2
+			}	
+		}
+		ICE = { add_ideas = neutrality_idea }
+		hidden_effect = {
+			news_event = { id = news.331 days = 1 }
+		}
+	}
+}

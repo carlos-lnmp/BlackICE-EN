@@ -1,0 +1,524 @@
+﻿instant_effect = {
+	set_country_flag = placed_research_centre
+	
+	add_research_slot = 1
+	43 = { state_add_research_centre = yes }
+	SLOT:infantry_folder = yes
+	SLOT:support_folder = yes
+	SLOT:artillery_folder = yes
+
+	add_research_slot = 1
+	940 = { state_add_research_centre = yes }
+	SLOT:industry_folder = yes
+}
+
+division_template = {
+	name = "Gyalogdandár"		
+	division_names_group = HUN_INF_02		
+	template_counter = 118
+	
+	regiments = {
+		semi_motorized = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		
+		infantry = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 1 y = 2 }
+		
+		infantry = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+		militia = { x = 2 y = 2 }
+
+		artillery_brigade = { x = 3 y = 0 }		
+		artillery_brigade = { x = 3 y = 1 }	
+		artillery_brigade = { x = 3 y = 2 }	
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 } 
+		engineer = { x = 0 y = 2 }
+		artillery_heavy = { x = 0 y = 3 }
+	}
+}
+division_template = {
+	name = "Huszár Dandár" 	
+	division_names_group = HUN_CAV_01				
+	# Note: has 2x bicycle inf bns added during 1938-40 mobilization
+	template_counter = 210
+	
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+
+		motorized = { x = 1 y = 0 }
+		semi_motorized = { x = 1 y = 1 }
+		semi_motorized = { x = 1 y = 2 }
+
+		motorized = { x = 2 y = 0 }
+		semi_motorized = { x = 2 y = 1 }
+		semi_motorized = { x = 2 y = 2 }
+
+		artillery_brigade_mot= { x = 3 y = 0 }
+		artillery_brigade_mot= { x = 3 y = 1 }
+		artillery_brigade_mot= { x = 3 y = 2 }
+		
+		light_armor_axis = { x = 4 y = 0 }
+	}
+	support = {
+		DIV_HQ = { x = 0 y = 0 }
+		Tankettes = { x = 0 y = 1 } 
+		recon_ac = { x = 0 y = 2 }   # recon bn of tankettes, ACs, mot inf
+		engineer = { x = 0 y = 3 }
+	}
+}
+instant_effect = {
+	if = {
+		limit = {
+			is_ai = yes 
+		}
+		division_template = {
+			name = "Gyalogdandár"	
+			template_counter = 118
+			
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+
+				artillery_brigade = { x = 3 y = 0 }		
+				artillery_brigade = { x = 3 y = 1 }	
+				artillery_brigade = { x = 3 y = 2 }	
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 } 
+				engineer = { x = 0 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Huszár Dandár"
+			template_counter = 210
+			
+			regiments = {
+				semi_motorized = { x = 0 y = 0 }
+				semi_motorized = { x = 0 y = 1 }
+				semi_motorized = { x = 0 y = 2 }
+
+				semi_motorized = { x = 1 y = 0 }
+				semi_motorized = { x = 1 y = 1 }
+				semi_motorized = { x = 1 y = 2 }
+
+				semi_motorized = { x = 2 y = 0 }
+				semi_motorized = { x = 2 y = 1 }
+				semi_motorized = { x = 2 y = 2 }
+
+				artillery_brigade_mot= { x = 3 y = 0 }
+				artillery_brigade_mot= { x = 3 y = 1 }
+				artillery_brigade_mot= { x = 3 y = 2 }
+				
+			}
+			support = {
+				DIV_HQ = { x = 0 y = 0 } 
+				recon = { x = 0 y = 1 }   
+				engineer = { x = 0 y = 2 }
+			}
+		}
+	}
+}
+#division_template = {
+#	name = "HQ Command"
+#
+#	regiments = {
+#		HQ = { x = 0 y = 0 }
+#	
+#	}
+#	support = {
+#		recon = { x = 0 y = 0 }
+#	}
+#}
+#### OOB ####
+units = {
+	##### Honvédelmi Fõparancsnokság #####
+
+	#division= {	
+	#	name = "Honvédelmi Fõparancsnokság" 
+	#	location = 9660
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	# Gyorshadtest ('Rapid Corps', actual corps raised in 1940)
+
+	#division= {	
+	#	name = "Gyorshadtest" 
+	#	location = 9660
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 9660
+		division_template = "Huszár Dandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 9660
+		division_template = "Huszár Dandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+
+	# I Hadtest
+	#division= {	
+	#	name = "I Hadtest" 
+	#	location = 9660
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 9660
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 9660
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+
+	# II Hadtest
+	#division= {	
+	#	name = "II Hadtest" 
+	#	location = 701
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 701
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 701
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+
+	# III Hadtest
+	#division= {	
+	#	name = "III Hadtest" 
+	#	location = 11627
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 11627
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 11627
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+
+	# IV Hadtest
+	#division= {	
+	#	name = "IV Hadtest" 
+	#	location = 11610
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 11610
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 11610
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+
+	# V Hadtest
+	#division= {	
+	#	name = "V Hadtest" 
+	#	location = 679
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 679
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 679
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+
+	# VI Hadtest
+	#division= {	
+	#	name = "VI Hadtest" 
+	#	location = 11659
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 11
+		}
+		location = 11659
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 11659
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+
+	# VII Hadtest
+	#division= {	
+	#	name = "VII Hadtest" 
+	#	location = 6751
+	#	division_template = "HQ Command" 
+	#	start_experience_factor = 0.0
+	#	start_equipment_factor = 0.8
+	#}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
+		location = 6751
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+	division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 6751
+		division_template = "Gyalogdandár"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+}
+
+### Magyar Légiero ###
+air_wings = {
+	43 = {
+		# 1. Légi Ezred -- Fiat CR.32 fighters
+		# 2. Légi Ezred -- Fiat CR.32 fighters
+		fighter_equipment_0 = {
+			owner = "HUN" 
+				amount = 72
+		}
+		#cr_series_fighter_equipment_3 = { #Fiat CR.20bis AQ #Left service once replaced by Cr.32
+		#	owner = "HUN" 
+		#	creator = "ITA"
+		#	amount = 12
+		#}
+
+	}
+	154 = {
+		# 3. Légi Ezred -- Caproni Ca.101, WM-16 Budapest light bombers
+		CAS_equipment_1 = {
+			owner = "HUN" 
+			amount = 24
+		}
+	}
+}
+
+### Starting Production ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "HUN"
+		}
+		requested_factories = 2
+		progress = 0.68
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "HUN"
+		}
+		requested_factories = 1
+		progress = 0.60
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = infantry_uniforms_1
+			creator = "HUN"
+		}
+		requested_factories = 1
+		progress = 0.60
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_0
+			creator = "HUN" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = medartillery_equipment_0
+			creator = "HUN" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artyhorse_equipment_1
+			creator = "HUN" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = artytruck_equipment_0
+			creator = "HUN" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+	add_equipment_production = {
+		equipment = {
+			type = recon_equipment_0
+			creator = "HUN" 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 25
+	}
+	add_equipment_production = {
+		equipment = {
+			type = HQ_equipment_0
+			creator = "HUN" 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 25
+	}
+	add_equipment_production = {
+		equipment = {
+			type = horse_equipment_0
+			creator = "HUN" 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 25
+	}
+}

@@ -1,0 +1,46 @@
+region_management_1 = {
+
+	ruling_party_decrease = {
+		allowed = {
+			is_mod_country = yes
+		}
+    
+		available = {
+
+		}
+    
+		visible = {
+			is_mod_country = yes
+		}
+    
+		cost = 0
+    
+		days_re_enable = 10
+		
+		target_trigger = { 
+			FROM = {
+				OR = {
+					ruling_party > 0.03
+					opposition_party > 0.03
+				}
+			}
+		}
+    
+		complete_effect = {
+			FROM = {
+				add_popularity = {
+					ideology = ruling_party
+					popularity = -1
+				}
+				add_popularity = {
+					ideology = opposition_party
+					popularity = -1
+				}
+			}
+		}
+    
+		ai_will_do = {
+			factor = 10000
+		}
+	}
+}

@@ -1,0 +1,217 @@
+leader_traits = {
+##################################
+# FRA Traits
+##################################
+	French_Inter-allied_Victory_Medal = {
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		
+		modifier = {
+			max_dig_in_factor = 0.1	
+			army_morale_factor = -0.07
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	Legion_of_Honor = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_winning = yes
+		}
+		
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		
+		cost = 6500
+		
+		modifier = {
+			offence = 0.05
+			defence = 0.05
+			}
+				
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	Upper_Silesia_Medal = {
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		
+		modifier = {
+			out_of_supply_factor = -0.05
+		}
+				
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	French_War_Cross = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			is_winning = yes
+			has_trait = French_Military_Medal
+		}
+		
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		
+		cost = 3500
+		
+		modifier = {
+			defence = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	French_Military_Medal = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			has_trait = Combatants_Cross
+		}
+		
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		
+		cost = 2500
+		
+		modifier = {
+			max_dig_in_factor = 0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	Medal_for_Escapees = { 
+		type = all
+		trait_type = personality_trait
+		
+                gain_xp = {
+			always = no # not gainable
+		}
+
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		
+		modifier = {
+			army_speed_factor = 0.03
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	TOE_War_Cross = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		
+		modifier = {
+			max_dig_in = 1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	Combatants_Cross = {
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			OR = {
+				is_attacker = yes
+				is_defender = yes
+			}
+		}
+		
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		
+		cost = 2000
+		
+		non_shared_modifier = {
+			promote_cost_factor = -0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	Colonial_Medal = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		
+		modifier = {
+			supply_consumption_factor = -0.02
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

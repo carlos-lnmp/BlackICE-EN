@@ -1,0 +1,721 @@
+ideas = {
+	hidden_ideas = {
+		IEA_command = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				max_command_power = 15		
+				mobilization_speed = 0.05				
+			}
+		}
+	}
+	country = {
+		IEA_Linea_idea = {
+			picture =  GFX_idea_loire
+			allowed = {
+				always = no
+			}
+			modifier = {
+				air_accidents_factor = -0.02
+			}
+			equipment_bonus = {
+				transport_plane_equipment = {
+					air_range = 0.1 instant = yes
+					reliability = 0.03 instant = yes
+					fuel_consumption_factor = -0.1 instant = yes
+				}
+			}
+			removal_cost = -1
+		}
+		IEA_patrols = {
+			picture =  prc_the_long_march2
+			allowed = {
+				always = no
+			}
+			modifier = {
+				fascism_drift = 0.05
+				stability_weekly = 0.001
+				production_speed_buildings_factor = 0.1
+			}
+			removal_cost = -1
+		}
+		
+		IEA_kings_men = {
+			picture = chi_war_of_resistance3
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				local_resources_factor = -0.10 		
+				industrial_capacity_factory = -0.25
+				industrial_capacity_dockyard = -0.10
+				production_speed_buildings_factor = -0.25
+				attrition = 0.1
+				enemy_partisan_effect = 0.75
+				monarchism_drift = 0.02
+			}
+		}
+		IEA_kings_men2 = {
+			name = IEA_kings_men
+			picture = chi_war_of_resistance2
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				local_resources_factor = -0.05 		
+				industrial_capacity_factory = -0.20
+				industrial_capacity_dockyard = -0.05
+				production_speed_buildings_factor = -0.20
+				attrition = 0.07
+				enemy_partisan_effect = 0.5
+				monarchism_drift = 0.015
+			}
+		}
+		IEA_kings_men3 = {
+			name = IEA_kings_men
+			picture = chi_war_of_resistance2
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				local_resources_factor = -0.03 		
+				industrial_capacity_factory = -0.15
+				industrial_capacity_dockyard = -0.02
+				production_speed_buildings_factor = -0.12
+				attrition = 0.04
+				enemy_partisan_effect = 0.25
+				monarchism_drift = 0.01
+			}
+		}
+		IEA_kings_men4 = { 
+			name = IEA_kings_men
+			picture = chi_war_of_resistance
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				local_resources_factor = -0.01 		
+				industrial_capacity_factory = -0.05
+				production_speed_buildings_factor = -0.05
+				attrition = 0.02
+				enemy_partisan_effect = 0.25
+				monarchism_drift = 0.005
+			}
+		}
+		IEA_coffee_trade = {
+			name = IEA_coffee_trade
+			picture = GFX_idea_USA_land_rehab
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.03
+			}
+		}
+		IEA_coffee_trade2 = {
+			name = IEA_coffee_trade
+			picture = GFX_idea_USA_land_rehab
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+	}
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+		IEA_Alfredo_siniscalchi = {
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = ETH
+			}
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				domestminster_farms 
+head_of_state_trait
+			}
+		}
+		IEA_luigi_frusci = {
+			picture = generic_army_south_america_3
+			
+			allowed = {
+				original_tag = ETH
+			}
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				indomitable_perseverance
+head_of_state_trait
+			}
+		}
+		IEA_carlo_geloso = {
+			picture = generic_army_south_america_2
+			
+			allowed = {
+				original_tag = ETH
+			}
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				efficient_sociopath
+				good_soldier
+head_of_state_trait
+			}
+		}
+		IEA_enrico_cerulli = {
+			picture = generic_political_advisor_south_america_1
+			
+			allowed = {
+				original_tag = ETH
+			}
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				education_reformer
+				careful_diplomat
+head_of_state_trait
+			}
+		}
+	}
+	#Foreign
+	foreign_minister = {
+		ETH_makonnen_endelkatchew = {
+			picture = generic_political_advisor_arab_3
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { smooth_talking_charmer  foreign_minister_trait }
+		}
+	}
+	#Propaganda/Security
+	interior_minister = {
+		ETH_bedjironde_tekle_hawariate = {
+			picture = generic_political_advisor_arab_2
+
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { 
+				prince_of_terror
+				fascist
+interior_minister_trait
+			}
+		}
+	}
+	#Intelligence
+	intel_minister = {
+	}
+	#Economic
+	economic_minister = {
+		ETH_ras_imru_haile_selassie = {
+			picture = generic_political_advisor_arab_1
+				
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { captain_of_industry  economic_minister_trait }
+		}
+		IEA_augusto_turati = {
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = ETH
+			}
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				business_tycoon
+economic_minister_trait
+			}
+		}
+	}
+	#Political Advisers
+	political_advisor = {
+		ETH_ugo_villarde = {
+			picture = generic_political_advisor_europe_3
+				
+			allowed = {
+				original_tag = ETH
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				intellectual 
+political_advisor_trait
+			}
+			
+		}
+		IEA_francesc_caroselli = {
+			picture = generic_political_advisor_europe_2
+				
+			allowed = {
+				original_tag = ETH
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				righthand_man
+political_advisor_trait
+			}
+			
+		}
+	}
+	#Domestic
+	domestic_minister = {
+		ETH_dom1 = {
+			picture = generic_political_advisor_europe_2
+				
+			allowed = {
+				original_tag = ETH
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				trade_minister 
+domestic_minister_trait
+			}
+			
+		}
+		ETH_dom2 = {
+			picture = generic_political_advisor_europe_1
+				
+			allowed = {
+				original_tag = ETH
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				open_immigration 
+domestic_minister_trait
+			}
+			
+		}
+		ETH_dom3 = {
+			picture = generic_political_advisor_europe_3
+				
+			allowed = {
+				original_tag = ETH
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				domestminster_health 
+domestic_minister_trait
+			}
+			
+		}
+		ETH_dom4 = {
+			picture = generic_political_advisor_europe_4
+				
+			allowed = {
+				original_tag = ETH
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				transport_minster
+domestic_minister_trait
+			}
+			
+		}		
+	}
+	influence_minister = {
+		ETH_hamid_awate = {
+			picture = generic_political_advisor_african_1
+				
+			allowed = {
+				original_tag = ETH
+			}
+			
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				good_trainer
+				independent_guy
+influence_minister_trait
+			}
+		}
+		ETH_guy2 = {
+			allowed = {
+				original_tag = "ETH"
+			}
+			picture = generic_political_advisor_african_2
+			available = {
+				has_government = fascism
+			}
+
+			traits = { 
+				angry_warrior
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ETH_guy3 = {
+			allowed = {
+				original_tag = "ETH"
+			}
+			picture = generic_political_advisor_europe_3
+			available = {
+				has_government = fascism
+			}
+
+			traits = { 
+				political_fearmonger
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		ETH_guy5 = {
+			allowed = {
+				original_tag = "ETH"
+			}
+			picture = generic_political_advisor_europe_5
+			available = {
+				has_government = fascism
+			}
+
+			traits = { 
+				unyeilding_defender
+influence_minister_trait
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				factor = 0
+			}
+		}					
+	}
+	#Academy
+	military_academy = {
+	}
+	industrial_concern = {
+		IEA_Rail_company = {
+			
+			picture = generic_build_infrastructure
+			
+							
+			available = {
+				has_completed_focus = IEA_Road
+			}
+			allowed = {
+				original_tag = ETH
+			}
+			
+			research_bonus = {			
+				construction_tech = 0.10			
+			}
+			
+			traits = { industrial_concern  industrial_concern_trait }
+			
+			modifier = { 
+				production_speed_infrastructure_factor = 0.10
+			}
+			
+			cost = 100
+		}
+	}
+	#Theorist
+	theorist = {
+		ETH_ras_kebbede = {
+			picture = generic_army_arab_2
+
+			allowed = {
+				original_tag = ETH
+			}
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { military_theorist  theorist_trait }
+		}
+		ETH_wondossen_kassa = {
+			picture = generic_navy_arab_3
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			research_bonus = {
+				naval_doctrine = 0.07
+			}
+			
+			traits = { naval_theorist  theorist_trait }
+		}
+		ETH_gabriel_zawde_gilaneh = {
+
+			picture = generic_air_arab_2
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			research_bonus = {
+				air_doctrine = 0.07
+			}
+			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+	}
+	#Military
+	#Supreme Commanders
+	supreme_commander = {
+		IEA_guglielmo_nasi = {
+			picture = generic_army_south_america_2
+			
+			allowed = {
+				original_tag = ETH
+			}
+			available = {
+				has_government = fascism
+			}
+			
+			traits = { 
+				fascist
+				supreme_com_organizer
+supreme_commander_trait
+			}
+		}	
+	}
+	#Army
+	army_chief = {
+		ETH_desta_damtew = {
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = ETH
+			}		
+			
+			traits = { army_chief_organizational_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		ETH_ras_kassa = {
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { army_chief_defensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	#Air
+	air_chief = {
+		ETH_john_robinson = {
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { air_chief_reform_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		ETH_mesfin_sileshi = {
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { air_chief_ground_support_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	#Navy
+	navy_chief = {
+		ETH_ras_seyum = {
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { navy_chief_commerce_raiding_2  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		ETH_lij_johannes = {
+			picture = generic_navy_arab_3
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { navy_chief_maneuver_2  navy_chief_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	#High Command
+	high_command = {
+		ETH_woldemeskal_tariku = {
+			
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { army_regrouping_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		ETH_haile_abba_mersa = {
+			picture = generic_army_arab_3
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { army_infantry_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		ETH_lij_abiye_abebe = {
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { army_armored_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		ETH_fitauri_zawde_gobena = {
+			picture = generic_air_arab_2
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { air_close_air_support_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		ETH_dedja_zinatch_nadeon = {
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { navy_capital_ship_2  high_command_trait }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		IEA_siad_barre = {
+			picture = generic_army_african_2
+			
+			allowed = {
+				original_tag = ETH
+			}
+			
+			traits = { 
+				communist
+				army_chief_drill_2
+army_chief_trait
+			}
+		}	
+	}
+}
+### EOF ###

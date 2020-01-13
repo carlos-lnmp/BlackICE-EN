@@ -1,0 +1,6934 @@
+#Category only allowed for GER
+GER_mefo_bills_category = {
+
+	GER_mefo_bills_mission = {
+
+		allowed = { always = no }
+
+		icon = ger_mefo_bills
+
+		available = {
+			NOT = { democratic_govt = yes }
+			GER_can_delay_mefo_payment = yes
+			has_political_power > 0
+		}
+
+		#cost = GER_mefo_bill_counter?10
+
+		selectable_mission = yes
+		days_mission_timeout = 180
+		is_good = no
+		fire_only_once = yes
+
+		cancel_trigger = {
+			hidden_trigger = {
+				OR = {
+					NOT = { GER_has_mefo_bills = yes }
+					has_idea = GER_mefo_bills_ended
+				}
+			}
+		}
+
+		days_remove = GER_extend_mefo_bills_days?0
+		
+		remove_effect = {
+			GER_mefo_bills_level_up = yes
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 15 compare = less_than }
+				}
+				set_variable = { var = GER_mefo_bill_counter value = 10 }
+			}
+			add_to_variable = { var = GER_mefo_bill_counter value = 5 }
+
+			hidden_effect = {
+				activate_mission = GER_mefo_bills_mission
+			}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_mefo_bills_mission_tt
+			custom_effect_tooltip = GER_mefo_bills_effect_in_days
+			effect_tooltip = {
+				GER_mefo_bills_level_up = yes
+			}
+			hidden_effect = {
+				set_variable = { GER_extend_mefo_bills_days = days_mission_timeout@GER_mefo_bills_mission }
+				set_country_flag = { flag = MEFO_done days = 162 }
+			}
+		}
+
+		timeout_effect = {
+			GER_remove_mefo_bills = yes
+			#1
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 15 compare = less_than }
+				}
+				add_political_power = -20
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 60 }
+			}
+			#2
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 20 compare = equals }
+				}
+				add_political_power = -40
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 80 }
+			}
+			#3
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 30 compare = equals }
+				}
+				add_political_power = -60
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 100 }
+			}
+			#4
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 40 compare = equals }
+				}
+				add_political_power = -80
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 120 }
+			}
+			#5
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 50 compare = equals }
+				}
+				add_political_power = -100
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 140 }
+			}
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 60 compare = equals }
+				}
+				add_political_power = -120
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 160 }
+			}
+			#7
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 70 compare = equals }
+				}
+				add_political_power = -140
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 180 }
+			}
+			#8
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 80 compare = equals }
+				}
+				add_political_power = -160
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 200 }
+			}
+			#9
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 90 compare = equals }
+				}
+				add_political_power = -180
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 220 }
+			}
+			#10
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 100 compare = equals }
+				}
+				add_political_power = -200
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 240 }
+			}
+			#11
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 110 compare = equals }
+				}
+				add_political_power = -220
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 260 }
+			}
+			#12
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 120 compare = equals }
+				}
+				add_political_power = -240
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 280 }
+			}			
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 130 compare = equals }
+				}
+				add_political_power = -260
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 300 }
+			}
+			#14
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 140 compare = equals }
+				}
+				add_political_power = -280
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 320 }
+			}
+			#15
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 150 compare = equals }
+				}
+				add_political_power = -300
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 340 }
+			}
+			#16
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 160 compare = equals }
+				}
+				add_political_power = -320
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 360 }
+			}
+			#17
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 170 compare = equals }
+				}
+				add_political_power = -340
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 380 }
+			}
+			#18
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 180 compare = equals }
+				}
+				add_political_power = -360
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 400 }
+			}
+			if = {
+				limit = {
+					check_variable = { var = GER_mefo_bill_counter value = 180 compare = greater_than }
+				}
+				add_political_power = -380
+				add_timed_idea = { idea = GER_mefo_bills_ended days = 420 }
+			}			
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+}
+
+operations = {
+
+	GER_take_moscow = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		#Success trigger
+		available = {
+			845 = { is_controlled_by = GER  }
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = no
+
+		activation = {
+			has_war = yes
+			845 = {
+				is_controlled_by = SOV
+				any_neighbor_state = {
+					GER = {
+						divisions_in_state = {
+							size > 0
+							state = PREV
+						}
+					}
+				}
+			}
+		}
+
+		#Fail
+		timeout_effect = {
+			add_war_support = -0.1
+			
+			SOV = { 
+				effect_tooltip = { add_war_support = 0.1 }
+				set_country_flag = SOV_rschew_wjasma_operation
+				unlock_decision_tooltip = SOV_rschew_wjasma_operation
+			}
+		}
+		#Success
+		complete_effect = {
+			add_war_support = 0.1
+			
+			SOV = { 
+				effect_tooltip = { add_war_support = -0.1 }
+			}
+		}
+	}
+
+	GER_take_leningrad = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		#Success trigger
+		available = {
+			195 = { is_controlled_by = GER } #Germany would not be happy with the Fins taking it
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = no
+
+		activation = {
+			has_war = yes
+			195 = {
+				is_controlled_by = SOV
+				any_neighbor_state = {
+					GER = {
+						divisions_in_state = {
+							size > 0
+							state = PREV
+						}
+					}
+				}
+			}
+		}
+
+		#Fail
+		timeout_effect = {
+			add_war_support = -0.1
+			
+			SOV = { 
+				effect_tooltip = { add_war_support = 0.1 }
+				set_country_flag = SOV_operation_leningrad_nowgorod
+				unlock_decision_tooltip = SOV_operation_leningrad_nowgorod
+			}
+		}
+		#Success
+		complete_effect = {
+			add_war_support = 0.1
+			
+			SOV = { 
+				effect_tooltip = { add_war_support = -0.1 }
+			}
+		}
+	}
+
+	GER_take_stalingrad = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		#Success trigger
+		available = {
+			217 = { is_controlled_by = GER  }
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = no
+
+		activation = {
+			has_war = yes
+			217 = {
+				is_controlled_by = SOV
+				any_neighbor_state = {
+					GER = {
+						divisions_in_state = {
+							size > 0
+							state = PREV
+						}
+					}
+				}
+			}
+		}
+
+		#Fail
+		timeout_effect = {
+			add_war_support = -0.1
+			
+			SOV = { 
+				effect_tooltip = { add_war_support = 0.1 }
+				set_country_flag = SOV_operation_uranus
+				unlock_decision_tooltip = SOV_operation_uranus
+			}
+		}
+		#Success
+		complete_effect = {
+			add_war_support = 0.1
+			
+			SOV = {
+				effect_tooltip = { add_war_support = -0.1 }
+			}
+		}
+	}
+
+	GER_barbarossa_mission = {
+
+		icon = generic_operation
+
+		allowed = {
+			always = no
+			#added through on_action
+		}
+
+		available = {
+			controls_state = 845
+			controls_state = 195
+			controls_state = 877
+			controls_state = 217
+		}
+
+		days_mission_timeout = 180
+		fire_only_once = yes
+
+		activation = {
+
+		}
+
+		is_good = no
+
+		complete_effect = {
+			add_war_support = 0.1
+			custom_effect_tooltip = barbarossa_mission_tt
+		}
+
+		timeout_effect = {
+			
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	GER_operation_25 = {
+
+		icon = generic_operation
+
+		available = {
+			date > 1941.3.1
+			is_in_faction_with = ROM
+			is_in_faction_with = ITA
+			is_in_faction_with = HUN
+			
+			YUG = {
+				OR = {
+					has_country_flag = coup_d_etat 
+					NOT = { is_in_faction_with = GER }
+				}
+				exists = yes
+				is_puppet = no
+				controls_state = 903
+				has_capitulated = no
+			}
+		}
+		
+		modifier = {
+			max_planning = 0.3
+			planning_speed = 0.6
+		}
+		
+		days_remove = 16
+
+		cost = 0
+		fire_only_once = yes
+		war_with_on_remove = YUG
+
+		visible = {
+			original_tag = GER
+			has_government = fascism
+			is_in_faction_with = ROM
+			is_in_faction_with = ITA
+			is_in_faction_with = HUN
+			NOT = { is_in_faction_with = YUG }
+			date > 1941.2.1
+			YUG = {
+				OR = {
+					has_country_flag = coup_d_etat 
+					NOT = { 
+						is_in_faction_with = GER 
+						has_war_with = GER
+					}
+				}
+				exists = yes
+				controls_state = 903
+				has_capitulated = no
+			}
+		}
+		ai_will_do = {
+			factor = 150
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = YUG
+				type = annex_everything
+			}
+			ITA = { 
+				add_to_war = { 
+					targeted_alliance = GER 
+					enemy = YUG 
+					hostility_reason = asked_to_join
+				} 
+			}
+			HUN = { 
+				add_to_war = { 
+					targeted_alliance = GER 
+					enemy = YUG 
+					hostility_reason = asked_to_join
+				} 
+			}
+			ROM = { 
+				add_to_war = { 
+					targeted_alliance = GER 
+					enemy = YUG 
+					hostility_reason = asked_to_join
+				} 
+			}
+			
+		}
+	}
+		
+	GER_give_hungary_their_land = {
+
+		icon = generic_operation
+
+		available = {
+			is_faction_leader = yes
+			is_in_faction_with = HUN
+			has_war_with = YUG
+			
+			914 = { is_controlled_by_ROOT_or_ally = yes }
+			45 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		
+		days_remove = 1
+
+		cost = 0
+		fire_only_once = yes
+
+		visible = {
+			original_tag = GER
+			has_government = fascism
+			is_in_faction_with = HUN
+			has_war_with = YUG
+		}
+		ai_will_do = {
+			factor = 150
+		}
+		complete_effect = {
+			add_political_power = 25
+			HUN = { country_event = hungary.6 }
+		}
+	}
+	
+	GER_give_italy_their_land = {
+
+		icon = generic_operation
+
+		available = {
+			is_faction_leader = yes
+			is_in_faction_with = ITA
+			has_war_with = YUG
+			
+			916 = { is_controlled_by_ROOT_or_ally = yes }
+			913 = { is_controlled_by_ROOT_or_ally = yes }
+			900 = { is_controlled_by_ROOT_or_ally = yes }
+			105 = { is_controlled_by_ROOT_or_ally = yes }
+			904 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		
+		days_remove = 1
+
+		cost = 0
+		fire_only_once = yes
+
+		visible = {
+			original_tag = GER
+			has_government = fascism
+			is_in_faction_with = ITA
+			has_war_with = YUG
+			
+		}
+		ai_will_do = {
+			factor = 150
+		}
+		complete_effect = {
+			add_political_power = 50 
+			ITA = { country_event = italy.13 }
+		}
+	}
+	
+	GER_give_bulgaria_their_land = {
+
+		icon = generic_operation
+
+		available = {
+			is_faction_leader = yes
+			has_war_with = YUG
+			NOT = { has_war_with = BUL }
+			BUL = { 
+				fascism > 0.2 
+				has_capitulated = no 
+			}
+			
+			905 = { is_controlled_by_ROOT_or_ally = yes }
+			106 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		
+		days_remove = 1
+
+		cost = 0
+		fire_only_once = yes
+
+		visible = {
+			original_tag = GER
+			has_government = fascism
+			NOT = { has_war_with = BUL }
+			has_war_with = YUG
+		}
+		ai_will_do = {
+			factor = 150
+		}
+		complete_effect = {
+			add_political_power = 25 
+			BUL = { country_event = bulgaria.3 }
+		}
+	}
+	
+	GER_give_bulgaria_their_land_2 = {
+
+		icon = generic_operation
+
+		available = {
+			is_faction_leader = yes
+			has_war_with = GRE
+			BUL = { is_in_faction_with = GER }
+			
+			GRE = { has_capitulated = yes }
+		}
+		
+		days_remove = 1
+
+		cost = 0
+		fire_only_once = yes
+
+		visible = {
+			original_tag = GER
+			has_government = fascism
+			has_war_with = GRE
+			BUL = { is_in_faction_with = GER }	
+		}
+		ai_will_do = {
+			factor = 150
+		}
+		complete_effect = {
+			country_event = germany.100
+		}
+	}
+	
+	GER_integrate_RK_RP = {
+	
+		allowed = {
+			always = no 
+		}
+	
+		icon = generic_operation
+
+		available = {
+			FROM = {
+				#is_subject_of = ROOT
+				#OR = {
+				#	has_autonomy_state = autonomy_reichskommissariat
+				#	has_autonomy_state = autonomy_reichsprotectorate
+				#}
+				capital_scope = {
+					ROOT = {
+						divisions_in_state = {
+							size > 4
+							state = PREV
+						}
+					}
+				}
+			}
+			
+			hidden_trigger = {
+				command_power > 49.9 
+			}
+		}
+		
+		days_remove = 1
+
+		custom_cost_trigger = {
+			command_power > 49.9
+		}
+		custom_cost_text = cp_atleast_50
+		
+		fire_only_once = yes
+
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 0
+			
+			modifier = {
+				add = 100 
+				FROM = { tag = CZE }
+			}
+		}
+		complete_effect = {
+			hidden_effect = { add_command_power = -50 }
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							tag = RKO 
+							tag = RKU 
+							tag = RKM
+						}
+					}
+				}
+				every_state = {
+					limit = {
+						is_controlled_by = FROM
+					}
+					if = {
+						limit = {
+							ROOT = { has_war_with = SOV }
+						}
+						SOV = { set_state_owner = PREV }
+					}
+					ROOT = { set_state_controller = PREV }
+				}
+			}
+			
+			else_if = {
+				limit = {	
+					FROM = {
+						NOT = {
+							tag = RKO 
+							tag = RKU 
+							tag = RKM
+						}
+					}
+				}
+				annex_country = { target = FROM transfer_troops = yes }
+			}
+		}
+	}
+
+}
+
+GER_case_anton_category = {
+
+	GER_case_anton = {
+
+		icon = generic_operation
+
+		available = {
+			original_tag = GER
+			has_government = fascism
+			VIC = {
+				has_government = fascism
+				is_puppet_of = GER
+				NOT = { has_country_flag = case_anton }
+			}
+			divisions_in_state = { state = 31 size < 1 }
+			divisions_in_state = { state = 25 size < 1 }
+			divisions_in_state = { state = 22 size < 1 }
+			divisions_in_state = { state = 21 size < 1 }
+			divisions_in_state = { state = 32 size < 1 }
+			divisions_in_state = { state = 22 size < 1 }
+			divisions_in_state = { state = 26 size < 1 }
+			divisions_in_state = { state = 33 size < 1 }
+			divisions_in_state = { state = 20 size < 1 }
+			OR = {
+				ITA = { controls_state = 735 }
+				divisions_in_state = { state = 735 size < 1 }
+			}
+		}
+
+		cost = 50
+		fire_only_once = yes
+
+		visible = {
+			original_tag = GER
+			has_government = fascism
+			VIC = {
+				has_government = fascism
+				is_puppet_of = GER
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				ITA = { has_capitulated = no }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = GER_case_anton_tt
+			hidden_effect = {
+				VIC = {
+					set_country_flag = case_anton
+				}
+			}
+		}
+	}
+}
+#Category only allowed for GER
+GER_reichskommissariats = {
+	GER_reichskommissariat_norwegen = {
+
+		icon = ger_reichskommissariats
+		
+		available = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			110 = { is_controlled_by_ROOT_or_ally = yes }
+			142 = { is_controlled_by_ROOT_or_ally = yes }
+			143 = { is_controlled_by_ROOT_or_ally = yes }
+			144 = { is_controlled_by_ROOT_or_ally = yes }
+			866 = { is_controlled_by_ROOT_or_ally = yes }
+			930 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		cost = 0
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				ENG = { has_capitulated = yes }
+			}
+		}
+		
+		fire_only_once = yes
+
+		visible = {
+			has_war_with = NOR
+			has_government = fascism
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					country_exists = NOR
+				}
+				hidden_effect = {
+					NOR = {
+						set_state_controller = 110
+						set_state_controller = 142
+						set_state_controller = 143
+						set_state_controller = 144
+						set_state_controller = 866
+						set_state_controller = 930
+					}
+				}
+			}
+			RKN = {
+				set_state_controller = 110
+				set_state_controller = 142
+				set_state_controller = 143
+				set_state_controller = 144
+				set_state_controller = 930
+				transfer_state = 866
+				GER = {
+					puppet = PREV
+					if = {
+						limit = {
+							has_dlc = "Together for Victory"
+						}
+						set_autonomy = { target = PREV autonomy_state = autonomy_reichskommissariat }
+					}
+				}
+				#set_cosmetic_tag = NOR_reichskommissariat
+				create_country_leader = {
+					name = "Josef Terboven"
+					desc = "POLITICS_JOSEF_TERBOVEN_DESC"
+					picture = "gfx/leaders/RKS/Portrait_Josef_Terboven.dds"
+					expire = "1965.1.1"
+					ideology = nazism
+					traits = {
+					}
+				}
+			}
+		}
+	}
+	# Netherlands
+	GER_reichskommissariat_niederlande = {
+
+		icon = ger_reichskommissariats
+
+		available = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			7 = { is_controlled_by_ROOT_or_ally = yes }
+			35 = { is_controlled_by_ROOT_or_ally = yes }
+			36 = { is_controlled_by_ROOT_or_ally = yes }
+			786 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				ENG = { has_capitulated = yes }
+			}
+		}
+		fire_only_once = yes
+
+		visible = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			has_government = fascism
+			has_war_with = HOL
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					country_exists = HOL
+				}
+				hidden_effect = {
+					HOL = {
+						set_state_controller = 7
+						set_state_controller = 35
+						set_state_controller = 36
+						set_state_controller = 786
+					}
+				}
+			}
+			RKH = {
+				set_state_controller = 7
+				set_state_controller = 35
+				set_state_controller = 36
+				transfer_state = 786
+				GER = {
+					puppet = PREV
+					if = {
+						limit = {
+							has_dlc = "Together for Victory"
+						}
+						set_autonomy = { target = PREV autonomy_state = autonomy_reichskommissariat }
+					}
+				}
+				
+				#set_cosmetic_tag = HOL_reichskommissariat
+				create_country_leader = {
+					name = "Arthur Seyss-Inquart"
+					desc = "POLITICS_ARTHUR_SEYSS_INQUART_DESC"
+					picture = "gfx/leaders/RKS/Portrait_Arthur_Seyss_Inquart.dds"
+					expire = "1965.1.1"
+					ideology = nazism
+					traits = {
+					}
+				}
+			}
+		}
+	}
+	# Belgium and Northern France
+	GER_reichskommissariat_belgien_nordfrankreich = {
+
+		icon = ger_reichskommissariats
+
+		available = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			6 = { is_controlled_by_ROOT_or_ally = yes }
+			774 = { is_controlled_by_ROOT_or_ally = yes }
+			29 = { is_controlled_by_ROOT_or_ally = yes }
+			34 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				ENG = { has_capitulated = yes }
+			}
+		}
+
+		visible = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			has_government = fascism
+			has_war_with = BEL
+		}
+		fire_only_once = yes
+
+		complete_effect = {
+			if = {
+				limit = {
+					country_exists = BEL
+				}
+				hidden_effect = {
+					BEL = {
+						set_state_controller = 6
+						set_state_controller = 34
+					}
+				}
+			}
+				
+			RKB = {
+				set_state_controller = 6
+				set_state_controller = 29
+				set_state_controller = 34
+				transfer_state = 774
+				GER = {
+					puppet = PREV
+					if = {
+						limit = {
+							has_dlc = "Together for Victory"
+						}
+						set_autonomy = { target = PREV autonomy_state = autonomy_reichskommissariat }
+					}
+				}
+				#set_cosmetic_tag = BEL_reichskommissariat
+				create_country_leader = {
+					name = "Josef Grohe"
+					desc = "POLITICS_JOSEF_GROHE_DESC"
+					picture = "gfx/leaders/RKS/Portrait_Josef_Grohe.dds"
+					expire = "1965.1.1"
+					ideology = nazism
+					traits = {
+					}
+				}
+			}
+		}
+	}
+	# Ostland
+	GER_reichskommissariat_ostland = {
+
+		icon = ger_reichskommissariats
+
+		available = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			97 = { is_controlled_by_ROOT_or_ally = yes }
+			95 = { is_controlled_by_ROOT_or_ally = yes }
+			96 = { is_controlled_by_ROOT_or_ally = yes }
+			11 = { is_controlled_by_ROOT_or_ally = yes }
+			189 = { is_controlled_by_ROOT_or_ally = yes }
+			12 = { is_controlled_by_ROOT_or_ally = yes }
+			190 = { is_controlled_by_ROOT_or_ally = yes }
+			13 = { is_controlled_by_ROOT_or_ally = yes }
+			191 = { is_controlled_by_ROOT_or_ally = yes }
+			840 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		fire_only_once = yes
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				SOV = { surrender_progress > 90 }
+			}
+		}
+
+		visible = {
+			has_completed_focus = GER_form_the_reichskommissariats
+			has_government = fascism
+			has_war_with = SOV
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				transfer_state = 97
+			}
+			RKO = {
+				transfer_state = 189
+				set_state_controller = 11
+				set_state_controller = 12
+				set_state_controller = 190
+				set_state_controller = 13
+				set_state_controller = 191
+				set_state_controller = 95
+				set_state_controller = 96
+				set_state_controller = 840
+				GER = {
+					hidden_effect = { 
+						transfer_state = 842
+					}
+					puppet = PREV
+					if = {
+						limit = {
+							has_dlc = "Together for Victory"
+						}
+						set_autonomy = { target = PREV autonomy_state = autonomy_reichskommissariat }
+					}
+				}
+				
+				#set_cosmetic_tag = BLR_reichskommissariat
+				create_country_leader = {
+					name = "Hinrich Lohse"
+					desc = "POLITICS_HINRICH_LOHSE_DESC"
+					picture = "gfx/leaders/RKS/Portrait_Hinrich_Lohse.dds"
+					expire = "1965.1.1"
+					ideology = nazism
+					traits = {
+					}
+				}
+			}
+		}
+	}
+	# Ukraine
+	GER_reichskommissariat_ukraine = {
+
+		icon = ger_reichskommissariats
+		
+		allowed = {
+			#always = no 
+		}
+
+		available = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			93 = { is_controlled_by_ROOT_or_ally = yes }
+			199 = { is_controlled_by_ROOT_or_ally = yes }
+			201 = { is_controlled_by_ROOT_or_ally = yes }
+			198 = { is_controlled_by_ROOT_or_ally = yes }
+			202 = { is_controlled_by_ROOT_or_ally = yes }
+			193 = { is_controlled_by_ROOT_or_ally = yes }
+			192 = { is_controlled_by_ROOT_or_ally = yes }
+			203 = { is_controlled_by_ROOT_or_ally = yes }
+			197 = { is_controlled_by_ROOT_or_ally = yes }
+			225 = { is_controlled_by_ROOT_or_ally = yes }
+			259 = { is_controlled_by_ROOT_or_ally = yes }
+			226 = { is_controlled_by_ROOT_or_ally = yes }
+			196 = { is_controlled_by_ROOT_or_ally = yes }
+			200 = { is_controlled_by_ROOT_or_ally = yes }
+			221 = { is_controlled_by_ROOT_or_ally = yes }
+			228 = { is_controlled_by_ROOT_or_ally = yes }
+			227 = { is_controlled_by_ROOT_or_ally = yes }
+			194 = { is_controlled_by_ROOT_or_ally = yes }
+			94 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				SOV = { surrender_progress > 90 }
+			}
+		}
+		fire_only_once = yes
+
+		visible = {
+			has_completed_focus = GER_form_the_reichskommissariats
+			has_government = fascism
+			has_war_with = SOV
+		}
+
+		complete_effect = {
+			RKU = {
+				set_state_controller = 877
+				set_state_controller = 199
+				set_state_controller = 201
+				set_state_controller = 198
+				set_state_controller = 202
+				set_state_controller = 193
+				set_state_controller = 192
+				set_state_controller = 203
+				set_state_controller = 197
+				set_state_controller = 225
+				set_state_controller = 259
+				set_state_controller = 226
+				set_state_controller = 196
+				set_state_controller = 200
+				set_state_controller = 221
+				set_state_controller = 228
+				set_state_controller = 227
+				set_state_controller = 94
+				set_state_controller = 194
+				transfer_state = 93
+				GER = {
+					puppet = PREV
+					if = {
+						limit = {
+							has_dlc = "Together for Victory"
+						}
+						set_autonomy = { target = PREV autonomy_state = autonomy_reichskommissariat }
+					}
+				}
+				#set_cosmetic_tag = UKR_reichskommissariat
+				create_country_leader = {
+					name = "Erich Koch"
+					desc = "POLITICS_HINRICH_LOHSE_DESC"
+					picture = "gfx/leaders/RKS/Portrait_Erich_Koch.dds"
+					expire = "1965.1.1"
+					ideology = nazism
+					traits = {
+					}
+				}
+			}
+		}
+	}
+	
+	GER_expand_reichskommissariat_ukraine = {
+
+		icon = ger_reichskommissariats
+		
+		allowed = {
+			#always = no 
+		}
+
+		available = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			RKU	= { is_subject_of = ROOT }
+			220 = { is_controlled_by_ROOT_or_ally = yes }
+			240 = { is_controlled_by_ROOT_or_ally = yes }
+			260 = { is_controlled_by_ROOT_or_ally = yes }
+			265 = { is_controlled_by_ROOT_or_ally = yes }
+			245 = { is_controlled_by_ROOT_or_ally = yes }
+			218 = { is_controlled_by_ROOT_or_ally = yes }
+			217 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				SOV = { surrender_progress > 90 }
+			}
+		}
+		fire_only_once = yes
+
+		visible = {
+			RKU	= { is_subject_of = ROOT }
+			has_government = fascism
+			has_war_with = SOV
+		}
+
+		complete_effect = {
+			RKU = {
+				set_state_controller = 220
+				set_state_controller = 240
+				set_state_controller = 260
+				set_state_controller = 265
+				set_state_controller = 245
+				set_state_controller = 218
+				set_state_controller = 217
+			}
+		}
+	}
+	
+	GER_expand_reichskommissariat_ostland = {
+
+		icon = ger_reichskommissariats
+		
+		allowed = {
+			#always = no 
+		}
+
+		available = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			RKO	= { is_subject_of = ROOT }
+			207 = { is_controlled_by_ROOT_or_ally = yes }
+			206 = { is_controlled_by_ROOT_or_ally = yes }
+			204 = { is_controlled_by_ROOT_or_ally = yes }
+			241 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				SOV = { surrender_progress > 90 }
+			}
+		}
+		fire_only_once = yes
+
+		visible = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			has_government = fascism
+			has_war_with = SOV
+		}
+
+		complete_effect = {
+			RKO = {
+				set_state_controller = 207
+				set_state_controller = 206
+				set_state_controller = 204
+				set_state_controller = 241
+			}
+		}
+	}
+	
+	GER_expand_reichskommissariat_moskowien = {
+
+		icon = ger_reichskommissariats
+		
+		allowed = {
+			#always = no 
+		}
+
+		available = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			RKM	= { is_subject_of = ROOT }
+			351 = { is_controlled_by_ROOT_or_ally = yes }
+			214 = { is_controlled_by_ROOT_or_ally = yes }
+			400 = { is_controlled_by_ROOT_or_ally = yes }
+			256 = { is_controlled_by_ROOT_or_ally = yes }
+			250 = { is_controlled_by_ROOT_or_ally = yes }
+			249 = { is_controlled_by_ROOT_or_ally = yes }
+			399 = { is_controlled_by_ROOT_or_ally = yes }
+			251 = { is_controlled_by_ROOT_or_ally = yes }
+			398 = { is_controlled_by_ROOT_or_ally = yes }
+			651 = { is_controlled_by_ROOT_or_ally = yes }
+			652 = { is_controlled_by_ROOT_or_ally = yes }
+			401 = { is_controlled_by_ROOT_or_ally = yes }
+			407 = { is_controlled_by_ROOT_or_ally = yes }
+			406 = { is_controlled_by_ROOT_or_ally = yes }
+			262 = { is_controlled_by_ROOT_or_ally = yes }
+			397 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				SOV = { surrender_progress > 90 }
+			}
+		}
+		fire_only_once = yes
+
+		visible = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			has_government = fascism
+			has_war_with = SOV
+		}
+
+		complete_effect = {
+			RKM = {
+				set_state_controller = 351 
+				set_state_controller = 214 
+				set_state_controller = 400 
+				set_state_controller = 256 
+				set_state_controller = 250 
+				set_state_controller = 249 
+				set_state_controller = 399 
+				set_state_controller = 251 
+				set_state_controller = 398 
+				set_state_controller = 651 
+				set_state_controller = 652 
+				set_state_controller = 401 
+				set_state_controller = 407 
+				set_state_controller = 406 
+				set_state_controller = 262 
+				set_state_controller = 397
+			}
+		}
+	}
+	
+	GER_expand_generalgouvernment = {
+
+		icon = ger_reichskommissariats
+		
+		allowed = {
+			always = no 
+		}
+
+		available = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			RKP	= { is_subject_of = ROOT }
+			91 = { is_controlled_by_ROOT_or_ally = yes }
+			89 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				SOV = { surrender_progress > 90 }
+			}
+		}
+		fire_only_once = yes
+
+		visible = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			has_government = fascism
+			has_war_with = SOV
+		}
+
+		complete_effect = {
+			RKP = {
+				set_state_controller = 91
+				set_state_controller = 89 
+			}
+		}
+	}
+	#Moskowien
+	GER_reichskommissariat_moskowien = {
+
+		icon = ger_reichskommissariats
+		
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			243 = { is_controlled_by_ROOT_or_ally = yes }
+			224 = { is_controlled_by_ROOT_or_ally = yes }
+			242 = { is_controlled_by_ROOT_or_ally = yes }
+			246 = { is_controlled_by_ROOT_or_ally = yes }
+			210 = { is_controlled_by_ROOT_or_ally = yes }
+			209 = { is_controlled_by_ROOT_or_ally = yes }
+			208 = { is_controlled_by_ROOT_or_ally = yes }
+			195 = { is_controlled_by_ROOT_or_ally = yes }
+			263 = { is_controlled_by_ROOT_or_ally = yes }
+			244 = { is_controlled_by_ROOT_or_ally = yes }
+			205 = { is_controlled_by_ROOT_or_ally = yes }
+			223 = { is_controlled_by_ROOT_or_ally = yes }
+			254 = { is_controlled_by_ROOT_or_ally = yes }
+			219 = { is_controlled_by_ROOT_or_ally = yes }
+			829 = { is_controlled_by_ROOT_or_ally = yes }
+			830 = { is_controlled_by_ROOT_or_ally = yes }
+			828 = { is_controlled_by_ROOT_or_ally = yes }
+			845 = { is_controlled_by_ROOT_or_ally = yes }
+			247 = { is_controlled_by_ROOT_or_ally = yes }
+			214 = { is_controlled_by_ROOT_or_ally = yes }
+			351 = { is_controlled_by_ROOT_or_ally = yes }
+			248 = { is_controlled_by_ROOT_or_ally = yes }
+			253 = { is_controlled_by_ROOT_or_ally = yes }
+			252 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				SOV = { surrender_progress > 90 }
+			}
+		}
+		fire_only_once = yes
+
+		visible = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			has_government = fascism
+			has_war_with = SOV
+		}
+
+		complete_effect = {
+			RKM = {
+				every_state = {
+					limit = {
+						OR = {
+							#region = 131 #Belarus
+							region = 133
+							region = 251
+							region = 265
+							region = 266
+							region = 267
+							region = 270 #Wologda
+							region = 271
+						}
+						NOT = { 
+							state = 260 #States north of Ukraine
+							state = 240
+							state = 220
+							
+							state = 146 #Karelia
+							state = 216
+						}
+					}
+					RKM = { 
+						set_state_controller = PREV
+						transfer_state = 210
+					}
+				}
+				GER = {
+					puppet = PREV
+					if = {
+						limit = {
+							has_dlc = "Together for Victory"
+						}
+						set_autonomy = { target = PREV autonomy_state = autonomy_reichskommissariat }
+					}
+				}
+				create_country_leader = {
+					name = "Siegfried Kasche"
+					desc = "POLITICS_SIEGFRIED_KASCHE_DESC"
+					picture = "gfx/leaders/Europe/Portrait_Europe_Generic_6.dds"
+					expire = "1965.1.1"
+					ideology = nazism
+					traits = {
+					}
+				}
+			}
+		}
+	}
+	
+	
+	# Croatia
+	GER_croatian_puppet = {
+
+		icon = ger_reichskommissariats
+
+		available = {
+			HUN = {
+				controls_state = 45
+				controls_state = 914
+			}
+			
+			ITA = {
+				controls_state = 900
+				controls_state = 904
+				controls_state = 913
+				controls_state = 916
+				controls_state = 105
+			}
+			
+			BUL = {
+				controls_state = 106
+				controls_state = 905
+			}
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				YUG = { has_capitulated = yes }
+			}
+		}
+		fire_only_once = yes
+		visible = {
+			#has_completed_focus = GER_form_the_reichskommissariats
+			has_government = fascism
+			has_war_with = YUG
+			is_in_faction_with = HUN
+			is_in_faction_with = ITA
+			is_in_faction_with = BUL
+			is_puppet = no
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				GER = { 
+					transfer_state = 109
+					transfer_state = 103
+					transfer_state = 902
+					transfer_state = 104
+					transfer_state = 908
+					transfer_state = 915
+					transfer_state = 901
+					transfer_state = 917
+					set_state_controller = 907
+					set_state_controller = 108
+					set_state_controller = 107
+					set_state_controller = 903
+					set_state_controller = 906
+				}
+				ITA = {
+					set_state_controller = 900
+					set_state_controller = 904
+					set_state_controller = 913
+					set_state_controller = 916
+					set_state_controller = 105
+				}
+				BUL = {
+					set_state_controller = 106
+					set_state_controller = 905
+				}
+				HUN = {
+					set_state_controller = 45
+					set_state_controller = 914
+				}
+				CRO = {
+					add_state_core = 109
+					add_state_core = 103
+					add_state_core = 902
+					add_state_core = 104
+					add_state_core = 908
+					add_state_core = 915
+					add_state_core = 901
+					add_state_core = 917
+				}
+			}
+		
+			release = CRO
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = CRO
+					autonomous_state = autonomy_reichsprotectorate
+				}
+			}
+			else = {
+				puppet = CRO
+			}			
+		}
+	}
+}
+
+foreign_politics = {
+
+	## Push the Luna Rally
+	GER_arg_rally = {
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			ARG = { has_country_flag = luna_nazi }			
+		}
+
+		cost = 35
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			ARG = { has_country_flag = luna_nazi }	
+			NOT =  { has_war_with = ARG }
+			has_dlc = "Waking the Tiger" 
+		}
+		days_remove = 40
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+		
+		complete_effect = {
+			ARG = {
+				set_country_flag = luna_funded
+				add_timed_idea = {
+					idea = Arab_fascist_drift
+					days = 90
+				}
+			}
+		}
+	}
+	
+	## Trade Ties with Sweden
+	GER_swed_trade = {
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			SWE = { has_completed_focus = SWE_liberty_ethos }			
+		}
+
+		cost = 75
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 3
+		}
+
+		visible = {
+			SWE = { has_completed_focus = SWE_hansson_3 }
+			NOT =  { has_war_with = SWE }
+		}
+
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = SWE
+				modifier = trade_partner
+			}
+		}
+	}
+	GER_help_per = {
+		allowed = {
+			original_tag = GER
+			player_only_trigger = yes
+		}
+
+		available = {
+			PER = {
+				not = { 
+					or = {
+						is_in_faction_with = ENG
+						is_in_faction_with = SOV
+					}
+				}
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			PER = { 
+				exists = yes
+				not = { 
+					or = {
+						is_in_faction_with = ENG
+						is_in_faction_with = SOV
+					}
+				}
+				or = {
+					has_government = monarchism
+					has_government = fascism
+				}
+				has_country_flag = industry_aid_removed
+			}
+			has_dlc = "Waking the Tiger" 
+		}
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = {
+			add_tech_bonus = {
+				name = industry_bonus
+				bonus = 0.15
+				ahead_reduction = 0.5
+				uses = 1
+				category = industry
+			}
+			reverse_add_opinion_modifier = {
+				target = PER
+				modifier = aided_industry
+			}
+			PER = {
+				swap_ideas = {
+					remove_idea = PER_german_investment
+					add_idea = PER_german_investment2
+				}			
+				hidden_effect = {
+					if = {
+						limit = {
+							PER = { is_ai = yes }
+						}
+						swap_ideas = {
+							remove_idea = PER_neutral
+							add_idea = neutrality_idea
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#Category only allowed for GER
+GER_military_buildup = {
+	
+	GER_Aufstellungswelle_1 = {
+		
+		icon = ger_military_buildup
+		
+		available = {
+			date > 1936.2.1
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_aw_1
+			hidden_effect = { update_all_subunits = yes }
+			set_country_flag = welle_one
+		}
+	}
+	
+	GER_motorise_29_infdiv = {
+		
+		icon = ger_29_infdiv
+		
+		available = {
+			has_army_size = {
+				size > 49
+			}
+			date > 1937.10.11
+			NOT = { has_country_flag = mot_29 }
+		}
+		
+		highlight_states = {
+			state = 60
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		visible = {
+			#has_completed_focus = GER_Wehrmacht
+			date > 1937.1.1
+		}
+
+		complete_effect = {
+			add_war_support = 0.02
+			custom_effect_tooltip = GER_mot_29_dec_tt
+			division_template = {
+				name = "29. Inf.-Div(mot.)"		
+				division_names_group = GER_MOT_01
+				priority = 2
+				template_counter = 174
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot = { x = 3 y = 2 }
+					artillery_brigade_mot_med = { x = 3 y = 3 }
+					anti_tank_brigade_mot =  { x = 3 y = 4 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_mot = { x = 0 y = 1 }
+					recon_ac = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			hidden_effect = { update_all_subunits = yes }
+			country_event = { id = germany.253 hours = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_motorise_2_infdiv = {
+		
+		icon = ger_2_infdiv
+		
+		available = {
+			date > 1937.10.13
+			has_country_flag = mot_29
+		}
+		
+		highlight_states = {
+			state = 894
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		visible = {
+			#has_completed_focus = GER_Wehrmacht
+			date > 1937.1.1
+		}
+
+		complete_effect = {
+			add_war_support = 0.01
+			custom_effect_tooltip = GER_mot_2_dec_tt
+			division_template = {
+				name = "2. Inf.-Div(mot.)"		
+				division_names_group = GER_MOT_01
+				priority = 2
+				template_counter = 174
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot = { x = 3 y = 2 }
+					artillery_brigade_mot_med = { x = 3 y = 3 }
+					anti_tank_brigade_mot =  { x = 3 y = 4 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_mot = { x = 0 y = 1 }
+					recon_ac = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			hidden_effect = { update_all_subunits = yes }
+			country_event = { id = germany.254 hours = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_motorise_13_infdiv = {
+		
+		icon = ger_13_pzdiv
+		
+		available = {
+			date > 1937.10.16
+			has_country_flag = mot_29
+		}
+		
+		highlight_states = {
+			state = 64
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		visible = {
+			date > 1937.1.1
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_mot_13_dec_tt
+			add_war_support = 0.01
+			division_template = {
+				name = "13. Inf.-Div(mot.)"		
+				division_names_group = GER_MOT_01
+				priority = 2
+				template_counter = 174
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot = { x = 3 y = 2 }
+					artillery_brigade_mot_med = { x = 3 y = 3 }
+					anti_tank_brigade_mot =  { x = 3 y = 4 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_mot = { x = 0 y = 1 }
+					recon_ac = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			hidden_effect = { update_all_subunits = yes }
+			country_event = { id = germany.255 hours = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_motorise_20_infdiv = {
+		
+		icon = ger_20_infdiv
+		
+		available = {
+			date > 1937.10.19
+			has_country_flag = mot_29
+		}
+		
+		highlight_states = {
+			state = 58
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		visible = {
+			date > 1937.1.1
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_mot_20_dec_tt
+			add_war_support = 0.01
+			division_template = {
+				name = "20. Inf.-Div(mot.)"		
+				division_names_group = GER_MOT_01
+				priority = 2
+				template_counter = 174
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot = { x = 3 y = 2 }
+					artillery_brigade_mot_med = { x = 3 y = 3 }
+					anti_tank_brigade_mot =  { x = 3 y = 4 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_mot = { x = 0 y = 1 }
+					recon_ac = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			hidden_effect = { update_all_subunits = yes }
+			country_event = { id = germany.256 hours = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_1_L_div = {
+		icon = ger_1_Ldiv
+		
+		available = {
+			tag = GER
+			date > 1938.11.10
+			51 = { is_owned_by_ROOT_or_subject = yes }
+			NOT = { has_country_flag = GER_1_LDIV }
+		}
+		
+		highlight_states = {
+			state = 51
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_demand_sudetenland
+		}
+		
+		visible = {
+			has_completed_focus = GER_anschluss
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GER_1_L_DIV_dec_tt
+			division_template = {
+				name = "L-Div 1"
+				division_names_group = GER_LTARM_01
+				priority = 2
+				template_counter = 238
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					panzer_ii = { x = 1 y = 0 }
+					panzer_ii = { x = 1 y = 1 }
+
+					mechanized = { x = 2 y = 0 }
+					
+					panzer_ii = { x = 3 y = 0 } # Panzerabteilung 65
+					
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					anti_tank_brigade_mot =  { x = 4 y = 2 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery_heavy = { x = 0 y = 2 }
+					recon_mot = { x = 0 y = 3 }
+					anti_tank_mot = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			
+			country_event = { id = germany.228 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_1_L_div_pz35 = {
+		icon = ger_1_Ldiv
+		
+		available = {
+			tag = GER
+			has_completed_focus = GER_end_of_czechoslovakia
+			51 = { is_owned_by_ROOT_or_subject = yes }
+			has_country_flag = GER_1_LDIV
+			NOT = { has_country_flag = GER_1_LDIV_Pz35 }
+			has_tech = tech_czech_ger_panzer_1
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		highlight_states = {
+			state = 51
+		}
+		
+		activation = {
+			has_completed_focus = GER_end_of_czechoslovakia
+		}
+		
+		visible = {
+			has_country_flag = GER_1_LDIV
+			has_completed_focus = GER_demand_sudetenland
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GER_1_L_DIV_dec_tt
+			division_template = {
+				name = "L-Div 1 Pz35t"
+				division_names_group = GER_LTARM_01
+				priority = 2
+				template_counter = 238
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					czech_panzer = { x = 1 y = 0 } 	# Czech Pz35(t) tanks
+					panzer_ii = { x = 1 y = 1 }
+					panzer_ii = { x = 1 y = 2 }
+
+					mechanized = { x = 2 y = 0 }
+					
+					czech_panzer = { x = 3 y = 0 } # Panzerabteilung 65
+					
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					anti_tank_brigade_mot =  { x = 4 y = 2 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery_heavy = { x = 0 y = 2 }
+					recon_mot = { x = 0 y = 3 }
+					anti_tank_mot = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			
+			country_event = { id = germany.234 hours = 6 }
+			hidden_effect = {
+				update_all_subunits = yes
+			}
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_2_L_div = {
+		icon = ger_2_Ldiv
+		
+		available = {
+			tag = GER
+			date > 1938.11.10
+			60 = { is_owned_by_ROOT_or_subject = yes }
+			not = { has_country_flag = GER_2_LDIV }
+		}
+		
+		highlight_states = {
+			state = 60
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_demand_sudetenland
+		}
+		
+		visible = {
+			has_completed_focus = GER_anschluss
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GER_2_L_DIV_dec_tt
+			division_template = {
+				name = "L-Div 2"
+				division_names_group = GER_LTARM_01
+				priority = 2
+				template_counter = 238  #7 Pz-Div
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					panzer_ii = { x = 2 y = 0 } 	#Panzerabteilung 66
+					
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					anti_tank_brigade_mot =  { x = 3 y = 2 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery_heavy = { x = 0 y = 2 }
+					recon_mot = { x = 0 y = 3 }
+					anti_tank_mot = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			
+			country_event = { id = germany.229 hours = 8 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_2_L_div_pz38 = {
+		icon = ger_2_Ldiv
+		
+		available = {
+			tag = GER
+			has_completed_focus = GER_end_of_czechoslovakia
+			51 = { is_owned_by_ROOT_or_subject = yes }
+			has_country_flag = GER_2_LDIV
+			NOT = { has_country_flag = GER_2_LDIV_Pz38 }
+			has_tech = tech_czech_ger_panzer_2
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_end_of_czechoslovakia
+		}
+		
+		visible = {
+			has_completed_focus = GER_demand_sudetenland
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GER_2_L_DIV_dec_tt
+			division_template = {
+				name = "L-Div 2 Pz38t"
+				division_names_group = GER_LTARM_01
+				priority = 2
+				template_counter = 238
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					czech_panzer = { x = 1 y = 0 } 	# Czech Pz38(t) tanks
+					panzer_ii = { x = 1 y = 1 }
+					panzer_ii = { x = 1 y = 2 }
+
+					mechanized = { x = 2 y = 0 }
+					
+					czech_panzer = { x = 3 y = 0 } # Panzerabteilung 65
+					
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					anti_tank_brigade_mot =  { x = 4 y = 2 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery_heavy = { x = 0 y = 2 }
+					recon_mot = { x = 0 y = 3 }
+					anti_tank_mot = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			
+			country_event = { id = germany.237 hours = 6 }
+			hidden_effect = {
+				update_all_subunits = yes
+				set_technology = {
+					tech_czech_ger_panzer_2 = 1
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_3_L_div = {
+		icon = ger_3_Ldiv
+		
+		available = {
+			tag = GER
+			date > 1938.11.10
+			60 = { is_owned_by_ROOT_or_subject = yes }
+			not = { has_country_flag = GER_3_LDIV }
+		}
+		
+		highlight_states = {
+			state = 68
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_demand_sudetenland
+		}
+		
+		visible = {
+			has_completed_focus = GER_anschluss
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GER_3_L_DIV_dec_tt
+			
+			division_template = {
+				name = "L-Div 3"
+				division_names_group = GER_LTARM_01
+				priority = 2
+				template_counter = 238
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+
+					panzer_ii = { x = 2 y = 0 } # Panzerabteilung 67
+					
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					anti_tank_brigade_mot =  { x = 3 y = 2 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery_heavy = { x = 0 y = 2 }
+					recon_mot = { x = 0 y = 3 }
+					anti_tank_mot = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			
+			country_event = { id = germany.232 hours = 12 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_3_L_div_pz35 = {
+		icon = ger_3_Ldiv
+		
+		available = {
+			tag = GER
+			has_completed_focus = GER_end_of_czechoslovakia
+			51 = { is_owned_by_ROOT_or_subject = yes }
+			has_country_flag = GER_3_LDIV
+			NOT = { has_country_flag = GER_3_LDIV_Pz35 }
+			has_tech = tech_czech_ger_panzer_1
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_end_of_czechoslovakia
+		}
+		
+		visible = {
+			has_completed_focus = GER_demand_sudetenland
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GER_2_L_DIV_dec_tt
+			division_template = {
+				name = "L-Div 3 Pz35t"
+				division_names_group = GER_LTARM_01
+				priority = 2
+				template_counter = 238
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+
+					czech_panzer = { x = 2 y = 0 } # Panzerabteilung 67
+					
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					anti_tank_brigade =  { x = 3 y = 2 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery_heavy = { x = 0 y = 2 }
+					recon_mot = { x = 0 y = 3 }
+					anti_tank_mot = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			
+			country_event = { id = germany.272 hours = 10 }
+			hidden_effect = {
+				update_all_subunits = yes
+				set_technology = {
+					tech_czech_ger_panzer_1 = 1
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_4_L_div = {
+		icon = ger_4_Ldiv
+		
+		available = {
+			NOT = { has_country_flag = GER_4_LDIV }
+			4 = { is_owned_by_ROOT_or_subject = yes }
+		}
+		
+		highlight_states = {
+			state = 4
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_anschluss
+		}
+		
+		visible = {
+			has_completed_focus = GER_anschluss
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GER_4_L_DIV_dec_tt
+			division_template = {
+				name = "L-Div 4"
+				priority = 2
+				template_counter = 238
+				division_names_group = GER_LTARM_01
+	
+				regiments = {
+					semi_motorized = { x = 0 y = 0 }
+					semi_motorized = { x = 0 y = 1 }
+					
+					semi_motorized = { x = 1 y = 0 }
+					semi_motorized = { x = 1 y = 1 }
+					
+					panzer_ii = { x = 2 y = 0 } # Pz-Btl 33
+					
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot = { x = 3 y = 2 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					recon_cav = { x = 0 y = 2 }
+					anti_tank_mot = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			country_event = { id = germany.281 hours = 8 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_44_inf_div = {
+		icon = ger_44_infdiv
+		
+		available = {
+			has_country_flag = welle_one
+			has_completed_focus = GER_anschluss
+			NOT = { has_country_flag = GER_44_INFDIV }
+			4 = { is_owned_by_ROOT_or_subject = yes }
+		}
+		
+		highlight_states = {
+			state = 4
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_anschluss
+		}
+		
+		visible = {
+			has_completed_focus = GER_anschluss
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GERinfdiv_44_dec_tt
+			division_template = {
+				name = "44. Inf.-Div."
+				division_names_group = GER_Inf_01
+				template_counter = 114
+				
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+
+					artillery_brigade = { x = 3 y = 0 }
+					artillery_brigade = { x = 3 y = 1 }
+					anti_tank_brigade =  { x = 3 y = 2 }
+				}
+				
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					recon_cav = { x = 0 y = 2 }
+					artillery_heavy = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			country_event = { id = germany.221 days = 5 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_45_inf_div = {
+		icon = ger_45_infdiv
+		
+		available = {
+			has_country_flag = welle_one
+			NOT = { has_country_flag = GER_45_INFDIV }
+			has_completed_focus = GER_anschluss
+			152 = { is_owned_by_ROOT_or_subject = yes }
+		}
+		
+		highlight_states = {
+			state = 4
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_anschluss
+		}
+		
+		visible = {
+			has_completed_focus = GER_anschluss
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GERinfdiv_45_dec_tt
+			division_template = {
+				name = "45. Inf.-Div."
+				division_names_group = GER_Inf_01
+				template_counter = 114
+				
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+
+					artillery_brigade = { x = 3 y = 0 }
+					artillery_brigade = { x = 3 y = 1 }
+					anti_tank_brigade =  { x = 3 y = 2 }
+				}
+				
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					recon_cav = { x = 0 y = 2 }
+					artillery_heavy = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			country_event = { id = germany.222 days = 10 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_forming_4_pzdiv = {
+		icon = ger_4_pzdiv
+		
+		available = {
+			is_ai = no
+			date > 1938.11.1
+			NOT = { has_country_flag = GER_4_PDiv }
+			NOT = { has_country_flag = GER_4_PDiv_no }
+			has_tech = tech_panzer_ii_equipment_1
+			
+			OR = {
+				has_equipment = { panzer_ii_equipment_1 > 29 }
+				has_equipment = { panzer_ii_equipment_2 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_4_Pz_Div_dec_tt
+			division_template = {
+				name = "Pz-Div 4"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2011
+		
+				regiments = {
+					#Panzer-Regiment 35
+					panzer_i = { x = 0 y = 0 }
+					panzer_ii = { x = 0 y = 1 }
+					panzer_ii = { x = 0 y = 2 }
+					panzer_ii = { x = 0 y = 3 }
+					
+					#Panzer-Regiment 36
+					panzer_i = { x = 1 y = 0 }
+					panzer_ii = { x = 1 y = 1 }
+					panzer_ii = { x = 1 y = 2 }
+					panzer_ii = { x = 1 y = 3 }
+					
+					#Schützen-Regiment 33
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					#Kradschützen-Btl 34
+					mechanized = { x = 2 y = 2 } 
+					
+					#Artillerie-Regiment 1
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot = { x = 3 y = 2 }
+					anti_tank_brigade_mot =  { x = 3 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_ac = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					logistics_company = { x = 1 y = 0 }
+					field_hospital = { x = 1 y = 1 }
+				}
+			}
+			country_event = { id = germany.239 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_forming_5_pzdiv = {
+		icon = ger_5_pzdiv
+		
+		available = {
+			date > 1938.11.24
+			has_tech = tech_panzer_ii_equipment_1
+			OR = {
+				has_equipment = { panzer_ii_equipment_1 > 29 }
+				has_equipment = { panzer_ii_equipment_2 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_5_Pz_Div_dec_tt
+			division_template = {
+				name = "Pz-Div 5"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2013
+		
+				regiments = {
+					#Panzer-Regiment 15
+					panzer_i = { x = 0 y = 0 }
+					panzer_ii = { x = 0 y = 1 }
+					panzer_ii = { x = 0 y = 2 }
+					panzer_ii = { x = 0 y = 3 }
+					
+					#Panzer-Regiment 31
+					panzer_i = { x = 1 y = 0 }
+					panzer_ii = { x = 1 y = 1 }
+					panzer_ii = { x = 1 y = 2 }
+					panzer_ii = { x = 1 y = 3 }
+					
+					#Schützen-Regiment 13
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 } 
+					
+					#Artillerie-Regiment 116
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot = { x = 3 y = 2 }
+					anti_tank_brigade =  { x = 3 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_ac = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					logistics_company = { x = 1 y = 0 }
+					field_hospital = { x = 1 y = 1 }
+				}
+			}
+			country_event = { id = germany.240 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_forming_1_gebirgs_division = {
+		icon = ger_1_gebdiv
+		
+		available = {
+			date > 1938.4.1
+			has_country_flag = GER_gebirgs
+		}
+		visible = {
+			date > 1937.8.1
+		}
+		cost = 5
+		
+		highlight_states = {
+			state = 52
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			division_template = {
+				name = "Gebirgsjäger-Division 1"
+				division_names_group = GER_Mnt_01
+				priority = 2
+				template_counter = 2035	# Mountaineer Division
+				
+				regiments = {
+					mountaineers = { x = 0 y = 0 }
+					mountaineers = { x = 0 y = 1 }
+					mountaineers = { x = 0 y = 2 }
+					
+					mountaineers = { x = 1 y = 0 }
+					mountaineers = { x = 1 y = 1 }
+					mountaineers = { x = 1 y = 2 }
+					
+					mountaineers = { x = 2 y = 0 }
+					mountaineers = { x = 2 y = 1 }
+					mountaineers = { x = 2 y = 2 }
+					
+					mountain_artillery_brigade_mot = { x = 3 y = 0 }
+					mountain_artillery_brigade_mot = { x = 3 y = 1 }
+					mountain_artillery_brigade_mot = { x = 3 y = 2 }
+					artillery_brigade_mot_med = { x = 3 y = 3 }
+					anti_tank_brigade_mot =  { x = 3 y = 4 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_cav = { x = 0 y = 1 }
+					anti_tank = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					anti_air = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+					mount_support = { x = 1 y = 3 }
+				}
+			}
+			division_template = {
+				name = "Gebirgsjäger-Division"
+				division_names_group = GER_Mnt_01
+				priority = 2
+				template_counter = 3008	# Mountaineer Division
+				
+				regiments = {
+					mountaineers = { x = 0 y = 0 }
+					mountaineers = { x = 0 y = 1 }
+					mountaineers = { x = 0 y = 2 }
+					
+					mountaineers = { x = 1 y = 0 }
+					mountaineers = { x = 1 y = 1 }
+					mountaineers = { x = 1 y = 2 }
+					
+					mountaineers = { x = 2 y = 0 }
+					mountaineers = { x = 2 y = 1 }
+					mountaineers = { x = 2 y = 2 }
+					
+					mountain_artillery_brigade_mot = { x = 3 y = 0 }
+					mountain_artillery_brigade_mot = { x = 3 y = 1 }
+					mountain_artillery_brigade_mot = { x = 3 y = 2 }
+					artillery_brigade_mot_med = { x = 3 y = 3 }
+					anti_tank_brigade_mot =  { x = 3 y = 4 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_cav = { x = 0 y = 1 }
+					anti_tank = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					anti_air = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+					mount_support = { x = 1 y = 3 }
+				}
+			}
+			country_event = { id = germany.319 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	#1939
+	GER_upgrade_123_pzdiv = {
+		icon = ger_123_pzdiv
+		
+		available = {
+			date > 1939.1.1
+			has_tech = tech_combat_engineers
+			has_tech = tech_panzer_iii_equipment_1
+			has_tech = tech_panzer_iv_equipment_1
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+			OR = {
+				has_equipment = { panzer_iii_equipment_1 > 14 }
+				has_equipment = { panzer_iii_equipment_2 > 14 }
+			}
+			OR = {
+				has_equipment = { panzer_iv_equipment_1 > 14 }
+				has_equipment = { panzer_iv_equipment_2 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			date > 1938.1.1
+			OR = {
+				has_tech = tech_panzer_iii_equipment_1
+				has_tech = tech_panzer_iv_equipment_1
+			}
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			division_template = {
+				name = "Pz-Div 1"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2006
+		
+				regiments = {
+					#Panzer-Regiment 1
+					panzer_ii = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					#Panzer-Regiment 2
+					panzer_ii = { x = 1 y = 0 }
+					panzer_iii = { x = 1 y = 1 }
+					panzer_iv = { x = 1 y = 2 }
+					
+					#Schützen-Regiment 1
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					
+					#Kradschützen-Btl 1
+					mechanized = { x = 3 y = 0 } 
+					
+					#Artillerie-Regiment 1
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					artillery_brigade_mot = { x = 4 y = 2 }
+					anti_tank_brigade_mot =  { x = 4 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_ac = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					combat_engineer = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+					anti_air = { x = 1 y = 3 }
+				}
+			}
+			division_template = {
+				name = "Pz-Div 2"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2008
+				
+				regiments = {
+					#Panzer-Regiment 3
+					panzer_ii = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					#Panzer-Regiment 4
+					panzer_ii = { x = 1 y = 0 }
+					panzer_iii = { x = 1 y = 1 }
+					panzer_iv = { x = 1 y = 2 }
+					
+					#Schützen-Regiment 2
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					
+					#Kradschützen-Btl 2
+					mechanized = { x = 3 y = 0 }
+
+					#Artillerie-Regiment 74
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					artillery_brigade_mot = { x = 4 y = 2 }
+					anti_tank_brigade_mot =  { x = 4 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_ac = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					combat_engineer = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					logistics_company = { x = 1 y = 0 }
+					field_hospital = { x = 1 y = 1 }
+					anti_air = { x = 1 y = 2 }
+				}
+			}
+			division_template = {
+				name = "Pz-Div 3"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2010
+				
+				regiments = {
+					#Panzer-Regiment 5
+					panzer_ii = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					#Panzer-Regiment 6
+					panzer_ii = { x = 1 y = 0 }
+					panzer_iii = { x = 1 y = 1 }
+					panzer_iv = { x = 1 y = 2 }
+					
+					#Schützen-Regiment 
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+
+					#Kradschützen-Btl 3
+					mechanized = { x = 3 y = 0 }
+
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					artillery_brigade_mot = { x = 4 y = 2 }
+					anti_tank_brigade_mot =  { x = 4 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_ac = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					combat_engineer = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					logistics_company = { x = 1 y = 0 }
+					field_hospital = { x = 1 y = 1 }
+					anti_air = { x = 1 y = 2 }
+				}
+			}
+			country_event = { id = germany.601 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_forming_6_pzdiv = {
+		icon = ger_6_pzdiv
+		
+		available = {
+			OR = {
+				has_country_flag = GER_1_LDIV
+				has_country_flag = GER_1_LDIV_Pz35
+			}
+			NOT = { has_country_flag = GER_6_PDiv }
+			date > 1939.10.18
+			POL = { has_capitulated = yes }
+			843 = { is_controlled_by_ROOT_or_ally = yes } #Prague
+			has_tech = tech_panzer_ii_equipment_1
+			has_tech = tech_panzer_iv_equipment_1
+			
+			OR = {
+				has_equipment = { panzer_ii_equipment_1 > 14 }
+				has_equipment = { panzer_iv_equipment_2 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_end_of_czechoslovakia
+		}
+		
+		visible = {
+			has_war_with = POL
+		}
+		
+		highlight_states = {
+			state = 51
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			division_template = {
+				name = "Pz-Div 6"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2016
+		
+				regiments = {
+					# Panzer-Regiment
+					czech_panzer = { x = 0 y = 0 } 	# Czech Pz35(t) tanks
+					panzer_ii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					# Panzer-abteilung 65
+					czech_panzer = { x = 1 y = 0 } 	# Czech Pz35(t) tanks 
+					
+					# Schützen-Regiment 4
+					motorized = { x = 2 y = 0 }	
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					# Kradschützen-Bataillon 6
+					mechanized = { x = 2 y = 3 } 
+
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					anti_tank_brigade_mot =  { x = 3 y = 2 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_ac = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			country_event = { id = germany.290 hours = 4 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_forming_7_pzdiv = {
+		icon = ger_7_pzdiv
+		
+		available = {
+			OR = {
+				has_country_flag = GER_2_LDIV
+				has_country_flag = GER_2_LDIV_pz38
+			}
+			NOT = { has_country_flag = GER_7_PDiv }
+			date > 1939.10.18
+			POL = { has_capitulated = yes }
+			843 = { is_controlled_by_ROOT_or_ally = yes }#Prague
+			has_tech = tech_panzer_ii_equipment_1
+			has_tech = tech_panzer_iv_equipment_1
+			
+			OR = {
+				has_equipment = { panzer_ii_equipment_1 > 14 }
+				has_equipment = { panzer_iv_equipment_2 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_end_of_czechoslovakia
+		}
+		
+		visible = {
+			has_war_with = POL
+		}
+		
+		highlight_states = {
+			state = 
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_7_Pz_Div_dec_tt
+			division_template = {
+				name = "Pz-Div 7"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2018
+		
+				regiments = {
+					#Panzer-Regiment 25
+					czech_panzer = { x = 0 y = 0 } # Czech Pz38(t) tanks
+					panzer_ii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					# Panzer-Abteilung 66
+					czech_panzer = { x = 1 y = 0 } 	# Czech Pz38(t) tanks 
+					
+					#Schützen-Regiment 6
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					
+					#Schützen-Regiment 7
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					# Kradschützen-Btl 7
+					mechanized = { x = 3 y = 2 }  
+
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					artillery_brigade_mot = { x = 4 y = 2 }
+					anti_tank_brigade_mot =  { x = 4 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					anti_tank = { x = 0 y = 3 }
+					artillery_heavy = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			country_event = { id = germany.291 days = 5 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_Wach_rgt = {
+		icon = grossdeutschland
+		
+		available = {
+			date > 1937.6.1
+			not = { has_country_flag = wachrgt_berlin }
+			has_country_flag = Units_enabled
+			owns_state = 841
+		}
+		
+		cost = 10
+		
+		highlight_states = {
+			state = 841
+		}
+		
+		fire_only_once = yes
+		
+		activation = {
+			
+		}
+		
+		visible = {
+			date > 1937.1.1
+		}
+		
+		complete_effect = {
+			division_template = {
+				name = "Wach-Regt. Berlin"
+				priority = 2
+				template_counter = 2000
+				is_locked = yes
+				division_names_group = GER_GD_01
+
+				regiments = {			
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					logistics_company = { x = 0 y = 1 }
+				}
+			}
+			country_event = { id = germany.231 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_gd_regt = {
+		
+		icon = grossdeutschland
+		
+		available = {
+			date > 1939.5.1
+			has_country_flag = wachrgt_berlin
+			not = { has_country_flag = gd_regt_39 }
+			owns_state = 841
+		}
+		
+		highlight_states = {
+			state = 841
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_Wehrmacht
+		}
+		
+		visible = {
+			has_completed_focus = GER_Wehrmacht
+			date > 1939.1.1
+		}
+	
+		complete_effect = {
+			division_template = {
+				name = "Inf.-Regt.(GD)"	
+				priority = 2
+				template_counter = 2000
+				is_locked = yes
+				division_names_group = GER_GD_01
+				
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					
+					artillery_brigade = { x = 1 y = 0 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					logistics_company = { x = 0 y = 1 }
+					maintenance_company = { x = 0 y = 2 }
+				}
+			}
+			
+			country_event = { id = germany.400 hours = 6 }
+			
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_60_div = {
+		icon = ger_60_infdiv
+		
+		available = {
+			date > 1939.7.1
+			944 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_Wehrmacht
+		}
+		
+		visible = {
+			has_completed_focus = GER_Wehrmacht
+			date > 1939.5.1
+		}
+	
+		complete_effect = {
+			division_template = {
+				name = "Gruppe Eberhardt"
+				division_names_group = GER_Inf_60
+				priority = 1
+				template_counter = 65
+				
+				regiments = {
+					garrison = { x = 0 y = 0 }
+					garrison = { x = 0 y = 1 }
+					garrison = { x = 0 y = 2 }
+					
+					garrison = { x = 1 y = 0 }
+					garrison = { x = 1 y = 1 }
+					garrison = { x = 1 y = 2 }
+
+					artillery_brigade = { x = 2 y = 0 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+				}
+			}
+			
+			country_event = { id = germany.460 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_gd_regt_mot = {
+		icon = grossdeutschland
+		
+		available = {
+			date > 1939.10.1
+			has_country_flag = gd_regt_39
+			not = { has_country_flag = gd_regt_mot_39 }
+			841 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		
+		highlight_states = {
+			state = 841
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_Wehrmacht
+		}
+		
+		visible = {
+			has_completed_focus = GER_Wehrmacht
+			date > 1939.6.1
+		}
+	
+		complete_effect = {
+			division_template = {
+				name = "Inf.-Regt.-mot (GD)"	
+				division_names_group = GER_GD_01
+				is_locked = yes
+				template_counter = 2001
+				priority = 2
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					motorized = { x = 0 y = 3 }
+					
+					anti_tank_brigade_mot =  { x = 1 y = 0 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					logistics_company = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+				}
+			}
+			
+			country_event = { id = germany.401 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_60_inf_div = {
+		icon = ger_60_infdiv
+		
+		available = {
+			date > 1939.10.15
+			944 = { is_controlled_by_ROOT_or_ally = yes } #Danzig
+			has_country_flag = GERinfdiv_Grp_EH
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_Wehrmacht
+			has_country_flag = GERinfdiv_Grp_EH
+		}
+		
+		visible = {
+			has_completed_focus = GER_Wehrmacht
+			date > 1939.7.1
+			has_country_flag = GERinfdiv_Grp_EH
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GERinfdiv_60_dec_tt
+			division_template = {
+				name = "60. Inf.-Div."
+				division_names_group = GER_Inf_60
+				priority = 2
+				template_counter = 174
+				
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+
+					artillery_brigade = { x = 3 y = 0 }
+					artillery_brigade = { x = 3 y = 1 }
+					artillery_brigade = { x = 3 y = 2 }
+					artillery_brigade_med = { x = 3 y = 3 }
+					anti_tank_brigade =  { x = 3 y = 4 }
+				}
+				
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery_heavy = { x = 0 y = 2 }
+					recon_mot = { x = 0 y = 3 }
+					anti_tank = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			
+			country_event = { id = germany.461 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	#Before France
+	GER_forming_8_pzdiv = {
+		icon = ger_8_pzdiv_40
+		
+		available = {
+			date > 1939.10.16
+			OR = {
+				has_country_flag = GER_3_LDIV
+				has_country_flag = GER_3_LDIV_Pz35
+			}
+			POL = { has_capitulated = yes }
+			10 = { is_controlled_by_ROOT_or_ally = yes }	#Warsaw outer area
+			has_tech = tech_panzer_iv_equipment_1
+			
+			OR = {
+				has_equipment = { panzer_iv_equipment_1 > 14 }
+				has_equipment = { panzer_iv_equipment_2 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_end_of_czechoslovakia
+		}
+		
+		visible = {
+			has_war_with = POL
+		}
+		
+		highlight_states = {
+			state = 10
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_8_Pz_Div_dec_tt
+			division_template = {
+				name = "Pz-Div 8"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2020
+				
+				regiments = {
+					czech_panzer = { x = 0 y = 0 }
+					panzer_ii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+
+					czech_panzer = { x = 1 y = 0 } 	# Czech Pz38(t) tanks ## Panzer-abteilung 66
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					# Kradschützen-Bataillon 8
+					mechanized = { x = 2 y = 3 }  
+
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					anti_tank_brigade_mot =  { x = 3 y = 2 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					anti_tank_mot = { x = 0 y = 3 }
+					artillery_heavy = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			country_event = { id = germany.292 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_upgrade_4_pzdiv = {
+		icon = ger_4_pzdiv
+		
+		available = {
+			has_country_flag = GER_4_PDiv
+			date > 1939.11.1
+			POL = { has_capitulated = yes }
+			862 = { is_controlled_by_ROOT_or_ally = yes }
+			944 = { is_controlled_by_ROOT_or_ally = yes }
+			
+			has_tech = tech_combat_engineers
+			has_tech = tech_panzer_iii_equipment_1
+			has_tech = tech_panzer_iv_equipment_1
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+			
+			OR = {
+				has_equipment = { panzer_iii_equipment_1 > 14 }
+				has_equipment = { panzer_iii_equipment_2 > 14 }
+			}
+			
+			OR = {
+				has_equipment = { panzer_iv_equipment_1 > 14 }
+				has_equipment = { panzer_iv_equipment_2 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			has_war_with = POL
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_4_PZ_DIV_1939_dec_tt
+			division_template = {
+				name = "4. Pz-Div"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2012
+		
+				regiments = {
+					#Panzer-Regiment 35
+					panzer_ii = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					#Panzer-Regiment 36
+					panzer_ii = { x = 1 y = 0 }
+					panzer_iii = { x = 1 y = 1 }
+					panzer_iv = { x = 1 y = 2 }
+					
+					#Schützen-Regiment 12
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					
+					#Schützen-Regiment 33
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					#Kradschützen-Btl 34
+					mechanized = { x = 3 y = 2 } 
+					
+					#Artillerie-Regiment 1
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					artillery_brigade_mot = { x = 4 y = 2 }
+					anti_tank_brigade_mot =  { x = 4 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_ac = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					combat_engineer = { x = 0 y = 3 }
+					anti_air = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+					signal_company = { x = 1 y = 3 }
+				}
+			}
+			country_event = { id = germany.604 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_forming_10_pzdiv = {
+		icon = ger_10_pzdiv
+		
+		available = {
+			date > 1939.4.1
+			
+			has_tech = tech_panzer_iii_equipment_1
+			has_tech = tech_panzer_iv_equipment_1
+			
+			OR = {
+				has_equipment = { panzer_iii_equipment_1 > 14 }
+				has_equipment = { panzer_iii_equipment_2 > 14 }
+			}
+			OR = {
+				has_equipment = { panzer_iv_equipment_1 > 14 }
+				has_equipment = { panzer_iv_equipment_2 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			POL = { has_capitulated = yes }
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_10_PDiv_dec_tt
+			division_template = {
+				name = "Pz-Div 10"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2025
+				
+				regiments = {
+					#Panzer-Regiment 8
+					panzer_ii = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					#Schützen-Regiment 86
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					
+					artillery_brigade_mot = { x = 2 y = 0 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_mot = { x = 0 y = 1 }
+					military_police = { x = 0 y = 2 }
+				}
+			}
+			country_event = { id = germany.242 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_upgrade_5_pzdiv = {
+		icon = ger_5_pzdiv
+		
+		available = {
+			date > 1939.05.10
+			has_country_flag = GER_5_PDiv
+			POL = { has_capitulated = yes }
+			862 = { is_controlled_by_ROOT_or_ally = yes }
+			944 = { is_controlled_by_ROOT_or_ally = yes }
+			
+			has_tech = tech_combat_engineers
+			has_tech = tech_czech_ger_panzer_2 #Panzer 38(t)
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			has_war_with = POL
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_5_Pz_Div_1939_dec_tt
+			division_template = {
+				name = "5 Pz-Div"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2012
+				
+				regiments = {
+					#Panzer-Regiment 15
+					panzer_ii = { x = 0 y = 0 }
+					panzer_ii = { x = 0 y = 1 }
+					czech_panzer = { x = 0 y = 2 }
+					
+					#Panzer-Regiment 31
+					panzer_ii = { x = 1 y = 0 }
+					panzer_ii = { x = 1 y = 1 }
+					czech_panzer = { x = 1 y = 2 }
+					
+					#Schützen-Regiment 13
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					
+					#Schützen-Regiment 14
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+
+					#Artillerie-Regiment 116
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					artillery_brigade_mot = { x = 4 y = 2 }
+					#Panzerjäger-Abteilung 53
+					anti_tank_brigade_mot =  { x = 4 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_ac = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					
+					logistics_company = { x = 1 y = 0 }
+					field_hospital = { x = 1 y = 1 }
+				}
+			}
+			country_event = { id = germany.605 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	###1940
+	GER_upgrade_8_pzdiv = {
+		icon = ger_8_pzdiv_40
+		
+		available = {
+			date > 1940.1.8
+			862	 = { is_controlled_by_ROOT_or_ally = yes }#Warsaw
+			10	 = { is_controlled_by_ROOT_or_ally = yes }#Warsaw outer area
+			has_country_flag = GER_8_PDiv
+			has_tech = tech_combat_engineers
+			has_tech = tech_panzer_iii_equipment_2
+			has_tech = tech_panzer_iv_equipment_2
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+			
+			OR = {
+				has_equipment = { panzer_iii_equipment_2 > 14 }
+				has_equipment = { panzer_iv_equipment_2 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			POL = { has_capitulated = yes }
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_8_Pz_Div_dec_tt
+			division_template = {
+				name = "8 Pz-Div"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2021
+				
+				regiments = {
+					#Panzer-regiment 10 I. Abteilung
+					czech_panzer = { x = 0 y = 0 } # Czech Pz38(t) tanks	
+					panzer_ii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					# Panzer-abteilung 67
+					czech_panzer = { x = 1 y = 0 } 	# Czech Pz38(t) tanks 
+					panzer_iv = { x = 1 y = 1 }
+					
+					#Schützen-Regiment 8
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					# Kradschützen-Bataillon 8
+					mechanized = { x = 2 y = 3 }
+					
+					#Artillerie-Regiment 80
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot_med =  { x = 3 y = 2 }
+					anti_tank_brigade_mot =  { x = 3 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					combat_engineer = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					anti_tank = { x = 0 y = 3 }
+					artillery_heavy = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+					signal_company = { x = 1 y = 3 }
+					anti_air = { x = 1 y = 4 }
+				}
+			}
+			country_event = { id = germany.608 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_forming_9_pzdiv = {
+		icon = ger_9_pzdiv
+		
+		available = {
+			date > 1940.1.8
+			has_country_flag = GER_4_LDIV
+			has_tech = tech_combat_engineers
+			has_tech = subtech_light_assault_panzer_equipment_1
+			has_tech = tech_panzer_iii_equipment_2
+			has_tech = tech_panzer_iv_equipment_2
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+			
+			OR = {
+				has_equipment = { panzer_iii_equipment_1 > 14 }
+				has_equipment = { panzer_iii_equipment_2 > 14 }
+			}
+			OR = {
+				has_equipment = { panzer_iv_equipment_1 > 14 }
+				has_equipment = { panzer_iv_equipment_2 > 14 }
+			}
+			
+			has_equipment = { light_assault_panzer_equipment > 19 }
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			POL = { has_capitulated = yes }
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_9_Pz_Div_dec_tt
+			division_template = {
+				name = "9 Pz-Div"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2023
+				
+				regiments = {
+					#Panzer-Regiment 33
+					czech_panzer = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					#Schützen-Regiment 10
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					#Schützen-Regiment 11
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					
+					artillery_brigade_mot = { x = 3 y = 0 }	
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot_med = { x = 3 y = 2 }
+					anti_tank_brigade_mot =  { x = 3 y = 3 }
+					
+					light_assault_panzer = { x = 4 y = 0 }	#till febr 1942
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					combat_engineer = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					artillery_heavy = { x = 0 y = 3 }
+					anti_air = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+					signal_company = { x = 1 y = 3 }
+				}
+			}
+			country_event = { id = germany.241 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	
+	GER_upgrade_10_pzdiv = {
+		icon = ger_10_pzdiv_1940
+		
+		available = {
+			date > 1940.1.10
+			
+			has_country_flag = GER_10_Pz_Div
+			has_tech = tech_combat_engineers
+			has_tech = subtech_light_assault_panzer_equipment_1
+			has_tech = tech_panzer_iii_equipment_2
+			has_tech = tech_panzer_iv_equipment_2
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+			
+			OR = {
+				has_equipment = { panzer_iii_equipment_1 > 24 }
+				has_equipment = { panzer_iii_equipment_2 > 14 }
+			}
+			OR = {
+				has_equipment = { panzer_iv_equipment_1 > 24 }
+				has_equipment = { panzer_iv_equipment_2 > 14 }
+			}
+			
+			has_equipment = { light_assault_panzer_equipment > 19 }
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			POL = { has_capitulated = yes }
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_10_Pz_Div_dec_tt
+			division_template = {
+				name = "10 Pz-Div"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2026
+				
+				regiments = {
+					#Panzer-Regiment 8
+					panzer_ii = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					#Panzer-Regiment 7
+					panzer_ii = { x = 1 y = 0 }
+					panzer_iii = { x = 1 y = 1 }
+					panzer_iv = { x = 1 y = 2 }
+					
+					#Schützen-Regiment 86
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					
+					#Schützen-Regiment 86
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					
+					artillery_brigade_mot = { x = 3 y = 0 }	
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot_med = { x = 3 y = 2 }
+					anti_tank_brigade_mot =  { x = 3 y = 3 }
+					
+					light_assault_panzer = { x = 4 y = 0 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					combat_engineer = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					artillery_heavy = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					
+					logistics_company = { x = 1 y = 0 }
+					field_hospital = { x = 1 y = 1 }
+					signal_company = { x = 1 y = 2 }
+					anti_air = { x = 1 y = 3 }
+					military_police = { x = 1 y = 4 }
+				}
+			}
+			country_event = { id = germany.610 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_motorise_3_infdiv = {
+		
+		icon = ger_3_inf_div
+		
+		available = {
+			date > 1940.10.27 # 1940-10-27
+			has_equipment = { anti_tank_equipment > 24 }
+			68 = { is_controlled_by_ROOT_or_ally = yes }#Frankfurt a/d Oder
+			has_country_flag = mot_29
+		}
+		
+		highlight_states = {
+			state = 68
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		visible = {
+			date > 1940.1.1
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_mot_3_dec_tt
+			division_template = {
+				name = "3. Inf.-Div(mot.)"		
+				division_names_group = GER_MOT_01
+				priority = 2
+				template_counter = 174
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot = { x = 3 y = 2 }
+					artillery_brigade_mot_med = { x = 3 y = 3 }
+					anti_tank_brigade_mot =  { x = 3 y = 4 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_mot = { x = 0 y = 1 }
+					recon_ac = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			hidden_effect = { update_all_subunits = yes }
+			country_event = { id = germany.261 hours = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_upgrade_6_pzdiv = {
+		icon = ger_6_pzdiv
+		
+		available = {
+			date > 1940.7.1
+			has_country_flag = GER_6_PDiv
+			FRA = { has_capitulated = yes }
+			844	 = { is_controlled_by_ROOT_or_ally = yes }#Paris
+			
+			has_tech = tech_combat_engineers
+			has_tech = tech_panzer_iii_equipment_2
+			has_tech = tech_panzer_iv_equipment_2
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+			
+			has_equipment = { panzer_iii_equipment_2 > 24 }
+			has_equipment = { panzer_iv_equipment_2 > 24 }
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			POL = { has_capitulated = yes }
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			
+			division_template = {
+				name = "6 Pz-Div"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2017
+				
+				regiments = {
+					# Panzer-Regiment 11	Czech Pz35(t) tanks
+					czech_panzer = { x = 0 y = 0 } 	
+					panzer_ii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					# Panzer-abteilung 65 # Czech Pz35(t) tanks 
+					czech_panzer = { x = 1 y = 0 }	
+					panzer_ii = { x = 1 y = 1 }
+					panzer_iv = { x = 1 y = 2 }
+					
+					# Schützen-Regiment 4
+					motorized = { x = 2 y = 0 }	
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					# Kradschützen-Bataillon 6
+					mechanized = { x = 2 y = 3 } 
+
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot_med = { x = 3 y = 2 }
+					anti_tank_brigade_mot =  { x = 3 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					combat_engineer = { x = 0 y = 1 }
+					artillery_heavy = { x = 0 y = 2 }
+					recon_ac = { x = 0 y = 3 }
+					recon_mot = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+					signal_company = { x = 1 y = 3 }
+					anti_air = { x = 1 y = 3 }
+				}
+			}
+			country_event = { id = germany.606 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+			
+			division_template = {
+				name = "Panzer-Division II '1940'"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 258
+				
+				regiments = {
+					mechanized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+
+					panzer_iii = { x = 2 y = 0 }
+					panzer_iii = { x = 2 y = 1 }
+					panzer_iv = { x = 2 y = 2 }
+					
+					panzer_iii = { x = 3 y = 0 }
+					panzer_iii = { x = 3 y = 1 }
+					panzer_iv = { x = 3 y = 2 }
+					
+					artillery_brigade_mot = { x = 4 y = 0 }	
+					artillery_brigade_mot = { x = 4 y = 1 }
+					artillery_brigade_mot = { x = 4 y = 2 }
+					anti_tank_brigade_mot =  { x = 4 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery_heavy = { x = 0 y = 2 }
+					recon_ac = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					logistics_company = { x = 1 y = 0 }
+				}
+			}
+		}
+	}
+	GER_60_inf_div_mot = {
+		icon = ger_60_infdiv
+		
+		available = {
+			date > 1940.8.15
+			owns_state = 839
+			has_country_flag = GERinfdiv_60
+		}
+		
+		cost = 15
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_Wehrmacht
+		}
+		
+		visible = {
+			has_completed_focus = GER_Wehrmacht
+			date > 1940.6.1
+		}
+	
+		complete_effect = {
+			custom_effect_tooltip = GERinfdiv_60_mot_dec_tt
+			division_template = {
+				name = "60. Inf.-Div.(mot.)"
+				division_names_group = GER_Inf_60
+				priority = 2
+				template_counter = 203
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					
+					mechanized = { x = 3 y = 2 }
+					
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					artillery_brigade_mot = { x = 4 y = 2 }
+					artillery_brigade_mot_med = { x = 4 y = 3 }
+				}
+				
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery_heavy = { x = 0 y = 2 }
+					recon_mot = { x = 0 y = 3 }
+					anti_tank_mot = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+					signal_company = { x = 1 y = 3 }
+				}
+			}
+			
+			country_event = { id = germany.462 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_upgrade_7_pzdiv = {
+		icon = ger_7_pzdiv
+		
+		available = {
+			date > 1940.8.1
+			has_country_flag = GER_7_PDiv
+			FRA = { has_capitulated = yes }
+			844 = { is_controlled_by_ROOT_or_ally = yes } #Paris
+			
+			has_tech = tech_combat_engineers
+			has_tech = tech_panzer_iii_equipment_2
+			has_tech = tech_panzer_iv_equipment_2
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+			
+			OR = {
+				has_equipment = { panzer_iii_equipment_2 > 24 }
+				has_equipment = { panzer_iii_equipment_3 > 14 }
+			}
+			OR = {
+				has_equipment = { panzer_iv_equipment_2 > 24 }
+				has_equipment = { panzer_iv_equipment_3 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			BEL = { has_capitulated = yes }
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_7_Pz_Div_1940_dec_tt
+			division_template = {
+				name = "7 Pz-Div"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2019
+				
+				regiments = {
+					#Panzer-Regiment 25
+					czech_panzer = { x = 0 y = 0 } 	# Czech Pz35(t) tanks  I. Abteilung
+					panzer_ii = { x = 0 y = 1 }
+					panzer_iii = { x = 0 y = 2 }
+					panzer_iv = { x = 0 y = 3 }
+					
+					# Panzer-abteilung 66
+					czech_panzer = { x = 1 y = 0 } 	# Czech Pz38(t) tanks 
+					panzer_ii = { x = 1 y = 1 }
+					panzer_iv = { x = 1 y = 2 }
+					
+					#Schützen-Regiment 6
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					
+					#Schützen-Regiment 7
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					# Kradschützen-Btl 7
+					mechanized = { x = 3 y = 2 }  
+
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					artillery_brigade_mot_med = { x = 4 y = 2 }
+					anti_tank_brigade_mot =  { x = 4 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					combat_engineer = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					anti_tank = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					logistics_company = { x = 1 y = 0 }
+					field_hospital = { x = 1 y = 1 }
+					signal_company = { x = 1 y = 2 }
+					anti_air = { x = 1 y = 3 }
+				}
+			}
+			country_event = { id = germany.607 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_upgrade_9_pzdiv = {
+		icon = ger_9_pzdiv
+		
+		available = {
+			date > 1940.8.8
+			FRA = { has_capitulated = yes }
+			844 = { is_controlled_by_ROOT_or_ally = yes } #Paris
+			has_country_flag = GER_9_PDiv_1940
+			
+			has_tech = tech_combat_engineers
+			has_tech = subtech_light_assault_panzer_equipment_1
+			has_tech = tech_panzer_iii_equipment_2
+			has_tech = tech_panzer_iv_equipment_2
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+			OR = {
+				has_equipment = { panzer_iii_equipment_2 > 24 }
+				has_equipment = { panzer_iii_equipment_3 > 14 }
+			}
+			OR = {
+				has_equipment = { panzer_iv_equipment_2 > 24 }
+				has_equipment = { panzer_iv_equipment_3 > 14 }
+			}
+			has_equipment = { light_assault_panzer_equipment > 19 }
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			FRA = { has_capitulated = yes }
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		complete_effect = {
+			delete_unit_template_and_units = {
+				division_template = "9 Pz-Div"
+			}
+			
+			division_template = {
+				name = "Pz-Div 9"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2023
+				
+				regiments = {
+					#Panzer-Regiment 33
+					panzer_ii = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					#Schützen-Regiment 10
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					light_assault_panzer = { x = 2 y = 0 }
+					
+					#Schützen-Regiment 11
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					motorized = { x = 3 y = 2 }
+					
+					artillery_brigade_mot = { x = 4 y = 0 }	
+					artillery_brigade_mot = { x = 4 y = 1 }
+					anti_tank_brigade_mot =  { x = 4 y = 2 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					combat_engineer = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					recon_ac = { x = 0 y = 3 }
+					artillery_heavy = { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+					signal_company = { x = 1 y = 3 }
+					anti_air = { x = 1 y = 3 }
+				}
+			}
+			country_event = { id = germany.609 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_gd_regt_mot_art_sup = {
+		icon = grossdeutschland
+		
+		available = {
+			date > 1940.10.1
+			has_country_flag = gd_regt_mot_39
+			not = { has_country_flag = gd_regt_mot_art_39 }
+			17 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+		
+		highlight_states = {
+			state = 17
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		activation = {
+			
+		}
+		
+		visible = {
+			date > 1940.4.1
+		}
+	
+		complete_effect = {
+			division_template = {
+				name = "Inf.-Regt.-mot (GD)"	
+				division_names_group = GER_GD_01
+				is_locked = yes
+				template_counter = 2001
+				priority = 2
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					motorized = { x = 0 y = 3 }
+					
+					artillery_brigade_mot = { x = 1 y = 0 }
+					anti_tank_brigade_mot =  { x = 1 y = 1 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					logistics_company = { x = 0 y = 2 }
+					field_hospital = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					
+					artillery_heavy = { x = 1 y = 0 }
+					recon_mot = { x = 1 y = 1 }
+				}
+			}
+			
+			country_event = { id = germany.401 hours = 6 }
+			
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_forming_11_pzdiv = {
+		icon = ger_11_pzdiv
+		
+		available = {
+			date > 1940.9.4
+			FRA = { has_capitulated = yes }
+			844 = { is_controlled_by_ROOT_or_ally = yes }	#Paris
+			19 = { is_controlled_by_ROOT_or_ally = yes }	#Bordeaux
+			
+			has_country_flag = GER_5_PZ_DIV_1939
+			
+			has_tech = tech_combat_engineers
+			has_tech = tech_panzer_iii_equipment_2
+			has_tech = tech_panzer_iv_equipment_2
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+			
+			OR = {
+				has_equipment = { panzer_iii_equipment_2 > 24 }
+				has_equipment = { panzer_iii_equipment_3 > 24 }
+			}
+			OR = {
+				has_equipment = { panzer_iv_equipment_2 > 24 }
+				has_equipment = { panzer_iv_equipment_3 > 24 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			date > 1940.1.1
+			has_tech = tech_combat_engineers
+			has_tech = tech_panzer_iii_equipment_2
+			has_tech = tech_panzer_iv_equipment_2
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = GER_11_Pz_Div_dec_tt
+			
+			division_template = {
+				name = "Pz-Div 5"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2014
+				
+				regiments = {
+					#Panzer-Regiment 31
+					panzer_ii = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					#Schützen-Regiment 13
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					
+					#Schützen-Regiment 14
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+
+					#Artillerie-Regiment 116
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot_med = { x = 3 y = 2 }
+					#Panzerjäger-Abteilung 53
+					anti_tank_brigade_mot =  { x = 3 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					combat_engineer = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					recon_ac = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					
+					logistics_company = { x = 1 y = 0 }
+					field_hospital = { x = 1 y = 1 }
+					signal_company = { x = 1 y = 2 }
+					anti_air = { x = 1 y = 3 }
+				}
+			}
+			division_template = {
+				name = "Pz-Div 11"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2028
+				
+				regiments = {
+					#Panzer-Regiment 15
+					panzer_ii = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					##Schützen-Regiment 110
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					
+					##Schützen-Regiment 111
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					#Kradschützen-Bataillon 61
+					mechanized = { x = 2 y = 2 }
+					
+					#Artillerie-Regiment 119
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot_med = { x = 3 y = 2 }
+					#Panzerjäger-Abteilung 61
+					anti_tank_brigade_mot =  { x = 3 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					combat_engineer = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					recon_ac = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					logistics_company = { x = 1 y = 0 }
+					field_hospital = { x = 1 y = 1 }
+					signal_company = { x = 1 y = 2 }
+					anti_air = { x = 1 y = 3 }
+				}
+			}
+			country_event = { id = germany.243 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_forming_12_pzdiv = {
+		icon = ger_12_pzdiv
+		
+		available = {
+			date > 1940.10.5
+			has_country_flag = mot_2
+			FRA = { has_capitulated = yes }
+			844 = { is_controlled_by_ROOT_or_ally = yes }	#Paris
+			
+			has_tech = tech_combat_engineers
+			has_tech = tech_panzer_iii_equipment_2
+			has_tech = tech_panzer_iv_equipment_2
+			has_tech = tech_signal_company
+			has_tech = interwar_antiair
+			
+			OR = {
+				has_equipment = { panzer_iii_equipment_2 > 24 }
+				has_equipment = { panzer_iii_equipment_3 > 14 }
+			}
+			OR = {
+				has_equipment = { panzer_iv_equipment_2 > 24 }
+				has_equipment = { panzer_iv_equipment_3 > 14 }
+			}
+		}
+		
+		activation = {
+			has_completed_focus = GER_achtung_panzer
+		}
+		
+		visible = {
+			date > 1940.10.5
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		complete_effect = {
+			delete_unit_template_and_units = {
+				division_template = "2 Inf.-Div(mot.)"
+			}
+			
+			division_template = {
+				name = "Pz-Div 12"
+				division_names_group = GER_Arm_01
+				priority = 2
+				template_counter = 2032
+				
+				regiments = {
+					#Panzer-Regiment 29
+					panzer_ii = { x = 0 y = 0 }
+					panzer_iii = { x = 0 y = 1 }
+					panzer_iv = { x = 0 y = 2 }
+					
+					#Schützen-Regiment 5
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					
+					#Schützen-Regiment 25
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					#Kradschützen-Bataillon 22
+					mechanized = { x = 2 y = 2 }
+
+					#Artillerie-Regiment 2
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot_med = { x = 3 y = 2 }
+					#Panzerjäger-Abteilung 2
+					anti_tank_brigade_mot =  { x = 3 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					combat_engineer = { x = 0 y = 1 }
+					recon_mot = { x = 0 y = 2 }
+					recon_ac = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					
+					logistics_company = { x = 1 y = 0 }
+					field_hospital = { x = 1 y = 1 }
+					signal_company = { x = 1 y = 2 }
+					anti_air = { x = 1 y = 3 }
+				}
+			}
+			country_event = { id = germany.244 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+	}
+	GER_motorise_16_infdiv = {
+		
+		icon = ger_16_inf_div
+		
+		available = {
+			has_equipment = { anti_tank_equipment > 24 }
+			50 = { is_controlled_by = GER }
+			date > 1940.8.6
+		}
+		
+		highlight_states = {
+			state = 50
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_Wehrmacht
+		}
+		
+		visible = {
+			has_completed_focus = GER_Wehrmacht
+			date > 1940.1.1
+		}
+
+		complete_effect = {
+			add_war_support = 0.025
+			custom_effect_tooltip =  GER_mot_16_dec_tt
+			division_template = {
+				name = "16.Inf.-Div(mot.)" 			
+				division_names_group = GER_MOT_01
+				priority = 2
+				template_counter = 174
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot = { x = 3 y = 2 }
+					anti_tank_brigade_mot =  { x = 3 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_mot = { x = 0 y = 1 }
+					recon_ac = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					anti_tank_mot =  { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			country_event = { id = germany.259 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	###1941
+	GER_motorise_25_infdiv = {
+		
+		icon = ger_25_inf_div
+		
+		available = {
+			has_equipment = { anti_tank_equipment > 24 }
+			has_country_flag = mot_29
+			57 = { is_controlled_by = GER }
+			date > 1941.3.6
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_Wehrmacht
+		}
+		
+		visible = {
+			has_completed_focus = GER_Wehrmacht
+			date > 1940.2.1
+		}
+
+		complete_effect = {
+			add_war_support = 0.025
+			custom_effect_tooltip =  GER_mot_25_dec_tt
+			division_template = {
+				name = "25. Inf.-Div(mot.)"			
+				division_names_group = GER_MOT_01
+				priority = 2
+				template_counter = 174
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot = { x = 3 y = 2 }
+					anti_tank_brigade_mot =  { x = 3 y = 3 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_mot = { x = 0 y = 1 }
+					recon_ac = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					anti_tank_mot =  { x = 0 y = 4 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			country_event = { id = germany.260 hours = 6 }
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	### 1942
+	GER_gd_div_42 = {
+		
+		icon = grossdeutschland
+		
+		available = {
+			date > 1942.05.1
+			has_country_flag = gd_regt_mot_39
+			not = { has_country_flag = gd_div_mot_42 }
+			893 = { is_controlled_by_ROOT_or_ally = yes }
+			has_tech = subtech_panzer_spaa_equipment_1
+			has_tech = subtech_panzer_iii_td_equipment_1
+		}
+		
+		highlight_states = {
+			state = 893
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_Wehrmacht
+		}
+		
+		visible = {
+			has_completed_focus = GER_Wehrmacht
+			date > 1941.12.1
+		}
+	
+		complete_effect = {
+			division_template = {
+				name = "Inf.-Div.-mot (GD)"
+				division_names_group = GER_GD_01
+				is_locked = yes
+				template_counter = 2002
+				priority = 2
+				
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					motorized = { x = 0 y = 3 }
+					
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					motorized = { x = 1 y = 3 }
+					
+					mechanized = { x = 2 y = 0 }
+					
+					panzer_iv = { x = 3 y = 0 }
+					panzer_iii_td = { x = 3 y = 1 }
+					
+					artillery_brigade_mot = { x = 4 y = 0 }
+					artillery_brigade_mot = { x = 4 y = 1 }
+					artillery_brigade_mot = { x = 4 y = 2 }
+					anti_tank_brigade_mot =  { x = 4 y = 3 }
+					panzer_spaa = { x = 4 y = 4 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					logistics_company = { x = 0 y = 2 }
+					field_hospital = { x = 0 y = 3 }
+					maintenance_company = { x = 0 y = 4 }
+					
+					anti_air = { x = 1 y = 0 }
+					recon_mot = { x = 1 y = 1 }
+					artillery_heavy = { x = 1 y = 2 }
+				}
+			}
+			
+			country_event = { id = germany.402 hours = 6 }
+			
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	### 1942
+	GER_gd_div_43 = {
+		
+		icon = grossdeutschland
+		
+		available = {
+			date > 1943.05.1
+			has_country_flag = gd_regt_mot_39
+			not = { has_country_flag = gd_div_mot_42 }
+			259 = { is_controlled_by_ROOT_or_ally = yes }
+			has_tech = mechanised_infantry2
+			has_tech = tech_panzer_v_equipment_1
+			has_tech = subtech_panzer_v_spaa_equipment_1
+			has_tech = subtech_heavy_panzer_art_equipment_1
+			has_tech = subtech_panzer_iii_td_equipment_3
+			has_tech = tech_heavy_panzer_equipment_2
+		}
+		
+		highlight_states = {
+			state = 259
+		}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		activation = {
+			has_completed_focus = GER_Wehrmacht
+		}
+		
+		visible = {
+			has_completed_focus = GER_Wehrmacht
+			date > 1942.6.1
+		}
+	
+		complete_effect = {
+			division_template = {
+				name = "Pz.Gen-Div.(GD)" 			
+				division_names_group = GER_GD_01
+				is_locked = yes
+				template_counter = 2003
+				priority = 2
+				
+				regiments = {
+					mechanized = { x = 0 y = 0 }
+					mechanized = { x = 0 y = 1 }
+					mechanized = { x = 0 y = 2 }
+					mechanized = { x = 0 y = 3 }
+					
+					mechanized = { x = 1 y = 0 }
+					mechanized = { x = 1 y = 1 }
+					mechanized = { x = 1 y = 2 }
+					mechanized = { x = 1 y = 3 }
+					
+					panzer_iv = { x = 2 y = 0 }
+					panzer_v = { x = 2 y = 1 }
+					panzer_vi = { x = 2 y = 2 }		#joined in august 1943.
+					
+					heavy_panzer_art = { x = 3 y = 0 }
+					heavy_panzer_art = { x = 3 y = 1 }
+					heavy_panzer_art = { x = 3 y = 2 }
+					motorized_rocket_brigade = { x = 3 y = 3 }
+					
+					panzer_iii_td = { x = 4 y = 0 }
+					panzer_v_spaa = { x = 4 y = 1 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					logistics_company = { x = 0 y = 1 }
+					maintenance_company = { x = 0 y = 2 }
+					field_hospital = { x = 0 y = 3 }
+					combat_engineer = { x = 0 y = 4 }
+					
+					recon_ac = { x = 1 y = 0 }
+					recon_mot = { x = 1 y = 1 }
+					artillery_heavy = { x = 1 y = 2 }
+					anti_air = { x = 1 y = 3 }
+					anti_air_heavy = { x = 1 y = 4 }
+				}
+			}
+			
+			country_event = { id = germany.403 hours = 6 }
+			
+			hidden_effect = { update_all_subunits = yes }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_29_pzgren_div = {
+		icon = ger_29_pzgren_div
+		
+		available = {
+			date > 1943.10.11
+			has_country_flag = mot_29
+		}
+		
+		#highlight_states = {
+		#	state = 60
+		#}
+		
+		cost = 10
+		
+		fire_only_once = yes
+		
+		visible = {
+			date > 1942.6.23
+		}
+
+		complete_effect = {
+			division_template = {
+				name = "29. Pzgren-Div"
+				division_names_group = GER_MEC_01
+				priority = 2
+				template_counter = 203
+				
+				regiments = {
+					mechanized = { x = 0 y = 0 }
+					mechanized = { x = 0 y = 1 }
+					mechanized = { x = 0 y = 2 }
+					
+					mechanized = { x = 1 y = 0 }
+					mechanized = { x = 1 y = 1 }
+					mechanized = { x = 1 y = 2 }
+					
+					panzer_iii_td = { x = 2 y = 0 }
+					panzer_iii_td = { x = 2 y = 1 }
+					medium_panzer_td = { x = 2 y = 2 }
+					
+					artillery_brigade_mot = { x = 3 y = 0 }
+					artillery_brigade_mot = { x = 3 y = 1 }
+					artillery_brigade_mot_med = { x = 3 y = 2 }
+					anti_tank_brigade =  { x = 3 y = 3 }
+					panzer_v_spaa = { x = 3 y = 4 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					recon_mot = { x = 0 y = 1 }
+					recon_ac = { x = 0 y = 2 }
+					combat_engineer = { x = 0 y = 3 }
+					
+					maintenance_company = { x = 1 y = 0 }
+					logistics_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+					signal_company = { x = 1 y = 3 }
+				}
+			}
+			hidden_effect = { update_all_subunits = yes }
+			country_event = { id = germany.253 hours = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GER_jaegernotprogramm = {
+
+		icon = generic_air
+
+		available = {
+			has_war = yes
+			AND = {
+				has_deployed_air_force_size = {
+					type = fighter
+					size < 750
+				}
+				has_equipment = {
+					fighter_equipment < 250
+				}
+			}
+			NOT = {
+				has_idea = GER_jaegernotprogramm
+			}
+		}
+
+		cost = 50
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_war = yes
+			AND = {
+				has_deployed_air_force_size = {
+					type = fighter
+					size < 750
+				}
+				has_equipment = {
+					fighter_equipment < 250
+				}
+			}
+			NOT = {
+				has_idea = GER_jaegernotprogramm
+			}
+		}
+
+		complete_effect = {
+			add_timed_idea = { idea = GER_jaegernotprogramm days = 180 }
+		}
+	}
+}
+
+GER_naval_buildup = {
+	# Plan Z - modified for naval rework mod (nrm). Further work planned by Yagashura
+	# numbers just pulled out of my a** or left as they were. 
+	# Idea: make it work first, then improve
+	# Modified by Elouda as part of German Naval NF Rework
+	GER_plan_z = {
+
+		icon = generic_naval
+
+		available = {
+			has_navy_size = {
+				archetype = nrm_ship_hull_capital
+				size > 13
+			}
+			has_navy_size = {
+				archetype = nrm_ship_hull_carrier
+				size > 3
+			}
+			has_navy_size = {
+				archetype = nrm_ship_hull_cruiser
+				size > 24
+			}
+			has_navy_size = {
+				archetype = nrm_ship_hull_destroyer
+				size > 99
+			}
+		}
+
+		is_good = no
+		fire_only_once = yes
+		days_mission_timeout = 2190
+
+		activation = {
+			has_idea = GER_idea_plan_z
+		}
+		
+		visible = {
+			has_idea = GER_idea_plan_z
+		}
+
+		complete_effect = {
+			add_war_support = 0.1
+			add_stability = 0.05
+			navy_experience = 200
+		}
+		
+		timeout_effect = {
+			add_war_support = -0.1
+			navy_experience = -50
+		}
+	}
+	
+	GER_plan_z_cancel = {
+
+		icon = generic_naval
+		
+		cost = 100
+
+		available = {
+			has_idea = GER_idea_plan_z
+		}
+		
+		visible = {
+			has_idea = GER_idea_plan_z
+		}
+		
+		complete_effect = {
+			remove_mission = GER_plan_z
+			remove_ideas = GER_idea_plan_z
+			add_war_support = -0.05
+		}
+	}
+}
+
+GER_fm_promotion = {
+	FM_promotion_39 = {
+		icon = generic_air
+		
+		available = {
+			date > 1939.8.1
+			command_power > 49.9
+		}
+		
+		visible = {
+			date > 1939.5.1
+		}
+		
+		fire_only_once = yes
+		
+		cost = 0
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		complete_effect = {
+			effect_tooltip = {
+				every_unit_leader = { 
+					limit = { OR = { has_id = 9 has_id = 1 has_id = 13 } }
+					promote_leader = yes
+				}
+			}
+			hidden_effect = {
+				add_command_power = -50
+			}
+			country_event = { id = promotion.1 hours = 6 }
+		}
+		custom_cost_trigger = {
+			command_power > 49.9
+		}
+		custom_cost_text = cp_atleast_50
+	}
+}
+
+special_projects = {
+	GER_dismantle_maginot = {
+
+		icon = generic_construction
+
+		available = {
+			#has_war = yes
+			controls_state = 28
+			if = {
+				limit = {
+					FRA = { has_completed_focus = FRA_extend_the_maginot_line }
+				}
+				controls_state = 18
+				controls_state = 29
+			}
+		}
+
+		cost = 50
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		visible = {
+			#has_war = yes
+			controls_state = 28
+			if = {
+				limit = {
+					FRA = { has_completed_focus = FRA_extend_the_maginot_line }
+				}
+				controls_state = 18
+				controls_state = 29
+			}
+		}
+		
+		days_remove = 180
+		
+		modifier = {
+			civilian_factory_use = 15
+		}
+		
+		remove_effect = {
+			if = {
+				limit = {
+					original_tag = FRA
+					OR = {
+						AND = {
+							GER = { exists = yes }
+							GER = { has_government = fascism }
+						}
+						has_war = yes 
+					}
+				}
+				remove_ideas = FRA_protected_by_the_maginot_line
+				add_stability = -0.5
+				add_war_support = -0.5
+			 }
+			28 = {
+				set_building_level = {
+					type = bunker
+					level = 2
+					province = {
+						all_provinces = yes
+						limit_to_border = no
+						level > 2
+					}
+				}
+			}
+			if = {
+				limit = {
+					FRA = { has_completed_focus = FRA_extend_the_maginot_line }
+				}
+				18 = {
+					set_building_level = {
+						type = bunker
+						level = 2
+						province = {
+							all_provinces = yes
+							limit_to_border = no
+							level > 2
+						}
+					}
+				}
+				29 = {
+					set_building_level = {
+						type = bunker
+						level = 2
+						province = {
+							all_provinces = yes
+							limit_to_border = no
+							level > 2
+						}
+					}
+				}
+			}
+		}
+		
+		complete_effect = {
+			if = {
+				limit = { FRA = { has_completed_focus = FRA_extend_the_maginot_line } }
+				add_timed_idea = { idea = GER_dismantle_maginot days = 270 }
+			}
+			else = {
+				add_timed_idea = { idea = GER_dismantle_maginot days = 180 }
+			}
+		}
+	}
+}
+
+GER_fuhrer_HQ = {
+	
+	GER_Berghof = {
+
+		icon = generic_construction
+
+		available = {
+			52 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 52
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+		}
+		
+		complete_effect = {
+			set_country_flag = HQ
+			custom_effect_tooltip = move_in
+			52 = { set_state_flag = HQ_present }
+			set_country_flag = Berghof
+			
+			hidden_effect = { activate_mission = GER_Berghof_mission }
+			
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Berghof_mission = {
+
+		icon = generic_construction
+
+		available = {
+			52 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Berghof
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Berghof_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Berghof_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Berghof } clr_country_flag = HQ 52 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Berghof_days = days_mission_timeout@GER_Berghof_mission }
+			}
+		
+		}
+	}
+	
+	GER_Fuhrerbunker = {
+
+		icon = generic_construction
+
+		available = {
+			896 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 896
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+		}
+		
+		complete_effect = {
+			set_country_flag = HQ
+			custom_effect_tooltip = move_in
+			896 = { set_state_flag = HQ_present }
+			
+			set_country_flag = Fuhrerbunker
+			
+			hidden_effect = { activate_mission = GER_Fuhrerbunker_mission }
+			
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Fuhrerbunker_mission = {
+		
+		icon = generic_construction
+		
+		available = {
+			896 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Fuhrerbunker
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Fuhrerbunker_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Fuhrerbunker_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Fuhrerbunker } clr_country_flag = HQ 896 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Fuhrerbunker_days = days_mission_timeout@GER_Fuhrerbunker_mission }
+			}
+		}
+	}
+	GER_Wolfsschanze_construction = {
+
+		icon = generic_construction
+
+		available = {
+			839 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 839
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			date > 1940.1.3
+		}
+		
+		days_remove = 90
+		
+		modifier = {
+			civilian_factory_use = 15
+		}
+		
+		complete_effect = {
+			set_country_flag = Wolfsschanze_built
+			custom_effect_tooltip = Wolfsschanze_built
+		}
+	}
+	
+	GER_Wolfsschanze = {
+
+		icon = generic_construction
+
+		available = {
+			839 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 839
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+			has_country_flag = Wolfsschanze_built
+		}
+		
+		complete_effect = {
+			hidden_effect = { add_timed_idea = { idea = GER_Wolfsschanze days = 180 } }
+			custom_effect_tooltip = add_idea_III
+			set_country_flag = HQ
+			set_country_flag = Wolfsschanze
+			hidden_effect = { activate_mission = GER_Wolfsschanze_mission }
+			custom_effect_tooltip = move_in
+			839 = { set_state_flag = HQ_present }
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Wolfsschanze_mission = {
+
+		icon = generic_construction
+
+		available = {
+			839 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Wolfsschanze
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Wolfsschanze_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Wolfsschanze_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Wolfsschanze } clr_country_flag = HQ 839 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Wolfsschanze_days = days_mission_timeout@GER_Wolfsschanze_mission }
+			}
+		}
+	}
+	
+	GER_Tannenberg_construction = {
+
+		icon = generic_construction
+
+		available = {
+			50 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 50
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			date > 1940.1.8
+		}
+		
+		days_remove = 90
+		
+		modifier = {
+			civilian_factory_use = 15
+		}
+		
+		complete_effect = {
+			set_country_flag = Tannenberg_built
+			custom_effect_tooltip = Tannenberg_built
+		}
+	}
+	
+	GER_Tannenberg = {
+
+		icon = generic_construction
+
+		available = {
+			50 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 50
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+			has_country_flag = Tannenberg_built
+		}
+	
+		complete_effect = {
+			set_country_flag = HQ
+			set_country_flag = Tannenberg
+			custom_effect_tooltip = move_in
+			hidden_effect = { activate_mission = GER_Tannenberg_mission }
+			50 = { set_state_flag = HQ_present }
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Tannenberg_mission = {
+
+		icon = generic_construction
+
+		available = {
+			50 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Tannenberg
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Tannenberg_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Tannenberg_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Tannenberg } clr_country_flag = HQ 50 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Tannenberg_days = days_mission_timeout@GER_Tannenberg_mission }
+			}
+		}
+	}
+	
+	GER_Wolfsschlucht_I = {
+
+		icon = generic_construction
+
+		available = {
+			34 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 34
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+		}
+		
+		complete_effect = {
+			hidden_effect = {
+				add_ideas = GER_Wolfsschlucht_I
+			}
+			hidden_effect = { activate_mission = GER_Wolfsschlucht_I_mission }
+			custom_effect_tooltip = add_idea_I
+			set_country_flag = HQ
+			set_country_flag = Wolfsschlucht_I
+			custom_effect_tooltip = move_in
+			34 = { set_state_flag = HQ_present }
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Wolfsschlucht_I_mission = {
+
+		icon = generic_construction
+
+		available = {
+			34 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Wolfsschlucht_I
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Wolfsschlucht_I_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Wolfsschlucht_I_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Wolfsschlucht_I } clr_country_flag = HQ 34 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Wolfsschlucht_I_days = days_mission_timeout@GER_Wolfsschlucht_I_mission }
+			}
+		}
+	}
+	
+	GER_Wolfsschlucht_II = {
+
+		icon = generic_construction
+
+		available = {
+			18 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 18
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+		}
+		
+		complete_effect = {
+		hidden_effect = {
+			add_ideas = GER_Wolfsschlucht_II
+		}
+		hidden_effect = { activate_mission = GER_Wolfsschlucht_II_mission }
+			set_country_flag = Wolfsschlucht_II
+			custom_effect_tooltip = add_idea_II
+			set_country_flag = HQ
+			custom_effect_tooltip = move_in
+			18 = { set_state_flag = HQ_present }
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Wolfsschlucht_II_mission = {
+
+		icon = generic_construction
+
+		available = {
+			18 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Wolfsschlucht_II
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Wolfsschlucht_II_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Wolfsschlucht_II_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Wolfsschlucht_II } clr_country_flag = HQ 18 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Wolfsschlucht_II_days = days_mission_timeout@GER_Wolfsschlucht_II_mission }
+			}
+		}
+	}
+	
+	GER_Adlerhorst = {
+
+		icon = generic_construction
+
+		available = {
+			55 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 55
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+		}
+		
+		complete_effect = {
+			set_country_flag = HQ
+			custom_effect_tooltip = move_in
+			55 = { set_state_flag = HQ_present }
+			set_country_flag = Adlerhorst
+			hidden_effect = { activate_mission = GER_Adlerhorst_mission }
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Adlerhorst_mission = {
+
+		icon = generic_construction
+
+		available = {
+			55 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Adlerhorst
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Adlerhorst_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Adlerhorst_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Adlerhorst } clr_country_flag = HQ 55 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Adlerhorst_days = days_mission_timeout@GER_Adlerhorst_mission }
+			}
+		}
+	}
+	
+	GER_Anlage_Sud = {
+
+		icon = generic_construction
+
+		available = {
+			88 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 88
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+		}
+		
+		complete_effect = {
+			set_country_flag = HQ
+			custom_effect_tooltip = move_in
+			88 = { set_state_flag = HQ_present }
+			hidden_effect = { activate_mission = GER_Anlage_Sud_mission }
+			set_country_flag = Anlage_Sud
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Anlage_Sud_mission = {
+
+		icon = generic_construction
+
+		available = {
+			88 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Anlage_Sud
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Anlage_Sud_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Anlage_Sud_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Anlage_Sud } clr_country_flag = HQ 88 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Anlage_Sud_days = days_mission_timeout@GER_Anlage_Sud_mission }
+			}
+		}
+	}
+	
+	GER_Felsennest = {
+
+		icon = generic_construction
+
+		available = {
+			51 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 51
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+		}
+	
+		complete_effect = {
+			set_country_flag = HQ
+			custom_effect_tooltip = move_in
+			51 = { set_state_flag = HQ_present }
+			hidden_effect = { activate_mission = GER_Anlage_Sud_mission }
+			set_country_flag = Felsennest
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Felsennest_mission = {
+
+		icon = generic_construction
+
+		available = {
+			51 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Felsennest
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Felsennest_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Felsennest_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Anlage_Sud } clr_country_flag = HQ 51 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Felsennest_days = days_mission_timeout@GER_Felsennest_mission }
+			}
+		}
+	}
+	
+	GER_Werwolf = {
+
+		icon = generic_construction
+
+		available = {
+			199 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 199
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+		}
+		
+		complete_effect = {
+			set_country_flag = HQ
+			custom_effect_tooltip = move_in
+			199 = { set_state_flag = HQ_present }
+			hidden_effect = { activate_mission = GER_Werwolf_mission }
+			set_country_flag = Werwolf
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Werwolf_mission = {
+
+		icon = generic_construction
+
+		available = {
+			199 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Werwolf
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Werwolf_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Werwolf_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Werwolf } clr_country_flag = HQ 199 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Werwolf_days = days_mission_timeout@GER_Werwolf_mission }
+			}
+		}
+	}
+	
+	GER_Kehlsteinhaus = {
+
+		icon = generic_construction
+
+		available = {
+			52 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+		}
+		
+		highlight_states = {
+			state = 52
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		visible = {
+			NOT = { has_country_flag = HQ }
+		}
+	
+		complete_effect = {
+			set_country_flag = HQ
+			custom_effect_tooltip = move_in
+			52 = { set_state_flag = HQ_present }
+			hidden_effect = { activate_mission = GER_Kehlsteinhaus_mission }
+			set_country_flag = Kehlsteinhaus
+			custom_effect_tooltip = relocate_HQ_TT
+		}
+	}
+	
+	GER_Kehlsteinhaus_mission = {
+
+		icon = generic_construction
+
+		available = {
+			52 = { 
+				controller = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+			} 
+			has_country_flag = Kehlsteinhaus
+		}
+		
+		activation = {
+			always = no
+		}
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		selectable_mission = yes
+		days_mission_timeout = 180
+		
+		days_remove = GER_Kehlsteinhaus_days?0
+		
+		visible = {
+			always = no
+		}
+		
+		timeout_effect = {
+		
+			custom_effect_tooltip = HQ_stay
+			hidden_effect = { activate_mission = GER_Kehlsteinhaus_mission }
+		}
+		
+		remove_effect = {
+			if = { limit = { has_country_flag = leave } clr_country_flag = leave clr_country_flag = Kehlsteinhaus } clr_country_flag = HQ 52 = { clr_state_flag = HQ_present }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = HQ_move
+			set_country_flag = leave
+			
+			hidden_effect = {
+				set_variable = { GER_Kehlsteinhaus_days = days_mission_timeout@GER_Kehlsteinhaus_mission }
+			}
+		}
+	}
+}
+
+GER_aid_hun_rom_democratic_civil_war = {
+
+	GER_aid_hun_democratic_civil_war = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			HUN = {
+				NOT = { democratic_govt = yes }
+				NOT = { has_war_with = GER }
+				has_civil_war = yes
+				exists = yes
+			}
+			any_country = {
+				original_tag = HUN
+				democratic_govt = yes
+				has_war_with = HUN
+			}
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		#Available if democratic civil war
+		visible = {
+			#has_completed_focus = GER_align_hungary
+			GER = { democratic_govt = yes }
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					HUN = { is_in_faction_with = GER }
+				}
+				remove_from_faction = HUN
+				random_country = {
+					limit = {
+						original_tag = HUN
+						democratic_govt = yes
+						has_war_with = HUN
+					}
+					GER = { add_to_faction = PREV }
+				}
+			}
+			random_country = {
+				limit = {
+					original_tag = HUN
+					democratic_govt = yes
+					has_war_with = HUN
+				}
+				GER = { add_to_war = { targeted_alliance = PREV enemy = HUN hostility_reason = asked_to_join } }
+			}
+		}
+	}
+
+	GER_aid_rom_democratic_civil_war = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			ROM = {
+				NOT = { democratic_govt = yes }
+				NOT = { has_war_with = GER }
+				has_civil_war = yes
+				exists = yes
+			}
+			any_country = {
+				original_tag = ROM
+				democratic_govt = yes
+				has_war_with = ROM
+			}
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		#Available if democratic civil war
+		visible = {
+			#has_completed_focus = GER_align_romania
+			GER = { democratic_govt = yes }
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					ROM = { is_in_faction_with = GER }
+				}
+				remove_from_faction = ROM
+				random_country = {
+					limit = {
+						original_tag = ROM
+						democratic_govt = yes
+						has_war_with = ROM
+					}
+					GER = { add_to_faction = PREV }
+				}
+			}
+			random_country = {
+				limit = {
+					original_tag = ROM
+					democratic_govt = yes
+					has_war_with = ROM
+				}
+				GER = { add_to_war = { targeted_alliance = PREV enemy = ROM hostility_reason = asked_to_join } }
+			}
+		}
+	}
+
+}
+
+GER_austro_hungarian_empire = {
+
+	GER_reform_austro_hungarian_empire = {
+
+		allowed = {
+			OR = {
+				original_tag = AUS
+				original_tag = HUN
+				original_tag = CZE
+			}
+		}
+
+		available = {
+			AUS = {
+				OR = {
+					has_government = neutrality
+					neutrality > 0.4
+				}
+			}
+			HUN = {
+				OR = {
+					has_government = neutrality
+					neutrality > 0.4
+				}
+			}
+			CZE = {
+				OR = {
+					has_government = neutrality
+					neutrality > 0.4
+				}
+			}
+		}
+
+		visible = {
+			GER = { 
+				#has_completed_focus = GER_rekindle_imperial_sentiment 
+				has_government = neutrality
+			}
+			NOT = { has_global_flag = GER_reformed_austro_hungarian_empire }
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				tag = HUN
+			}
+			modifier = {
+				factor = 0
+				tag = CZE
+			}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_reform_austro_hungarian_empire_tt
+			hidden_effect = { set_global_flag = GER_reformed_austro_hungarian_empire }
+			if = {
+				limit = {
+					tag = AUS
+				}
+				HUN = { country_event = { id = wtt_germany.68 hours = 1 } }
+				CZE = { country_event = { id = wtt_germany.68 hours = 3 } }
+			}
+			if = {
+				limit = {
+					tag = HUN
+				}
+				AUS = { country_event = { id = wtt_germany.68 hours = 1 } }
+				CZE = { country_event = { id = wtt_germany.68 hours = 3 } }
+			}
+			if = {
+				limit = {
+					tag = CZE
+				}
+				HUN = { country_event = { id = wtt_germany.68 hours = 1 } }
+				AUS = { country_event = { id = wtt_germany.68 hours = 3 } }
+			}
+			if = {
+				limit = {
+					NOT = { has_government = neutrality }
+				}
+				set_politics = { ruling_party = neutrality elections_allowed = no }
+			}
+			create_country_leader = {
+				name = "Otto von Habsburg"
+				desc = "POLITICS_OTTO_VON_HABSBURG_DESC"
+				picture = GFX_Portrait_hungary_otto_von_hapsburg
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					
+				}
+			}
+		}
+	}
+}
+
+### EOF ###

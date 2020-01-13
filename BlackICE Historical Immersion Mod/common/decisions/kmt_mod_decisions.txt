@@ -1,0 +1,5392 @@
+#Category only allowed for all china
+#Category visible when PRC_coalition_government focus is completed for PRC
+#Category visible when CHI_join_the_republican_government focus is completed for warlord
+
+#Variables and flags and targets to know about
+#Event target WTT_current_china_leader
+#State variable for amount Support Points gained: state_political_support_value
+#State flag: majority_political_platform_<TAG> for whoever has majority in the state
+#Country flag: wtt_political_struggle for all countries involved in the struggle
+
+#Variables:
+#days_remove = global.days_add_support?1337 #DAYS_UNTIL_SUPPORRT_IN_STATE_IS_ADDED
+#days_remove = global.days_remove_support?1337 #DAYS_UNTIL_REMOVE_SUPPORT
+
+
+
+#Nat China
+#595 "Fujian"
+#596 "Zhejiang"
+#597 "Shandong"
+#598 "Jiangsu"
+#600 "Jiangxi"
+#601 "Xikang"
+#602 "Hunan"
+#603 "Guizhou"
+#605 "Sichuan"
+#606 "Anhui"
+#607 "Henan"
+#608 "Beijing"
+#613 "Shanghai"
+#614 "Hebei"
+#620 "Hubei"
+
+#Shanxi
+#615 "Shanxi"
+#621 "Suiyuan"
+
+#Com China
+#622 "Shaanxi"
+
+#Xibei San Ma
+#283 "Gansu"
+#604 "Qinghai"
+#616 "Ningxia"
+
+#Sinkiang
+#287 "Taklamakan"
+#617 "Urumqi"
+#618 "Dzungaria"
+#619 "Yarkand"
+
+#Yunnan
+#325 "Yunnan"
+
+#Guangxi Clique
+#591 "Hainan"
+#592 "Guangzhou"
+#593 "Guangdong"
+#594 "Nanning"
+#599 "Guangxi"
+
+KMT_dcat_postal_romanisation = {
+
+	KMT_postal_romanisation_decision = {
+		icon = generic_decision
+		visible = {
+			NOT = { has_global_flag = KMT_use_postal_romanisation }
+		}
+
+		available = {
+			always = yes
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 0
+
+		complete_effect = {
+			custom_effect_tooltip = KMT_use_postal_romanisation_tt
+			hidden_effect = {
+				283 = { set_state_name = KMT_postal_STATE_283 }
+				592 = { set_state_name = KMT_postal_STATE_592 }
+				593 = { set_state_name = KMT_postal_STATE_593 }
+				595 = { set_state_name = KMT_postal_STATE_595 }
+				596 = { set_state_name = KMT_postal_STATE_596 }
+				597 = { set_state_name = KMT_postal_STATE_597 }
+				598 = { set_state_name = KMT_postal_STATE_598 }
+				599 = { set_state_name = KMT_postal_STATE_599 }
+				600 = { set_state_name = KMT_postal_STATE_600 }
+				601 = { set_state_name = KMT_postal_STATE_601 }
+				603 = { set_state_name = KMT_postal_STATE_603 }
+				604 = { set_state_name = KMT_postal_STATE_604 }
+				605 = { set_state_name = KMT_postal_STATE_605 }
+				607 = { set_state_name = KMT_postal_STATE_607 }
+				608 = { set_state_name = KMT_postal_STATE_608 }
+				609 = { set_state_name = KMT_postal_STATE_609 }
+				613 = { set_state_name = KMT_postal_STATE_613 }
+				614 = { set_state_name = KMT_postal_STATE_614 }
+				615 = { set_state_name = KMT_postal_STATE_615 }
+				616 = { set_state_name = KMT_postal_STATE_616 }
+				620 = { set_state_name = KMT_postal_STATE_620 }
+				622 = { set_state_name = KMT_postal_STATE_622 }
+				728 = { set_state_name = KMT_postal_STATE_728 }
+				743 = { set_state_name = KMT_10000_postal }
+				744 = { set_state_name = KMT_postal_STATE_752 }
+				if = {
+					limit = {
+						745 = {
+							has_state_flag = renaming_decided
+						}
+					}
+					745 = {
+						set_state_name = KMT_1150_postal 
+					}
+				}
+				747 = { set_state_name = KMT_7965_postal }
+				748 = { set_state_name = KMT_10763_postal }
+				749 = { set_state_name = KMT_12019_postal }
+				750 = { set_state_name = KMT_10757_postal }
+				753 = { set_state_name = KMT_2045_postal }
+				754 = { set_state_name = KMT_10490_postal }
+				755 = { set_state_name = KMT_2099_postal }
+				756 = { set_state_name = KMT_2028_postal }
+				775 = { set_state_name = KMT_postal_STATE_775 }
+				763 = { set_state_name = KMT_postal_STATE_763 }
+				767 = { set_state_name = KMT_postal_STATE_754 }
+				770 = { set_state_name = KMT_postal_STATE_757 }
+				772 = { set_state_name = KMT_postal_STATE_759 }
+				773 = { set_state_name = KMT_postal_STATE_760 }
+				#774 = { set_state_name = KMT_postal_STATE_761 }
+				set_province_name = { id = 1200 name = KMT_1200_postal }
+				set_province_name = { id = 4181 name = KMT_4181_postal }
+				set_province_name = { id = 12069 name = KMT_12069_postal }
+				set_province_name = { id = 7109 name = KMT_7109_postal }
+				set_province_name = { id = 4190 name = KMT_4190_postal }
+				set_province_name = { id = 1168 name = KMT_1168_postal }
+				set_province_name = { id = 1055 name = KMT_1055_postal }
+				set_province_name = { id = 7108 name = KMT_7108_postal }
+				set_province_name = { id = 9963 name = KMT_9963_postal }
+				set_province_name = { id = 7067 name = KMT_7067_postal }
+				set_province_name = { id = 10057 name = KMT_10057_postal }
+				set_province_name = { id = 11920 name = KMT_11920_postal }
+				set_province_name = { id = 10335 name = KMT_10335_postal }
+				set_province_name = { id = 10040 name = KMT_10040_postal }
+				set_province_name = { id = 10098 name = KMT_10098_postal }
+				set_province_name = { id = 7158 name = KMT_7158_postal }
+				set_province_name = { id = 10474 name = KMT_10474_postal }
+				set_province_name = { id = 7167 name = KMT_7167_postal }
+				set_province_name = { id = 10757 name = KMT_10757_postal }
+				set_province_name = { id = 12436 name = KMT_12436_postal }
+				set_province_name = { id = 4028 name = KMT_4028_postal }
+				set_province_name = { id = 1018 name = KMT_1018_postal }
+				set_province_name = { id = 10763 name = KMT_10763_postal }
+				set_province_name = { id = 11972 name = KMT_11972_postal }
+				set_province_name = { id = 8026 name = KMT_8026_postal }
+				set_province_name = { id = 1976 name = KMT_1976_postal }
+				set_province_name = { id = 8081 name = KMT_8081_postal }
+				set_province_name = { id = 7911 name = KMT_7911_postal }
+				set_province_name = { id = 1630 name = KMT_1630_postal }
+				set_province_name = { id = 2028 name = KMT_2028_postal }
+				set_province_name = { id = 1383 name = KMT_1383_postal }
+				set_province_name = { id = 11986 name = KMT_11986_postal }
+				set_province_name = { id = 3900 name = KMT_3900_postal }
+				set_province_name = { id = 4809 name = KMT_4809_postal }
+				set_province_name = { id = 7633 name = KMT_7633_postal }
+				set_province_name = { id = 4503 name = KMT_4503_postal }
+				set_province_name = { id = 1638 name = KMT_1638_postal }
+				set_province_name = { id = 10612 name = KMT_10612_postal }
+				set_province_name = { id = 1588 name = KMT_1588_postal }
+				set_province_name = { id = 1545 name = KMT_1545_postal }
+				set_province_name = { id = 11906 name = KMT_11906_postal }
+				set_province_name = { id = 10397 name = KMT_10397_postal }
+				set_province_name = { id = 9938 name = KMT_9938_postal }
+				set_province_name = { id = 1395 name = KMT_1395_postal }
+				set_province_name = { id = 2045 name = KMT_2045_postal }
+				set_province_name = { id = 1474 name = KMT_1474_postal }
+				set_province_name = { id = 12086 name = KMT_12086_postal }
+				set_province_name = { id = 8049 name = KMT_8049_postal }
+				set_province_name = { id = 12014 name = KMT_12014_postal }
+				set_province_name = { id = 9942 name = KMT_9942_postal }
+				set_province_name = { id = 11913 name = KMT_11913_postal }
+				set_province_name = { id = 7191 name = KMT_7191_postal }
+				set_province_name = { id = 9974 name = KMT_9974_postal }
+				set_province_name = { id = 4196 name = KMT_4196_postal }
+				set_province_name = { id = 0.771 name = KMT_7071_postal }
+				set_province_name = { id = 1047 name = KMT_1047_postal }
+				set_province_name = { id = 10404 name = KMT_10404_postal }
+				set_province_name = { id = 7965 name = KMT_7965_postal }
+				set_province_name = { id = 4504 name = KMT_4504_postal }
+				set_province_name = { id = 7101 name = KMT_7101_postal }
+				set_province_name = { id = 6999 name = KMT_6999_postal }
+				set_province_name = { id = 9958 name = KMT_9958_postal }
+				set_province_name = { id = 9843 name = KMT_9843_postal }
+				set_province_name = { id = 4495 name = KMT_4495_postal }
+				set_province_name = { id = 1150 name = KMT_1150_postal }
+				set_province_name = { id = 10068 name = KMT_10068_postal }
+				set_province_name = { id = 10000 name = KMT_10000_postal }
+				set_province_name = { id = 1627 name = KMT_1627_postal }
+				set_province_name = { id = 6837 name = KMT_6837_postal }
+				set_province_name = { id = 11764 name = KMT_11764_postal }
+				set_province_name = { id = 11822 name = KMT_11822_postal }
+				set_province_name = { id = 1069 name = KMT_1069_postal }
+				set_province_name = { id = 1070 name = KMT_1070_postal }
+				set_province_name = { id = 12019 name = KMT_12019_postal }
+				set_province_name = { id = 2099 name = KMT_2099_postal }
+				set_province_name = { id = 10490 name = KMT_10490_postal }
+				if = {
+					limit = {
+						has_global_flag = renaming_decided12068
+					}
+					set_province_name = { id = 12068 name = KMT_12068_postal }
+				}
+			}
+			set_global_flag = KMT_use_postal_romanisation
+		}
+	}
+}
+
+KMT_dcat_incompetent_industry = {
+
+	KMT_lower_incompetent_industry_1 = {
+		icon = generic_construction
+		visible = {
+			has_idea = incompetent_industry_real
+		}
+
+		available = {
+			has_idea = incompetent_industry_real
+			has_tech = basic_machine_tools
+			OR = {
+				has_tech = concentrated_industry
+				has_tech = dispersed_industry
+			}
+			has_tech = construction1
+			OR = {
+				AND = {
+					num_of_factories > 50
+					has_war = no
+				}
+				AND = {
+					num_of_factories > 65
+					has_defensive_war = yes
+				}
+				AND = {
+					num_of_factories > 75
+					has_offensive_war = yes
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 50
+
+		complete_effect = {
+			custom_effect_tooltip = KMT_lower_incompetent_industry_tt
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = incompetent_industry_real
+					add_idea = incompetent_industry_real_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = incompetent_industry_real_navy
+				}
+				custom_effect_tooltip = KMT_lower_incompetent_naval_industry_tt
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = incompetent_industry_real_navy
+						add_idea = incompetent_industry_real_2_navy
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_idea = KMT_camco_assembly_plants_1
+				}
+				swap_ideas = {
+					remove_idea = KMT_camco_assembly_plants_1
+					add_idea = KMT_camco_assembly_plants_2
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		remove_effect = {
+		}
+	}
+
+	KMT_lower_incompetent_industry_2 = {
+		icon = generic_construction
+		visible = {
+			has_idea = incompetent_industry_real_2
+		}
+
+		available = {
+			has_idea = incompetent_industry_real_2
+			has_tech = improved_machine_tools
+			OR = {
+				has_tech = concentrated_industry2
+				has_tech = dispersed_industry2
+			}
+			has_tech = construction2
+			OR = {
+				AND = {
+					num_of_factories > 70
+					has_war = no
+				}
+				AND = {
+					num_of_factories > 80
+					has_defensive_war = yes
+				}
+				AND = {
+					num_of_factories > 90
+					has_offensive_war = yes
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = KMT_has_weaker_public_iliteracy_tt
+				NOT = { 
+					has_idea = public_iliteracy 
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = KMT_has_3_lowered_lack_skilled_personnel_tt
+				NOT = {
+					has_idea = PRC_lack_skilled_personnel 
+					has_idea = PRC_lack_skilled_personnel_1 
+					has_idea = PRC_lack_skilled_personnel_2  
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 50
+
+		complete_effect = {
+			custom_effect_tooltip = KMT_lower_incompetent_industry_tt
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = incompetent_industry_real_2
+					add_idea = incompetent_industry_real_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = incompetent_industry_real_2_navy
+				}
+				custom_effect_tooltip = KMT_lower_incompetent_naval_industry_tt
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = incompetent_industry_real_2_navy
+						add_idea = incompetent_industry_real_3_navy
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_idea = KMT_camco_assembly_plants_2
+				}
+				swap_ideas = {
+					remove_idea = KMT_camco_assembly_plants_2
+					add_idea = KMT_camco_assembly_plants_3
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		remove_effect = {
+		}
+	}
+
+	KMT_lower_incompetent_industry_3 = {
+		icon = generic_construction
+		visible = {
+			has_idea = incompetent_industry_real_3
+		}
+
+		available = {
+			has_idea = incompetent_industry_real_3
+			has_tech = advanced_machine_tools
+			OR = {
+				has_tech = concentrated_industry3
+				has_tech = dispersed_industry3
+			}
+			has_tech = construction3
+			OR = {
+				AND = {
+					num_of_factories > 90
+					has_war = no
+				}
+				AND = {
+					num_of_factories > 115
+					has_defensive_war = yes
+				}
+				AND = {
+					num_of_factories > 125
+					has_offensive_war = yes
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = KMT_has_weaker_public_iliteracy_tt
+				NOT = { 
+					has_idea = public_iliteracy 
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = KMT_has_6_lowered_lack_skilled_personnel_tt
+				NOT = { 
+					has_idea = PRC_lack_skilled_personnel
+					has_idea = PRC_lack_skilled_personnel_1
+					has_idea = PRC_lack_skilled_personnel_2
+					has_idea = PRC_lack_skilled_personnel_3
+					has_idea = PRC_lack_skilled_personnel_4 
+					has_idea = PRC_lack_skilled_personnel_5 
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 50
+
+		complete_effect = {
+			custom_effect_tooltip = KMT_lower_incompetent_industry_tt
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = incompetent_industry_real_3
+					add_idea = incompetent_industry_real_4
+				}
+			}
+			if = {
+				limit = {
+					has_idea = incompetent_industry_real_3_navy
+				}
+				custom_effect_tooltip = KMT_lower_incompetent_naval_industry_tt
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = incompetent_industry_real_3_navy
+						add_idea = incompetent_industry_real_4_navy
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_idea = KMT_camco_assembly_plants_4
+				}
+				remove_ideas = KMT_camco_assembly_plants_4
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		remove_effect = {
+		}
+	}
+
+	KMT_lower_incompetent_industry_4 = {
+		icon = generic_construction
+		visible = {
+			has_idea = incompetent_industry_real_4
+		}
+
+		available = {
+			has_idea = incompetent_industry_real_4
+			has_tech = assembly_line_production
+			OR = {
+				has_tech = concentrated_industry4
+				has_tech = dispersed_industry4
+			}
+			has_tech = construction4
+			OR = {
+				AND = {
+					num_of_factories > 110
+					has_war = no
+				}
+				AND = {
+					num_of_factories > 140
+					has_defensive_war = yes
+				}
+				AND = {
+					num_of_factories > 150
+					has_offensive_war = yes
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = KMT_no_public_iliteracy_tt
+				NOT = {
+					has_idea = public_iliteracy 
+					has_idea = public_iliteracy_2 
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = KMT_has_9_lowered_lack_skilled_personnel_tt
+			}
+			hidden_trigger = {
+				NOT = {
+					has_idea = PRC_lack_skilled_personnel
+					has_idea = PRC_lack_skilled_personnel_1
+					has_idea = PRC_lack_skilled_personnel_2
+					has_idea = PRC_lack_skilled_personnel_3
+					has_idea = PRC_lack_skilled_personnel_4 
+					has_idea = PRC_lack_skilled_personnel_5 
+					has_idea = PRC_lack_skilled_personnel_6
+					has_idea = PRC_lack_skilled_personnel_7
+					has_idea = PRC_lack_skilled_personnel_8
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 50
+
+		complete_effect = {
+			custom_effect_tooltip = KMT_lower_incompetent_industry_tt
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = incompetent_industry_real_4
+					add_idea = incompetent_industry_real_5
+				}
+			}
+			if = {
+				limit = {
+					has_idea = incompetent_industry_real_4_navy
+				}
+				custom_effect_tooltip = KMT_lower_incompetent_naval_industry_tt
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = incompetent_industry_real_4_navy
+						add_idea = incompetent_industry_real_5_navy
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		remove_effect = {
+		}
+	}
+
+	KMT_lower_incompetent_industry_5 = {
+		icon = generic_construction
+		visible = {
+			has_idea = incompetent_industry_real_5
+		}
+
+		available = {
+			has_idea = incompetent_industry_real_5
+			OR = {
+				has_tech = flexible_line
+				has_tech = streamlined_line
+			}
+			OR = {
+				has_tech = concentrated_industry5
+				has_tech = dispersed_industry5
+			}
+			has_tech = construction5
+			OR = {
+				AND = {
+					num_of_factories > 130
+					has_war = no
+				}
+				AND = {
+					num_of_factories > 170
+					has_defensive_war = yes
+				}
+				AND = {
+					num_of_factories > 190
+					has_offensive_war = yes
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = KMT_no_public_iliteracy_tt
+				NOT = {
+					has_idea = public_iliteracy 
+					has_idea = public_iliteracy_2 
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = KMT_no_lack_skilled_personnel_tt
+			}
+			hidden_trigger = {
+				NOT = {
+					has_idea = PRC_lack_skilled_personnel
+					has_idea = PRC_lack_skilled_personnel_1
+					has_idea = PRC_lack_skilled_personnel_2
+					has_idea = PRC_lack_skilled_personnel_3
+					has_idea = PRC_lack_skilled_personnel_4 
+					has_idea = PRC_lack_skilled_personnel_5 
+					has_idea = PRC_lack_skilled_personnel_6
+					has_idea = PRC_lack_skilled_personnel_7
+					has_idea = PRC_lack_skilled_personnel_9
+					has_idea = PRC_lack_skilled_personnel_10
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 50
+
+		complete_effect = {
+			add_stability = 0.01
+			add_war_support = 0.01
+			remove_ideas = incompetent_industry_real_5
+			if = {
+				limit = {
+					has_idea = incompetent_industry_real_5_navy
+				}
+				remove_ideas = incompetent_industry_real_5_navy
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		remove_effect = {
+		}
+	}
+}
+
+KMT_dcat_incompetent_army = {
+	
+	KMT_lower_incompetent_army_1 = {
+		icon = generic_prepare_civil_war
+		visible = {
+			OR = {
+				has_idea = KMT_weak_army
+				has_idea = KMT_weak_army_lesser
+				has_idea = KMT_weak_army_lesserer
+			}
+		}
+		
+		available = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				has_army_experience > 349
+			}
+			else = {
+				has_army_experience > 49
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 50
+		
+		complete_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				army_experience = -500
+			}
+			else = {
+				army_experience = -50
+			}
+			if = {
+				limit = {
+					has_idea = KMT_weak_army
+				}
+				swap_ideas = {
+					remove_idea = KMT_weak_army
+					add_idea = KMT_weak_army_lesser
+				}
+				else = {
+					if = {
+						limit = {
+							has_idea = KMT_weak_army_lesser
+						}
+						swap_ideas = {
+							remove_idea = KMT_weak_army_lesser
+							add_idea = KMT_weak_army_lesserer
+						}
+						else = {
+							if = {
+								limit = {
+									has_idea = KMT_weak_army_lesserer
+								}
+								remove_ideas = KMT_weak_army_lesserer
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	KMT_extensive_drilling = {
+		icon = generic_industry
+		visible = {
+			has_completed_focus = KMT_army_reform
+		}
+		
+		available = {
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				OR = {
+					has_idea = KMT_weak_army
+					has_idea = KMT_weak_army_lesser
+					has_idea = KMT_weak_army_lesserer
+				}
+				has_war = no
+				add = 100
+			}
+			modifier = {
+				has_war = yes
+				add = -8
+			}
+			modifier = {
+				any_country = {
+					is_major = yes
+					has_war_with = ROOT
+				}
+				factor = 0
+			}
+		}
+
+		days_remove = 365
+		days_re_enable = 0
+		
+		fire_only_once = yes
+
+		cost = 50
+		
+		modifier = {
+			experience_gain_army = 0.07
+			experience_gain_army_factor = 0.5
+			army_morale_factor = -0.05
+			army_org_factor = -0.05
+		}
+		
+		complete_effect = {
+		}
+		
+		remove_effect = {
+			set_country_flag = KMT_extensive_drilling_finished
+		}
+	}
+	
+	KMT_tighten_up_recruitment_standard = {
+		icon = generic_political_discourse
+		visible = {
+			has_completed_focus = KMT_army_reform
+		}
+		
+		available = {
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				OR = {
+					has_idea = KMT_weak_army
+					has_idea = KMT_weak_army_lesser
+					has_idea = KMT_weak_army_lesserer
+				}
+				has_war = no
+				add = 100
+			}
+			modifier = {
+				has_war = yes
+				add = -8
+			}
+			modifier = {
+				any_country = {
+					is_major = yes
+					has_war_with = ROOT
+				}
+				factor = 0
+			}
+		}
+
+		days_remove = 365
+		days_re_enable = 0
+		
+		fire_only_once = yes
+
+		cost = 50
+		
+		modifier = {
+			experience_gain_army = 0.07
+			experience_gain_army_factor = 0.5
+			conscription = -0.01
+			conscription_factor = -0.1
+		}
+		
+		complete_effect = {
+		}
+		
+		remove_effect = {
+			set_country_flag = KMT_tighten_up_recruitment_standard_finished
+		}
+	}
+	
+	KMT_officer_reshuffle = {
+		icon = generic_army_support
+		visible = {
+			has_completed_focus = KMT_army_reform
+		}
+		
+		available = {
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				OR = {
+					has_idea = KMT_weak_army
+					has_idea = KMT_weak_army_lesser
+					has_idea = KMT_weak_army_lesserer
+				}
+				has_war = no
+				add = 100
+			}
+			modifier = {
+				has_war = yes
+				add = -8
+			}
+			modifier = {
+				any_country = {
+					is_major = yes
+					has_war_with = ROOT
+				}
+				factor = 0
+			}
+		}
+
+		days_remove = 365
+		days_re_enable = 0
+		
+		fire_only_once = yes
+
+		cost = 50
+		
+		modifier = {
+			experience_gain_army = 0.07
+			experience_gain_army_factor = 0.5
+			military_leader_cost_factor = 0.75
+			planning_speed = -0.1
+		}
+		
+		complete_effect = {
+		}
+		
+		remove_effect = {
+			set_country_flag = KMT_officer_reshuffle_finished
+		}
+	}
+	
+	KMT_extensive_drilling_plus = {
+		icon = generic_industry
+		visible = {
+			has_completed_focus = KMT_army_reform
+		}
+		
+		available = {
+			has_country_flag = KMT_extensive_drilling_finished
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+
+		days_remove = -1
+		days_re_enable = 0
+
+		cost = 75
+		
+		modifier = {
+			experience_gain_army = 0.01
+			training_time_army_factor = -0.1
+		}
+	}
+	
+	KMT_tighten_up_recruitment_standard_plus = {
+		icon = generic_political_discourse
+		visible = {
+			has_completed_focus = KMT_army_reform
+		}
+		
+		available = {
+			has_country_flag = KMT_tighten_up_recruitment_standard_finished
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+
+		days_remove = -1
+		days_re_enable = 0
+
+		cost = 75
+		
+		modifier = {
+			army_org_factor = 0.025
+			army_morale_factor = 0.025
+		}
+	}
+	
+	KMT_officer_reshuffle_plus = {
+		icon = generic_army_support
+		visible = {
+			has_completed_focus = KMT_army_reform
+		}
+		
+		available = {
+			has_country_flag = KMT_officer_reshuffle_finished
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+
+		days_remove = -1
+		days_re_enable = 0
+
+		cost = 75
+		
+		modifier = {
+			max_planning = 0.05
+			planning_speed = 0.1
+		}
+	}
+}
+
+KMT_dcat_national_treasure = {
+
+	KMT_evacuate_national_treasures = {
+		icon = generic_nationalism
+		visible = {
+			tag = CHI
+			NOT = { 
+				has_country_flag = treasures_abroad 
+				has_country_flag = treasure_ransacked 
+			}
+			any_owned_state = {
+				has_state_flag = KMT_treasure_state
+				OR = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+							OR = {
+								tag = JAP
+								is_puppet_of = JAP
+							}
+						}
+					}
+					controller = {
+						has_war_with = ROOT
+						OR = {
+							tag = JAP
+							is_puppet_of = JAP
+						}
+					}
+				}
+			}
+		}
+
+
+		ai_will_do = {
+			base = 10000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 0
+
+		complete_effect = {
+			if = {
+				limit = {
+					613 = {
+						has_state_flag = KMT_treasure_state
+					}
+				}
+				613 = {
+					clr_state_flag = KMT_treasure_state
+				}
+				605 = {
+					set_state_flag = KMT_treasure_state
+					custom_effect_tooltip = KMT_will_be_destination_tt
+				}
+				else = {
+					if = {
+						limit = {
+							605 = {
+								has_state_flag = KMT_treasure_state
+							}
+						}
+						605 = {
+							clr_state_flag = KMT_treasure_state
+						}
+						325 = {
+							set_state_flag = KMT_treasure_state
+							custom_effect_tooltip = KMT_will_be_destination_tt
+						}
+						else = {
+							if = {
+								limit = {
+									325 = {
+										has_state_flag = KMT_treasure_state
+									}		
+								}
+								325 = {
+									clr_state_flag = KMT_treasure_state
+								}
+								add_timed_idea = {
+									idea = KMT_treasure_abroad_idea
+									days = 365
+								}
+								set_country_flag = treasures_abroad
+							}
+						}
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+
+	KMT_treasures_will_be_ransacked = {
+
+		icon = generic_operation
+		
+		visible = {
+			tag = CHI
+			NOT = { 
+				has_country_flag = treasures_abroad 
+				has_country_flag = treasure_ransacked 
+			}
+			any_owned_state = {
+				has_state_flag = KMT_treasure_state
+				OR = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+							OR = {
+								tag = JAP
+								is_puppet_of = JAP
+							}
+							has_government = fascism
+						}
+					}
+					controller = {
+						has_war_with = ROOT
+						OR = {
+							tag = JAP
+							is_puppet_of = JAP
+						}
+					}
+				}
+			}
+		}
+
+		allowed = {
+			tag = CHI
+		}
+
+		available = {
+			NOT = {
+				any_owned_state = {
+					has_state_flag = KMT_treasure_state
+					controller = {
+						has_war_with = ROOT
+						OR = {
+							tag = JAP
+							is_puppet_of = JAP
+						}
+						has_government = fascism
+					}
+				}
+			}
+		}
+
+		days_mission_timeout = 5
+		fire_only_once = no
+
+		activation = {
+			NOT = { 
+				has_country_flag = treasures_abroad 
+				has_country_flag = treasure_ransacked 
+			}
+			any_owned_state = {
+				has_state_flag = KMT_treasure_state
+				controller = {
+					has_war_with = ROOT
+					OR = {
+						tag = JAP
+						is_puppet_of = JAP
+					}
+				}
+			}
+		}
+
+		is_good = no
+
+		complete_effect = {
+		}
+
+		timeout_effect = {
+			country_event = {
+				id = kmt.204
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+
+KMT_dcat_rename_reconquered_cities = {
+
+	KMT_rename_dairen = {
+		icon = generic_decision
+		visible = {
+			owns_state = 745
+			745 = {
+				NOT = {
+					has_state_flag = renaming_decided
+				}
+			}
+		}
+
+		available = {
+			always = yes
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 5
+
+		complete_effect = {
+			add_stability = 0.01
+			if = {
+				limit = {
+					has_global_flag = KMT_use_postal_romanisation
+				}
+				745 = { set_state_name = KMT_1150_postal }
+				else = {
+					745 = { set_state_name = VICTORY_POINTS_1150 }
+				}
+			}
+			745 = {
+				set_state_flag = renaming_decided
+			}
+		}
+		remove_effect = {
+		}
+	}
+
+	KMT_rename_takao = {
+		icon = generic_decision
+		visible = {
+			NOT = {
+				has_global_flag = renaming_decided12068
+			}
+			524 = {
+				is_owned_by = ROOT
+			}
+		}
+
+		available = {
+			always = yes
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 5
+
+		complete_effect = {
+			add_stability = 0.01
+			if = {
+				limit = {
+					has_global_flag = KMT_use_postal_romanisation
+				}
+				set_province_name = { id = 12068 name = KMT_12068_postal }
+				else = {
+					set_province_name = { id = 12068 name = VICTORY_POINTS_12068 }
+				}
+			}
+			set_global_flag = renaming_decided12068
+		}
+		remove_effect = {
+		}
+	}
+
+	KMT_rename_hsinking = {
+		icon = generic_decision
+		visible = {
+			NOT = {
+				has_global_flag = renaming_decided1567
+			}
+			328 = {
+				is_owned_by = ROOT
+			}
+		}
+
+		available = {
+			always = yes
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 5
+
+		complete_effect = {
+			add_stability = 0.01
+			set_province_name = { id = 1567 name = KMT_changchun }
+			set_global_flag = renaming_decided1567
+		}
+		remove_effect = {
+		}
+	}
+
+	KMT_rename_mukden = {
+		icon = generic_decision
+		visible = {
+			NOT = {
+				has_global_flag = renaming_decided11771
+			}
+			716 = {
+				is_owned_by = ROOT
+			}
+		}
+
+		available = {
+			always = yes
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 5
+
+		complete_effect = {
+			add_stability = 0.01
+			set_province_name = { id = 11771 name = KMT_shenyang }
+			set_global_flag = renaming_decided11771
+		}
+		remove_effect = {
+		}
+	}
+	
+}
+
+KMT_dcat_support_china = {
+	
+	KMT_construct_ledo_road = {
+		icon = generic_construction
+		visible = {
+			tag = USA
+			has_idea = KMT_assistance_to_CHI
+		}
+
+		available = {
+			NOT = {
+				has_war_with = CHI
+			}
+			has_capitulated = no
+			is_puppet = no
+			custom_trigger_tooltip = {
+				tooltip = KMT_alone_or_peace_faction_tt
+				is_alone_or_in_faction_at_peace_with_CHI = yes
+			}
+			has_idea = KMT_assistance_to_CHI
+			CHI = {
+				has_defensive_war_with = JAP
+				OR = {
+					custom_trigger_tooltip = {
+						tooltip = KMT_not_controlling_any_coastal_state_tt
+						NOT = {
+							any_state = {
+								is_controlled_by = PREV
+								is_coastal = yes
+							}
+						}
+					}
+					surrender_progress > 0.24
+					AND = {
+						613 = {
+							controller = { has_war_with = CHI }
+						}
+						608 = {
+							controller = { has_war_with = CHI }
+						}
+					}
+				}
+			}
+			NOT = {
+				is_puppet_of = JAP
+				is_in_faction_with = JAP
+				has_non_aggression_pact_with = JAP
+				has_war_with = CHI
+				is_puppet_of = CHI
+			}
+			640 = {
+				controller = {
+					OR = {
+						has_war_with = CHI
+						has_war_with = ENG
+					}
+				}
+			}
+			766 = {
+				controller = { 
+					NOT = {
+						has_war_with = CHI
+						has_war_with = USA
+					}
+				}
+			}
+			747 = {
+				controller = { 
+					NOT = {
+						has_war_with = CHI
+						has_war_with = USA
+					}
+					OR = {
+						tag = CHI
+						is_in_faction_with = CHI
+						is_puppet_of = CHI
+						has_war_together_with = CHI
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 600
+		days_re_enable = 0
+
+		cost = 5
+		
+		fire_only_once = yes
+		
+		modifier = {
+			civilian_factory_use = 1
+		}
+
+		complete_effect = {
+		}
+		
+		remove_effect = {
+			if = {
+				limit = {
+					CHI = {
+						has_defensive_war = yes
+					}
+				}
+				CHI = {
+					add_ideas = KMT_ledo_road_idea
+					country_event = { id = kmt.516 }
+				}
+				USA = {
+					country_event = { id = kmt.519 }
+				}
+			}
+			766 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = CHI_needed_for_ledo_road
+			}
+			747 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = CHI_needed_for_ledo_road
+			}
+			288 = {
+				set_state_flag = CHI_needed_for_ledo_road
+			}
+		}
+	}
+	
+	KMT_FRA_retake_indochina = {
+		icon = generic_operation
+		visible = {
+			tag = FRA
+			CHI = {
+				has_completed_focus = KMT_defense_of_indo_china
+			}
+			has_global_flag = KMT_FRA_transferred_indochina_to_CHI
+			has_war = no
+			is_subject = no
+			CHI = { 
+				has_war = no 
+				is_subject = no
+			}
+		}
+		
+		fire_only_once = yes
+
+		available = {
+			NOT = {
+				has_war_with = CHI
+			}
+			any_state = {
+				OR = {
+					state = 741
+					state = 671
+					state = 670
+					state = 286
+				}
+				owner = {
+					OR = {
+						tag = CHI
+						is_puppet_of = CHI
+					}
+				}
+				controller = {
+					OR = {
+						tag = CHI
+						is_puppet_of = CHI
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 10
+		
+		modifier = {
+		}
+
+		complete_effect = {
+			CHI = {
+				country_event = { id = kmt.558 }
+			}
+		}
+		
+		remove_effect = {
+		}
+	}
+
+	KMT_withdraw_support = {
+		icon = generic_break_treaty
+		visible = {
+			has_idea = KMT_assistance_to_CHI
+		}
+
+		available = {
+			always = yes
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -29
+				}
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -34
+				}
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -39
+				}
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -44
+				}
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -49
+				}
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -54
+				}
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -59
+				}
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -64
+				}
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -69
+				}
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -74
+				}
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = CHI
+					value < -79
+				}
+			}
+			modifier = {
+				add = 10
+				has_opinion = {
+					target = CHI
+					value < -84
+				}
+			}
+			modifier = {
+				add = 10
+				has_opinion = {
+					target = CHI
+					value < -89
+				}
+			}
+			modifier = {
+				add = 10
+				has_opinion = {
+					target = CHI
+					value < -94
+				}
+			}
+			modifier = {
+				add = 10
+				has_opinion = {
+					target = CHI
+					value < -99
+				}
+			}
+			modifier = {
+				add = 100
+				OR = {
+					any_country = {
+						is_in_faction_with = ROOT
+						has_war_with = CHI
+					}
+					any_country = {
+						is_in_faction_with = CHI
+						has_war_with = ROOT
+					}
+				}
+			}
+			modifier = {
+				add = 1000
+				has_capitulated = yes
+			}
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 5
+
+		complete_effect = {
+			add_political_power = -95
+			add_stability = -0.05
+			remove_ideas = KMT_assistance_to_CHI
+			remove_opinion_modifier = {
+				modifier = KMT_offered_assistance
+				target = CHI
+			}
+			CHI = {
+				remove_opinion_modifier = {
+					modifier = KMT_offered_assistance
+					target = ROOT
+				}
+				country_event = { id = kmt.538 }
+			}
+			if = {
+				limit = {
+					any_state = {
+						controller = {
+							OR = {
+								tag = ROOT
+								is_puppet_of = ROOT
+							}
+						}
+						has_state_flag = CHI_needed_for_hanoi_route
+						NOT = { has_state_flag = CHI_hanoi_route_closed_state }
+					}
+				}
+				hidden_effect = {
+					every_state = {
+						limit = {
+							has_state_flag = CHI_needed_for_hanoi_route
+							NOT = { has_state_flag = CHI_hanoi_route_closed_state }
+							OR = {
+								is_controlled_by = ROOT
+								CONTROLLER = { is_subject_of = ROOT }
+							}
+						}
+						set_state_flag = CHI_hanoi_route_closed_state
+					}
+				}
+				random_country = {
+					#Country that had the route
+					limit = { 
+						OR = {
+							has_idea = KMT_yunnan_bahn_idea
+							has_idea = KMT_yunnan_bahn_idea_closed
+						}
+					}
+					country_event = { id = kmt_fsr.10 }
+					custom_effect_tooltip = close_hanoi_route_explanation # Prints the contents of the CHI_hanoi_route_current_level variable
+				}
+			}
+			if = {
+				limit = {
+					any_state = {
+						controller = {
+							OR = {
+								tag = ROOT
+								is_puppet_of = ROOT
+							}
+						}
+						has_state_flag = CHI_the_hump_closed_state
+						NOT = { has_state_flag = CHI_the_hump_closed_state }
+					}
+				}
+				hidden_effect = {
+					every_state = {
+						limit = {
+							has_state_flag = CHI_needed_for_the_hump
+							NOT = { has_state_flag = CHI_the_hump_closed_state }
+							OR = {
+								is_controlled_by = ROOT
+								CONTROLLER = { is_subject_of = ROOT }
+							}
+						}
+						set_state_flag = CHI_the_hump_closed_state
+					}
+				}
+				random_country = {
+					#Country that had the route
+					limit = { 
+						OR = {
+							has_idea = KMT_the_hump_idea
+							has_idea = KMT_the_hump_idea_closed
+						}
+					}
+					country_event = { id = kmt_fsr.12 }
+					custom_effect_tooltip = close_the_hump_explanation # Prints the contents of the CHI_the_hump_current_level variable
+				}
+			}
+			if = {
+				limit = {
+					any_state = {
+						controller = {
+							OR = {
+								tag = ROOT
+								is_puppet_of = ROOT
+							}
+						}
+						has_state_flag = CHI_needed_for_ledo_road
+						NOT = { has_state_flag = CHI_ledo_road_closed_state }
+					}
+				}
+				hidden_effect = {
+					every_state = {
+						limit = {
+							has_state_flag = CHI_needed_for_ledo_road
+							NOT = { has_state_flag = CHI_ledo_road_closed_state }
+							OR = {
+								is_controlled_by = ROOT
+								CONTROLLER = { is_subject_of = ROOT }
+							}
+						}
+						set_state_flag = CHI_ledo_road_closed_state
+					}
+				}
+				random_country = {
+					#Country that had the route
+					limit = { 
+						OR = {
+							has_idea = KMT_ledo_road_idea
+							has_idea = KMT_ledo_road_idea_closed
+						}
+					}
+					country_event = { id = kmt_fsr.6 }
+					custom_effect_tooltip = close_ledo_road_explanation # Prints the contents of the CHI_ledo_road_current_level variable
+				}
+			}
+			if = {
+				limit = {
+					any_state = {
+						controller = {
+							OR = {
+								tag = ROOT
+								is_puppet_of = ROOT
+							}
+						}
+						has_state_flag = CHI_needed_for_burma_road
+						NOT = { has_state_flag = CHI_burma_road_closed_state }
+					}
+				}
+				hidden_effect = {
+					every_state = {
+						limit = {
+							has_state_flag = CHI_needed_for_burma_road
+							NOT = { has_state_flag = CHI_burma_road_closed_state }
+							OR = {
+								is_controlled_by = ROOT
+								CONTROLLER = { is_subject_of = ROOT }
+							}
+						}
+						set_state_flag = CHI_burma_road_closed_state
+					}
+				}
+				random_country = {
+					limit = { 
+						OR = {
+							has_idea = KMT_burma_road_idea 
+							has_idea = KMT_burma_road_idea_closed
+						}				
+					}
+					country_event = { id = kmt_fsr.2 }
+				}
+			}
+			set_country_flag = KMT_withdrew_support_from_chi
+		}
+		remove_effect = {
+		}
+	}
+}
+
+#KMT_dcat_resources_in_china = {
+#
+#}
+
+KMT_dcat_industrial_evacuation = {
+	
+	KMT_industrial_evacuation_peking = { 
+		icon = generic_scorched_earth
+		available = {
+			608 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 608
+		}
+		visible = {	
+			608 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			608 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_subject_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					608 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				608 = {
+					KMT_evacuate_industry_to_the_rear = yes
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				608 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_hopeh = { 
+		icon = generic_scorched_earth
+		available = {
+			614 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 614
+		}
+		visible = {	
+			614 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			614 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					614 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				614 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				614 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_shantung = { 
+		icon = generic_scorched_earth
+		available = {
+			597 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 597
+		}
+		visible = {	
+			597 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			597 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					597 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				597 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				597 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_qingdao = { 
+		icon = generic_scorched_earth
+		available = {
+			743 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 743
+		}
+		visible = {	
+			743 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			743 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					743 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				743 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				743 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_jinan = { 
+		icon = generic_scorched_earth
+		available = {
+			770 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 770
+		}
+		visible = {	
+			770 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			770 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					770 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				770 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				770 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_jiangsu = { 
+		icon = generic_scorched_earth
+		available = {
+			598 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 598
+		}
+		visible = {	
+			598 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			598 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					598 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				598 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				598 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_shanghai = { 
+		icon = generic_scorched_earth
+		available = {
+			769 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 769
+		}
+		visible = {	
+			769 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			769 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					769 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				769 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				769 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_nanjing = { 
+		icon = generic_scorched_earth
+		available = {
+			613 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 613
+		}
+		visible = {	
+			613 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			613 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					613 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				613 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				613 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_zhejiang = { 
+		icon = generic_scorched_earth
+		available = {
+			596 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 596
+		}
+		visible = {	
+			596 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			596 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					596 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				596 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				596 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_fujian = { 
+		icon = generic_scorched_earth
+		available = {
+			595 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 595
+		}
+		visible = {	
+			595 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			595 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					595 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				595 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				595 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_guangdong = { 
+		icon = generic_scorched_earth
+		available = {
+			593 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 593
+		}
+		visible = {	
+			593 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			593 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					593 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				593 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				593 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_guangzhou = { 
+		icon = generic_scorched_earth
+		available = {
+			592 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 592
+		}
+		visible = {	
+			592 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			592 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					592 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				592 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				592 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_hainan = { 
+		icon = generic_scorched_earth
+		available = {
+			591 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 591
+		}
+		visible = {	
+			591 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			591 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					591 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				591 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				591 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_hongkong = { 
+		icon = generic_scorched_earth
+		available = {
+			326 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 326
+		}
+		visible = {	
+			326 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			326 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					326 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				326 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				326 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_macao = { 
+		icon = generic_scorched_earth
+		available = {
+			729 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 729
+		}
+		visible = {	
+			729 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			729 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					729 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				729 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				729 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_gzw = { 
+		icon = generic_scorched_earth
+		available = {
+			728 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 728
+		}
+		visible = {	
+			728 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			728 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					728 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				728 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				728 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_nanning = { 
+		icon = generic_scorched_earth
+		available = {
+			594 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 594
+		}
+		visible = {	
+			594 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			594 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					594 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				594 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				594 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_shiukwan = { 
+		icon = generic_scorched_earth
+		available = {
+			763 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 763
+		}
+		visible = {	
+			763 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			763 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					763 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				763 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				763 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_taiyuan = { 
+		icon = generic_scorched_earth
+		available = {
+			615 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 615
+		}
+		visible = {	
+			615 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			615 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					615 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				615 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				615 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_henan = { 
+		icon = generic_scorched_earth
+		available = {
+			607 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 607
+		}
+		visible = {	
+			607 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			607 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					607 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				607 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				607 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_nanyang = { 
+		icon = generic_scorched_earth
+		available = {
+			771 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 771
+		}
+		visible = {	
+			771 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			771 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					771 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				771 = {
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				771 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_anhui = { 
+		icon = generic_scorched_earth
+		available = {
+			606 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 606
+		}
+		visible = {	
+			606 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			606 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					606 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				606 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				606 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_huizhou = { 
+		icon = generic_scorched_earth
+		available = {
+			749 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 749
+		}
+		visible = {	
+			749 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			749 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					749 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				749 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				749 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_jiangxi = { 
+		icon = generic_scorched_earth
+		available = {
+			600 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 600
+		}
+		visible = {	
+			600 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			600 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					600 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				600 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				600 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_ganzhou = { 
+		icon = generic_scorched_earth
+		available = {
+			773 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 773
+		}
+		visible = {	
+			773 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			773 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					773 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				773 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				773 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+
+	KMT_industrial_evacuations_wuhan = { 
+		icon = generic_scorched_earth
+		available = {
+			765 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 765
+		}
+		visible = {	
+			765 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			765 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					765 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				765 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				765 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_hupeh = { 
+		icon = generic_scorched_earth
+		available = {
+			620 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 620
+		}
+		visible = {	
+			620 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			620 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					620 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				620 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				625 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+	
+	KMT_industrial_evacuations_hunan = { 
+		icon = generic_scorched_earth
+		available = {
+			602 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+		}
+		highlight_states = {
+			state = 602
+		}
+		visible = {	
+			602 = { 
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
+				}
+			}
+			tag = event_target:KMT_central_gov_tag
+			has_completed_focus = KMT_the_big_rear_concept
+			602 = { 
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						has_idea = cu_is_warlord
+						has_war_together_with = ROOT
+						has_full_control_of_state = PREV
+					}
+					CONTROLLER = {
+						is_puppet_of = ROOT
+					}
+				}
+			}			
+		}
+
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {}
+
+		remove_effect = {
+			if = {
+				limit = {
+					602 = { 
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								has_idea = cu_is_warlord
+								has_war_together_with = ROOT
+								has_full_control_of_state = PREV
+							}
+							CONTROLLER = {
+								is_subject_of = ROOT
+							}
+						}
+					}			
+				}
+				602 = {
+					KMT_evacuate_industry_to_the_rear = yes		
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				602 = {
+					any_neighbor_state = {
+						controller = {
+							has_war_with = ROOT
+						}
+					}
+				}
+				factor = 1000
+			}
+		}
+	}
+}
+KMT_dcat_central_government = {
+	
+	KMT_take_the_seat_of_central_gov = { 
+		icon = generic_scorched_earth
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = KMT_own_central_gov_capital_tt
+				OR = {
+					event_target:KMT_central_gov_capital_state = {
+						is_owned_by = ROOT
+					}
+				}
+			}
+			is_chinese_nations = yes
+			is_puppet = no
+			OR = {
+				has_idea = cg_warlords
+				has_idea = cg_warlords_ssc
+				has_idea = cg_displaced_warlords
+			}
+		}
+		highlight_states = {
+			state = event_target:KMT_central_gov_capital_state
+		}
+		visible = {	
+			OR = {
+				has_idea = cg_warlords
+				has_idea = cg_displaced_warlords
+				has_idea = cg_warlords_ssc
+			}
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		days_remove = 0
+
+		modifier = {}
+
+		complete_effect = {
+			add_ideas = cg_true
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+}
+foreign_politics = {
+	
+	KMT_communists_overthrow_white_peace_window_mission = {
+
+		icon = generic_decision
+
+		allowed = { always = no } 
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					any_country = {
+						has_war_with = ROOT
+					}
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = KMT_communists_overthrow_white_peace_window_flag
+		}
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				
+			}
+		}
+		
+		is_good = yes
+
+		days_mission_timeout = 35
+		
+		timeout_effect = {
+			custom_effect_tooltip = KMT_nolonger_able_to_white_peace_with_countries
+			clr_country_flag = KMT_communists_overthrow_white_peace_window_flag
+			remove_mission = KMT_communists_overthrow_white_peace_window_mission
+		}
+	}
+
+	KMT_white_peace_with_from = {
+		icon = generic_decision
+		
+		cost = 1
+		days_remove = 0
+		
+		visible = {
+			has_country_flag = KMT_communists_overthrow_white_peace_window_flag
+			FROM = {
+				has_war_with = ROOT
+				NOT = {
+					has_country_flag = KMT_rejected_spread_peace
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 10
+			modifier = {
+				FROM = {
+					surrender_progress > 0.5
+				}
+				factor = 0.25
+			}
+			modifier = {
+				FROM = {
+					surrender_progress > 0.75
+				}
+				factor = 0
+			}
+		}
+		
+		target_array = enemies
+		
+		target_trigger = {
+			FROM = {
+				NOT = {
+					original_tag = ROOT
+				}
+				has_war_with = ROOT
+				NOT = {
+					has_country_flag = KMT_rejected_spread_peace
+				}
+			}
+		}
+		
+		complete_effect = {
+			FROM = {
+				country_event = { id = kmt.540 }
+			}
+		}
+	}
+
+	KMT_white_peace_with_colony_test = {
+		icon = generic_decision
+		
+		cost = 0
+		days_remove = 0
+		
+		available = {
+			FROM = {
+				has_war_with = ROOT
+			}
+		}
+		
+		visible = {
+			FROM = {
+				check_variable = { 
+					var = KMT_spread_revolution_int_match_check
+					value = ROOT.KMT_spread_revolution_int_match_check
+					compare = equals
+				}
+				has_idea = KMT_spread_independence_war
+				has_war_with = ROOT
+				has_country_flag = KMT_independence_war_from_spread
+				OR = {
+					NOT = {
+						has_country_flag = KMT_rejected_colony_peace
+					}
+					has_country_flag = {
+						flag = KMT_rejected_colony_peace
+						days > 30
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					has_country_flag = {
+						flag = KMT_independence_war_from_spread
+						days > 60
+					}
+					surrender_progress < 0.05
+				}
+				add = 10
+			}
+			modifier = {
+				FROM = {
+					has_country_flag = {
+						flag = KMT_independence_war_from_spread
+						days > 90
+					}
+					surrender_progress < 0.1
+				}
+				add = 15
+			}
+			modifier = {
+				FROM = {
+					has_country_flag = {
+						flag = KMT_independence_war_from_spread
+						days > 120
+					}
+					surrender_progress < 0.15
+				}
+				add = 30
+			}
+			modifier = {
+				surrender_progress > 0.5
+				add = 30
+			}
+			modifier = {
+				has_capitulated = yes
+				add = 1000
+			}
+			modifier = {
+				has_government = fascism
+				factor = 0.1
+			}
+			modifier = {
+				has_government = communism
+				factor = 0.25
+			}
+		}
+		
+		target_root_trigger = {
+			has_war = yes
+		}
+		
+		target_array = enemies
+		
+		target_trigger = {
+			FROM = {
+				check_variable = { 
+					var = KMT_spread_revolution_int_match_check
+					value = ROOT.KMT_spread_revolution_int_match_check
+					compare = equals
+				}
+				has_idea = KMT_spread_independence_war
+				#has_war_with = ROOT
+				has_country_flag = KMT_independence_war_from_spread
+			}
+		}
+		
+		complete_effect = {
+			FROM = {
+				country_event = { id = kmt.546 }
+			}
+		}
+	}
+
+	KMT_seek_peace_with_China = {
+		icon = generic_decision
+		available = {
+			has_war_with = FROM
+			custom_trigger_tooltip = {
+				tooltip = KMT_JAP_seek_peace_with_from_tt
+				OR = {
+					NOT = {
+						any_state = {
+							NOT = { state = 524 }
+							is_core_of = FROM
+							owner = {
+								OR = {
+									tag = ROOT
+									is_subject_of = ROOT
+								}
+							}
+							controller = {
+								OR = {
+									tag = ROOT
+									is_subject_of = ROOT
+								}
+							}
+						}
+					}
+					NOT = {
+						any_state = {
+							is_core_of = FROM
+							owner = {
+								OR = {
+									tag = ROOT
+									is_subject_of = ROOT
+								}
+							}
+						}
+					}
+				}
+				OR = {
+					NOT = {
+						any_state = {
+							OR = {
+								state = 525
+								state = 527
+							}
+							owner = {
+								OR = {
+									tag = ROOT
+									is_subject_of = ROOT
+								}
+							}
+							controller = {
+								OR = {
+									tag = ROOT
+									is_subject_of = ROOT
+								}
+							}
+						}
+					}
+					NOT = {
+						any_state = {
+							OR = {
+								state = 525
+								state = 527
+							}
+							owner = {
+								OR = {
+									tag = ROOT
+									is_subject_of = ROOT
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		target_root_trigger = {
+			has_war = yes
+		}
+		
+		target_array = enemies
+		
+		target_trigger = {
+			FROM = {
+				OR = {
+					tag = CHI
+					tag = PRC
+				}
+				OR = {
+					is_faction_leader = yes
+					is_in_faction = no
+				}
+				has_war_with = JAP
+			}
+		}
+
+		visible = {
+			FROM = {
+				surrender_progress < 0.2
+				is_puppet = no
+				OR = {
+					is_faction_leader = yes
+					is_in_faction = no
+				}
+			}
+			tag = JAP
+			NOT = {
+				is_in_faction_with = FROM
+			}
+			has_war_with = FROM
+		}
+
+		cost = 0
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				has_civil_war = yes
+				add = 50
+			}
+			modifier = {
+				FROM = {
+					tag = PRC
+					is_ai = no
+				}
+				add = 2
+			}
+			modifier = {
+				FROM = {
+					tag = CHI
+					is_ai = no
+				}
+				add = 10
+			}
+		}
+
+		complete_effect = {
+			FROM = {
+				country_event = { id = sfl.19 }
+			}
+		}
+	}
+
+	KMT_test = {
+		icon = generic_decision
+
+		visible = {
+			tag = FRA
+			always = no
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			base = 0
+		}
+
+		complete_effect = {
+			every_owned_state = {
+				limit = {
+					any_neighbor_state = {
+						is_core_of = ROOT
+						is_owned_by = ROOT
+					}
+					NOT = {
+						is_core_of = ROOT
+					}
+				}
+				add_core_of = ROOT
+			}
+		}
+	}
+}
+
+KMT_dcat_annex_warlords_for_vp = {
+	KMT_annex_from_for_vps = {
+		icon = generic_nationalism
+		available = {
+			surrender_progress > 0.7
+			has_war_together_with = FROM
+		}
+		
+		visible = {
+			has_war = yes
+			FROM = {
+				has_idea = cu_is_warlord
+				has_idea = KMT_united_front
+				has_war_together_with = ROOT
+				NOT = {
+					has_war_with = ROOT
+				}
+				exists = yes
+			}
+		}
+		target_root_trigger = {
+			has_war = yes 
+		}
+		target_trigger = {
+			FROM = {
+				has_idea = cu_is_warlord
+				has_idea = KMT_united_front
+				has_war_together_with = ROOT
+				NOT = {
+					has_war_with = ROOT
+				}
+				has_war = yes
+			}
+		}
+		
+		days_re_enable = 0
+		days_remove = 0
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				surrender_progress > 0.6
+				add = 15
+			}
+			modifier = {
+				surrender_progress > 0.7
+				add = 30
+			}
+			modifier = {
+				surrender_progress > 0.8
+				add = 60
+			}
+			modifier = {
+				FROM = {
+					tag = SCC
+				}
+				factor = 5
+			}
+			modifier = {
+				FROM = {
+					NOT = { is_neighbor_of = ROOT }
+				}
+				factor = 0.75
+			}
+		}
+		
+		cost = 5
+		
+		complete_effect = {
+			FROM = {
+				country_event = { id = kmt.549 }
+			}
+		}
+	}
+}
+
+KMT_dcat_GER_withdraw_advisor = {
+	KMT_GER_withdraw_advisor = {
+		icon = generic_break_treaty
+		visible = {
+			original_tag = GER
+			NOT = {
+				is_subject_of = CHI
+			}
+			CHI = {
+				OR = {
+					has_idea = german_advisors
+					has_idea = KMT_sino_german_joint_research_ger_adv
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				has_opinion = {
+					target = CHI
+					value < -34
+				}
+				add = 100
+			}
+			modifier = {
+				CHI = {
+					has_government = communism
+				}
+				add = 1000
+			}
+			modifier = {
+				has_global_flag = KMT_sino_soviet_neutrality
+				add = 1000
+			}
+			modifier = {
+				has_global_flag = GER_JAP_tripartite_pact
+				JAP = {
+					has_war_with = CHI
+				}
+				add = 100
+			}
+			modifier = {
+				has_war_with = CHI
+				add = 10000
+			}
+			modifier = {
+				is_in_faction_with = CHI
+				add = -5000
+			}
+		}
+		fire_only_once = yes
+		days_re_enable = 0
+		days_remove = 0
+		
+		cost = 0
+		custom_cost_trigger = {
+			command_power > 49.9
+		}
+		custom_cost_text = cp_atleast_50		
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50 
+			}
+			remove_ideas = GER_CHI_friend
+			CHI = {
+				if = {
+					limit = {
+						has_idea = german_advisors
+					}
+					remove_ideas = german_advisors
+				}
+				if = {
+					limit = {
+						has_idea = KMT_sino_german_joint_research_ger_adv
+					}
+					remove_ideas = KMT_sino_german_joint_research_ger_adv
+				}
+				if = {
+					limit = {
+						has_idea = KMT_sino_german_joint_research
+					}
+					remove_ideas = KMT_sino_german_joint_research
+				}
+				country_event = { id = kmt.553 }
+				remove_opinion_modifier = {
+					modifier = sino_german_cooperation
+					target = GER
+				}
+				remove_opinion_modifier = {
+					modifier = more_sino_german_coop_trade
+					target = GER
+				}
+				remove_opinion_modifier = {
+					modifier = more_sino_german_coop
+					target = GER
+				}
+			}
+			remove_opinion_modifier = {
+				modifier = sino_german_cooperation
+				target = CHI
+			}
+			remove_opinion_modifier = {
+				modifier = more_sino_german_coop_trade
+				target = CHI
+			}
+			remove_opinion_modifier = {
+				modifier = more_sino_german_coop
+				target = CHI
+			}
+			effect_tooltip = {
+				CHI = {
+					if = { 
+						limit = { has_unit_leader = 1040 }
+						every_unit_leader = {
+							limit = { has_id = 1040 }
+							set_nationality = GER
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	KMT_grant_falkenhausen_more_power = {
+		icon = generic_decision
+		visible = {
+			tag = CHI
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+		
+		days_re_enable = 0
+		days_remove = 0
+		
+		cost = 0
+		
+		fire_only_once = yes
+		
+		available = {
+			GER = { has_idea = KMT_assistance_to_CHI }
+		}
+		
+		complete_effect = {
+			create_corps_commander = {
+				id = 1040
+				name = "Alexander von Falkenhausen"
+				portrait_path = "gfx/leaders/kmt_mod/kmt_Falkenhausen.dds"
+				traits = { infantry_officer }
+				attack_skill = 2
+				defense_skill = 2
+				planning_skill = 3
+				logistics_skill = 2
+				skill = 3
+			}
+			
+		}
+	}
+	
+	KMT_cadet_in_GER_land = {
+		icon = generic_army_support
+		available = {
+			tag = CHI
+			NOT = { has_idea = KMT_cadet_in_GER_idea_mw }
+			GER = {
+				has_idea = KMT_assistance_to_CHI
+				OR = {
+					has_tech = mobile_warfare
+					has_tech = superior_firepower
+					has_tech = trench_warfare
+					has_tech = mass_assault
+					has_tech = assault_operations
+				}
+			}
+			has_completed_focus = KMT_falkenhausen_citizenship
+		}
+		visible = {
+			tag = CHI
+			NOT = { has_idea = KMT_cadet_in_GER_idea_mw }
+			GER = {
+				has_idea = KMT_assistance_to_CHI
+			}
+			has_completed_focus = KMT_falkenhausen_citizenship
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				political_power_daily < 0.1
+				has_political_power < 10
+				factor = 0
+			}
+		}
+		
+		days_re_enable = 0
+		days_remove = 0
+		
+		cost = 5
+		
+		modifier = {
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					GER = { has_tech = mobile_warfare }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_mw
+			}
+			else_if = {
+				limit = {
+					GER = { has_tech = superior_firepower }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_sf
+			}
+			else_if = {
+				limit = {
+					GER = { has_tech = trench_warfare }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_gb
+			}
+			else_if = {
+				limit = {
+					GER = { has_tech = mass_assault }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_ma
+			}
+			else_if = {
+				limit = {
+					GER = { has_tech = assault_operations }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_ao
+			}
+		}
+	}
+	
+	KMT_cadet_in_GER_land_recall = {
+		icon = generic_army_support
+		visible = {
+			tag = CHI
+			OR = {
+				has_idea = KMT_cadet_in_GER_idea_mw
+				has_idea = KMT_cadet_in_GER_idea_sf
+				has_idea = KMT_cadet_in_GER_idea_gb
+				has_idea = KMT_cadet_in_GER_idea_ma
+				has_idea = KMT_cadet_in_GER_idea_ao
+			}
+		}
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				political_power_daily < 0.1
+				has_political_power < 10
+				add = 100
+			}
+		}
+		
+		days_re_enable = 0
+		days_remove = 0
+		
+		cost = 5
+		
+		modifier = {
+		}
+		
+		complete_effect = {
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_mw }
+				remove_ideas = KMT_cadet_in_GER_idea_mw
+			}
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_sf }
+				remove_ideas = KMT_cadet_in_GER_idea_sf
+			}
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_gb }
+				remove_ideas = KMT_cadet_in_GER_idea_gb
+			}
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_ma }
+				remove_ideas = KMT_cadet_in_GER_idea_ma
+			}
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_ao }
+				remove_ideas = KMT_cadet_in_GER_idea_ao
+			}
+		}
+	}
+
+	KMT_cadet_in_GER_navy = {
+		icon = generic_naval
+		available = {
+			tag = CHI
+			NOT = { has_idea = KMT_cadet_in_GER_idea_fib }
+			GER = {
+				has_idea = KMT_assistance_to_CHI
+				OR = {
+					has_tech = nrm_fleet_in_being
+					has_tech = nrm_trade_interdiction
+					has_tech = nrm_decisive_battle
+				}
+			}
+			has_completed_focus = KMT_falkenhausen_citizenship
+		}
+		visible = {
+			tag = CHI
+			NOT = { has_idea = KMT_cadet_in_GER_idea_fib }
+			GER = {
+				has_idea = KMT_assistance_to_CHI
+			}
+			has_completed_focus = KMT_falkenhausen_citizenship
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				political_power_daily < 0.1
+				has_political_power < 10
+				factor = 0
+			}
+		}
+		
+		days_re_enable = 0
+		days_remove = 0
+		
+		cost = 5
+		
+		modifier = {
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					GER = { has_tech = nrm_fleet_in_being }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_fib
+			}
+			else_if = {
+				limit = {
+					GER = { has_tech = nrm_trade_interdiction }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_ti
+			}
+			else_if = {
+				limit = {
+					GER = { has_tech = nrm_decisive_battle }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_bs
+			}
+		}
+	}
+	
+	KMT_cadet_in_GER_navy_recall = {
+		icon = generic_naval
+		visible = {
+			tag = CHI
+			OR = {
+				has_idea = KMT_cadet_in_GER_idea_fib
+				has_idea = KMT_cadet_in_GER_idea_ti
+				has_idea = KMT_cadet_in_GER_idea_bs
+			}
+		}
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				political_power_daily < 0.1
+				has_political_power < 10
+				add = 100
+			}
+		}
+		
+		days_re_enable = 0
+		days_remove = 0
+		
+		cost = 5
+		
+		modifier = {
+		}
+		
+		complete_effect = {
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_fib }
+				remove_ideas = KMT_cadet_in_GER_idea_fib
+			}
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_ti }
+				remove_ideas = KMT_cadet_in_GER_idea_ti
+			}
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_bs }
+				remove_ideas = KMT_cadet_in_GER_idea_bs
+			}
+		}
+	}
+
+	KMT_cadet_in_GER_air = {
+		icon = generic_air
+		available = {
+			tag = CHI
+			NOT = { has_idea = KMT_cadet_in_GER_idea_sd }
+			GER = {
+				has_idea = KMT_assistance_to_CHI
+				OR = {
+					has_tech = air_superiority
+					has_tech = formation_flying
+					has_tech = force_rotation
+				}
+			}
+			has_completed_focus = KMT_falkenhausen_citizenship
+		}
+		visible = {
+			tag = CHI
+			NOT = { has_idea = KMT_cadet_in_GER_idea_sd }
+			GER = {
+				has_idea = KMT_assistance_to_CHI
+			}
+			has_completed_focus = KMT_falkenhausen_citizenship
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				political_power_daily < 0.1
+				has_political_power < 10
+				factor = 0
+			}
+		}
+		
+		days_re_enable = 0
+		days_remove = 0
+		
+		cost = 5
+		
+		modifier = {
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					GER = { has_tech = air_superiority }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_sd
+			}
+			else_if = {
+				limit = {
+					GER = { has_tech = formation_flying }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_battlefield_support
+			}
+			else_if = {
+				limit = {
+					GER = { has_tech = force_rotation }
+				}
+				add_ideas = KMT_cadet_in_GER_idea_oi
+			}
+		}
+	}
+	
+	KMT_cadet_in_GER_air_recall = {
+		icon = generic_air
+		visible = {
+			tag = CHI
+			OR = {
+				has_idea = KMT_cadet_in_GER_idea_sd
+				has_idea = KMT_cadet_in_GER_idea_battlefield_support
+				has_idea = KMT_cadet_in_GER_idea_oi
+			}
+		}
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				political_power_daily < 0.1
+				has_political_power < 10
+				add = 100
+			}
+		}
+		
+		days_re_enable = 0
+		days_remove = 0
+		
+		cost = 5
+		
+		modifier = {
+		}
+		
+		complete_effect = {
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_sd }
+				remove_ideas = KMT_cadet_in_GER_idea_sd
+			}
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_battlefield_support }
+				remove_ideas = KMT_cadet_in_GER_idea_battlefield_support
+			}
+			if = {
+				limit = { has_idea = KMT_cadet_in_GER_idea_oi }
+				remove_ideas = KMT_cadet_in_GER_idea_oi
+			}
+		}
+	}
+}
+
+KMT_dcat_integrate_the_communists = {
+	
+	KMT_incorporate_communist_generals = {
+		icon = generic_air
+		visible = {
+			tag = CHI
+			has_completed_focus = KMT_allow_commie
+			PRC = {
+				is_subject_of = ROOT
+			}
+		}
+		
+		ai_will_do = {
+			base = 1
+		}
+		
+		cancel_trigger = {
+			PRC = {
+				NOT = { is_subject_of = ROOT }
+			}
+		}
+		
+		days_re_enable = 0
+		days_remove = 180
+		
+		cost = 5
+		
+		modifier = {
+		}
+		
+		remove_effect = {
+			set_country_flag = KMT_commie_generals_absorbed
+			PRC = {
+				random_unit_leader = {
+					limit = { 
+						NOT = { 
+							has_id = 1064 
+							has_trait = KMT_former_communists 
+						}
+					}
+					add_unit_leader_trait = KMT_former_communists
+				}
+				random_unit_leader = {
+					limit = { 
+						NOT = { 
+							has_id = 1064 
+							has_trait = KMT_former_communists 
+						}
+					}
+					add_unit_leader_trait = KMT_former_communists
+				}
+				random_unit_leader = {
+					limit = { 
+						NOT = { 
+							has_id = 1064 
+							has_trait = KMT_former_communists 
+						}
+					}
+					add_unit_leader_trait = KMT_former_communists
+				}
+				random_unit_leader = {
+					limit = { 
+						NOT = { 
+							has_id = 1064 
+							has_trait = KMT_former_communists 
+						}
+					}
+					add_unit_leader_trait = KMT_former_communists
+				}
+				random_unit_leader = {
+					limit = { 
+						NOT = { 
+							has_id = 1064 
+							has_trait = KMT_former_communists 
+						}
+					}
+					add_unit_leader_trait = KMT_former_communists
+				}
+				random_unit_leader = {
+					limit = { 
+						NOT = { 
+							has_id = 1064 
+							has_trait = KMT_former_communists 
+						}
+					}
+					add_unit_leader_trait = KMT_former_communists
+				}
+				random_unit_leader = {
+					limit = { 
+						NOT = { 
+							has_id = 1064 
+							has_trait = KMT_former_communists 
+						}
+					}
+					add_unit_leader_trait = KMT_former_communists
+				}
+				country_event = {
+					id = kmt.562
+				}
+			}
+		}
+		
+		complete_effect = {
+			hidden_effect = {
+			}
+		}
+	}
+	
+	KMT_incorporate_communist_talents = {
+		icon = generic_air
+		visible = {
+			tag = CHI
+			has_completed_focus = KMT_allow_commie
+			PRC = {
+				is_subject_of = ROOT
+			}
+		}
+		
+		ai_will_do = {
+			base = 1
+		}
+		
+		cancel_trigger = {
+			PRC = {
+				NOT = { is_subject_of = ROOT }
+			}
+		}
+		
+		days_re_enable = 0
+		days_remove = 180
+		
+		cost = 5
+		
+		modifier = {
+		}
+		
+		remove_effect = {
+			set_country_flag = KMT_integrated_prc
+		}
+		
+		complete_effect = {
+		}
+	}
+	
+	KMT_replace_local_officials = {
+		icon = generic_air
+		visible = {
+			tag = CHI
+			has_completed_focus = KMT_allow_commie
+			PRC = {
+				is_subject_of = ROOT
+			}
+			has_country_flag = KMT_integrated_prc
+			has_country_flag = KMT_commie_generals_absorbed
+		}
+		
+		ai_will_do = {
+			base = 1
+		}
+		
+		cancel_trigger = {
+			PRC = {
+				NOT = { is_subject_of = ROOT }
+			}
+		}
+		
+		days_re_enable = 0
+		days_remove = 180
+		
+		cost = 5
+		
+		modifier = {
+		}
+		
+		complete_effect = {
+			PRC = {
+				country_event = { id = kmt.564 }
+			}
+		}
+	}
+}

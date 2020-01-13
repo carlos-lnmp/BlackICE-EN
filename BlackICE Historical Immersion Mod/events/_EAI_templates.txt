@@ -1,0 +1,77 @@
+﻿add_namespace = EAI_T
+
+####################################################
+# template events
+####################################################
+country_event = { #Removing templates if exile government
+	id = EAI_T.1000
+	hidden = yes
+	
+	#mean_time_to_happen = {
+	#	days = 2
+	#}
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_government_in_exile = yes 
+		is_ai = yes
+		NOT = { has_country_flag = exile_AI }
+	}
+	
+	immediate = {
+		set_country_flag = exile_AI
+		
+		
+		delete_unit_template_and_units = {
+			division_template = "Militia Division"
+		}
+		if = {
+			limit = {
+				NOT = { ai_has_role_division = garrison }
+			}
+			delete_unit_template_and_units = {
+				division_template = "Garrison Division"
+			}
+		}
+		if = {
+			limit = {
+				NOT = { ai_has_role_division = motorized }
+			}
+			delete_unit_template_and_units = {
+				division_template = "Motorized Division"
+			}
+		}
+		if = {
+			limit = {
+				NOT = { ai_has_role_division = mechanized }
+			}
+			delete_unit_template_and_units = {
+				division_template = "Mechanized Division"
+			}
+		}
+		if = {
+			limit = {
+				NOT = { ai_has_role_division = mountaineers }
+			}
+			delete_unit_template_and_units = {
+				division_template = "Mountaineer Division"
+			}
+		}
+		if = {
+			limit = {
+				NOT = { ai_has_role_division = marines }
+			}
+			delete_unit_template_and_units = {
+				division_template = "Marine Division"
+			}
+		}
+		
+	}
+	
+	option = {}
+}
+
+
+		
+		

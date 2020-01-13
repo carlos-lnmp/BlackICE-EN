@@ -1,0 +1,91 @@
+############################################################################################################
+#	Expert AI mod - on_actions
+############################################################################################################
+
+on_actions = {
+	on_daily = {
+		effect = {
+
+			# clear invalid construction project
+			if = { limit = { has_country_flag = EAI_construction_project_active }
+
+				if = {
+					limit = {
+						NOT = {
+							has_decision = EAI_construction_CICx5_decision
+							has_decision = EAI_construction_CICx10_decision
+							has_decision = EAI_construction_CICx15_decision
+						}
+					}
+
+					EAI_end_construction = yes
+				}
+			}
+		}
+	}
+	on_declare_war = {
+		effect = {
+
+			# clear wardec script flags
+			ROOT = { clear_variable = EAI_wardec_script_target }
+			FROM = {
+				clr_country_flag = EAI_declare_war_from_@ROOT
+				clr_country_flag = EAI_prepare_for_war_from_@ROOT
+			}
+
+			# clear USA neutrality
+			if = { limit = { FROM = { OR = { has_idea = EAI_neutrality_idea_USA is_puppet_of = USA } } }
+				hidden_effect = {
+					USA = {
+						remove_ideas = EAI_neutrality_idea_USA
+					}
+				}
+			}
+			
+			# clear spain neutrality
+			if = { limit = { FROM = { has_idea = EAI_neutrality_idea_SPR } }
+				hidden_effect = {
+					FROM = {
+						remove_ideas = EAI_neutrality_idea_SPR
+					}
+				}
+			}
+		
+			# force update scipted AI
+			if = { limit = { FROM = { is_ai = yes } }
+				hidden_effect = {
+					FROM = { country_event = { id = EAI_background.0 hours = 1 } }
+				}
+			}
+			if = { limit = { is_ai = yes }
+				hidden_effect = { 
+					country_event = { id = EAI_background.0 hours = 1 } 
+				}
+			}
+
+			# jap invasion blitz
+			if = { limit = { is_ai = yes original_tag = JAP FROM = { OR = { original_tag = PHI original_tag = USA original_tag = ENG } } }
+				hidden_effect = { 
+					set_country_flag = { flag = EAI_invasion_blitz_JAP value = 1 days = 180 }
+				}
+			}
+		}
+	}
+	on_nuke_drop = {
+		effect = {		
+			if = { limit = { has_country_flag = EAI_logging } log = "[Root.GetName] nuked [From.GetName]" } 
+		}
+	}
+	on_state_control_changed = { #ROOT is new controller #FROM is old controller #FROM.FROM is state ID
+		effect = {
+
+			# clear priority construction project on lost control
+			FROM = {
+				if = { limit = { has_country_flag = EAI_construction_project_active check_variable = { EAI_construction_target_state = FROM.FROM.id } }
+
+					EAI_end_construction = yes
+				}
+			}
+		}
+	}
+}

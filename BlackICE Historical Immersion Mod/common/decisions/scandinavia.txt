@@ -1,0 +1,253 @@
+economy_decisions = {
+	SWE_export_markets = {
+		allowed = {
+			original_tag = SWE
+		}
+		available = {
+			has_idea = AST_great_depression_3
+			has_completed_focus = SWE_depression
+		}
+		visible = {
+			has_completed_focus = SWE_planned_expansion_II			
+		}
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 50
+		}
+		cost = 50
+		complete_effect = {
+			remove_ideas = AST_great_depression_3
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_opinion_modifier = {
+				target = GER
+				modifier = aided_industry
+			}		
+		}
+	}
+}
+operations = {
+	align_norway = {
+
+		icon = infiltrate_state
+		available = {
+			has_war_with = GER
+			NOR = {
+				is_in_faction = no
+			}			
+		}
+
+		days_remove = 90	
+
+			
+		allowed = {
+			tag = ENG
+		}		
+
+
+
+		visible = {
+			
+		}		
+
+
+		fire_only_once = yes
+		
+		modifier = {
+			command_power_gain = -0.05
+		}
+		remove_effect = {
+			NOR = {
+				country_event = {
+					id = norway.3
+					days = 1
+				}
+			}
+		}
+	}
+	destroy_mines = {
+		allowed = {
+			original_tag = SWE
+		}
+
+		available = {
+			OR = {
+				surrender_progress > 0.5
+				## Scandia
+				controls_state = 39
+			}			
+			command_power > 24.9			
+		}
+
+		visible = {
+			OR = {
+				has_war_with = GER
+				has_war_with = ENG
+			}
+		}
+		
+		custom_cost_trigger = {
+			command_power > 24.9
+		}
+		
+		custom_cost_text = cp_atleast_25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 50
+		}
+
+
+
+		complete_effect = {
+			## Norrland
+			38 = {
+				set_state_flag = destroyed_mines
+				custom_effect_tooltip = resources_sabotaged
+			}
+			## Lappland
+			666 = {
+				set_state_flag = destroyed_mines
+				custom_effect_tooltip = resources_sabotaged
+			}			
+			hidden_effect = {
+				add_command_power = -25
+			}
+		}
+	}
+	
+	rebuild_mines_1 = {
+		allowed = {
+			#controls_state = 38
+			#controls_state = 38
+		}
+
+		available = {
+		controls_state = 38
+		controls_state = 666
+				38 = {
+					has_state_flag = destroyed_mines
+				}
+				666 = {
+					has_state_flag = destroyed_mines
+				}
+		}
+
+		visible = {
+				38 = {
+					has_state_flag = destroyed_mines
+				}
+				666 = {
+					has_state_flag = destroyed_mines
+				}
+		}
+		
+		cost = 75
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				add = -50
+				tag = SWE
+				surrender_progress > 0.1
+			}
+		}
+		days_remove = 100
+		
+		modifier = {
+			civilian_factory_use = 10
+		}
+		
+		complete_effect = {
+			
+		}		
+		remove_effect = {
+			38 = {
+				clr_state_flag = destroyed_mines
+				set_state_flag = destroyed_mines_1
+				add_state_modifier = {
+					modifier = {
+						local_resources = 0.30
+					}
+				}
+			}
+			666 = {
+				clr_state_flag = destroyed_mines
+				set_state_flag = destroyed_mines_1
+				add_state_modifier = {
+					modifier = {
+						local_resources = 0.30
+					}
+				}
+			}
+		}
+	}
+	
+	rebuild_mines_2 = {
+		allowed = {
+		}
+
+		available = {
+				controls_state = 38
+				controls_state = 666
+				38 = {
+					has_state_flag = destroyed_mines
+				}
+				666 = {
+					has_state_flag = destroyed_mines
+				}	
+		}
+
+		visible = {
+				38 = {
+					has_state_flag = destroyed_mines_1
+				}
+				666 = {
+					has_state_flag = destroyed_mines_1
+				}
+		}
+		
+		cost = 75
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				add = -50
+				tag = SWE
+				surrender_progress < 0.1
+			}
+		}
+		days_remove = 100
+		
+		modifier = {
+			civilian_factory_use = 10
+		}
+		
+		complete_effect = {			
+		}
+		
+		remove_effect = {
+			38 = {
+				clr_state_flag = destroyed_mines_1
+				add_state_modifier = {
+					modifier = {
+						local_resources = 0.60
+					}
+				}
+			}
+			666 = {
+				clr_state_flag = destroyed_mines_1
+				add_state_modifier = {
+					modifier = {
+						local_resources = 0.60
+					}
+				}
+			}
+		}
+	}
+}

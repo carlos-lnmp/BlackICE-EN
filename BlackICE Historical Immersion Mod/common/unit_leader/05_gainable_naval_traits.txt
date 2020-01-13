@@ -1,0 +1,724 @@
+# leader_traits contain a list of UnitLeaderTrait with the following structure:
+# trait_key = {
+# 	type = all # or either of field_marshal, corps_commander, navy
+#	trait_type = basic_trait # or either of status_trait, personality_trait, assignable_trait, basic_terrain_trait, assignable_terrain_trait, exile
+#	attack_skill = 0 # integer
+#	defense_skill = 0 # integer
+#	logistics_skill = 0 # integer
+#	planning_skill = 0 # integer
+#	maneuvering_skill = 0 # integer
+#	coordination_skill = 0 # integer
+#	attack_skill_factor = 0.0 # decimal
+#	defense_skill_factor = 0.0 # decimal
+#	logistics_skill_factor = 0.0 # decimal
+#	planning_skill_factor = 0.0 # decimal
+#	maneuvering_skill_factor = 0.0 # decimal
+#	coordination_skill_factor = 0.0 # decimal
+#	show_in_combat = yes # boolean
+#	override_effect_tooltip = "" # loc key
+#	custom_effect_tooltip = "" # loc key
+#	custom_prerequisite_tooltip = "" # loc key
+#	custom_gain_xp_trigger_tooltip = "" # loc key
+#	mutually_exclusive = other_trait # trait key
+#	parent = other_trait # trait key
+#	num_parents_needed = -1 # integer, -1 means "all"
+#	gui_row = -1 # integer, starts at 0, -1 means auto
+#	gui_column = -1 # integer, starts at 0, -1 means auto
+#	allowed = trigger # scope is an unit leader
+#	prerequisites = trigger # scope is an unit leader
+#	gain_xp = trigger # scope is a combatant
+#	gain_xp_on_spotting = 0 # integer
+#	modifier = { } # list of modifiers
+#	non_shared_modifier = {} #
+#	corps_commander_modifier = {} #
+#	field_marshal_modifier = {} #
+#	sub_unit_modifiers = { # list of sub unit def
+#		# e.g.
+#		submarine {
+#			units = {} # list of adjusters
+#			# list of modifiers e.g.
+#			naval_visibility = -0.1
+#		}
+#	}
+#	trait_xp_factor = {} # list of trait_key/decimal
+#	on_add = effect # scope is an unit leader
+#	on_remove = effect # scope is an unit leader
+#	daily_effect = effect # scope is an unit leader
+#	cost = 1000 # integer
+#	ai_will_do = {} # weight
+#	new_commander_weight = {} # weight
+#	enable_ability = ability_key
+#}
+#Based on HoI3 BICE traits by Riever 
+#Adapted for HOI4 1.5 by maverick87
+##################################
+# Table of Contents
+# - Navy leaders gainable traits
+##################################
+leader_traits = {
+	#seawolf
+	seawolf_II = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			navy_submarine_attack_factor = 0.2 # +X% stronger sub damage
+			navy_submarine_defence_factor = 0.1 				
+			convoy_raiding_efficiency_factor = 0.15
+			spotting_chance = 0.1 											
+			naval_hit_chance = 0.05
+			sub_retreat_speed = 0.05		
+		}
+		
+		parent = seawolf
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		gui_row = 0
+		gui_column = 1
+	}
+	seawolf_III = { 
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			navy_submarine_attack_factor = 0.2 
+			navy_submarine_defence_factor = 0.1
+			convoy_raiding_efficiency_factor = 0.15
+			naval_torpedo_reveal_chance_factor = -0.05
+			spotting_chance = 0.1 							
+			naval_hit_chance = 0.05
+			sub_retreat_speed = 0.1
+		}
+		
+		parent = seawolf_II
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		gui_row = 0
+		gui_column = 2
+	}
+	torpedo_expert = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			naval_torpedo_hit_chance_factor = 0.15
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = seawolf_II
+		parent = silent_hunter
+		parent = lancer
+		num_parents_needed = 1
+		
+		gui_row = 1
+		gui_column = 2
+	}
+	silent_hunter = { 
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			naval_torpedo_reveal_chance_factor = -0.05
+		}
+		sub_unit_modifiers = {
+			coastal_submarine = {
+				navy_visibility = -0.05
+			}
+			submarine = {
+				navy_visibility = -0.05
+			}
+			lr_submarine = {
+				navy_visibility = -0.05
+			}
+		}	
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = seawolf
+		mutually_exclusive = lancer
+		
+		gui_row = 1
+		gui_column = 1
+	}
+	lancer = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			naval_torpedo_screen_penetration_factor = 0.1
+			naval_torpedo_hit_chance_factor = 0.05
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = seawolf
+		parent = fleet_protector
+		num_parents_needed = 1
+		
+		mutually_exclusive = silent_hunter
+		
+		gui_row = 2
+		gui_column = 1
+	}
+	#fleet_protector
+	destroyer_leader = {
+		type = navy
+		
+		trait_type = assignable_trait
+		modifier = {
+			
+		}
+		sub_unit_modifiers = {
+			destroyer = {
+				naval_damage_factor = 0.1
+				naval_torpedo_hit_chance_factor = 0.1
+				navy_visibility = -0.05
+				naval_speed_factor = 0.01
+			}
+		}	
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = fleet_protector
+		
+		gui_row = 3
+		gui_column = 1
+	}
+	loading_drill_master = { 
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			naval_torpedo_cooldown_factor = -0.334
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = silent_hunter
+		parent = lancer
+		parent = destroyer_leader
+		num_parents_needed = 1
+		
+		gui_row = 2
+		gui_column = 2
+	}
+	hunter_killer = { 
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			navy_submarine_detection_factor = 0.25
+			convoy_escort_efficiency = 0.1
+		}
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = destroyer_leader
+		
+		gui_row = 3
+		gui_column = 2
+	}
+	#flyswatter
+	cruiser_captain = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+
+		}
+		
+		sub_unit_modifiers = {
+			light_cruiser = {
+				naval_damage_factor = 0.1
+				naval_speed_factor = 0.01
+			}
+			heavy_cruiser = {
+				naval_damage_factor = 0.1
+				naval_speed_factor = 0.01
+			}
+		}
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = fly_swatter
+		parent = fleet_protector
+		num_parents_needed = 1
+
+		gui_row = 5
+		gui_column = 1
+	}
+	search_pattern_expert = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			spotting_chance = 0.2
+			naval_coordination = 0.05
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = cruiser_captain
+
+		gui_row = 5
+		gui_column = 2
+	}
+	#blockade_runner
+	#spotter
+	mine_sweeper = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			mines_sweeping_by_fleets_factor = 0.25
+			naval_mines_effect_reduction = 0.25
+		}
+
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = spotter
+		parent = blockade_runner
+		num_parents_needed = 1
+		
+		mutually_exclusive = mine_layer
+		
+		gui_row = 6
+		gui_column = 1
+	}
+	mine_layer = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			mines_planting_by_fleets_factor = 0.25
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = spotter
+		parent = blockade_runner
+		num_parents_needed = 1
+		
+		mutually_exclusive = mine_sweeper
+		
+		gui_row = 6
+		gui_column = 2
+	}
+	#spotter
+	spotter_II = { 
+		type = navy
+		trait_type = assignable_trait
+		
+		gain_xp_on_spotting = 10
+		
+		cost = 3750
+		
+		modifier = {
+			spotting_chance = 0.1							
+			convoy_escort_efficiency = 0.05
+			convoy_raiding_efficiency_factor = 0.05			
+			naval_retreat_chance = 0.05					
+			ships_at_battle_start = 0.05				
+		}
+		
+		parent = spotter
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		gui_row = 7
+		gui_column = 1
+	}
+	spotter_III = { 
+		type = navy
+		trait_type = assignable_trait
+		
+		gain_xp_on_spotting = 10 
+		
+		cost = 5000
+		
+		modifier = {
+			spotting_chance = 0.1							
+			convoy_escort_efficiency = 0.05
+			convoy_raiding_efficiency_factor = 0.05
+			naval_retreat_chance = 0.05						
+			ships_at_battle_start = 0.05			
+		}
+		
+		parent = spotter_II
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		gui_row = 7
+		gui_column = 2
+	}
+	#blockade_runner
+	#spotter
+	#superior_tactician
+	concealment_expert = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			navy_visibility = -0.05
+			convoy_raiding_efficiency_factor = 0.10
+			naval_coordination = 0.05
+			naval_retreat_speed = 0.05
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = superior_tactician
+		parent = spotter
+		parent = blockade_runner
+		num_parents_needed = 1
+		
+		mutually_exclusive = lone_wolf
+		
+		gui_row = 8
+		gui_column = 1
+	}
+	#lone_wolf
+	#concealment_expert
+	smoke_screen_expert = {
+		type = navy
+		
+		trait_type = assignable_trait
+		modifier = {
+			naval_retreat_chance = 0.25
+			naval_retreat_speed = 0.1
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = lone_wolf
+		parent = concealment_expert
+		num_parents_needed = 1
+		
+		gui_row = 8
+		gui_column = 2
+	}
+	#superior_tactician
+	lone_wolf = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			naval_enemy_fleet_size_ratio_penalty_factor = 0.1
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = superior_tactician
+		mutually_exclusive = concealment_expert
+		
+		gui_row = 9
+		gui_column = 1
+	}
+	#ironside
+	ground_pounder = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			shore_bombardment_bonus = 0.25
+		}
+
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = ironside
+
+		gui_row = 12
+		gui_column = 1
+	}
+	big_guns_expert = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			navy_capital_ship_attack_factor = 0.15
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = ironside
+
+		gui_row = 10
+		gui_column = 1
+	}
+	safety_first = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			critical_receive_chance = -0.25
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = ironside
+
+		gui_row = 11
+		gui_column = 1
+	}
+	marksman = {
+		type = navy
+		modifier = {
+			naval_critical_score_chance_factor = 0.25
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+
+		trait_type = assignable_trait
+		mutually_exclusive = crisis_magician
+		parent = big_guns_expert
+
+		gui_row = 10
+		gui_column = 2
+	}
+	crisis_magician = {
+		type = navy
+		modifier = {
+			naval_critical_effect_factor = -0.5
+		}
+
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+
+		trait_type = assignable_trait
+		mutually_exclusive = marksman
+		parent = safety_first
+
+		gui_row = 11
+		gui_column = 2
+	}
+	#air_controller
+	flight_deck_manager = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			navy_carrier_air_targetting_factor = 0.05
+			navy_carrier_air_attack_factor = 0.05
+			navy_carrier_air_agility_factor = 0.05
+			sortie_efficiency = 0.1
+		}
+
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		parent = air_controller
+
+		gui_row = 13
+		gui_column = 1
+	}
+	fighter_director = {
+		type = navy
+		trait_type = assignable_trait
+		
+		modifier = {
+			fighter_sortie_efficiency = 0.15
+		}
+
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		mutually_exclusive = dive_bomber
+		mutually_exclusive = torpedo_bomber
+		parent = flight_deck_manager
+
+		gui_row = 12
+		gui_column = 2
+	}
+	dive_bomber = {
+		type = navy
+		trait_type = assignable_trait
+		
+		sub_unit_modifiers = {
+			cv_cas = {
+				air_attack_factor = 0.1
+				air_mission_efficiency = 0.1
+			}
+		}
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		mutually_exclusive = fighter_director
+		mutually_exclusive = torpedo_bomber
+		parent = flight_deck_manager
+
+		gui_row = 13
+		gui_column = 2
+	}
+	torpedo_bomber = {
+		type = navy
+		trait_type = assignable_trait
+		
+		sub_unit_modifiers = {
+			cv_nav_bomber = {
+				air_attack_factor = 0.1
+				air_mission_efficiency = 0.1
+			}
+		}
+		ai_will_do = {
+			base = -1000
+			modifier = {
+				add = -4000
+				EAI_save_command_power_on_traits = yes 
+			}
+		}
+		
+		mutually_exclusive = fighter_director
+		mutually_exclusive = dive_bomber
+		parent = flight_deck_manager
+
+		gui_row = 14
+		gui_column = 2
+	}
+	
+}

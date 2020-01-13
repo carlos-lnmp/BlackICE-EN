@@ -1,0 +1,385 @@
+ideas = {
+	##################
+	####Politicians
+	##################
+	#HoS
+	head_of_state = {
+		MAR_mohammad = {
+
+			picture = generic_political_advisor_arab_2
+
+			allowed = {
+				original_tag = MAR
+			}
+			
+			traits = { 
+				independent_guy
+				ambitious_reformer				
+head_of_state_trait
+			}
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Foreign Ministers
+	foreign_minister = {
+		# Done by zzz_generic
+	}
+	#Propaganda/Security
+	interior_minister = {
+		MOR_pot = {
+
+			picture = generic_political_advisor_arab_2
+
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			traits = { hearts_and_minds  interior_minister_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Intelligence
+	intel_minister = {
+		# Done by zzz_generic
+	}
+	#Economic
+	economic_minister = {
+		MOR_coi = {
+
+			picture = generic_political_advisor_arab_1
+				
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+		
+			traits = { captain_of_industry  economic_minister_trait }
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_civilian_buildup = yes 
+				}
+			}
+		}
+	}
+	#Political Advisors
+	political_advisor = {
+		MOR_stc = {
+
+			picture = generic_political_advisor_arab_3
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			traits = { smooth_talking_charmer  political_advisor_trait }
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+	#Domestic
+	domestic_minister = {
+	}
+	influence_minister = {
+	}
+	#Academy
+	military_academy = {
+	}
+	#Theorist
+	theorist = {
+		MOR_mt = {
+			
+			picture = generic_army_arab_1
+
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			research_bonus = {
+				land_doctrine = 0.07
+			}
+			
+			traits = { military_theorist  theorist_trait }
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		MOR_nt = {
+
+			picture = generic_navy_arab_3
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			research_bonus = {
+				naval_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { naval_theorist  theorist_trait }
+		}	
+		MOR_awt = {
+
+			picture = generic_air_arab_2
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			research_bonus = {
+				air_doctrine = 0.07
+			}
+			ai_will_do = {
+				factor = 20
+			}			
+			traits = { air_warfare_theorist  theorist_trait }
+		}
+	}
+	#MILITARY
+	#Supreme Commanders
+	supreme_commander = {
+		# Done by zzz_generic
+	}
+	#Army
+	army_chief = {
+		MOR_aco2 = {
+
+			picture = generic_army_arab_2
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}		
+			
+			traits = { army_chief_organizational_1  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		MOR_acd2 = {
+
+			picture = generic_army_arab_1
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			traits = { army_chief_defensive_2  army_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#Navy
+	navy_chief = {
+		MOR_nccr = {
+
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+					
+			traits = { navy_chief_commerce_raiding_1  navy_chief_trait }
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_sub_bonus = yes 
+				}
+			}
+		}
+		MOR_ncm = {
+
+			picture = generic_navy_arab_3
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+					
+			traits = { navy_chief_maneuver_1  navy_chief_trait }
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_fleet_bonus = yes 
+				}
+			}
+		}
+	}
+	#Air
+	air_chief = {
+		MOR_acr = {
+
+			picture = generic_air_arab_3
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			traits = { air_chief_reform_2  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		MOR_acgs = {
+
+			picture = generic_air_arab_3
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			traits = { air_chief_ground_support_1  air_chief_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+	#High Command
+	high_command = {
+		MOR_ar = {
+			
+			picture = generic_army_arab_1
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			traits = { army_regrouping_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		MOR_ai2 = {
+
+			picture = generic_army_arab_3
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			traits = { army_infantry_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		MOR_aa2 = {
+
+			picture = generic_army_arab_2
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			traits = { army_armored_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		MOR_acas = {
+
+			picture = generic_air_arab_2
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			traits = { air_close_air_support_1  high_command_trait }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		MOR_ncs = {
+
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				OR = {
+					original_tag = MOR
+					original_tag = MAR
+				}
+			}
+			
+			traits = { navy_capital_ship_1  high_command_trait }
+			
+			ai_will_do = { 
+				factor = 0 
+				modifier = {
+					add = 20 
+					EAI_prioritize_fleet_bonus = yes 
+				}
+			}
+		}
+	}
+	#Designers
+	#Materials
+	materiel_manufacturer = {
+		# Done by zzz_generic
+	}
+}
+### EOF ###
